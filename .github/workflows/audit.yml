@@ -1,0 +1,28 @@
+name: VTEX UTM Audit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install googleapis axios
+
+      - name: Run audit
+        env:
+          VTEX_APP_KEY: ${{ secrets.VTEX_APP_KEY }}
+          VTEX_APP_TOKEN: ${{ secrets.VTEX_APP_TOKEN }}
+          VTEX_ACCOUNT: ${{ secrets.VTEX_ACCOUNT }}
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          SHEET_ID: "1NSDJ7fvZlOoqe1aiZQknkmnoxw8Wbcxw2GXxViwgW4c"
+        run: node audit.js
