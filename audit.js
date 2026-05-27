@@ -5,10 +5,27 @@ const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 const SHEET_ID     = process.env.SHEET_ID;
-const DATE_FROM    = "2026-05-01T00:00:00.000Z";
-const DATE_TO      = "2026-05-27T23:59:59.999Z";
 const PAGE_SIZE    = 100;
 const CONCURRENCY  = 15;
+
+// Partir el mes en rangos de 3 días
+function buildDateRanges() {
+  const ranges = [];
+  const start  = new Date("2026-05-01T00:00:00.000Z");
+  const end    = new Date("2026-05-27T23:59:59.999Z");
+  let current  = new Date(start);
+
+  while (current < end) {
+    const from = current.toISOString();
+    const to   = new Date(Math.min(
+      current.getTime() + (3 * 24 * 60 * 60 * 1000) - 1,
+      end.getTime()
+    )).toISOString();
+    ranges.push({ from, to });
+    current = new Date(current.getTime() + (3 * 24 * 60 * 60 * 1000));
+  }
+  return ranges;
+}
 
 const vtexHeaders = {
   "X-VTEX-API-AppKey":   VTEX_KEY,
@@ -35,7 +52,7 @@ async function fetchWithRetry(fn, retries = 5, delay = 1000) {
       return await fn();
     } catch (e) {
       const status = e?.response?.status;
-      if (status === 404 || status === 401 || status === 403) throw e;
+      if (status === 401 || status === 403) throw e;
       if (i === retries - 1) throw e;
       const wait = delay * Math.pow(2, i);
       console.warn(`  ⚠ Retry ${i + 1}/${retries} (status ${status}) esperando ${wait}ms...`);
@@ -44,20 +61,19 @@ async function fetchWithRetry(fn, retries = 5, delay = 1000) {
   }
 }
 
-// URL construida manualmente para evitar que axios re-encodee los corchetes
-function buildListUrl(page) {
+function buildListUrl(from, to, page) {
   return `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders`
-    + `?f_creationDate=creationDate%3A%5B${DATE_FROM}%20TO%20${DATE_TO}%5D`
+    + `?f_creationDate=creationDate%3A%5B${from}%20TO%20${to}%5D`
     + `&orderBy=creationDate%2Cdesc`
     + `&page=${page}`
     + `&per_page=${PAGE_SIZE}`;
 }
 
-async function fetchOrderList(page) {
+async function fetchOrderList(from, to, page) {
   return fetchWithRetry(async () => {
-    const res = await axios.get(buildListUrl(page), {
+    const res = await axios.get(buildListUrl(from, to, page), {
       headers: vtexHeaders,
-      transformRequest: [d => d] // evita que axios toque la URL
+      transformRequest: [d => d]
     });
     return res.data;
   });
@@ -103,14 +119,9 @@ async function processBatch(orderIds, seen) {
 
     for (const detail of details) {
       if (!detail) continue;
-
-      const orderId     = detail.orderId;
-      const fromValue   = getCustomAppFrom(detail);
-
-      // Solo nos interesan pedidos de app
+      const orderId   = detail.orderId;
+      const fromValue = getCustomAppFrom(detail);
       if (fromValue !== "app") continue;
-
-      // Deduplicar
       if (seen.has(orderId)) continue;
       seen.add(orderId);
 
@@ -123,12 +134,12 @@ async function processBatch(orderIds, seen) {
         formatDate(detail.creationDate),
         detail.status || "",
         detail.value ? detail.value / 100 : 0,
-        utmSource,   // vacío si no tiene
+        utmSource,
         utmMedium,
         utmCampaign,
         fromValue,
         detail.clientProfileData?.email || "",
-        utmSource ? "CON UTM" : "SIN UTM"  // columna extra para filtrar fácil
+        utmSource ? "CON UTM" : "SIN UTM"
       ]);
     }
   }
@@ -148,9 +159,48 @@ async function flushToSheet(sheets, rows) {
   );
 }
 
+async function processRange(from, to, seen, sheets, globalStats) {
+  let page = 1;
+  let totalPagesInRange = null;
+
+  while (true) {
+    let data;
+    try {
+      data = await fetchOrderList(from, to, page);
+    } catch (e) {
+      console.error(`  ✗ Error página ${page} [${from.slice(0,10)}]: ${e?.response?.status || e.message}`);
+      break;
+    }
+
+    if (!totalPagesInRange) {
+      totalPagesInRange = Math.ceil((data.paging?.total || 0) / PAGE_SIZE);
+      console.log(`  → ${data.paging?.total || 0} pedidos en este rango (${totalPagesInRange} páginas)`);
+    }
+
+    const orderIds = (data.list || []).map(o => o.orderId);
+    if (!orderIds.length) break;
+
+    const rows = await processBatch(orderIds, seen);
+    globalStats.analyzed += orderIds.length;
+    globalStats.found    += rows.length;
+    globalStats.conUTM   += rows.filter(r => r[9] === "CON UTM").length;
+    globalStats.sinUTM   += rows.filter(r => r[9] === "SIN UTM").length;
+    globalStats.pending.push(...rows);
+
+    // Flush cada 500 filas
+    if (globalStats.pending.length >= 500) {
+      await flushToSheet(sheets, globalStats.pending);
+      console.log(`  💾 Flush: ${globalStats.pending.length} filas | total app → con UTM: ${globalStats.conUTM} | sin UTM: ${globalStats.sinUTM}`);
+      globalStats.pending = [];
+    }
+
+    if (page >= totalPagesInRange) break;
+    page++;
+  }
+}
+
 async function main() {
   console.log("🚀 Iniciando auditoría VTEX...");
-  console.log(`   Período: ${DATE_FROM} → ${DATE_TO}`);
 
   const sheets = await getSheetsClient();
 
@@ -168,64 +218,31 @@ async function main() {
     }
   });
 
-  const firstPage  = await fetchOrderList(1);
-  const totalItems = firstPage.paging?.total || 0;
-  const totalPages = Math.ceil(totalItems / PAGE_SIZE);
-  console.log(`\n📦 Total pedidos: ${totalItems} | Páginas: ${totalPages}\n`);
+  const ranges = buildDateRanges();
+  console.log(`\n📅 Procesando ${ranges.length} rangos de 3 días\n`);
 
   const seen        = new Set();
-  let allRows       = [];
-  let totalAnalyzed = 0;
-  let totalFound    = 0;
-  let conUTM        = 0;
-  let sinUTM        = 0;
+  const globalStats = { analyzed: 0, found: 0, conUTM: 0, sinUTM: 0, pending: [] };
 
-  for (let page = 1; page <= totalPages; page++) {
-    process.stdout.write(`Página ${page}/${totalPages}... `);
-
-    let data;
-    try {
-      data = page === 1 ? firstPage : await fetchOrderList(page);
-    } catch (e) {
-      console.error(`\n✗ Error página ${page}: ${e?.response?.status || e.message}. Saltando...`);
-      await sleep(3000);
-      continue;
-    }
-
-    const orderIds = (data.list || []).map(o => o.orderId);
-    const rows     = await processBatch(orderIds, seen);
-
-    totalAnalyzed += orderIds.length;
-    totalFound    += rows.length;
-    conUTM        += rows.filter(r => r[9] === "CON UTM").length;
-    sinUTM        += rows.filter(r => r[9] === "SIN UTM").length;
-    allRows.push(...rows);
-
-    console.log(`✓ app: ${rows.length} (con UTM: ${rows.filter(r=>r[9]==="CON UTM").length} | sin UTM: ${rows.filter(r=>r[9]==="SIN UTM").length})`);
-
-    if (page % 10 === 0 && allRows.length > 0) {
-      await flushToSheet(sheets, allRows);
-      console.log(`  💾 Flush: ${allRows.length} filas | acumulado → con UTM: ${conUTM} | sin UTM: ${sinUTM}\n`);
-      allRows = [];
-    }
-
-    if (page % 50 === 0) {
-      console.log("  ⏸ Pausa de 2s...");
-      await sleep(2000);
-    }
+  for (let i = 0; i < ranges.length; i++) {
+    const { from, to } = ranges[i];
+    console.log(`\n[${i + 1}/${ranges.length}] ${from.slice(0,10)} → ${to.slice(0,10)}`);
+    await processRange(from, to, seen, sheets, globalStats);
+    await sleep(500);
   }
 
-  if (allRows.length > 0) {
-    await flushToSheet(sheets, allRows);
-    console.log(`  💾 Flush final: ${allRows.length} filas\n`);
+  // Flush final
+  if (globalStats.pending.length > 0) {
+    await flushToSheet(sheets, globalStats.pending);
+    console.log(`  💾 Flush final: ${globalStats.pending.length} filas`);
   }
 
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+  console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
   console.log(`✅ FINALIZADO`);
-  console.log(`   Pedidos analizados:     ${totalAnalyzed}`);
-  console.log(`   Pedidos de app totales: ${totalFound}`);
-  console.log(`   Con UTM:                ${conUTM}`);
-  console.log(`   Sin UTM:                ${sinUTM}`);
+  console.log(`   Pedidos analizados:     ${globalStats.analyzed}`);
+  console.log(`   Pedidos de app totales: ${globalStats.found}`);
+  console.log(`   Con UTM:                ${globalStats.conUTM}`);
+  console.log(`   Sin UTM:                ${globalStats.sinUTM}`);
   console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 }
 
