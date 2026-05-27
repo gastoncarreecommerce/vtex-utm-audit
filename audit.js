@@ -8,7 +8,7 @@ const SHEET_ID     = process.env.SHEET_ID;
 const DATE_FROM    = "2026-05-01T00:00:00.000Z";
 const DATE_TO      = "2026-05-27T23:59:59.999Z";
 const PAGE_SIZE    = 100;
-const CONCURRENCY  = 15; // paralelo conservador para no quemar VTEX
+const CONCURRENCY  = 15;
 
 const vtexHeaders = {
   "X-VTEX-API-AppKey":   VTEX_KEY,
@@ -16,7 +16,6 @@ const vtexHeaders = {
   "Content-Type":        "application/json"
 };
 
-// --- Google Sheets ---
 async function getSheetsClient() {
   const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
   const auth  = new google.auth.GoogleAuth({
@@ -26,14 +25,16 @@ async function getSheetsClient() {
   return google.sheets({ version: "v4", auth });
 }
 
-// --- Fetch con retry automático ---
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
 async function fetchWithRetry(fn, retries = 5, delay = 1000) {
   for (let i = 0; i < retries; i++) {
     try {
       return await fn();
     } catch (e) {
       const status = e?.response?.status;
-      // No reintentar en errores que no son de red/throttle
       if (status === 404 || status === 401 || status === 403) throw e;
       if (i === retries - 1) throw e;
       const wait = delay * Math.pow(2, i);
@@ -43,21 +44,25 @@ async function fetchWithRetry(fn, retries = 5, delay = 1000) {
   }
 }
 
-// --- Traer página de lista ---
+// URL construida manualmente para evitar que axios re-encodee los corchetes
+function buildListUrl(page) {
+  return `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders`
+    + `?f_creationDate=creationDate%3A%5B${DATE_FROM}%20TO%20${DATE_TO}%5D`
+    + `&orderBy=creationDate%2Cdesc`
+    + `&page=${page}`
+    + `&per_page=${PAGE_SIZE}`;
+}
+
 async function fetchOrderList(page) {
   return fetchWithRetry(async () => {
-    const dateFilter = `creationDate:[${DATE_FROM} TO ${DATE_TO}]`;
-    const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders`
-      + `?f_creationDate=${encodeURIComponent(dateFilter)}`
-      + `&orderBy=creationDate%2Cdesc`
-      + `&page=${page}`
-      + `&per_page=${PAGE_SIZE}`;
-    const res = await axios.get(url, { headers: vtexHeaders });
+    const res = await axios.get(buildListUrl(page), {
+      headers: vtexHeaders,
+      transformRequest: [d => d] // evita que axios toque la URL
+    });
     return res.data;
   });
 }
 
-// --- Traer detalle de un pedido ---
 async function fetchOrderDetail(orderId) {
   try {
     return await fetchWithRetry(async () => {
@@ -71,7 +76,6 @@ async function fetchOrderDetail(orderId) {
   }
 }
 
-// --- Buscar from en customApps ---
 function getCustomAppFrom(order) {
   const apps = order?.customData?.customApps || [];
   for (const app of apps) {
@@ -80,7 +84,6 @@ function getCustomAppFrom(order) {
   return "";
 }
 
-// --- Formatear fecha a hora argentina ---
 function formatDate(iso) {
   if (!iso) return "";
   try {
@@ -89,16 +92,9 @@ function formatDate(iso) {
       day: "2-digit", month: "2-digit", year: "numeric",
       hour: "2-digit", minute: "2-digit", second: "2-digit"
     });
-  } catch (e) {
-    return iso;
-  }
+  } catch (e) { return iso; }
 }
 
-function sleep(ms) {
-  return new Promise(r => setTimeout(r, ms));
-}
-
-// --- Procesar batch en paralelo ---
 async function processBatch(orderIds, seen) {
   const results = [];
   for (let i = 0; i < orderIds.length; i += CONCURRENCY) {
@@ -109,34 +105,36 @@ async function processBatch(orderIds, seen) {
       if (!detail) continue;
 
       const orderId     = detail.orderId;
-      const utmSource   = detail.marketingData?.utmSource   || "";
-      const utmMedium   = detail.marketingData?.utmMedium   || "";
-      const utmCampaign = detail.marketingData?.utmCampaign || "";
       const fromValue   = getCustomAppFrom(detail);
+
+      // Solo nos interesan pedidos de app
+      if (fromValue !== "app") continue;
 
       // Deduplicar
       if (seen.has(orderId)) continue;
       seen.add(orderId);
 
-      if (fromValue === "app" && !utmSource) {
-        results.push([
-          orderId,
-          formatDate(detail.creationDate),
-          detail.status || "",
-          detail.value ? detail.value / 100 : 0,
-          utmSource,
-          utmMedium,
-          utmCampaign,
-          fromValue,
-          detail.clientProfileData?.email || ""
-        ]);
-      }
+      const utmSource   = detail.marketingData?.utmSource   || "";
+      const utmMedium   = detail.marketingData?.utmMedium   || "";
+      const utmCampaign = detail.marketingData?.utmCampaign || "";
+
+      results.push([
+        orderId,
+        formatDate(detail.creationDate),
+        detail.status || "",
+        detail.value ? detail.value / 100 : 0,
+        utmSource,   // vacío si no tiene
+        utmMedium,
+        utmCampaign,
+        fromValue,
+        detail.clientProfileData?.email || "",
+        utmSource ? "CON UTM" : "SIN UTM"  // columna extra para filtrar fácil
+      ]);
     }
   }
   return results;
 }
 
-// --- Escribir en sheet ---
 async function flushToSheet(sheets, rows) {
   if (!rows.length) return;
   await fetchWithRetry(() =>
@@ -150,14 +148,12 @@ async function flushToSheet(sheets, rows) {
   );
 }
 
-// --- Main ---
 async function main() {
   console.log("🚀 Iniciando auditoría VTEX...");
   console.log(`   Período: ${DATE_FROM} → ${DATE_TO}`);
 
   const sheets = await getSheetsClient();
 
-  // Limpiar sheet y headers
   await sheets.spreadsheets.values.clear({ spreadsheetId: SHEET_ID, range: "HOJA 1" });
   await sheets.spreadsheets.values.update({
     spreadsheetId: SHEET_ID,
@@ -166,21 +162,23 @@ async function main() {
     requestBody: {
       values: [[
         "Order ID", "Fecha creación", "Estado", "Total (ARS)",
-        "UTM Source", "UTM Medium", "UTM Campaign", "customApp from", "Email cliente"
+        "UTM Source", "UTM Medium", "UTM Campaign", "customApp from",
+        "Email cliente", "UTM Status"
       ]]
     }
   });
 
-  // Primera página para saber el total
   const firstPage  = await fetchOrderList(1);
   const totalItems = firstPage.paging?.total || 0;
   const totalPages = Math.ceil(totalItems / PAGE_SIZE);
   console.log(`\n📦 Total pedidos: ${totalItems} | Páginas: ${totalPages}\n`);
 
-  const seen        = new Set(); // deduplicado global
+  const seen        = new Set();
   let allRows       = [];
   let totalAnalyzed = 0;
   let totalFound    = 0;
+  let conUTM        = 0;
+  let sinUTM        = 0;
 
   for (let page = 1; page <= totalPages; page++) {
     process.stdout.write(`Página ${page}/${totalPages}... `);
@@ -189,8 +187,8 @@ async function main() {
     try {
       data = page === 1 ? firstPage : await fetchOrderList(page);
     } catch (e) {
-      console.error(`\n✗ Error al traer página ${page}: ${e?.response?.status || e.message}. Saltando...`);
-      await sleep(2000);
+      console.error(`\n✗ Error página ${page}: ${e?.response?.status || e.message}. Saltando...`);
+      await sleep(3000);
       continue;
     }
 
@@ -199,34 +197,35 @@ async function main() {
 
     totalAnalyzed += orderIds.length;
     totalFound    += rows.length;
+    conUTM        += rows.filter(r => r[9] === "CON UTM").length;
+    sinUTM        += rows.filter(r => r[9] === "SIN UTM").length;
     allRows.push(...rows);
 
-    console.log(`✓ encontrados: ${rows.length} (total: ${totalFound})`);
+    console.log(`✓ app: ${rows.length} (con UTM: ${rows.filter(r=>r[9]==="CON UTM").length} | sin UTM: ${rows.filter(r=>r[9]==="SIN UTM").length})`);
 
-    // Flush cada 10 páginas
     if (page % 10 === 0 && allRows.length > 0) {
       await flushToSheet(sheets, allRows);
-      console.log(`  💾 Flush: ${allRows.length} filas escritas en sheet\n`);
+      console.log(`  💾 Flush: ${allRows.length} filas | acumulado → con UTM: ${conUTM} | sin UTM: ${sinUTM}\n`);
       allRows = [];
     }
 
-    // Pequeña pausa cada 50 páginas para no saturar VTEX
     if (page % 50 === 0) {
       console.log("  ⏸ Pausa de 2s...");
       await sleep(2000);
     }
   }
 
-  // Flush final
   if (allRows.length > 0) {
     await flushToSheet(sheets, allRows);
-    console.log(`  💾 Flush final: ${allRows.length} filas escritas\n`);
+    console.log(`  💾 Flush final: ${allRows.length} filas\n`);
   }
 
   console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
   console.log(`✅ FINALIZADO`);
-  console.log(`   Pedidos analizados: ${totalAnalyzed}`);
-  console.log(`   Sin UTM + from=app: ${totalFound}`);
+  console.log(`   Pedidos analizados:     ${totalAnalyzed}`);
+  console.log(`   Pedidos de app totales: ${totalFound}`);
+  console.log(`   Con UTM:                ${conUTM}`);
+  console.log(`   Sin UTM:                ${sinUTM}`);
   console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 }
 
