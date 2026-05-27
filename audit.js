@@ -6,26 +6,7 @@ const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 const SHEET_ID     = process.env.SHEET_ID;
 const PAGE_SIZE    = 100;
-const CONCURRENCY  = 15;
-
-// Partir el mes en rangos de 3 días
-function buildDateRanges() {
-  const ranges = [];
-  const start  = new Date("2026-05-01T00:00:00.000Z");
-  const end    = new Date("2026-05-27T23:59:59.999Z");
-  let current  = new Date(start);
-
-  while (current < end) {
-    const from = current.toISOString();
-    const to   = new Date(Math.min(
-      current.getTime() + (3 * 24 * 60 * 60 * 1000) - 1,
-      end.getTime()
-    )).toISOString();
-    ranges.push({ from, to });
-    current = new Date(current.getTime() + (3 * 24 * 60 * 60 * 1000));
-  }
-  return ranges;
-}
+const CONCURRENCY  = 10; // conservador para no quemar VTEX
 
 const vtexHeaders = {
   "X-VTEX-API-AppKey":   VTEX_KEY,
@@ -33,35 +14,53 @@ const vtexHeaders = {
   "Content-Type":        "application/json"
 };
 
-async function getSheetsClient() {
-  const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-  const auth  = new google.auth.GoogleAuth({
-    credentials: creds,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"]
-  });
-  return google.sheets({ version: "v4", auth });
+// -------------------------------------------------------
+// Rangos de 6hs — máx ~950 pedidos por bloque → <10 páginas
+// -------------------------------------------------------
+function buildDateRanges() {
+  const ranges = [];
+  const start  = new Date("2026-05-01T00:00:00.000Z");
+  const end    = new Date("2026-05-27T23:59:59.999Z");
+  const block  = 6 * 60 * 60 * 1000;
+  let current  = new Date(start);
+
+  while (current <= end) {
+    const from = current.toISOString();
+    const to   = new Date(Math.min(current.getTime() + block - 1, end.getTime())).toISOString();
+    ranges.push({ from, to });
+    current = new Date(current.getTime() + block);
+  }
+  return ranges;
 }
 
+// -------------------------------------------------------
+// Helpers
+// -------------------------------------------------------
 function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
-async function fetchWithRetry(fn, retries = 5, delay = 1000) {
+async function fetchWithRetry(fn, retries = 6, delay = 1500) {
   for (let i = 0; i < retries; i++) {
     try {
       return await fn();
     } catch (e) {
       const status = e?.response?.status;
-      if (status === 401 || status === 403) throw e;
+      // No reintentar en errores permanentes
+      if (status === 401 || status === 403 || status === 404) throw e;
       if (i === retries - 1) throw e;
       const wait = delay * Math.pow(2, i);
-      console.warn(`  ⚠ Retry ${i + 1}/${retries} (status ${status}) esperando ${wait}ms...`);
+      console.warn(`  ⚠ Retry ${i + 1}/${retries} (status ${status || e.message}) → esperando ${wait}ms...`);
       await sleep(wait);
     }
   }
 }
 
+// -------------------------------------------------------
+// VTEX API
+// -------------------------------------------------------
 function buildListUrl(from, to, page) {
+  // Construimos la URL manualmente para evitar que axios re-encodee los corchetes
   return `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders`
     + `?f_creationDate=creationDate%3A%5B${from}%20TO%20${to}%5D`
     + `&orderBy=creationDate%2Cdesc`
@@ -73,8 +72,10 @@ async function fetchOrderList(from, to, page) {
   return fetchWithRetry(async () => {
     const res = await axios.get(buildListUrl(from, to, page), {
       headers: vtexHeaders,
-      transformRequest: [d => d]
+      transformRequest: [d => d], // evita que axios toque la URL
+      timeout: 30000
     });
+    if (!res.data || !res.data.list) throw new Error("Respuesta inesperada de VTEX lista");
     return res.data;
   });
 }
@@ -83,19 +84,23 @@ async function fetchOrderDetail(orderId) {
   try {
     return await fetchWithRetry(async () => {
       const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders/${orderId}`;
-      const res = await axios.get(url, { headers: vtexHeaders });
+      const res = await axios.get(url, { headers: vtexHeaders, timeout: 30000 });
+      if (!res.data || !res.data.orderId) throw new Error("Respuesta inesperada de VTEX detalle");
       return res.data;
     });
   } catch (e) {
-    console.error(`  ✗ Error detalle ${orderId}: ${e?.response?.status || e.message}`);
+    console.error(`  ✗ Detalle ${orderId}: ${e?.response?.status || e.message}`);
     return null;
   }
 }
 
+// -------------------------------------------------------
+// Parseo
+// -------------------------------------------------------
 function getCustomAppFrom(order) {
   const apps = order?.customData?.customApps || [];
   for (const app of apps) {
-    if (app?.fields?.from !== undefined) return app.fields.from;
+    if (app?.fields?.from !== undefined) return String(app.fields.from).trim();
   }
   return "";
 }
@@ -113,37 +118,62 @@ function formatDate(iso) {
 
 async function processBatch(orderIds, seen) {
   const results = [];
+
   for (let i = 0; i < orderIds.length; i += CONCURRENCY) {
     const batch   = orderIds.slice(i, i + CONCURRENCY);
     const details = await Promise.all(batch.map(fetchOrderDetail));
 
     for (const detail of details) {
-      if (!detail) continue;
+      if (!detail?.orderId) continue;
+
       const orderId   = detail.orderId;
       const fromValue = getCustomAppFrom(detail);
+
+      // Solo pedidos de app
       if (fromValue !== "app") continue;
+
+      // Deduplicar globalmente
       if (seen.has(orderId)) continue;
       seen.add(orderId);
 
       const utmSource   = detail.marketingData?.utmSource   || "";
       const utmMedium   = detail.marketingData?.utmMedium   || "";
       const utmCampaign = detail.marketingData?.utmCampaign || "";
+      const email       = detail.clientProfileData?.email   || "";
+      const total       = typeof detail.value === "number" ? detail.value / 100 : 0;
+      const utmStatus   = utmSource ? "CON UTM" : "SIN UTM";
 
       results.push([
         orderId,
         formatDate(detail.creationDate),
         detail.status || "",
-        detail.value ? detail.value / 100 : 0,
+        total,
         utmSource,
         utmMedium,
         utmCampaign,
         fromValue,
-        detail.clientProfileData?.email || "",
-        utmSource ? "CON UTM" : "SIN UTM"
+        email,
+        utmStatus
       ]);
     }
+
+    // Pequeña pausa entre batches para no saturar
+    if (i + CONCURRENCY < orderIds.length) await sleep(100);
   }
+
   return results;
+}
+
+// -------------------------------------------------------
+// Google Sheets
+// -------------------------------------------------------
+async function getSheetsClient() {
+  const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+  const auth  = new google.auth.GoogleAuth({
+    credentials: creds,
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"]
+  });
+  return google.sheets({ version: "v4", auth });
 }
 
 async function flushToSheet(sheets, rows) {
@@ -159,51 +189,78 @@ async function flushToSheet(sheets, rows) {
   );
 }
 
-async function processRange(from, to, seen, sheets, globalStats) {
-  let page = 1;
-  let totalPagesInRange = null;
+// -------------------------------------------------------
+// Procesar un rango de fechas completo
+// -------------------------------------------------------
+async function processRange(from, to, seen, sheets, stats) {
+  let page             = 1;
+  let totalPages       = null;
+  let consecutiveErrors = 0;
 
   while (true) {
     let data;
     try {
       data = await fetchOrderList(from, to, page);
+      consecutiveErrors = 0;
     } catch (e) {
-      console.error(`  ✗ Error página ${page} [${from.slice(0,10)}]: ${e?.response?.status || e.message}`);
-      break;
+      consecutiveErrors++;
+      console.error(`  ✗ Error página ${page} [${from.slice(0,10)} ${from.slice(11,16)}]: ${e?.response?.status || e.message}`);
+      if (consecutiveErrors >= 3) {
+        console.error(`  ✗ 3 errores consecutivos, abandonando este rango`);
+        break;
+      }
+      await sleep(3000);
+      continue;
     }
 
-    if (!totalPagesInRange) {
-      totalPagesInRange = Math.ceil((data.paging?.total || 0) / PAGE_SIZE);
-      console.log(`  → ${data.paging?.total || 0} pedidos en este rango (${totalPagesInRange} páginas)`);
+    if (totalPages === null) {
+      const total = data.paging?.total || 0;
+      totalPages  = Math.ceil(total / PAGE_SIZE);
+      if (total > 0) {
+        process.stdout.write(`  → ${total} pedidos (${totalPages} págs) `);
+      } else {
+        console.log(`  → 0 pedidos, saltando`);
+        break;
+      }
     }
 
-    const orderIds = (data.list || []).map(o => o.orderId);
+    const orderIds = (data.list || []).map(o => o.orderId).filter(Boolean);
     if (!orderIds.length) break;
 
     const rows = await processBatch(orderIds, seen);
-    globalStats.analyzed += orderIds.length;
-    globalStats.found    += rows.length;
-    globalStats.conUTM   += rows.filter(r => r[9] === "CON UTM").length;
-    globalStats.sinUTM   += rows.filter(r => r[9] === "SIN UTM").length;
-    globalStats.pending.push(...rows);
+    stats.analyzed += orderIds.length;
+    stats.found    += rows.length;
+    stats.conUTM   += rows.filter(r => r[9] === "CON UTM").length;
+    stats.sinUTM   += rows.filter(r => r[9] === "SIN UTM").length;
+    stats.pending.push(...rows);
 
-    // Flush cada 500 filas
-    if (globalStats.pending.length >= 500) {
-      await flushToSheet(sheets, globalStats.pending);
-      console.log(`  💾 Flush: ${globalStats.pending.length} filas | total app → con UTM: ${globalStats.conUTM} | sin UTM: ${globalStats.sinUTM}`);
-      globalStats.pending = [];
+    process.stdout.write(".");
+
+    // Flush cada 300 filas
+    if (stats.pending.length >= 300) {
+      await flushToSheet(sheets, stats.pending);
+      stats.pending = [];
     }
 
-    if (page >= totalPagesInRange) break;
+    if (page >= totalPages) break;
     page++;
+    await sleep(200);
   }
+
+  console.log(` ✓`);
 }
 
+// -------------------------------------------------------
+// Main
+// -------------------------------------------------------
 async function main() {
-  console.log("🚀 Iniciando auditoría VTEX...");
+  console.log("🚀 Iniciando auditoría VTEX — Mayo 2026");
+  console.log(`   Cuenta: ${VTEX_ACCOUNT}`);
+  console.log(`   Sheet:  ${SHEET_ID}\n`);
 
   const sheets = await getSheetsClient();
 
+  // Limpiar y poner headers
   await sheets.spreadsheets.values.clear({ spreadsheetId: SHEET_ID, range: "HOJA 1" });
   await sheets.spreadsheets.values.update({
     spreadsheetId: SHEET_ID,
@@ -212,41 +269,45 @@ async function main() {
     requestBody: {
       values: [[
         "Order ID", "Fecha creación", "Estado", "Total (ARS)",
-        "UTM Source", "UTM Medium", "UTM Campaign", "customApp from",
-        "Email cliente", "UTM Status"
+        "UTM Source", "UTM Medium", "UTM Campaign",
+        "customApp from", "Email cliente", "UTM Status"
       ]]
     }
   });
 
   const ranges = buildDateRanges();
-  console.log(`\n📅 Procesando ${ranges.length} rangos de 3 días\n`);
+  console.log(`📅 ${ranges.length} bloques de 6hs a procesar\n`);
 
-  const seen        = new Set();
-  const globalStats = { analyzed: 0, found: 0, conUTM: 0, sinUTM: 0, pending: [] };
+  const seen  = new Set();
+  const stats = { analyzed: 0, found: 0, conUTM: 0, sinUTM: 0, pending: [] };
 
   for (let i = 0; i < ranges.length; i++) {
     const { from, to } = ranges[i];
-    console.log(`\n[${i + 1}/${ranges.length}] ${from.slice(0,10)} → ${to.slice(0,10)}`);
-    await processRange(from, to, seen, sheets, globalStats);
-    await sleep(500);
+    const label = `${from.slice(0,10)} ${from.slice(11,16)} → ${to.slice(11,16)}`;
+    process.stdout.write(`[${String(i+1).padStart(3)}/${ranges.length}] ${label} `);
+    await processRange(from, to, seen, sheets, stats);
+    await sleep(300);
   }
 
   // Flush final
-  if (globalStats.pending.length > 0) {
-    await flushToSheet(sheets, globalStats.pending);
-    console.log(`  💾 Flush final: ${globalStats.pending.length} filas`);
+  if (stats.pending.length > 0) {
+    await flushToSheet(sheets, stats.pending);
   }
 
-  console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+  const pctSinUTM = stats.found > 0
+    ? ((stats.sinUTM / stats.found) * 100).toFixed(1)
+    : "0.0";
+
+  console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
   console.log(`✅ FINALIZADO`);
-  console.log(`   Pedidos analizados:     ${globalStats.analyzed}`);
-  console.log(`   Pedidos de app totales: ${globalStats.found}`);
-  console.log(`   Con UTM:                ${globalStats.conUTM}`);
-  console.log(`   Sin UTM:                ${globalStats.sinUTM}`);
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+  console.log(`   Pedidos analizados:     ${stats.analyzed.toLocaleString()}`);
+  console.log(`   Pedidos de app totales: ${stats.found.toLocaleString()}`);
+  console.log(`   Con UTM:                ${stats.conUTM.toLocaleString()}`);
+  console.log(`   Sin UTM:                ${stats.sinUTM.toLocaleString()} (${pctSinUTM}%)`);
+  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 }
 
 main().catch(err => {
-  console.error("💥 Error fatal:", err.message);
+  console.error("\n💥 Error fatal:", err.message);
   process.exit(1);
 });
