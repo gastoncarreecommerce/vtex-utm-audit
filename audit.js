@@ -6,7 +6,7 @@ const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 const SHEET_ID     = process.env.SHEET_ID;
 const PAGE_SIZE    = 100;
-const CONCURRENCY  = 10; // conservador para no quemar VTEX
+const CONCURRENCY  = 10;
 
 const vtexHeaders = {
   "X-VTEX-API-AppKey":   VTEX_KEY,
@@ -14,12 +14,9 @@ const vtexHeaders = {
   "Content-Type":        "application/json"
 };
 
-// -------------------------------------------------------
-// Rangos de 6hs — máx ~950 pedidos por bloque → <10 páginas
-// -------------------------------------------------------
 function buildDateRanges() {
   const ranges = [];
-  const start  = new Date("2026-05-01T00:00:00.000Z");
+  const start  = new Date("2026-05-27T18:00:00.000Z"); // 15hs Argentina en adelante
   const end    = new Date("2026-05-27T23:59:59.999Z");
   const block  = 6 * 60 * 60 * 1000;
   let current  = new Date(start);
@@ -33,9 +30,6 @@ function buildDateRanges() {
   return ranges;
 }
 
-// -------------------------------------------------------
-// Helpers
-// -------------------------------------------------------
 function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
@@ -46,7 +40,6 @@ async function fetchWithRetry(fn, retries = 6, delay = 1500) {
       return await fn();
     } catch (e) {
       const status = e?.response?.status;
-      // No reintentar en errores permanentes
       if (status === 401 || status === 403 || status === 404) throw e;
       if (i === retries - 1) throw e;
       const wait = delay * Math.pow(2, i);
@@ -56,11 +49,7 @@ async function fetchWithRetry(fn, retries = 6, delay = 1500) {
   }
 }
 
-// -------------------------------------------------------
-// VTEX API
-// -------------------------------------------------------
 function buildListUrl(from, to, page) {
-  // Construimos la URL manualmente para evitar que axios re-encodee los corchetes
   return `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders`
     + `?f_creationDate=creationDate%3A%5B${from}%20TO%20${to}%5D`
     + `&orderBy=creationDate%2Cdesc`
@@ -72,7 +61,7 @@ async function fetchOrderList(from, to, page) {
   return fetchWithRetry(async () => {
     const res = await axios.get(buildListUrl(from, to, page), {
       headers: vtexHeaders,
-      transformRequest: [d => d], // evita que axios toque la URL
+      transformRequest: [d => d],
       timeout: 30000
     });
     if (!res.data || !res.data.list) throw new Error("Respuesta inesperada de VTEX lista");
@@ -94,9 +83,6 @@ async function fetchOrderDetail(orderId) {
   }
 }
 
-// -------------------------------------------------------
-// Parseo
-// -------------------------------------------------------
 function getCustomAppFrom(order) {
   const apps = order?.customData?.customApps || [];
   for (const app of apps) {
@@ -129,10 +115,7 @@ async function processBatch(orderIds, seen) {
       const orderId   = detail.orderId;
       const fromValue = getCustomAppFrom(detail);
 
-      // Solo pedidos de app
       if (fromValue !== "app") continue;
-
-      // Deduplicar globalmente
       if (seen.has(orderId)) continue;
       seen.add(orderId);
 
@@ -157,16 +140,12 @@ async function processBatch(orderIds, seen) {
       ]);
     }
 
-    // Pequeña pausa entre batches para no saturar
     if (i + CONCURRENCY < orderIds.length) await sleep(100);
   }
 
   return results;
 }
 
-// -------------------------------------------------------
-// Google Sheets
-// -------------------------------------------------------
 async function getSheetsClient() {
   const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
   const auth  = new google.auth.GoogleAuth({
@@ -189,12 +168,9 @@ async function flushToSheet(sheets, rows) {
   );
 }
 
-// -------------------------------------------------------
-// Procesar un rango de fechas completo
-// -------------------------------------------------------
 async function processRange(from, to, seen, sheets, stats) {
-  let page             = 1;
-  let totalPages       = null;
+  let page              = 1;
+  let totalPages        = null;
   let consecutiveErrors = 0;
 
   while (true) {
@@ -236,7 +212,6 @@ async function processRange(from, to, seen, sheets, stats) {
 
     process.stdout.write(".");
 
-    // Flush cada 300 filas
     if (stats.pending.length >= 300) {
       await flushToSheet(sheets, stats.pending);
       stats.pending = [];
@@ -250,31 +225,14 @@ async function processRange(from, to, seen, sheets, stats) {
   console.log(` ✓`);
 }
 
-// -------------------------------------------------------
-// Main
-// -------------------------------------------------------
 async function main() {
-  console.log("🚀 Iniciando auditoría VTEX — Mayo 2026");
+  console.log("🚀 Completando día 27 — desde las 15hs Argentina");
   console.log(`   Cuenta: ${VTEX_ACCOUNT}`);
   console.log(`   Sheet:  ${SHEET_ID}\n`);
 
   const sheets = await getSheetsClient();
 
-  // Limpiar y poner headers
-  await sheets.spreadsheets.values.clear({ spreadsheetId: SHEET_ID, range: "HOJA 1" });
-  await sheets.spreadsheets.values.update({
-    spreadsheetId: SHEET_ID,
-    range: "HOJA 1!A1",
-    valueInputOption: "RAW",
-    requestBody: {
-      values: [[
-        "Order ID", "Fecha creación", "Estado", "Total (ARS)",
-        "UTM Source", "UTM Medium", "UTM Campaign",
-        "customApp from", "Email cliente", "UTM Status"
-      ]]
-    }
-  });
-
+  // Sin clear — appendea a lo que ya está en la sheet
   const ranges = buildDateRanges();
   console.log(`📅 ${ranges.length} bloques de 6hs a procesar\n`);
 
@@ -289,7 +247,6 @@ async function main() {
     await sleep(300);
   }
 
-  // Flush final
   if (stats.pending.length > 0) {
     await flushToSheet(sheets, stats.pending);
   }
