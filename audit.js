@@ -18,8 +18,8 @@ const vtexHeaders = {
 // Bloques de 1 hora — ~160 pedidos por bloque, nunca supera 30 páginas
 function buildDateRanges() {
   const ranges = [];
-  const start  = new Date("2026-05-27T00:00:00.000Z");
-  const end    = new Date("2026-05-27T23:59:59.999Z");
+  const start  = new Date("2026-05-27T03:00:00.000Z");
+  const end    = new Date("2026-05-28T02:59:59.999Z");
   const block  = 1 * 60 * 60 * 1000; // 1 hora
   let current  = new Date(start);
 
