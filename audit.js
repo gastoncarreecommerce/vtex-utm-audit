@@ -5,6 +5,7 @@ const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 const SHEET_ID     = process.env.SHEET_ID;
+const SHEET_NAME   = "27 MAYO";
 const PAGE_SIZE    = 100;
 const CONCURRENCY  = 10;
 
@@ -14,11 +15,12 @@ const vtexHeaders = {
   "Content-Type":        "application/json"
 };
 
+// Bloques de 1 hora — ~160 pedidos por bloque, nunca supera 30 páginas
 function buildDateRanges() {
   const ranges = [];
-  const start  = new Date("2026-05-27T18:00:00.000Z"); // 15hs Argentina en adelante
+  const start  = new Date("2026-05-27T00:00:00.000Z");
   const end    = new Date("2026-05-27T23:59:59.999Z");
-  const block  = 6 * 60 * 60 * 1000;
+  const block  = 1 * 60 * 60 * 1000; // 1 hora
   let current  = new Date(start);
 
   while (current <= end) {
@@ -34,7 +36,7 @@ function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
-async function fetchWithRetry(fn, retries = 6, delay = 1500) {
+async function fetchWithRetry(fn, retries = 8, delay = 1500) {
   for (let i = 0; i < retries; i++) {
     try {
       return await fn();
@@ -43,7 +45,7 @@ async function fetchWithRetry(fn, retries = 6, delay = 1500) {
       if (status === 401 || status === 403 || status === 404) throw e;
       if (i === retries - 1) throw e;
       const wait = delay * Math.pow(2, i);
-      console.warn(`  ⚠ Retry ${i + 1}/${retries} (status ${status || e.message}) → esperando ${wait}ms...`);
+      console.warn(`  ⚠ Retry ${i + 1}/${retries} (status ${status || e.message}) → ${wait}ms`);
       await sleep(wait);
     }
   }
@@ -64,23 +66,18 @@ async function fetchOrderList(from, to, page) {
       transformRequest: [d => d],
       timeout: 30000
     });
-    if (!res.data || !res.data.list) throw new Error("Respuesta inesperada de VTEX lista");
+    if (!res.data || !res.data.list) throw new Error("Respuesta inesperada lista");
     return res.data;
   });
 }
 
 async function fetchOrderDetail(orderId) {
-  try {
-    return await fetchWithRetry(async () => {
-      const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders/${orderId}`;
-      const res = await axios.get(url, { headers: vtexHeaders, timeout: 30000 });
-      if (!res.data || !res.data.orderId) throw new Error("Respuesta inesperada de VTEX detalle");
-      return res.data;
-    });
-  } catch (e) {
-    console.error(`  ✗ Detalle ${orderId}: ${e?.response?.status || e.message}`);
-    return null;
-  }
+  return fetchWithRetry(async () => {
+    const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/oms/pvt/orders/${orderId}`;
+    const res = await axios.get(url, { headers: vtexHeaders, timeout: 30000 });
+    if (!res.data || !res.data.orderId) throw new Error("Respuesta inesperada detalle");
+    return res.data;
+  });
 }
 
 function getCustomAppFrom(order) {
@@ -102,12 +99,21 @@ function formatDate(iso) {
   } catch (e) { return iso; }
 }
 
+// Procesa un batch con reintento individual por pedido fallido
 async function processBatch(orderIds, seen) {
   const results = [];
 
   for (let i = 0; i < orderIds.length; i += CONCURRENCY) {
-    const batch   = orderIds.slice(i, i + CONCURRENCY);
-    const details = await Promise.all(batch.map(fetchOrderDetail));
+    const batch = orderIds.slice(i, i + CONCURRENCY);
+
+    const details = await Promise.all(batch.map(async (id) => {
+      try {
+        return await fetchOrderDetail(id);
+      } catch (e) {
+        console.error(`  ✗ Detalle ${id} falló tras todos los reintentos: ${e?.response?.status || e.message}`);
+        return null;
+      }
+    }));
 
     for (const detail of details) {
       if (!detail?.orderId) continue;
@@ -124,7 +130,6 @@ async function processBatch(orderIds, seen) {
       const utmCampaign = detail.marketingData?.utmCampaign || "";
       const email       = detail.clientProfileData?.email   || "";
       const total       = typeof detail.value === "number" ? detail.value / 100 : 0;
-      const utmStatus   = utmSource ? "CON UTM" : "SIN UTM";
 
       results.push([
         orderId,
@@ -136,7 +141,7 @@ async function processBatch(orderIds, seen) {
         utmCampaign,
         fromValue,
         email,
-        utmStatus
+        utmSource ? "CON UTM" : "SIN UTM"
       ]);
     }
 
@@ -160,7 +165,7 @@ async function flushToSheet(sheets, rows) {
   await fetchWithRetry(() =>
     sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,
-      range: "HOJA 1!A1",
+      range: `${SHEET_NAME}!A1`,
       valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
       requestBody: { values: rows }
@@ -168,10 +173,12 @@ async function flushToSheet(sheets, rows) {
   );
 }
 
+// Procesa un rango horario completo — reintenta páginas fallidas hasta 3 veces
 async function processRange(from, to, seen, sheets, stats) {
   let page              = 1;
   let totalPages        = null;
   let consecutiveErrors = 0;
+  const failedPages     = [];
 
   while (true) {
     let data;
@@ -180,10 +187,14 @@ async function processRange(from, to, seen, sheets, stats) {
       consecutiveErrors = 0;
     } catch (e) {
       consecutiveErrors++;
-      console.error(`  ✗ Error página ${page} [${from.slice(0,10)} ${from.slice(11,16)}]: ${e?.response?.status || e.message}`);
+      console.error(`  ✗ Error pág ${page} [${from.slice(11,16)}]: ${e?.response?.status || e.message}`);
       if (consecutiveErrors >= 3) {
-        console.error(`  ✗ 3 errores consecutivos, abandonando este rango`);
-        break;
+        failedPages.push(page);
+        console.error(`  ✗ Marcando pág ${page} como fallida y continuando`);
+        consecutiveErrors = 0;
+        page++;
+        if (totalPages && page > totalPages) break;
+        continue;
       }
       await sleep(3000);
       continue;
@@ -195,20 +206,20 @@ async function processRange(from, to, seen, sheets, stats) {
       if (total > 0) {
         process.stdout.write(`  → ${total} pedidos (${totalPages} págs) `);
       } else {
-        console.log(`  → 0 pedidos, saltando`);
+        console.log(`  → 0 pedidos`);
         break;
       }
     }
 
     const orderIds = (data.list || []).map(o => o.orderId).filter(Boolean);
-    if (!orderIds.length) break;
-
-    const rows = await processBatch(orderIds, seen);
-    stats.analyzed += orderIds.length;
-    stats.found    += rows.length;
-    stats.conUTM   += rows.filter(r => r[9] === "CON UTM").length;
-    stats.sinUTM   += rows.filter(r => r[9] === "SIN UTM").length;
-    stats.pending.push(...rows);
+    if (orderIds.length) {
+      const rows = await processBatch(orderIds, seen);
+      stats.analyzed += orderIds.length;
+      stats.found    += rows.length;
+      stats.conUTM   += rows.filter(r => r[9] === "CON UTM").length;
+      stats.sinUTM   += rows.filter(r => r[9] === "SIN UTM").length;
+      stats.pending.push(...rows);
+    }
 
     process.stdout.write(".");
 
@@ -222,31 +233,84 @@ async function processRange(from, to, seen, sheets, stats) {
     await sleep(200);
   }
 
+  // Reintentar páginas fallidas
+  if (failedPages.length > 0) {
+    console.log(`\n  🔁 Reintentando ${failedPages.length} páginas fallidas...`);
+    for (const p of failedPages) {
+      try {
+        const data     = await fetchOrderList(from, to, p);
+        const orderIds = (data.list || []).map(o => o.orderId).filter(Boolean);
+        if (orderIds.length) {
+          const rows = await processBatch(orderIds, seen);
+          stats.analyzed += orderIds.length;
+          stats.found    += rows.length;
+          stats.conUTM   += rows.filter(r => r[9] === "CON UTM").length;
+          stats.sinUTM   += rows.filter(r => r[9] === "SIN UTM").length;
+          stats.pending.push(...rows);
+          console.log(`  ✓ Pág ${p} recuperada`);
+        }
+      } catch (e) {
+        console.error(`  ✗ Pág ${p} no se pudo recuperar: ${e?.response?.status || e.message}`);
+        stats.lostPages.push({ from, to, page: p });
+      }
+      await sleep(1000);
+    }
+  }
+
   console.log(` ✓`);
 }
 
 async function main() {
-  console.log("🚀 Completando día 27 — desde las 15hs Argentina");
+  console.log("🚀 Auditoría VTEX — 27 de mayo completo");
   console.log(`   Cuenta: ${VTEX_ACCOUNT}`);
-  console.log(`   Sheet:  ${SHEET_ID}\n`);
+  console.log(`   Sheet:  ${SHEET_ID} → ${SHEET_NAME}\n`);
 
   const sheets = await getSheetsClient();
 
-  // Sin clear — appendea a lo que ya está en la sheet
+  // Crear hoja nueva o limpiarla si ya existe
+  const meta = await sheets.spreadsheets.get({ spreadsheetId: SHEET_ID });
+  const existingSheet = meta.data.sheets.find(s => s.properties.title === SHEET_NAME);
+
+  if (existingSheet) {
+    await sheets.spreadsheets.values.clear({ spreadsheetId: SHEET_ID, range: SHEET_NAME });
+    console.log(`  Hoja "${SHEET_NAME}" limpiada\n`);
+  } else {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId: SHEET_ID,
+      requestBody: { requests: [{ addSheet: { properties: { title: SHEET_NAME } } }] }
+    });
+    console.log(`  Hoja "${SHEET_NAME}" creada\n`);
+  }
+
+  // Headers
+  await sheets.spreadsheets.values.update({
+    spreadsheetId: SHEET_ID,
+    range: `${SHEET_NAME}!A1`,
+    valueInputOption: "RAW",
+    requestBody: {
+      values: [[
+        "Order ID", "Fecha creación", "Estado", "Total (ARS)",
+        "UTM Source", "UTM Medium", "UTM Campaign",
+        "customApp from", "Email cliente", "UTM Status"
+      ]]
+    }
+  });
+
   const ranges = buildDateRanges();
-  console.log(`📅 ${ranges.length} bloques de 6hs a procesar\n`);
+  console.log(`📅 ${ranges.length} bloques de 1 hora\n`);
 
   const seen  = new Set();
-  const stats = { analyzed: 0, found: 0, conUTM: 0, sinUTM: 0, pending: [] };
+  const stats = { analyzed: 0, found: 0, conUTM: 0, sinUTM: 0, pending: [], lostPages: [] };
 
   for (let i = 0; i < ranges.length; i++) {
     const { from, to } = ranges[i];
-    const label = `${from.slice(0,10)} ${from.slice(11,16)} → ${to.slice(11,16)}`;
-    process.stdout.write(`[${String(i+1).padStart(3)}/${ranges.length}] ${label} `);
+    const label = `${from.slice(11,16)} → ${to.slice(11,16)} UTC`;
+    process.stdout.write(`[${String(i+1).padStart(2)}/${ranges.length}] ${label} `);
     await processRange(from, to, seen, sheets, stats);
     await sleep(300);
   }
 
+  // Flush final
   if (stats.pending.length > 0) {
     await flushToSheet(sheets, stats.pending);
   }
@@ -261,6 +325,10 @@ async function main() {
   console.log(`   Pedidos de app totales: ${stats.found.toLocaleString()}`);
   console.log(`   Con UTM:                ${stats.conUTM.toLocaleString()}`);
   console.log(`   Sin UTM:                ${stats.sinUTM.toLocaleString()} (${pctSinUTM}%)`);
+  if (stats.lostPages.length > 0) {
+    console.log(`\n  ⚠ Páginas no recuperadas: ${stats.lostPages.length}`);
+    stats.lostPages.forEach(p => console.log(`    - ${p.from.slice(0,16)} pág ${p.page}`));
+  }
   console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 }
 
