@@ -11,46 +11,56 @@ const headers = {
 };
 
 async function main() {
-  // Test 1: endpoint pipeline catalog
-  console.log("=== TEST 1: pipeline/catalog ===");
+  // Test: traer SKUs de VTEX y ver qué campos trae
+  console.log("=== TEST: SKU list de VTEX ===");
   try {
     const res = await axios.get(
-      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/pricing/pipeline/catalog/1?pageSize=5&page=1`,
+      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitids?page=1&pagesize=5`,
       { headers }
     );
     console.log("Status:", res.status);
-    console.log("Headers:", JSON.stringify(res.headers, null, 2));
-    console.log("Data:", JSON.stringify(res.data, null, 2));
+    console.log("SKU IDs (primeros 5):", JSON.stringify(res.data));
   } catch (err) {
-    console.error("Error:", err.response?.status, JSON.stringify(err.response?.data));
+    console.error("Error SKU list:", err.response?.status, JSON.stringify(err.response?.data));
   }
 
-  // Test 2: endpoint alternativo prices por SKU conocido
-  console.log("\n=== TEST 2: precio SKU individual ===");
+  // Test: fixed price de un SKU numérico real
+  console.log("\n=== TEST: fixed prices de SKU numérico ===");
   try {
-    // Usamos un SKU ID del export de Janis para probar
-    const testSku = "68d6f323962fc72e0502a2df";
-    const res = await axios.get(
-      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/pricing/prices/${testSku}`,
+    // Primero traemos un SKU ID real
+    const listRes = await axios.get(
+      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitids?page=1&pagesize=1`,
       { headers }
     );
-    console.log("Status:", res.status);
-    console.log("Data:", JSON.stringify(res.data, null, 2));
+    const skuId = listRes.data[0];
+    console.log("SKU ID numérico de prueba:", skuId);
+
+    // Ahora traemos sus fixed prices
+    const priceRes = await axios.get(
+      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/pricing/prices/${skuId}`,
+      { headers }
+    );
+    console.log("Precio response:", JSON.stringify(priceRes.data, null, 2));
   } catch (err) {
-    console.error("Error:", err.response?.status, JSON.stringify(err.response?.data));
+    console.error("Error fixed price:", err.response?.status, JSON.stringify(err.response?.data));
   }
 
-  // Test 3: endpoint con myvtex
-  console.log("\n=== TEST 3: myvtex domain ===");
+  // Test: fixed prices filtrado por trade policy
+  console.log("\n=== TEST: fixed prices por trade policy ===");
   try {
-    const res = await axios.get(
-      `https://${VTEX_ACCOUNT}.myvtex.com/api/pricing/pipeline/catalog/1?pageSize=5&page=1`,
+    const listRes = await axios.get(
+      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitids?page=1&pagesize=1`,
       { headers }
     );
-    console.log("Status:", res.status);
-    console.log("Data:", JSON.stringify(res.data, null, 2));
+    const skuId = listRes.data[0];
+
+    const priceRes = await axios.get(
+      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/pricing/prices/${skuId}/fixed/5`,
+      { headers }
+    );
+    console.log("Fixed price PC5:", JSON.stringify(priceRes.data, null, 2));
   } catch (err) {
-    console.error("Error:", err.response?.status, JSON.stringify(err.response?.data));
+    console.error("Error fixed price PC5:", err.response?.status, JSON.stringify(err.response?.data));
   }
 }
 
