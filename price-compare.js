@@ -11,51 +11,36 @@ const headers = {
   "Content-Type":        "application/json"
 };
 
-const PAGE_SIZE = 50;
-
-async function getProductsForPolicy(sc) {
+async function getPricesForPolicy(policyId) {
   const prices = {};
-  let from = 0;
-  let total = null;
+  let page = 1;
+  const pageSize = 100;
 
-  console.log(`Trayendo productos PC${sc}...`);
+  console.log(`Trayendo precios PC${policyId}...`);
 
   while (true) {
-    const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pub/products/search?sc=${sc}&_from=${from}&_to=${from + PAGE_SIZE - 1}`;
+    const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/pricing/pipeline/catalog/${policyId}?pageSize=${pageSize}&page=${page}`;
 
     try {
       const res = await axios.get(url, { headers });
+      const items = res.data;
 
-      // El total viene en el header
-      if (total === null) {
-        total = parseInt(res.headers["resources"]?.split("/")?.[1] ?? "0");
-        console.log(`  PC${sc}: total estimado ${total} productos`);
+      if (!Array.isArray(items) || items.length === 0) break;
+
+      for (const item of items) {
+        prices[item.itemId] = {
+          price:     item.basePrice ?? item.costPrice ?? null,
+          listPrice: item.listPrice ?? null
+        };
       }
 
-      const products = res.data;
-      if (!products || products.length === 0) break;
-
-      for (const product of products) {
-        for (const item of (product.items ?? [])) {
-          const skuId = item.itemId;
-          const seller = item.sellers?.find(s => s.sellerId === "1");
-          const price = seller?.commertialOffer?.Price ?? null;
-          const listPrice = seller?.commertialOffer?.ListPrice ?? null;
-          if (skuId && price !== null) {
-            prices[skuId] = { price, listPrice, productName: product.productName, skuName: item.nameComplete };
-          }
-        }
-      }
-
-      console.log(`  PC${sc}: ${Object.keys(prices).length} SKUs acumulados (from=${from})...`);
-      from += PAGE_SIZE;
-      if (from >= total) break;
-
-      // Pausa para no saturar la API
-      await new Promise(r => setTimeout(r, 300));
+      console.log(`  PC${policyId}: ${Object.keys(prices).length} SKUs (página ${page})...`);
+      if (items.length < pageSize) break;
+      page++;
+      await new Promise(r => setTimeout(r, 200));
 
     } catch (err) {
-      console.error(`Error en PC${sc} (from=${from}):`, err.response?.status, err.response?.data ?? err.message);
+      console.error(`Error en PC${policyId} (pág ${page}):`, err.response?.status, err.response?.data ?? err.message);
       break;
     }
   }
@@ -64,9 +49,8 @@ async function getProductsForPolicy(sc) {
 }
 
 async function main() {
-  // Traer en serie para no saturar
-  const pc1 = await getProductsForPolicy(1);
-  const pc5 = await getProductsForPolicy(5);
+  const pc1 = await getPricesForPolicy(1);
+  const pc5 = await getPricesForPolicy(5);
 
   console.log(`\nPC1: ${Object.keys(pc1).length} SKUs`);
   console.log(`PC5: ${Object.keys(pc5).length} SKUs`);
@@ -81,11 +65,9 @@ async function main() {
     if (p5 !== p1) {
       diffs.push({
         skuId,
-        productName: pc5[skuId].productName ?? "",
-        skuName:     pc5[skuId].skuName ?? "",
-        precio_pc1:  p1,
-        precio_pc5:  p5,
-        diferencia:  (p5 - p1).toFixed(2),
+        precio_pc1:     p1,
+        precio_pc5:     p5,
+        diferencia:     (p5 - p1).toFixed(2),
         diferencia_pct: (((p5 - p1) / p1) * 100).toFixed(2) + "%"
       });
     }
@@ -98,8 +80,6 @@ async function main() {
     path: "price-diff.csv",
     header: [
       { id: "skuId",          title: "SKU ID" },
-      { id: "productName",    title: "Producto" },
-      { id: "skuName",        title: "SKU" },
       { id: "precio_pc1",     title: "Precio PC1" },
       { id: "precio_pc5",     title: "Precio PC5" },
       { id: "diferencia",     title: "Diferencia ($)" },
