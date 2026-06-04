@@ -5,10 +5,10 @@ const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 const SHEET_ID     = process.env.SHEET_ID;
-const SHEET_NAME   = "MAYO COMPLETO";
+const SHEET_NAME   = "03 JUNIO";
 const PAGE_SIZE    = 100;
-const CONCURRENCY  = 20;   // requests paralelos por batch
-const RANGE_PARALLEL = 3;  // rangos horarios en paralelo
+const CONCURRENCY  = 20;
+const RANGE_PARALLEL = 3;
 
 const vtexHeaders = {
   "X-VTEX-API-AppKey":   VTEX_KEY,
@@ -16,12 +16,11 @@ const vtexHeaders = {
   "Content-Type":        "application/json"
 };
 
-// Mayo completo en hora Argentina (UTC-3)
 function buildDateRanges() {
   const ranges = [];
-  const start  = new Date("2026-05-01T03:00:00.000Z"); // 00:00 Argentina
-  const end    = new Date("2026-06-01T02:59:59.999Z"); // 23:59 31/05 Argentina
-  const block  = 1 * 60 * 60 * 1000; // bloques de 1 hora
+  const start  = new Date("2026-06-03T03:00:00.000Z"); // 00:00 Argentina
+  const end    = new Date("2026-06-04T02:59:59.999Z"); // 23:59 Argentina
+  const block  = 1 * 60 * 60 * 1000;
   let current  = new Date(start);
 
   while (current <= end) {
@@ -145,7 +144,6 @@ async function getSheetsClient() {
   return google.sheets({ version: "v4", auth });
 }
 
-// Mutex para escribir en la sheet sin race conditions
 class SheetWriter {
   constructor(sheets) {
     this.sheets  = sheets;
@@ -161,8 +159,8 @@ class SheetWriter {
 
   flush() {
     if (!this.pending.length) return Promise.resolve();
-    const rows     = this.pending.splice(0);
-    this.queue     = this.queue.then(() => fetchWithRetry(() =>
+    const rows = this.pending.splice(0);
+    this.queue = this.queue.then(() => fetchWithRetry(() =>
       this.sheets.spreadsheets.values.append({
         spreadsheetId: SHEET_ID,
         range: `${SHEET_NAME}!A1`,
@@ -176,10 +174,10 @@ class SheetWriter {
 }
 
 async function processRange(from, to, seen, writer, stats) {
-  let page             = 1;
-  let totalPages       = null;
+  let page              = 1;
+  let totalPages        = null;
   let consecutiveErrors = 0;
-  const failedPages    = [];
+  const failedPages     = [];
 
   while (true) {
     let data;
@@ -219,7 +217,6 @@ async function processRange(from, to, seen, writer, stats) {
     page++;
   }
 
-  // Reintentar páginas fallidas
   for (const p of failedPages) {
     try {
       const data     = await fetchOrderList(from, to, p);
@@ -239,13 +236,12 @@ async function processRange(from, to, seen, writer, stats) {
 }
 
 async function main() {
-  console.log("🚀 Auditoría VTEX — Mayo 2026 COMPLETO");
-  console.log(`   Rango: 01/05 00:00 → 31/05 23:59 (hora Argentina)\n`);
+  console.log("🚀 Auditoría VTEX — 03 de Junio 2026");
+  console.log(`   Rango: 03/06 00:00 → 03/06 23:59 (hora Argentina)\n`);
 
   const sheets = await getSheetsClient();
 
-  // Crear/limpiar hoja
-  const meta = await sheets.spreadsheets.get({ spreadsheetId: SHEET_ID });
+  const meta   = await sheets.spreadsheets.get({ spreadsheetId: SHEET_ID });
   const exists = meta.data.sheets.find(s => s.properties.title === SHEET_NAME);
   if (exists) {
     await sheets.spreadsheets.values.clear({ spreadsheetId: SHEET_ID, range: SHEET_NAME });
@@ -274,10 +270,9 @@ async function main() {
   const stats  = { analyzed: 0, found: 0, conUTM: 0, sinUTM: 0, lostPages: [] };
   const writer = new SheetWriter(sheets);
 
-  // Procesar rangos de a RANGE_PARALLEL en paralelo
   for (let i = 0; i < ranges.length; i += RANGE_PARALLEL) {
-    const batch = ranges.slice(i, i + RANGE_PARALLEL);
-    const labels = batch.map(r => `${r.from.slice(11,16)}`).join(" | ");
+    const batch  = ranges.slice(i, i + RANGE_PARALLEL);
+    const labels = batch.map(r => r.from.slice(11,16)).join(" | ");
     process.stdout.write(`[${i+1}-${Math.min(i+RANGE_PARALLEL, ranges.length)}/${ranges.length}] UTC ${labels} ... `);
 
     await Promise.all(batch.map(({ from, to }) =>
