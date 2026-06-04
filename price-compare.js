@@ -11,37 +11,52 @@ const headers = {
   "Content-Type":        "application/json"
 };
 
-// Trae todos los SKUs con precio para una política comercial
-async function getPricesForPolicy(policyId) {
+const PAGE_SIZE = 50;
+
+async function getProductsForPolicy(sc) {
   const prices = {};
-  let hasMore = true;
-  let token = null;
+  let from = 0;
+  let total = null;
 
-  console.log(`Trayendo precios PC${policyId}...`);
+  console.log(`Trayendo productos PC${sc}...`);
 
-  while (hasMore) {
-    const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/pricing/pipeline/catalog/${policyId}?pageSize=1000${token ? `&token=${token}` : ""}`;
+  while (true) {
+    const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pub/products/search?sc=${sc}&_from=${from}&_to=${from + PAGE_SIZE - 1}`;
 
     try {
       const res = await axios.get(url, { headers });
-      const data = res.data;
 
-      if (Array.isArray(data.items)) {
-        for (const item of data.items) {
-          prices[item.itemId] = {
-            price: item.basePrice ?? item.costPrice ?? null,
-            listPrice: item.listPrice ?? null
-          };
-        }
-        console.log(`  PC${policyId}: ${Object.keys(prices).length} SKUs acumulados...`);
+      // El total viene en el header
+      if (total === null) {
+        total = parseInt(res.headers["resources"]?.split("/")?.[1] ?? "0");
+        console.log(`  PC${sc}: total estimado ${total} productos`);
       }
 
-      token = data.nextToken ?? null;
-      hasMore = !!token;
+      const products = res.data;
+      if (!products || products.length === 0) break;
+
+      for (const product of products) {
+        for (const item of (product.items ?? [])) {
+          const skuId = item.itemId;
+          const seller = item.sellers?.find(s => s.sellerId === "1");
+          const price = seller?.commertialOffer?.Price ?? null;
+          const listPrice = seller?.commertialOffer?.ListPrice ?? null;
+          if (skuId && price !== null) {
+            prices[skuId] = { price, listPrice, productName: product.productName, skuName: item.nameComplete };
+          }
+        }
+      }
+
+      console.log(`  PC${sc}: ${Object.keys(prices).length} SKUs acumulados (from=${from})...`);
+      from += PAGE_SIZE;
+      if (from >= total) break;
+
+      // Pausa para no saturar la API
+      await new Promise(r => setTimeout(r, 300));
 
     } catch (err) {
-      console.error(`Error en PC${policyId}:`, err.response?.status, err.response?.data ?? err.message);
-      hasMore = false;
+      console.error(`Error en PC${sc} (from=${from}):`, err.response?.status, err.response?.data ?? err.message);
+      break;
     }
   }
 
@@ -49,10 +64,9 @@ async function getPricesForPolicy(policyId) {
 }
 
 async function main() {
-  const [pc1, pc5] = await Promise.all([
-    getPricesForPolicy(1),
-    getPricesForPolicy(5)
-  ]);
+  // Traer en serie para no saturar
+  const pc1 = await getProductsForPolicy(1);
+  const pc5 = await getProductsForPolicy(5);
 
   console.log(`\nPC1: ${Object.keys(pc1).length} SKUs`);
   console.log(`PC5: ${Object.keys(pc5).length} SKUs`);
@@ -63,32 +77,32 @@ async function main() {
     const p5 = pc5[skuId]?.price;
     const p1 = pc1[skuId]?.price;
 
-    if (p1 === null || p1 === undefined) continue; // SKU sin precio en PC1, skip
-    if (p5 === null || p5 === undefined) continue;
-
+    if (!p1 || !p5) continue;
     if (p5 !== p1) {
       diffs.push({
         skuId,
-        precio_pc1: p1,
-        precio_pc5: p5,
-        diferencia: p5 - p1,
+        productName: pc5[skuId].productName ?? "",
+        skuName:     pc5[skuId].skuName ?? "",
+        precio_pc1:  p1,
+        precio_pc5:  p5,
+        diferencia:  (p5 - p1).toFixed(2),
         diferencia_pct: (((p5 - p1) / p1) * 100).toFixed(2) + "%"
       });
     }
   }
 
   console.log(`\nSKUs con precio PC5 ≠ PC1: ${diffs.length}`);
-
-  // Ordenar por diferencia absoluta descendente
   diffs.sort((a, b) => Math.abs(b.diferencia) - Math.abs(a.diferencia));
 
   const csvWriter = createObjectCsvWriter({
     path: "price-diff.csv",
     header: [
-      { id: "skuId",         title: "SKU ID" },
-      { id: "precio_pc1",    title: "Precio PC1" },
-      { id: "precio_pc5",    title: "Precio PC5" },
-      { id: "diferencia",    title: "Diferencia ($)" },
+      { id: "skuId",          title: "SKU ID" },
+      { id: "productName",    title: "Producto" },
+      { id: "skuName",        title: "SKU" },
+      { id: "precio_pc1",     title: "Precio PC1" },
+      { id: "precio_pc5",     title: "Precio PC5" },
+      { id: "diferencia",     title: "Diferencia ($)" },
       { id: "diferencia_pct", title: "Diferencia (%)" }
     ]
   });
