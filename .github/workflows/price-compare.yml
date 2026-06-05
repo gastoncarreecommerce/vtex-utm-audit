@@ -16,7 +16,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install axios csv-writer
+        run: npm install axios csv-writer xlsx
 
       - name: Run price comparison
         env:
@@ -29,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: price-diff-pc1-vs-pc5
-          path: price-diff.csv
+          path: vtex-prices.csv
