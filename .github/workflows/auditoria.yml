@@ -1,28 +1,25 @@
 name: Auditoria Precios Janis-MELI
 
-# Esto permite disparar la acción manualmente desde la pestaña "Actions" en GitHub
 on:
   workflow_dispatch:
 
 jobs:
   ejecutar-auditoria:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Trae el código de tu repositorio
       - name: Checkout del repositorio
         uses: actions/checkout@v4
 
-      # 2. Instala Node.js para poder correr el script
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # 3. Ejecuta tu script inyectando los Secrets de GitHub
-      - name: Correr script de auditoría
+      - name: Correr auditoria Janis
         env:
-          # Asegurate de que los nombres coincidan exactamente con los que tenés en Settings > Secrets
-          VTEX_API_KEY: ${{ secrets.VTEX_API_KEY }}
-          VTEX_API_TOKEN: ${{ secrets.VTEX_API_TOKEN }}
-        run: node auditoria-meli.js
+          JANIS_API_KEY: ${{ secrets.JANIS_API_KEY }}
+          JANIS_API_SECRET: ${{ secrets.JANIS_API_SECRET }}
+          JANIS_CLIENT: ${{ secrets.JANIS_CLIENT }}
+          MELI_SC_ID: ${{ secrets.MELI_SC_ID }}
+          LIST_CHANNELS: '1'
+        run: node auditoria-janis-meli.js
