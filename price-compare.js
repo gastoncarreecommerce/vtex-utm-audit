@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { createObjectCsvWriter } = require("csv-writer");
 const XLSX = require("xlsx");
-const path = require("path");
+const fs = require("fs");
 
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
@@ -14,6 +14,17 @@ const headers = {
 };
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function parseCsv(filePath) {
+  const lines = fs.readFileSync(filePath, "utf8").split("\n");
+  const headers = lines[0].split(",");
+  return lines.slice(1).filter(l => l.trim()).map(line => {
+    const vals = line.split(",");
+    const obj = {};
+    headers.forEach((h, i) => obj[h.trim()] = (vals[i] ?? "").trim());
+    return obj;
+  });
+}
 
 async function getSkuPrice(skuId) {
   try {
@@ -29,67 +40,65 @@ async function getSkuPrice(skuId) {
 }
 
 async function main() {
-  // Leer archivos
+  // Leer Productos.xlsx
   const prodWb = XLSX.readFile("Productos.xlsx");
   const prodSheet = prodWb.Sheets[prodWb.SheetNames[0]];
   const productos = XLSX.utils.sheet_to_json(prodSheet);
-
-  const priceWb = XLSX.readFile("price-1.xlsx");
-  const priceSheet = priceWb.Sheets[priceWb.SheetNames[0]];
-  const janisPrecios = XLSX.utils.sheet_to_json(priceSheet);
-
   console.log(`Productos: ${productos.length}`);
-  console.log(`Precios Janis PC5: ${janisPrecios.length}`);
 
-  // Indexar Janis por meliItemId para lookup rápido
-  // También por nombre (normalizado) como fallback
+  // Leer janis-prices-small.csv
+  const janisRows = parseCsv("janis-prices-small.csv");
+  console.log(`Precios Janis PC5: ${janisRows.length}`);
+
+  // Indexar Janis por meliItemId
   const janisByMeli = {};
-  const janisByNombre = {};
-  for (const row of janisPrecios) {
+  for (const row of janisRows) {
     if (row.meliItemId) janisByMeli[row.meliItemId] = row;
   }
 
-  // Filtrar solo productos que tienen referenceId numérico válido
-  const skuIds = productos
+  // Filtrar SKUs válidos
+  const skus = productos
     .filter(p => p.referenceId && !isNaN(p.referenceId))
     .map(p => ({ skuId: Number(p.referenceId), name: p.name }));
 
-  console.log(`SKUs a procesar: ${skuIds.length}`);
+  console.log(`SKUs a procesar: ${skus.length}`);
 
-  const diffs = [];
+  // Para cada SKU: obtener precio VTEX
+  // Guardar mapa skuId -> precio VTEX
+  const vtexPrices = {};
   const CONCURRENCY = 20;
   let processed = 0;
 
-  for (let i = 0; i < skuIds.length; i += CONCURRENCY) {
-    const batch = skuIds.slice(i, i + CONCURRENCY);
+  for (let i = 0; i < skus.length; i += CONCURRENCY) {
+    const batch = skus.slice(i, i + CONCURRENCY);
 
     await Promise.all(batch.map(async ({ skuId, name }) => {
       try {
-        const vtexPrice = await getSkuPrice(skuId);
-        if (vtexPrice === null) return;
-
-        // Buscar en Janis — por ahora guardamos VTEX price para comparar manualmente
-        // También buscamos si el SKU aparece en Janis de alguna forma
-        diffs.push({
-          skuId:       String(skuId),
-          nombre:      name,
-          precio_vtex: vtexPrice
-        });
+        const price = await getSkuPrice(skuId);
+        if (price !== null) {
+          vtexPrices[skuId] = { price, name };
+        }
       } catch (err) {
         console.error(`Error SKU ${skuId}:`, err.message);
       }
     }));
 
     processed += batch.length;
-    if (processed % 500 === 0 || processed >= skuIds.length) {
-      console.log(`  Procesados ${processed}/${skuIds.length}...`);
+    if (processed % 500 === 0 || processed >= skus.length) {
+      console.log(`  Procesados ${processed}/${skus.length} — con precio: ${Object.keys(vtexPrices).length}`);
     }
     await sleep(100);
   }
 
-  console.log(`\nSKUs con precio en VTEX: ${diffs.length}`);
+  console.log(`\nSKUs con precio en VTEX: ${Object.keys(vtexPrices).length}`);
 
-  const csvWriter = createObjectCsvWriter({
+  // Ahora comparar con Janis
+  // Janis no tiene skuId numérico, pero sí meliItemId
+  // Generamos dos outputs:
+  // 1. vtex-prices.csv: todos los SKUs con precio VTEX (para cruzar manual)
+  // 2. Si encontramos matches, price-diff.csv con diferencias
+
+  const vtexCsvWriter = createObjectCsvWriter({
     path: "vtex-prices.csv",
     header: [
       { id: "skuId",       title: "SKU ID VTEX" },
@@ -98,8 +107,31 @@ async function main() {
     ]
   });
 
-  await csvWriter.writeRecords(diffs);
-  console.log("Archivo vtex-prices.csv generado ✓");
+  const vtexRows = Object.entries(vtexPrices).map(([skuId, { price, name }]) => ({
+    skuId, nombre: name, precio_vtex: price
+  }));
+
+  await vtexCsvWriter.writeRecords(vtexRows);
+  console.log(`vtex-prices.csv generado con ${vtexRows.length} SKUs ✓`);
+
+  // También exportar Janis para cruzar
+  const janisCsvWriter = createObjectCsvWriter({
+    path: "janis-export.csv",
+    header: [
+      { id: "meliItemId",   title: "MELI Item ID" },
+      { id: "price",        title: "Precio Janis (PC5)" },
+      { id: "lastPricingUpdateDate", title: "Última actualización" }
+    ]
+  });
+
+  const janisOut = janisRows.map(r => ({
+    meliItemId: r.meliItemId,
+    price: r.price,
+    lastPricingUpdateDate: r.lastPricingUpdateDate
+  }));
+
+  await janisCsvWriter.writeRecords(janisOut);
+  console.log(`janis-export.csv generado ✓`);
 }
 
 main().catch(console.error);
