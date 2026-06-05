@@ -1,0 +1,32 @@
+name: Export productos PC5 VTEX
+
+on:
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install axios csv-writer
+
+      - name: Run export
+        env:
+          VTEX_APP_KEY: ${{ secrets.VTEX_APP_KEY }}
+          VTEX_APP_TOKEN: ${{ secrets.VTEX_APP_TOKEN }}
+          VTEX_ACCOUNT: ${{ secrets.VTEX_ACCOUNT }}
+        run: node export-pc5.js
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: vtex-pc5-export
+          path: vtex-pc5.csv
