@@ -30,3 +30,11 @@ jobs:
         with:
           name: price-diff-pc1-vs-pc5
           path: vtex-prices.csv
+
+          - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: price-diff-pc1-vs-pc5
+          path: |
+            vtex-prices.csv
+            janis-export.csv
