@@ -1,0 +1,48 @@
+name: Fetch Daily Orders
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 6am UTC = 3am Argentina (día ya cerrado)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Fecha a procesar (YYYY-MM-DD). Vacío = ayer"
+        required: false
+        default: ""
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install googleapis axios
+
+      - name: Fetch orders
+        env:
+          VTEX_APP_KEY:   ${{ secrets.VTEX_APP_KEY }}
+          VTEX_APP_TOKEN: ${{ secrets.VTEX_APP_TOKEN }}
+          VTEX_ACCOUNT:   ${{ secrets.VTEX_ACCOUNT }}
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            node fetch-orders.js ${{ github.event.inputs.date }}
+          else
+            node fetch-orders.js
+          fi
+
+      - name: Commit data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/
+          git diff --staged --quiet || git commit -m "data: $(node fetch-orders.js --date-only 2>/dev/null || date -u +%Y-%m-%d)"
+          git push
