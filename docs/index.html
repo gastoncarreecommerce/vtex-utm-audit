@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AppDash — Carrefour App Analytics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<style>
+/* ── Reset & Base ─────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --surface2: #21262d;
+  --border:   #30363d;
+  --text:     #e6edf3;
+  --muted:    #7d8590;
+  --blue:     #2563eb;
+  --blue-l:   #3b82f6;
+  --green:    #16a34a;
+  --green-l:  #22c55e;
+  --red:      #dc2626;
+  --red-l:    #ef4444;
+  --amber:    #d97706;
+  --amber-l:  #f59e0b;
+  --purple:   #7c3aed;
+  --purple-l: #a78bfa;
+  --radius:   10px;
+  --shadow:   0 4px 24px rgba(0,0,0,.4);
+  --trans:    .18s cubic-bezier(.4,0,.2,1);
+}
+html,body{height:100%;font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--surface)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ── Login ──────────────────────────────────────────── */
+#login-screen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;
+  background:radial-gradient(ellipse at 30% 40%,rgba(37,99,235,.15) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 70%,rgba(124,58,237,.1) 0%,transparent 60%),
+             var(--bg);
+}
+.login-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:40px;width:100%;max-width:400px;
+  box-shadow:var(--shadow);
+  animation:fadeUp .5s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.login-logo{
+  display:flex;align-items:center;gap:12px;margin-bottom:32px;
+}
+.login-logo .icon{
+  width:44px;height:44px;background:var(--blue);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.login-logo .brand{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.login-logo .brand span{color:var(--blue-l)}
+.login-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.login-select,.login-input{
+  width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+  color:var(--text);padding:10px 14px;font-size:14px;outline:none;
+  transition:border-color var(--trans),box-shadow var(--trans);margin-bottom:16px;
+}
+.login-select:focus,.login-input:focus{border-color:var(--blue-l);box-shadow:0 0 0 3px rgba(59,130,246,.2)}
+.login-btn{
+  width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--radius);
+  padding:12px;font-size:15px;font-weight:600;cursor:pointer;
+  transition:background var(--trans),transform var(--trans);
+}
+.login-btn:hover{background:var(--blue-l);transform:translateY(-1px)}
+.login-btn:active{transform:none}
+.login-error{color:var(--red-l);font-size:13px;margin-top:8px;text-align:center;min-height:20px}
+
+/* ── App Shell ──────────────────────────────────────── */
+#app{display:none;height:100vh;overflow:hidden;flex-direction:column}
+#app.visible{display:flex}
+
+/* ── Topbar ─────────────────────────────────────────── */
+.topbar{
+  display:flex;align-items:center;gap:16px;
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:0 20px;height:56px;flex-shrink:0;
+  position:relative;z-index:10;
+}
+.topbar-brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px;letter-spacing:-.3px;margin-right:8px}
+.topbar-brand .dot{width:8px;height:8px;background:var(--blue-l);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.topbar-nav{display:flex;gap:2px;flex:1}
+.nav-btn{
+  padding:6px 14px;border-radius:6px;border:none;background:transparent;
+  color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;
+  transition:all var(--trans);
+}
+.nav-btn:hover{background:var(--surface2);color:var(--text)}
+.nav-btn.active{background:var(--blue);color:#fff}
+.topbar-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.user-chip{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface2);border:1px solid var(--border);border-radius:20px;
+  padding:5px 12px 5px 5px;cursor:pointer;
+  transition:border-color var(--trans);
+}
+.user-chip:hover{border-color:var(--blue-l)}
+.user-avatar{
+  width:26px;height:26px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;
+}
+.user-name{font-size:13px;font-weight:500}
+
+/* ── Main content ───────────────────────────────────── */
+.main-content{flex:1;overflow-y:auto;padding:20px 24px}
+
+/* ── Date Range bar ─────────────────────────────────── */
+.controls-bar{
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;
+}
+.date-presets{display:flex;gap:4px}
+.preset-btn{
+  padding:5px 12px;border-radius:6px;border:1px solid var(--border);
+  background:var(--surface2);color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;
+  transition:all var(--trans);
+}
+.preset-btn:hover,.preset-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.date-inputs{display:flex;align-items:center;gap:8px}
+.date-input{
+  background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+  color:var(--text);padding:6px 12px;font-size:13px;outline:none;
+  transition:border-color var(--trans);
+}
+.date-input:focus{border-color:var(--blue-l)}
+.controls-right{margin-left:auto;display:flex;gap:8px}
+.btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:var(--radius);border:1px solid var(--border);
+  background:var(--surface2);color:var(--text);font-size:13px;font-weight:500;cursor:pointer;
+  transition:all var(--trans);
+}
+.btn:hover{border-color:var(--blue-l);background:var(--surface);color:var(--blue-l)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.primary:hover{background:var(--blue-l)}
+
+/* ── KPI Cards ──────────────────────────────────────── */
+.kpi-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;margin-bottom:20px;
+}
+.kpi-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px;cursor:default;transition:all var(--trans);position:relative;overflow:hidden;
+}
+.kpi-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent,var(--blue));border-radius:var(--radius) var(--radius) 0 0;
+}
+.kpi-card:hover{border-color:var(--accent,var(--blue-l));transform:translateY(-2px);box-shadow:var(--shadow)}
+.kpi-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.kpi-value{font-size:28px;font-weight:800;letter-spacing:-1px;color:var(--accent,var(--text))}
+.kpi-sub{font-size:12px;color:var(--muted);margin-top:4px}
+.kpi-trend{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:11px;font-weight:600;padding:2px 6px;border-radius:4px;margin-top:6px;
+}
+.kpi-trend.up{background:rgba(34,197,94,.1);color:var(--green-l)}
+.kpi-trend.down{background:rgba(239,68,68,.1);color:var(--red-l)}
+.kpi-trend.neutral{background:rgba(125,133,144,.1);color:var(--muted)}
+
+/* ── Charts Grid ────────────────────────────────────── */
+.charts-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:20px}
+@media(max-width:900px){.charts-grid{grid-template-columns:1fr}}
+.chart-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;
+}
+.chart-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.chart-sub{font-size:12px;color:var(--muted);margin-bottom:16px}
+.chart-wrap{position:relative}
+
+/* ── Timeline / Milestones ───────────────────────────── */
+.milestones-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;margin-bottom:20px;
+}
+.milestones-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.milestones-title{font-size:14px;font-weight:600}
+.timeline{position:relative;padding:8px 0}
+.timeline::before{
+  content:"";position:absolute;left:0;right:0;top:50%;height:2px;
+  background:var(--border);transform:translateY(-50%);
+}
+.timeline-inner{display:flex;gap:0;overflow-x:auto;padding:24px 0;position:relative}
+.timeline-inner::-webkit-scrollbar{height:4px}
+.day-tick{
+  flex:1;min-width:32px;display:flex;flex-direction:column;align-items:center;
+  position:relative;cursor:pointer;
+}
+.day-dot{
+  width:10px;height:10px;border-radius:50%;background:var(--border);border:2px solid var(--surface);
+  transition:all var(--trans);z-index:1;
+}
+.day-tick:hover .day-dot{background:var(--blue-l);transform:scale(1.4)}
+.day-tick.has-milestone .day-dot{background:var(--accent,var(--amber));width:14px;height:14px;border-width:3px}
+.day-label{font-size:9px;color:var(--muted);margin-top:8px;white-space:nowrap}
+.milestone-pip{
+  position:absolute;bottom:calc(100% + 8px);
+  background:var(--surface2);border:1px solid var(--border);border-radius:6px;
+  padding:6px 10px;white-space:nowrap;font-size:11px;font-weight:500;
+  box-shadow:var(--shadow);z-index:10;pointer-events:none;
+  animation:fadeUp .2s ease;
+}
+.milestone-pip.promo{border-color:var(--green-l);color:var(--green-l)}
+.milestone-pip.bug{border-color:var(--red-l);color:var(--red-l)}
+.milestone-pip.event{border-color:var(--amber-l);color:var(--amber-l)}
+.milestone-pip.note{border-color:var(--blue-l);color:var(--blue-l)}
+
+/* ── Modal ──────────────────────────────────────────── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;z-index:100;
+  animation:fadeIn .2s ease;
+}
+.modal-overlay.hidden{display:none}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:28px;width:100%;max-width:460px;box-shadow:var(--shadow);
+  animation:fadeUp .25s ease;
+}
+.modal-title{font-size:17px;font-weight:700;margin-bottom:20px}
+.form-group{margin-bottom:14px}
+.form-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;display:block}
+.form-input,.form-select,.form-textarea{
+  width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+  color:var(--text);padding:9px 12px;font-size:13px;outline:none;font-family:inherit;
+  transition:border-color var(--trans);
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--blue-l)}
+.form-textarea{resize:vertical;min-height:80px}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+.type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
+.type-opt{
+  border:1px solid var(--border);border-radius:8px;padding:8px 4px;
+  text-align:center;cursor:pointer;font-size:11px;font-weight:600;
+  transition:all var(--trans);
+}
+.type-opt:hover{border-color:var(--blue-l)}
+.type-opt.selected{border-color:var(--blue-l);background:rgba(59,130,246,.15)}
+.type-opt .emoji{font-size:18px;display:block;margin-bottom:2px}
+
+/* ── Monthly Summary Table ──────────────────────────── */
+.summary-table{width:100%;border-collapse:collapse}
+.summary-table th{
+  text-align:left;font-size:11px;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.6px;padding:10px 12px;
+  border-bottom:1px solid var(--border);
+}
+.summary-table td{padding:10px 12px;border-bottom:1px solid rgba(48,54,61,.5);font-size:13px}
+.summary-table tr:last-child td{border-bottom:none}
+.summary-table tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge.food{background:rgba(34,197,94,.15);color:var(--green-l)}
+.badge.non_food{background:rgba(59,130,246,.15);color:var(--blue-l)}
+.badge.marketplace{background:rgba(167,139,250,.15);color:var(--purple-l)}
+.badge.quickcommerce{background:rgba(245,158,11,.15);color:var(--amber-l)}
+
+/* ── Loading ────────────────────────────────────────── */
+.loading{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;padding:60px;color:var(--muted);font-size:13px;
+}
+.spinner{
+  width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--blue-l);
+  border-radius:50%;animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{padding:40px;text-align:center;color:var(--muted);font-size:13px}
+
+/* ── Tooltip ────────────────────────────────────────── */
+.tooltip{
+  position:fixed;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:10px 14px;font-size:12px;pointer-events:none;
+  box-shadow:var(--shadow);z-index:200;max-width:220px;display:none;
+}
+
+/* ── Tag pill ───────────────────────────────────────── */
+.tag{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.tag.con-utm{background:rgba(34,197,94,.15);color:var(--green-l)}
+.tag.sin-utm{background:rgba(239,68,68,.15);color:var(--red-l)}
+
+/* ── Settings modal ─────────────────────────────────── */
+.settings-info{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media(max-width:600px){
+  .topbar-nav .nav-btn span{display:none}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .main-content{padding:12px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Login ─────────────────────────────────────────── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="icon">📊</div>
+      <div>
+        <div class="brand">App<span>Dash</span></div>
+        <div style="font-size:11px;color:var(--muted)">Carrefour App Analytics</div>
+      </div>
+    </div>
+    <div class="login-label">Usuario</div>
+    <select id="login-user" class="login-select">
+      <option value="">Seleccioná tu usuario...</option>
+    </select>
+    <div class="login-label">Contraseña</div>
+    <input id="login-pass" type="password" class="login-input" placeholder="••••••••">
+    <button class="login-btn" onclick="doLogin()">Ingresar →</button>
+    <div id="login-error" class="login-error"></div>
+  </div>
+</div>
+
+<!-- ── App ───────────────────────────────────────────── -->
+<div id="app">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-brand"><div class="dot"></div>AppDash</div>
+    <div class="topbar-nav">
+      <button class="nav-btn active" data-view="dashboard" onclick="switchView('dashboard',this)"><span>Dashboard</span></button>
+      <button class="nav-btn" data-view="monthly" onclick="switchView('monthly',this)"><span>Resumen Mensual</span></button>
+    </div>
+    <div class="topbar-right">
+      <button class="btn" onclick="openSettings()">⚙</button>
+      <div class="user-chip" onclick="openUserMenu()">
+        <div class="user-avatar" id="user-avatar">G</div>
+        <div class="user-name" id="user-name-display">Gasti</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main-content" id="main-content">
+
+    <!-- ── Dashboard View ── -->
+    <div id="view-dashboard">
+      <div class="controls-bar">
+        <div class="date-presets">
+          <button class="preset-btn active" onclick="setPreset(1,this)">Hoy</button>
+          <button class="preset-btn" onclick="setPreset(7,this)">7d</button>
+          <button class="preset-btn" onclick="setPreset(30,this)">30d</button>
+          <button class="preset-btn" onclick="setPreset(0,this)">Este mes</button>
+        </div>
+        <div class="date-inputs">
+          <input type="date" id="date-from" class="date-input" onchange="loadRange()">
+          <span style="color:var(--muted);font-size:12px">→</span>
+          <input type="date" id="date-to" class="date-input" onchange="loadRange()">
+        </div>
+        <div class="controls-right">
+          <button class="btn" onclick="exportCSV()">⬇ Exportar CSV</button>
+          <button class="btn primary" onclick="refreshData()">↻ Actualizar</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid" id="kpi-grid">
+        <div class="loading"><div class="spinner"></div>Cargando...</div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-title">Pedidos de App por Día</div>
+          <div class="chart-sub">Desglose por segmento</div>
+          <div class="chart-wrap" style="height:220px"><canvas id="line-chart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Distribución por Segmento</div>
+          <div class="chart-sub">Período seleccionado</div>
+          <div class="chart-wrap" style="height:220px"><canvas id="donut-chart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- UTM Chart -->
+      <div class="chart-card" style="margin-bottom:20px">
+        <div class="chart-title">% Sin UTM por Día</div>
+        <div class="chart-sub">Pedidos de app sin atribución</div>
+        <div class="chart-wrap" style="height:150px"><canvas id="utm-chart"></canvas></div>
+      </div>
+
+      <!-- Milestones -->
+      <div class="milestones-card">
+        <div class="milestones-header">
+          <div>
+            <div class="milestones-title">📍 Hitos en el Tiempo</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Marcá eventos, bugs o promociones en el timeline</div>
+          </div>
+          <button class="btn primary" onclick="openMilestoneModal()">+ Agregar Hito</button>
+        </div>
+        <div id="timeline-container"></div>
+      </div>
+    </div>
+
+    <!-- ── Monthly View ── -->
+    <div id="view-monthly" style="display:none">
+      <div style="margin-bottom:20px">
+        <h2 style="font-size:18px;font-weight:700">Resumen por Mes</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:4px">Totales acumulados por mes y segmento</p>
+      </div>
+      <div class="chart-card" style="margin-bottom:20px">
+        <div class="chart-title">Pedidos de App — Tendencia Mensual</div>
+        <div class="chart-wrap" style="height:200px"><canvas id="monthly-chart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <table class="summary-table" id="monthly-table">
+          <thead>
+            <tr>
+              <th>Mes</th><th>Total App</th><th>Food</th><th>H&amp;E</th>
+              <th>Marketplace</th><th>Quickcommerce</th><th>Con UTM</th><th>Sin UTM %</th><th>Participación</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Milestone Modal ── -->
+<div class="modal-overlay hidden" id="milestone-modal">
+  <div class="modal">
+    <div class="modal-title" id="milestone-modal-title">Nuevo Hito</div>
+    <div class="form-group">
+      <label class="form-label">Fecha</label>
+      <input type="date" id="m-date" class="form-input">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tipo</label>
+      <div class="type-grid">
+        <div class="type-opt selected" data-type="promo" onclick="selectType(this)"><span class="emoji">🎯</span>Promo</div>
+        <div class="type-opt" data-type="bug" onclick="selectType(this)"><span class="emoji">🔴</span>Bug</div>
+        <div class="type-opt" data-type="event" onclick="selectType(this)"><span class="emoji">⭐</span>Evento</div>
+        <div class="type-opt" data-type="note" onclick="selectType(this)"><span class="emoji">📝</span>Nota</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Título</label>
+      <input type="text" id="m-title" class="form-input" placeholder="ej: Hot Sale — primer día">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Descripción</label>
+      <textarea id="m-desc" class="form-textarea" placeholder="Contexto adicional..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeMilestoneModal()">Cancelar</button>
+      <button id="m-delete-btn" class="btn" style="color:var(--red-l);border-color:var(--red);display:none" onclick="deleteMilestone()">Eliminar</button>
+      <button class="btn primary" onclick="saveMilestone()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Settings Modal ── -->
+<div class="modal-overlay hidden" id="settings-modal">
+  <div class="modal">
+    <div class="modal-title">⚙ Configuración</div>
+    <div class="form-group">
+      <label class="form-label">GitHub Token (para guardar hitos)</label>
+      <input type="password" id="gh-token" class="form-input" placeholder="ghp_...">
+      <div class="settings-info">
+        Necesitás un Personal Access Token con scope <code>repo</code> para que los hitos se guarden en el repo y sean visibles para todos.
+        <br>Generalo en <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--blue-l)">github.com/settings/tokens</a>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Repo Owner/Name</label>
+      <input type="text" id="gh-repo" class="form-input" placeholder="usuario/vtex-utm-audit">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeSettings()">Cancelar</button>
+      <button class="btn primary" onclick="saveSettings()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── User Menu Modal ── -->
+<div class="modal-overlay hidden" id="user-modal">
+  <div class="modal" style="max-width:300px">
+    <div class="modal-title">👤 Sesión</div>
+    <div style="font-size:14px;margin-bottom:16px">
+      Sesión activa como <strong id="um-name"></strong>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeUserMenu()">Cerrar</button>
+      <button class="btn" style="color:var(--red-l)" onclick="doLogout()">Cerrar sesión</button>
+    </div>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════════════════════
+const USERS = [
+  { username: "gasti",  name: "Gastón Ruiz",    avatar: "GR" },
+  { username: "juanpa", name: "Juan Pablo",      avatar: "JP" },
+  { username: "edis",   name: "Edis Osorio",     avatar: "EO" },
+  { username: "dardo",  name: "Dardo",           avatar: "DA" },
+  { username: "matias", name: "Matías Condorí",  avatar: "MC" },
+];
+const PASSWORD  = "AppDash123";
+
+// GitHub Pages base URL para los datos — se ajusta automáticamente
+const DATA_BASE = (() => {
+  const p = window.location.pathname.replace(/\/[^/]*$/, "");
+  return window.location.origin + p + "/data";
+})();
+
+const SEGMENT_COLORS = {
+  food:          "#22c55e",
+  non_food:      "#3b82f6",
+  marketplace:   "#a78bfa",
+  quickcommerce: "#f59e0b",
+};
+const SEGMENT_LABELS = {
+  food:          "Food",
+  non_food:      "H&E (Non Food)",
+  marketplace:   "Marketplace",
+  quickcommerce: "Quickcommerce",
+};
+
+// ══════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════
+let state = {
+  user:       null,
+  dateFrom:   null,
+  dateTo:     null,
+  data:       {},     // { "2026-06-03": {...} }
+  rows:       {},     // { "2026-06-03": [...] }
+  milestones: [],
+  charts:     {},
+  editingMilestone: null,
+};
+
+// ══════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════
+window.addEventListener("DOMContentLoaded", () => {
+  // Populate users
+  const sel = document.getElementById("login-user");
+  USERS.forEach(u => {
+    const opt = document.createElement("option");
+    opt.value = u.username;
+    opt.textContent = u.name;
+    sel.appendChild(opt);
+  });
+
+  // Check session
+  const sess = localStorage.getItem("appdash_session");
+  if (sess) {
+    try {
+      const s = JSON.parse(sess);
+      const u = USERS.find(x => x.username === s.username);
+      if (u) { loginAs(u); return; }
+    } catch {}
+  }
+
+  // Enter key
+  document.getElementById("login-pass").addEventListener("keydown", e => {
+    if (e.key === "Enter") doLogin();
+  });
+});
+
+// ══════════════════════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════════════════════
+function doLogin() {
+  const username = document.getElementById("login-user").value;
+  const pass     = document.getElementById("login-pass").value;
+  const err      = document.getElementById("login-error");
+
+  if (!username) { err.textContent = "Seleccioná un usuario"; return; }
+  if (pass !== PASSWORD) {
+    err.textContent = "Contraseña incorrecta";
+    document.getElementById("login-pass").style.borderColor = "var(--red-l)";
+    return;
+  }
+
+  const u = USERS.find(x => x.username === username);
+  loginAs(u);
+}
+
+function loginAs(u) {
+  state.user = u;
+  localStorage.setItem("appdash_session", JSON.stringify({ username: u.username }));
+
+  document.getElementById("login-screen").style.display = "none";
+  const app = document.getElementById("app");
+  app.classList.add("visible");
+
+  document.getElementById("user-avatar").textContent = u.avatar;
+  document.getElementById("user-name-display").textContent = u.name.split(" ")[0];
+
+  // Default: last 7 days
+  setPreset(7, document.querySelector(".preset-btn[onclick*='setPreset(7']"));
+}
+
+function doLogout() {
+  localStorage.removeItem("appdash_session");
+  location.reload();
+}
+
+// ══════════════════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════════════════
+function switchView(view, btn) {
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("view-dashboard").style.display = view === "dashboard" ? "" : "none";
+  document.getElementById("view-monthly").style.display   = view === "monthly"   ? "" : "none";
+  if (view === "monthly") renderMonthly();
+}
+
+// ══════════════════════════════════════════════════════════════
+// DATE RANGE
+// ══════════════════════════════════════════════════════════════
+function todayAR() {
+  const d = new Date();
+  // UTC-3
+  const ar = new Date(d.getTime() - 3 * 60 * 60 * 1000);
+  return ar.toISOString().slice(0, 10);
+}
+
+function addDays(dateStr, n) {
+  const d = new Date(dateStr + "T12:00:00Z");
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+function setPreset(days, btn) {
+  document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  const today = todayAR();
+
+  if (days === 0) {
+    // Este mes
+    state.dateFrom = today.slice(0, 7) + "-01";
+    state.dateTo   = today;
+  } else {
+    state.dateTo   = today;
+    state.dateFrom = addDays(today, -(days - 1));
+  }
+
+  document.getElementById("date-from").value = state.dateFrom;
+  document.getElementById("date-to").value   = state.dateTo;
+  loadRange();
+}
+
+function loadRange() {
+  state.dateFrom = document.getElementById("date-from").value;
+  state.dateTo   = document.getElementById("date-to").value;
+  if (!state.dateFrom || !state.dateTo) return;
+  loadDataForRange(state.dateFrom, state.dateTo);
+}
+
+// ══════════════════════════════════════════════════════════════
+// DATA LOADING
+// ══════════════════════════════════════════════════════════════
+function getDatesInRange(from, to) {
+  const dates = [];
+  let cur = new Date(from + "T12:00:00Z");
+  const end = new Date(to + "T12:00:00Z");
+  while (cur <= end) {
+    dates.push(cur.toISOString().slice(0, 10));
+    cur.setUTCDate(cur.getUTCDate() + 1);
+  }
+  return dates;
+}
+
+async function fetchDayData(date) {
+  if (state.data[date]) return state.data[date];
+
+  // Try localStorage cache
+  const cacheKey = `appdash_data_${date}`;
+  const cached   = localStorage.getItem(cacheKey);
+  if (cached) {
+    try {
+      const parsed = JSON.parse(cached);
+      state.data[date] = parsed;
+      return parsed;
+    } catch {}
+  }
+
+  try {
+    const res = await fetch(`${DATA_BASE}/daily/${date}.json`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    state.data[date] = data;
+    // Cache for 1 hour
+    localStorage.setItem(cacheKey, JSON.stringify(data));
+    setTimeout(() => localStorage.removeItem(cacheKey), 3600000);
+    return data;
+  } catch { return null; }
+}
+
+async function fetchDayRows(date) {
+  if (state.rows[date]) return state.rows[date];
+  try {
+    const res = await fetch(`${DATA_BASE}/daily/${date}-rows.json`);
+    if (!res.ok) return [];
+    const rows = await res.json();
+    state.rows[date] = rows;
+    return rows;
+  } catch { return []; }
+}
+
+async function loadMilestones() {
+  // Try GitHub API first (if token available), then fallback to static file
+  const token = localStorage.getItem("gh_token");
+  const repo  = localStorage.getItem("gh_repo");
+
+  if (token && repo) {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`, {
+        headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" }
+      });
+      if (res.ok) {
+        const json = await res.json();
+        state.milestones = JSON.parse(atob(json.content));
+        state._milestonesFileSha = json.sha;
+        return;
+      }
+    } catch {}
+  }
+
+  // Fallback: static file
+  try {
+    const res = await fetch(`${DATA_BASE}/milestones.json`);
+    if (res.ok) state.milestones = await res.json();
+  } catch {}
+}
+
+async function saveMilestones() {
+  const token = localStorage.getItem("gh_token");
+  const repo  = localStorage.getItem("gh_repo");
+  if (!token || !repo) {
+    alert("Necesitás configurar el GitHub Token en ⚙ Configuración para que los hitos se guarden y sean visibles para todos.");
+    return false;
+  }
+
+  const content = btoa(JSON.stringify(state.milestones, null, 2));
+  try {
+    const res = await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`, {
+      method: "PUT",
+      headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: `hito: actualizado por ${state.user.name}`,
+        content,
+        sha: state._milestonesFileSha
+      })
+    });
+    if (res.ok) {
+      const json = await res.json();
+      state._milestonesFileSha = json.content.sha;
+      return true;
+    }
+  } catch {}
+  return false;
+}
+
+async function loadDataForRange(from, to) {
+  showKPILoading();
+  const dates = getDatesInRange(from, to);
+
+  // Load all days in parallel
+  await Promise.all([
+    ...dates.map(d => fetchDayData(d)),
+    loadMilestones()
+  ]);
+
+  renderDashboard(dates);
+}
+
+// ══════════════════════════════════════════════════════════════
+// RENDER DASHBOARD
+// ══════════════════════════════════════════════════════════════
+function aggregateData(dates) {
+  const agg = {
+    total_ecomm: 0,
+    app_total: 0, app_gmv: 0,
+    con_utm: 0, sin_utm: 0,
+    food:{ orders:0,gmv:0 }, non_food:{ orders:0,gmv:0 },
+    marketplace:{ orders:0,gmv:0 }, quickcommerce:{ orders:0,gmv:0 },
+    daily: []
+  };
+
+  dates.forEach(date => {
+    const d = state.data[date];
+    if (!d) { agg.daily.push({ date, app: 0, food: 0, non_food: 0, marketplace: 0, quickcommerce: 0, utm_pct: 0 }); return; }
+
+    agg.total_ecomm += d.total_ecomm_orders || 0;
+    agg.app_total   += d.app?.total || 0;
+    agg.app_gmv     += d.app?.gmv || 0;
+    agg.con_utm     += d.app?.con_utm || 0;
+    agg.sin_utm     += d.app?.sin_utm || 0;
+    ["food","non_food","marketplace","quickcommerce"].forEach(seg => {
+      agg[seg].orders += d.app?.segments?.[seg]?.orders || 0;
+      agg[seg].gmv    += d.app?.segments?.[seg]?.gmv || 0;
+    });
+
+    agg.daily.push({
+      date,
+      app:          d.app?.total || 0,
+      food:         d.app?.segments?.food?.orders || 0,
+      non_food:     d.app?.segments?.non_food?.orders || 0,
+      marketplace:  d.app?.segments?.marketplace?.orders || 0,
+      quickcommerce:d.app?.segments?.quickcommerce?.orders || 0,
+      utm_pct:      d.utm_pct_sin || 0,
+    });
+  });
+
+  agg.participation_pct = agg.total_ecomm > 0
+    ? Math.round(agg.app_total / agg.total_ecomm * 1000) / 10
+    : 0;
+  agg.utm_sin_pct = agg.app_total > 0
+    ? Math.round(agg.sin_utm / agg.app_total * 1000) / 10
+    : 0;
+
+  return agg;
+}
+
+function showKPILoading() {
+  document.getElementById("kpi-grid").innerHTML = '<div class="loading"><div class="spinner"></div>Cargando datos...</div>';
+}
+
+function renderDashboard(dates) {
+  const agg = aggregateData(dates);
+  renderKPIs(agg);
+  renderLineChart(agg.daily);
+  renderDonutChart(agg);
+  renderUTMChart(agg.daily);
+  renderTimeline(dates);
+}
+
+function fmt(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1) + "M";
+  if (n >= 1000)    return (n/1000).toFixed(1) + "k";
+  return n.toLocaleString("es-AR");
+}
+function fmtARS(n) {
+  if (n >= 1000000) return "$" + (n/1000000).toFixed(1) + "M";
+  if (n >= 1000)    return "$" + (n/1000).toFixed(0) + "k";
+  return "$" + n.toLocaleString("es-AR");
+}
+
+function renderKPIs(agg) {
+  const cards = [
+    { label:"Total App",       value: fmt(agg.app_total),    sub: fmtARS(agg.app_gmv) + " GMV",               accent:"var(--blue-l)" },
+    { label:"Food",            value: fmt(agg.food.orders),  sub: fmtARS(agg.food.gmv),                        accent:"var(--green-l)" },
+    { label:"H&E (Non Food)",  value: fmt(agg.non_food.orders), sub: fmtARS(agg.non_food.gmv),                 accent:"var(--blue-l)" },
+    { label:"Marketplace",     value: fmt(agg.marketplace.orders), sub: fmtARS(agg.marketplace.gmv),           accent:"var(--purple-l)" },
+    { label:"Quickcommerce",   value: fmt(agg.quickcommerce.orders), sub: fmtARS(agg.quickcommerce.gmv),       accent:"var(--amber-l)" },
+    { label:"Participación App", value: agg.participation_pct + "%", sub: fmt(agg.total_ecomm) + " total ecomm", accent:"var(--blue-l)" },
+    { label:"Con UTM",         value: fmt(agg.con_utm),      sub: (100 - agg.utm_sin_pct).toFixed(1) + "% del total", accent:"var(--green-l)" },
+    { label:"Sin UTM",         value: fmt(agg.sin_utm),      sub: agg.utm_sin_pct + "% sin atribución",        accent:"var(--red-l)" },
+  ];
+
+  const grid = document.getElementById("kpi-grid");
+  grid.innerHTML = cards.map(c => `
+    <div class="kpi-card" style="--accent:${c.accent}">
+      <div class="kpi-label">${c.label}</div>
+      <div class="kpi-value">${c.value}</div>
+      <div class="kpi-sub">${c.sub}</div>
+    </div>
+  `).join("");
+}
+
+// ── Charts ──────────────────────────────────────────────────
+function destroyChart(id) {
+  if (state.charts[id]) { state.charts[id].destroy(); delete state.charts[id]; }
+}
+
+const chartDefaults = {
+  plugins: { legend: { labels: { color: "#7d8590", font: { size: 11 } } } },
+  scales: {
+    x: { ticks: { color: "#7d8590", font: { size: 10 } }, grid: { color: "rgba(48,54,61,.5)" } },
+    y: { ticks: { color: "#7d8590", font: { size: 10 } }, grid: { color: "rgba(48,54,61,.5)" } }
+  }
+};
+
+function renderLineChart(daily) {
+  destroyChart("line");
+  const ctx = document.getElementById("line-chart").getContext("2d");
+  const labels = daily.map(d => d.date.slice(5)); // MM-DD
+
+  state.charts.line = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        { label:"Food",         data: daily.map(d=>d.food),          borderColor: SEGMENT_COLORS.food,          backgroundColor: SEGMENT_COLORS.food + "20",          fill:true, tension:.3, pointRadius:3 },
+        { label:"H&E",          data: daily.map(d=>d.non_food),      borderColor: SEGMENT_COLORS.non_food,      backgroundColor: SEGMENT_COLORS.non_food + "20",      fill:true, tension:.3, pointRadius:3 },
+        { label:"Marketplace",  data: daily.map(d=>d.marketplace),   borderColor: SEGMENT_COLORS.marketplace,  backgroundColor: SEGMENT_COLORS.marketplace + "20",   fill:true, tension:.3, pointRadius:3 },
+        { label:"Quickcommerce",data: daily.map(d=>d.quickcommerce), borderColor: SEGMENT_COLORS.quickcommerce,backgroundColor: SEGMENT_COLORS.quickcommerce + "20", fill:true, tension:.3, pointRadius:3 },
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false, interaction:{ mode:"index", intersect:false },
+      ...chartDefaults,
+      plugins: { ...chartDefaults.plugins, tooltip: { backgroundColor:"#21262d", borderColor:"#30363d", borderWidth:1, titleColor:"#e6edf3", bodyColor:"#7d8590" } }
+    }
+  });
+}
+
+function renderDonutChart(agg) {
+  destroyChart("donut");
+  const ctx = document.getElementById("donut-chart").getContext("2d");
+  state.charts.donut = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Food","H&E","Marketplace","Quickcommerce"],
+      datasets: [{ data: [agg.food.orders, agg.non_food.orders, agg.marketplace.orders, agg.quickcommerce.orders],
+        backgroundColor: [SEGMENT_COLORS.food, SEGMENT_COLORS.non_food, SEGMENT_COLORS.marketplace, SEGMENT_COLORS.quickcommerce],
+        borderWidth: 2, borderColor: "#161b22", hoverBorderColor: "#21262d"
+      }]
+    },
+    options: { responsive:true, maintainAspectRatio:false, cutout:"65%",
+      plugins: {
+        legend: { position:"bottom", labels:{ color:"#7d8590", font:{ size:11 }, padding:12, usePointStyle:true } },
+        tooltip: { backgroundColor:"#21262d", borderColor:"#30363d", borderWidth:1, titleColor:"#e6edf3", bodyColor:"#7d8590" }
+      }
+    }
+  });
+}
+
+function renderUTMChart(daily) {
+  destroyChart("utm");
+  const ctx = document.getElementById("utm-chart").getContext("2d");
+  state.charts.utm = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: daily.map(d => d.date.slice(5)),
+      datasets: [{
+        label: "% Sin UTM",
+        data: daily.map(d => d.utm_pct),
+        backgroundColor: daily.map(d => d.utm_pct > 35 ? "#dc262660" : "#3b82f640"),
+        borderColor:     daily.map(d => d.utm_pct > 35 ? "#dc2626" : "#3b82f6"),
+        borderWidth: 1, borderRadius: 4,
+      }]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      scales: {
+        x: { ticks:{ color:"#7d8590", font:{ size:9 } }, grid:{ color:"rgba(48,54,61,.5)" } },
+        y: { ticks:{ color:"#7d8590", font:{ size:9 }, callback: v => v+"%" }, grid:{ color:"rgba(48,54,61,.5)" }, max:60 }
+      },
+      plugins: {
+        legend: { display:false },
+        tooltip: { backgroundColor:"#21262d", borderColor:"#30363d", borderWidth:1, titleColor:"#e6edf3", bodyColor:"#7d8590",
+          callbacks: { label: c => ` ${c.raw}% sin UTM` }
+        }
+      }
+    }
+  });
+}
+
+// ── Timeline ─────────────────────────────────────────────────
+function renderTimeline(dates) {
+  const container = document.getElementById("timeline-container");
+  if (!dates || dates.length === 0) { container.innerHTML = '<div class="empty">Sin datos en el rango seleccionado</div>'; return; }
+
+  const milestoneMap = {};
+  state.milestones.forEach(m => { if (!milestoneMap[m.date]) milestoneMap[m.date] = []; milestoneMap[m.date].push(m); });
+
+  const typeColors = { promo:"var(--green-l)", bug:"var(--red-l)", event:"var(--amber-l)", note:"var(--blue-l)" };
+  const typeEmoji  = { promo:"🎯", bug:"🔴", event:"⭐", note:"📝" };
+
+  const ticks = dates.map(date => {
+    const ms  = milestoneMap[date] || [];
+    const day = state.data[date];
+    const orders = day?.app?.total || 0;
+    const hasMilestone = ms.length > 0;
+    const color = hasMilestone ? typeColors[ms[0].type] : "var(--border)";
+
+    return `
+      <div class="day-tick ${hasMilestone ? "has-milestone" : ""}"
+           style="${hasMilestone ? `--accent:${color}` : ""}"
+           onclick="handleTickClick('${date}')"
+           title="${date}: ${orders} pedidos">
+        ${hasMilestone ? ms.map(m => `<div class="milestone-pip ${m.type}" style="display:none" data-pip="${date}">${typeEmoji[m.type]} ${m.title}</div>`).join("") : ""}
+        <div class="day-dot" style="${hasMilestone ? `background:${color}` : ""}"></div>
+        <div class="day-label">${date.slice(5)}</div>
+      </div>
+    `;
+  }).join("");
+
+  container.innerHTML = `<div class="timeline"><div class="timeline-inner">${ticks}</div></div>`;
+
+  // Hover pips
+  container.querySelectorAll(".day-tick").forEach(tick => {
+    tick.addEventListener("mouseenter", () => {
+      tick.querySelectorAll("[data-pip]").forEach(pip => pip.style.display = "");
+    });
+    tick.addEventListener("mouseleave", () => {
+      tick.querySelectorAll("[data-pip]").forEach(pip => pip.style.display = "none");
+    });
+  });
+}
+
+function handleTickClick(date) {
+  const existing = state.milestones.filter(m => m.date === date);
+  if (existing.length > 0) {
+    openMilestoneModal(existing[0]);
+  } else {
+    openMilestoneModal(null, date);
+  }
+}
+
+// ── Monthly ──────────────────────────────────────────────────
+async function renderMonthly() {
+  // Gather all available dates from index
+  let allDates = [];
+  try {
+    const res = await fetch(`${DATA_BASE}/index.json`);
+    if (res.ok) { const idx = await res.json(); allDates = idx.dates || []; }
+  } catch {}
+
+  if (!allDates.length) {
+    document.getElementById("monthly-body").innerHTML = '<tr><td colspan="9" class="empty">Sin datos disponibles</td></tr>';
+    return;
+  }
+
+  // Group by month
+  const byMonth = {};
+  for (const date of allDates) {
+    const month = date.slice(0, 7);
+    if (!byMonth[month]) byMonth[month] = [];
+    byMonth[month].push(date);
+  }
+
+  // Load all data
+  await Promise.all(allDates.map(d => fetchDayData(d)));
+
+  // Aggregate by month
+  const months = Object.keys(byMonth).sort().reverse();
+  const rows = months.map(month => {
+    const agg = aggregateData(byMonth[month]);
+    return { month, ...agg };
+  });
+
+  // Render table
+  document.getElementById("monthly-body").innerHTML = rows.map(r => `
+    <tr>
+      <td><strong>${r.month}</strong></td>
+      <td>${r.app_total.toLocaleString()}</td>
+      <td><span class="badge food">${r.food.orders.toLocaleString()}</span></td>
+      <td><span class="badge non_food">${r.non_food.orders.toLocaleString()}</span></td>
+      <td><span class="badge marketplace">${r.marketplace.orders.toLocaleString()}</span></td>
+      <td><span class="badge quickcommerce">${r.quickcommerce.orders.toLocaleString()}</span></td>
+      <td><span class="tag con-utm">${r.con_utm.toLocaleString()}</span></td>
+      <td><span class="tag ${r.utm_sin_pct > 35 ? "sin-utm" : "con-utm"}">${r.utm_sin_pct}%</span></td>
+      <td>${r.participation_pct}%</td>
+    </tr>
+  `).join("");
+
+  // Monthly chart
+  destroyChart("monthly");
+  const ctx = document.getElementById("monthly-chart").getContext("2d");
+  state.charts.monthly = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: rows.map(r => r.month).reverse(),
+      datasets: [
+        { label:"Food",         data: rows.map(r=>r.food.orders).reverse(),          backgroundColor: SEGMENT_COLORS.food + "cc", borderRadius:4 },
+        { label:"H&E",          data: rows.map(r=>r.non_food.orders).reverse(),      backgroundColor: SEGMENT_COLORS.non_food + "cc", borderRadius:4 },
+        { label:"Marketplace",  data: rows.map(r=>r.marketplace.orders).reverse(),   backgroundColor: SEGMENT_COLORS.marketplace + "cc", borderRadius:4 },
+        { label:"Quickcommerce",data: rows.map(r=>r.quickcommerce.orders).reverse(), backgroundColor: SEGMENT_COLORS.quickcommerce + "cc", borderRadius:4 },
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      scales: {
+        x: { stacked:true, ticks:{ color:"#7d8590" }, grid:{ color:"rgba(48,54,61,.5)" } },
+        y: { stacked:true, ticks:{ color:"#7d8590" }, grid:{ color:"rgba(48,54,61,.5)" } }
+      },
+      plugins: {
+        legend: { labels:{ color:"#7d8590", font:{ size:11 }, usePointStyle:true } },
+        tooltip: { backgroundColor:"#21262d", borderColor:"#30363d", borderWidth:1, titleColor:"#e6edf3", bodyColor:"#7d8590", mode:"index" }
+      }
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
+// MILESTONES
+// ══════════════════════════════════════════════════════════════
+let selectedType = "promo";
+
+function selectType(el) {
+  document.querySelectorAll(".type-opt").forEach(o => o.classList.remove("selected"));
+  el.classList.add("selected");
+  selectedType = el.dataset.type;
+}
+
+function openMilestoneModal(milestone = null, defaultDate = null) {
+  state.editingMilestone = milestone;
+  const modal = document.getElementById("milestone-modal");
+  const title = document.getElementById("milestone-modal-title");
+  const delBtn = document.getElementById("m-delete-btn");
+
+  if (milestone) {
+    title.textContent = "Editar Hito";
+    delBtn.style.display = "";
+    document.getElementById("m-date").value  = milestone.date;
+    document.getElementById("m-title").value = milestone.title;
+    document.getElementById("m-desc").value  = milestone.desc || "";
+    selectedType = milestone.type;
+    document.querySelectorAll(".type-opt").forEach(o => {
+      o.classList.toggle("selected", o.dataset.type === selectedType);
+    });
+  } else {
+    title.textContent = "Nuevo Hito";
+    delBtn.style.display = "none";
+    document.getElementById("m-date").value  = defaultDate || todayAR();
+    document.getElementById("m-title").value = "";
+    document.getElementById("m-desc").value  = "";
+    selectedType = "promo";
+    document.querySelectorAll(".type-opt").forEach(o => o.classList.toggle("selected", o.dataset.type === "promo"));
+  }
+
+  modal.classList.remove("hidden");
+}
+
+function closeMilestoneModal() {
+  document.getElementById("milestone-modal").classList.add("hidden");
+  state.editingMilestone = null;
+}
+
+async function saveMilestone() {
+  const date  = document.getElementById("m-date").value;
+  const title = document.getElementById("m-title").value.trim();
+  const desc  = document.getElementById("m-desc").value.trim();
+  if (!date || !title) { alert("Completá fecha y título"); return; }
+
+  if (state.editingMilestone) {
+    const idx = state.milestones.findIndex(m => m.id === state.editingMilestone.id);
+    if (idx >= 0) state.milestones[idx] = { ...state.editingMilestone, date, type: selectedType, title, desc, author: state.user.name, updated: new Date().toISOString() };
+  } else {
+    state.milestones.push({ id: Date.now().toString(), date, type: selectedType, title, desc, author: state.user.name, created: new Date().toISOString() });
+  }
+
+  const ok = await saveMilestones();
+  if (!ok) {
+    // Save locally anyway
+    localStorage.setItem("appdash_milestones_local", JSON.stringify(state.milestones));
+  }
+  closeMilestoneModal();
+  renderTimeline(getDatesInRange(state.dateFrom, state.dateTo));
+}
+
+async function deleteMilestone() {
+  if (!state.editingMilestone) return;
+  if (!confirm("¿Eliminar este hito?")) return;
+  state.milestones = state.milestones.filter(m => m.id !== state.editingMilestone.id);
+  await saveMilestones();
+  closeMilestoneModal();
+  renderTimeline(getDatesInRange(state.dateFrom, state.dateTo));
+}
+
+// ══════════════════════════════════════════════════════════════
+// EXPORT
+// ══════════════════════════════════════════════════════════════
+async function exportCSV() {
+  const dates = getDatesInRange(state.dateFrom, state.dateTo);
+  const allRows = [];
+
+  for (const date of dates) {
+    const rows = await fetchDayRows(date);
+    allRows.push(...rows);
+  }
+
+  if (!allRows.length) { alert("Sin datos para exportar en el rango seleccionado"); return; }
+
+  const header = ["order_id","fecha","estado","total_ars","utm_source","utm_medium","segmento","email","utm_status"];
+  const csv = [
+    header.join(","),
+    ...allRows.map(r => [r.order_id, `"${r.fecha}"`, r.estado, r.total, r.utm_source, r.utm_medium, r.segment, `"${r.email}"`, r.utm_status].join(","))
+  ].join("\n");
+
+  const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url;
+  a.download = `appdash_${state.dateFrom}_${state.dateTo}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ══════════════════════════════════════════════════════════════
+// SETTINGS
+// ══════════════════════════════════════════════════════════════
+function openSettings() {
+  document.getElementById("gh-token").value = localStorage.getItem("gh_token") || "";
+  document.getElementById("gh-repo").value  = localStorage.getItem("gh_repo") || "";
+  document.getElementById("settings-modal").classList.remove("hidden");
+}
+function closeSettings() { document.getElementById("settings-modal").classList.add("hidden"); }
+function saveSettings() {
+  localStorage.setItem("gh_token", document.getElementById("gh-token").value);
+  localStorage.setItem("gh_repo",  document.getElementById("gh-repo").value);
+  closeSettings();
+}
+
+function openUserMenu() {
+  document.getElementById("um-name").textContent = state.user.name;
+  document.getElementById("user-modal").classList.remove("hidden");
+}
+function closeUserMenu() { document.getElementById("user-modal").classList.add("hidden"); }
+
+// Close modals on overlay click
+document.querySelectorAll(".modal-overlay").forEach(el => {
+  el.addEventListener("click", e => { if (e.target === el) el.classList.add("hidden"); });
+});
+
+function refreshData() {
+  // Clear cache for current range
+  getDatesInRange(state.dateFrom, state.dateTo).forEach(d => {
+    localStorage.removeItem(`appdash_data_${d}`);
+    delete state.data[d];
+    delete state.rows[d];
+  });
+  loadRange();
+}
+</script>
+</body>
+</html>
