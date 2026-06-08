@@ -3,74 +3,50 @@ const JANIS_KEY    = process.env.JANIS_API_KEY;
 const JANIS_SECRET = process.env.JANIS_API_SECRET;
 const JANIS_CLIENT = process.env.JANIS_CLIENT;
 
-const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
-const VTEX_KEY     = process.env.VTEX_APP_KEY;
-const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
-
 const janisHeaders = {
   'Content-Type': 'application/json',
   'janis-api-key': JANIS_KEY,
   'janis-api-secret': JANIS_SECRET,
   'janis-client': JANIS_CLIENT,
 };
-const vtexHeaders = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-  'X-VTEX-API-AppKey': VTEX_KEY,
-  'X-VTEX-API-AppToken': VTEX_TOKEN,
-};
 
-// EANs de ejemplo de tus pegados
-const EANS_PRUEBA = ['7798049540078', '7790895001024', '7791290786639'];
-
-async function listarPriceSheets() {
-  console.log('=== 1) PRICE-SHEETS DE JANIS ===');
-  const res = await fetch(`${PRICING_BASE}/price-sheet`, {
-    headers: { ...janisHeaders, 'x-janis-page': '1', 'x-janis-page-size': '60' },
-  });
-  if (!res.ok) { console.log('  HTTP', res.status); return; }
-  const sheets = await res.json();
-  console.log(`  Total price-sheets: ${sheets.length}`);
-  sheets.forEach(s =>
-    console.log(`  - "${s.name}" | refId: ${s.referenceId} | salesChannels: ${JSON.stringify(s.salesChannels)}`)
-  );
-  console.log('');
-}
-
-async function eanToSkuId(ean) {
-  // VTEX: buscar SKU por referenceId
-  const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitidsbyrefids`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: vtexHeaders,
-    body: JSON.stringify([ean]),
-  });
-  if (!res.ok) return { ean, error: `HTTP ${res.status}` };
-  const data = await res.json();
-  return { ean, skuId: data[ean] || null, raw: data };
-}
-
-async function vtexPrice(skuId) {
-  const url = `https://api.vtex.com/${VTEX_ACCOUNT}/pricing/prices/${skuId}`;
-  const res = await fetch(url, { headers: vtexHeaders });
-  if (!res.ok) return { skuId, error: `HTTP ${res.status}` };
-  const data = await res.json();
-  return { skuId, basePrice: data.basePrice, fixedPrices: data.fixedPrices };
-}
+// El sales channel de MELI 0002 (de tu price-sheet 0002-5)
+const SC_MELI_0002 = '68cd4d36f7120cfb22dda331';
 
 async function run() {
-  await listarPriceSheets();
-
-  console.log('=== 2) PRUEBA EAN -> SKU ID VTEX -> PRECIO ===');
-  for (const ean of EANS_PRUEBA) {
-    const t = await eanToSkuId(ean);
-    console.log(`\nEAN ${ean}:`);
-    console.log('  traduccion:', JSON.stringify(t));
-    if (t.skuId) {
-      const p = await vtexPrice(t.skuId);
-      console.log('  precio VTEX:', JSON.stringify(p));
+  // 1. Encontrar el price-sheet de MELI 0002 y su id
+  console.log('=== Buscando price-sheet de MELI 0002 ===');
+  let page = 1, target = null;
+  while (page <= 5) {
+    const res = await fetch(`${PRICING_BASE}/price-sheet`, {
+      headers: { ...janisHeaders, 'x-janis-page': String(page), 'x-janis-page-size': '60' },
+    });
+    const sheets = await res.json();
+    if (!sheets.length) break;
+    for (const s of sheets) {
+      if ((s.salesChannels || []).includes(SC_MELI_0002)) {
+        target = s;
+      }
     }
+    if (target) break;
+    page++;
   }
+  if (!target) { console.log('No encontrado'); return; }
+  console.log('Price-sheet MELI 0002:');
+  console.log('  id:', target.id);
+  console.log('  name:', target.name);
+  console.log('  refId:', target.referenceId);
+  console.log('  salesChannels:', JSON.stringify(target.salesChannels));
+
+  // 2. Traer precios de ese price-sheet (muestra)
+  console.log('\n=== Muestra de precios del price-sheet MELI 0002 ===');
+  const res2 = await fetch(`${PRICING_BASE}/price?filters[priceSheet]=${target.id}`, {
+    headers: { ...janisHeaders, 'x-janis-page': '1', 'x-janis-page-size': '5' },
+  });
+  console.log('HTTP', res2.status);
+  const prices = await res2.json();
+  console.log(JSON.stringify(prices, null, 2).slice(0, 1500));
+  console.log('\nCampos:', prices.length ? Object.keys(prices[0]).join(', ') : 'vacio');
 }
 
 run().catch(e => { console.error(e); process.exit(1); });
