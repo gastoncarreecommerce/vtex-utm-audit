@@ -12,11 +12,8 @@ const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 
-// Price-sheet de MELI sucursal 0002 (confirmado en diagnostico)
 const PRICE_SHEET_MELI = '68cd5054eaa341977f783fef';
-// Sales channel de VTEX para comparar (MELI 0002)
 const VTEX_SALES_CHANNEL = '5';
-const VTEX_SELLER = 'carrefourar0002';
 
 const TOLERANCIA = 0.01;
 const DIAS_PEGADO = Number(process.env.DIAS_PEGADO || 30);
@@ -35,14 +32,29 @@ const vtexHeaders = {
   'X-VTEX-API-AppToken': VTEX_TOKEN,
 };
 
-// ===================== HELPERS =====================
+// ---- fetch con timeout + reintentos ----
+async function fetchRetry(url, options = {}, { retries = 3, timeoutMs = 20000 } = {}) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, { ...options, signal: ctrl.signal });
+      clearTimeout(timer);
+      return res;
+    } catch (e) {
+      clearTimeout(timer);
+      if (attempt === retries) throw e;
+      await new Promise(r => setTimeout(r, 1000 * (attempt + 1))); // backoff
+    }
+  }
+}
+
 async function fetchAllPaged(label, baseUrl) {
   const all = [];
   let page = 1;
   const pageSize = 100;
   while (true) {
-    const sep = baseUrl.includes('?') ? '&' : '?';
-    const res = await fetch(baseUrl, {
+    const res = await fetchRetry(baseUrl, {
       headers: { ...janisHeaders, 'x-janis-page': String(page), 'x-janis-page-size': String(pageSize) },
     });
     if (!res.ok) {
@@ -61,43 +73,42 @@ async function fetchAllPaged(label, baseUrl) {
   return all;
 }
 
-// Traduce lote de EANs -> skuId VTEX
+// Traduce un lote de EANs -> { ean: skuId } con reintentos
 async function eansToSkuIds(eans) {
   const url = 'https://' + VTEX_ACCOUNT + '.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitidsbyrefids';
   try {
-    const res = await fetch(url, { method: 'POST', headers: vtexHeaders, body: JSON.stringify(eans) });
+    const res = await fetchRetry(url, {
+      method: 'POST', headers: vtexHeaders, body: JSON.stringify(eans),
+    }, { retries: 3, timeoutMs: 30000 });
     if (!res.ok) return {};
     return await res.json();
   } catch { return {}; }
 }
 
-// Precio VTEX por skuId
 async function vtexPrice(skuId) {
   const url = 'https://api.vtex.com/' + VTEX_ACCOUNT + '/pricing/prices/' + skuId;
   try {
-    const res = await fetch(url, { headers: vtexHeaders });
+    const res = await fetchRetry(url, { headers: vtexHeaders }, { retries: 2, timeoutMs: 15000 });
     if (res.status === 404) return { skuId, sinPrecio: true };
     if (!res.ok) return { skuId, error: 'HTTP ' + res.status };
     const data = await res.json();
-    // Buscar fixedPrice de la trade policy 5; si no hay, basePrice
     let precio = data.basePrice;
-    let origen = 'base';
     if (Array.isArray(data.fixedPrices)) {
       const fp = data.fixedPrices.find(p => String(p.tradePolicyId) === VTEX_SALES_CHANNEL);
-      if (fp) { precio = fp.value; origen = 'pc5'; }
+      if (fp) precio = fp.value;
     }
-    return { skuId, precio, origen };
+    return { skuId, precio };
   } catch (e) { return { skuId, error: e.message }; }
 }
 
-async function mapConcurrency(items, fn, concurrency) {
+async function mapConcurrency(items, fn, concurrency, label) {
   const results = [];
   let i = 0;
   async function worker() {
     while (i < items.length) {
       const idx = i++;
       results[idx] = await fn(items[idx], idx);
-      if (idx % 500 === 0 && idx > 0) console.log('    VTEX precios: ' + idx + '/' + items.length);
+      if (idx % 1000 === 0 && idx > 0) console.log('    ' + label + ': ' + idx + '/' + items.length);
     }
   }
   await Promise.all(Array.from({ length: concurrency }, worker));
@@ -108,7 +119,6 @@ async function mapConcurrency(items, fn, concurrency) {
 async function run() {
   console.log('=== AUDITORIA MELI carrefourar0002-5 ===\n');
 
-  // 1) Catalog: hex -> { referenceId(EAN), nombre }
   console.log('1) Catalogo...');
   const skus = await fetchAllPaged('catalog/sku', CATALOG_BASE + '/sku');
   const catalogMap = new Map();
@@ -120,12 +130,10 @@ async function run() {
   }
   console.log('   ' + catalogMap.size + ' SKUs mapeados\n');
 
-  // 2) Precios del price-sheet MELI 0002
   console.log('2) Precios Janis (price-sheet MELI 0002)...');
   const precios = await fetchAllPaged('price', PRICING_BASE + '/price?filters[priceSheet]=' + PRICE_SHEET_MELI);
   console.log('');
 
-  // 3) Enriquecer con EAN + nombre
   const ahora = Date.now();
   const filas = precios.map(p => {
     const cat = catalogMap.get(String(p.sku));
@@ -141,27 +149,26 @@ async function run() {
     };
   });
 
-  // 4) Traducir EANs -> skuId VTEX (en lotes)
-  console.log('3) Traduciendo EAN -> SKU VTEX...');
+  console.log('3) Traduciendo EAN -> SKU VTEX (lotes de 50)...');
   const eansValidos = [...new Set(filas.map(f => f.ean).filter(Boolean))];
+  console.log('   ' + eansValidos.length + ' EANs unicos a traducir');
   const eanToSku = {};
-  for (let i = 0; i < eansValidos.length; i += 200) {
-    const lote = eansValidos.slice(i, i + 200);
+  const LOTE = 50;
+  for (let i = 0; i < eansValidos.length; i += LOTE) {
+    const lote = eansValidos.slice(i, i + LOTE);
     Object.assign(eanToSku, await eansToSkuIds(lote));
+    if ((i / LOTE) % 20 === 0) console.log('    traducidos ~' + i + '/' + eansValidos.length);
   }
   console.log('   ' + Object.keys(eanToSku).length + ' EANs traducidos\n');
 
-  // 5) Precio VTEX por skuId (concurrente)
   console.log('4) Trayendo precios VTEX...');
   const skuIdsUnicos = [...new Set(Object.values(eanToSku).filter(Boolean))];
-  const preciosVtex = await mapConcurrency(skuIdsUnicos, vtexPrice, CONCURRENCIA);
+  console.log('   ' + skuIdsUnicos.length + ' SKU IDs unicos');
+  const preciosVtex = await mapConcurrency(skuIdsUnicos, vtexPrice, CONCURRENCIA, 'VTEX precios');
   const vtexMap = new Map();
-  for (const r of preciosVtex) {
-    if (r && r.skuId) vtexMap.set(String(r.skuId), r);
-  }
-  console.log('   ' + vtexMap.size + ' precios VTEX obtenidos\n');
+  for (const r of preciosVtex) if (r && r.skuId) vtexMap.set(String(r.skuId), r);
+  console.log('   ' + vtexMap.size + ' precios VTEX procesados\n');
 
-  // 6) Cruce final
   for (const f of filas) {
     const skuId = eanToSku[f.ean];
     f.skuIdVtex = skuId || '';
@@ -176,15 +183,14 @@ async function run() {
              : (dif < 0 ? 'MELI MAS BARATO (riesgo)' : 'MELI MAS CARO');
   }
 
-  // 7) Reportes
   const desfasados = filas.filter(f => f.estado === 'MELI MAS BARATO (riesgo)' || f.estado === 'MELI MAS CARO')
     .sort((a, b) => (a.diferencia || 0) - (b.diferencia || 0));
   const pegados = filas.filter(f => typeof f.diasSinCambio === 'number' && f.diasSinCambio >= DIAS_PEGADO)
     .sort((a, b) => b.diasSinCambio - a.diasSinCambio);
 
   console.log('========================================');
-  console.log('Total SKUs en MELI 0002: ' + filas.length);
-  console.log('Desfasados vs VTEX:      ' + desfasados.length);
+  console.log('Total SKUs en MELI 0002:  ' + filas.length);
+  console.log('Desfasados vs VTEX:       ' + desfasados.length);
   console.log('Pegados (+' + DIAS_PEGADO + 'd sin cambio): ' + pegados.length);
   console.log('========================================\n');
 
@@ -193,9 +199,8 @@ async function run() {
     console.log('EAN ' + f.ean + ' | Janis $' + f.precioJanis + ' | VTEX $' + f.precioVtex + ' | Dif $' + f.diferencia + ' | ' + f.estado + ' | ' + f.nombre.slice(0,35))
   );
 
-  // 8) CSVs
   const header = 'ean,nombre,sku_vtex,hex_janis,precio_janis_meli,precio_vtex,diferencia,estado,status,date_modified,dias_sin_cambio\n';
-  const toRow = f => [f.ean, f.nombre, f.skuIdVtex, f.hex, f.precioJanis, f.precioVtex, f.diferencia != null ? f.diferencia : '', f.estado, f.status, f.dateModified, f.diasSinCambio].join(',');
+  const toRow = f => [f.ean, f.nombre, f.skuIdVtex, f.hex, f.precioJanis, f.precioVtex != null ? f.precioVtex : '', f.diferencia != null ? f.diferencia : '', f.estado, f.status, f.dateModified, f.diasSinCambio].join(',');
 
   fs.writeFileSync('meli0002-completo.csv', header + filas.map(toRow).join('\n'));
   fs.writeFileSync('meli0002-desfasados.csv', header + desfasados.map(toRow).join('\n'));
