@@ -49,18 +49,26 @@ function loadVtexMap() {
 }
 
 async function runAudit() {
-  // Modo descubrimiento: muestra una listita para encontrar el canal de MELI
+  // MODO TEST: prueba varios endpoints y muestra el status de cada uno
   if (process.env.LIST_CHANNELS === '1') {
-    console.log('--- Modo descubrimiento: muestra de sc-sku-price ---');
-    const res = await fetch(`${JANIS_BASE}/sc-sku-price`, {
-      headers: { ...janisHeaders, 'x-janis-page': '1', 'x-janis-page-size': '20' },
-    });
-    if (!res.ok) {
-      const body = await res.text();
-      throw new Error(`Janis HTTP ${res.status}: ${body.slice(0, 300)}`);
+    console.log('--- Test de permisos de la API key ---\n');
+    const endpoints = ['sc-sku-price', 'base-price', 'price-sheet', 'price-change'];
+    for (const ep of endpoints) {
+      try {
+        const res = await fetch(`${JANIS_BASE}/${ep}`, {
+          headers: { ...janisHeaders, 'x-janis-page': '1', 'x-janis-page-size': '5' },
+        });
+        const body = await res.text();
+        console.log(`${ep.padEnd(16)} -> HTTP ${res.status}`);
+        if (res.ok) {
+          console.log(`   muestra: ${body.slice(0, 500)}\n`);
+        } else {
+          console.log(`   detalle: ${body.slice(0, 200)}\n`);
+        }
+      } catch (e) {
+        console.log(`${ep.padEnd(16)} -> ERROR ${e.message}\n`);
+      }
     }
-    const sample = await res.json();
-    console.log(JSON.stringify(sample, null, 2));
     return;
   }
 
