@@ -27,7 +27,7 @@ jobs:
         with:
           name: resultados-auditoria
           path: |
-            janis-base-prices-completo.csv
+            janis-completo.csv
             janis-pegados.csv
             janis-desfasados.csv
           if-no-files-found: warn
