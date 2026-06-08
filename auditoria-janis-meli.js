@@ -1,37 +1,47 @@
-const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
+const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT; // master
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 
-const vtexHeaders = {
+const H = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'X-VTEX-API-AppKey': VTEX_KEY,
   'X-VTEX-API-AppToken': VTEX_TOKEN,
 };
 
-const SKUS_PRUEBA = ['9833', '181128', '200321'];
+const SKUS = ['9833', '181128', '200321'];
 
-async function simular(skuId) {
-  const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/checkout/pub/orderForms/simulation?sc=5`;
+async function show(label, url, opts = {}) {
   try {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: vtexHeaders,
-      body: JSON.stringify({ items: [{ id: skuId, quantity: 1, seller: 'carrefourar0002' }] }),
-    });
-    const data = await res.json();
-    if (data.items && data.items[0]) {
-      const it = data.items[0];
-      return `price=${it.price/100} sellingPrice=${it.sellingPrice/100} listPrice=${it.listPrice/100} availability=${it.availability}`;
-    }
-    return 'Sin items: ' + JSON.stringify(data).slice(0, 300);
-  } catch (e) { return 'ERROR ' + e.message; }
+    const res = await fetch(url, { headers: H, ...opts });
+    const txt = await res.text();
+    console.log(`  [${res.status}] ${label}`);
+    if (res.ok) console.log('       ' + txt.slice(0, 400));
+    else console.log('       ' + txt.slice(0, 150));
+  } catch (e) {
+    console.log(`  [ERR] ${label}: ${e.message}`);
+  }
 }
 
 async function run() {
-  console.log('Simulacion seller carrefourar0002, sc=5:\n');
-  for (const sku of SKUS_PRUEBA) {
-    console.log(`SKU ${sku}: ${await simular(sku)}`);
+  for (const sku of SKUS) {
+    console.log(`\n===== SKU ${sku} =====`);
+
+    // 1. Pricing master - ver TODO el objeto (no solo basePrice)
+    await show('Pricing master completo',
+      `https://api.vtex.com/${VTEX_ACCOUNT}/pricing/prices/${sku}`);
+
+    // 2. Pricing con computeInfo (precios por cuenta)
+    await show('Pricing master + computeInfo',
+      `https://api.vtex.com/${VTEX_ACCOUNT}/pricing/prices/${sku}?computeInfo=true`);
+
+    // 3. Price endpoint alternativo (pricing/v3 o por account)
+    await show('Pricing fixedPrices por cuenta',
+      `https://api.vtex.com/${VTEX_ACCOUNT}/pricing/prices/${sku}/fixed`);
+
+    // 4. Catalog pricing (precio simple por SKU desde catalog)
+    await show('Catalog system price',
+      `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pvt/products/GetPriceById/${sku}`);
   }
 }
 
