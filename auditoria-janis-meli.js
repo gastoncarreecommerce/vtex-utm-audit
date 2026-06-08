@@ -10,43 +10,45 @@ const janisHeaders = {
   'janis-client': JANIS_CLIENT,
 };
 
-// El sales channel de MELI 0002 (de tu price-sheet 0002-5)
-const SC_MELI_0002 = '68cd4d36f7120cfb22dda331';
-
 async function run() {
-  // 1. Encontrar el price-sheet de MELI 0002 y su id
-  console.log('=== Buscando price-sheet de MELI 0002 ===');
-  let page = 1, target = null;
-  while (page <= 5) {
+  // 1. Buscar el price-sheet de carrefourar0002-5
+  console.log('=== Buscando price-sheet carrefourar0002-5 ===');
+  let target = null;
+  let page = 1;
+  while (true) {
     const res = await fetch(`${PRICING_BASE}/price-sheet`, {
-      headers: { ...janisHeaders, 'x-janis-page': String(page), 'x-janis-page-size': '60' },
+      headers: { ...janisHeaders, 'x-janis-page': String(page), 'x-janis-page-size': '100' },
     });
     const sheets = await res.json();
-    if (!sheets.length) break;
+    if (!Array.isArray(sheets) || sheets.length === 0) break;
     for (const s of sheets) {
-      if ((s.salesChannels || []).includes(SC_MELI_0002)) {
+      if (s.referenceId && s.referenceId.includes('0002-5')) {
         target = s;
       }
     }
-    if (target) break;
+    if (target || sheets.length < 100) break;
     page++;
   }
-  if (!target) { console.log('No encontrado'); return; }
-  console.log('Price-sheet MELI 0002:');
-  console.log('  id:', target.id);
-  console.log('  name:', target.name);
-  console.log('  refId:', target.referenceId);
-  console.log('  salesChannels:', JSON.stringify(target.salesChannels));
 
-  // 2. Traer precios de ese price-sheet (muestra)
-  console.log('\n=== Muestra de precios del price-sheet MELI 0002 ===');
+  if (!target) { console.log('NO encontrado. Revisar referenceId.'); return; }
+  console.log('ENCONTRADO:');
+  console.log(JSON.stringify(target, null, 2));
+
+  // 2. Traer precios de ESE price-sheet
+  console.log(`\n=== Precios del price-sheet ${target.id} (primeros 5) ===`);
   const res2 = await fetch(`${PRICING_BASE}/price?filters[priceSheet]=${target.id}`, {
     headers: { ...janisHeaders, 'x-janis-page': '1', 'x-janis-page-size': '5' },
   });
   console.log('HTTP', res2.status);
-  const prices = await res2.json();
-  console.log(JSON.stringify(prices, null, 2).slice(0, 1500));
-  console.log('\nCampos:', prices.length ? Object.keys(prices[0]).join(', ') : 'vacio');
+  if (res2.ok) {
+    const precios = await res2.json();
+    console.log(JSON.stringify(precios, null, 2));
+    if (Array.isArray(precios) && precios.length) {
+      console.log('\nCAMPOS:', Object.keys(precios[0]).join(', '));
+    }
+  } else {
+    console.log((await res2.text()).slice(0, 200));
+  }
 }
 
 run().catch(e => { console.error(e); process.exit(1); });
