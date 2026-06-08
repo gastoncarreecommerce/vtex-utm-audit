@@ -20,6 +20,14 @@ jobs:
           JANIS_API_KEY: ${{ secrets.JANIS_API_KEY }}
           JANIS_API_SECRET: ${{ secrets.JANIS_API_SECRET }}
           JANIS_CLIENT: ${{ secrets.JANIS_CLIENT }}
-          MELI_SC_ID: ${{ secrets.MELI_SC_ID }}
-          LIST_CHANNELS: '1'
         run: node auditoria-janis-meli.js
+
+      - name: Subir resultados como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultados-auditoria
+          path: |
+            janis-base-prices-completo.csv
+            janis-pegados.csv
+            janis-desfasados.csv
+          if-no-files-found: warn
