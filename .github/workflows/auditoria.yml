@@ -30,7 +30,7 @@ jobs:
         with:
           name: resultados-auditoria
           path: |
-            janis-completo.csv
-            janis-pegados.csv
-            janis-desfasados.csv
+            meli0002-completo.csv
+            meli0002-desfasados.csv
+            meli0002-pegados.csv
           if-no-files-found: warn
