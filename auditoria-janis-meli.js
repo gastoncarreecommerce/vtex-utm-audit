@@ -1,4 +1,4 @@
-const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT; // master: carrefourar
+const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 
@@ -9,38 +9,29 @@ const vtexHeaders = {
   'X-VTEX-API-AppToken': VTEX_TOKEN,
 };
 
-const EAN_PRUEBA = '7791290786639'; // el que dio precio antes
+const SKUS_PRUEBA = ['9833', '181128', '200321'];
 
-async function refToSku(cuenta, ean) {
-  const url = `https://${cuenta}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitidsbyrefids`;
-  const res = await fetch(url, { method: 'POST', headers: vtexHeaders, body: JSON.stringify([ean]) });
-  if (!res.ok) return `HTTP ${res.status}`;
-  return JSON.stringify(await res.json());
-}
-
-async function price(cuenta, skuId) {
-  const res = await fetch(`https://api.vtex.com/${cuenta}/pricing/prices/${skuId}`, { headers: vtexHeaders });
-  if (!res.ok) return `HTTP ${res.status}`;
-  const d = await res.json();
-  return `basePrice=${d.basePrice} fixedPrices=${JSON.stringify(d.fixedPrices)}`;
+async function simular(skuId) {
+  const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/checkout/pub/orderForms/simulation?sc=5`;
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: vtexHeaders,
+      body: JSON.stringify({ items: [{ id: skuId, quantity: 1, seller: 'carrefourar0002' }] }),
+    });
+    const data = await res.json();
+    if (data.items && data.items[0]) {
+      const it = data.items[0];
+      return `price=${it.price/100} sellingPrice=${it.sellingPrice/100} listPrice=${it.listPrice/100} availability=${it.availability}`;
+    }
+    return 'Sin items: ' + JSON.stringify(data).slice(0, 300);
+  } catch (e) { return 'ERROR ' + e.message; }
 }
 
 async function run() {
-  console.log('EAN de prueba:', EAN_PRUEBA, '\n');
-
-  console.log('--- Traduccion EAN -> skuId ---');
-  const skuMaster = await refToSku(VTEX_ACCOUNT, EAN_PRUEBA);
-  console.log('  en master', VTEX_ACCOUNT + ':', skuMaster);
-  const sku0002 = await refToSku('carrefourar0002', EAN_PRUEBA);
-  console.log('  en 0002:', sku0002);
-
-  console.log('\n--- Precio del mismo skuId en cada cuenta ---');
-  // probamos el skuId que devolvio master, en ambas cuentas
-  const obj = JSON.parse(skuMaster);
-  const skuId = obj[EAN_PRUEBA];
-  if (skuId) {
-    console.log('  skuId', skuId, 'en master:', await price(VTEX_ACCOUNT, skuId));
-    console.log('  skuId', skuId, 'en 0002:  ', await price('carrefourar0002', skuId));
+  console.log('Simulacion seller carrefourar0002, sc=5:\n');
+  for (const sku of SKUS_PRUEBA) {
+    console.log(`SKU ${sku}: ${await simular(sku)}`);
   }
 }
 
