@@ -5,7 +5,7 @@ const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 const SHEET_ID     = process.env.SHEET_ID;
-const SHEET_NAME   = "05 JUNIO";
+const SHEET_NAME   = "06 JUNIO";
 const PAGE_SIZE    = 100;
 const CONCURRENCY  = 20;
 const RANGE_PARALLEL = 3;
@@ -18,8 +18,8 @@ const vtexHeaders = {
 
 function buildDateRanges() {
   const ranges = [];
-  const start  = new Date("2026-06-05T03:00:00.000Z"); // 00:00 Argentina
-  const end    = new Date("2026-06-06T02:59:59.999Z"); // 23:59 Argentina
+  const start  = new Date("2026-06-06T03:00:00.000Z"); // 00:00 Argentina
+  const end    = new Date("2026-06-07T02:59:59.999Z"); // 23:59 Argentina
   const block  = 1 * 60 * 60 * 1000;
   let current  = new Date(start);
 
