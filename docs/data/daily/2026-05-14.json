@@ -1,0 +1,31 @@
+{
+  "date": "2026-05-14",
+  "total_ecomm_orders": 5597,
+  "total_ecomm_gmv": 0,
+  "app": {
+    "total": 804,
+    "gmv": 59741251,
+    "con_utm": 605,
+    "sin_utm": 199,
+    "segments": {
+      "food": {
+        "orders": 755,
+        "gmv": 52405279
+      },
+      "non_food": {
+        "orders": 11,
+        "gmv": 5260995
+      },
+      "marketplace": {
+        "orders": 6,
+        "gmv": 757808
+      },
+      "quickcommerce": {
+        "orders": 32,
+        "gmv": 1317169
+      }
+    }
+  },
+  "participation_pct": 14.4,
+  "utm_pct_sin": 24.8
+}
