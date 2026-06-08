@@ -4,8 +4,10 @@ const JANIS_BASE   = 'https://pricing.janis.in/api';
 const JANIS_KEY    = process.env.JANIS_API_KEY;
 const JANIS_SECRET = process.env.JANIS_API_SECRET;
 const JANIS_CLIENT = process.env.JANIS_CLIENT;
-const MELI_SALES_CHANNEL_ID = process.env.MELI_SC_ID;
 const TOLERANCIA = 0.01;
+
+// Cuántos días sin modificarse para considerar un precio "sospechoso de pegado"
+const DIAS_PEGADO = Number(process.env.DIAS_PEGADO || 60);
 
 const janisHeaders = {
   'Content-Type': 'application/json',
@@ -14,13 +16,12 @@ const janisHeaders = {
   'janis-client': JANIS_CLIENT,
 };
 
-async function fetchAllJanisPrices(salesChannelId) {
+async function fetchAllBasePrices() {
   const all = [];
   let page = 1;
   const pageSize = 100;
   while (true) {
-    const url = `${JANIS_BASE}/sc-sku-price?filters[salesChannelId]=${encodeURIComponent(salesChannelId)}`;
-    const res = await fetch(url, {
+    const res = await fetch(`${JANIS_BASE}/base-price`, {
       method: 'GET',
       headers: { ...janisHeaders, 'x-janis-page': String(page), 'x-janis-page-size': String(pageSize) },
     });
@@ -31,7 +32,7 @@ async function fetchAllJanisPrices(salesChannelId) {
     const batch = await res.json();
     if (!Array.isArray(batch) || batch.length === 0) break;
     all.push(...batch);
-    console.log(`  Janis page ${page}: +${batch.length} (total ${all.length})`);
+    console.log(`  base-price page ${page}: +${batch.length} (total ${all.length})`);
     if (batch.length < pageSize) break;
     page++;
     if (page > 5000) break;
@@ -41,81 +42,82 @@ async function fetchAllJanisPrices(salesChannelId) {
 
 function loadVtexMap() {
   if (!fs.existsSync('vtex-prices.json')) {
-    console.warn('!! No existe vtex-prices.json. El cruce con VTEX se omite.');
+    console.warn('!! No existe vtex-prices.json. Solo se hace el analisis de antiguedad (sin cruce VTEX).');
     return new Map();
   }
   const vtex = JSON.parse(fs.readFileSync('vtex-prices.json', 'utf-8'));
   return new Map(vtex.filter(r => !r.error).map(r => [String(r.sku), Number(r.pc5Price)]));
 }
 
-async function runAudit() {
-  // MODO TEST: prueba varios endpoints y muestra el status de cada uno
-  if (process.env.LIST_CHANNELS === '1') {
-    console.log('--- Test de permisos de la API key ---\n');
-    const endpoints = ['sc-sku-price', 'base-price', 'price-sheet', 'price-change'];
-    for (const ep of endpoints) {
-      try {
-        const res = await fetch(`${JANIS_BASE}/${ep}`, {
-          headers: { ...janisHeaders, 'x-janis-page': '1', 'x-janis-page-size': '5' },
-        });
-        const body = await res.text();
-        console.log(`${ep.padEnd(16)} -> HTTP ${res.status}`);
-        if (res.ok) {
-          console.log(`   muestra: ${body.slice(0, 500)}\n`);
-        } else {
-          console.log(`   detalle: ${body.slice(0, 200)}\n`);
-        }
-      } catch (e) {
-        console.log(`${ep.padEnd(16)} -> ERROR ${e.message}\n`);
+async function run() {
+  console.log('--- Auditoria de Base Prices en Janis ---\n');
+  const prices = await fetchAllBasePrices();
+  console.log(`\nTotal base prices: ${prices.length}\n`);
+
+  const ahora = Date.now();
+  const vtexMap = loadVtexMap();
+
+  const filas = prices.map(p => {
+    const sku = String(p.sku);
+    const mod = p.dateModified ? new Date(p.dateModified) : null;
+    const diasSinCambio = mod ? Math.floor((ahora - mod.getTime()) / 86400000) : null;
+    const precioVtex = vtexMap.get(sku);
+    let diferencia = null, estado = '';
+    if (precioVtex != null) {
+      diferencia = Math.round((Number(p.price) - precioVtex) * 100) / 100;
+      if (Math.abs(diferencia) > TOLERANCIA) {
+        estado = diferencia < 0 ? 'MELI MAS BARATO (riesgo)' : 'MELI MAS CARO';
+      } else {
+        estado = 'OK';
       }
     }
-    return;
-  }
+    return {
+      sku,
+      precioJanis: Number(p.price),
+      precioVtex: precioVtex ?? '',
+      diferencia: diferencia ?? '',
+      estado,
+      status: p.status,
+      dateModified: p.dateModified || '',
+      diasSinCambio: diasSinCambio ?? '',
+    };
+  });
 
-  if (!MELI_SALES_CHANNEL_ID) {
-    throw new Error('Falta MELI_SC_ID. Corré primero con LIST_CHANNELS=1 para descubrirlo.');
-  }
+  // --- Reporte 1: precios pegados (viejos) ---
+  const pegados = filas
+    .filter(f => typeof f.diasSinCambio === 'number' && f.diasSinCambio >= DIAS_PEGADO)
+    .sort((a, b) => b.diasSinCambio - a.diasSinCambio);
 
-  console.log(`--- Auditoría Janis->MELI (salesChannel ${MELI_SALES_CHANNEL_ID}) ---\n`);
-  const janisPrices = await fetchAllJanisPrices(MELI_SALES_CHANNEL_ID);
-  console.log(`\nTotal precios en Janis (MELI): ${janisPrices.length}`);
-
-  const vtexMap = loadVtexMap();
-  console.log(`Precios de referencia VTEX: ${vtexMap.size}\n`);
-
-  const afectados = [];
-  let sinReferencia = 0;
-  for (const row of janisPrices) {
-    const sku = String(row.skuId);
-    const precioJanis = Number(row.price);
-    const precioVtex = vtexMap.get(sku);
-    if (precioVtex == null) { sinReferencia++; continue; }
-    const diff = Math.round((precioJanis - precioVtex) * 100) / 100;
-    if (Math.abs(diff) > TOLERANCIA) {
-      afectados.push({
-        sku, precioJanisMeli: precioJanis, precioVtexCorrecto: precioVtex,
-        diferencia: diff, dateModifiedJanis: row.dateModified || null,
-        estado: diff < 0 ? 'MELI MAS BARATO (riesgo)' : 'MELI MAS CARO',
-      });
-    }
-  }
-  afectados.sort((a, b) => a.diferencia - b.diferencia);
-
-  console.log(`\n========================================`);
-  console.log(`SKUs desfasados: ${afectados.length}`);
-  console.log(`SKUs sin precio de referencia VTEX: ${sinReferencia}`);
+  console.log(`========================================`);
+  console.log(`Precios sin cambios hace +${DIAS_PEGADO} dias: ${pegados.length}`);
   console.log(`========================================\n`);
-  afectados.slice(0, 50).forEach(a =>
-    console.log(`SKU ${a.sku} | Janis: $${a.precioJanisMeli} | Correcto: $${a.precioVtexCorrecto} | Dif: $${a.diferencia} | mod: ${a.dateModifiedJanis} | ${a.estado}`)
+  pegados.slice(0, 30).forEach(f =>
+    console.log(`SKU ${f.sku} | $${f.precioJanis} | ${f.diasSinCambio} dias sin cambio | ${f.status} | mod: ${f.dateModified}`)
   );
-  if (afectados.length > 50) console.log(`... y ${afectados.length - 50} más (ver CSV)`);
+  if (pegados.length > 30) console.log(`... y ${pegados.length - 30} mas (ver CSV)`);
 
-  fs.writeFileSync('afectados.json', JSON.stringify(afectados, null, 2));
-  fs.writeFileSync('afectados.csv',
-    'sku,precio_janis_meli,precio_vtex_correcto,diferencia,date_modified_janis,estado\n' +
-    afectados.map(a => `${a.sku},${a.precioJanisMeli},${a.precioVtexCorrecto},${a.diferencia},${a.dateModifiedJanis},${a.estado}`).join('\n')
-  );
-  console.log('\n-> Generados: afectados.csv / afectados.json');
+  // --- Reporte 2: desfasados vs VTEX (si hay referencia) ---
+  const desfasados = filas.filter(f => f.estado && f.estado !== 'OK');
+  if (vtexMap.size > 0) {
+    console.log(`\n========================================`);
+    console.log(`Desfasados vs VTEX: ${desfasados.length}`);
+    console.log(`========================================\n`);
+    desfasados.slice(0, 30).forEach(f =>
+      console.log(`SKU ${f.sku} | Janis: $${f.precioJanis} | VTEX: $${f.precioVtex} | Dif: $${f.diferencia} | ${f.estado}`)
+    );
+  }
+
+  // --- Salidas CSV ---
+  const header = 'sku,precio_janis,precio_vtex,diferencia,estado,status,date_modified,dias_sin_cambio\n';
+  const toRow = f => `${f.sku},${f.precioJanis},${f.precioVtex},${f.diferencia},${f.estado},${f.status},${f.dateModified},${f.diasSinCambio}`;
+
+  fs.writeFileSync('janis-base-prices-completo.csv', header + filas.map(toRow).join('\n'));
+  fs.writeFileSync('janis-pegados.csv', header + pegados.map(toRow).join('\n'));
+  if (vtexMap.size > 0) {
+    fs.writeFileSync('janis-desfasados.csv', header + desfasados.map(toRow).join('\n'));
+  }
+
+  console.log('\n-> Generados: janis-base-prices-completo.csv / janis-pegados.csv' + (vtexMap.size > 0 ? ' / janis-desfasados.csv' : ''));
 }
 
-runAudit().catch(e => { console.error(e); process.exit(1); });
+run().catch(e => { console.error(e); process.exit(1); });
