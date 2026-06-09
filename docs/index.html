@@ -303,7 +303,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
         </div>
         <div class="grid-2">
           <div class="card">
-            <div class="card-header"><div><div class="card-title">Pedidos de App por Día</div><div class="card-sub">Por segmento de negocio</div></div></div>
+            <div class="card-header"><div><div class="card-title" id="line-chart-title">Pedidos de App por Día</div><div class="card-sub" id="line-chart-sub">Por segmento de negocio</div></div></div>
             <div class="card-body"><div style="height:220px"><canvas id="line-chart"></canvas></div></div>
             <div class="seg-legend">
               <span class="seg-dot" style="--c:#10b981">Food</span>
@@ -571,9 +571,21 @@ function agg(dates) {
 function fmt(n){ return n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n/1000).toFixed(1)+"k":n.toLocaleString("es-AR"); }
 function fmtARS(n){ return "$"+(n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n/1000).toFixed(0)+"k":n.toLocaleString("es-AR")); }
 
-function renderDash(dates) {
+async function renderDash(dates) {
   const a=agg(dates);
-  renderKPIs(a); renderLine(a.daily); renderDonut(a); renderUTM(a.daily); renderPart(a.daily); renderTimeline(dates,a.daily);
+  renderKPIs(a); renderDonut(a); renderUTM(a.daily); renderPart(a.daily); renderTimeline(dates,a.daily);
+  // Hourly chart si es un solo día (Hoy o Ayer)
+  if(dates.length===1){
+    document.getElementById("line-chart-title").textContent="Pedidos de App por Hora";
+    document.getElementById("line-chart-sub").textContent=dates[0]+" · desglose horario";
+    const rows=await fetchRows(dates[0]);
+    if(rows.length>0){ renderLineHourly(rows,dates[0]); }
+    else { document.getElementById("line-chart-title").textContent="Pedidos de App por Día"; renderLine(a.daily); }
+  } else {
+    document.getElementById("line-chart-title").textContent="Pedidos de App por Día";
+    document.getElementById("line-chart-sub").textContent="Por segmento de negocio";
+    renderLine(a.daily);
+  }
   lastFetch=new Date();
   updateLiveTs();
 }
@@ -611,6 +623,40 @@ function renderKPIs(a) {
 
 function dc(id){ if(S.charts[id]){S.charts[id].destroy();delete S.charts[id];} }
 const cOpts={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#6b7280",font:{size:11},usePointStyle:true,boxWidth:6}},tooltip:{backgroundColor:"#fff",borderColor:"#e5e7eb",borderWidth:1,titleColor:"#0f1117",bodyColor:"#6b7280",padding:10,cornerRadius:8}},scales:{x:{ticks:{color:"#9ca3af",font:{size:10}},grid:{color:"#f3f4f6"}},y:{ticks:{color:"#9ca3af",font:{size:10}},grid:{color:"#f3f4f6"}}}};
+
+
+function parseHour(fecha) {
+  try{
+    // es-AR 24h: "08/06/2026, 14:30:25"
+    const parts=fecha.split(', ');
+    if(parts.length>=2){ const h=parseInt(parts[1].split(':')[0]); if(!isNaN(h)&&h>=0&&h<=23) return h; }
+    return null;
+  }catch{ return null; }
+}
+
+function renderLineHourly(rows, date) {
+  dc("line");
+  const hours=Array.from({length:24},(_,i)=>({h:i,food:0,non_food:0,marketplace:0,quickcommerce:0}));
+  rows.forEach(r=>{ const h=parseHour(r.fecha); if(h!==null&&hours[h]){ const s=r.segment||"food"; if(hours[h][s]!==undefined) hours[h][s]++; } });
+  // Para "hoy" solo mostrar hasta la hora actual AR; para "ayer" todas
+  const isToday=date===todayAR();
+  const maxH=isToday?new Date(Date.now()-3*3600000).getUTCHours():23;
+  const filtered=hours.filter(h=>h.h<=maxH);
+  const labels=filtered.map(h=>String(h.h).padStart(2,'0')+":00");
+  S.charts.line=new Chart(document.getElementById("line-chart").getContext("2d"),{
+    type:"line",
+    data:{
+      labels,
+      datasets:[
+        {label:"Food",         data:filtered.map(h=>h.food),          borderColor:"#10b981",backgroundColor:"#10b98112",fill:true,tension:.4,pointRadius:3,borderWidth:2},
+        {label:"H&E",          data:filtered.map(h=>h.non_food),      borderColor:"#0ea5e9",backgroundColor:"#0ea5e912",fill:true,tension:.4,pointRadius:3,borderWidth:2},
+        {label:"Marketplace",  data:filtered.map(h=>h.marketplace),   borderColor:"#8b5cf6",backgroundColor:"#8b5cf612",fill:true,tension:.4,pointRadius:3,borderWidth:2},
+        {label:"Quickcommerce",data:filtered.map(h=>h.quickcommerce), borderColor:"#f59e0b",backgroundColor:"#f59e0b12",fill:true,tension:.4,pointRadius:3,borderWidth:2},
+      ]
+    },
+    options:{...cOpts,interaction:{mode:"index",intersect:false}}
+  });
+}
 
 function renderLine(daily) {
   dc("line");
