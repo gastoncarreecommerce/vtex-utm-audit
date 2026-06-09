@@ -538,7 +538,8 @@ async function loadMilestones() {
   try{ const r=await fetch(`${DATA_BASE}/milestones.json`); if(r.ok) S.milestones=await r.json(); }catch{}
 }
 async function saveMilestones() {
-  const token=localStorage.getItem("gh_token"), repo=localStorage.getItem("gh_repo");
+  const token=localStorage.getItem("gh_token")||"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";
+  const repo=localStorage.getItem("gh_repo")||"gastoncarreecommerce/vtex-utm-audit";
   if(!token||!repo){ alert("Configurá el GitHub Token en ⚙ para guardar hitos compartidos."); return false; }
   const content=btoa(unescape(encodeURIComponent(JSON.stringify(S.milestones,null,2))));
   try{ const r=await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`,{method:"PUT",headers:{Authorization:`token ${token}`,Accept:"application/vnd.github.v3+json","Content-Type":"application/json"},body:JSON.stringify({message:`hito: ${S.user.name}`,content,sha:S.msSha})}); if(r.ok){ const j=await r.json(); S.msSha=j.content.sha; return true; } }catch{}
