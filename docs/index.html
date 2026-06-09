@@ -538,7 +538,7 @@ async function loadMilestones() {
   try{ const r=await fetch(`${DATA_BASE}/milestones.json`); if(r.ok) S.milestones=await r.json(); }catch{}
 }
 async function saveMilestones() {
-  const token=localStorage.getItem("gh_token")||"__GH_TOKEN__";
+  const token=localStorage.getItem("gh_token")||"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";
   const repo=localStorage.getItem("gh_repo")||"gastoncarreecommerce/vtex-utm-audit";
   if(!token||!repo){ alert("Configurá el GitHub Token en ⚙ para guardar hitos compartidos."); return false; }
   const content=btoa(unescape(encodeURIComponent(JSON.stringify(S.milestones,null,2))));
