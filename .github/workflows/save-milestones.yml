@@ -1,0 +1,31 @@
+name: Save Milestones
+
+on:
+  repository_dispatch:
+    types: [save-milestones]
+
+permissions:
+  contents: write
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write milestones file
+        run: |
+          mkdir -p docs/data
+          cat > docs/data/milestones.json << 'JSONEOF'
+          ${{ github.event.client_payload.milestones }}
+          JSONEOF
+          # Validar que es JSON válido
+          node -e "JSON.parse(require('fs').readFileSync('docs/data/milestones.json','utf8'))" || { echo "JSON inválido"; exit 1; }
+
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/milestones.json
+          git diff --staged --quiet || git commit -m "hito: ${{ github.event.client_payload.author }}"
+          git push
