@@ -663,7 +663,27 @@ const S = { user:null, from:null, to:null, data:{}, rows:{}, milestones:[], char
 // ══════════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════════
-document.addEventListener("DOMContentLoaded", () => {
+(function init() {
+  const sel = document.getElementById("login-user");
+  USERS.forEach(u => {
+    const o = document.createElement("option");
+    o.value = u.username;
+    o.textContent = u.name;
+    sel.appendChild(o);
+  });
+  document.getElementById("login-pass").addEventListener("keydown", e => {
+    if (e.key === "Enter") doLogin();
+  });
+
+  const sess = localStorage.getItem("appdash_sess");
+  if (sess) {
+    try {
+      const s = JSON.parse(sess);
+      const u = USERS.find(x => x.username === s.u);
+      if (u) { loginAs(u); return; }
+    } catch {}
+  }
+})();
   const sel = document.getElementById("login-user");
   USERS.forEach(u => { const o=document.createElement("option"); o.value=u.username; o.textContent=u.name; sel.appendChild(o); });
   document.getElementById("login-pass").addEventListener("keydown", e => { if(e.key==="Enter") doLogin(); });
