@@ -184,6 +184,14 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 .badge.con-utm{background:var(--green-bg);color:var(--green)}
 .badge.sin-utm{background:var(--red-bg);color:var(--red)}
 
+
+/* LIVE */
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:#ecfdf5;border:1px solid #bbf7d0;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;color:#059669;margin-left:8px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#10b981;animation:livePulse 1.5s infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.live-updated{font-size:11px;color:var(--ink-4);margin-left:6px}
+.preset-btn.live-active{background:#059669;border-color:#059669;color:#fff}
+
 /* SKELETON */
 .skeleton{background:linear-gradient(90deg,var(--border-2) 25%,var(--border) 50%,var(--border-2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:6px}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
@@ -263,7 +271,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 
   <div class="main-area">
     <div class="topbar">
-      <div class="topbar-title" id="topbar-title">Dashboard <span id="topbar-range"></span></div>
+      <div class="topbar-title" id="topbar-title">Dashboard <span id="topbar-range"></span><span id="live-badge" style="display:none" class="live-badge"><span class="live-dot"></span>En vivo</span><span id="live-updated" class="live-updated"></span></div>
       <div class="topbar-controls" id="topbar-controls">
         <div class="date-range-group">
           <button class="preset-btn" onclick="setPreset(1,this)">Hoy</button>
@@ -412,16 +420,19 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 
 <script>
 const USERS = [
-  {username:"Gasti",  name:"Gastón Ruiz",   avatar:"GR"},
-  {username:"Dai", name:"Daiana Molina",     avatar:"DM"},
-  {username:"Bere",   name:"Berenice Fraga",    avatar:"BF"},
-  {username:"Samu",  name:"Samuel Moreira",          avatar:"SM"},
+  {username:"gasti",  name:"Gastón Ruiz",   avatar:"GR"},
+  {username:"juanpa", name:"Juan Pablo",     avatar:"JP"},
+  {username:"edis",   name:"Edis Osorio",    avatar:"EO"},
+  {username:"dardo",  name:"Dardo",          avatar:"DA"},
+  {username:"matias", name:"Matías Condorí", avatar:"MC"},
 ];
 const PASSWORD = "AppDash123";
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
 const S = {user:null,from:null,to:null,data:{},rows:{},milestones:[],charts:{},editMs:null,msSha:null};
 let currentMsType = "promo";
+let liveInterval = null;
+let lastFetch = null;
 
 // ── INIT ──────────────────────────────────────────────
 (function(){
@@ -482,6 +493,18 @@ function setPreset(days,btn) {
   document.getElementById("date-from").value=S.from;
   document.getElementById("date-to").value=S.to;
   document.getElementById("topbar-range").textContent=S.from===S.to?S.from:`${S.from} → ${S.to}`;
+  // Live mode when "Hoy"
+  if(days===1){
+    document.getElementById("live-badge").style.display="";
+    localStorage.removeItem("appdash_"+today);
+    delete S.data[today]; delete S.rows[today];
+    liveInterval = setInterval(()=>{ 
+      const t=todayAR();
+      localStorage.removeItem("appdash_"+t);
+      delete S.data[t]; delete S.rows[t];
+      loadAll(S.from,S.to);
+    }, 5*60*1000);
+  }
   loadAll(S.from,S.to);
 }
 function loadRange() {
@@ -552,7 +575,16 @@ function fmtARS(n){ return "$"+(n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n
 function renderDash(dates) {
   const a=agg(dates);
   renderKPIs(a); renderLine(a.daily); renderDonut(a); renderUTM(a.daily); renderPart(a.daily); renderTimeline(dates,a.daily);
+  lastFetch=new Date();
+  updateLiveTs();
 }
+function updateLiveTs(){
+  const el=document.getElementById("live-updated");
+  if(!el||!lastFetch) return;
+  const mins=Math.floor((Date.now()-lastFetch)/60000);
+  el.textContent=mins===0?"· ahora mismo":`· hace ${mins} min`;
+}
+setInterval(updateLiveTs, 30000);
 
 function renderKPIs(a) {
   const cards=[
