@@ -9,353 +9,174 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --sidebar-w: 220px;
-  --topbar-h:  56px;
-  --ink:       #0f1117;
-  --ink-2:     #374151;
-  --ink-3:     #6b7280;
-  --ink-4:     #9ca3af;
-  --bg:        #f5f7fa;
-  --surface:   #ffffff;
-  --border:    #e5e7eb;
-  --border-2:  #f3f4f6;
-  --sidebar-bg:#13151f;
-  --sidebar-border:#1f2232;
-  --sidebar-text:#94a3b8;
-  --sidebar-active:#ffffff;
-  --indigo:    #4f46e5;
-  --indigo-l:  #6366f1;
-  --indigo-bg: #eef2ff;
-  --green:     #059669;
-  --green-l:   #10b981;
-  --green-bg:  #ecfdf5;
-  --red:       #dc2626;
-  --red-l:     #ef4444;
-  --red-bg:    #fef2f2;
-  --amber:     #d97706;
-  --amber-l:   #f59e0b;
-  --amber-bg:  #fffbeb;
-  --purple:    #7c3aed;
-  --purple-l:  #8b5cf6;
-  --purple-bg: #f5f3ff;
-  --sky:       #0284c7;
-  --sky-l:     #0ea5e9;
-  --sky-bg:    #f0f9ff;
-  --r:         12px;
-  --r-sm:      8px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
-  --shadow:    0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06);
-  --t:         .15s ease;
+  --sidebar-w:220px;--topbar-h:56px;
+  --ink:#0f1117;--ink-2:#374151;--ink-3:#6b7280;--ink-4:#9ca3af;
+  --bg:#f5f7fa;--surface:#ffffff;--border:#e5e7eb;--border-2:#f3f4f6;
+  --sidebar-bg:#13151f;--sidebar-border:#1f2232;--sidebar-text:#94a3b8;
+  --indigo:#4f46e5;--indigo-l:#6366f1;--indigo-bg:#eef2ff;
+  --green:#059669;--green-l:#10b981;--green-bg:#ecfdf5;
+  --red:#dc2626;--red-l:#ef4444;--red-bg:#fef2f2;
+  --amber:#d97706;--amber-l:#f59e0b;--amber-bg:#fffbeb;
+  --purple:#7c3aed;--purple-l:#8b5cf6;--purple-bg:#f5f3ff;
+  --sky:#0284c7;--sky-l:#0ea5e9;--sky-bg:#f0f9ff;
+  --r:12px;--r-sm:8px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.07);
+  --shadow:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06);
+  --t:.15s ease;
 }
 html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
-/* ══ LOGIN ════════════════════════════════════════════ */
-#login-screen{
-  display:flex;min-height:100vh;
-  background:linear-gradient(135deg,#13151f 0%,#1a1d2e 50%,#0f172a 100%);
-}
-.login-left{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:48px;
-}
-.login-right{
-  width:480px;display:flex;align-items:center;justify-content:center;
-  padding:48px;background:rgba(255,255,255,.03);
-  border-left:1px solid rgba(255,255,255,.06);
-}
+/* LOGIN */
+#login-screen{display:flex;min-height:100vh;background:linear-gradient(135deg,#13151f 0%,#1a1d2e 50%,#0f172a 100%)}
+.login-left{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px}
+.login-right{width:480px;display:flex;align-items:center;justify-content:center;padding:48px;background:rgba(255,255,255,.03);border-left:1px solid rgba(255,255,255,.06)}
 @media(max-width:768px){.login-left{display:none}.login-right{width:100%}}
-.login-hero-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);
-  border-radius:20px;padding:5px 14px;font-size:12px;color:#a5b4fc;font-weight:500;
-  margin-bottom:24px;
-}
+.login-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:20px;padding:5px 14px;font-size:12px;color:#a5b4fc;font-weight:500;margin-bottom:24px}
 .login-hero-title{font-size:40px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;letter-spacing:-.5px}
 .login-hero-title span{color:#818cf8}
 .login-hero-sub{font-size:15px;color:#64748b;line-height:1.7;max-width:380px}
 .login-stats{display:flex;gap:32px;margin-top:40px}
 .login-stat-n{font-size:28px;font-weight:800;color:#fff;letter-spacing:-.5px}
 .login-stat-l{font-size:12px;color:#475569;margin-top:2px}
-
-.login-card{
-  background:var(--surface);border-radius:20px;padding:40px;width:100%;max-width:400px;
-  box-shadow:var(--shadow-lg);
-  animation:slideUp .4s cubic-bezier(.34,1.56,.64,1) both;
-}
+.login-card{background:var(--surface);border-radius:20px;padding:40px;width:100%;max-width:400px;box-shadow:var(--shadow-lg);animation:slideUp .4s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .login-card-logo{display:flex;align-items:center;gap:10px;margin-bottom:32px}
-.login-card-logo .lc-icon{
-  width:38px;height:38px;background:var(--indigo);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;font-size:18px;
-  box-shadow:0 4px 12px rgba(79,70,229,.4);
-}
-.login-card-logo .lc-brand{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.3px}
-.login-card-logo .lc-brand span{color:var(--indigo)}
-.login-card-sub{font-size:13px;color:var(--ink-3);margin-top:2px}
+.lc-icon{width:38px;height:38px;background:var(--indigo);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 12px rgba(79,70,229,.4)}
+.lc-brand{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.3px}
+.lc-brand span{color:var(--indigo)}
+.lc-card-sub{font-size:13px;color:var(--ink-3);margin-top:2px}
 .lc-heading{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .lc-desc{font-size:13px;color:var(--ink-3);margin-bottom:28px}
 .lc-label{font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:6px;display:block}
-.lc-input,.lc-select{
-  width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);
-  color:var(--ink);padding:10px 14px;font-size:14px;outline:none;font-family:inherit;
-  transition:border-color var(--t),box-shadow var(--t),background var(--t);margin-bottom:16px;
-}
-.lc-input:focus,.lc-select:focus{
-  border-color:var(--indigo-l);box-shadow:0 0 0 3px rgba(99,102,241,.12);background:#fff;
-}
-.lc-btn{
-  width:100%;background:var(--indigo);color:#fff;border:none;border-radius:var(--r-sm);
-  padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;
-  transition:all var(--t);display:flex;align-items:center;justify-content:center;gap:8px;
-}
+.lc-input,.lc-select{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--ink);padding:10px 14px;font-size:14px;outline:none;font-family:inherit;transition:border-color var(--t),box-shadow var(--t),background var(--t);margin-bottom:16px}
+.lc-input:focus,.lc-select:focus{border-color:var(--indigo-l);box-shadow:0 0 0 3px rgba(99,102,241,.12);background:#fff}
+.lc-btn{width:100%;background:var(--indigo);color:#fff;border:none;border-radius:var(--r-sm);padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all var(--t);display:flex;align-items:center;justify-content:center;gap:8px}
 .lc-btn:hover{background:var(--indigo-l);transform:translateY(-1px);box-shadow:0 4px 16px rgba(79,70,229,.35)}
 .lc-btn:active{transform:none;box-shadow:none}
 .lc-error{color:var(--red);font-size:13px;margin-top:8px;text-align:center;min-height:18px}
 
-/* ══ APP SHELL ════════════════════════════════════════ */
+/* APP */
 #app{display:none;height:100vh}
 #app.visible{display:flex}
 
-/* ══ SIDEBAR ══════════════════════════════════════════ */
-.sidebar{
-  width:var(--sidebar-w);background:var(--sidebar-bg);display:flex;flex-direction:column;
-  flex-shrink:0;border-right:1px solid var(--sidebar-border);
-  position:relative;z-index:20;
-}
-.sidebar-logo{
-  display:flex;align-items:center;gap:10px;
-  padding:20px 20px 16px;border-bottom:1px solid var(--sidebar-border);
-}
-.sidebar-logo .sl-icon{
-  width:32px;height:32px;background:var(--indigo);border-radius:8px;
-  display:flex;align-items:center;justify-content:center;font-size:16px;
-  box-shadow:0 2px 8px rgba(79,70,229,.5);flex-shrink:0;
-}
-.sidebar-logo .sl-name{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px}
-.sidebar-logo .sl-name span{color:#818cf8}
-.sidebar-logo .sl-badge{
-  margin-left:auto;background:rgba(99,102,241,.2);color:#818cf8;
-  font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;letter-spacing:.5px;
-}
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);background:var(--sidebar-bg);display:flex;flex-direction:column;flex-shrink:0;border-right:1px solid var(--sidebar-border);position:relative;z-index:20}
+.sidebar-logo{display:flex;align-items:center;gap:10px;padding:20px 20px 16px;border-bottom:1px solid var(--sidebar-border)}
+.sl-icon{width:32px;height:32px;background:var(--indigo);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(79,70,229,.5);flex-shrink:0}
+.sl-name{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px}
+.sl-name span{color:#818cf8}
+.sl-badge{margin-left:auto;background:rgba(99,102,241,.2);color:#818cf8;font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;letter-spacing:.5px}
 .sidebar-section{padding:12px 12px 4px;font-size:10px;font-weight:700;color:#334155;letter-spacing:1px;text-transform:uppercase}
 .sidebar-nav{flex:1;padding:8px 10px;display:flex;flex-direction:column;gap:2px}
-.nav-item{
-  display:flex;align-items:center;gap:10px;
-  padding:9px 12px;border-radius:var(--r-sm);cursor:pointer;
-  color:var(--sidebar-text);font-size:13px;font-weight:500;
-  transition:all var(--t);border:none;background:none;width:100%;text-align:left;font-family:inherit;
-}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--r-sm);cursor:pointer;color:var(--sidebar-text);font-size:13px;font-weight:500;transition:all var(--t);border:none;background:none;width:100%;text-align:left;font-family:inherit}
 .nav-item:hover{background:rgba(255,255,255,.06);color:#cbd5e1}
 .nav-item.active{background:rgba(99,102,241,.18);color:#a5b4fc}
-.nav-item .ni-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0}
-.nav-item .ni-badge{
-  margin-left:auto;background:rgba(99,102,241,.2);color:#818cf8;
-  font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;
-}
-.sidebar-bottom{
-  padding:12px 10px;border-top:1px solid var(--sidebar-border);display:flex;flex-direction:column;gap:2px;
-}
-.sidebar-user{
-  display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-sm);cursor:pointer;
-  transition:background var(--t);
-}
+.ni-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+.sidebar-bottom{padding:12px 10px;border-top:1px solid var(--sidebar-border);display:flex;flex-direction:column;gap:2px}
+.sidebar-user{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-sm);cursor:pointer;transition:background var(--t)}
 .sidebar-user:hover{background:rgba(255,255,255,.05)}
-.su-avatar{
-  width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--purple-l));
-  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;
-}
+.su-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--purple-l));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
 .su-info{flex:1;min-width:0}
 .su-name{font-size:13px;font-weight:600;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .su-role{font-size:11px;color:#475569}
 .su-logout{color:#475569;font-size:13px;cursor:pointer;padding:4px;border-radius:4px;transition:color var(--t)}
 .su-logout:hover{color:#94a3b8}
 
-/* ══ MAIN AREA ════════════════════════════════════════ */
+/* MAIN */
 .main-area{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-
-/* ══ TOPBAR ═══════════════════════════════════════════ */
-.topbar{
-  height:var(--topbar-h);background:var(--surface);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:12px;padding:0 24px;flex-shrink:0;
-}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;padding:0 24px;flex-shrink:0}
 .topbar-title{font-size:15px;font-weight:700;color:var(--ink);flex:1}
 .topbar-title span{color:var(--ink-3);font-weight:400;font-size:13px;margin-left:8px}
 .topbar-controls{display:flex;align-items:center;gap:8px}
-.date-range-group{
-  display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);
-  border-radius:var(--r-sm);overflow:hidden;
-}
-.preset-btn{
-  padding:6px 12px;border:none;background:transparent;color:var(--ink-3);
-  font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap;
-  transition:all var(--t);
-}
+.date-range-group{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);overflow:hidden}
+.preset-btn{padding:6px 12px;border:none;background:transparent;color:var(--ink-3);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all var(--t)}
 .preset-btn:hover{background:var(--border-2);color:var(--ink-2)}
 .preset-btn.active{background:var(--indigo);color:#fff}
 .drg-sep{width:1px;background:var(--border);align-self:stretch}
-.date-inp{
-  background:transparent;border:none;color:var(--ink);padding:6px 10px;
-  font-size:12px;outline:none;font-family:inherit;cursor:pointer;
-}
-.tbtn{
-  display:flex;align-items:center;gap:6px;padding:7px 14px;
-  border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--surface);
-  color:var(--ink-2);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;
-  transition:all var(--t);white-space:nowrap;
-}
+.date-inp{background:transparent;border:none;color:var(--ink);padding:6px 10px;font-size:12px;outline:none;font-family:inherit;cursor:pointer}
+.tbtn{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--surface);color:var(--ink-2);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;transition:all var(--t);white-space:nowrap}
 .tbtn:hover{border-color:var(--indigo-l);color:var(--indigo);background:var(--indigo-bg)}
 .tbtn.primary{background:var(--indigo);border-color:var(--indigo);color:#fff}
 .tbtn.primary:hover{background:var(--indigo-l);border-color:var(--indigo-l);box-shadow:0 2px 8px rgba(79,70,229,.3)}
-
-/* ══ SCROLL AREA ══════════════════════════════════════ */
 .scroll-area{flex:1;overflow-y:auto;padding:24px}
 
-/* ══ KPI CARDS ════════════════════════════════════════ */
+/* KPI */
 .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
-.kpi-card{
-  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);
-  padding:18px 18px 14px;transition:all var(--t);cursor:default;position:relative;overflow:hidden;
-}
+.kpi-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:18px 18px 14px;transition:all var(--t);cursor:default;position:relative;overflow:hidden}
 .kpi-card:hover{border-color:var(--cc,var(--indigo-l));box-shadow:var(--shadow);transform:translateY(-2px)}
 .kpi-icon-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.kpi-icon{
-  width:36px;height:36px;border-radius:10px;background:var(--cbg,var(--indigo-bg));
-  display:flex;align-items:center;justify-content:center;font-size:18px;
-}
-.kpi-trend{
-  display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;
-  padding:3px 7px;border-radius:6px;
-}
-.kpi-trend.up{background:var(--green-bg);color:var(--green)}
-.kpi-trend.down{background:var(--red-bg);color:var(--red)}
-.kpi-trend.neutral{background:var(--bg);color:var(--ink-3)}
+.kpi-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.kpi-trend{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:3px 7px;border-radius:6px;background:var(--bg);color:var(--ink-3)}
 .kpi-value{font-size:26px;font-weight:800;color:var(--ink);letter-spacing:-.5px;line-height:1}
 .kpi-label{font-size:12px;color:var(--ink-3);margin-top:5px;font-weight:500}
 .kpi-sub{font-size:11px;color:var(--ink-4);margin-top:3px}
 .kpi-bar{height:3px;border-radius:2px;background:var(--border-2);margin-top:14px;overflow:hidden}
-.kpi-bar-fill{height:100%;border-radius:2px;background:var(--cc,var(--indigo));transition:width .6s cubic-bezier(.34,1.56,.64,1)}
+.kpi-bar-fill{height:100%;border-radius:2px;transition:width .6s cubic-bezier(.34,1.56,.64,1)}
 
-/* ══ GRID ═════════════════════════════════════════════ */
+/* GRID */
 .grid-2{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:20px}
 .grid-2-eq{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
 @media(max-width:900px){.grid-2,.grid-2-eq{grid-template-columns:1fr}}
 
-/* ══ CARDS ════════════════════════════════════════════ */
-.card{
-  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);
-  overflow:hidden;
-}
-.card-header{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  padding:18px 20px 0;
-}
+/* CARDS */
+.card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;padding:18px 20px 0}
 .card-title{font-size:14px;font-weight:700;color:var(--ink)}
 .card-sub{font-size:12px;color:var(--ink-3);margin-top:2px}
 .card-body{padding:16px 20px 20px}
 .card-body-flush{padding:0}
-.chart-wrap{position:relative}
-
-/* ══ SEGMENT LEGEND ═══════════════════════════════════ */
 .seg-legend{display:flex;flex-wrap:wrap;gap:10px;padding:14px 20px 0;border-top:1px solid var(--border-2);margin-top:8px}
 .seg-dot{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-3);font-weight:500}
 .seg-dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}
 
-/* ══ MILESTONE TIMELINE ═══════════════════════════════ */
+/* TIMELINE */
 .timeline-wrap{padding:20px 20px 16px;overflow-x:auto}
-.timeline-track{display:flex;align-items:center;gap:0;min-width:max-content;position:relative;padding:32px 0 0}
-.timeline-rail{
-  position:absolute;top:6px;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--border-2) 0%,var(--border) 50%,var(--border-2) 100%);
-}
-.tl-tick{
-  display:flex;flex-direction:column;align-items:center;cursor:pointer;
-  min-width:36px;position:relative;
-}
-.tl-pip{
-  position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);
-  display:none;z-index:10;
-}
-.tl-pip-inner{
-  background:var(--surface);border:1.5px solid var(--border);border-radius:8px;
-  padding:6px 10px;white-space:nowrap;font-size:11px;font-weight:600;
-  box-shadow:var(--shadow);color:var(--ink-2);
-}
+.timeline-track{display:flex;align-items:center;min-width:max-content;position:relative;padding:32px 0 0}
+.timeline-rail{position:absolute;top:6px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--border-2) 0%,var(--border) 50%,var(--border-2) 100%)}
+.tl-tick{display:flex;flex-direction:column;align-items:center;cursor:pointer;min-width:36px;position:relative}
+.tl-pip{position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);display:none;z-index:10}
+.tl-pip-inner{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:6px 10px;white-space:nowrap;font-size:11px;font-weight:600;box-shadow:var(--shadow);color:var(--ink-2)}
 .tl-pip-inner.promo{border-color:var(--green-l);color:var(--green)}
 .tl-pip-inner.bug{border-color:var(--red-l);color:var(--red)}
 .tl-pip-inner.event{border-color:var(--amber-l);color:var(--amber)}
 .tl-pip-inner.note{border-color:var(--sky-l);color:var(--sky)}
-.tl-dot{
-  width:10px;height:10px;border-radius:50%;background:var(--border);
-  border:2px solid var(--surface);transition:all var(--t);z-index:1;position:relative;
-}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--border);border:2px solid var(--surface);transition:all var(--t);z-index:1;position:relative}
 .tl-tick:hover .tl-dot{background:var(--indigo-l);transform:scale(1.4)}
-.tl-tick.has-ms .tl-dot{
-  width:14px;height:14px;border-width:2.5px;
-  background:var(--ms-c,var(--amber-l));border-color:var(--surface);
-  box-shadow:0 0 0 3px var(--ms-bg,var(--amber-bg));
-}
+.tl-tick.has-ms .tl-dot{width:14px;height:14px;border-width:2.5px;background:var(--ms-c,var(--amber-l));border-color:var(--surface);box-shadow:0 0 0 3px var(--ms-bg,var(--amber-bg))}
 .tl-label{font-size:9px;color:var(--ink-4);margin-top:7px;white-space:nowrap}
 .tl-tick:hover .tl-pip{display:block}
-.tl-orders{position:absolute;top:-20px;left:50%;transform:translateX(-50%);
-  font-size:9px;color:var(--ink-4);white-space:nowrap;display:none}
+.tl-orders{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--ink-4);white-space:nowrap;display:none}
 .tl-tick:hover .tl-orders{display:block}
 
-/* ══ MODAL ════════════════════════════════════════════ */
-.overlay{
-  position:fixed;inset:0;background:rgba(15,17,23,.5);backdrop-filter:blur(4px);
-  display:flex;align-items:center;justify-content:center;z-index:100;
-  animation:fadeIn .15s ease;
-}
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(15,17,23,.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:100;animation:fadeIn .15s ease}
 .overlay.hidden{display:none}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{
-  background:var(--surface);border:1.5px solid var(--border);border-radius:16px;
-  padding:28px;width:100%;max-width:460px;box-shadow:var(--shadow-lg);
-  animation:slideUp .2s ease;
-}
+.modal{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:28px;width:100%;max-width:460px;box-shadow:var(--shadow-lg);animation:slideUp .2s ease}
 .modal-title{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:20px}
 .form-group{margin-bottom:14px}
 .form-label{font-size:12px;font-weight:600;color:var(--ink-2);display:block;margin-bottom:5px}
-.form-input,.form-select,.form-textarea{
-  width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);
-  color:var(--ink);padding:9px 12px;font-size:13px;outline:none;font-family:inherit;
-  transition:border-color var(--t),box-shadow var(--t);
-}
-.form-input:focus,.form-select:focus,.form-textarea:focus{
-  border-color:var(--indigo-l);box-shadow:0 0 0 3px rgba(99,102,241,.1);background:#fff;
-}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--ink);padding:9px 12px;font-size:13px;outline:none;font-family:inherit;transition:border-color var(--t),box-shadow var(--t)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--indigo-l);box-shadow:0 0 0 3px rgba(99,102,241,.1);background:#fff}
 .form-textarea{resize:vertical;min-height:72px}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
 .type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
-.type-opt{
-  border:1.5px solid var(--border);border-radius:10px;padding:10px 4px;text-align:center;
-  cursor:pointer;font-size:11px;font-weight:600;color:var(--ink-3);
-  transition:all var(--t);background:var(--bg);
-}
-.type-opt:hover{border-color:var(--indigo-l);background:var(--indigo-bg);color:var(--indigo)}
-.type-opt.selected{border-color:var(--indigo-l);background:var(--indigo-bg);color:var(--indigo)}
-.type-opt .to-emoji{font-size:20px;display:block;margin-bottom:4px}
+.type-opt{border:1.5px solid var(--border);border-radius:10px;padding:10px 4px;text-align:center;cursor:pointer;font-size:11px;font-weight:600;color:var(--ink-3);transition:all var(--t);background:var(--bg)}
+.type-opt:hover,.type-opt.selected{border-color:var(--indigo-l);background:var(--indigo-bg);color:var(--indigo)}
+.to-emoji{font-size:20px;display:block;margin-bottom:4px}
 
-/* ══ TABLE ════════════════════════════════════════════ */
+/* TABLE */
 .data-table{width:100%;border-collapse:collapse}
 .data-table thead tr{background:var(--bg);border-bottom:1.5px solid var(--border)}
-.data-table th{
-  text-align:left;padding:10px 16px;font-size:11px;font-weight:700;
-  color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;
-}
-.data-table td{
-  padding:12px 16px;border-bottom:1px solid var(--border-2);font-size:13px;color:var(--ink-2);
-}
+.data-table th{text-align:left;padding:10px 16px;font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px;white-space:nowrap}
+.data-table td{padding:12px 16px;border-bottom:1px solid var(--border-2);font-size:13px;color:var(--ink-2)}
 .data-table tbody tr:hover td{background:var(--indigo-bg)}
 .data-table tbody tr:last-child td{border-bottom:none}
-.badge{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap;
-}
+.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap}
 .badge.food{background:var(--green-bg);color:var(--green)}
 .badge.non_food{background:var(--sky-bg);color:var(--sky)}
 .badge.marketplace{background:var(--purple-bg);color:var(--purple)}
@@ -363,20 +184,19 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 .badge.con-utm{background:var(--green-bg);color:var(--green)}
 .badge.sin-utm{background:var(--red-bg);color:var(--red)}
 
-/* ══ LOADING SKELETON ═════════════════════════════════ */
+/* SKELETON */
 .skeleton{background:linear-gradient(90deg,var(--border-2) 25%,var(--border) 50%,var(--border-2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:6px}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .sk-kpi{height:110px;border-radius:var(--r)}
-.sk-chart{height:240px;border-radius:var(--r)}
 .empty-state{padding:48px;text-align:center;color:var(--ink-3)}
-.empty-state .es-icon{font-size:36px;margin-bottom:12px}
-.empty-state .es-title{font-size:15px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
-.empty-state .es-sub{font-size:13px}
+.es-icon{font-size:36px;margin-bottom:12px}
+.es-title{font-size:15px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.es-sub{font-size:13px}
 </style>
 </head>
 <body>
 
-<!-- ══ LOGIN ════════════════════════════════════════════ -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-left">
     <div>
@@ -396,7 +216,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
         <div class="lc-icon">📦</div>
         <div>
           <div class="lc-brand">App<span>Dash</span></div>
-          <div class="login-card-sub">Carrefour Argentina</div>
+          <div class="lc-card-sub">Carrefour Argentina</div>
         </div>
       </div>
       <div class="lc-heading">Bienvenido de nuevo</div>
@@ -405,15 +225,14 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       <select id="login-user" class="lc-select"><option value="">Elegí tu usuario...</option></select>
       <label class="lc-label">Contraseña</label>
       <input id="login-pass" type="password" class="lc-input" placeholder="••••••••">
-      <button class="lc-btn" onclick="doLogin()">Ingresar <span>→</span></button>
+      <button class="lc-btn" onclick="doLogin()">Ingresar →</button>
       <div id="login-error" class="lc-error"></div>
     </div>
   </div>
 </div>
 
-<!-- ══ APP ═══════════════════════════════════════════════ -->
+<!-- APP -->
 <div id="app">
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="sl-icon">📦</div>
@@ -430,9 +249,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       </button>
     </nav>
     <div class="sidebar-bottom">
-      <button class="nav-item" onclick="openSettings()">
-        <span class="ni-icon">⚙</span>Configuración
-      </button>
+      <button class="nav-item" onclick="openSettings()"><span class="ni-icon">⚙</span>Configuración</button>
       <div class="sidebar-user" onclick="openUserMenu()">
         <div class="su-avatar" id="su-avatar">G</div>
         <div class="su-info">
@@ -444,12 +261,10 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
     </div>
   </aside>
 
-  <!-- Main -->
   <div class="main-area">
-    <!-- Topbar -->
     <div class="topbar">
       <div class="topbar-title" id="topbar-title">Dashboard <span id="topbar-range"></span></div>
-      <div class="topbar-controls">
+      <div class="topbar-controls" id="topbar-controls">
         <div class="date-range-group">
           <button class="preset-btn active" onclick="setPreset(1,this)">Hoy</button>
           <div class="drg-sep"></div>
@@ -468,27 +283,18 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       </div>
     </div>
 
-    <!-- Scroll area -->
     <div class="scroll-area">
-
-      <!-- Dashboard View -->
+      <!-- Dashboard -->
       <div id="view-dashboard">
-        <!-- KPIs -->
         <div class="kpi-row" id="kpi-row">
-          <div class="skeleton sk-kpi"></div>
-          <div class="skeleton sk-kpi"></div>
-          <div class="skeleton sk-kpi"></div>
-          <div class="skeleton sk-kpi"></div>
+          <div class="skeleton sk-kpi"></div><div class="skeleton sk-kpi"></div>
+          <div class="skeleton sk-kpi"></div><div class="skeleton sk-kpi"></div>
           <div class="skeleton sk-kpi"></div>
         </div>
-
-        <!-- Charts row 1 -->
         <div class="grid-2">
           <div class="card">
-            <div class="card-header">
-              <div><div class="card-title">Pedidos de App por Día</div><div class="card-sub">Por segmento de negocio</div></div>
-            </div>
-            <div class="card-body"><div class="chart-wrap" style="height:220px"><canvas id="line-chart"></canvas></div></div>
+            <div class="card-header"><div><div class="card-title">Pedidos de App por Día</div><div class="card-sub">Por segmento de negocio</div></div></div>
+            <div class="card-body"><div style="height:220px"><canvas id="line-chart"></canvas></div></div>
             <div class="seg-legend">
               <span class="seg-dot" style="--c:#10b981">Food</span>
               <span class="seg-dot" style="--c:#0ea5e9">H&amp;E</span>
@@ -498,96 +304,73 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             <div style="height:16px"></div>
           </div>
           <div class="card">
-            <div class="card-header">
-              <div><div class="card-title">Distribución</div><div class="card-sub">Período seleccionado</div></div>
-            </div>
-            <div class="card-body"><div class="chart-wrap" style="height:220px"><canvas id="donut-chart"></canvas></div></div>
+            <div class="card-header"><div><div class="card-title">Distribución</div><div class="card-sub">Período seleccionado</div></div></div>
+            <div class="card-body"><div style="height:220px"><canvas id="donut-chart"></canvas></div></div>
           </div>
         </div>
-
-        <!-- Charts row 2 -->
-        <div class="grid-2-eq" style="margin-bottom:20px">
+        <div class="grid-2-eq">
           <div class="card">
-            <div class="card-header">
-              <div><div class="card-title">% Sin UTM por Día</div><div class="card-sub">Pedidos sin atribución</div></div>
-            </div>
-            <div class="card-body"><div class="chart-wrap" style="height:140px"><canvas id="utm-chart"></canvas></div></div>
+            <div class="card-header"><div><div class="card-title">% Sin UTM por Día</div><div class="card-sub">Pedidos sin atribución</div></div></div>
+            <div class="card-body"><div style="height:140px"><canvas id="utm-chart"></canvas></div></div>
           </div>
           <div class="card">
-            <div class="card-header">
-              <div><div class="card-title">Participación App vs Web</div><div class="card-sub">% sobre total ecommerce</div></div>
-            </div>
-            <div class="card-body"><div class="chart-wrap" style="height:140px"><canvas id="part-chart"></canvas></div></div>
+            <div class="card-header"><div><div class="card-title">Participación App vs Web</div><div class="card-sub">% sobre total ecommerce</div></div></div>
+            <div class="card-body"><div style="height:140px"><canvas id="part-chart"></canvas></div></div>
           </div>
         </div>
-
-        <!-- Milestones -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header" style="padding-bottom:0">
             <div>
               <div class="card-title">📍 Hitos del Período</div>
-              <div class="card-sub">Marcá eventos, campañas o bugs en el timeline — visibles para todo el equipo</div>
+              <div class="card-sub">Marcá eventos, campañas o bugs — visibles para todo el equipo</div>
             </div>
             <button class="tbtn primary" onclick="openMilestoneModal()" style="flex-shrink:0">+ Agregar</button>
           </div>
           <div class="timeline-wrap" id="timeline-wrap">
-            <div class="empty-state"><div class="es-icon">📍</div><div class="es-title">Sin hitos aún</div><div class="es-sub">Seleccioná un rango de fechas para ver el timeline</div></div>
+            <div class="empty-state"><div class="es-icon">📍</div><div class="es-title">Seleccioná un rango para ver el timeline</div></div>
           </div>
         </div>
       </div>
 
-      <!-- Monthly View -->
+      <!-- Monthly -->
       <div id="view-monthly" style="display:none">
         <div style="margin-bottom:20px">
           <h2 style="font-size:20px;font-weight:800;color:var(--ink)">Resumen por Mes</h2>
           <p style="font-size:13px;color:var(--ink-3);margin-top:4px">Acumulados por mes y segmento</p>
         </div>
         <div class="card" style="margin-bottom:20px">
-          <div class="card-header"><div><div class="card-title">Tendencia Mensual — App Total</div></div></div>
-          <div class="card-body"><div class="chart-wrap" style="height:200px"><canvas id="monthly-chart"></canvas></div></div>
+          <div class="card-header"><div><div class="card-title">Tendencia Mensual</div></div></div>
+          <div class="card-body"><div style="height:200px"><canvas id="monthly-chart"></canvas></div></div>
         </div>
         <div class="card">
           <div class="card-body-flush">
-            <table class="data-table" id="monthly-table">
-              <thead><tr>
-                <th>Mes</th><th>App Total</th><th>Food</th><th>H&amp;E</th>
-                <th>Marketplace</th><th>Quick.</th><th>Con UTM</th><th>% Sin UTM</th><th>Part. %</th>
-              </tr></thead>
-              <tbody id="monthly-body"><tr><td colspan="9"><div class="empty-state"><div class="es-icon">📅</div><div class="es-title">Cargando datos mensuales...</div></div></td></tr></tbody>
+            <table class="data-table">
+              <thead><tr><th>Mes</th><th>App Total</th><th>Food</th><th>H&amp;E</th><th>Marketplace</th><th>Quick.</th><th>Con UTM</th><th>% Sin UTM</th><th>Part. %</th></tr></thead>
+              <tbody id="monthly-body"><tr><td colspan="9"><div class="empty-state"><div class="es-icon">📅</div><div class="es-title">Cargando...</div></div></td></tr></tbody>
             </table>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ══ MILESTONE MODAL ══════════════════════════════════ -->
+<!-- MILESTONE MODAL -->
 <div class="overlay hidden" id="ms-modal">
   <div class="modal">
     <div class="modal-title" id="ms-modal-title">Nuevo Hito</div>
-    <div class="form-group">
-      <label class="form-label">Fecha</label>
-      <input type="date" id="m-date" class="form-input">
-    </div>
+    <div class="form-group"><label class="form-label">Fecha</label><input type="date" id="m-date" class="form-input"></div>
     <div class="form-group">
       <label class="form-label">Tipo</label>
       <div class="type-grid">
-        <div class="type-opt selected" data-type="promo" onclick="selType(this)"><span class="to-emoji">🎯</span>Promo</div>
-        <div class="type-opt" data-type="bug" onclick="selType(this)"><span class="to-emoji">🔴</span>Bug</div>
-        <div class="type-opt" data-type="event" onclick="selType(this)"><span class="to-emoji">⭐</span>Evento</div>
-        <div class="type-opt" data-type="note" onclick="selType(this)"><span class="to-emoji">📝</span>Nota</div>
+        <div class="type-opt selected" data-type="promo" onclick="pickType(this)"><span class="to-emoji">🎯</span>Promo</div>
+        <div class="type-opt" data-type="bug" onclick="pickType(this)"><span class="to-emoji">🔴</span>Bug</div>
+        <div class="type-opt" data-type="event" onclick="pickType(this)"><span class="to-emoji">⭐</span>Evento</div>
+        <div class="type-opt" data-type="note" onclick="pickType(this)"><span class="to-emoji">📝</span>Nota</div>
       </div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Título</label>
-      <input type="text" id="m-title" class="form-input" placeholder="ej: Cupón 15OFF App — primer día">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Descripción (opcional)</label>
-      <textarea id="m-desc" class="form-textarea" placeholder="Contexto del equipo..."></textarea>
-    </div>
+    <div class="form-group"><label class="form-label">Título</label><input type="text" id="m-title" class="form-input" placeholder="ej: Cupón 15OFF App"></div>
+    <div class="form-group"><label class="form-label">Descripción (opcional)</label><textarea id="m-desc" class="form-textarea" placeholder="Contexto del equipo..."></textarea></div>
     <div class="modal-actions">
       <button class="tbtn" onclick="closeMsModal()">Cancelar</button>
       <button id="m-del-btn" class="tbtn" style="color:var(--red);border-color:var(--red);display:none" onclick="deleteMilestone()">Eliminar</button>
@@ -596,21 +379,16 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
   </div>
 </div>
 
-<!-- ══ SETTINGS MODAL ═══════════════════════════════════ -->
+<!-- SETTINGS MODAL -->
 <div class="overlay hidden" id="settings-modal">
   <div class="modal">
     <div class="modal-title">⚙ Configuración</div>
     <div class="form-group">
       <label class="form-label">GitHub Personal Access Token</label>
       <input type="password" id="gh-token" class="form-input" placeholder="ghp_...">
-      <div style="font-size:12px;color:var(--ink-3);margin-top:5px;line-height:1.6">
-        Necesario para que los hitos se guarden en el repo y sean visibles para todo el equipo. Generalo en <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--indigo)">github.com/settings/tokens</a> con scope <code>repo</code>.
-      </div>
+      <div style="font-size:12px;color:var(--ink-3);margin-top:5px;line-height:1.6">Necesario para guardar hitos compartidos. Generalo en <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--indigo)">github.com/settings/tokens</a> con scope <code>repo</code>.</div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Repo (owner/nombre)</label>
-      <input type="text" id="gh-repo" class="form-input" placeholder="gastoncarreecommerce/vtex-utm-audit">
-    </div>
+    <div class="form-group"><label class="form-label">Repo (owner/nombre)</label><input type="text" id="gh-repo" class="form-input" placeholder="gastoncarreecommerce/vtex-utm-audit"></div>
     <div class="modal-actions">
       <button class="tbtn" onclick="closeSettings()">Cancelar</button>
       <button class="tbtn primary" onclick="saveSettings()">Guardar</button>
@@ -618,7 +396,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
   </div>
 </div>
 
-<!-- ══ USER MODAL ════════════════════════════════════════ -->
+<!-- USER MODAL -->
 <div class="overlay hidden" id="user-modal">
   <div class="modal" style="max-width:320px">
     <div class="modal-title">👤 Tu sesión</div>
@@ -631,584 +409,279 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════
-// CONFIG
-// ══════════════════════════════════════════════════════
 const USERS = [
-  { username:"gasti",  name:"Gastón Ruiz",   avatar:"GR" },
-  { username:"juanpa", name:"Juan Pablo",     avatar:"JP" },
-  { username:"edis",   name:"Edis Osorio",    avatar:"EO" },
-  { username:"dardo",  name:"Dardo",          avatar:"DA" },
-  { username:"matias", name:"Matías Condorí", avatar:"MC" },
+  {username:"gasti",  name:"Gastón Ruiz",   avatar:"GR"},
+  {username:"juanpa", name:"Juan Pablo",     avatar:"JP"},
+  {username:"edis",   name:"Edis Osorio",    avatar:"EO"},
+  {username:"dardo",  name:"Dardo",          avatar:"DA"},
+  {username:"matias", name:"Matías Condorí", avatar:"MC"},
 ];
 const PASSWORD = "AppDash123";
+const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
-const DATA_BASE = (() => {
-  const p = window.location.pathname.replace(/\/[^/]*$/, "");
-  return window.location.origin + p + "/data";
-})();
+const S = {user:null,from:null,to:null,data:{},rows:{},milestones:[],charts:{},editMs:null,msSha:null};
+let currentMsType = "promo";
 
-const SEG = {
-  food:          { label:"Food",         color:"#10b981", bg:"#ecfdf5", cc:"#059669" },
-  non_food:      { label:"H&E",          color:"#0ea5e9", bg:"#f0f9ff", cc:"#0284c7" },
-  marketplace:   { label:"Marketplace",  color:"#8b5cf6", bg:"#f5f3ff", cc:"#7c3aed" },
-  quickcommerce: { label:"Quickcommerce",color:"#f59e0b", bg:"#fffbeb", cc:"#d97706" },
-};
-
-// ══════════════════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════════════════
-const S = { user:null, from:null, to:null, data:{}, rows:{}, milestones:[], charts:{}, editMs:null, msSha:null };
-
-// ══════════════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════════════
-(function init() {
+// ── INIT ──────────────────────────────────────────────
+(function(){
   const sel = document.getElementById("login-user");
   USERS.forEach(u => {
     const o = document.createElement("option");
-    o.value = u.username;
-    o.textContent = u.name;
+    o.value = u.username; o.textContent = u.name;
     sel.appendChild(o);
   });
-  document.getElementById("login-pass").addEventListener("keydown", e => {
-    if (e.key === "Enter") doLogin();
-  });
-
-  const sess = localStorage.getItem("appdash_sess");
-  if (sess) {
-    try {
-      const s = JSON.parse(sess);
-      const u = USERS.find(x => x.username === s.u);
-      if (u) { loginAs(u); return; }
-    } catch {}
-  }
-})();
-  const sel = document.getElementById("login-user");
-  USERS.forEach(u => { const o=document.createElement("option"); o.value=u.username; o.textContent=u.name; sel.appendChild(o); });
   document.getElementById("login-pass").addEventListener("keydown", e => { if(e.key==="Enter") doLogin(); });
-
   const sess = localStorage.getItem("appdash_sess");
-  if (sess) { try { const s=JSON.parse(sess); const u=USERS.find(x=>x.username===s.u); if(u){loginAs(u);return;} } catch{} }
-});
+  if(sess){ try{ const s=JSON.parse(sess); const u=USERS.find(x=>x.username===s.u); if(u){loginAs(u);return;} }catch{} }
+})();
 
-// ══════════════════════════════════════════════════════
-// AUTH
-// ══════════════════════════════════════════════════════
+// ── AUTH ──────────────────────────────────────────────
 function doLogin() {
-  const u = document.getElementById("login-user").value;
-  const p = document.getElementById("login-pass").value;
-  const e = document.getElementById("login-error");
+  const u  = document.getElementById("login-user").value;
+  const p  = document.getElementById("login-pass").value;
+  const er = document.getElementById("login-error");
   const pi = document.getElementById("login-pass");
-  if (!u) { e.textContent="Seleccioná un usuario"; return; }
-  if (p !== PASSWORD) { e.textContent="Contraseña incorrecta"; pi.style.borderColor="var(--red)"; setTimeout(()=>pi.style.borderColor="",1500); return; }
+  if(!u){ er.textContent="Seleccioná un usuario"; return; }
+  if(p!==PASSWORD){ er.textContent="Contraseña incorrecta"; pi.style.borderColor="var(--red)"; setTimeout(()=>pi.style.borderColor="",1500); return; }
   loginAs(USERS.find(x=>x.username===u));
 }
-
 function loginAs(u) {
-  S.user = u;
-  localStorage.setItem("appdash_sess", JSON.stringify({u:u.username}));
-  document.getElementById("login-screen").style.display = "none";
-  document.getElementById("app").style.cssText = "display:flex;height:100vh";
-  document.getElementById("su-avatar").textContent = u.avatar;
-  document.getElementById("su-name").textContent = u.name.split(" ")[0];
+  S.user=u;
+  localStorage.setItem("appdash_sess",JSON.stringify({u:u.username}));
+  document.getElementById("login-screen").style.display="none";
+  document.getElementById("app").style.cssText="display:flex;height:100vh";
+  document.getElementById("su-avatar").textContent=u.avatar;
+  document.getElementById("su-name").textContent=u.name.split(" ")[0];
   setPreset(7, document.querySelectorAll(".preset-btn")[1]);
 }
+function doLogout(){ localStorage.removeItem("appdash_sess"); location.reload(); }
 
-function doLogout() { localStorage.removeItem("appdash_sess"); location.reload(); }
-
-// ══════════════════════════════════════════════════════
-// NAVIGATION
-// ══════════════════════════════════════════════════════
-function switchView(v, btn) {
-  document.querySelectorAll(".nav-item[data-view]").forEach(b => b.classList.remove("active"));
+// ── NAV ───────────────────────────────────────────────
+function switchView(v,btn) {
+  document.querySelectorAll(".nav-item[data-view]").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
-  document.getElementById("view-dashboard").style.display = v==="dashboard" ? "" : "none";
-  document.getElementById("view-monthly").style.display   = v==="monthly"   ? "" : "none";
-  const titles = {dashboard:"Dashboard", monthly:"Resumen Mensual"};
-  document.querySelector(".topbar-title").firstChild.textContent = titles[v] + " ";
-  document.querySelector(".topbar-controls").style.display = v==="dashboard" ? "" : "none";
-  if (v==="monthly") renderMonthly();
+  document.getElementById("view-dashboard").style.display = v==="dashboard"?"":"none";
+  document.getElementById("view-monthly").style.display   = v==="monthly"?"":"none";
+  document.getElementById("topbar-controls").style.display = v==="dashboard"?"":"none";
+  document.getElementById("topbar-title").firstChild.textContent = (v==="dashboard"?"Dashboard":"Resumen Mensual")+" ";
+  if(v==="monthly") renderMonthly();
 }
 
-// ══════════════════════════════════════════════════════
-// DATE HELPERS
-// ══════════════════════════════════════════════════════
-function todayAR() {
-  const d = new Date(Date.now() - 3*3600000);
-  return d.toISOString().slice(0,10);
-}
-function addDays(s, n) {
-  const d = new Date(s+"T12:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10);
-}
-function getDates(from, to) {
-  const dates=[]; let c=new Date(from+"T12:00:00Z"); const e=new Date(to+"T12:00:00Z");
-  while(c<=e){ dates.push(c.toISOString().slice(0,10)); c.setUTCDate(c.getUTCDate()+1); }
-  return dates;
-}
-function setPreset(days, btn) {
+// ── DATES ─────────────────────────────────────────────
+function todayAR(){ const d=new Date(Date.now()-3*3600000); return d.toISOString().slice(0,10); }
+function addDays(s,n){ const d=new Date(s+"T12:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
+function getDates(from,to){ const a=[],e=new Date(to+"T12:00:00Z"); let c=new Date(from+"T12:00:00Z"); while(c<=e){a.push(c.toISOString().slice(0,10));c.setUTCDate(c.getUTCDate()+1);} return a; }
+function setPreset(days,btn) {
   document.querySelectorAll(".preset-btn").forEach(b=>b.classList.remove("active"));
   if(btn) btn.classList.add("active");
-  const today = todayAR();
-  S.to = today;
-  S.from = days===0 ? today.slice(0,7)+"-01" : addDays(today,-(days-1));
-  document.getElementById("date-from").value = S.from;
-  document.getElementById("date-to").value   = S.to;
-  document.getElementById("topbar-range").textContent = S.from===S.to ? S.from : `${S.from} → ${S.to}`;
-  loadRange();
+  const today=todayAR();
+  S.to=today; S.from=days===0?today.slice(0,7)+"-01":addDays(today,-(days-1));
+  document.getElementById("date-from").value=S.from;
+  document.getElementById("date-to").value=S.to;
+  document.getElementById("topbar-range").textContent=S.from===S.to?S.from:`${S.from} → ${S.to}`;
+  loadAll(S.from,S.to);
 }
 function loadRange() {
-  S.from = document.getElementById("date-from").value;
-  S.to   = document.getElementById("date-to").value;
+  S.from=document.getElementById("date-from").value;
+  S.to=document.getElementById("date-to").value;
   if(!S.from||!S.to) return;
-  document.getElementById("topbar-range").textContent = S.from===S.to ? S.from : `${S.from} → ${S.to}`;
-  loadAll(S.from, S.to);
+  document.getElementById("topbar-range").textContent=S.from===S.to?S.from:`${S.from} → ${S.to}`;
+  loadAll(S.from,S.to);
 }
 
-// ══════════════════════════════════════════════════════
-// DATA
-// ══════════════════════════════════════════════════════
+// ── DATA ──────────────────────────────────────────────
 async function fetchDay(date) {
   if(S.data[date]) return S.data[date];
-  const ck = "appdash_"+date;
-  const cached = localStorage.getItem(ck);
+  const ck="appdash_"+date, cached=localStorage.getItem(ck);
   if(cached){ try{ const p=JSON.parse(cached); S.data[date]=p; return p; }catch{} }
   try{
-    const r = await fetch(`${DATA_BASE}/daily/${date}.json`);
+    const r=await fetch(`${DATA_BASE}/daily/${date}.json`);
     if(!r.ok) return null;
-    const d = await r.json();
-    S.data[date] = d;
-    localStorage.setItem(ck, JSON.stringify(d));
-    setTimeout(()=>localStorage.removeItem(ck), 3600000);
+    const d=await r.json(); S.data[date]=d;
+    localStorage.setItem(ck,JSON.stringify(d));
+    setTimeout(()=>localStorage.removeItem(ck),3600000);
     return d;
   }catch{ return null; }
 }
-
 async function fetchRows(date) {
   if(S.rows[date]) return S.rows[date];
-  try{
-    const r = await fetch(`${DATA_BASE}/daily/${date}-rows.json`);
-    if(!r.ok) return [];
-    const d = await r.json();
-    S.rows[date] = d; return d;
-  }catch{ return []; }
+  try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json`); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
 }
-
 async function loadMilestones() {
-  const token = localStorage.getItem("gh_token");
-  const repo  = localStorage.getItem("gh_repo");
-  if(token && repo){
-    try{
-      const r = await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`,
-        {headers:{Authorization:`token ${token}`,Accept:"application/vnd.github.v3+json"}});
-      if(r.ok){ const j=await r.json(); S.milestones=JSON.parse(atob(j.content)); S.msSha=j.sha; return; }
-    }catch{}
-  }
+  const token=localStorage.getItem("gh_token"), repo=localStorage.getItem("gh_repo");
+  if(token&&repo){ try{ const r=await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`,{headers:{Authorization:`token ${token}`,Accept:"application/vnd.github.v3+json"}}); if(r.ok){ const j=await r.json(); S.milestones=JSON.parse(atob(j.content)); S.msSha=j.sha; return; } }catch{} }
   try{ const r=await fetch(`${DATA_BASE}/milestones.json`); if(r.ok) S.milestones=await r.json(); }catch{}
 }
-
 async function saveMilestones() {
   const token=localStorage.getItem("gh_token"), repo=localStorage.getItem("gh_repo");
   if(!token||!repo){ alert("Configurá el GitHub Token en ⚙ para guardar hitos compartidos."); return false; }
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(S.milestones,null,2))));
-  try{
-    const r=await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`,{
-      method:"PUT",
-      headers:{Authorization:`token ${token}`,Accept:"application/vnd.github.v3+json","Content-Type":"application/json"},
-      body:JSON.stringify({message:`hito: ${S.user.name}`,content,sha:S.msSha})
-    });
-    if(r.ok){ const j=await r.json(); S.msSha=j.content.sha; return true; }
-  }catch{}
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(S.milestones,null,2))));
+  try{ const r=await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`,{method:"PUT",headers:{Authorization:`token ${token}`,Accept:"application/vnd.github.v3+json","Content-Type":"application/json"},body:JSON.stringify({message:`hito: ${S.user.name}`,content,sha:S.msSha})}); if(r.ok){ const j=await r.json(); S.msSha=j.content.sha; return true; } }catch{}
   return false;
 }
-
-async function loadAll(from, to) {
-  showSkeleton();
-  const dates = getDates(from, to);
-  await Promise.all([...dates.map(d=>fetchDay(d)), loadMilestones()]);
+async function loadAll(from,to) {
+  document.getElementById("kpi-row").innerHTML=Array(5).fill('<div class="skeleton sk-kpi"></div>').join("");
+  const dates=getDates(from,to);
+  await Promise.all([...dates.map(d=>fetchDay(d)),loadMilestones()]);
   renderDash(dates);
 }
 
-// ══════════════════════════════════════════════════════
-// AGGREGATE
-// ══════════════════════════════════════════════════════
+// ── AGGREGATE ─────────────────────────────────────────
 function agg(dates) {
-  const r = {
-    ecomm:0, app:0, gmv:0, con_utm:0, sin_utm:0,
-    food:{o:0,g:0}, non_food:{o:0,g:0}, marketplace:{o:0,g:0}, quickcommerce:{o:0,g:0},
-    daily:[]
-  };
+  const r={ecomm:0,app:0,gmv:0,con_utm:0,sin_utm:0,food:{o:0,g:0},non_food:{o:0,g:0},marketplace:{o:0,g:0},quickcommerce:{o:0,g:0},daily:[]};
   dates.forEach(date=>{
     const d=S.data[date];
     if(!d){ r.daily.push({date,app:0,food:0,non_food:0,marketplace:0,quickcommerce:0,utm_pct:0,part:0}); return; }
-    r.ecomm    += d.total_ecomm_orders||0;
-    r.app      += d.app?.total||0;
-    r.gmv      += d.app?.gmv||0;
-    r.con_utm  += d.app?.con_utm||0;
-    r.sin_utm  += d.app?.sin_utm||0;
-    ["food","non_food","marketplace","quickcommerce"].forEach(s=>{
-      r[s].o += d.app?.segments?.[s]?.orders||0;
-      r[s].g += d.app?.segments?.[s]?.gmv||0;
-    });
-    r.daily.push({
-      date,
-      app:         d.app?.total||0,
-      food:        d.app?.segments?.food?.orders||0,
-      non_food:    d.app?.segments?.non_food?.orders||0,
-      marketplace: d.app?.segments?.marketplace?.orders||0,
-      quickcommerce:d.app?.segments?.quickcommerce?.orders||0,
-      utm_pct:     d.utm_pct_sin||0,
-      part:        d.participation_pct||0,
-    });
+    r.ecomm+=d.total_ecomm_orders||0; r.app+=d.app?.total||0; r.gmv+=d.app?.gmv||0;
+    r.con_utm+=d.app?.con_utm||0; r.sin_utm+=d.app?.sin_utm||0;
+    ["food","non_food","marketplace","quickcommerce"].forEach(s=>{ r[s].o+=d.app?.segments?.[s]?.orders||0; r[s].g+=d.app?.segments?.[s]?.gmv||0; });
+    r.daily.push({date,app:d.app?.total||0,food:d.app?.segments?.food?.orders||0,non_food:d.app?.segments?.non_food?.orders||0,marketplace:d.app?.segments?.marketplace?.orders||0,quickcommerce:d.app?.segments?.quickcommerce?.orders||0,utm_pct:d.utm_pct_sin||0,part:d.participation_pct||0});
   });
-  r.part_pct = r.ecomm>0 ? Math.round(r.app/r.ecomm*1000)/10 : 0;
-  r.utm_sin_pct = r.app>0 ? Math.round(r.sin_utm/r.app*1000)/10 : 0;
+  r.part_pct=r.ecomm>0?Math.round(r.app/r.ecomm*1000)/10:0;
+  r.utm_sin_pct=r.app>0?Math.round(r.sin_utm/r.app*1000)/10:0;
   return r;
 }
 
-// ══════════════════════════════════════════════════════
-// RENDER
-// ══════════════════════════════════════════════════════
-function fmt(n) {
-  if(n>=1000000) return (n/1000000).toFixed(1)+"M";
-  if(n>=1000)    return (n/1000).toFixed(1)+"k";
-  return n.toLocaleString("es-AR");
-}
-function fmtARS(n) { return "$"+(n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n/1000).toFixed(0)+"k":n.toLocaleString("es-AR")); }
-
-function showSkeleton() {
-  document.getElementById("kpi-row").innerHTML = Array(5).fill('<div class="skeleton sk-kpi"></div>').join("");
-}
+// ── RENDER ────────────────────────────────────────────
+function fmt(n){ return n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n/1000).toFixed(1)+"k":n.toLocaleString("es-AR"); }
+function fmtARS(n){ return "$"+(n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n/1000).toFixed(0)+"k":n.toLocaleString("es-AR")); }
 
 function renderDash(dates) {
-  const a = agg(dates);
-  renderKPIs(a);
-  renderLine(a.daily);
-  renderDonut(a);
-  renderUTM(a.daily);
-  renderPart(a.daily);
-  renderTimeline(dates, a.daily);
+  const a=agg(dates);
+  renderKPIs(a); renderLine(a.daily); renderDonut(a); renderUTM(a.daily); renderPart(a.daily); renderTimeline(dates,a.daily);
 }
 
 function renderKPIs(a) {
-  const cards = [
-    { icon:"📦", cbg:"#eef2ff", cc:"#4f46e5", label:"Total App",     value:fmt(a.app),         sub:fmtARS(a.gmv)+" GMV",            bar:null },
-    { icon:"🥦", cbg:"#ecfdf5", cc:"#059669", label:"Food",          value:fmt(a.food.o),      sub:fmtARS(a.food.g),                 bar:a.app>0?a.food.o/a.app:0 },
-    { icon:"🏠", cbg:"#f0f9ff", cc:"#0284c7", label:"H&E (Non Food)",value:fmt(a.non_food.o),  sub:fmtARS(a.non_food.g),             bar:a.app>0?a.non_food.o/a.app:0 },
-    { icon:"🛒", cbg:"#f5f3ff", cc:"#7c3aed", label:"Marketplace",   value:fmt(a.marketplace.o),sub:fmtARS(a.marketplace.g),         bar:a.app>0?a.marketplace.o/a.app:0 },
-    { icon:"⚡", cbg:"#fffbeb", cc:"#d97706", label:"Quickcommerce", value:fmt(a.quickcommerce.o),sub:fmtARS(a.quickcommerce.g),      bar:a.app>0?a.quickcommerce.o/a.app:0 },
-    { icon:"📈", cbg:"#eef2ff", cc:"#4f46e5", label:"Participación App",value:a.part_pct+"%",  sub:fmt(a.ecomm)+" total ecomm",      bar:a.part_pct/100 },
-    { icon:"✅", cbg:"#ecfdf5", cc:"#059669", label:"Con UTM",       value:fmt(a.con_utm),     sub:(100-a.utm_sin_pct).toFixed(1)+"% del total", bar:a.app>0?a.con_utm/a.app:0 },
-    { icon:"⚠️", cbg:"#fef2f2", cc:"#dc2626", label:"Sin UTM",      value:fmt(a.sin_utm),     sub:a.utm_sin_pct+"% sin atribución",  bar:a.utm_sin_pct/100 },
+  const cards=[
+    {icon:"📦",cbg:"#eef2ff",cc:"#4f46e5",label:"Total App",     value:fmt(a.app),              sub:fmtARS(a.gmv)+" GMV",                        bar:null},
+    {icon:"🥦",cbg:"#ecfdf5",cc:"#059669",label:"Food",          value:fmt(a.food.o),            sub:fmtARS(a.food.g),                             bar:a.app>0?a.food.o/a.app:0},
+    {icon:"🏠",cbg:"#f0f9ff",cc:"#0284c7",label:"H&E (Non Food)",value:fmt(a.non_food.o),        sub:fmtARS(a.non_food.g),                         bar:a.app>0?a.non_food.o/a.app:0},
+    {icon:"🛒",cbg:"#f5f3ff",cc:"#7c3aed",label:"Marketplace",   value:fmt(a.marketplace.o),     sub:fmtARS(a.marketplace.g),                      bar:a.app>0?a.marketplace.o/a.app:0},
+    {icon:"⚡",cbg:"#fffbeb",cc:"#d97706",label:"Quickcommerce", value:fmt(a.quickcommerce.o),   sub:fmtARS(a.quickcommerce.g),                    bar:a.app>0?a.quickcommerce.o/a.app:0},
+    {icon:"📈",cbg:"#eef2ff",cc:"#4f46e5",label:"Participación App",value:a.part_pct+"%",       sub:fmt(a.ecomm)+" total ecomm",                  bar:a.part_pct/100},
+    {icon:"✅",cbg:"#ecfdf5",cc:"#059669",label:"Con UTM",       value:fmt(a.con_utm),           sub:(100-a.utm_sin_pct).toFixed(1)+"% del total", bar:a.app>0?a.con_utm/a.app:0},
+    {icon:"⚠️",cbg:"#fef2f2",cc:"#dc2626",label:"Sin UTM",      value:fmt(a.sin_utm),           sub:a.utm_sin_pct+"% sin atribución",             bar:a.utm_sin_pct/100},
   ];
-  document.getElementById("kpi-row").innerHTML = cards.map(c=>`
+  document.getElementById("kpi-row").innerHTML=cards.map(c=>`
     <div class="kpi-card" style="--cc:${c.cc}">
       <div class="kpi-icon-row">
         <div class="kpi-icon" style="background:${c.cbg}">${c.icon}</div>
-        ${c.bar!==null ? `<div class="kpi-trend neutral">${(c.bar*100).toFixed(1)}%</div>` : ""}
+        ${c.bar!==null?`<div class="kpi-trend">${(c.bar*100).toFixed(1)}%</div>`:""}
       </div>
       <div class="kpi-value">${c.value}</div>
       <div class="kpi-label">${c.label}</div>
       <div class="kpi-sub">${c.sub}</div>
-      ${c.bar!==null ? `<div class="kpi-bar"><div class="kpi-bar-fill" style="width:${Math.min(c.bar*100,100)}%;background:${c.cc}"></div></div>` : ""}
-    </div>
-  `).join("");
+      ${c.bar!==null?`<div class="kpi-bar"><div class="kpi-bar-fill" style="width:${Math.min(c.bar*100,100)}%;background:${c.cc}"></div></div>`:""}
+    </div>`).join("");
 }
 
-// ── Charts ─────────────────────────────────────────────
 function dc(id){ if(S.charts[id]){S.charts[id].destroy();delete S.charts[id];} }
-
-const cOpts = {
-  responsive:true, maintainAspectRatio:false,
-  plugins:{
-    legend:{labels:{color:"#6b7280",font:{size:11},usePointStyle:true,boxWidth:6}},
-    tooltip:{backgroundColor:"#fff",borderColor:"#e5e7eb",borderWidth:1,titleColor:"#0f1117",bodyColor:"#6b7280",padding:10,cornerRadius:8}
-  },
-  scales:{
-    x:{ticks:{color:"#9ca3af",font:{size:10}},grid:{color:"#f3f4f6"}},
-    y:{ticks:{color:"#9ca3af",font:{size:10}},grid:{color:"#f3f4f6"}}
-  }
-};
+const cOpts={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#6b7280",font:{size:11},usePointStyle:true,boxWidth:6}},tooltip:{backgroundColor:"#fff",borderColor:"#e5e7eb",borderWidth:1,titleColor:"#0f1117",bodyColor:"#6b7280",padding:10,cornerRadius:8}},scales:{x:{ticks:{color:"#9ca3af",font:{size:10}},grid:{color:"#f3f4f6"}},y:{ticks:{color:"#9ca3af",font:{size:10}},grid:{color:"#f3f4f6"}}}};
 
 function renderLine(daily) {
   dc("line");
-  const ctx = document.getElementById("line-chart").getContext("2d");
-  S.charts.line = new Chart(ctx,{
-    type:"line",
-    data:{
-      labels:daily.map(d=>d.date.slice(5)),
-      datasets:[
-        {label:"Food",         data:daily.map(d=>d.food),          borderColor:"#10b981",backgroundColor:"#10b98112",fill:true,tension:.4,pointRadius:2,borderWidth:2},
-        {label:"H&E",          data:daily.map(d=>d.non_food),      borderColor:"#0ea5e9",backgroundColor:"#0ea5e912",fill:true,tension:.4,pointRadius:2,borderWidth:2},
-        {label:"Marketplace",  data:daily.map(d=>d.marketplace),   borderColor:"#8b5cf6",backgroundColor:"#8b5cf612",fill:true,tension:.4,pointRadius:2,borderWidth:2},
-        {label:"Quickcommerce",data:daily.map(d=>d.quickcommerce), borderColor:"#f59e0b",backgroundColor:"#f59e0b12",fill:true,tension:.4,pointRadius:2,borderWidth:2},
-      ]
-    },
-    options:{...cOpts, interaction:{mode:"index",intersect:false}}
-  });
+  S.charts.line=new Chart(document.getElementById("line-chart").getContext("2d"),{type:"line",data:{labels:daily.map(d=>d.date.slice(5)),datasets:[{label:"Food",data:daily.map(d=>d.food),borderColor:"#10b981",backgroundColor:"#10b98112",fill:true,tension:.4,pointRadius:2,borderWidth:2},{label:"H&E",data:daily.map(d=>d.non_food),borderColor:"#0ea5e9",backgroundColor:"#0ea5e912",fill:true,tension:.4,pointRadius:2,borderWidth:2},{label:"Marketplace",data:daily.map(d=>d.marketplace),borderColor:"#8b5cf6",backgroundColor:"#8b5cf612",fill:true,tension:.4,pointRadius:2,borderWidth:2},{label:"Quickcommerce",data:daily.map(d=>d.quickcommerce),borderColor:"#f59e0b",backgroundColor:"#f59e0b12",fill:true,tension:.4,pointRadius:2,borderWidth:2}]},options:{...cOpts,interaction:{mode:"index",intersect:false}}});
 }
-
 function renderDonut(a) {
   dc("donut");
-  const ctx = document.getElementById("donut-chart").getContext("2d");
-  S.charts.donut = new Chart(ctx,{
-    type:"doughnut",
-    data:{
-      labels:["Food","H&E","Marketplace","Quickcommerce"],
-      datasets:[{
-        data:[a.food.o,a.non_food.o,a.marketplace.o,a.quickcommerce.o],
-        backgroundColor:["#10b981","#0ea5e9","#8b5cf6","#f59e0b"],
-        borderWidth:3,borderColor:"#fff",hoverBorderColor:"#f9fafb",
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,cutout:"68%",
-      plugins:{
-        legend:{position:"bottom",labels:{color:"#6b7280",font:{size:11},usePointStyle:true,padding:14,boxWidth:6}},
-        tooltip:{backgroundColor:"#fff",borderColor:"#e5e7eb",borderWidth:1,titleColor:"#0f1117",bodyColor:"#6b7280",padding:10,cornerRadius:8}
-      }
-    }
-  });
+  S.charts.donut=new Chart(document.getElementById("donut-chart").getContext("2d"),{type:"doughnut",data:{labels:["Food","H&E","Marketplace","Quickcommerce"],datasets:[{data:[a.food.o,a.non_food.o,a.marketplace.o,a.quickcommerce.o],backgroundColor:["#10b981","#0ea5e9","#8b5cf6","#f59e0b"],borderWidth:3,borderColor:"#fff"}]},options:{responsive:true,maintainAspectRatio:false,cutout:"68%",plugins:{legend:{position:"bottom",labels:{color:"#6b7280",font:{size:11},usePointStyle:true,padding:14,boxWidth:6}},tooltip:{backgroundColor:"#fff",borderColor:"#e5e7eb",borderWidth:1,titleColor:"#0f1117",bodyColor:"#6b7280",padding:10,cornerRadius:8}}}});
 }
-
 function renderUTM(daily) {
   dc("utm");
-  const ctx = document.getElementById("utm-chart").getContext("2d");
-  S.charts.utm = new Chart(ctx,{
-    type:"bar",
-    data:{
-      labels:daily.map(d=>d.date.slice(5)),
-      datasets:[{
-        label:"% Sin UTM",
-        data:daily.map(d=>d.utm_pct),
-        backgroundColor:daily.map(d=>d.utm_pct>35?"#fee2e2":"#dbeafe"),
-        borderColor:daily.map(d=>d.utm_pct>35?"#ef4444":"#3b82f6"),
-        borderWidth:1,borderRadius:4,
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      scales:{
-        x:{ticks:{color:"#9ca3af",font:{size:9}},grid:{color:"#f3f4f6"}},
-        y:{ticks:{color:"#9ca3af",font:{size:9},callback:v=>v+"%"},grid:{color:"#f3f4f6"},max:60}
-      },
-      plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",borderColor:"#e5e7eb",borderWidth:1,titleColor:"#0f1117",bodyColor:"#6b7280",padding:10,cornerRadius:8,callbacks:{label:c=>` ${c.raw}% sin UTM`}}}
-    }
-  });
+  S.charts.utm=new Chart(document.getElementById("utm-chart").getContext("2d"),{type:"bar",data:{labels:daily.map(d=>d.date.slice(5)),datasets:[{label:"% Sin UTM",data:daily.map(d=>d.utm_pct),backgroundColor:daily.map(d=>d.utm_pct>35?"#fee2e2":"#dbeafe"),borderColor:daily.map(d=>d.utm_pct>35?"#ef4444":"#3b82f6"),borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:"#9ca3af",font:{size:9}},grid:{color:"#f3f4f6"}},y:{ticks:{color:"#9ca3af",font:{size:9},callback:v=>v+"%"},grid:{color:"#f3f4f6"},max:60}},plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",borderColor:"#e5e7eb",borderWidth:1,titleColor:"#0f1117",bodyColor:"#6b7280",padding:10,cornerRadius:8,callbacks:{label:c=>` ${c.raw}% sin UTM`}}}}});
 }
-
 function renderPart(daily) {
   dc("part");
-  const ctx = document.getElementById("part-chart").getContext("2d");
-  S.charts.part = new Chart(ctx,{
-    type:"line",
-    data:{
-      labels:daily.map(d=>d.date.slice(5)),
-      datasets:[{
-        label:"% Participación App",
-        data:daily.map(d=>d.part),
-        borderColor:"#4f46e5",backgroundColor:"#4f46e518",fill:true,tension:.4,pointRadius:2,borderWidth:2,
-      }]
-    },
-    options:{
-      ...cOpts,
-      scales:{
-        x:{ticks:{color:"#9ca3af",font:{size:9}},grid:{color:"#f3f4f6"}},
-        y:{ticks:{color:"#9ca3af",font:{size:9},callback:v=>v+"%"},grid:{color:"#f3f4f6"},min:0}
-      }
-    }
-  });
+  S.charts.part=new Chart(document.getElementById("part-chart").getContext("2d"),{type:"line",data:{labels:daily.map(d=>d.date.slice(5)),datasets:[{label:"% Participación App",data:daily.map(d=>d.part),borderColor:"#4f46e5",backgroundColor:"#4f46e518",fill:true,tension:.4,pointRadius:2,borderWidth:2}]},options:{...cOpts,scales:{x:{ticks:{color:"#9ca3af",font:{size:9}},grid:{color:"#f3f4f6"}},y:{ticks:{color:"#9ca3af",font:{size:9},callback:v=>v+"%"},grid:{color:"#f3f4f6"},min:0}}}});
 }
 
-// ── Timeline ────────────────────────────────────────────
-const MS_COLORS = { promo:{c:"#059669",bg:"#ecfdf5",tc:"promo"}, bug:{c:"#dc2626",bg:"#fef2f2",tc:"bug"}, event:{c:"#d97706",bg:"#fffbeb",tc:"event"}, note:{c:"#0284c7",bg:"#f0f9ff",tc:"note"} };
-const MS_EMOJI  = { promo:"🎯", bug:"🔴", event:"⭐", note:"📝" };
+// ── TIMELINE ──────────────────────────────────────────
+const MS_COLORS={promo:{c:"#059669",bg:"#ecfdf5"},bug:{c:"#dc2626",bg:"#fef2f2"},event:{c:"#d97706",bg:"#fffbeb"},note:{c:"#0284c7",bg:"#f0f9ff"}};
+const MS_EMOJI={promo:"🎯",bug:"🔴",event:"⭐",note:"📝"};
 
-function renderTimeline(dates, daily) {
-  const wrap = document.getElementById("timeline-wrap");
+function renderTimeline(dates,daily) {
+  const wrap=document.getElementById("timeline-wrap");
   if(!dates||!dates.length){ wrap.innerHTML='<div class="empty-state"><div class="es-icon">📅</div><div class="es-title">Sin rango seleccionado</div></div>'; return; }
-
-  const msMap = {};
+  const msMap={};
   S.milestones.forEach(m=>{ if(!msMap[m.date]) msMap[m.date]=[]; msMap[m.date].push(m); });
-
-  const maxOrders = Math.max(...daily.map(d=>d.app), 1);
-
-  const ticks = dates.map((date,i)=>{
-    const ms = msMap[date]||[];
-    const orders = daily[i]?.app||0;
-    const hasMilestone = ms.length>0;
-    const mc = hasMilestone ? MS_COLORS[ms[0].type] : null;
-    const pips = ms.map(m=>`<div class="tl-pip-inner ${m.type}">${MS_EMOJI[m.type]} ${m.title}</div>`).join("");
-
+  const ticks=dates.map((date,i)=>{
+    const ms=msMap[date]||[], orders=daily[i]?.app||0, hasMilestone=ms.length>0;
+    const mc=hasMilestone?MS_COLORS[ms[0].type]:null;
+    const pips=ms.map(m=>`<div class="tl-pip-inner ${m.type}">${MS_EMOJI[m.type]} ${m.title}</div>`).join("");
     return `<div class="tl-tick${hasMilestone?" has-ms":""}" ${hasMilestone?`style="--ms-c:${mc.c};--ms-bg:${mc.bg}"`:""}
-      onclick="tlClick('${date}')" title="${date}: ${orders} pedidos de app">
+      onclick="tlClick('${date}')" title="${date}: ${orders} pedidos">
       <div class="tl-orders">${orders>0?orders:""}</div>
       <div class="tl-pip">${pips}</div>
       <div class="tl-dot"></div>
       <div class="tl-label">${date.slice(5)}</div>
     </div>`;
   }).join("");
-
-  wrap.innerHTML = `<div class="timeline-track"><div class="timeline-rail"></div>${ticks}</div>`;
-
+  wrap.innerHTML=`<div class="timeline-track"><div class="timeline-rail"></div>${ticks}</div>`;
   wrap.querySelectorAll(".tl-tick").forEach(t=>{
     t.addEventListener("mouseenter",()=>t.querySelectorAll(".tl-pip-inner").forEach(p=>p.parentElement.style.display="block"));
     t.addEventListener("mouseleave",()=>t.querySelectorAll(".tl-pip-inner").forEach(p=>p.parentElement.style.display="none"));
   });
 }
+function tlClick(date){ const e=S.milestones.find(m=>m.date===date); e?openMilestoneModal(e):openMilestoneModal(null,date); }
 
-function tlClick(date) {
-  const existing = S.milestones.find(m=>m.date===date);
-  existing ? openMilestoneModal(existing) : openMilestoneModal(null, date);
-}
-
-// ── Monthly ─────────────────────────────────────────────
+// ── MONTHLY ───────────────────────────────────────────
 async function renderMonthly() {
-  let allDates = [];
+  let allDates=[];
   try{ const r=await fetch(`${DATA_BASE}/index.json`); if(r.ok){ const j=await r.json(); allDates=j.dates||[]; } }catch{}
-
-  if(!allDates.length){
-    document.getElementById("monthly-body").innerHTML='<tr><td colspan="9"><div class="empty-state"><div class="es-icon">📦</div><div class="es-title">Sin datos disponibles</div><div class="es-sub">Corré el workflow para cargar datos</div></div></td></tr>';
-    return;
-  }
-
+  if(!allDates.length){ document.getElementById("monthly-body").innerHTML='<tr><td colspan="9"><div class="empty-state"><div class="es-icon">📦</div><div class="es-title">Sin datos</div><div class="es-sub">Corré el workflow primero</div></div></td></tr>'; return; }
   await Promise.all(allDates.map(d=>fetchDay(d)));
-
-  const byMonth = {};
+  const byMonth={};
   allDates.forEach(d=>{ const m=d.slice(0,7); if(!byMonth[m]) byMonth[m]=[]; byMonth[m].push(d); });
-  const months = Object.keys(byMonth).sort().reverse();
-  const rows = months.map(month=>({ month, ...agg(byMonth[month]) }));
-
-  document.getElementById("monthly-body").innerHTML = rows.map(r=>`
-    <tr>
-      <td><strong>${r.month}</strong></td>
-      <td><strong>${r.app.toLocaleString()}</strong></td>
-      <td><span class="badge food">${r.food.o.toLocaleString()}</span></td>
-      <td><span class="badge non_food">${r.non_food.o.toLocaleString()}</span></td>
-      <td><span class="badge marketplace">${r.marketplace.o.toLocaleString()}</span></td>
-      <td><span class="badge quickcommerce">${r.quickcommerce.o.toLocaleString()}</span></td>
-      <td><span class="badge con-utm">${r.con_utm.toLocaleString()}</span></td>
-      <td><span class="badge ${r.utm_sin_pct>35?"sin-utm":"con-utm"}">${r.utm_sin_pct}%</span></td>
-      <td>${r.part_pct}%</td>
-    </tr>
-  `).join("");
-
+  const months=Object.keys(byMonth).sort().reverse();
+  const rows=months.map(month=>({month,...agg(byMonth[month])}));
+  document.getElementById("monthly-body").innerHTML=rows.map(r=>`<tr><td><strong>${r.month}</strong></td><td><strong>${r.app.toLocaleString()}</strong></td><td><span class="badge food">${r.food.o.toLocaleString()}</span></td><td><span class="badge non_food">${r.non_food.o.toLocaleString()}</span></td><td><span class="badge marketplace">${r.marketplace.o.toLocaleString()}</span></td><td><span class="badge quickcommerce">${r.quickcommerce.o.toLocaleString()}</span></td><td><span class="badge con-utm">${r.con_utm.toLocaleString()}</span></td><td><span class="badge ${r.utm_sin_pct>35?"sin-utm":"con-utm"}">${r.utm_sin_pct}%</span></td><td>${r.part_pct}%</td></tr>`).join("");
   dc("monthly");
-  const ctx = document.getElementById("monthly-chart").getContext("2d");
-  S.charts.monthly = new Chart(ctx,{
-    type:"bar",
-    data:{
-      labels:rows.map(r=>r.month).reverse(),
-      datasets:[
-        {label:"Food",         data:rows.map(r=>r.food.o).reverse(),          backgroundColor:"#10b981cc",borderRadius:4},
-        {label:"H&E",          data:rows.map(r=>r.non_food.o).reverse(),      backgroundColor:"#0ea5e9cc",borderRadius:4},
-        {label:"Marketplace",  data:rows.map(r=>r.marketplace.o).reverse(),   backgroundColor:"#8b5cf6cc",borderRadius:4},
-        {label:"Quickcommerce",data:rows.map(r=>r.quickcommerce.o).reverse(), backgroundColor:"#f59e0bcc",borderRadius:4},
-      ]
-    },
-    options:{
-      ...cOpts,
-      scales:{
-        x:{stacked:true,ticks:{color:"#9ca3af"},grid:{color:"#f3f4f6"}},
-        y:{stacked:true,ticks:{color:"#9ca3af"},grid:{color:"#f3f4f6"}}
-      }
-    }
-  });
+  S.charts.monthly=new Chart(document.getElementById("monthly-chart").getContext("2d"),{type:"bar",data:{labels:rows.map(r=>r.month).reverse(),datasets:[{label:"Food",data:rows.map(r=>r.food.o).reverse(),backgroundColor:"#10b981cc",borderRadius:4},{label:"H&E",data:rows.map(r=>r.non_food.o).reverse(),backgroundColor:"#0ea5e9cc",borderRadius:4},{label:"Marketplace",data:rows.map(r=>r.marketplace.o).reverse(),backgroundColor:"#8b5cf6cc",borderRadius:4},{label:"Quickcommerce",data:rows.map(r=>r.quickcommerce.o).reverse(),backgroundColor:"#f59e0bcc",borderRadius:4}]},options:{...cOpts,scales:{x:{stacked:true,ticks:{color:"#9ca3af"},grid:{color:"#f3f4f6"}},y:{stacked:true,ticks:{color:"#9ca3af"},grid:{color:"#f3f4f6"}}}}});
 }
 
-// ══════════════════════════════════════════════════════
-// MILESTONES
-// ══════════════════════════════════════════════════════
-let selType = "promo";
-function selType2(el) {
-  document.querySelectorAll(".type-opt").forEach(o=>o.classList.remove("selected"));
-  el.classList.add("selected"); selType = el.dataset.type;
-}
-// alias
-const selType_fn = selType2;
-function selType(el){ selType2(el); }
-
-function openMilestoneModal(ms=null, defaultDate=null) {
-  S.editMs = ms;
-  const del = document.getElementById("m-del-btn");
-  document.getElementById("ms-modal-title").textContent = ms ? "Editar Hito" : "Nuevo Hito";
-  del.style.display = ms ? "" : "none";
-  document.getElementById("m-date").value  = ms?.date  || defaultDate || todayAR();
-  document.getElementById("m-title").value = ms?.title || "";
-  document.getElementById("m-desc").value  = ms?.desc  || "";
-  selType = ms?.type || "promo";
-  document.querySelectorAll(".type-opt").forEach(o=>o.classList.toggle("selected", o.dataset.type===selType));
+// ── MILESTONES ────────────────────────────────────────
+function pickType(el){ document.querySelectorAll(".type-opt").forEach(o=>o.classList.remove("selected")); el.classList.add("selected"); currentMsType=el.dataset.type; }
+function openMilestoneModal(ms=null,defaultDate=null) {
+  S.editMs=ms;
+  document.getElementById("ms-modal-title").textContent=ms?"Editar Hito":"Nuevo Hito";
+  document.getElementById("m-del-btn").style.display=ms?"":"none";
+  document.getElementById("m-date").value=ms?.date||defaultDate||todayAR();
+  document.getElementById("m-title").value=ms?.title||"";
+  document.getElementById("m-desc").value=ms?.desc||"";
+  currentMsType=ms?.type||"promo";
+  document.querySelectorAll(".type-opt").forEach(o=>o.classList.toggle("selected",o.dataset.type===currentMsType));
   document.getElementById("ms-modal").classList.remove("hidden");
 }
-function closeMsModal() { document.getElementById("ms-modal").classList.add("hidden"); S.editMs=null; }
-
+function closeMsModal(){ document.getElementById("ms-modal").classList.add("hidden"); S.editMs=null; }
 async function saveMilestone() {
-  const date  = document.getElementById("m-date").value;
-  const title = document.getElementById("m-title").value.trim();
-  const desc  = document.getElementById("m-desc").value.trim();
+  const date=document.getElementById("m-date").value, title=document.getElementById("m-title").value.trim(), desc=document.getElementById("m-desc").value.trim();
   if(!date||!title){ alert("Completá fecha y título"); return; }
-
-  if(S.editMs) {
-    const idx = S.milestones.findIndex(m=>m.id===S.editMs.id);
-    if(idx>=0) S.milestones[idx] = {...S.editMs, date, type:selType, title, desc, author:S.user.name, updated:new Date().toISOString()};
-  } else {
-    S.milestones.push({id:Date.now().toString(), date, type:selType, title, desc, author:S.user.name, created:new Date().toISOString()});
-  }
-
-  await saveMilestones();
-  closeMsModal();
-  loadAll(S.from, S.to);
+  if(S.editMs){ const idx=S.milestones.findIndex(m=>m.id===S.editMs.id); if(idx>=0) S.milestones[idx]={...S.editMs,date,type:currentMsType,title,desc,author:S.user.name,updated:new Date().toISOString()}; }
+  else S.milestones.push({id:Date.now().toString(),date,type:currentMsType,title,desc,author:S.user.name,created:new Date().toISOString()});
+  await saveMilestones(); closeMsModal(); loadAll(S.from,S.to);
 }
-
 async function deleteMilestone() {
   if(!S.editMs||!confirm("¿Eliminar este hito?")) return;
-  S.milestones = S.milestones.filter(m=>m.id!==S.editMs.id);
-  await saveMilestones();
-  closeMsModal();
-  loadAll(S.from, S.to);
+  S.milestones=S.milestones.filter(m=>m.id!==S.editMs.id);
+  await saveMilestones(); closeMsModal(); loadAll(S.from,S.to);
 }
 
-// ══════════════════════════════════════════════════════
-// EXPORT
-// ══════════════════════════════════════════════════════
+// ── EXPORT ────────────────────────────────────────────
 async function exportCSV() {
-  const dates = getDates(S.from, S.to);
-  const allRows = (await Promise.all(dates.map(fetchRows))).flat();
+  const dates=getDates(S.from,S.to), allRows=(await Promise.all(dates.map(fetchRows))).flat();
   if(!allRows.length){ alert("Sin datos para exportar"); return; }
-  const h = ["order_id","fecha","estado","total_ars","utm_source","utm_medium","segmento","email","utm_status"];
-  const csv = [h.join(","), ...allRows.map(r=>[r.order_id,`"${r.fecha}"`,r.estado,r.total,r.utm_source,r.utm_medium,r.segment,`"${r.email}"`,r.utm_status].join(","))].join("\n");
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"}));
-  a.download=`appdash_${S.from}_${S.to}.csv`;
-  a.click();
+  const h=["order_id","fecha","estado","total_ars","utm_source","utm_medium","segmento","email","utm_status"];
+  const csv=[h.join(","),...allRows.map(r=>[r.order_id,`"${r.fecha}"`,r.estado,r.total,r.utm_source,r.utm_medium,r.segment,`"${r.email}"`,r.utm_status].join(","))].join("\n");
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"})); a.download=`appdash_${S.from}_${S.to}.csv`; a.click();
 }
 
-// ══════════════════════════════════════════════════════
-// SETTINGS & USER
-// ══════════════════════════════════════════════════════
-function openSettings() {
-  document.getElementById("gh-token").value = localStorage.getItem("gh_token")||"";
-  document.getElementById("gh-repo").value  = localStorage.getItem("gh_repo")||"";
-  document.getElementById("settings-modal").classList.remove("hidden");
-}
-function closeSettings() { document.getElementById("settings-modal").classList.add("hidden"); }
-function saveSettings() {
-  localStorage.setItem("gh_token", document.getElementById("gh-token").value);
-  localStorage.setItem("gh_repo",  document.getElementById("gh-repo").value);
-  closeSettings();
-}
-function openUserMenu() {
-  document.getElementById("um-name").textContent = S.user.name;
-  document.getElementById("user-modal").classList.remove("hidden");
-}
-function closeUserMenu() { document.getElementById("user-modal").classList.add("hidden"); }
-
-function refreshData() {
-  getDates(S.from, S.to).forEach(d=>{ localStorage.removeItem("appdash_"+d); delete S.data[d]; delete S.rows[d]; });
-  loadAll(S.from, S.to);
-}
-
-// Close on overlay click
+// ── SETTINGS & USER ───────────────────────────────────
+function openSettings(){ document.getElementById("gh-token").value=localStorage.getItem("gh_token")||""; document.getElementById("gh-repo").value=localStorage.getItem("gh_repo")||""; document.getElementById("settings-modal").classList.remove("hidden"); }
+function closeSettings(){ document.getElementById("settings-modal").classList.add("hidden"); }
+function saveSettings(){ localStorage.setItem("gh_token",document.getElementById("gh-token").value); localStorage.setItem("gh_repo",document.getElementById("gh-repo").value); closeSettings(); }
+function openUserMenu(){ document.getElementById("um-name").textContent=S.user.name; document.getElementById("user-modal").classList.remove("hidden"); }
+function closeUserMenu(){ document.getElementById("user-modal").classList.add("hidden"); }
+function refreshData(){ getDates(S.from,S.to).forEach(d=>{ localStorage.removeItem("appdash_"+d); delete S.data[d]; delete S.rows[d]; }); loadAll(S.from,S.to); }
 document.querySelectorAll(".overlay").forEach(el=>el.addEventListener("click",e=>{ if(e.target===el) el.classList.add("hidden"); }));
 </script>
 </body>
