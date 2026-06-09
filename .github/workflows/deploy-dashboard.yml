@@ -1,0 +1,31 @@
+name: Deploy Dashboard
+
+on:
+  push:
+    paths:
+      - "docs/index.html"   # se dispara cuando cambia el HTML fuente
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject token into dashboard
+        env:
+          GH_MILESTONES_TOKEN: ${{ secrets.GH_MILESTONES_TOKEN }}
+        run: |
+          sed "s|__GH_TOKEN__|${GH_MILESTONES_TOKEN}|g" docs/index.html > docs/index.built.html
+          mv docs/index.built.html docs/index.html
+
+      - name: Commit built dashboard
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html
+          git diff --staged --quiet || git commit -m "deploy: dashboard build $(date -u +%Y-%m-%dT%H:%M)Z"
+          git push
