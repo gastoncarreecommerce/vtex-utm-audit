@@ -266,7 +266,9 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       <div class="topbar-title" id="topbar-title">Dashboard <span id="topbar-range"></span></div>
       <div class="topbar-controls" id="topbar-controls">
         <div class="date-range-group">
-          <button class="preset-btn active" onclick="setPreset(1,this)">Hoy</button>
+          <button class="preset-btn" onclick="setPreset(1,this)">Hoy</button>
+          <div class="drg-sep"></div>
+          <button class="preset-btn active" onclick="setPreset(-1,this)">Ayer</button>
           <div class="drg-sep"></div>
           <button class="preset-btn" onclick="setPreset(7,this)">7d</button>
           <div class="drg-sep"></div>
@@ -452,7 +454,7 @@ function loginAs(u) {
   document.getElementById("app").style.cssText="display:flex;height:100vh";
   document.getElementById("su-avatar").textContent=u.avatar;
   document.getElementById("su-name").textContent=u.name.split(" ")[0];
-  setPreset(7, document.querySelectorAll(".preset-btn")[1]);
+  setPreset(-1, document.querySelectorAll(".preset-btn")[2]);
 }
 function doLogout(){ localStorage.removeItem("appdash_sess"); location.reload(); }
 
@@ -475,7 +477,9 @@ function setPreset(days,btn) {
   document.querySelectorAll(".preset-btn").forEach(b=>b.classList.remove("active"));
   if(btn) btn.classList.add("active");
   const today=todayAR();
-  S.to=today; S.from=days===0?today.slice(0,7)+"-01":addDays(today,-(days-1));
+  if(days===-1){ S.from=addDays(today,-1); S.to=addDays(today,-1); }
+  else if(days===0){ S.from=today.slice(0,7)+"-01"; S.to=today; }
+  else { S.from=addDays(today,-(days-1)); S.to=today; }
   document.getElementById("date-from").value=S.from;
   document.getElementById("date-to").value=S.to;
   document.getElementById("topbar-range").textContent=S.from===S.to?S.from:`${S.from} → ${S.to}`;
