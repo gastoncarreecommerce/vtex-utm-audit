@@ -3,14 +3,14 @@
   "total_ecomm_orders": 2914,
   "total_ecomm_gmv": 0,
   "app": {
-    "total": 542,
-    "gmv": 44673157,
-    "con_utm": 344,
+    "total": 541,
+    "gmv": 44524061,
+    "con_utm": 343,
     "sin_utm": 198,
     "segments": {
       "food": {
-        "orders": 454,
-        "gmv": 39916388
+        "orders": 453,
+        "gmv": 39767293
       },
       "non_food": {
         "orders": 3,
@@ -27,5 +27,5 @@
     }
   },
   "participation_pct": 18.6,
-  "utm_pct_sin": 36.5
+  "utm_pct_sin": 36.6
 }
