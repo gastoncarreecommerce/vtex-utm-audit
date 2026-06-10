@@ -693,7 +693,7 @@ function setPreset(days,btn){
   if(days===1){
     document.getElementById("live-badge").style.display="";
     localStorage.removeItem("appdash_"+today); delete S.data[today]; delete S.rows[today];
-    liveInterval=setInterval(()=>{ const t=todayAR(); localStorage.removeItem("appdash_"+t); delete S.data[t]; delete S.rows[t]; loadAll(S.from,S.to); }, 5*60*1000);
+    liveInterval=setInterval(()=>{ const t=todayAR(); localStorage.removeItem("appdash_"+t); delete S.data[t]; delete S.rows[t]; loadAll(S.from,S.to); }, 60*1000);
   }
   loadAll(S.from,S.to);
 }

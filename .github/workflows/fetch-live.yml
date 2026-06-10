@@ -2,8 +2,13 @@ name: Fetch Live (Hoy)
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # cada 15 minutos
+    - cron: "*/5 * * * *"   # cada 5 min (mínimo real de GitHub Actions; puede demorarse algo bajo carga)
   workflow_dispatch:
+
+# Evita que dos corridas se pisen: si arranca una nueva, cancela la anterior en curso
+concurrency:
+  group: fetch-live
+  cancel-in-progress: true
 
 jobs:
   fetch-live:
