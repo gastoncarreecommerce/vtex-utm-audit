@@ -525,7 +525,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             </div>
           </div>
           <div class="card">
-            <div class="card-header"><div><div class="card-title">🎟️ Pedidos con Cupón</div><div class="card-sub" id="coupon-sub">utm_campaign como proxy de cupón</div></div></div>
+            <div class="card-header"><div><div class="card-title">🎟️ Pedidos con Cupón</div><div class="card-sub" id="coupon-sub">Código de cupón aplicado en el checkout</div></div></div>
             <div class="card-body">
               <div style="height:140px;margin-bottom:18px"><canvas id="coupon-chart"></canvas></div>
               <div style="font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Top 5 cupones</div>
@@ -1015,7 +1015,8 @@ function openDetail(r){
     ["Estado",r.estado],["Total",`$${(+r.total).toLocaleString("es-AR")}`],
     ["Segmento",SEGL[r.segment]||r.segment],["UTM Status",r.utm_status],
     ["UTM Source",r.utm_source||"—"],["UTM Medium",r.utm_medium||"—"],
-    ["UTM Campaign / Cupón",r.utm_campaign||"—"],
+    ["UTM Campaign",r.utm_campaign||"—"],
+    ["Cupón",r.coupon||"—"],
     ["Email",(r.email||"").split("-")[0]],
   ];
   const items=Array.isArray(r.items)?r.items:[];
@@ -1039,6 +1040,8 @@ function closeDetail(){ document.getElementById("detail-overlay").classList.add(
 const SEG_COLORS={food:"#10b981",non_food:"#0ea5e9",marketplace:"#8b5cf6",quickcommerce:"#f59e0b"};
 const SEG_LBL={food:"Food",non_food:"H&E",marketplace:"Marketplace",quickcommerce:"Quickcommerce"};
 
+// Cupón real (marketingData.coupon). Para rows viejos (sin el campo) devuelve "".
+function rowCoupon(r){ return (r.coupon||"").trim(); }
 function cleanEmail(email){ return (email||"").split("-")[0].trim(); }
 function obfEmail(email){
   const e=cleanEmail(email); if(!e) return "—";
@@ -1068,7 +1071,7 @@ function renderAnalyticsKPIs(perDay){
   const buyers={};
   allRows.forEach(r=>{
     (r.items||[]).forEach(it=>units+=(+it.qty||0));
-    if((r.utm_campaign||"").trim()) withCoupon++;
+    if(rowCoupon(r)) withCoupon++;
     const e=cleanEmail(r.email); if(e) buyers[e]=(buyers[e]||0)+1;
   });
   const uniqueBuyers=Object.keys(buyers).length;
@@ -1196,12 +1199,12 @@ function renderRecurrence(perDay){
 function renderCoupons(perDay){
   const dates=perDay.map(p=>p.date);
   const dailyPct=perDay.map(({rows})=>{
-    const tot=rows.length, wc=rows.filter(r=>(r.utm_campaign||"").trim()).length;
+    const tot=rows.length, wc=rows.filter(r=>rowCoupon(r)).length;
     return tot>0?Math.round(wc/tot*1000)/10:0;
   });
   const allRows=perDay.flatMap(p=>p.rows);
   const camps={};
-  allRows.forEach(r=>{ const c=(r.utm_campaign||"").trim(); if(c) camps[c]=(camps[c]||0)+1; });
+  allRows.forEach(r=>{ const c=rowCoupon(r); if(c) camps[c]=(camps[c]||0)+1; });
   const top=Object.entries(camps).map(([c,n])=>({c,n})).sort((a,b)=>b.n-a.n).slice(0,5);
   const totalCoupon=Object.values(camps).reduce((s,n)=>s+n,0);
   document.getElementById("coupon-sub").textContent=`${totalCoupon.toLocaleString("es-AR")} pedidos con cupón · ${Object.keys(camps).length} cupones distintos`;
@@ -1266,8 +1269,8 @@ async function deleteMilestone(){
 async function exportCSV(){
   const dates=getDates(S.from,S.to), allRows=(await Promise.all(dates.map(fetchRows))).flat();
   if(!allRows.length){ showToast("Sin datos para exportar","error"); return; }
-  const h=["order_id","fecha","estado","total_ars","utm_source","utm_medium","utm_campaign","segmento","email","utm_status"];
-  const csv=[h.join(","),...allRows.map(r=>[r.order_id,`"${r.fecha}"`,r.estado,r.total,r.utm_source,r.utm_medium,`"${(r.utm_campaign||"").replace(/"/g,'""')}"`,r.segment,`"${r.email}"`,r.utm_status].join(","))].join("\n");
+  const h=["order_id","fecha","estado","total_ars","utm_source","utm_medium","utm_campaign","cupon","segmento","email","utm_status"];
+  const csv=[h.join(","),...allRows.map(r=>[r.order_id,`"${r.fecha}"`,r.estado,r.total,r.utm_source,r.utm_medium,`"${(r.utm_campaign||"").replace(/"/g,'""')}"`,`"${(r.coupon||"").replace(/"/g,'""')}"`,r.segment,`"${r.email}"`,r.utm_status].join(","))].join("\n");
   const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"})); a.download=`appdash_${S.from}_${S.to}.csv`; a.click();
   showToast("CSV exportado ✓","success");
 }
