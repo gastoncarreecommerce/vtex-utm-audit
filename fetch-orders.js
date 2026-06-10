@@ -188,15 +188,24 @@ async function processBatch(orderIds, seen, result) {
 
       // Store raw row for export
       result.rows.push({
-        order_id:   orderId,
-        fecha:      new Date(detail.creationDate).toLocaleString("es-AR", { timeZone: "America/Argentina/Buenos_Aires" }),
-        estado:     status,
-        total:      Math.round(gmv),
-        utm_source: utmSource,
-        utm_medium: detail.marketingData?.utmMedium || "",
+        order_id:     orderId,
+        fecha:        new Date(detail.creationDate).toLocaleString("es-AR", { timeZone: "America/Argentina/Buenos_Aires" }),
+        estado:       status,
+        total:        Math.round(gmv),
+        utm_source:   utmSource,
+        utm_medium:   detail.marketingData?.utmMedium || "",
+        utm_campaign: detail.marketingData?.utmCampaign || "",
         segment,
-        email:      detail.clientProfileData?.email || "",
-        utm_status: utmSource ? "CON UTM" : "SIN UTM"
+        email:        detail.clientProfileData?.email || "",
+        utm_status:   utmSource ? "CON UTM" : "SIN UTM",
+        items: (detail.items || []).map(item => ({
+          id:     item.id,
+          name:   item.name,
+          sku:    item.refId || item.id,
+          qty:    item.quantity,
+          price:  (item.price || 0) / 100,
+          seller: item.seller
+        }))
       });
     }
   }
