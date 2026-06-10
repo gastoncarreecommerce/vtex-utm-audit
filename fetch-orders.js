@@ -195,6 +195,7 @@ async function processBatch(orderIds, seen, result) {
         utm_source:   utmSource,
         utm_medium:   detail.marketingData?.utmMedium || "",
         utm_campaign: detail.marketingData?.utmCampaign || "",
+        coupon:       detail.marketingData?.coupon || "",
         segment,
         email:        detail.clientProfileData?.email || "",
         utm_status:   utmSource ? "CON UTM" : "SIN UTM",
