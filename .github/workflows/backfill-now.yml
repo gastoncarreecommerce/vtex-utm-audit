@@ -3,7 +3,7 @@ name: Backfill Now (one-shot)
 # Se dispara automáticamente al cambiar este archivo (push a main),
 # así no depende del botón "Run workflow". Reescribe los rows con los
 # campos nuevos (items + utm_campaign + coupon) para todo el histórico.
-# Re-run 2: poblar marketingData.coupon.
+# Re-run 3: arreglar hora 24h (formatFechaAR) + coupon. Reescribe todo el histórico.
 on:
   push:
     branches: [main]
@@ -11,9 +11,10 @@ on:
       - ".github/workflows/backfill-now.yml"
   workflow_dispatch:
 
+# cancel-in-progress: true → este run cancela cualquier backfill anterior en curso
 concurrency:
   group: backfill-now
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   backfill:
@@ -49,7 +50,7 @@ jobs:
             git config user.name  "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add docs/data/
-            git diff --staged --quiet || git commit -m "backfill coupon: $current" -q
+            git diff --staged --quiet || git commit -m "backfill 24h+coupon: $current" -q
           done
 
       - name: Push data
