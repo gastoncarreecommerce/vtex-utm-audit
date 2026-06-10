@@ -515,7 +515,7 @@ const USERS = [
   {username:"samuel",  name:"Samuel Moreira", avatar:"SM"},
 ];
 const PASSWORD = "AppDash123";
-const GH_TOKEN = "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";
+const GH_TOKEN = "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";
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
@@ -619,27 +619,22 @@ async function fetchRows(date){
   try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json`); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
 }
 async function loadMilestones(){
-  if(GH_TOKEN&&GH_REPO&&!GH_TOKEN.includes("GH_TOKEN")){
-    try{
-      const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/docs/data/milestones.json?t=${Date.now()}`,{headers:{Authorization:`token ${GH_TOKEN}`,Accept:"application/vnd.github.v3+json"}});
-      if(r.ok){ const j=await r.json(); S.milestones=JSON.parse(decodeURIComponent(escape(atob(j.content)))); S.msSha=j.sha; return; }
-    }catch(e){ console.warn("milestones gh load fail",e); }
-  }
+  // Lectura SIEMPRE desde archivo público — no requiere token
   try{ const r=await fetch(`${DATA_BASE}/milestones.json?t=${Date.now()}`); if(r.ok) S.milestones=await r.json(); }catch{}
 }
 async function saveMilestones(){
+  // Escritura vía repository_dispatch — el token SOLO dispara el workflow
   const token=localStorage.getItem("gh_token")||GH_TOKEN;
-  const repo=localStorage.getItem("gh_repo")||GH_REPO;
-  if(!token||token.includes("GH_TOKEN")){ showToast("Token de GitHub no configurado","error"); return false; }
-  const content=btoa(unescape(encodeURIComponent(JSON.stringify(S.milestones,null,2))));
+  if(!token||token.includes("GH_TOKEN")){ showToast("Token no configurado — vé a ⚙","error"); return false; }
   try{
-    const r=await fetch(`https://api.github.com/repos/${repo}/contents/docs/data/milestones.json`,{
-      method:"PUT",headers:{Authorization:`token ${token}`,Accept:"application/vnd.github.v3+json","Content-Type":"application/json"},
-      body:JSON.stringify({message:`hito: ${S.user.name}`,content,sha:S.msSha})
+    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/dispatches`,{
+      method:"POST",
+      headers:{Authorization:`Bearer ${token}`,Accept:"application/vnd.github+json","Content-Type":"application/json"},
+      body:JSON.stringify({event_type:"save-milestones",client_payload:{milestones:JSON.stringify(S.milestones,null,2),author:S.user.name}})
     });
-    if(r.ok){ const j=await r.json(); S.msSha=j.content.sha; return true; }
-    const err=await r.json(); console.error("save fail",err); showToast("Error al guardar: "+(err.message||r.status),"error"); return false;
-  }catch(e){ console.error(e); showToast("Error de red al guardar","error"); return false; }
+    if(r.status===204){ return true; }
+    const err=await r.json().catch(()=>({})); console.error("dispatch fail",err); showToast("Error: "+(err.message||r.status),"error"); return false;
+  }catch(e){ console.error(e); showToast("Error de red","error"); return false; }
 }
 async function loadAll(from,to){
   document.getElementById("kpi-row").innerHTML=Array(5).fill('<div class="skeleton sk-kpi"></div>').join("");
@@ -874,14 +869,14 @@ async function saveMilestone(){
   if(S.editMs){ const idx=S.milestones.findIndex(m=>m.id===S.editMs.id); if(idx>=0) S.milestones[idx]={...S.editMs,date,type:currentMsType,title,desc,author:S.user.name,updated:new Date().toISOString()}; }
   else S.milestones.push({id:Date.now().toString(),date,type:currentMsType,title,desc,author:S.user.name,created:new Date().toISOString()});
   const ok=await saveMilestones();
-  if(ok){ showToast("Hito guardado ✓","success"); closeMsModal(); loadAll(S.from,S.to); }
+  if(ok){ showToast("Hito guardado ✓ (se publica en ~10s)","success"); closeMsModal(); setTimeout(()=>loadAll(S.from,S.to),12000); }
 }
 async function deleteMilestone(){
   if(!S.editMs||!confirm("¿Eliminar este hito?")) return;
   await loadMilestones();
   S.milestones=S.milestones.filter(m=>m.id!==S.editMs.id);
   const ok=await saveMilestones();
-  if(ok){ showToast("Hito eliminado","success"); closeMsModal(); loadAll(S.from,S.to); }
+  if(ok){ showToast("Hito eliminado (se publica en ~10s)","success"); closeMsModal(); setTimeout(()=>loadAll(S.from,S.to),12000); }
 }
 
 // ── EXPORT ────────────────────────────────────────────
