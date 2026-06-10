@@ -2,7 +2,8 @@ name: Backfill Now (one-shot)
 
 # Se dispara automáticamente al cambiar este archivo (push a main),
 # así no depende del botón "Run workflow". Reescribe los rows con los
-# campos nuevos (items + utm_campaign) para todo el histórico.
+# campos nuevos (items + utm_campaign + coupon) para todo el histórico.
+# Re-run 2: poblar marketingData.coupon.
 on:
   push:
     branches: [main]
@@ -48,7 +49,7 @@ jobs:
             git config user.name  "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add docs/data/
-            git diff --staged --quiet || git commit -m "backfill items+cupones: $current" -q
+            git diff --staged --quiet || git commit -m "backfill coupon: $current" -q
           done
 
       - name: Push data
