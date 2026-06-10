@@ -271,6 +271,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 .rank-name{flex:1;font-size:12.5px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rank-meta{font-size:11px;color:var(--ink-4);white-space:nowrap}
 .rank-val{font-size:12.5px;font-weight:700;white-space:nowrap}
+.sort-ar{color:var(--indigo);font-size:10px;font-weight:700}
 
 /* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:200;opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;gap:9px}
@@ -495,7 +496,15 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
           </div>
           <div class="card-body-flush" style="overflow-x:auto">
             <table class="data-table" id="top-prod-table">
-              <thead><tr><th>#</th><th>Producto</th><th>SKU</th><th>Pedidos</th><th>Unidades</th><th>GMV</th><th>Segmento</th></tr></thead>
+              <thead><tr>
+                <th>#</th>
+                <th onclick="sortProducts('name')" data-pk="name">Producto<span class="sort-ar"></span></th>
+                <th>SKU</th>
+                <th onclick="sortProducts('orders')" data-pk="orders">Pedidos<span class="sort-ar"></span></th>
+                <th onclick="sortProducts('units')" data-pk="units">Unidades<span class="sort-ar"></span></th>
+                <th onclick="sortProducts('gmv')" data-pk="gmv">GMV<span class="sort-ar"></span></th>
+                <th>Segmento</th>
+              </tr></thead>
               <tbody id="top-prod-body"><tr><td colspan="7"><div class="empty-state"><div class="es-icon">⏳</div><div class="es-title">Cargando...</div></div></td></tr></tbody>
             </table>
           </div>
@@ -624,7 +633,7 @@ const GH_TOKEN = "github_pat_11BUG2KCY03GQPSN9diUyw_kCcUDe8tfR7nZT6Ma7DcsO5BX7ck
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
-const S = {user:null,from:null,to:null,data:{},rows:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"}};
+const S = {user:null,from:null,to:null,data:{},rows:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"}};
 let currentMsType="promo", liveInterval=null, lastFetch=null;
 
 // ── DATE FORMAT (Argentina dd/mm/yyyy) ────────────────
@@ -1096,11 +1105,22 @@ function renderTopProducts(){
       p.segs[r.segment]=(p.segs[r.segment]||0)+1;
     });
   });
-  const list=Object.values(prods).map(p=>{
+  const all=Object.values(prods).map(p=>{
     const seg=Object.entries(p.segs).sort((a,b)=>b[1]-a[1])[0]?.[0]||"food";
     return {name:p.name,sku:p.sku,orders:p.orders.size,units:p.units,gmv:Math.round(p.gmv),seg};
-  }).sort((a,b)=>b.gmv-a.gmv).slice(0,10);
-  document.getElementById("top-prod-sub").textContent=fSeg?`Top en ${SEG_LBL[fSeg]} · ${fmtRangeAR(S.from,S.to)}`:`Más vendidos · ${fmtRangeAR(S.from,S.to)}`;
+  });
+  const {key,dir}=S.prodSort;
+  all.sort((a,b)=>{
+    if(key==="name"){ const va=(a.name||"").toLowerCase(),vb=(b.name||"").toLowerCase(); return dir==="asc"?(va<vb?-1:va>vb?1:0):(va<vb?1:va>vb?-1:0); }
+    return dir==="asc"?a[key]-b[key]:b[key]-a[key];
+  });
+  const list=all.slice(0,10);
+  // flechas de orden en encabezados
+  document.querySelectorAll("#top-prod-table th[data-pk]").forEach(th=>{
+    th.querySelector(".sort-ar").textContent = th.dataset.pk===key ? (dir==="asc"?" ▲":" ▼") : "";
+  });
+  const KL={gmv:"GMV",units:"unidades",orders:"pedidos",name:"nombre"};
+  document.getElementById("top-prod-sub").textContent=`${fSeg?"Top en "+SEG_LBL[fSeg]:"Top 10"} por ${KL[key]} · ${fmtRangeAR(S.from,S.to)}`;
   const body=document.getElementById("top-prod-body");
   if(!list.length){ body.innerHTML='<tr><td colspan="7"><div class="empty-state"><div class="es-icon">📦</div><div class="es-title">Sin datos de productos</div><div class="es-sub">Los pedidos del período aún no incluyen ítems. Se completará en próximas cargas del pipeline.</div></div></td></tr>'; return; }
   body.innerHTML=list.map((p,i)=>`
@@ -1113,6 +1133,12 @@ function renderTopProducts(){
       <td style="font-weight:700">$${p.gmv.toLocaleString("es-AR")}</td>
       <td><span class="badge ${p.seg}">${SEG_LBL[p.seg]||p.seg}</span></td>
     </tr>`).join("");
+}
+
+function sortProducts(key){
+  if(S.prodSort.key===key) S.prodSort.dir=S.prodSort.dir==="asc"?"desc":"asc";
+  else S.prodSort={key,dir:key==="name"?"asc":"desc"};
+  renderTopProducts();
 }
 
 function renderHeatmap(perDay){
