@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AppDash — Carrefour</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -368,7 +369,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
           <span style="font-size:12px;color:var(--ink-4)">→</span>
           <input type="date" id="date-to" class="date-inp" onchange="loadRange()">
         </div>
-        <button class="tbtn" onclick="exportCSV()">⬇ CSV</button>
+        <button class="tbtn" onclick="exportXLSX()">⬇ Exportar Excel</button>
         <button class="tbtn primary" onclick="refreshData()">↻ Actualizar</button>
       </div>
     </div>
@@ -629,7 +630,7 @@ const USERS = [
   {username:"samuel",  name:"Samuel Moreira", avatar:"SM"},
 ];
 const PASSWORD = "AppDash123";
-const GH_TOKEN = "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";
+const GH_TOKEN = "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"; // el workflow deploy-dashboard inyecta el secret GH_MILESTONES_TOKEN al publicar
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
@@ -1227,11 +1228,22 @@ async function renderMonthly(){
   const rows=months.map(month=>({month,label:MES[month.slice(5)]+" "+month.slice(0,4),...agg(byMonth[month])}));
   document.getElementById("monthly-body").innerHTML=rows.map(r=>`<tr><td><strong>${r.label}</strong></td><td><strong>${r.app.toLocaleString("es-AR")}</strong></td><td><span class="badge food">${r.food.o.toLocaleString("es-AR")}</span></td><td><span class="badge non_food">${r.non_food.o.toLocaleString("es-AR")}</span></td><td><span class="badge marketplace">${r.marketplace.o.toLocaleString("es-AR")}</span></td><td><span class="badge quickcommerce">${r.quickcommerce.o.toLocaleString("es-AR")}</span></td><td><span class="badge con-utm">${r.con_utm.toLocaleString("es-AR")}</span></td><td><span class="badge ${r.utm_sin_pct>35?"sin-utm":"con-utm"}">${r.utm_sin_pct}%</span></td><td>${r.part_pct}%</td></tr>`).join("");
   dc("monthly");
-  S.charts.monthly=new Chart(document.getElementById("monthly-chart").getContext("2d"),{type:"bar",data:{labels:rows.map(r=>r.label).reverse(),datasets:[
-    {label:"Food",data:rows.map(r=>r.food.o).reverse(),backgroundColor:"#10b981",borderRadius:5},
-    {label:"H&E",data:rows.map(r=>r.non_food.o).reverse(),backgroundColor:"#0ea5e9",borderRadius:5},
-    {label:"Marketplace",data:rows.map(r=>r.marketplace.o).reverse(),backgroundColor:"#8b5cf6",borderRadius:5},
-    {label:"Quickcommerce",data:rows.map(r=>r.quickcommerce.o).reverse(),backgroundColor:"#f59e0b",borderRadius:5}]},options:{...cOpts,scales:{x:{stacked:true,ticks:{color:"#9ca3af"},grid:{display:false}},y:{stacked:true,ticks:{color:"#9ca3af"},grid:{color:"#f1f4f8"}}}}});
+  const mLabels=rows.map(r=>r.label).reverse();
+  // plugin local: imprime el valor arriba de cada barra (resuelve la ilegibilidad por escala)
+  const barLabels={id:"barLabels",afterDatasetsDraw(chart){
+    const {ctx}=chart; ctx.save(); ctx.font="700 10px Inter, sans-serif"; ctx.fillStyle="#374151"; ctx.textAlign="center";
+    chart.data.datasets.forEach((ds,di)=>{ const meta=chart.getDatasetMeta(di); if(meta.hidden) return;
+      meta.data.forEach((el,i)=>{ const v=ds.data[i]; if(!v) return; ctx.fillText(Number(v).toLocaleString("es-AR"),el.x,el.y-4); }); });
+    ctx.restore();
+  }};
+  S.charts.monthly=new Chart(document.getElementById("monthly-chart").getContext("2d"),{type:"bar",data:{labels:mLabels,datasets:[
+    {label:"Food",data:rows.map(r=>r.food.o).reverse(),backgroundColor:"#10b981",borderRadius:5,maxBarThickness:46},
+    {label:"H&E",data:rows.map(r=>r.non_food.o).reverse(),backgroundColor:"#0ea5e9",borderRadius:5,maxBarThickness:46},
+    {label:"Marketplace",data:rows.map(r=>r.marketplace.o).reverse(),backgroundColor:"#8b5cf6",borderRadius:5,maxBarThickness:46},
+    {label:"Quickcommerce",data:rows.map(r=>r.quickcommerce.o).reverse(),backgroundColor:"#f59e0b",borderRadius:5,maxBarThickness:46}]},
+    options:{...cOpts,layout:{padding:{top:20}},plugins:{...cOpts.plugins,legend:{position:"top",labels:{color:"#6b7280",font:{size:11},usePointStyle:true,boxWidth:7,padding:14}},tooltip:{...cOpts.plugins.tooltip,callbacks:{label:c=>` ${c.dataset.label}: ${Number(c.raw).toLocaleString("es-AR")} pedidos`}}},
+    scales:{x:{stacked:false,ticks:{color:"#9ca3af",font:{size:12,weight:"600"}},grid:{display:false}},y:{stacked:false,beginAtZero:true,ticks:{color:"#9ca3af",callback:v=>v.toLocaleString("es-AR")},grid:{color:"#f1f4f8"}}},
+    plugins:[barLabels]}});
 }
 
 // ── MILESTONES ────────────────────────────────────────
@@ -1266,13 +1278,43 @@ async function deleteMilestone(){
 }
 
 // ── EXPORT ────────────────────────────────────────────
-async function exportCSV(){
+// Parsea "9/6/2026, 14:30:25" -> Date (para ordenar). Argentina UTC-3.
+function parseFechaAR(f){
+  const m=(f||"").match(/(\d{1,2})\/(\d{1,2})\/(\d{4}),?\s+(\d{1,2}):(\d{2})(?::(\d{2}))?/);
+  if(!m) return new Date(0);
+  return new Date(+m[3],+m[2]-1,+m[1],+m[4],+m[5],+m[6]||0);
+}
+async function exportXLSX(){
+  if(typeof XLSX==="undefined"){ showToast("La libreria de Excel no cargo, reintenta","error"); return; }
+  showToast("Generando Excel...");
   const dates=getDates(S.from,S.to), allRows=(await Promise.all(dates.map(fetchRows))).flat();
   if(!allRows.length){ showToast("Sin datos para exportar","error"); return; }
-  const h=["order_id","fecha","estado","total_ars","utm_source","utm_medium","utm_campaign","cupon","segmento","email","utm_status"];
-  const csv=[h.join(","),...allRows.map(r=>[r.order_id,`"${r.fecha}"`,r.estado,r.total,r.utm_source,r.utm_medium,`"${(r.utm_campaign||"").replace(/"/g,'""')}"`,`"${(r.coupon||"").replace(/"/g,'""')}"`,r.segment,`"${r.email}"`,r.utm_status].join(","))].join("\n");
-  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"})); a.download=`appdash_${S.from}_${S.to}.csv`; a.click();
-  showToast("CSV exportado ✓","success");
+  const SEGL={food:"Food",non_food:"H&E (Non Food)",marketplace:"Marketplace",quickcommerce:"Quickcommerce"};
+  const rows=[...allRows].sort((a,b)=>parseFechaAR(b.fecha)-parseFechaAR(a.fecha));
+  const data=rows.map(r=>({
+    "Order ID":      r.order_id,
+    "Fecha":         r.fecha,
+    "Estado":        r.estado,
+    "Total (ARS)":   +r.total||0,
+    "Segmento":      SEGL[r.segment]||r.segment,
+    "UTM Status":    r.utm_status,
+    "UTM Source":    r.utm_source||"",
+    "UTM Medium":    r.utm_medium||"",
+    "UTM Campaign":  r.utm_campaign||"",
+    "Cupon":         r.coupon||"",
+    "Cliente":       (r.email||"").split("-")[0],
+    "Productos":     Array.isArray(r.items)?r.items.length:0,
+    "Unidades":      Array.isArray(r.items)?r.items.reduce((s,it)=>s+(+it.qty||0),0):0,
+  }));
+  const ws=XLSX.utils.json_to_sheet(data);
+  ws["!cols"]=[{wch:20},{wch:20},{wch:16},{wch:13},{wch:18},{wch:11},{wch:14},{wch:12},{wch:24},{wch:16},{wch:26},{wch:10},{wch:10}];
+  ws["!autofilter"]={ref:ws["!ref"]};
+  const range=XLSX.utils.decode_range(ws["!ref"]);
+  for(let R=1;R<=range.e.r;R++){ const c=ws[XLSX.utils.encode_cell({r:R,c:3})]; if(c){ c.t="n"; c.z="#,##0"; } }
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,"Pedidos App");
+  XLSX.writeFile(wb,`AppDash_${S.from}_${S.to}.xlsx`);
+  showToast("Excel exportado","success");
 }
 
 // ── SETTINGS & USER ───────────────────────────────────

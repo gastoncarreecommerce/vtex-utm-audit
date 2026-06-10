@@ -56,6 +56,16 @@ const NON_FOOD_SELLER = "carrefourar0899";
 const QC_SALES_CHANNEL = "3";
 
 // ── Date helpers ────────────────────────────────────────────────────────
+// Formatea a hora Argentina (UTC-3, sin DST) en 24h: "9/6/2026, 14:30:25".
+// No usamos toLocaleString("es-AR") porque en algunos runtimes devuelve
+// formato 12h sin AM/PM y se pierde la hora real (14:00 -> "02:00").
+function formatFechaAR(iso) {
+  const d  = new Date(new Date(iso).getTime() - 3 * 60 * 60 * 1000); // shift a AR
+  const dd = d.getUTCDate(), mm = d.getUTCMonth() + 1, yy = d.getUTCFullYear();
+  const p  = n => String(n).padStart(2, "0");
+  return `${dd}/${mm}/${yy}, ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`;
+}
+
 function getTargetDate() {
   const arg = process.argv[2];
   if (arg && /^\d{4}-\d{2}-\d{2}$/.test(arg)) return arg;
@@ -189,7 +199,7 @@ async function processBatch(orderIds, seen, result) {
       // Store raw row for export
       result.rows.push({
         order_id:     orderId,
-        fecha:        new Date(detail.creationDate).toLocaleString("es-AR", { timeZone: "America/Argentina/Buenos_Aires" }),
+        fecha:        formatFechaAR(detail.creationDate),
         estado:       status,
         total:        Math.round(gmv),
         utm_source:   utmSource,
