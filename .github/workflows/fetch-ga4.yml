@@ -1,6 +1,12 @@
 name: Fetch GA4 (Compra Online)
 
 on:
+  # Push a este archivo → backfill one-shot del histórico (mismo patrón que backfill-now.yml,
+  # porque la integración no puede disparar workflow_dispatch por API)
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-ga4.yml"
   schedule:
     - cron: "30 6 * * *"   # 6:30 UTC = 3:30am AR, después del fetch diario de pedidos
   workflow_dispatch:
@@ -42,6 +48,10 @@ jobs:
         run: |
           start="${{ github.event.inputs.date_from }}"
           end="${{ github.event.inputs.date_to }}"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            start="2026-05-01"
+            end="2026-06-11"
+          fi
           if [ -z "$start" ]; then
             node fetch-ga4.js
           else
