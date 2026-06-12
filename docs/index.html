@@ -501,6 +501,11 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
           </div>
         </div>
 
+        <div class="card" id="ga4-other-card" style="margin-bottom:22px;display:none">
+          <div class="card-header"><div><div class="card-title">🔀 Otros eventos de Compra Online (GA4)</div><div class="card-sub" id="ga4-other-sub">Acciones fuera del camino de compra · usuarios del período</div></div></div>
+          <div class="card-body" id="ga4-other-body"></div>
+        </div>
+
         <div class="card" style="margin-bottom:22px">
           <div class="card-header">
             <div><div class="card-title">🏆 Top 10 Productos</div><div class="card-sub" id="top-prod-sub">Más vendidos del período</div></div>
@@ -1168,20 +1173,23 @@ function renderAnalyticsKPIs(perDay){
 }
 
 // ── GA4 (Compra Online) ───────────────────────────────
-// Orden del funnel — editá esta lista si cambian los eventos de la app.
-// Solo se muestran los pasos que existen en los datos del período.
+// Funnel = SOLO el camino secuencial de compra (cada paso es subconjunto del anterior).
+// No mezclar acciones laterales acá o las conversiones dan >100% y dejan de tener sentido.
 const GA4_FUNNEL=[
   ["switch_to_ecommerce","Entrada a Compra Online"],
   ["view_item_list","Vio listado"],
-  ["search","Buscó"],
   ["view_item","Vio producto"],
   ["add_to_cart","Agregó al carrito"],
-  ["select_item","Seleccionó producto"],
   ["view_cart","Vio carrito"],
-  ["remove_from_cart","Quitó del carrito"],
-  ["select_promotion","Seleccionó promoción"],
   ["add_shipping_info","Cargó envío"],
   ["purchase","Compró"],
+];
+// Acciones laterales (fuera de la secuencia de compra) → panel aparte, sin % de conversión.
+const GA4_OTHER=[
+  ["search","Buscó"],
+  ["select_item","Seleccionó producto"],
+  ["remove_from_cart","Quitó del carrito"],
+  ["select_promotion","Seleccionó promoción"],
   ["add_to_wishlist","Agregó a favoritos"],
 ];
 async function fetchGA4(date){
@@ -1204,6 +1212,7 @@ function renderGA4(dates,ga4Days){
     tBody.innerHTML=msg; fBody.innerHTML=msg;
     document.getElementById("ga4-traffic-sub").textContent="Sin datos en el período";
     document.getElementById("ga4-funnel-sub").textContent="Sin datos en el período";
+    document.getElementById("ga4-other-card").style.display="none";
     return;
   }
   // Tráfico: usuarios de switch_to_ecommerce por día
@@ -1216,7 +1225,7 @@ function renderGA4(dates,ga4Days){
   const agg={};
   valid.forEach(d=>{ Object.entries(d.events||{}).forEach(([k,v])=>{ if(!agg[k]) agg[k]={count:0,users:0}; agg[k].count+=v.count||0; agg[k].users+=v.users||0; }); });
   const steps=GA4_FUNNEL.filter(([ev])=>agg[ev]&&agg[ev].users>0).map(([ev,label])=>({ev,label,users:agg[ev].users}));
-  if(!steps.length){ fBody.innerHTML='<div class="empty-state"><div class="es-icon">🛒</div><div class="es-title">Sin eventos del funnel en el período</div><div class="es-sub">Revisá la lista GA4_FUNNEL en index.html si los nombres de eventos cambiaron.</div></div>'; return; }
+  if(!steps.length){ fBody.innerHTML='<div class="empty-state"><div class="es-icon">🛒</div><div class="es-title">Sin eventos del funnel en el período</div><div class="es-sub">Revisá la lista GA4_FUNNEL en index.html si los nombres de eventos cambiaron.</div></div>'; document.getElementById("ga4-other-card").style.display="none"; return; }
   const base=steps[0].users;
   fBody.innerHTML=steps.map((st,i)=>{
     const pctBase=base>0?st.users/base*100:0;
@@ -1230,6 +1239,25 @@ function renderGA4(dates,ga4Days){
       <div class="dist-bar" style="height:14px"><div class="dist-fill" style="width:${Math.max(pctBase,1.5).toFixed(1)}%;background:linear-gradient(90deg,#4f46e5,#8b5cf6)"></div></div>
     </div>`;
   }).join("")+`<div style="font-size:11px;color:var(--ink-4);margin-top:10px">% principal = vs paso 1 (${steps[0].label}) · ↳ = conversión vs paso anterior</div>`;
+  // Otros eventos (acciones laterales) — sin % de conversión, ordenados por usuarios
+  const others=GA4_OTHER.filter(([ev])=>agg[ev]&&agg[ev].users>0).map(([ev,label])=>({ev,label,users:agg[ev].users,count:agg[ev].count})).sort((a,b)=>b.users-a.users);
+  const oCard=document.getElementById("ga4-other-card");
+  if(!others.length){ oCard.style.display="none"; }
+  else{
+    oCard.style.display="";
+    const oMax=others[0].users;
+    document.getElementById("ga4-other-sub").textContent=`Acciones fuera del camino de compra · ${others.length} eventos · usuarios del período`;
+    document.getElementById("ga4-other-body").innerHTML=others.map(o=>{
+      const w=oMax>0?o.users/oMax*100:0;
+      return `<div style="margin-bottom:11px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+          <span style="font-size:12px;font-weight:600;color:var(--ink-2)">${o.label}</span>
+          <span style="font-size:11px;color:var(--ink-4)">${o.users.toLocaleString("es-AR")} usuarios · ${o.count.toLocaleString("es-AR")} eventos</span>
+        </div>
+        <div class="dist-bar" style="height:14px"><div class="dist-fill" style="width:${Math.max(w,1.5).toFixed(1)}%;background:linear-gradient(90deg,#0ea5e9,#22d3ee)"></div></div>
+      </div>`;
+    }).join("")+`<div style="font-size:11px;color:var(--ink-4);margin-top:10px">Eventos paralelos al funnel (no son pasos secuenciales de la compra).</div>`;
+  }
 }
 
 function renderTopProducts(){
