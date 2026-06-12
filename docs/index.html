@@ -1173,13 +1173,16 @@ function renderAnalyticsKPIs(perDay){
 const GA4_FUNNEL=[
   ["switch_to_ecommerce","Entrada a Compra Online"],
   ["view_item_list","Vio listado"],
+  ["search","Buscó"],
   ["view_item","Vio producto"],
   ["add_to_cart","Agregó al carrito"],
+  ["select_item","Seleccionó producto"],
   ["view_cart","Vio carrito"],
-  ["begin_checkout","Inició checkout"],
+  ["remove_from_cart","Quitó del carrito"],
+  ["select_promotion","Seleccionó promoción"],
   ["add_shipping_info","Cargó envío"],
-  ["add_payment_info","Cargó pago"],
   ["purchase","Compró"],
+  ["add_to_wishlist","Agregó a favoritos"],
 ];
 async function fetchGA4(date){
   if(S.ga4&&S.ga4[date]!==undefined) return S.ga4[date];
