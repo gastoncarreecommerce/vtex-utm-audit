@@ -1,19 +1,18 @@
 name: Fetch GA4 (Compra Online)
 
 on:
-  # Push a este archivo → backfill one-shot del histórico (mismo patrón que backfill-now.yml,
-  # porque la integración no puede disparar workflow_dispatch por API)
-  # Re-run: Analytics Data API ya habilitada en el proyecto GCP
+  # Push a este archivo → trae el día de HOY ya mismo (refresco manual inmediato)
   push:
     branches: [main]
     paths:
       - ".github/workflows/fetch-ga4.yml"
   schedule:
-    - cron: "30 6 * * *"   # 6:30 UTC = 3:30am AR, después del fetch diario de pedidos
+    - cron: "5 * * * *"    # cada hora: refresca el día de HOY (datos intraday de GA4)
+    - cron: "30 6 * * *"   # 6:30 UTC = 3:30am AR: consolida el día de AYER ya completo
   workflow_dispatch:
     inputs:
       date_from:
-        description: "Fecha inicio (YYYY-MM-DD). Vacío = ayer"
+        description: "Fecha inicio (YYYY-MM-DD). Vacío = hoy"
         required: false
         default: ""
       date_to:
@@ -49,19 +48,21 @@ jobs:
         run: |
           start="${{ github.event.inputs.date_from }}"
           end="${{ github.event.inputs.date_to }}"
-          if [ "${{ github.event_name }}" = "push" ]; then
-            start="2026-05-01"
-            end="2026-06-11"
-          fi
-          if [ -z "$start" ]; then
-            node fetch-ga4.js
-          else
+          today=$(date -u -d "-3 hours" +%Y-%m-%d)   # hoy en hora Argentina (UTC-3)
+          if [ -n "$start" ]; then
+            # Rango manual (backfill): date_from → date_to
             [ -z "$end" ] && end="$start"
             current="$start"
             while [[ "$current" < "$end" ]] || [[ "$current" == "$end" ]]; do
               node fetch-ga4.js "$current" || echo "⚠ Error en $current, continuando..."
               current=$(date -d "$current + 1 day" +%Y-%m-%d)
             done
+          elif [ "${{ github.event.schedule }}" = "30 6 * * *" ]; then
+            # Cron diario: ayer ya completo (default de fetch-ga4.js)
+            node fetch-ga4.js
+          else
+            # Push, cron horario o dispatch sin inputs → HOY (intraday)
+            node fetch-ga4.js "$today"
           fi
 
       - name: Commit data
