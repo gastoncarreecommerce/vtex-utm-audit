@@ -3,6 +3,7 @@ name: Fetch GA4 (Compra Online)
 on:
   # Push a este archivo → backfill one-shot del histórico (mismo patrón que backfill-now.yml,
   # porque la integración no puede disparar workflow_dispatch por API)
+  # Re-run: Analytics Data API ya habilitada en el proyecto GCP
   push:
     branches: [main]
     paths:
