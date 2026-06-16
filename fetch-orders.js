@@ -317,6 +317,7 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   const { rows, ...summary } = result;
+  summary.fetched_at = new Date().toISOString();
   fs.writeFileSync(outPath, JSON.stringify(summary, null, 2));
   console.log(`\n💾 Saved: ${outPath}`);
 

@@ -86,9 +86,13 @@ export default async function handler(req, res) {
   }
 
   const date    = (req.query.date || todayAR()).slice(0, 10);
-  const fromDT  = `${date}T03:00:00.000Z`;
-  const toDT    = new Date(new Date(fromDT).getTime() + 86400000 - 1).toISOString();
+  const since   = req.query.since || null; // ISO UTC — si viene, solo fetcheamos el delta
+  const fetchedAt = new Date().toISOString();
+  const dayStart = `${date}T03:00:00.000Z`;
+  const fromDT  = since && new Date(since) > new Date(dayStart) ? since : dayStart;
+  const toDT    = new Date(new Date(dayStart).getTime() + 86400000 - 1).toISOString();
   const filter  = `creationDate:[${fromDT} TO ${toDT}]`;
+  const isDelta = !!(since && new Date(since) > new Date(dayStart));
   const base    = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br`;
 
   const result = {
@@ -178,5 +182,5 @@ export default async function handler(req, res) {
     ? Math.round(result.app.sin_utm / result.app.total * 1000) / 10 : 0;
 
   res.setHeader("Cache-Control", "no-store");
-  res.json({ summary: result, rows });
+  res.json({ summary: result, rows, delta: isDelta, fetched_at: fetchedAt });
 }

@@ -724,8 +724,16 @@ function setPreset(days,btn){
   document.getElementById("topbar-range").textContent=fmtRangeAR(S.from,S.to);
   if(days===1){
     document.getElementById("live-badge").style.display="";
+    // Limpiar caché para forzar recarga del JSON estático
     localStorage.removeItem("appdash_"+today); delete S.data[today]; delete S.rows[today];
-    liveInterval=setInterval(()=>{ const t=todayAR(); localStorage.removeItem("appdash_"+t); delete S.data[t]; delete S.rows[t]; loadAll(S.from,S.to); }, 60*1000);
+    // Intervalo: solo fetcha delta (no borra S.data para que la UI no quede en blanco)
+    liveInterval=setInterval(async ()=>{
+      const t=todayAR();
+      await fetchTodayDelta(t);
+      const dates=getDates(S.from,S.to);
+      const [pf,pt]=prevRange(S.from,S.to);
+      renderDash(dates,getDates(pf,pt));
+    }, 60*1000);
   }
   loadAll(S.from,S.to);
 }
@@ -741,34 +749,82 @@ function loadRange(){
 
 // ── DATA ──────────────────────────────────────────────
 let _todayPromise=null;
-async function fetchToday(date){
-  if(S.data[date]&&S.rows[date]) return;
+
+// Mergea un delta de la API sobre el summary base que ya está en S.data
+function mergeSummaryDelta(base, delta){
+  const m=JSON.parse(JSON.stringify(base));
+  m.app.total+=delta.app.total; m.app.gmv+=delta.app.gmv;
+  m.app.con_utm+=delta.app.con_utm; m.app.sin_utm+=delta.app.sin_utm;
+  ["food","non_food","marketplace","quickcommerce"].forEach(s=>{
+    m.app.segments[s].orders+=delta.app.segments[s].orders;
+    m.app.segments[s].gmv+=delta.app.segments[s].gmv;
+  });
+  m.utm_pct_sin=m.app.total>0?Math.round(m.app.sin_utm/m.app.total*1000)/10:0;
+  m.participation_pct=m.total_ecomm_orders>0?Math.round(m.app.total/m.total_ecomm_orders*1000)/10:0;
+  return m;
+}
+
+// Fetcha solo el delta de nuevos pedidos desde fetched_at del JSON estático
+async function fetchTodayDelta(date){
   if(_todayPromise) return _todayPromise;
-  _todayPromise=fetch(`/api/today?date=${date}&t=${Date.now()}`)
+  const since=S.data[date]?.fetched_at||null;
+  const url=`/api/today?date=${date}${since?`&since=${encodeURIComponent(since)}`:""}&t=${Date.now()}`;
+  _todayPromise=fetch(url)
     .then(r=>r.ok?r.json():null)
-    .then(d=>{ if(d?.summary){ S.data[date]=d.summary; S.rows[date]=d.rows||[]; } })
+    .then(d=>{
+      if(!d?.summary) return;
+      if(d.delta && S.data[date]){
+        S.data[date]=mergeSummaryDelta(S.data[date], d.summary);
+        // Append new rows (evitar duplicados por order_id)
+        const existing=new Set((S.rows[date]||[]).map(r=>r.order_id));
+        const newRows=(d.rows||[]).filter(r=>!existing.has(r.order_id));
+        S.rows[date]=[...(S.rows[date]||[]),...newRows];
+      } else {
+        S.data[date]=d.summary;
+        S.rows[date]=d.rows||[];
+      }
+      if(S.data[date]) S.data[date].fetched_at=d.fetched_at||new Date().toISOString();
+    })
     .catch(()=>{})
     .finally(()=>{ _todayPromise=null; });
   return _todayPromise;
 }
+
 async function fetchDay(date){
   if(S.data[date]) return S.data[date];
   const isToday=date===todayAR();
-  if(isToday){ await fetchToday(date); if(S.data[date]) return S.data[date]; }
-  const ck="appdash_"+date, cached=isToday?null:localStorage.getItem(ck);
+  if(isToday){
+    // 1. Cargar JSON estático del workflow inmediatamente (rápido)
+    try{
+      const r=await fetch(`${DATA_BASE}/daily/${date}.json?t=${Date.now()}`,{cache:"no-store"});
+      if(r.ok){ S.data[date]=await r.json(); }
+    }catch{}
+    // 2. Cargar rows estáticos en paralelo
+    if(!S.rows[date]){
+      fetch(`${DATA_BASE}/daily/${date}-rows.json?t=${Date.now()}`,{cache:"no-store"})
+        .then(r=>r.ok?r.json():null).then(d=>{ if(d) S.rows[date]=d; }).catch(()=>{});
+    }
+    // 3. Fetchear delta de pedidos nuevos desde la API (en background)
+    fetchTodayDelta(date).then(()=>{
+      const dates=getDates(S.from,S.to);
+      const [pf,pt]=prevRange(S.from,S.to);
+      renderDash(dates,getDates(pf,pt));
+    });
+    return S.data[date]||null;
+  }
+  const ck="appdash_"+date, cached=localStorage.getItem(ck);
   if(cached){ try{ const p=JSON.parse(cached); S.data[date]=p; return p; }catch{} }
   try{
-    const r=await fetch(`${DATA_BASE}/daily/${date}.json${isToday?`?t=${Date.now()}`:""}`,{cache:isToday?"no-store":"default"});
+    const r=await fetch(`${DATA_BASE}/daily/${date}.json`,{cache:"default"});
     if(!r.ok) return null;
     const d=await r.json(); S.data[date]=d;
-    if(!isToday){ localStorage.setItem(ck,JSON.stringify(d)); setTimeout(()=>localStorage.removeItem(ck),3600000); }
+    localStorage.setItem(ck,JSON.stringify(d)); setTimeout(()=>localStorage.removeItem(ck),3600000);
     return d;
   }catch{ return null; }
 }
 async function fetchRows(date){
   if(S.rows[date]) return S.rows[date];
   const isToday=date===todayAR();
-  if(isToday){ await fetchToday(date); if(S.rows[date]) return S.rows[date]; }
   try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json${isToday?`?t=${Date.now()}`:""}`,{cache:isToday?"no-store":"default"}); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
 }
 async function loadMilestones(){
