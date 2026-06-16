@@ -2,5 +2,8 @@
   "outputDirectory": "docs",
   "functions": {
     "api/today.js": { "maxDuration": 120 }
-  }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/app.html" }
+  ]
 }
