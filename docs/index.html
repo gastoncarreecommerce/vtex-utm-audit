@@ -711,6 +711,8 @@ function switchView(v,btn){
 
 // ── DATES ─────────────────────────────────────────────
 function todayAR(){ return new Date(Date.now()-3*3600000).toISOString().slice(0,10); }
+// Limpiar caches live de días anteriores al arrancar
+(()=>{ const today=new Date(Date.now()-3*3600000).toISOString().slice(0,10); for(const k of Object.keys(localStorage)) if(k.startsWith("appdash_live_")&&!k.endsWith(today)) localStorage.removeItem(k); })();
 function addDays(s,n){ const d=new Date(s+"T12:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
 function getDates(from,to){ const a=[],e=new Date(to+"T12:00:00Z"); let c=new Date(from+"T12:00:00Z"); while(c<=e){a.push(c.toISOString().slice(0,10));c.setUTCDate(c.getUTCDate()+1);} return a; }
 
@@ -788,7 +790,6 @@ async function fetchTodayDelta(date){
       if(!d?.summary) return;
       if(d.delta && S.data[date]){
         S.data[date]=mergeSummaryDelta(S.data[date], d.summary);
-        // Append new rows (evitar duplicados por order_id)
         const existing=new Set((S.rows[date]||[]).map(r=>r.order_id));
         const newRows=(d.rows||[]).filter(r=>!existing.has(r.order_id));
         S.rows[date]=[...(S.rows[date]||[]),...newRows];
@@ -797,6 +798,10 @@ async function fetchTodayDelta(date){
         S.rows[date]=d.rows||[];
       }
       if(S.data[date]) S.data[date].fetched_at=d.fetched_at||new Date().toISOString();
+      // Persistir en localStorage para sobrevivir el refresh
+      try{
+        localStorage.setItem("appdash_live_"+date, JSON.stringify({data:S.data[date],rows:S.rows[date]}));
+      }catch{}
     })
     .catch(()=>{})
     .finally(()=>{ _todayPromise=null; setDeltaLoading(false); });
@@ -807,15 +812,24 @@ async function fetchDay(date){
   if(S.data[date]) return S.data[date];
   const isToday=date===todayAR();
   if(isToday){
-    // 1. Cargar JSON estático del workflow inmediatamente (rápido)
-    try{
-      const r=await fetch(`${DATA_BASE}/daily/${date}.json?t=${Date.now()}`,{cache:"no-store"});
-      if(r.ok) S.data[date]=await r.json();
-    }catch{}
-    // 2. Rows estáticos en paralelo (no bloqueante)
-    if(!S.rows[date]){
-      fetch(`${DATA_BASE}/daily/${date}-rows.json?t=${Date.now()}`,{cache:"no-store"})
-        .then(r=>r.ok?r.json():null).then(d=>{ if(d) S.rows[date]=d; }).catch(()=>{});
+    // 1. Preferir el cache live (tiene el delta mergeado del último refresh)
+    const liveCache=localStorage.getItem("appdash_live_"+date);
+    if(liveCache){
+      try{
+        const c=JSON.parse(liveCache);
+        if(c.data?.fetched_at) { S.data[date]=c.data; S.rows[date]=c.rows||[]; }
+      }catch{}
+    }
+    // 2. Si no hay cache live, cargar JSON estático del workflow
+    if(!S.data[date]){
+      try{
+        const r=await fetch(`${DATA_BASE}/daily/${date}.json?t=${Date.now()}`,{cache:"no-store"});
+        if(r.ok) S.data[date]=await r.json();
+      }catch{}
+      if(!S.rows[date]){
+        fetch(`${DATA_BASE}/daily/${date}-rows.json?t=${Date.now()}`,{cache:"no-store"})
+          .then(r=>r.ok?r.json():null).then(d=>{ if(d) S.rows[date]=d; }).catch(()=>{});
+      }
     }
     // 3. Delta en background — solo si el intervalo no lo está haciendo ya
     // (el intervalo llama fetchTodayDelta directamente, este caso es solo el primer load)
