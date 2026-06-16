@@ -656,7 +656,7 @@ const USERS = [
   {username:"berenice",name:"Berenice Fraga", avatar:"BF"},
   {username:"samuel",  name:"Samuel Moreira", avatar:"SM"},
 ];
-const PASSWORD = "AppDash123";
+// Sin PASSWORD acá — la validación es server-side en /api/login
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 function getGHToken(){ return localStorage.getItem("gh_token")||""; }
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
@@ -668,22 +668,39 @@ let currentMsType="promo", liveInterval=null, lastFetch=null;
 function fmtFechaAR(iso){ const [y,m,d]=iso.split("-"); return `${d}/${m}/${y}`; }
 function fmtRangeAR(from,to){ return from===to?fmtFechaAR(from):`${fmtFechaAR(from)} → ${fmtFechaAR(to)}`; }
 
+// ── TOKEN (HMAC firmado por /api/login, expira 12hs) ──
+function tokenValid(){
+  const raw=localStorage.getItem("appdash_token"); if(!raw) return false;
+  try{ const[,exp]=atob(raw.replace(/-/g,"+").replace(/_/g,"/")).split(":"); return Date.now()<Number(exp); }catch{ return false; }
+}
+
 // ── INIT ──────────────────────────────────────────────
 (function(){
   const sel=document.getElementById("login-user");
   USERS.forEach(u=>{ const o=document.createElement("option"); o.value=u.username; o.textContent=u.name; sel.appendChild(o); });
   document.getElementById("login-pass").addEventListener("keydown",e=>{ if(e.key==="Enter") doLogin(); });
   const sess=localStorage.getItem("appdash_sess");
-  if(sess){ try{ const s=JSON.parse(sess); const u=USERS.find(x=>x.username===s.u); if(u){loginAs(u);return;} }catch{} }
+  if(sess&&tokenValid()){ try{ const s=JSON.parse(sess); const u=USERS.find(x=>x.username===s.u); if(u){loginAs(u);return;} }catch{} }
+  // Token expirado o inválido → limpiar
+  localStorage.removeItem("appdash_sess"); localStorage.removeItem("appdash_token");
 })();
 
 // ── AUTH ──────────────────────────────────────────────
-function doLogin(){
+async function doLogin(){
   const u=document.getElementById("login-user").value, p=document.getElementById("login-pass").value;
   const er=document.getElementById("login-error"), pi=document.getElementById("login-pass");
+  const btn=document.querySelector(".lc-btn");
   if(!u){ er.textContent="Seleccioná un usuario"; return; }
-  if(p!==PASSWORD){ er.textContent="Contraseña incorrecta"; pi.style.borderColor="var(--red)"; setTimeout(()=>pi.style.borderColor="",1500); return; }
-  loginAs(USERS.find(x=>x.username===u));
+  if(!p){ er.textContent="Ingresá la contraseña"; return; }
+  btn.textContent="Verificando..."; btn.disabled=true;
+  try{
+    const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username:u,password:p})});
+    const d=await r.json();
+    if(!r.ok){ er.textContent=d.error||"Error al iniciar sesión"; pi.style.borderColor="var(--red)"; setTimeout(()=>pi.style.borderColor="",1500); return; }
+    localStorage.setItem("appdash_token",d.token);
+    loginAs(d.user);
+  }catch{ er.textContent="Error de red, intentá de nuevo"; }
+  finally{ btn.textContent="Ingresar →"; btn.disabled=false; }
 }
 function loginAs(u){
   S.user=u;
@@ -694,7 +711,7 @@ function loginAs(u){
   document.getElementById("su-name").textContent=u.name.split(" ")[0];
   setPreset(1,document.querySelectorAll(".preset-btn")[0]);
 }
-function doLogout(){ localStorage.removeItem("appdash_sess"); location.reload(); }
+function doLogout(){ localStorage.removeItem("appdash_sess"); localStorage.removeItem("appdash_token"); location.reload(); }
 
 // ── NAV ───────────────────────────────────────────────
 function switchView(v,btn){
