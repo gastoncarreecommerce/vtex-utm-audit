@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="5;url=https://appnativa-dashboard.vercel.app/">
 <title>AppDash — Redirigiendo...</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,6 +18,12 @@ a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,70,229,.4)}
 </style>
 </head>
 <body>
+<script>
+// Si no estamos en GitHub Pages, ir directo al dashboard
+if (!location.hostname.includes('github.io')) {
+  location.replace('/app.html');
+}
+</script>
 <div class="card">
   <div class="icon">📦</div>
   <h1>Nos mudamos</h1>
