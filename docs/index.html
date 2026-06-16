@@ -654,6 +654,12 @@ const USERS = [
 const PASSWORD = "AppDash123";
 const GH_TOKEN = "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"; // el workflow deploy-dashboard inyecta el secret GH_MILESTONES_TOKEN al publicar
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
+// VTEX live — deploy-dashboard.yml reemplaza estos placeholders con los secrets reales.
+// Solo se usan para consultar la vista de HOY directamente desde el browser.
+const VTEX_ACCOUNT   = "__VTEX_ACCOUNT__";
+const VTEX_APP_KEY   = "__VTEX_APP_KEY__";
+const VTEX_APP_TOKEN = "__VTEX_APP_TOKEN__";
+const VTEX_LIVE_OK   = VTEX_APP_KEY && !VTEX_APP_KEY.includes("VTEX_APP_KEY");
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
 const S = {user:null,from:null,to:null,data:{},rows:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"}};
@@ -739,10 +745,70 @@ function loadRange(){
   loadAll(S.from,S.to);
 }
 
+// ── VTEX LIVE (consulta directa para el día de HOY) ────
+const VTEX_MKT_SELLERS=new Set(["abaco284","aircomputers546","americanwood705","anubisdecoracion261","Autodo","awaresolutions923","awaresolutionssrl189","bangho","beautysas","Bebitos","bigstarsar","blackmusic902","brogas700","buhl040","bulonfer","bydsudamericana031","calefactorescalden943","calm328","carrelloar624","clubdigital656","codini088","colchonesysommier288","CRF","ctcgroup940","ctcproductos740","dehuka404","demelf394","derpacomar064","dielfe771","districolor768","districolor804","donacero930","dvigi943","eczanepharma170","electroluxar","emcmuebles005","emoodmarket","enasport189","estelar454","exosa541","ferreydeco793","gasei472","grupomarquez012","haustore986","hidrolit736","hispanos470","hogarisnova327","homekong441","intecnova657","internationalhomesa717","kamadoargentino563","kiluga771","kitsolar316","laplanchetta301","lilasense516","limansky653","lumina946","luxom345","magazzinoar","mantra171","mgsolucionsa519","microbell122","mueblesespeciales315","mundopino165","neba791","neoseg957","ohgiftcard537","ortopedialibertad288","outin691","pampadeacero948","phidigital143","pinataar","pinataarCRF","potenzaemarketsa179","praga278","prestigio1","Producteca225119","Producteca232302","Producteca232621","Producteca237680","Producteca238451","Producteca238567","Producteca238818","Producteca239254","Producteca241872","Producteca241968","Producteca242766","Producteca246251","Producteca246437","Producteca246519","Producteca246643","Producteca247492","Producteca247683","Producteca249023","Producteca249357","Producteca249773","Producteca251086","Producteca251428","Producteca252062","Producteca70438","puntodeportivoar","rockinroll106","rua839","sccortinasrollers240","sharecomputacion867","shopwide119","soportar561","springwall441","sungreensrl102","tecnofull391","tenacta582","tiendasdigitalesar","todotodo061","topmega421","turboblender168","tutiendaonline271","unitecsa564","universopinturerias","Vexi","vexistore751","vexistorear","vinson363","vmpsa473","whirlpoolarg","wolke303","wsabiskin470","xcientoargentino189"]);
+function _vtexCateg(d){ if(String(d.salesChannel||"")==="3") return "quickcommerce"; const sel=new Set((d.items||[]).map(i=>i.seller).filter(Boolean)); for(const s of sel) if(VTEX_MKT_SELLERS.has(s)) return "marketplace"; if(sel.has("carrefourar0899")) return "non_food"; return "food"; }
+function _vtexFecha(iso){ const d=new Date(new Date(iso).getTime()-3*3600000); const p=n=>String(n).padStart(2,"0"); return `${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getUTCFullYear()}, ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`; }
+function _vtexAppFrom(o){ for(const a of o?.customData?.customApps||[]) if(a?.fields?.from!==undefined) return String(a.fields.from).trim(); return ""; }
+let _vtexP=null;
+async function ensureVTEXToday(){
+  const today=todayAR();
+  if(S.data[today]&&S.rows[today]) return;
+  if(_vtexP) return _vtexP;
+  _vtexP=(async()=>{
+    const base=`https://${VTEX_ACCOUNT}.vtexcommercestable.com.br`;
+    const hdrs={"X-VTEX-API-AppKey":VTEX_APP_KEY,"X-VTEX-API-AppToken":VTEX_APP_TOKEN};
+    // Rango del día de hoy en hora Argentina (UTC-3)
+    const fromDT=`${today}T03:00:00.000Z`;
+    const toDT=new Date(new Date(fromDT).getTime()+86400000-1).toISOString();
+    const flt=`creationDate:[${fromDT} TO ${toDT}]`;
+    const result={date:today,total_ecomm_orders:0,total_ecomm_gmv:0,
+      app:{total:0,gmv:0,con_utm:0,sin_utm:0,segments:{food:{orders:0,gmv:0},non_food:{orders:0,gmv:0},marketplace:{orders:0,gmv:0},quickcommerce:{orders:0,gmv:0}}}};
+    const rows=[]; const seen=new Set();
+    // Procesa un batch de order IDs: trae detalles y filtra por app
+    async function processBatchVTEX(ids){
+      const details=await Promise.all(ids.map(async id=>{
+        try{ const r=await fetch(`${base}/api/oms/pvt/orders/${id}`,{headers:hdrs}); return r.ok?r.json():null; }catch{ return null; }
+      }));
+      for(const d of details){
+        if(!d?.orderId||_vtexAppFrom(d)!=="app"||seen.has(d.orderId)) continue;
+        seen.add(d.orderId);
+        const seg=_vtexCateg(d), gmv=typeof d.value==="number"?d.value/100:0;
+        const utmS=d.marketingData?.utmSource||"";
+        result.app.total++; result.app.gmv+=gmv;
+        utmS?result.app.con_utm++:result.app.sin_utm++;
+        result.app.segments[seg].orders++; result.app.segments[seg].gmv+=gmv;
+        rows.push({order_id:d.orderId,fecha:_vtexFecha(d.creationDate),estado:d.status||"",total:Math.round(gmv),utm_source:utmS,utm_medium:d.marketingData?.utmMedium||"",utm_campaign:d.marketingData?.utmCampaign||"",coupon:d.marketingData?.coupon||"",segment:seg,email:d.clientProfileData?.email||"",utm_status:utmS?"CON UTM":"SIN UTM",items:(d.items||[]).map(i=>({id:i.id,name:i.name,sku:i.refId||i.id,qty:i.quantity,price:(i.price||0)/100,seller:i.seller}))});
+      }
+    }
+    // Pagina la lista y procesa en bloques de 30 detalles paralelos
+    let page=1,totalPages=null;
+    while(true){
+      try{
+        const url=`${base}/api/oms/pvt/orders?f_creationDate=${encodeURIComponent(flt)}&orderBy=creationDate,desc&page=${page}&per_page=100`;
+        const res=await fetch(url,{headers:hdrs}); if(!res.ok) break;
+        const data=await res.json(); if(!data?.list) break;
+        if(totalPages===null){ result.total_ecomm_orders=data.paging?.total||0; totalPages=Math.max(1,Math.ceil(result.total_ecomm_orders/100)); }
+        const ids=(data.list||[]).map(o=>o.orderId).filter(Boolean);
+        for(let i=0;i<ids.length;i+=30) await processBatchVTEX(ids.slice(i,i+30));
+        if(page>=totalPages) break; page++;
+      }catch{ break; }
+    }
+    // Cierra totales
+    result.app.gmv=Math.round(result.app.gmv);
+    ["food","non_food","marketplace","quickcommerce"].forEach(s=>{result.app.segments[s].gmv=Math.round(result.app.segments[s].gmv);});
+    result.participation_pct=result.total_ecomm_orders>0?Math.round(result.app.total/result.total_ecomm_orders*1000)/10:0;
+    result.utm_pct_sin=result.app.total>0?Math.round(result.app.sin_utm/result.app.total*1000)/10:0;
+    S.data[today]=result; S.rows[today]=rows;
+  })().catch(e=>console.warn("VTEX live error:",e)).finally(()=>{ _vtexP=null; });
+  return _vtexP;
+}
+
 // ── DATA ──────────────────────────────────────────────
 async function fetchDay(date){
   if(S.data[date]) return S.data[date];
   const isToday=date===todayAR();
+  if(isToday && VTEX_LIVE_OK){ await ensureVTEXToday(); return S.data[date]||null; }
   const ck="appdash_"+date, cached=isToday?null:localStorage.getItem(ck);
   if(cached){ try{ const p=JSON.parse(cached); S.data[date]=p; return p; }catch{} }
   try{
@@ -756,6 +822,7 @@ async function fetchDay(date){
 async function fetchRows(date){
   if(S.rows[date]) return S.rows[date];
   const isToday=date===todayAR();
+  if(isToday && VTEX_LIVE_OK){ await ensureVTEXToday(); return S.rows[date]||[]; }
   try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json${isToday?`?t=${Date.now()}`:""}`,{cache:isToday?"no-store":"default"}); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
 }
 async function loadMilestones(){
@@ -847,16 +914,25 @@ function updateLiveTs(){
   // Hora real del último pedido VTEX en el archivo de hoy
   const today=todayAR();
   const rows=S.rows[today]||[];
-  let vtexTs="";
+  if(VTEX_LIVE_OK){
+    // Datos en vivo de VTEX → mostrar hora del último pedido (si existe)
+    if(rows.length){
+      const last=rows.map(r=>r.fecha||"").filter(Boolean).sort().at(-1)||"";
+      const m=last.match(/(\d{1,2}:\d{2}):\d{2}$/);
+      el.textContent=m?`· VTEX en vivo (último: ${m[1]})`:"· VTEX en vivo";
+    } else {
+      el.textContent="· VTEX en vivo";
+    }
+    return;
+  }
+  // Fallback: hora del último pedido en el archivo
   if(rows.length){
     const last=rows.map(r=>r.fecha||"").filter(Boolean).sort().at(-1)||"";
-    // last = "16/6/2026, 09:25:50" → extraer HH:MM
     const m=last.match(/(\d{1,2}:\d{2}):\d{2}$/);
-    if(m) vtexTs=` · VTEX al ${m[1]}`;
+    if(m){ el.textContent=`· VTEX al ${m[1]}`; return; }
   }
   const mins=lastFetch?Math.floor((Date.now()-lastFetch)/60000):null;
-  const fetchStr=mins===null?"":mins===0?" · actualizado ahora":`· actualizado hace ${mins} min`;
-  el.textContent=vtexTs||fetchStr;
+  el.textContent=mins===null?"":mins===0?"· actualizado ahora":`· actualizado hace ${mins} min`;
 }
 setInterval(updateLiveTs,30000);
 
