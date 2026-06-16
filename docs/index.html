@@ -610,9 +610,13 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
     <div class="form-group">
       <label class="form-label">GitHub Personal Access Token</label>
       <input type="password" id="gh-token" class="form-input" placeholder="ghp_...">
-      <div style="font-size:12px;color:var(--ink-3);margin-top:5px;line-height:1.6">Opcional — ya viene preconfigurado. Solo cambialo si el token expiró.</div>
+      <div style="font-size:12px;color:var(--ink-3);margin-top:5px;line-height:1.6">Requerido para guardar hitos. Se guarda solo en este navegador.</div>
     </div>
     <div class="form-group"><label class="form-label">Repo (owner/nombre)</label><input type="text" id="gh-repo" class="form-input" placeholder="gastoncarreecommerce/vtex-utm-audit"></div>
+    <div style="border-top:1px solid var(--border);margin:18px 0 16px;padding-top:16px;font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px">VTEX Live (datos de hoy)</div>
+    <div class="form-group"><label class="form-label">VTEX App Key</label><input type="password" id="vtex-key" class="form-input" placeholder="vtexappkey-..."></div>
+    <div class="form-group"><label class="form-label">VTEX App Token</label><input type="password" id="vtex-token" class="form-input" placeholder="Token de acceso VTEX"></div>
+    <div style="font-size:12px;color:var(--ink-3);margin-top:-10px;margin-bottom:16px;line-height:1.6">Opcional — sin esto, "Hoy" carga del último JSON generado por el workflow. Se guardan solo en este navegador.</div>
     <div class="modal-actions">
       <button class="tbtn" onclick="closeSettings()">Cancelar</button>
       <button class="tbtn primary" onclick="saveSettings()">Guardar</button>
@@ -652,14 +656,13 @@ const USERS = [
   {username:"samuel",  name:"Samuel Moreira", avatar:"SM"},
 ];
 const PASSWORD = "AppDash123";
-const GH_TOKEN = "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"; // el workflow deploy-dashboard inyecta el secret GH_MILESTONES_TOKEN al publicar
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
-// VTEX live — deploy-dashboard.yml reemplaza estos placeholders con los secrets reales.
-// Solo se usan para consultar la vista de HOY directamente desde el browser.
-const VTEX_ACCOUNT   = "carrefourar";
-const VTEX_APP_KEY   = "vtexappkey-carrefourar-MWMRJK";
-const VTEX_APP_TOKEN = "HDIFEKVCXUWIEITIDDGLZPAMAKPVSMMRHIQKHKNDEDXUEOEJBXIOGURSATUMVNFHQIUERVAXKSSSVCBCVMFHJMCDHNFFNGJIVOGCFUIHEVZIQUYJSCMZYPFAPRINPYAJ";
-const VTEX_LIVE_OK   = VTEX_APP_KEY && !VTEX_APP_KEY.includes("VTEX_APP_KEY");
+const VTEX_ACCOUNT = "carrefourar";
+// Credenciales sensibles se leen solo de localStorage — nunca hardcodeadas aquí
+function getGHToken(){ return localStorage.getItem("gh_token")||""; }
+function getVTEXKey(){ return localStorage.getItem("vtex_key")||""; }
+function getVTEXToken(){ return localStorage.getItem("vtex_token")||""; }
+function isVTEXLiveOK(){ const k=getVTEXKey(); return !!(k&&k.startsWith("vtexappkey-")); }
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
 const S = {user:null,from:null,to:null,data:{},rows:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"}};
@@ -757,7 +760,7 @@ async function ensureVTEXToday(){
   if(_vtexP) return _vtexP;
   _vtexP=(async()=>{
     const base=`https://${VTEX_ACCOUNT}.vtexcommercestable.com.br`;
-    const hdrs={"X-VTEX-API-AppKey":VTEX_APP_KEY,"X-VTEX-API-AppToken":VTEX_APP_TOKEN};
+    const hdrs={"X-VTEX-API-AppKey":getVTEXKey(),"X-VTEX-API-AppToken":getVTEXToken()};
     // Rango del día de hoy en hora Argentina (UTC-3)
     const fromDT=`${today}T03:00:00.000Z`;
     const toDT=new Date(new Date(fromDT).getTime()+86400000-1).toISOString();
@@ -808,7 +811,7 @@ async function ensureVTEXToday(){
 async function fetchDay(date){
   if(S.data[date]) return S.data[date];
   const isToday=date===todayAR();
-  if(isToday && VTEX_LIVE_OK){ await ensureVTEXToday(); return S.data[date]||null; }
+  if(isToday && isVTEXLiveOK()){ await ensureVTEXToday(); if(S.data[date]) return S.data[date]; }
   const ck="appdash_"+date, cached=isToday?null:localStorage.getItem(ck);
   if(cached){ try{ const p=JSON.parse(cached); S.data[date]=p; return p; }catch{} }
   try{
@@ -822,7 +825,7 @@ async function fetchDay(date){
 async function fetchRows(date){
   if(S.rows[date]) return S.rows[date];
   const isToday=date===todayAR();
-  if(isToday && VTEX_LIVE_OK){ await ensureVTEXToday(); return S.rows[date]||[]; }
+  if(isToday && isVTEXLiveOK()){ await ensureVTEXToday(); if(S.rows[date]) return S.rows[date]; }
   try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json${isToday?`?t=${Date.now()}`:""}`,{cache:isToday?"no-store":"default"}); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
 }
 async function loadMilestones(){
@@ -831,8 +834,8 @@ async function loadMilestones(){
 }
 async function saveMilestones(){
   // Escritura vía repository_dispatch — el token SOLO dispara el workflow
-  const token=localStorage.getItem("gh_token")||GH_TOKEN;
-  if(!token||token.includes("GH_TOKEN")){ showToast("Token no configurado — vé a ⚙","error"); return false; }
+  const token=getGHToken();
+  if(!token){ showToast("GitHub Token no configurado — vé a ⚙","error"); return false; }
   try{
     const r=await fetch(`https://api.github.com/repos/${GH_REPO}/dispatches`,{
       method:"POST",
@@ -914,7 +917,7 @@ function updateLiveTs(){
   // Hora real del último pedido VTEX en el archivo de hoy
   const today=todayAR();
   const rows=S.rows[today]||[];
-  if(VTEX_LIVE_OK){
+  if(isVTEXLiveOK()){
     // Datos en vivo de VTEX → mostrar hora del último pedido (si existe)
     if(rows.length){
       const last=rows.map(r=>r.fecha||"").filter(Boolean).sort().at(-1)||"";
@@ -1578,9 +1581,26 @@ async function exportXLSX(){
 }
 
 // ── SETTINGS & USER ───────────────────────────────────
-function openSettings(){ document.getElementById("gh-token").value=localStorage.getItem("gh_token")||""; document.getElementById("gh-repo").value=localStorage.getItem("gh_repo")||""; document.getElementById("settings-modal").classList.remove("hidden"); }
+function openSettings(){
+  document.getElementById("gh-token").value=localStorage.getItem("gh_token")||"";
+  document.getElementById("gh-repo").value=localStorage.getItem("gh_repo")||"";
+  document.getElementById("vtex-key").value=localStorage.getItem("vtex_key")||"";
+  document.getElementById("vtex-token").value=localStorage.getItem("vtex_token")||"";
+  document.getElementById("settings-modal").classList.remove("hidden");
+}
 function closeSettings(){ document.getElementById("settings-modal").classList.add("hidden"); }
-function saveSettings(){ const t=document.getElementById("gh-token").value,r=document.getElementById("gh-repo").value; if(t)localStorage.setItem("gh_token",t); if(r)localStorage.setItem("gh_repo",r); closeSettings(); showToast("Configuración guardada","success"); }
+function saveSettings(){
+  const ghT=document.getElementById("gh-token").value;
+  const ghR=document.getElementById("gh-repo").value;
+  const vKey=document.getElementById("vtex-key").value;
+  const vTok=document.getElementById("vtex-token").value;
+  if(ghT) localStorage.setItem("gh_token",ghT); else localStorage.removeItem("gh_token");
+  if(ghR) localStorage.setItem("gh_repo",ghR);
+  if(vKey) localStorage.setItem("vtex_key",vKey); else localStorage.removeItem("vtex_key");
+  if(vTok) localStorage.setItem("vtex_token",vTok); else localStorage.removeItem("vtex_token");
+  closeSettings();
+  showToast("Configuración guardada","success");
+}
 function openUserMenu(){ document.getElementById("um-name").textContent=S.user.name; document.getElementById("user-modal").classList.remove("hidden"); }
 function closeUserMenu(){ document.getElementById("user-modal").classList.add("hidden"); }
 function refreshData(){ getDates(S.from,S.to).forEach(d=>{ localStorage.removeItem("appdash_"+d); delete S.data[d]; delete S.rows[d]; }); loadAll(S.from,S.to); showToast("Datos actualizados","success"); }
