@@ -177,6 +177,6 @@ export default async function handler(req, res) {
   result.utm_pct_sin = result.app.total > 0
     ? Math.round(result.app.sin_utm / result.app.total * 1000) / 10 : 0;
 
-  res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=300");
+  res.setHeader("Cache-Control", "no-store");
   res.json({ summary: result, rows });
 }
