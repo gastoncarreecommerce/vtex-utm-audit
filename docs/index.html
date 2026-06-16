@@ -687,7 +687,7 @@ function loginAs(u){
   document.getElementById("app").style.cssText="display:flex;height:100vh";
   document.getElementById("su-avatar").textContent=u.avatar;
   document.getElementById("su-name").textContent=u.name.split(" ")[0];
-  setPreset(-1,document.querySelectorAll(".preset-btn")[1]);
+  setPreset(1,document.querySelectorAll(".preset-btn")[0]);
 }
 function doLogout(){ localStorage.removeItem("appdash_sess"); location.reload(); }
 
@@ -841,7 +841,23 @@ async function renderDash(dates,pdates){
   }
   lastFetch=new Date(); updateLiveTs();
 }
-function updateLiveTs(){ const el=document.getElementById("live-updated"); if(!el||!lastFetch||document.getElementById("live-badge").style.display==="none"){ if(el)el.textContent=""; return; } const m=Math.floor((Date.now()-lastFetch)/60000); el.textContent=m===0?"· ahora mismo":`· hace ${m} min`; }
+function updateLiveTs(){
+  const el=document.getElementById("live-updated");
+  if(!el||document.getElementById("live-badge").style.display==="none"){ if(el)el.textContent=""; return; }
+  // Hora real del último pedido VTEX en el archivo de hoy
+  const today=todayAR();
+  const rows=S.rows[today]||[];
+  let vtexTs="";
+  if(rows.length){
+    const last=rows.map(r=>r.fecha||"").filter(Boolean).sort().at(-1)||"";
+    // last = "16/6/2026, 09:25:50" → extraer HH:MM
+    const m=last.match(/(\d{1,2}:\d{2}):\d{2}$/);
+    if(m) vtexTs=` · VTEX al ${m[1]}`;
+  }
+  const mins=lastFetch?Math.floor((Date.now()-lastFetch)/60000):null;
+  const fetchStr=mins===null?"":mins===0?" · actualizado ahora":`· actualizado hace ${mins} min`;
+  el.textContent=vtexTs||fetchStr;
+}
 setInterval(updateLiveTs,30000);
 
 // devuelve {cur,prev} para una métrica según la clave
