@@ -730,16 +730,18 @@ function setPreset(days,btn){
   document.getElementById("topbar-range").textContent=fmtRangeAR(S.from,S.to);
   if(days===1){
     document.getElementById("live-badge").style.display="";
-    // Limpiar caché para forzar recarga del JSON estático
-    localStorage.removeItem("appdash_"+today); delete S.data[today]; delete S.rows[today];
-    // Intervalo: solo fetcha delta (no borra S.data para que la UI no quede en blanco)
-    liveInterval=setInterval(async ()=>{
+    localStorage.removeItem("appdash_"+today);
+    // Si ya tenemos datos en memoria los reutilizamos — no tiramos nada.
+    // Solo lanzamos un delta inmediato para refrescar lo que falta.
+    const runDelta=async()=>{
       const t=todayAR();
       await fetchTodayDelta(t);
       const dates=getDates(S.from,S.to);
       const [pf,pt]=prevRange(S.from,S.to);
       renderDash(dates,getDates(pf,pt));
-    }, 60*1000);
+    };
+    runDelta();
+    liveInterval=setInterval(runDelta, 60*1000);
   }
   loadAll(S.from,S.to);
 }
@@ -808,19 +810,22 @@ async function fetchDay(date){
     // 1. Cargar JSON estático del workflow inmediatamente (rápido)
     try{
       const r=await fetch(`${DATA_BASE}/daily/${date}.json?t=${Date.now()}`,{cache:"no-store"});
-      if(r.ok){ S.data[date]=await r.json(); }
+      if(r.ok) S.data[date]=await r.json();
     }catch{}
-    // 2. Cargar rows estáticos en paralelo
+    // 2. Rows estáticos en paralelo (no bloqueante)
     if(!S.rows[date]){
       fetch(`${DATA_BASE}/daily/${date}-rows.json?t=${Date.now()}`,{cache:"no-store"})
         .then(r=>r.ok?r.json():null).then(d=>{ if(d) S.rows[date]=d; }).catch(()=>{});
     }
-    // 3. Fetchear delta de pedidos nuevos desde la API (en background)
-    fetchTodayDelta(date).then(()=>{
-      const dates=getDates(S.from,S.to);
-      const [pf,pt]=prevRange(S.from,S.to);
-      renderDash(dates,getDates(pf,pt));
-    });
+    // 3. Delta en background — solo si el intervalo no lo está haciendo ya
+    // (el intervalo llama fetchTodayDelta directamente, este caso es solo el primer load)
+    if(!_todayPromise){
+      fetchTodayDelta(date).then(()=>{
+        const dates=getDates(S.from,S.to);
+        const [pf,pt]=prevRange(S.from,S.to);
+        renderDash(dates,getDates(pf,pt));
+      });
+    }
     return S.data[date]||null;
   }
   const ck="appdash_"+date, cached=localStorage.getItem(ck);
