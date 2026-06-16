@@ -119,6 +119,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 .live-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:24px;padding:4px 11px;font-size:11px;font-weight:700;color:var(--green);margin-left:10px}
 .live-dot{width:7px;height:7px;border-radius:50%;background:var(--green-l);animation:livePulse 1.5s infinite;box-shadow:0 0 0 0 rgba(16,185,129,.6)}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 6px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
 .live-updated{font-size:11px;color:var(--ink-4);margin-left:8px}
 
 /* KPI */
@@ -353,6 +354,10 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
         <span class="tt-range" id="topbar-range"></span>
         <span id="live-badge" style="display:none" class="live-badge"><span class="live-dot"></span>En vivo</span>
         <span id="live-updated" class="live-updated"></span>
+        <span id="delta-loading" style="display:none;font-size:11px;color:var(--indigo);margin-left:6px;display:none;align-items:center;gap:5px">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin .8s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          Actualizando...
+        </span>
       </div>
       <div class="topbar-controls" id="topbar-controls">
         <div class="date-range-group">
@@ -716,6 +721,7 @@ function setPreset(days,btn){
   clearInterval(liveInterval); liveInterval=null;
   document.getElementById("live-badge").style.display="none";
   document.getElementById("live-updated").textContent="";
+  setDeltaLoading(false);
   if(days===-1){ S.from=addDays(today,-1); S.to=addDays(today,-1); }
   else if(days===0){ S.from=today.slice(0,7)+"-01"; S.to=today; }
   else { S.from=addDays(today,-(days-1)); S.to=today; }
@@ -765,10 +771,15 @@ function mergeSummaryDelta(base, delta){
 }
 
 // Fetcha solo el delta de nuevos pedidos desde fetched_at del JSON estático
+function setDeltaLoading(on){
+  const el=document.getElementById("delta-loading");
+  if(el) el.style.display=on?"inline-flex":"none";
+}
 async function fetchTodayDelta(date){
   if(_todayPromise) return _todayPromise;
   const since=S.data[date]?.fetched_at||null;
   const url=`/api/today?date=${date}${since?`&since=${encodeURIComponent(since)}`:""}&t=${Date.now()}`;
+  setDeltaLoading(true);
   _todayPromise=fetch(url)
     .then(r=>r.ok?r.json():null)
     .then(d=>{
@@ -786,7 +797,7 @@ async function fetchTodayDelta(date){
       if(S.data[date]) S.data[date].fetched_at=d.fetched_at||new Date().toISOString();
     })
     .catch(()=>{})
-    .finally(()=>{ _todayPromise=null; });
+    .finally(()=>{ _todayPromise=null; setDeltaLoading(false); });
   return _todayPromise;
 }
 
