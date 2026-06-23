@@ -806,17 +806,48 @@ function recomputeTodaySummary(date,state){
   };
 }
 
+// Snapshot COMPARTIDO entre usuarios: cada 5 min un cron de GitHub Actions ya hace
+// el fetch completo del día y lo deja en docs/data/daily/<hoy>.json (el mismo lugar
+// donde se guardan los días anteriores). Si existe, lo usamos como punto de partida
+// — así el primer usuario del día no es el único que "paga" el costo del fetch
+// completo: todos arrancan ya con lo que el cron dejó, y solo completan el huequito
+// entre ese snapshot y el momento actual con el fetch incremental de siempre.
+async function seedFromSnapshot(date,state){
+  try{
+    const [rs,rr]=await Promise.all([
+      fetch(`${DATA_BASE}/daily/${date}.json`,{cache:"no-store"}),
+      fetch(`${DATA_BASE}/daily/${date}-rows.json`,{cache:"no-store"})
+    ]);
+    if(!rs.ok||!rr.ok) return false;
+    const summary=await rs.json(), rows=await rr.json();
+    if(!summary?.fetched_at||!Array.isArray(rows)) return false;
+    for(const row of rows){
+      if(state.seen.has(row.order_id)) continue;
+      state.seen.add(row.order_id);
+      state.rows.push(row);
+    }
+    state.totalOrders=summary.total_ecomm_orders||0;
+    state.lastTo=summary.fetched_at;
+    return true;
+  }catch{ return false; }
+}
+
 let _liveP=null;
 async function fetchTodayLive(date){
   if(_liveP) return _liveP;
   setDeltaLoading(true);
   const state=S.todayState[date]||(S.todayState[date]={rows:[],seen:new Set(),totalOrders:0,lastTo:null});
-  const url=state.lastTo
-    ? `/api/today?date=${date}&since=${encodeURIComponent(state.lastTo)}&t=${Date.now()}`
-    : `/api/today?date=${date}&t=${Date.now()}`;
-  _liveP=fetch(url,{cache:"no-store"})
-    .then(r=>r.ok?r.json():null)
-    .then(d=>{
+  _liveP=(async()=>{
+    if(state.lastTo===null){
+      const seeded=await seedFromSnapshot(date,state);
+      if(seeded){ S.data[date]=recomputeTodaySummary(date,state); S.rows[date]=state.rows; }
+    }
+    const url=state.lastTo
+      ? `/api/today?date=${date}&since=${encodeURIComponent(state.lastTo)}&t=${Date.now()}`
+      : `/api/today?date=${date}&t=${Date.now()}`;
+    try{
+      const r=await fetch(url,{cache:"no-store"});
+      const d=r.ok?await r.json():null;
       if(!d?.summary) return; // fetch falló → mantenemos lo último mostrado, no pisamos con ceros
       for(const row of (d.rows||[])){
         if(state.seen.has(row.order_id)) continue;
@@ -827,9 +858,8 @@ async function fetchTodayLive(date){
       if(d.window_to) state.lastTo=d.window_to;
       S.data[date]=recomputeTodaySummary(date,state);
       S.rows[date]=state.rows;
-    })
-    .catch(()=>{})
-    .finally(()=>{ _liveP=null; setDeltaLoading(false); });
+    }catch{}
+  })().finally(()=>{ _liveP=null; setDeltaLoading(false); });
   return _liveP;
 }
 
