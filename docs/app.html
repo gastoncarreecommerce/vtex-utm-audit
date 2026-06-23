@@ -780,6 +780,10 @@ let _todayPromise=null;
 // Mergea un delta de la API sobre el summary base que ya está en S.data
 function mergeSummaryDelta(base, delta){
   const m=JSON.parse(JSON.stringify(base));
+  // El delta trae el total de ecommerce SOLO de la ventana [since, hoy] — hay que sumarlo
+  // al acumulado del día, igual que el numerador. Si no se suma, el denominador queda
+  // congelado en el primer fetch del día y la participación termina superando el 100%.
+  m.total_ecomm_orders+=delta.total_ecomm_orders||0; m.total_ecomm_gmv+=delta.total_ecomm_gmv||0;
   m.app.total+=delta.app.total; m.app.gmv+=delta.app.gmv;
   m.app.con_utm+=delta.app.con_utm; m.app.sin_utm+=delta.app.sin_utm;
   ["food","non_food","marketplace","quickcommerce"].forEach(s=>{
@@ -787,7 +791,8 @@ function mergeSummaryDelta(base, delta){
     m.app.segments[s].gmv+=delta.app.segments[s].gmv;
   });
   m.utm_pct_sin=m.app.total>0?Math.round(m.app.sin_utm/m.app.total*1000)/10:0;
-  m.participation_pct=m.total_ecomm_orders>0?Math.round(m.app.total/m.total_ecomm_orders*1000)/10:0;
+  m.total_ecomm_orders=Math.max(m.total_ecomm_orders,m.app.total); // nunca menos que los pedidos app encontrados
+  m.participation_pct=m.total_ecomm_orders>0?Math.min(100,Math.round(m.app.total/m.total_ecomm_orders*1000)/10):0;
   return m;
 }
 
