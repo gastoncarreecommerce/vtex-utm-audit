@@ -2,11 +2,15 @@
  * api/today.js — Vercel serverless proxy para datos VTEX en vivo.
  * Credenciales se leen de las env vars de Vercel (nunca expuestas al browser).
  *
- * GET /api/today?date=YYYY-MM-DD   (default: hoy en hora Argentina)
- * Responde: { summary: {...}, rows: [...], fetched_at }
+ * GET /api/today?date=YYYY-MM-DD[&since=ISO]   (default date: hoy en hora Argentina)
+ * Responde: { summary: {...}, rows: [...], window_to, fetched_at }
  *
- * Siempre hace una consulta COMPLETA y en vivo del día — sin cache, sin deltas.
- * Cada llamada es una foto fresca y consistente de VTEX en ese instante.
+ * Sin `since`: consulta el día completo desde medianoche hasta ahora.
+ * Con `since`: consulta solo la VENTANA [since, ahora] — `summary`/`rows` son
+ * SOLO de esa ventana, no acumulados. El servidor nunca cachea ni guarda nada;
+ * la acumulación de pedidos ya vistos vive en memoria del browser (ver fetchTodayLive
+ * en docs/app.html), que también recalcula el resumen completo desde cero en cada
+ * tick para no repetir el bug de mergear porcentajes ya calculados.
  */
 
 const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT || "carrefourar";
@@ -67,6 +71,21 @@ function formatFechaAR(iso) {
   return `${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getUTCFullYear()}, ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`;
 }
 
+function emptyWindowSummary(date) {
+  return {
+    date, total_ecomm_orders: 0, total_ecomm_gmv: 0,
+    app: {
+      total: 0, gmv: 0, con_utm: 0, sin_utm: 0,
+      segments: {
+        food:          { orders: 0, gmv: 0 },
+        non_food:      { orders: 0, gmv: 0 },
+        marketplace:   { orders: 0, gmv: 0 },
+        quickcommerce: { orders: 0, gmv: 0 }
+      }
+    }
+  };
+}
+
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 // Timeout corto por request — si VTEX se cuelga en una sola llamada no queremos
@@ -116,9 +135,33 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "VTEX credentials not configured in Vercel env vars" });
   }
 
-  const date     = (req.query.date || todayAR()).slice(0, 10);
-  const fromDT   = `${date}T03:00:00.000Z`;
-  const toDT     = new Date(new Date(fromDT).getTime() + 86400000 - 1).toISOString();
+  const date      = (req.query.date || todayAR()).slice(0, 10);
+  const dayStartMs = new Date(`${date}T03:00:00.000Z`).getTime();
+  const dayEndMs    = dayStartMs + 86400000 - 1;
+
+  // `since` permite traer solo la VENTANA de pedidos nuevos desde el último fetch
+  // exitoso del browser (que acumula los pedidos crudos en memoria, nunca en disco).
+  // El total y los agregados de esta respuesta son SOLO de esta ventana — el cliente
+  // los suma a lo que ya tiene y recalcula el resumen completo desde cero, nunca
+  // mergea porcentajes ya calculados (esa mezcla fue la causa del bug de >100%).
+  let fromMs = dayStartMs;
+  const sinceMs = req.query.since ? new Date(req.query.since).getTime() : NaN;
+  if (!isNaN(sinceMs)) fromMs = Math.max(fromMs, sinceMs + 1);
+  const toMs = Math.min(dayEndMs, Date.now());
+
+  if (toMs < fromMs) {
+    // Ya pedimos todo lo que existe hasta ahora — nada nuevo en esta ventana.
+    res.setHeader("Cache-Control", "no-store");
+    return res.json({
+      summary: emptyWindowSummary(date),
+      rows: [],
+      window_to: new Date(fromMs - 1).toISOString(),
+      fetched_at: new Date().toISOString()
+    });
+  }
+
+  const fromDT   = new Date(fromMs).toISOString();
+  const toDT     = new Date(toMs).toISOString();
   const filter   = `creationDate:[${fromDT} TO ${toDT}]`;
   const base     = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br`;
   const listUrl  = page => `${base}/api/oms/pvt/orders?f_creationDate=${encodeURIComponent(filter)}&orderBy=creationDate,desc&page=${page}&per_page=100`;
@@ -210,5 +253,5 @@ export default async function handler(req, res) {
     ? Math.round(result.app.sin_utm / result.app.total * 1000) / 10 : 0;
 
   res.setHeader("Cache-Control", "no-store");
-  res.json({ summary: result, rows, fetched_at: new Date().toISOString() });
+  res.json({ summary: result, rows, window_to: toDT, fetched_at: new Date().toISOString() });
 }

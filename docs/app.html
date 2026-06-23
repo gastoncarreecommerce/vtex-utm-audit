@@ -661,7 +661,7 @@ const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 function getGHToken(){ return localStorage.getItem("gh_token")||""; }
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
-const S = {user:null,from:null,to:null,data:{},rows:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"}};
+const S = {user:null,from:null,to:null,data:{},rows:{},todayState:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"}};
 let currentMsType="promo", liveInterval=null, lastFetch=null;
 
 // ── DATE FORMAT (Argentina dd/mm/yyyy) ────────────────
@@ -747,11 +747,14 @@ function setPreset(days,btn){
   document.getElementById("topbar-range").textContent=fmtRangeAR(S.from,S.to);
   if(days===1){
     document.getElementById("live-badge").style.display="";
-    // "Hoy" es 100% en vivo: cada refresco vuelve a consultar VTEX completo, sin
-    // cache ni merge de deltas — así el número siempre es exacto, nunca acumulado.
+    // "Hoy" trae datos en vivo de VTEX. Cada tick solo pide la VENTANA de pedidos
+    // nuevos desde el último fetch (no se cachea/almacena nada en disco — todo vive
+    // en memoria, S.todayState, y se pierde al cerrar/recargar la pestaña). El resumen
+    // siempre se recalcula desde cero sobre el set completo acumulado, nunca se mergean
+    // porcentajes ya calculados.
     const runLive=async()=>{
       const t=todayAR();
-      await fetchTodayLive(t,true);
+      await fetchTodayLive(t);
       const dates=getDates(S.from,S.to);
       const [pf,pt]=prevRange(S.from,S.to);
       renderDash(dates,getDates(pf,pt));
@@ -777,20 +780,53 @@ function setDeltaLoading(on){
   if(el) el.style.display=on?"inline-flex":"none";
 }
 
-// "Hoy" es 100% en vivo: sin localStorage, sin merge de deltas. Cada llamada trae
-// una foto completa y fresca de VTEX (api/today.js corre la query del día entero).
-// force=true ignora lo que ya está en memoria y vuelve a pedir todo de nuevo.
+// "Hoy" en vivo: NADA se guarda en disco (ni localStorage ni servidor). Lo único que
+// existe es S.todayState[date] en memoria del browser — pedidos crudos ya vistos +
+// el total de pedidos acumulado — que se pierde al cerrar/recargar la pestaña.
+// Cada tick pide a api/today.js solo la VENTANA de pedidos nuevos (since=lastTo),
+// y el resumen mostrado se recalcula siempre desde cero sobre el set completo
+// (recomputeTodaySummary), nunca se suman/mergean porcentajes ya calculados —
+// así no puede repetirse el bug de participación >100%.
+function recomputeTodaySummary(date,state){
+  const segs={food:{orders:0,gmv:0},non_food:{orders:0,gmv:0},marketplace:{orders:0,gmv:0},quickcommerce:{orders:0,gmv:0}};
+  let gmv=0,conUtm=0,sinUtm=0;
+  for(const r of state.rows){
+    gmv+=r.total||0;
+    if(r.utm_source) conUtm++; else sinUtm++;
+    (segs[r.segment]||segs.food).orders++;
+    (segs[r.segment]||segs.food).gmv+=r.total||0;
+  }
+  const appTotal=state.rows.length;
+  const totalEcomm=Math.max(state.totalOrders,appTotal);
+  return {
+    date, total_ecomm_orders:totalEcomm, total_ecomm_gmv:0,
+    app:{ total:appTotal, gmv:Math.round(gmv), con_utm:conUtm, sin_utm:sinUtm, segments:segs },
+    participation_pct: totalEcomm>0 ? Math.min(100,Math.round(appTotal/totalEcomm*1000)/10) : 0,
+    utm_pct_sin: appTotal>0 ? Math.round(sinUtm/appTotal*1000)/10 : 0
+  };
+}
+
 let _liveP=null;
-async function fetchTodayLive(date,force){
-  if(!force && S.data[date] && S.rows[date]) return;
+async function fetchTodayLive(date){
   if(_liveP) return _liveP;
   setDeltaLoading(true);
-  _liveP=fetch(`/api/today?date=${date}&t=${Date.now()}`,{cache:"no-store"})
+  const state=S.todayState[date]||(S.todayState[date]={rows:[],seen:new Set(),totalOrders:0,lastTo:null});
+  const url=state.lastTo
+    ? `/api/today?date=${date}&since=${encodeURIComponent(state.lastTo)}&t=${Date.now()}`
+    : `/api/today?date=${date}&t=${Date.now()}`;
+  _liveP=fetch(url,{cache:"no-store"})
     .then(r=>r.ok?r.json():null)
     .then(d=>{
       if(!d?.summary) return; // fetch falló → mantenemos lo último mostrado, no pisamos con ceros
-      S.data[date]=d.summary;
-      S.rows[date]=d.rows||[];
+      for(const row of (d.rows||[])){
+        if(state.seen.has(row.order_id)) continue;
+        state.seen.add(row.order_id);
+        state.rows.push(row);
+      }
+      state.totalOrders+=d.summary.total_ecomm_orders||0;
+      if(d.window_to) state.lastTo=d.window_to;
+      S.data[date]=recomputeTodaySummary(date,state);
+      S.rows[date]=state.rows;
     })
     .catch(()=>{})
     .finally(()=>{ _liveP=null; setDeltaLoading(false); });
@@ -798,7 +834,7 @@ async function fetchTodayLive(date,force){
 }
 
 async function fetchDay(date){
-  if(date===todayAR()){ await fetchTodayLive(date,false); return S.data[date]||null; }
+  if(date===todayAR()){ await fetchTodayLive(date); return S.data[date]||null; }
   if(S.data[date]) return S.data[date];
   const ck="appdash_"+date, cached=localStorage.getItem(ck);
   if(cached){ try{ const p=JSON.parse(cached); S.data[date]=p; return p; }catch{} }
@@ -811,7 +847,7 @@ async function fetchDay(date){
   }catch{ return null; }
 }
 async function fetchRows(date){
-  if(date===todayAR()){ await fetchTodayLive(date,false); return S.rows[date]||[]; }
+  if(date===todayAR()){ await fetchTodayLive(date); return S.rows[date]||[]; }
   if(S.rows[date]) return S.rows[date];
   try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json`,{cache:"default"}); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
 }
