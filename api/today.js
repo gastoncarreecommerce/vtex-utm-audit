@@ -3,7 +3,10 @@
  * Credenciales se leen de las env vars de Vercel (nunca expuestas al browser).
  *
  * GET /api/today?date=YYYY-MM-DD   (default: hoy en hora Argentina)
- * Responde: { summary: {...}, rows: [...] }
+ * Responde: { summary: {...}, rows: [...], fetched_at }
+ *
+ * Siempre hace una consulta COMPLETA y en vivo del día — sin cache, sin deltas.
+ * Cada llamada es una foto fresca y consistente de VTEX en ese instante.
  */
 
 const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT || "carrefourar";
@@ -66,7 +69,7 @@ function formatFechaAR(iso) {
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-async function vtexFetch(url, retries = 5) {
+async function vtexFetch(url, retries = 4) {
   for (let i = 0; i < retries; i++) {
     const res = await fetch(url, {
       headers: { "X-VTEX-API-AppKey": VTEX_KEY, "X-VTEX-API-AppToken": VTEX_TOKEN }
@@ -75,9 +78,25 @@ async function vtexFetch(url, retries = 5) {
     if (res.status === 401 || res.status === 403 || res.status === 404) {
       throw new Error(`VTEX ${res.status}`);
     }
-    if (i < retries - 1) await sleep(1000 * Math.pow(2, i));
+    if (i < retries - 1) await sleep(600 * Math.pow(2, i));
   }
   throw new Error("VTEX fetch failed after retries");
+}
+
+// Pool de concurrencia fija — evita disparar miles de requests a la vez (rate limit)
+// pero mantiene siempre `limit` requests en vuelo para terminar lo antes posible.
+async function mapLimit(items, limit, fn) {
+  const results = new Array(items.length);
+  let idx = 0;
+  async function worker() {
+    while (idx < items.length) {
+      const i = idx++;
+      try { results[i] = await fn(items[i], i); }
+      catch { results[i] = null; }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+  return results;
 }
 
 export default async function handler(req, res) {
@@ -85,19 +104,37 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "VTEX credentials not configured in Vercel env vars" });
   }
 
-  const date    = (req.query.date || todayAR()).slice(0, 10);
-  const since   = req.query.since || null; // ISO UTC — si viene, solo fetcheamos el delta
-  const fetchedAt = new Date().toISOString();
-  const dayStart = `${date}T03:00:00.000Z`;
-  const fromDT  = since && new Date(since) > new Date(dayStart) ? since : dayStart;
-  const toDT    = new Date(new Date(dayStart).getTime() + 86400000 - 1).toISOString();
-  const filter  = `creationDate:[${fromDT} TO ${toDT}]`;
-  const isDelta = !!(since && new Date(since) > new Date(dayStart));
-  const base    = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br`;
+  const date     = (req.query.date || todayAR()).slice(0, 10);
+  const fromDT   = `${date}T03:00:00.000Z`;
+  const toDT     = new Date(new Date(fromDT).getTime() + 86400000 - 1).toISOString();
+  const filter   = `creationDate:[${fromDT} TO ${toDT}]`;
+  const base     = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br`;
+  const listUrl  = page => `${base}/api/oms/pvt/orders?f_creationDate=${encodeURIComponent(filter)}&orderBy=creationDate,desc&page=${page}&per_page=100`;
+
+  // 1) Página 1 → conocer el total y cuántas páginas más faltan
+  let firstPage;
+  try { firstPage = await vtexFetch(listUrl(1)); }
+  catch (e) { return res.status(502).json({ error: `VTEX list error: ${e.message}` }); }
+
+  const total      = firstPage?.paging?.total || 0;
+  const totalPages = Math.max(1, Math.ceil(total / 100));
+  const ids        = (firstPage?.list || []).map(o => o.orderId).filter(Boolean);
+
+  // 2) Resto de páginas (si hay) en paralelo — listar es liviano, no necesita mucho límite
+  if (totalPages > 1) {
+    const restPages = Array.from({ length: totalPages - 1 }, (_, i) => i + 2);
+    const restLists = await mapLimit(restPages, 6, p => vtexFetch(listUrl(p)));
+    for (const data of restLists) {
+      if (data?.list) ids.push(...data.list.map(o => o.orderId).filter(Boolean));
+    }
+  }
+
+  // 3) Detalle de cada pedido en paralelo (concurrencia alta — es lo que determina el tiempo total)
+  const details = await mapLimit(ids, 40, id => vtexFetch(`${base}/api/oms/pvt/orders/${id}`));
 
   const result = {
     date,
-    total_ecomm_orders: 0,
+    total_ecomm_orders: total,
     total_ecomm_gmv:    0,
     app: {
       total: 0, gmv: 0, con_utm: 0, sin_utm: 0,
@@ -112,63 +149,34 @@ export default async function handler(req, res) {
   const rows = [];
   const seen = new Set();
 
-  let page = 1, totalPages = null;
-
-  while (true) {
-    try {
-      const url  = `${base}/api/oms/pvt/orders?f_creationDate=${encodeURIComponent(filter)}&orderBy=creationDate,desc&page=${page}&per_page=100`;
-      const data = await vtexFetch(url);
-      if (!data?.list) break;
-
-      if (totalPages === null) {
-        result.total_ecomm_orders = data.paging?.total || 0;
-        totalPages = Math.max(1, Math.ceil(result.total_ecomm_orders / 100));
-      }
-
-      const ids = data.list.map(o => o.orderId).filter(Boolean);
-
-      // Detalles en paralelo en bloques de 20
-      for (let i = 0; i < ids.length; i += 20) {
-        const batch   = ids.slice(i, i + 20);
-        const details = await Promise.all(
-          batch.map(id => vtexFetch(`${base}/api/oms/pvt/orders/${id}`).catch(() => null))
-        );
-        for (const d of details) {
-          if (!d?.orderId || getAppFrom(d) !== "app" || seen.has(d.orderId)) continue;
-          seen.add(d.orderId);
-          const seg = categorize(d);
-          const gmv = typeof d.value === "number" ? d.value / 100 : 0;
-          const utm = d.marketingData?.utmSource || "";
-          result.app.total++;
-          result.app.gmv += gmv;
-          utm ? result.app.con_utm++ : result.app.sin_utm++;
-          result.app.segments[seg].orders++;
-          result.app.segments[seg].gmv += gmv;
-          rows.push({
-            order_id:     d.orderId,
-            fecha:        formatFechaAR(d.creationDate),
-            estado:       d.status || "",
-            total:        Math.round(gmv),
-            utm_source:   utm,
-            utm_medium:   d.marketingData?.utmMedium   || "",
-            utm_campaign: d.marketingData?.utmCampaign || "",
-            coupon:       d.marketingData?.coupon      || "",
-            segment:      seg,
-            email:        d.clientProfileData?.email   || "",
-            utm_status:   utm ? "CON UTM" : "SIN UTM",
-            items: (d.items || []).map(i => ({
-              id: i.id, name: i.name, sku: i.refId || i.id,
-              qty: i.quantity, price: (i.price || 0) / 100, seller: i.seller
-            }))
-          });
-        }
-      }
-
-      if (page >= totalPages) break;
-      page++;
-    } catch {
-      break;
-    }
+  for (const d of details) {
+    if (!d?.orderId || getAppFrom(d) !== "app" || seen.has(d.orderId)) continue;
+    seen.add(d.orderId);
+    const seg = categorize(d);
+    const gmv = typeof d.value === "number" ? d.value / 100 : 0;
+    const utm = d.marketingData?.utmSource || "";
+    result.app.total++;
+    result.app.gmv += gmv;
+    utm ? result.app.con_utm++ : result.app.sin_utm++;
+    result.app.segments[seg].orders++;
+    result.app.segments[seg].gmv += gmv;
+    rows.push({
+      order_id:     d.orderId,
+      fecha:        formatFechaAR(d.creationDate),
+      estado:       d.status || "",
+      total:        Math.round(gmv),
+      utm_source:   utm,
+      utm_medium:   d.marketingData?.utmMedium   || "",
+      utm_campaign: d.marketingData?.utmCampaign || "",
+      coupon:       d.marketingData?.coupon      || "",
+      segment:      seg,
+      email:        d.clientProfileData?.email   || "",
+      utm_status:   utm ? "CON UTM" : "SIN UTM",
+      items: (d.items || []).map(i => ({
+        id: i.id, name: i.name, sku: i.refId || i.id,
+        qty: i.quantity, price: (i.price || 0) / 100, seller: i.seller
+      }))
+    });
   }
 
   // Cerrar totales
@@ -176,11 +184,12 @@ export default async function handler(req, res) {
   ["food","non_food","marketplace","quickcommerce"].forEach(s => {
     result.app.segments[s].gmv = Math.round(result.app.segments[s].gmv);
   });
+  result.total_ecomm_orders = Math.max(result.total_ecomm_orders, result.app.total);
   result.participation_pct = result.total_ecomm_orders > 0
-    ? Math.round(result.app.total / result.total_ecomm_orders * 1000) / 10 : 0;
+    ? Math.min(100, Math.round(result.app.total / result.total_ecomm_orders * 1000) / 10) : 0;
   result.utm_pct_sin = result.app.total > 0
     ? Math.round(result.app.sin_utm / result.app.total * 1000) / 10 : 0;
 
   res.setHeader("Cache-Control", "no-store");
-  res.json({ summary: result, rows, delta: isDelta, fetched_at: fetchedAt });
+  res.json({ summary: result, rows, fetched_at: new Date().toISOString() });
 }
