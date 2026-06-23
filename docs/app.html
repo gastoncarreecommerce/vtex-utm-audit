@@ -728,8 +728,6 @@ function switchView(v,btn){
 
 // ── DATES ─────────────────────────────────────────────
 function todayAR(){ return new Date(Date.now()-3*3600000).toISOString().slice(0,10); }
-// Limpiar caches live de días anteriores al arrancar
-(()=>{ const today=new Date(Date.now()-3*3600000).toISOString().slice(0,10); for(const k of Object.keys(localStorage)) if(k.startsWith("appdash_live_")&&!k.endsWith(today)) localStorage.removeItem(k); })();
 function addDays(s,n){ const d=new Date(s+"T12:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
 function getDates(from,to){ const a=[],e=new Date(to+"T12:00:00Z"); let c=new Date(from+"T12:00:00Z"); while(c<=e){a.push(c.toISOString().slice(0,10));c.setUTCDate(c.getUTCDate()+1);} return a; }
 
@@ -749,18 +747,17 @@ function setPreset(days,btn){
   document.getElementById("topbar-range").textContent=fmtRangeAR(S.from,S.to);
   if(days===1){
     document.getElementById("live-badge").style.display="";
-    localStorage.removeItem("appdash_"+today);
-    // Si ya tenemos datos en memoria los reutilizamos — no tiramos nada.
-    // Solo lanzamos un delta inmediato para refrescar lo que falta.
-    const runDelta=async()=>{
+    // "Hoy" es 100% en vivo: cada refresco vuelve a consultar VTEX completo, sin
+    // cache ni merge de deltas — así el número siempre es exacto, nunca acumulado.
+    const runLive=async()=>{
       const t=todayAR();
-      await fetchTodayDelta(t);
+      await fetchTodayLive(t,true);
       const dates=getDates(S.from,S.to);
       const [pf,pt]=prevRange(S.from,S.to);
       renderDash(dates,getDates(pf,pt));
     };
-    runDelta();
-    liveInterval=setInterval(runDelta, 60*1000);
+    runLive();
+    liveInterval=setInterval(runLive, 60*1000);
   }
   loadAll(S.from,S.to);
 }
@@ -775,95 +772,34 @@ function loadRange(){
 }
 
 // ── DATA ──────────────────────────────────────────────
-let _todayPromise=null;
-
-// Mergea un delta de la API sobre el summary base que ya está en S.data
-function mergeSummaryDelta(base, delta){
-  const m=JSON.parse(JSON.stringify(base));
-  // El delta trae el total de ecommerce SOLO de la ventana [since, hoy] — hay que sumarlo
-  // al acumulado del día, igual que el numerador. Si no se suma, el denominador queda
-  // congelado en el primer fetch del día y la participación termina superando el 100%.
-  m.total_ecomm_orders+=delta.total_ecomm_orders||0; m.total_ecomm_gmv+=delta.total_ecomm_gmv||0;
-  m.app.total+=delta.app.total; m.app.gmv+=delta.app.gmv;
-  m.app.con_utm+=delta.app.con_utm; m.app.sin_utm+=delta.app.sin_utm;
-  ["food","non_food","marketplace","quickcommerce"].forEach(s=>{
-    m.app.segments[s].orders+=delta.app.segments[s].orders;
-    m.app.segments[s].gmv+=delta.app.segments[s].gmv;
-  });
-  m.utm_pct_sin=m.app.total>0?Math.round(m.app.sin_utm/m.app.total*1000)/10:0;
-  m.total_ecomm_orders=Math.max(m.total_ecomm_orders,m.app.total); // nunca menos que los pedidos app encontrados
-  m.participation_pct=m.total_ecomm_orders>0?Math.min(100,Math.round(m.app.total/m.total_ecomm_orders*1000)/10):0;
-  return m;
-}
-
-// Fetcha solo el delta de nuevos pedidos desde fetched_at del JSON estático
 function setDeltaLoading(on){
   const el=document.getElementById("delta-loading");
   if(el) el.style.display=on?"inline-flex":"none";
 }
-async function fetchTodayDelta(date){
-  if(_todayPromise) return _todayPromise;
-  const since=S.data[date]?.fetched_at||null;
-  const url=`/api/today?date=${date}${since?`&since=${encodeURIComponent(since)}`:""}&t=${Date.now()}`;
+
+// "Hoy" es 100% en vivo: sin localStorage, sin merge de deltas. Cada llamada trae
+// una foto completa y fresca de VTEX (api/today.js corre la query del día entero).
+// force=true ignora lo que ya está en memoria y vuelve a pedir todo de nuevo.
+let _liveP=null;
+async function fetchTodayLive(date,force){
+  if(!force && S.data[date] && S.rows[date]) return;
+  if(_liveP) return _liveP;
   setDeltaLoading(true);
-  _todayPromise=fetch(url)
+  _liveP=fetch(`/api/today?date=${date}&t=${Date.now()}`,{cache:"no-store"})
     .then(r=>r.ok?r.json():null)
     .then(d=>{
-      if(!d?.summary) return;
-      if(d.delta && S.data[date]){
-        S.data[date]=mergeSummaryDelta(S.data[date], d.summary);
-        const existing=new Set((S.rows[date]||[]).map(r=>r.order_id));
-        const newRows=(d.rows||[]).filter(r=>!existing.has(r.order_id));
-        S.rows[date]=[...(S.rows[date]||[]),...newRows];
-      } else {
-        S.data[date]=d.summary;
-        S.rows[date]=d.rows||[];
-      }
-      if(S.data[date]) S.data[date].fetched_at=d.fetched_at||new Date().toISOString();
-      // Persistir en localStorage para sobrevivir el refresh
-      try{
-        localStorage.setItem("appdash_live_"+date, JSON.stringify({data:S.data[date],rows:S.rows[date]}));
-      }catch{}
+      if(!d?.summary) return; // fetch falló → mantenemos lo último mostrado, no pisamos con ceros
+      S.data[date]=d.summary;
+      S.rows[date]=d.rows||[];
     })
     .catch(()=>{})
-    .finally(()=>{ _todayPromise=null; setDeltaLoading(false); });
-  return _todayPromise;
+    .finally(()=>{ _liveP=null; setDeltaLoading(false); });
+  return _liveP;
 }
 
 async function fetchDay(date){
+  if(date===todayAR()){ await fetchTodayLive(date,false); return S.data[date]||null; }
   if(S.data[date]) return S.data[date];
-  const isToday=date===todayAR();
-  if(isToday){
-    // 1. Preferir el cache live (tiene el delta mergeado del último refresh)
-    const liveCache=localStorage.getItem("appdash_live_"+date);
-    if(liveCache){
-      try{
-        const c=JSON.parse(liveCache);
-        if(c.data?.fetched_at) { S.data[date]=c.data; S.rows[date]=c.rows||[]; }
-      }catch{}
-    }
-    // 2. Si no hay cache live, cargar JSON estático del workflow
-    if(!S.data[date]){
-      try{
-        const r=await fetch(`${DATA_BASE}/daily/${date}.json?t=${Date.now()}`,{cache:"no-store"});
-        if(r.ok) S.data[date]=await r.json();
-      }catch{}
-      if(!S.rows[date]){
-        fetch(`${DATA_BASE}/daily/${date}-rows.json?t=${Date.now()}`,{cache:"no-store"})
-          .then(r=>r.ok?r.json():null).then(d=>{ if(d) S.rows[date]=d; }).catch(()=>{});
-      }
-    }
-    // 3. Delta en background — solo si el intervalo no lo está haciendo ya
-    // (el intervalo llama fetchTodayDelta directamente, este caso es solo el primer load)
-    if(!_todayPromise){
-      fetchTodayDelta(date).then(()=>{
-        const dates=getDates(S.from,S.to);
-        const [pf,pt]=prevRange(S.from,S.to);
-        renderDash(dates,getDates(pf,pt));
-      });
-    }
-    return S.data[date]||null;
-  }
   const ck="appdash_"+date, cached=localStorage.getItem(ck);
   if(cached){ try{ const p=JSON.parse(cached); S.data[date]=p; return p; }catch{} }
   try{
@@ -875,9 +811,9 @@ async function fetchDay(date){
   }catch{ return null; }
 }
 async function fetchRows(date){
+  if(date===todayAR()){ await fetchTodayLive(date,false); return S.rows[date]||[]; }
   if(S.rows[date]) return S.rows[date];
-  const isToday=date===todayAR();
-  try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json${isToday?`?t=${Date.now()}`:""}`,{cache:isToday?"no-store":"default"}); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
+  try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json`,{cache:"default"}); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
 }
 async function loadMilestones(){
   // Lectura SIEMPRE desde archivo público — no requiere token
