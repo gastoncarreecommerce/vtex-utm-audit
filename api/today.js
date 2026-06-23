@@ -69,16 +69,28 @@ function formatFechaAR(iso) {
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-async function vtexFetch(url, retries = 4) {
+// Timeout corto por request — si VTEX se cuelga en una sola llamada no queremos
+// que eso bloquee un worker entero del pool y arrastre todo el fetch.
+async function vtexFetch(url, retries = 5, timeoutMs = 12000) {
   for (let i = 0; i < retries; i++) {
-    const res = await fetch(url, {
-      headers: { "X-VTEX-API-AppKey": VTEX_KEY, "X-VTEX-API-AppToken": VTEX_TOKEN }
-    });
+    let res;
+    try {
+      res = await fetch(url, {
+        headers: { "X-VTEX-API-AppKey": VTEX_KEY, "X-VTEX-API-AppToken": VTEX_TOKEN },
+        signal: AbortSignal.timeout(timeoutMs)
+      });
+    } catch {
+      if (i < retries - 1) await sleep(300 * Math.pow(1.8, i));
+      continue;
+    }
     if (res.ok) return res.json();
     if (res.status === 401 || res.status === 403 || res.status === 404) {
       throw new Error(`VTEX ${res.status}`);
     }
-    if (i < retries - 1) await sleep(600 * Math.pow(2, i));
+    if (i < retries - 1) {
+      const retryAfter = Number(res.headers.get("retry-after"));
+      await sleep(retryAfter > 0 ? retryAfter * 1000 : 300 * Math.pow(1.8, i));
+    }
   }
   throw new Error("VTEX fetch failed after retries");
 }
@@ -120,17 +132,24 @@ export default async function handler(req, res) {
   const totalPages = Math.max(1, Math.ceil(total / 100));
   const ids        = (firstPage?.list || []).map(o => o.orderId).filter(Boolean);
 
-  // 2) Resto de páginas (si hay) en paralelo — listar es liviano, no necesita mucho límite
-  if (totalPages > 1) {
-    const restPages = Array.from({ length: totalPages - 1 }, (_, i) => i + 2);
-    const restLists = await mapLimit(restPages, 6, p => vtexFetch(listUrl(p)));
-    for (const data of restLists) {
-      if (data?.list) ids.push(...data.list.map(o => o.orderId).filter(Boolean));
-    }
+  const detailUrl = id => `${base}/api/oms/pvt/orders/${id}`;
+
+  // 2) Resto de páginas de listado y detalle de la página 1 en PARALELO entre sí —
+  // no hay motivo para esperar a tener todos los ids antes de empezar a pedir detalle.
+  const restPages = totalPages > 1 ? Array.from({ length: totalPages - 1 }, (_, i) => i + 2) : [];
+  const [restLists, firstDetails] = await Promise.all([
+    mapLimit(restPages, 10, p => vtexFetch(listUrl(p))),
+    mapLimit(ids, 70, id => vtexFetch(detailUrl(id)))
+  ]);
+
+  const restIds = [];
+  for (const data of restLists) {
+    if (data?.list) restIds.push(...data.list.map(o => o.orderId).filter(Boolean));
   }
 
-  // 3) Detalle de cada pedido en paralelo (concurrencia alta — es lo que determina el tiempo total)
-  const details = await mapLimit(ids, 40, id => vtexFetch(`${base}/api/oms/pvt/orders/${id}`));
+  // 3) Detalle del resto de páginas (concurrencia alta — es lo que determina el tiempo total)
+  const restDetails = await mapLimit(restIds, 70, id => vtexFetch(detailUrl(id)));
+  const details = [...firstDetails, ...restDetails];
 
   const result = {
     date,
