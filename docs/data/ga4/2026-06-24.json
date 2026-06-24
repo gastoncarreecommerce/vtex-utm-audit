@@ -1,4 +1,137 @@
 {
   "date": "2026-06-24",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 220,
+      "users": 38
+    },
+    "user_engagement": {
+      "count": 201,
+      "users": 52
+    },
+    "view_item_list": {
+      "count": 54,
+      "users": 14
+    },
+    "add_to_cart": {
+      "count": 50,
+      "users": 9
+    },
+    "select_item": {
+      "count": 44,
+      "users": 8
+    },
+    "search": {
+      "count": 41,
+      "users": 10
+    },
+    "session_start": {
+      "count": 41,
+      "users": 40
+    },
+    "view_item": {
+      "count": 38,
+      "users": 8
+    },
+    "view_cart": {
+      "count": 35,
+      "users": 8
+    },
+    "notification_dismiss": {
+      "count": 22,
+      "users": 11
+    },
+    "mis_cupones": {
+      "count": 21,
+      "users": 18
+    },
+    "notification_receive": {
+      "count": 18,
+      "users": 10
+    },
+    "switch_to_ecommerce": {
+      "count": 16,
+      "users": 12
+    },
+    "re_escaner_precios": {
+      "count": 9,
+      "users": 3
+    },
+    "remove_from_cart": {
+      "count": 9,
+      "users": 4
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 6,
+      "users": 3
+    },
+    "lista_compras": {
+      "count": 4,
+      "users": 3
+    },
+    "switch_to_sucursales": {
+      "count": 4,
+      "users": 3
+    },
+    "view_promotion": {
+      "count": 4,
+      "users": 2
+    },
+    "escaner_precios": {
+      "count": 3,
+      "users": 3
+    },
+    "filter_cupones": {
+      "count": 3,
+      "users": 3
+    },
+    "promociones": {
+      "count": 3,
+      "users": 3
+    },
+    "cerrar_sesion": {
+      "count": 2,
+      "users": 2
+    },
+    "favorito_mes_renovar": {
+      "count": 2,
+      "users": 2
+    },
+    "folletos": {
+      "count": 2,
+      "users": 2
+    },
+    "app_remove": {
+      "count": 1,
+      "users": 1
+    },
+    "home_ahorros": {
+      "count": 1,
+      "users": 1
+    },
+    "inicio_registro": {
+      "count": 1,
+      "users": 1
+    },
+    "listado_notificaciones": {
+      "count": 1,
+      "users": 1
+    },
+    "notification_open": {
+      "count": 1,
+      "users": 1
+    },
+    "purchase": {
+      "count": 1,
+      "users": 1
+    },
+    "tarjeta_mi_carrefour": {
+      "count": 1,
+      "users": 1
+    },
+    "tickets_compra": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
