@@ -1,0 +1,183 @@
+{
+  "date": "2026-06-24",
+  "chat": {
+    "llamadas": 149,
+    "usuarios_unicos": 69,
+    "con_productos_identificados": 105,
+    "con_sugerencia": 21,
+    "errores": 24
+  },
+  "categorizar": {
+    "total": 89,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 8
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "Gaseosa",
+        "count": 2
+      },
+      {
+        "key": "Salsa de tomate económico ",
+        "count": 1
+      },
+      {
+        "key": "Ayudame a conseguir figuritas del mundial panini",
+        "count": 1
+      },
+      {
+        "key": "Necesito pasta delantal",
+        "count": 1
+      },
+      {
+        "key": "Algo simple y que convenga porq sea económico ",
+        "count": 1
+      },
+      {
+        "key": "Hola quiero fideos",
+        "count": 1
+      },
+      {
+        "key": "Largos y guiseros que este a buen precio, no tan caro mayor a 2500$ No. Menos por favor",
+        "count": 1
+      },
+      {
+        "key": "9 de oro",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 6
+      },
+      {
+        "key": "azúcar",
+        "count": 5
+      },
+      {
+        "key": "pollo",
+        "count": 5
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 5
+      },
+      {
+        "key": "queso cremoso",
+        "count": 5
+      },
+      {
+        "key": "cebolla",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "gaseosa",
+        "count": 4
+      },
+      {
+        "key": "morrón",
+        "count": 4
+      },
+      {
+        "key": "sal",
+        "count": 4
+      },
+      {
+        "key": "antitranspirante roll on",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "harina leudante",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 203,
+    "sin_resultado": 1,
+    "errores": 31
+  },
+  "agregar": {
+    "total_agregados": 21,
+    "valor_total": 912436.02,
+    "top_productos": [
+      {
+        "key": "Puré de tomate Carrefour classic 520 g.",
+        "count": 32
+      },
+      {
+        "key": "Azúcar común Bulnez 1 kg",
+        "count": 21
+      },
+      {
+        "key": "Atún desmenuzado Bulnez al natural 170 g.",
+        "count": 18
+      },
+      {
+        "key": "Pizza congelada Mozzarella y jamón sin gluten Carrefour Classic 1 uni",
+        "count": 16
+      },
+      {
+        "key": "Gaseosa cola Cunnington classic pet 2,25 lts",
+        "count": 16
+      },
+      {
+        "key": "Yogur batido Ser PRO + con proteínas sabor frutos rojos 175 grs",
+        "count": 12
+      },
+      {
+        "key": "Salchichas Paladini 6 u.",
+        "count": 12
+      },
+      {
+        "key": "Bizcochos 9 de Oro de grasa 200 g.",
+        "count": 12
+      },
+      {
+        "key": "Arvejas secas remojadas Carrefour classic en lata 300 g.",
+        "count": 12
+      },
+      {
+        "key": "Arroz largo fino Molinos Ala 1 kg.",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 15,
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 176,
+    "errores": 32
+  },
+  "origen": {
+    "total_requests": 272,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-25T22:00:23.139Z"
+}
