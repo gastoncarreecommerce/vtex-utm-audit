@@ -599,11 +599,13 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             <div class="card kpi-card"><div class="kpi-label">Carritos agregados</div><div class="kpi-value" id="at-carritos">—</div><div class="kpi-sub" id="at-valor"></div></div>
             <div class="card kpi-card"><div class="kpi-label">Ticket promedio</div><div class="kpi-value" id="at-ticket">—</div></div>
             <div class="card kpi-card"><div class="kpi-label">Búsquedas EAN sin resultado</div><div class="kpi-value" id="at-sinresultado">—</div></div>
-            <div class="card kpi-card"><div class="kpi-label">Usuarios logueados (únicos)</div><div class="kpi-value" id="at-login">—</div></div>
+            <div class="card kpi-card"><div class="kpi-label">Usuarios logueados (únicos)</div><div class="kpi-value" id="at-login">—</div><div class="kpi-sub" id="at-carrito-login"></div></div>
+            <div class="card kpi-card"><div class="kpi-label">Descuento total aplicado</div><div class="kpi-value" id="at-descuento">—</div></div>
+            <div class="card kpi-card"><div class="kpi-label">% Entrega inmediata</div><div class="kpi-value" id="at-inmediato">—</div></div>
           </div>
           <div class="card" style="margin-bottom:20px">
             <div class="card-header"><div class="card-title">Conversaciones por hora del día</div><div class="card-sub">Horario de mayor uso del chat</div></div>
-            <div class="card-body"><div id="at-horas" style="display:flex;align-items:flex-end;gap:3px;height:90px"></div></div>
+            <div class="card-body" style="height:220px"><canvas id="at-horas-chart"></canvas></div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
             <div class="card">
@@ -625,9 +627,25 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
               <div class="card-body-flush"><table class="data-table"><thead><tr><th>Marca</th><th>Veces</th></tr></thead><tbody id="at-marcas-body"></tbody></table></div>
             </div>
           </div>
-          <div class="card" style="margin-bottom:20px">
-            <div class="card-header"><div class="card-title">Top productos agregados al carrito</div></div>
-            <div class="card-body-flush"><table class="data-table"><thead><tr><th>Producto</th><th>Veces</th></tr></thead><tbody id="at-productos-body"></tbody></table></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Top subcategorías buscadas (EAN)</div></div>
+              <div class="card-body-flush"><table class="data-table"><thead><tr><th>Subcategoría</th><th>Veces</th></tr></thead><tbody id="at-subcategorias-body"></tbody></table></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Top categorías en "productos similares"</div></div>
+              <div class="card-body-flush"><table class="data-table"><thead><tr><th>Categoría</th><th>Veces</th></tr></thead><tbody id="at-cat-similares-body"></tbody></table></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Top productos agregados al carrito</div></div>
+              <div class="card-body-flush"><table class="data-table"><thead><tr><th>Producto</th><th>Veces</th></tr></thead><tbody id="at-productos-body"></tbody></table></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Top categorías agregadas al carrito</div></div>
+              <div class="card-body-flush"><table class="data-table"><thead><tr><th>Categoría</th><th>Veces</th></tr></thead><tbody id="at-categorias-body"></tbody></table></div>
+            </div>
           </div>
           <div class="card">
             <div class="card-header"><div class="card-title">Salud técnica (errores/warnings por log)</div></div>
@@ -718,7 +736,7 @@ function getGHToken(){ return localStorage.getItem("gh_token")||""; }
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
 const S = {user:null,from:null,to:null,data:{},rows:{},todayState:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"}};
-let currentMsType="promo", liveInterval=null, lastFetch=null;
+let currentMsType="promo", liveInterval=null, lastFetch=null, liveActive=false;
 
 // ── DATE FORMAT (Argentina dd/mm/yyyy) ────────────────
 function fmtFechaAR(iso){ const [y,m,d]=iso.split("-"); return `${d}/${m}/${y}`; }
@@ -777,6 +795,7 @@ function switchView(v,btn){
   document.getElementById("topbar-controls").style.display=(v==="monthly"||v==="atenti")?"none":"";
   const titles={dashboard:"Dashboard",orders:"Pedidos",analytics:"Analítica",monthly:"Resumen Mensual",atenti:"Atenti"};
   document.getElementById("topbar-title").childNodes[0].textContent=titles[v]+"\n        ";
+  if(v==="atenti") pauseLiveForAtenti(); else resumeLiveIfActive();
   if(v==="monthly") renderMonthly();
   if(v==="orders") renderOrdersTable();
   if(v==="analytics") loadAnalytics();
@@ -792,7 +811,7 @@ function setPreset(days,btn){
   document.querySelectorAll(".preset-btn").forEach(b=>b.classList.remove("active"));
   if(btn) btn.classList.add("active");
   const today=todayAR();
-  clearInterval(liveInterval); liveInterval=null;
+  clearInterval(liveInterval); liveInterval=null; liveActive=false;
   document.getElementById("live-badge").style.display="none";
   document.getElementById("live-updated").textContent="";
   setDeltaLoading(false);
@@ -803,29 +822,38 @@ function setPreset(days,btn){
   document.getElementById("date-to").value=S.to;
   document.getElementById("topbar-range").textContent=fmtRangeAR(S.from,S.to);
   if(days===1){
-    document.getElementById("live-badge").style.display="";
-    // "Hoy" trae datos en vivo de VTEX. Cada tick solo pide la VENTANA de pedidos
-    // nuevos desde el último fetch (no se cachea/almacena nada en disco — todo vive
-    // en memoria, S.todayState, y se pierde al cerrar/recargar la pestaña). El resumen
-    // siempre se recalcula desde cero sobre el set completo acumulado, nunca se mergean
-    // porcentajes ya calculados.
-    const runLive=async()=>{
-      const t=todayAR();
-      await fetchTodayLive(t);
-      const dates=getDates(S.from,S.to);
-      const [pf,pt]=prevRange(S.from,S.to);
-      renderDash(dates,getDates(pf,pt));
-    };
-    runLive();
-    liveInterval=setInterval(runLive, 60*1000);
+    liveActive=true;
+    startLive();
   }
   loadAll(S.from,S.to);
 }
+// "Hoy" trae datos en vivo de VTEX. Cada tick solo pide la VENTANA de pedidos
+// nuevos desde el último fetch (no se cachea/almacena nada en disco — todo vive
+// en memoria, S.todayState, y se pierde al cerrar/recargar la pestaña). El resumen
+// siempre se recalcula desde cero sobre el set completo acumulado, nunca se mergean
+// porcentajes ya calculados. Se pausa mientras se mira la pestaña Atenti (no tiene
+// sentido pegarle a VTEX en vivo desde una vista que no la muestra) y se reanuda
+// al volver, vía pauseLiveForAtenti()/resumeLiveIfActive().
+function startLive(){
+  if(!liveActive||liveInterval) return;
+  document.getElementById("live-badge").style.display="";
+  const runLive=async()=>{
+    const t=todayAR();
+    await fetchTodayLive(t);
+    const dates=getDates(S.from,S.to);
+    const [pf,pt]=prevRange(S.from,S.to);
+    renderDash(dates,getDates(pf,pt));
+  };
+  runLive();
+  liveInterval=setInterval(runLive, 60*1000);
+}
+function pauseLiveForAtenti(){ clearInterval(liveInterval); liveInterval=null; }
+function resumeLiveIfActive(){ if(liveActive) startLive(); }
 function loadRange(){
   S.from=document.getElementById("date-from").value; S.to=document.getElementById("date-to").value;
   if(!S.from||!S.to) return;
   document.querySelectorAll(".preset-btn").forEach(b=>b.classList.remove("active"));
-  clearInterval(liveInterval); liveInterval=null;
+  clearInterval(liveInterval); liveInterval=null; liveActive=false;
   document.getElementById("live-badge").style.display="none";
   document.getElementById("topbar-range").textContent=fmtRangeAR(S.from,S.to);
   loadAll(S.from,S.to);
@@ -1413,21 +1441,45 @@ async function loadAtenti(){
   document.getElementById("at-ticket").textContent=`$${Math.round(data.agregar.ticket_promedio||0).toLocaleString()}`;
   document.getElementById("at-sinresultado").textContent=data.buscar_eans.sin_resultado.toLocaleString();
   document.getElementById("at-login").textContent=data.login.usuarios_unicos.toLocaleString();
+  document.getElementById("at-carrito-login").textContent=data.login.carrito_promedio!==undefined?`$${Math.round(data.login.carrito_promedio).toLocaleString()} promedio · ${data.login.pct_con_carrito}% con carrito`:"";
+  document.getElementById("at-descuento").textContent=data.agregar.descuento_total!==undefined?`$${Math.round(data.agregar.descuento_total).toLocaleString()}`:"—";
+  const canal=data.agregar.canal, canalTot=canal?canal.inmediato+canal.programado:0;
+  document.getElementById("at-inmediato").textContent=canalTot?`${Math.round(canal.inmediato/canalTot*1000)/10}%`:"—";
   const rows=(arr,empty)=>arr&&arr.length?arr.map(x=>`<tr><td>${x.key}</td><td>${x.count}</td></tr>`).join(""):`<tr><td colspan="2"><div class="empty-state"><div class="es-title">${empty}</div></div></td></tr>`;
   document.getElementById("at-recetas-body").innerHTML=rows(data.categorizar.top_recetas,"Sin datos");
   document.getElementById("at-ingredientes-body").innerHTML=rows(data.categorizar.top_ingredientes,"Sin datos");
   document.getElementById("at-terminos-body").innerHTML=rows(data.buscar_eans.top_terminos,"Sin datos");
   document.getElementById("at-marcas-body").innerHTML=rows(data.buscar_similares.top_marcas,"Sin datos");
+  document.getElementById("at-subcategorias-body").innerHTML=rows(data.buscar_eans.top_subcategorias,"Sin datos");
+  document.getElementById("at-cat-similares-body").innerHTML=rows(data.buscar_similares.top_categorias,"Sin datos");
   document.getElementById("at-productos-body").innerHTML=rows(data.agregar.top_productos,"Sin datos");
+  document.getElementById("at-categorias-body").innerHTML=rows(data.agregar.top_categorias,"Sin datos");
   const errRows=[["chat",data.chat.errores],["categorizar",data.categorizar.errores],["buscar_eans",data.buscar_eans.errores],["agregar",data.agregar.errores],["buscar_similares",data.buscar_similares.errores],["login",data.login.errores]];
   document.getElementById("at-errores-body").innerHTML=errRows.map(([log,n])=>`<tr><td>${log}</td><td>${n}</td></tr>`).join("");
   const porHora=data.chat.por_hora||[];
-  const maxHora=Math.max(1,...porHora);
-  document.getElementById("at-horas").innerHTML=porHora.map((n,h)=>`
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end">
-      <div title="${h}hs: ${n}" style="width:100%;background:var(--indigo-l);border-radius:3px 3px 0 0;min-height:2px;height:${Math.round(n/maxHora*70)}px"></div>
-      <div style="font-size:9px;color:var(--ink-4)">${h}</div>
-    </div>`).join("");
+  const maxHora=Math.max(0,...porHora);
+  dc("horas");
+  S.charts.horas=new Chart(document.getElementById("at-horas-chart").getContext("2d"),{
+    type:"bar",
+    data:{
+      labels:porHora.map((_,h)=>`${h}h`),
+      datasets:[{
+        label:"Conversaciones",
+        data:porHora,
+        backgroundColor:porHora.map(n=>n===maxHora&&maxHora>0?"#4f46e5":"#c7d2fe"),
+        borderRadius:5,
+        maxBarThickness:26
+      }]
+    },
+    options:{
+      ...cOpts,
+      plugins:{legend:{display:false},tooltip:{...cOpts.plugins.tooltip,callbacks:{label:c=>` ${c.raw} conversaciones`}}},
+      scales:{
+        x:{ticks:{color:"#9ca3af",font:{size:9}},grid:{display:false}},
+        y:{beginAtZero:true,ticks:{color:"#9ca3af",font:{size:9},precision:0},grid:{color:"#f1f4f8"}}
+      }
+    }
+  });
 }
 
 async function fetchGA4(date){
