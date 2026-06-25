@@ -167,23 +167,37 @@ function analyzeCategorizar(content) {
 function analyzeBuscarEans(content) {
   const busquedas = (content.match(/Llamando: /g) || []).length;
   const conResultado = (content.match(/\] \d+: \[\{"ranking"/g) || []).length;
-  const terminos = {};
-  for (const m of content.matchAll(/"prompt":"([^|"]+)/g)) {
+  const terminos = {}, subcategorias = {};
+  for (const m of content.matchAll(/"prompt":"([^|"]+)(?:\|Sub Categoria: ([^"]+))?"/g)) {
     const term = m[1].trim().toLowerCase();
     if (term) terminos[term] = (terminos[term] || 0) + 1;
+    const sub = m[2]?.trim();
+    if (sub) subcategorias[sub] = (subcategorias[sub] || 0) + 1;
   }
   return {
     busquedas,
     sin_resultado: Math.max(0, busquedas - conResultado),
     top_terminos: topN(terminos, 15),
+    top_subcategorias: topN(subcategorias, 10),
     errores: countPhpIssues(content)
   };
 }
 
+// La categoría más específica de cada item es la de mayor ID numérico en
+// `productCategories` (verificado contra logs reales: el ID crece a medida que la
+// categoría es más profunda en el árbol). Ojo: V8 reordena claves tipo-índice de
+// forma ascendente al parsear/enumerar, así que NO se puede asumir el orden del JSON.
+function leafCategory(productCategories) {
+  if (!productCategories || typeof productCategories !== "object") return null;
+  const ids = Object.keys(productCategories).map(Number).filter(n => !isNaN(n));
+  if (!ids.length) return null;
+  return productCategories[String(Math.max(...ids))];
+}
+
 function analyzeAgregar(content) {
   const entries = parseEntries(content);
-  let total = 0, valorTotal = 0;
-  const productos = {};
+  let total = 0, valorTotal = 0, descuentoTotal = 0, inmediato = 0, programado = 0;
+  const productos = {}, categorias = {};
   for (const e of entries) {
     const m = e.match(/^(\d+): Agregando al carrito: /);
     if (!m) continue;
@@ -191,28 +205,44 @@ function analyzeAgregar(content) {
     if (!json) continue;
     total++;
     valorTotal += Number(json.value) || 0;
+    if (json.salesChannel === "IMMEDIATE") inmediato++;
+    else if (json.salesChannel === "SCHEDULED") programado++;
     for (const item of (json.items || [])) {
       if (!item?.name) continue;
-      productos[item.name] = (productos[item.name] || 0) + (Number(item.quantity) || 1);
+      const qty = Number(item.quantity) || 1;
+      productos[item.name] = (productos[item.name] || 0) + qty;
+      const cat = leafCategory(item.productCategories);
+      if (cat) categorias[cat] = (categorias[cat] || 0) + qty;
+      for (const badge of (item.badges || [])) {
+        descuentoTotal += Number(badge.totalDiscount) || 0;
+      }
     }
   }
   return {
     total_agregados: total,
     valor_total: Math.round(valorTotal * 100) / 100,
     ticket_promedio: total ? Math.round((valorTotal / total) * 100) / 100 : 0,
+    descuento_total: Math.round(descuentoTotal * 100) / 100,
+    canal: { inmediato, programado },
     top_productos: topN(productos, 10),
+    top_categorias: topN(categorias, 10),
     errores: countPhpIssues(content)
   };
 }
 
 function analyzeBuscarSimilares(content) {
   const total = (content.match(/Respuesta Valtech similares/g) || []).length;
-  const marcas = {};
+  const marcas = {}, categorias = {};
   for (const m of content.matchAll(/"brand":"([^"]+)"/g)) {
     const b = m[1].trim();
     if (b) marcas[b] = (marcas[b] || 0) + 1;
   }
-  return { total, top_marcas: topN(marcas, 10), errores: countPhpIssues(content) };
+  // Primer segmento del árbol de categorías (ej. "/Almacén/Fideos/..." → "Almacén").
+  for (const m of content.matchAll(/"categories":\["\/([^"/]+)\//g)) {
+    const c = m[1].trim();
+    if (c) categorias[c] = (categorias[c] || 0) + 1;
+  }
+  return { total, top_marcas: topN(marcas, 10), top_categorias: topN(categorias, 10), errores: countPhpIssues(content) };
 }
 
 function analyzeLogin(content) {
@@ -220,7 +250,21 @@ function analyzeLogin(content) {
   const re = /\] (\d+) entro/g;
   let m;
   while ((m = re.exec(content))) users.add(m[1]);
-  return { usuarios_unicos: users.size, errores: countPhpIssues(content) };
+  // Valor del carrito en el momento del login — solo el agregado, nunca el carrito
+  // ni el perfil del cliente que viaja en la misma línea cruda.
+  let conCarrito = 0, totalCarritos = 0, valorTotal = 0;
+  for (const cm of content.matchAll(/"cart":\{"id":"[^"]*","salesChannel":"[^"]*","value":([\d.]+)/g)) {
+    totalCarritos++;
+    const v = Number(cm[1]) || 0;
+    valorTotal += v;
+    if (v > 0) conCarrito++;
+  }
+  return {
+    usuarios_unicos: users.size,
+    carrito_promedio: totalCarritos ? Math.round((valorTotal / totalCarritos) * 100) / 100 : 0,
+    pct_con_carrito: totalCarritos ? Math.round((conCarrito / totalCarritos) * 1000) / 10 : 0,
+    errores: countPhpIssues(content)
+  };
 }
 
 function analyzeOrigen(content) {
