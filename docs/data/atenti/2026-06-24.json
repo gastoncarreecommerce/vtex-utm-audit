@@ -5,6 +5,32 @@
     "usuarios_unicos": 69,
     "con_productos_identificados": 105,
     "con_sugerencia": 21,
+    "por_hora": [
+      3,
+      3,
+      1,
+      2,
+      0,
+      2,
+      1,
+      1,
+      2,
+      3,
+      0,
+      0,
+      5,
+      8,
+      1,
+      11,
+      23,
+      31,
+      15,
+      10,
+      8,
+      10,
+      6,
+      3
+    ],
     "errores": 24
   },
   "categorizar": {
@@ -118,11 +144,74 @@
   "buscar_eans": {
     "busquedas": 203,
     "sin_resultado": 1,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "pollo",
+        "count": 5
+      },
+      {
+        "key": "azucar",
+        "count": 4
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "gaseosa",
+        "count": 4
+      },
+      {
+        "key": "aceite",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "antitranspirante roll on",
+        "count": 4
+      },
+      {
+        "key": "harina",
+        "count": 3
+      },
+      {
+        "key": "levadura",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      }
+    ],
     "errores": 31
   },
   "agregar": {
     "total_agregados": 21,
     "valor_total": 912436.02,
+    "ticket_promedio": 43449.33,
     "top_productos": [
       {
         "key": "Puré de tomate Carrefour classic 520 g.",
@@ -169,6 +258,48 @@
   },
   "buscar_similares": {
     "total": 15,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "7 Up",
+        "count": 7
+      },
+      {
+        "key": "Glade",
+        "count": 7
+      },
+      {
+        "key": "Mamá Cocina",
+        "count": 6
+      },
+      {
+        "key": "Colgate",
+        "count": 5
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Hinds",
+        "count": 5
+      },
+      {
+        "key": "Hogareñas",
+        "count": 5
+      },
+      {
+        "key": "Tonadita",
+        "count": 4
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 3
+      }
+    ],
     "errores": 0
   },
   "login": {
@@ -179,5 +310,5 @@
     "total_requests": 272,
     "ips_unicas": 2
   },
-  "fetched_at": "2026-06-25T22:00:23.139Z"
+  "fetched_at": "2026-06-25T22:34:51.563Z"
 }
