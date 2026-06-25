@@ -206,12 +206,59 @@
         "count": 3
       }
     ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 12
+      },
+      {
+        "key": "Fideos largos",
+        "count": 8
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 8
+      },
+      {
+        "key": "Leches enteras",
+        "count": 6
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 6
+      },
+      {
+        "key": "Accesorios de libreria",
+        "count": 5
+      },
+      {
+        "key": "Arroz",
+        "count": 5
+      },
+      {
+        "key": "Pollo y granja",
+        "count": 5
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 5
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 4
+      }
+    ],
     "errores": 31
   },
   "agregar": {
     "total_agregados": 21,
     "valor_total": 912436.02,
     "ticket_promedio": 43449.33,
+    "descuento_total": 80098.96,
+    "canal": {
+      "inmediato": 0,
+      "programado": 21
+    },
     "top_productos": [
       {
         "key": "Puré de tomate Carrefour classic 520 g.",
@@ -251,6 +298,48 @@
       },
       {
         "key": "Arroz largo fino Molinos Ala 1 kg.",
+        "count": 12
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 32
+      },
+      {
+        "key": "Comidas y panificados",
+        "count": 22
+      },
+      {
+        "key": "Azúcar",
+        "count": 21
+      },
+      {
+        "key": "Arroz",
+        "count": 21
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 19
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 16
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 14
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 12
+      },
+      {
+        "key": "Salchichas",
+        "count": 12
+      },
+      {
+        "key": "Bizcochitos",
         "count": 12
       }
     ],
@@ -300,15 +389,51 @@
         "count": 3
       }
     ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 40
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 22
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 18
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 12
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 7
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 3
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      }
+    ],
     "errores": 0
   },
   "login": {
     "usuarios_unicos": 176,
+    "carrito_promedio": 67381.22,
+    "pct_con_carrito": 59.9,
     "errores": 32
   },
   "origen": {
     "total_requests": 272,
     "ips_unicas": 2
   },
-  "fetched_at": "2026-06-25T22:34:51.563Z"
+  "fetched_at": "2026-06-25T22:49:24.975Z"
 }
