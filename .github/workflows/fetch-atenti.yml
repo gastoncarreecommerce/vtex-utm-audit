@@ -1,0 +1,50 @@
+name: Fetch Atenti (logs chat IA)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-atenti.yml"
+  schedule:
+    - cron: "20 4 * * *"   # 4:20 UTC = 1:20am AR — el mail llega a la 1am en punto
+  workflow_dispatch:
+
+concurrency:
+  group: fetch-atenti
+  cancel-in-progress: false
+
+jobs:
+  fetch-atenti:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install googleapis adm-zip
+
+      - name: Fetch Atenti logs
+        env:
+          GMAIL_CLIENT_ID:     ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+        run: node fetch-atenti.js
+
+      - name: Commit data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/atenti/ 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "atenti: $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4; do
+            if git push; then break; fi
+            echo "push falló, reintento..."; sleep ${i}0
+            git pull --rebase --autostash || true
+          done
