@@ -100,9 +100,15 @@ function topN(counter, n) {
     .map(([key, count]) => ({ key, count }));
 }
 
+// Hora (00-23, horario AR) de cada línea con timestamp — solo para detectar
+// picos de uso, nunca se asocia a ningún usuario puntual.
+const HOUR_RE = /^\[\d{2}-\w{3}-\d{4} (\d{2}):\d{2}:\d{2}/;
+function hourOf(line) { const m = line.match(HOUR_RE); return m ? Number(m[1]) : null; }
+
 function analyzeChat(content) {
   const entries = parseEntries(content);
   const users = new Set();
+  const porHora = Array(24).fill(0);
   let llamadas = 0, conProductos = 0, conSugerencia = 0;
   for (const e of entries) {
     let m = e.match(/^(\d+): Llamada: /);
@@ -116,11 +122,20 @@ function analyzeChat(content) {
       }
     }
   }
+  // Distribución horaria de "Llamada" (recalculada sobre el contenido crudo,
+  // ya que parseEntries descarta el timestamp original al agrupar entradas).
+  for (const line of content.split(/\r?\n/)) {
+    if (!HEADER_RE.test(line)) continue;
+    if (!/\d+: Llamada: /.test(line)) continue;
+    const h = hourOf(line);
+    if (h !== null) porHora[h]++;
+  }
   return {
     llamadas,
     usuarios_unicos: users.size,
     con_productos_identificados: conProductos,
     con_sugerencia: conSugerencia,
+    por_hora: porHora,
     errores: countPhpIssues(content)
   };
 }
@@ -152,9 +167,15 @@ function analyzeCategorizar(content) {
 function analyzeBuscarEans(content) {
   const busquedas = (content.match(/Llamando: /g) || []).length;
   const conResultado = (content.match(/\] \d+: \[\{"ranking"/g) || []).length;
+  const terminos = {};
+  for (const m of content.matchAll(/"prompt":"([^|"]+)/g)) {
+    const term = m[1].trim().toLowerCase();
+    if (term) terminos[term] = (terminos[term] || 0) + 1;
+  }
   return {
     busquedas,
     sin_resultado: Math.max(0, busquedas - conResultado),
+    top_terminos: topN(terminos, 15),
     errores: countPhpIssues(content)
   };
 }
@@ -178,6 +199,7 @@ function analyzeAgregar(content) {
   return {
     total_agregados: total,
     valor_total: Math.round(valorTotal * 100) / 100,
+    ticket_promedio: total ? Math.round((valorTotal / total) * 100) / 100 : 0,
     top_productos: topN(productos, 10),
     errores: countPhpIssues(content)
   };
@@ -185,7 +207,12 @@ function analyzeAgregar(content) {
 
 function analyzeBuscarSimilares(content) {
   const total = (content.match(/Respuesta Valtech similares/g) || []).length;
-  return { total, errores: countPhpIssues(content) };
+  const marcas = {};
+  for (const m of content.matchAll(/"brand":"([^"]+)"/g)) {
+    const b = m[1].trim();
+    if (b) marcas[b] = (marcas[b] || 0) + 1;
+  }
+  return { total, top_marcas: topN(marcas, 10), errores: countPhpIssues(content) };
 }
 
 function analyzeLogin(content) {
