@@ -334,6 +334,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       <button class="nav-item" data-view="orders" onclick="switchView('orders',this)"><span class="ni-icon">🧾</span>Pedidos</button>
       <button class="nav-item" data-view="analytics" onclick="switchView('analytics',this)"><span class="ni-icon">🔬</span>Analítica</button>
       <button class="nav-item" data-view="monthly" onclick="switchView('monthly',this)"><span class="ni-icon">📅</span>Resumen Mensual</button>
+      <button class="nav-item" data-view="atenti" onclick="switchView('atenti',this)"><span class="ni-icon">🤖</span>Atenti</button>
     </nav>
     <div class="sidebar-bottom">
       <button class="nav-item" onclick="openSettings()"><span class="ni-icon">⚙</span>Configuración</button>
@@ -579,6 +580,40 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
           </div>
         </div>
       </div>
+
+      <!-- ATENTI -->
+      <div id="view-atenti" style="display:none">
+        <div style="margin-bottom:20px"><h2 style="font-size:21px;font-weight:800;letter-spacing:-.4px">Atenti — Chat de IA</h2><p style="font-size:13px;color:var(--ink-3);margin-top:4px">Métricas agregadas del asistente de compras (sin datos personales)</p></div>
+        <div id="atenti-empty" class="card" style="display:none"><div class="card-body"><div class="empty-state"><div class="es-icon">🤖</div><div class="es-title">Todavía no hay datos de Atenti</div></div></div></div>
+        <div id="atenti-content" style="display:none">
+          <div class="kpi-row" style="margin-bottom:20px">
+            <div class="card kpi-card"><div class="kpi-label">Conversaciones</div><div class="kpi-value" id="at-llamadas">—</div><div class="kpi-sub" id="at-usuarios"></div></div>
+            <div class="card kpi-card"><div class="kpi-label">Con productos identificados</div><div class="kpi-value" id="at-productos">—</div></div>
+            <div class="card kpi-card"><div class="kpi-label">Con sugerencia mostrada</div><div class="kpi-value" id="at-sugerencia">—</div></div>
+            <div class="card kpi-card"><div class="kpi-label">Carritos agregados</div><div class="kpi-value" id="at-carritos">—</div><div class="kpi-sub" id="at-valor"></div></div>
+            <div class="card kpi-card"><div class="kpi-label">Búsquedas EAN sin resultado</div><div class="kpi-value" id="at-sinresultado">—</div></div>
+            <div class="card kpi-card"><div class="kpi-label">Usuarios logueados (únicos)</div><div class="kpi-value" id="at-login">—</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Top recetas/búsquedas</div></div>
+              <div class="card-body-flush"><table class="data-table"><thead><tr><th>Receta / consulta</th><th>Veces</th></tr></thead><tbody id="at-recetas-body"></tbody></table></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Top ingredientes</div></div>
+              <div class="card-body-flush"><table class="data-table"><thead><tr><th>Ingrediente</th><th>Veces</th></tr></thead><tbody id="at-ingredientes-body"></tbody></table></div>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:20px">
+            <div class="card-header"><div class="card-title">Top productos agregados al carrito</div></div>
+            <div class="card-body-flush"><table class="data-table"><thead><tr><th>Producto</th><th>Veces</th></tr></thead><tbody id="at-productos-body"></tbody></table></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Salud técnica (errores/warnings por log)</div></div>
+            <div class="card-body-flush"><table class="data-table"><thead><tr><th>Log</th><th>Errores</th></tr></thead><tbody id="at-errores-body"></tbody></table></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -717,13 +752,14 @@ function doLogout(){ localStorage.removeItem("appdash_sess"); localStorage.remov
 function switchView(v,btn){
   document.querySelectorAll(".nav-item[data-view]").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
-  ["dashboard","orders","analytics","monthly"].forEach(x=>document.getElementById("view-"+x).style.display=x===v?"":"none");
-  document.getElementById("topbar-controls").style.display=v==="monthly"?"none":"";
-  const titles={dashboard:"Dashboard",orders:"Pedidos",analytics:"Analítica",monthly:"Resumen Mensual"};
+  ["dashboard","orders","analytics","monthly","atenti"].forEach(x=>document.getElementById("view-"+x).style.display=x===v?"":"none");
+  document.getElementById("topbar-controls").style.display=(v==="monthly"||v==="atenti")?"none":"";
+  const titles={dashboard:"Dashboard",orders:"Pedidos",analytics:"Analítica",monthly:"Resumen Mensual",atenti:"Atenti"};
   document.getElementById("topbar-title").childNodes[0].textContent=titles[v]+"\n        ";
   if(v==="monthly") renderMonthly();
   if(v==="orders") renderOrdersTable();
   if(v==="analytics") loadAnalytics();
+  if(v==="atenti") loadAtenti();
 }
 
 // ── DATES ─────────────────────────────────────────────
@@ -1328,6 +1364,38 @@ const GA4_OTHER=[
   ["select_promotion","Seleccionó promoción"],
   ["add_to_wishlist","Agregó a favoritos"],
 ];
+// ── ATENTI (logs chat IA — solo métricas agregadas, sin PII) ──
+async function fetchAtenti(date){
+  try{
+    const r=await fetch(`${DATA_BASE}/atenti/${date}.json`,{cache:"no-store"});
+    return r.ok?await r.json():null;
+  }catch{ return null; }
+}
+async function loadAtenti(){
+  document.getElementById("atenti-empty").style.display="none";
+  document.getElementById("atenti-content").style.display="none";
+  // El mail llega a la 1am con los logs del día anterior — buscamos desde ayer
+  // hacia atrás hasta encontrar el último día con datos disponibles.
+  let d=addDays(todayAR(),-1), data=null;
+  for(let i=0;i<7&&!data;i++){ data=await fetchAtenti(d); if(!data) d=addDays(d,-1); }
+  if(!data){ document.getElementById("atenti-empty").style.display=""; return; }
+  document.getElementById("atenti-content").style.display="";
+  document.getElementById("at-llamadas").textContent=data.chat.llamadas.toLocaleString();
+  document.getElementById("at-usuarios").textContent=`${data.chat.usuarios_unicos.toLocaleString()} usuarios únicos — ${fmtFechaAR(data.date)}`;
+  document.getElementById("at-productos").textContent=data.chat.con_productos_identificados.toLocaleString();
+  document.getElementById("at-sugerencia").textContent=data.chat.con_sugerencia.toLocaleString();
+  document.getElementById("at-carritos").textContent=data.agregar.total_agregados.toLocaleString();
+  document.getElementById("at-valor").textContent=`$${Math.round(data.agregar.valor_total).toLocaleString()}`;
+  document.getElementById("at-sinresultado").textContent=data.buscar_eans.sin_resultado.toLocaleString();
+  document.getElementById("at-login").textContent=data.login.usuarios_unicos.toLocaleString();
+  const rows=(arr,empty)=>arr.length?arr.map(x=>`<tr><td>${x.key}</td><td>${x.count}</td></tr>`).join(""):`<tr><td colspan="2"><div class="empty-state"><div class="es-title">${empty}</div></div></td></tr>`;
+  document.getElementById("at-recetas-body").innerHTML=rows(data.categorizar.top_recetas,"Sin datos");
+  document.getElementById("at-ingredientes-body").innerHTML=rows(data.categorizar.top_ingredientes,"Sin datos");
+  document.getElementById("at-productos-body").innerHTML=rows(data.agregar.top_productos,"Sin datos");
+  const errRows=[["chat",data.chat.errores],["categorizar",data.categorizar.errores],["buscar_eans",data.buscar_eans.errores],["agregar",data.agregar.errores],["buscar_similares",data.buscar_similares.errores],["login",data.login.errores]];
+  document.getElementById("at-errores-body").innerHTML=errRows.map(([log,n])=>`<tr><td>${log}</td><td>${n}</td></tr>`).join("");
+}
+
 async function fetchGA4(date){
   if(S.ga4&&S.ga4[date]!==undefined) return S.ga4[date];
   if(!S.ga4) S.ga4={};
