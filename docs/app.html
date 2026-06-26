@@ -651,6 +651,34 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             <div class="card-header"><div class="card-title">Salud técnica (errores/warnings por log)</div></div>
             <div class="card-body-flush"><table class="data-table"><thead><tr><th>Log</th><th>Errores</th></tr></thead><tbody id="at-errores-body"></tbody></table></div>
           </div>
+          <div class="card" style="margin-top:20px">
+            <div class="card-header">
+              <div class="card-title">🔎 Búsqueda de clientes (en vivo)</div>
+              <div class="card-sub">Acceso restringido a usuarios logueados — re-lee el mail de Gmail de esa fecha en cada búsqueda, no se guarda nada en el dashboard.</div>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px">
+                <div class="form-group" style="margin:0"><label class="form-label">Fecha</label><input type="date" id="at-search-date" class="form-input"></div>
+                <div class="form-group" style="margin:0"><label class="form-label">DNI (opcional — vacío = ranking del día)</label><input type="text" id="at-search-dni" class="form-input" placeholder="Ej: 36669481" style="width:200px"></div>
+                <button class="tbtn primary" onclick="atentiSearch()">Buscar</button>
+              </div>
+              <div id="at-search-result"></div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:20px">
+            <div class="card-header">
+              <div class="card-title">📤 Exportar DNIs (para push)</div>
+              <div class="card-sub">CSV de una sola columna, sin encabezado, con los DNIs que usaron Atenti en el rango elegido</div>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
+                <div class="form-group" style="margin:0"><label class="form-label">Desde</label><input type="date" id="at-export-from" class="form-input"></div>
+                <div class="form-group" style="margin:0"><label class="form-label">Hasta</label><input type="date" id="at-export-to" class="form-input"></div>
+                <button class="tbtn" onclick="exportAtentiDnis()">Exportar CSV</button>
+              </div>
+              <div id="at-export-status" style="font-size:12px;color:var(--ink-3);margin-top:8px"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1480,6 +1508,72 @@ async function loadAtenti(){
       }
     }
   });
+  const sd=document.getElementById("at-search-date"), ef=document.getElementById("at-export-from"), et=document.getElementById("at-export-to");
+  if(sd&&!sd.value) sd.value=data.date;
+  if(ef&&!ef.value) ef.value=data.date;
+  if(et&&!et.value) et.value=data.date;
+}
+
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function atentiAuthHeader(){ const t=localStorage.getItem("appdash_token"); return t?{"Authorization":`Bearer ${t}`}:{}; }
+
+async function atentiSearch(){
+  const date=document.getElementById("at-search-date").value;
+  const dni=document.getElementById("at-search-dni").value.trim();
+  const box=document.getElementById("at-search-result");
+  if(!date){ showToast("Elegí una fecha","error"); return; }
+  box.innerHTML='<div class="empty-state"><div class="es-title">Buscando en los logs en vivo...</div></div>';
+  try{
+    const qs=new URLSearchParams({date}); if(dni) qs.set("dni",dni);
+    const r=await fetch(`/api/atenti-search?${qs}`,{headers:atentiAuthHeader()});
+    const d=await r.json();
+    if(!r.ok){ box.innerHTML=`<div class="empty-state"><div class="es-title">${escapeHtml(d.error||"Error")}</div></div>`; return; }
+    dni?renderAtentiConversation(d):renderAtentiRanking(d);
+  }catch(e){ box.innerHTML='<div class="empty-state"><div class="es-title">Error de red</div></div>'; }
+}
+
+function renderAtentiRanking(d){
+  const box=document.getElementById("at-search-result");
+  if(!d.ranking||!d.ranking.length){ box.innerHTML='<div class="empty-state"><div class="es-title">Sin conversaciones ese día</div></div>'; return; }
+  box.innerHTML=`<table class="data-table"><thead><tr><th>DNI</th><th>Nombre</th><th>Email</th><th>Mensajes</th></tr></thead><tbody>${
+    d.ranking.map(r=>`<tr style="cursor:pointer" onclick="document.getElementById('at-search-dni').value='${escapeHtml(r.dni)}';atentiSearch()"><td>${escapeHtml(r.dni)}</td><td>${escapeHtml(r.perfil?.nombre||"—")}</td><td>${escapeHtml(r.perfil?.email||"—")}</td><td>${r.mensajes}</td></tr>`).join("")
+  }</tbody></table>`;
+}
+
+function renderAtentiConversation(d){
+  const box=document.getElementById("at-search-result");
+  const p=d.perfil;
+  const head=`<div style="margin-bottom:12px;font-size:13px"><b>DNI:</b> ${escapeHtml(d.dni)}${p?` · <b>${escapeHtml(p.nombre||"")}</b> · ${escapeHtml(p.email||"")}${p.telefono?` · ${escapeHtml(p.telefono)}`:""}`:" · sin perfil de login ese día"}</div>`;
+  if(!d.conversacion||!d.conversacion.length){
+    box.innerHTML=head+'<div class="empty-state"><div class="es-title">Sin mensajes de chat ese día</div></div>';
+    return;
+  }
+  const bubbles=d.conversacion.map(m=>`
+    <div style="display:flex;justify-content:${m.role==="user"?"flex-end":"flex-start"};margin-bottom:8px">
+      <div style="max-width:70%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.4;${m.role==="user"?"background:var(--indigo);color:#fff;border-bottom-right-radius:4px":"background:#f1f4f8;color:var(--ink-1);border-bottom-left-radius:4px"}">
+        ${escapeHtml(m.text)}
+        <div style="font-size:10px;opacity:.65;margin-top:4px">${escapeHtml(m.ts)}</div>
+      </div>
+    </div>`).join("");
+  box.innerHTML=head+`<div style="max-height:420px;overflow-y:auto;padding:6px">${bubbles}</div>`;
+}
+
+async function exportAtentiDnis(){
+  const from=document.getElementById("at-export-from").value, to=document.getElementById("at-export-to").value;
+  const status=document.getElementById("at-export-status");
+  if(!from||!to){ showToast("Elegí desde/hasta","error"); return; }
+  status.textContent="Generando CSV...";
+  try{
+    const r=await fetch(`/api/atenti-search?format=csv&from=${from}&to=${to}`,{headers:atentiAuthHeader()});
+    if(!r.ok){ const d=await r.json().catch(()=>({})); status.textContent=d.error||"Error"; return; }
+    const blob=await r.blob();
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url; a.download=`atenti-dnis-${from}_${to}.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    status.textContent="Listo ✓";
+  }catch(e){ status.textContent="Error de red"; }
 }
 
 async function fetchGA4(date){
