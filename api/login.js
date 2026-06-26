@@ -15,6 +15,8 @@ const USERS = [
   { username: "daiana",   name: "Daiana Molina",  avatar: "DM" },
   { username: "berenice", name: "Berenice Fraga", avatar: "BF" },
   { username: "samuel",   name: "Samuel Moreira", avatar: "SM" },
+  { username: "leonardo", name: "Leonardo Arcas", avatar: "LA" },
+  { username: "mariano",  name: "Mariano Wegier", avatar: "MW" },
 ];
 
 function makeToken(username) {
