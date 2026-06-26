@@ -1,7 +1,8 @@
 {
   "outputDirectory": "docs",
   "functions": {
-    "api/today.js": { "maxDuration": 120 }
+    "api/today.js": { "maxDuration": 120 },
+    "api/atenti-search.js": { "maxDuration": 60 }
   },
   "rewrites": [
     { "source": "/", "destination": "/app.html" }
