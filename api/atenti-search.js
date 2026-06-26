@@ -6,13 +6,15 @@
  * al responder. Requiere sesión válida del dashboard (mismo token de /api/login).
  *
  * GET /api/atenti-search?date=YYYY-MM-DD                → ranking de uso ese día
- * GET /api/atenti-search?date=YYYY-MM-DD&dni=12345678   → perfil + conversación
+ * GET /api/atenti-search?date=YYYY-MM-DD&dni=12345678   → perfil + línea de tiempo
+ *                                                          (login, mensajes, búsquedas,
+ *                                                          recetas pedidas, carritos)
  * GET /api/atenti-search?format=csv&from=...&to=...     → CSV (1 columna, sin header)
  *                                                          de DNIs que usaron Atenti
  *                                                          en el rango (máx 31 días)
  */
 import { createHmac, timingSafeEqual } from "crypto";
-import { fetchLogsForDate, getLoginMap, getRanking, getConversation, getChatParticipants } from "../lib/atenti-source.js";
+import { fetchLogsForDate, getLoginMap, getRanking, getTimeline, getChatParticipants } from "../lib/atenti-source.js";
 
 const SECRET = process.env.SESSION_SECRET;
 
@@ -77,8 +79,8 @@ export default async function handler(req, res) {
   if (dni) {
     if (!/^\d+$/.test(dni)) return res.status(400).json({ error: "DNI inválido" });
     const perfil = getLoginMap(logs.loginLog).get(dni) || null;
-    const conversacion = getConversation(logs.chatLog, dni);
-    return res.json({ date, dni, perfil, conversacion });
+    const timeline = getTimeline(logs, dni);
+    return res.json({ date, dni, perfil, timeline });
   }
 
   const loginMap = getLoginMap(logs.loginLog);
