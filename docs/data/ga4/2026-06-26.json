@@ -1,4 +1,233 @@
 {
   "date": "2026-06-26",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 1279,
+      "users": 310
+    },
+    "user_engagement": {
+      "count": 1183,
+      "users": 317
+    },
+    "session_start": {
+      "count": 395,
+      "users": 386
+    },
+    "notification_dismiss": {
+      "count": 384,
+      "users": 254
+    },
+    "mis_cupones": {
+      "count": 268,
+      "users": 146
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 255,
+      "users": 27
+    },
+    "view_item_list": {
+      "count": 235,
+      "users": 46
+    },
+    "add_to_cart": {
+      "count": 221,
+      "users": 24
+    },
+    "search": {
+      "count": 167,
+      "users": 38
+    },
+    "switch_to_ecommerce": {
+      "count": 123,
+      "users": 73
+    },
+    "remove_from_cart": {
+      "count": 111,
+      "users": 16
+    },
+    "view_cart": {
+      "count": 109,
+      "users": 27
+    },
+    "tickets_compra": {
+      "count": 80,
+      "users": 61
+    },
+    "re_escaner_precios": {
+      "count": 71,
+      "users": 6
+    },
+    "notification_receive": {
+      "count": 68,
+      "users": 52
+    },
+    "select_item": {
+      "count": 57,
+      "users": 25
+    },
+    "view_item": {
+      "count": 49,
+      "users": 20
+    },
+    "ahorros_tips": {
+      "count": 44,
+      "users": 7
+    },
+    "filter_cupones": {
+      "count": 44,
+      "users": 23
+    },
+    "escaner_precios": {
+      "count": 34,
+      "users": 28
+    },
+    "mi_perfil": {
+      "count": 31,
+      "users": 24
+    },
+    "calculadora_home": {
+      "count": 30,
+      "users": 25
+    },
+    "view_promotion": {
+      "count": 30,
+      "users": 25
+    },
+    "calculadora_agregar_producto": {
+      "count": 27,
+      "users": 2
+    },
+    "folletos": {
+      "count": 25,
+      "users": 21
+    },
+    "notification_open": {
+      "count": 24,
+      "users": 23
+    },
+    "listado_notificaciones": {
+      "count": 23,
+      "users": 17
+    },
+    "chat_bot": {
+      "count": 20,
+      "users": 14
+    },
+    "favorito_mes_nuevo": {
+      "count": 17,
+      "users": 12
+    },
+    "favorito_mes_renovar": {
+      "count": 16,
+      "users": 14
+    },
+    "home_ahorros": {
+      "count": 16,
+      "users": 15
+    },
+    "ahorros_cambio_mes": {
+      "count": 14,
+      "users": 2
+    },
+    "favorito_mes": {
+      "count": 14,
+      "users": 12
+    },
+    "switch_to_sucursales": {
+      "count": 14,
+      "users": 10
+    },
+    "favorito_semanal_activacion": {
+      "count": 13,
+      "users": 13
+    },
+    "add_shipping_info": {
+      "count": 12,
+      "users": 10
+    },
+    "lista_compras": {
+      "count": 12,
+      "users": 10
+    },
+    "app_remove": {
+      "count": 10,
+      "users": 10
+    },
+    "ahorros_analisis": {
+      "count": 9,
+      "users": 7
+    },
+    "inicio_registro": {
+      "count": 9,
+      "users": 4
+    },
+    "tarjeta_mi_carrefour": {
+      "count": 9,
+      "users": 7
+    },
+    "favorito_semanal_volver_a_elegir": {
+      "count": 7,
+      "users": 6
+    },
+    "listado_notificaciones_click": {
+      "count": 7,
+      "users": 4
+    },
+    "promociones": {
+      "count": 6,
+      "users": 6
+    },
+    "cerrar_sesion": {
+      "count": 5,
+      "users": 4
+    },
+    "filter_escaner": {
+      "count": 4,
+      "users": 2
+    },
+    "select_promotion": {
+      "count": 4,
+      "users": 4
+    },
+    "favorito_semanal_favorito": {
+      "count": 3,
+      "users": 1
+    },
+    "purchase": {
+      "count": 3,
+      "users": 3
+    },
+    "sucursales": {
+      "count": 3,
+      "users": 3
+    },
+    "first_open": {
+      "count": 2,
+      "users": 2
+    },
+    "app_exception": {
+      "count": 1,
+      "users": 1
+    },
+    "consultas": {
+      "count": 1,
+      "users": 1
+    },
+    "consultas_app": {
+      "count": 1,
+      "users": 1
+    },
+    "notification_foreground": {
+      "count": 1,
+      "users": 1
+    },
+    "os_update": {
+      "count": 1,
+      "users": 1
+    },
+    "scanner_maxi_branch_list": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
