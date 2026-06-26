@@ -1,0 +1,419 @@
+{
+  "date": "2026-06-25",
+  "chat": {
+    "llamadas": 144,
+    "usuarios_unicos": 67,
+    "con_productos_identificados": 72,
+    "con_sugerencia": 12,
+    "por_hora": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      11,
+      2,
+      14,
+      7,
+      4,
+      11,
+      4,
+      12,
+      16,
+      26,
+      4,
+      10,
+      6,
+      3,
+      6
+    ],
+    "errores": 25
+  },
+  "categorizar": {
+    "total": 66,
+    "top_recetas": [
+      {
+        "key": "Si ",
+        "count": 3
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Hola quiero picada común de novillo ",
+        "count": 1
+      },
+      {
+        "key": "Picada",
+        "count": 1
+      },
+      {
+        "key": "Receta de albóndigas con pure",
+        "count": 1
+      },
+      {
+        "key": "Pan lactal blanco",
+        "count": 1
+      },
+      {
+        "key": "Pan lactal ",
+        "count": 1
+      },
+      {
+        "key": "Amarula ",
+        "count": 1
+      },
+      {
+        "key": "Queso sin sal",
+        "count": 1
+      },
+      {
+        "key": "Queso cremoso sin sal",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "huevos",
+        "count": 7
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "crema de leche",
+        "count": 5
+      },
+      {
+        "key": "cebolla",
+        "count": 5
+      },
+      {
+        "key": "tender de ropa",
+        "count": 5
+      },
+      {
+        "key": "sal",
+        "count": 4
+      },
+      {
+        "key": "pimienta",
+        "count": 4
+      },
+      {
+        "key": "morrón",
+        "count": 4
+      },
+      {
+        "key": "queso rallado",
+        "count": 4
+      },
+      {
+        "key": "pollo",
+        "count": 3
+      },
+      {
+        "key": "café",
+        "count": 3
+      },
+      {
+        "key": "café en cápsulas",
+        "count": 3
+      },
+      {
+        "key": "tapa de tarta",
+        "count": 3
+      },
+      {
+        "key": "queso cremoso",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 132,
+    "sin_resultado": 7,
+    "top_terminos": [
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "crema de leche",
+        "count": 5
+      },
+      {
+        "key": "tender de ropa",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "pimienta",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "pollo",
+        "count": 3
+      },
+      {
+        "key": "cafe",
+        "count": 3
+      },
+      {
+        "key": "morron",
+        "count": 3
+      },
+      {
+        "key": "queso rallado",
+        "count": 3
+      },
+      {
+        "key": "cafe en capsulas",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 14
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 7
+      },
+      {
+        "key": "Huevos",
+        "count": 7
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 5
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 4
+      },
+      {
+        "key": "Leches enteras",
+        "count": 4
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 4
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 4
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 4
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 4
+      }
+    ],
+    "errores": 37
+  },
+  "agregar": {
+    "total_agregados": 10,
+    "valor_total": 146071,
+    "ticket_promedio": 14607.1,
+    "descuento_total": 1008,
+    "canal": {
+      "inmediato": 0,
+      "programado": 10
+    },
+    "top_productos": [
+      {
+        "key": "Tapa para pascualina criolla Bulnez 2 uni",
+        "count": 24
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 6
+      },
+      {
+        "key": "Acelga x paquete",
+        "count": 5
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 4
+      },
+      {
+        "key": "Asado Novillo x kg.",
+        "count": 3
+      },
+      {
+        "key": "Queso untable light Santa Clara en pote 300 g.",
+        "count": 3
+      },
+      {
+        "key": "Tortera desmontable con gancho 25 cm Jovifel",
+        "count": 2
+      },
+      {
+        "key": "Azúcar común Bulnez 1 kg",
+        "count": 2
+      },
+      {
+        "key": "Harina de trigo 0000 Bulnez 1 kg.",
+        "count": 1
+      },
+      {
+        "key": "Mate cocido en saquitos Playadito x 25 uni",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 24
+      },
+      {
+        "key": "Verduras",
+        "count": 11
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 4
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 3
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 3
+      },
+      {
+        "key": "Ollas, sartenes y fuentes",
+        "count": 2
+      },
+      {
+        "key": "Azúcar",
+        "count": 2
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 1
+      },
+      {
+        "key": "Mate cocido",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "La Serenísima",
+        "count": 8
+      },
+      {
+        "key": "Genérico",
+        "count": 5
+      },
+      {
+        "key": "9 De Oro",
+        "count": 5
+      },
+      {
+        "key": "Tregar",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 3
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 3
+      },
+      {
+        "key": "Lactal",
+        "count": 2
+      },
+      {
+        "key": "Cusenier",
+        "count": 2
+      },
+      {
+        "key": "Amarula",
+        "count": 2
+      },
+      {
+        "key": "Sancor",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 39
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 6
+      },
+      {
+        "key": "Panadería",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 160,
+    "carrito_promedio": 75965.33,
+    "pct_con_carrito": 50.2,
+    "errores": 50
+  },
+  "origen": {
+    "total_requests": 237,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-26T08:03:47.132Z"
+}
