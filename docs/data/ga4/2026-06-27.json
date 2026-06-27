@@ -1,4 +1,105 @@
 {
   "date": "2026-06-27",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 35,
+      "users": 22
+    },
+    "session_start": {
+      "count": 30,
+      "users": 30
+    },
+    "mis_cupones": {
+      "count": 16,
+      "users": 11
+    },
+    "notification_dismiss": {
+      "count": 16,
+      "users": 11
+    },
+    "user_engagement": {
+      "count": 16,
+      "users": 13
+    },
+    "notification_open": {
+      "count": 3,
+      "users": 3
+    },
+    "chat_bot": {
+      "count": 2,
+      "users": 1
+    },
+    "filter_cupones": {
+      "count": 2,
+      "users": 2
+    },
+    "notification_receive": {
+      "count": 2,
+      "users": 2
+    },
+    "promociones": {
+      "count": 2,
+      "users": 1
+    },
+    "view_cart": {
+      "count": 2,
+      "users": 1
+    },
+    "app_remove": {
+      "count": 1,
+      "users": 1
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 1,
+      "users": 1
+    },
+    "escaner_precios": {
+      "count": 1,
+      "users": 1
+    },
+    "favorito_mes": {
+      "count": 1,
+      "users": 1
+    },
+    "favorito_mes_renovar": {
+      "count": 1,
+      "users": 1
+    },
+    "lista_compras": {
+      "count": 1,
+      "users": 1
+    },
+    "mi_perfil": {
+      "count": 1,
+      "users": 1
+    },
+    "search": {
+      "count": 1,
+      "users": 1
+    },
+    "select_item": {
+      "count": 1,
+      "users": 1
+    },
+    "switch_to_ecommerce": {
+      "count": 1,
+      "users": 1
+    },
+    "tarjeta_mi_carrefour": {
+      "count": 1,
+      "users": 1
+    },
+    "tickets_compra": {
+      "count": 1,
+      "users": 1
+    },
+    "view_item": {
+      "count": 1,
+      "users": 1
+    },
+    "view_item_list": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
