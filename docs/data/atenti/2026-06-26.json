@@ -1,0 +1,431 @@
+{
+  "date": "2026-06-26",
+  "chat": {
+    "llamadas": 198,
+    "usuarios_unicos": 78,
+    "con_productos_identificados": 111,
+    "con_sugerencia": 17,
+    "por_hora": [
+      1,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      9,
+      6,
+      24,
+      17,
+      6,
+      17,
+      43,
+      9,
+      11,
+      25,
+      2,
+      9,
+      2,
+      1,
+      5,
+      7
+    ],
+    "errores": 29
+  },
+  "categorizar": {
+    "total": 102,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 6
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "vegetariano y barato",
+        "count": 1
+      },
+      {
+        "key": "lentejas",
+        "count": 1
+      },
+      {
+        "key": "Carbonada ",
+        "count": 1
+      },
+      {
+        "key": "Azúcar ",
+        "count": 1
+      },
+      {
+        "key": "Alimentos tiernitos ",
+        "count": 1
+      },
+      {
+        "key": "Perro adulto ",
+        "count": 1
+      },
+      {
+        "key": "Busco cerveza de 5 litros ",
+        "count": 1
+      },
+      {
+        "key": "Busco Barril de Cerveza 5 Litros Denninghoffs",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 9
+      },
+      {
+        "key": "salsa golf",
+        "count": 7
+      },
+      {
+        "key": "huevos",
+        "count": 5
+      },
+      {
+        "key": "carne",
+        "count": 5
+      },
+      {
+        "key": "café torrado molido gourmet",
+        "count": 5
+      },
+      {
+        "key": "bolsas de basura",
+        "count": 5
+      },
+      {
+        "key": "ravioles",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "papel higiénico",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 4
+      },
+      {
+        "key": "detergente",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "carne vacuna",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 217,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 9
+      },
+      {
+        "key": "salsa golf",
+        "count": 6
+      },
+      {
+        "key": "carne",
+        "count": 5
+      },
+      {
+        "key": "bolsas de basura",
+        "count": 5
+      },
+      {
+        "key": "ravioles",
+        "count": 5
+      },
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 4
+      },
+      {
+        "key": "cafe torrado molido gourmet",
+        "count": 4
+      },
+      {
+        "key": "detergente",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "pure de tomate",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "harina leudante",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Aceites comunes",
+        "count": 13
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 11
+      },
+      {
+        "key": "Cafe molido y en grano",
+        "count": 10
+      },
+      {
+        "key": "Verduras",
+        "count": 9
+      },
+      {
+        "key": "Leches enteras",
+        "count": 8
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 7
+      },
+      {
+        "key": "Bolsas de residuos",
+        "count": 7
+      },
+      {
+        "key": "Difusores y repuestos",
+        "count": 6
+      },
+      {
+        "key": "Huevos",
+        "count": 5
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 5
+      }
+    ],
+    "errores": 18
+  },
+  "agregar": {
+    "total_agregados": 26,
+    "valor_total": 900952.4,
+    "ticket_promedio": 34652.02,
+    "descuento_total": 135425.22,
+    "canal": {
+      "inmediato": 7,
+      "programado": 19
+    },
+    "top_productos": [
+      {
+        "key": "Yogur Griego sabor vainilla Yogurísimo 140 grs",
+        "count": 20
+      },
+      {
+        "key": "Espinazo Novillo x kg.",
+        "count": 14
+      },
+      {
+        "key": "Papel higiénico doble hoja Higienol plus x4 30 mts.",
+        "count": 14
+      },
+      {
+        "key": "Leche liviana UAT clásica Bulnez 1 lt",
+        "count": 12
+      },
+      {
+        "key": "Leche entera larga vida Tregar 1 l.",
+        "count": 12
+      },
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Yogur descremado firme Tregar de vainilla 125 g.",
+        "count": 12
+      },
+      {
+        "key": "Gaseosa cola Coca Cola sabor liviano 2,25 lts",
+        "count": 12
+      },
+      {
+        "key": "Leche parcialmente descremada UAT Carrefour classic tetra 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Leche entera larga vida Las tres niñas 1 l.",
+        "count": 11
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 35
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 32
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 24
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 20
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 14
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 12
+      },
+      {
+        "key": "Lavandinas",
+        "count": 12
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 12
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 12
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 17,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 20
+      },
+      {
+        "key": "Bulnez",
+        "count": 14
+      },
+      {
+        "key": "Carrefour",
+        "count": 11
+      },
+      {
+        "key": "La Serenísima",
+        "count": 11
+      },
+      {
+        "key": "Ala",
+        "count": 8
+      },
+      {
+        "key": "Pep",
+        "count": 5
+      },
+      {
+        "key": "Santa Clara",
+        "count": 4
+      },
+      {
+        "key": "NotCo",
+        "count": 4
+      },
+      {
+        "key": "Adler",
+        "count": 4
+      },
+      {
+        "key": "308",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 48
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 40
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 33
+      },
+      {
+        "key": "Congelados",
+        "count": 20
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 187,
+    "carrito_promedio": 60758.61,
+    "pct_con_carrito": 49.4,
+    "errores": 64
+  },
+  "origen": {
+    "total_requests": 375,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-27T07:28:16.652Z"
+}
