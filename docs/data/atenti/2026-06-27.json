@@ -1,0 +1,415 @@
+{
+  "date": "2026-06-27",
+  "chat": {
+    "llamadas": 72,
+    "usuarios_unicos": 30,
+    "con_productos_identificados": 34,
+    "con_sugerencia": 5,
+    "por_hora": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      1,
+      3,
+      2,
+      12,
+      7,
+      4,
+      2,
+      13,
+      1,
+      7,
+      3,
+      6,
+      4,
+      1,
+      1,
+      0
+    ],
+    "errores": 17
+  },
+  "categorizar": {
+    "total": 32,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Desodorante",
+        "count": 1
+      },
+      {
+        "key": "Desodorante dove",
+        "count": 1
+      },
+      {
+        "key": "Coca cola",
+        "count": 1
+      },
+      {
+        "key": "Zero ",
+        "count": 1
+      },
+      {
+        "key": "Necesito pañales adulto xg ",
+        "count": 1
+      },
+      {
+        "key": "Resma Punax",
+        "count": 1
+      },
+      {
+        "key": "Verduras",
+        "count": 1
+      },
+      {
+        "key": "Desodorante axe",
+        "count": 1
+      },
+      {
+        "key": "Estoy buscando productos para una compra mensual y que sean baratos para dos personas ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "gaseosa cola zero",
+        "count": 4
+      },
+      {
+        "key": "pan de hamburguesa",
+        "count": 4
+      },
+      {
+        "key": "jugo en polvo pomelada",
+        "count": 3
+      },
+      {
+        "key": "jugo en polvo naranja dulce",
+        "count": 3
+      },
+      {
+        "key": "leche liviana",
+        "count": 3
+      },
+      {
+        "key": "jugo en polvo naranja durazno",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "desodorante",
+        "count": 3
+      },
+      {
+        "key": "agua mineral",
+        "count": 3
+      },
+      {
+        "key": "lavandina",
+        "count": 3
+      },
+      {
+        "key": "detergente para platos",
+        "count": 3
+      },
+      {
+        "key": "limpiador con lavandina",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "flan",
+        "count": 3
+      },
+      {
+        "key": "zapallo ancho",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 118,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "gaseosa cola zero",
+        "count": 4
+      },
+      {
+        "key": "pan de hamburguesa",
+        "count": 4
+      },
+      {
+        "key": "jugo en polvo pomelada",
+        "count": 3
+      },
+      {
+        "key": "jugo en polvo limon maracuya",
+        "count": 3
+      },
+      {
+        "key": "jugo en polvo naranja durazno",
+        "count": 3
+      },
+      {
+        "key": "gaseosa cola sin azucar",
+        "count": 3
+      },
+      {
+        "key": "leche liviana",
+        "count": 3
+      },
+      {
+        "key": "atun al natural",
+        "count": 3
+      },
+      {
+        "key": "jugo en polvo naranja dulce",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "desodorante",
+        "count": 3
+      },
+      {
+        "key": "lavandina",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "agua mineral",
+        "count": 3
+      },
+      {
+        "key": "limpiador con lavandina",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 12
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 10
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 9
+      },
+      {
+        "key": "Frutas",
+        "count": 6
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 5
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 4
+      },
+      {
+        "key": "Verduras",
+        "count": 4
+      },
+      {
+        "key": "Aguas saborizadas",
+        "count": 4
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 4
+      },
+      {
+        "key": "Pan para hamburguesas y panchos",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 10,
+    "valor_total": 499967,
+    "ticket_promedio": 49996.7,
+    "descuento_total": 158856.27,
+    "canal": {
+      "inmediato": 0,
+      "programado": 10
+    },
+    "top_productos": [
+      {
+        "key": "Leche La serenisima clásica 3% 1L.",
+        "count": 72
+      },
+      {
+        "key": "Azúcar Ledesma molida superior bolsa 1 kg.",
+        "count": 20
+      },
+      {
+        "key": "Yogur bebible Ser PRO+ con proteínas sabor frutillas y arándanos 190 grs",
+        "count": 18
+      },
+      {
+        "key": "Leche La serenisima liviana 1% 1L",
+        "count": 16
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 2,25 lts",
+        "count": 13
+      },
+      {
+        "key": "Lavandina Ayudín original 1 l.",
+        "count": 12
+      },
+      {
+        "key": "Caldo Knorr de verdura deshidratado 12 cubos",
+        "count": 12
+      },
+      {
+        "key": "Tostadas de arroz Molinos Ala clasicas 150 g.",
+        "count": 10
+      },
+      {
+        "key": "Limpiador cremoso Cif bioactive 500 cc.",
+        "count": 9
+      },
+      {
+        "key": "Leche Protein La Serenisima 1L",
+        "count": 9
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 72
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 25
+      },
+      {
+        "key": "Azúcar",
+        "count": 20
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 18
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 13
+      },
+      {
+        "key": "Lavandinas",
+        "count": 12
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 12
+      },
+      {
+        "key": "Caldos",
+        "count": 12
+      },
+      {
+        "key": "Limpiadores cremosos",
+        "count": 9
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 3,
+    "top_marcas": [
+      {
+        "key": "Cadbury",
+        "count": 7
+      },
+      {
+        "key": "Plenitud",
+        "count": 5
+      },
+      {
+        "key": "Nivea",
+        "count": 5
+      },
+      {
+        "key": "Hinds",
+        "count": 4
+      },
+      {
+        "key": "Promise",
+        "count": 2
+      },
+      {
+        "key": "Nonisec",
+        "count": 1
+      },
+      {
+        "key": "Old Spice",
+        "count": 1
+      },
+      {
+        "key": "Felices Las Vacas",
+        "count": 1
+      },
+      {
+        "key": "Arcor",
+        "count": 1
+      },
+      {
+        "key": "Rocklets",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Perfumería y farmacia",
+        "count": 18
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 115,
+    "carrito_promedio": 64792.91,
+    "pct_con_carrito": 50.7,
+    "errores": 33
+  },
+  "origen": {
+    "total_requests": 167,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-28T07:58:50.223Z"
+}
