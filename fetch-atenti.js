@@ -344,10 +344,7 @@ function analyzeOrigen(content) {
   return { total_requests: total, ips_unicas: ips.size };
 }
 
-async function main() {
-  const gmail = gmailClient();
-  const targetDate = (process.env.FETCH_ATENTI_DATE || "").trim() || null;
-
+async function processOneDate(gmail, targetDate) {
   console.log(targetDate ? `📬 Buscando mail de ${SENDER} para el ${targetDate}...` : `📬 Buscando mail de ${SENDER}...`);
   const zipBuffer = targetDate ? await findZipAttachmentForDate(gmail, targetDate) : await findLatestZipAttachment(gmail);
   console.log(`📦 Adjunto descargado (${(zipBuffer.length / 1024).toFixed(0)} KB)`);
@@ -383,6 +380,27 @@ async function main() {
   console.log(`💾 Guardado: ${outPath}`);
   console.log(`   Chat: ${result.chat.llamadas} llamadas, ${result.chat.usuarios_unicos} usuarios únicos`);
   console.log(`   Agregar: ${result.agregar.total_agregados} carritos, $${result.agregar.valor_total.toLocaleString()}`);
+}
+
+async function main() {
+  const gmail = gmailClient();
+  const raw = (process.env.FETCH_ATENTI_DATE || "").trim();
+  const dates = raw ? raw.split(",").map(d => d.trim()).filter(Boolean) : [null];
+
+  const fails = [];
+  for (const date of dates) {
+    try {
+      await processOneDate(gmail, date);
+    } catch (e) {
+      console.error(`⚠️  Falló ${date || "(último)"}: ${e.message}`);
+      fails.push(date);
+    }
+  }
+
+  if (fails.length) {
+    console.error(`💥 ${fails.length}/${dates.length} fechas fallaron: ${fails.join(", ")}`);
+    if (fails.length === dates.length) process.exit(1);
+  }
 }
 
 main().catch(err => { console.error("💥 Fatal Atenti:", err.message); process.exit(1); });

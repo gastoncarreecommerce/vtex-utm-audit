@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: "Backfill de un día puntual (YYYY-MM-DD). Vacío = último mail disponible."
+        description: "Backfill: una fecha (YYYY-MM-DD) o varias separadas por coma. Vacío = último mail disponible."
         required: false
 
 concurrency:
