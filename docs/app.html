@@ -588,7 +588,11 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             <h2 style="font-size:21px;font-weight:800;letter-spacing:-.4px">Atenti — Chat de IA</h2>
             <p style="font-size:13px;color:var(--ink-3);margin-top:4px">Métricas agregadas del asistente de compras (sin datos personales)</p>
           </div>
-          <div id="at-date-badge" style="display:none;font-size:13px;font-weight:600;color:var(--indigo);background:var(--indigo-bg);padding:7px 14px;border-radius:9px;white-space:nowrap"></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <div class="form-group" style="margin:0"><label class="form-label">Desde</label><input type="date" id="at-range-from" class="form-input" onchange="loadAtenti()" style="width:140px"></div>
+            <div class="form-group" style="margin:0"><label class="form-label">Hasta</label><input type="date" id="at-range-to" class="form-input" onchange="loadAtenti()" style="width:140px"></div>
+            <div id="at-date-badge" style="display:none;font-size:13px;font-weight:600;color:var(--indigo);background:var(--indigo-bg);padding:7px 14px;border-radius:9px;white-space:nowrap"></div>
+          </div>
         </div>
         <div id="atenti-empty" class="card" style="display:none"><div class="card-body"><div class="empty-state"><div class="es-icon">🤖</div><div class="es-title">Todavía no hay datos de Atenti</div></div></div></div>
         <div id="atenti-content" style="display:none">
@@ -1450,18 +1454,93 @@ async function fetchAtenti(date){
     return r.ok?await r.json():null;
   }catch{ return null; }
 }
+function sumField(days,path){ return days.reduce((s,d)=>{ const v=path.split(".").reduce((o,k)=>o&&o[k],d); return s+(Number(v)||0); },0); }
+function mergeTop(days,path,n){
+  const m={};
+  for(const d of days){
+    const arr=path.split(".").reduce((o,k)=>o&&o[k],d)||[];
+    for(const x of arr) m[x.key]=(m[x.key]||0)+x.count;
+  }
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,n).map(([key,count])=>({key,count}));
+}
+function mergeAtentiDays(days){
+  if(days.length===1) return days[0];
+  const porHora=Array(24).fill(0);
+  days.forEach(d=>(d.chat.por_hora||[]).forEach((v,i)=>porHora[i]+=v));
+  const avg=arr=>arr.length?arr.reduce((s,v)=>s+v,0)/arr.length:0;
+  const agregarTotal=sumField(days,"agregar.total_agregados"), agregarValor=sumField(days,"agregar.valor_total");
+  return {
+    date:`${days[0].date} → ${days[days.length-1].date}`,
+    _dias:days.length,
+    chat:{
+      llamadas:sumField(days,"chat.llamadas"),
+      usuarios_unicos:sumField(days,"chat.usuarios_unicos"),
+      con_productos_identificados:sumField(days,"chat.con_productos_identificados"),
+      con_sugerencia:sumField(days,"chat.con_sugerencia"),
+      por_hora:porHora,
+      errores:sumField(days,"chat.errores")
+    },
+    categorizar:{
+      top_recetas:mergeTop(days,"categorizar.top_recetas",10),
+      top_ingredientes:mergeTop(days,"categorizar.top_ingredientes",15),
+      errores:sumField(days,"categorizar.errores")
+    },
+    buscar_eans:{
+      sin_resultado:sumField(days,"buscar_eans.sin_resultado"),
+      top_terminos:mergeTop(days,"buscar_eans.top_terminos",15),
+      top_subcategorias:mergeTop(days,"buscar_eans.top_subcategorias",10),
+      errores:sumField(days,"buscar_eans.errores")
+    },
+    agregar:{
+      total_agregados:agregarTotal,
+      valor_total:agregarValor,
+      ticket_promedio:agregarTotal?agregarValor/agregarTotal:0,
+      descuento_total:sumField(days,"agregar.descuento_total"),
+      canal:{ inmediato:sumField(days,"agregar.canal.inmediato"), programado:sumField(days,"agregar.canal.programado") },
+      top_productos:mergeTop(days,"agregar.top_productos",10),
+      top_categorias:mergeTop(days,"agregar.top_categorias",10),
+      errores:sumField(days,"agregar.errores")
+    },
+    buscar_similares:{
+      top_marcas:mergeTop(days,"buscar_similares.top_marcas",10),
+      top_categorias:mergeTop(days,"buscar_similares.top_categorias",10),
+      errores:sumField(days,"buscar_similares.errores")
+    },
+    login:{
+      usuarios_unicos:sumField(days,"login.usuarios_unicos"),
+      carrito_promedio:avg(days.map(d=>d.login.carrito_promedio||0)),
+      pct_con_carrito:avg(days.map(d=>d.login.pct_con_carrito||0)),
+      errores:sumField(days,"login.errores")
+    }
+  };
+}
 async function loadAtenti(){
   document.getElementById("atenti-empty").style.display="none";
   document.getElementById("atenti-content").style.display="none";
-  // El mail llega a la 1am con los logs del día anterior — buscamos desde ayer
-  // hacia atrás hasta encontrar el último día con datos disponibles.
-  let d=addDays(todayAR(),-1), data=null;
-  for(let i=0;i<7&&!data;i++){ data=await fetchAtenti(d); if(!data) d=addDays(d,-1); }
-  if(!data){ document.getElementById("atenti-empty").style.display=""; return; }
+  const rf=document.getElementById("at-range-from"), rt=document.getElementById("at-range-to");
+  let data, dias;
+  if(rf.value&&rt.value){
+    const dates=[]; let d=rf.value;
+    while(d<=rt.value && dates.length<31){ dates.push(d); d=addDays(d,1); }
+    dias=(await Promise.all(dates.map(fetchAtenti))).filter(Boolean);
+    if(!dias.length){ document.getElementById("atenti-empty").style.display=""; return; }
+    data=mergeAtentiDays(dias);
+  }else{
+    // El mail llega a la 1am con los logs del día anterior — buscamos desde ayer
+    // hacia atrás hasta encontrar el último día con datos disponibles.
+    let d=addDays(todayAR(),-1);
+    for(let i=0;i<7&&!data;i++){ data=await fetchAtenti(d); if(!data) d=addDays(d,-1); }
+    if(!data){ document.getElementById("atenti-empty").style.display=""; return; }
+    if(!rf.value) rf.value=data.date;
+    if(!rt.value) rt.value=data.date;
+    dias=[data];
+  }
   document.getElementById("atenti-content").style.display="";
   const badge=document.getElementById("at-date-badge");
   badge.style.display="";
-  badge.textContent=`📅 Datos del ${fmtFechaAR(data.date)}${data.fetched_at?` · recibido ${new Date(data.fetched_at).toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",hour:"2-digit",minute:"2-digit",day:"2-digit",month:"2-digit"})}hs`:""}`;
+  badge.textContent=dias.length>1
+    ? `📅 ${dias.length} días con datos (${fmtFechaAR(dias[0].date)} → ${fmtFechaAR(dias[dias.length-1].date)})`
+    : `📅 Datos del ${fmtFechaAR(data.date)}${data.fetched_at?` · recibido ${new Date(data.fetched_at).toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",hour:"2-digit",minute:"2-digit",day:"2-digit",month:"2-digit"})}hs`:""}`;
   document.getElementById("at-llamadas").textContent=data.chat.llamadas.toLocaleString();
   document.getElementById("at-usuarios").textContent=`${data.chat.usuarios_unicos.toLocaleString()} usuarios únicos`;
   document.getElementById("at-productos").textContent=data.chat.con_productos_identificados.toLocaleString();
@@ -1510,10 +1589,11 @@ async function loadAtenti(){
       }
     }
   });
+  const lastDate=dias[dias.length-1].date;
   const sd=document.getElementById("at-search-date"), ef=document.getElementById("at-export-from"), et=document.getElementById("at-export-to");
-  if(sd&&!sd.value) sd.value=data.date;
-  if(ef&&!ef.value) ef.value=data.date;
-  if(et&&!et.value) et.value=data.date;
+  if(sd&&!sd.value) sd.value=lastDate;
+  if(ef&&!ef.value) ef.value=lastDate;
+  if(et&&!et.value) et.value=lastDate;
 }
 
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }

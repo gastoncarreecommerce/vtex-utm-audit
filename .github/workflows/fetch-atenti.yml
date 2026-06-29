@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: "20 4 * * *"   # 4:20 UTC = 1:20am AR — el mail llega a la 1am en punto
   workflow_dispatch:
+    inputs:
+      date:
+        description: "Backfill de un día puntual (YYYY-MM-DD). Vacío = último mail disponible."
+        required: false
 
 concurrency:
   group: fetch-atenti
@@ -35,6 +39,7 @@ jobs:
           GMAIL_CLIENT_ID:     ${{ secrets.GMAIL_CLIENT_ID }}
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          FETCH_ATENTI_DATE:   ${{ github.event.inputs.date }}
         run: node fetch-atenti.js
 
       - name: Commit data
