@@ -588,12 +588,17 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             <h2 style="font-size:21px;font-weight:800;letter-spacing:-.4px">Atenti — Chat de IA</h2>
             <p style="font-size:13px;color:var(--ink-3);margin-top:4px">Métricas agregadas del asistente de compras (sin datos personales)</p>
           </div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div id="at-range-controls" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
             <div class="form-group" style="margin:0"><label class="form-label">Desde</label><input type="date" id="at-range-from" class="form-input" onchange="loadAtenti()" style="width:140px"></div>
             <div class="form-group" style="margin:0"><label class="form-label">Hasta</label><input type="date" id="at-range-to" class="form-input" onchange="loadAtenti()" style="width:140px"></div>
             <div id="at-date-badge" style="display:none;font-size:13px;font-weight:600;color:var(--indigo);background:var(--indigo-bg);padding:7px 14px;border-radius:9px;white-space:nowrap"></div>
           </div>
         </div>
+        <div style="display:flex;gap:8px;margin-bottom:20px">
+          <button class="tbtn primary" id="at-tabbtn-dashboard" onclick="switchAtentiTab('dashboard')">📊 Dashboard</button>
+          <button class="tbtn" id="at-tabbtn-chats" onclick="switchAtentiTab('chats')">💬 Conversaciones y Push</button>
+        </div>
+        <div id="at-tab-dashboard">
         <div id="atenti-empty" class="card" style="display:none"><div class="card-body"><div class="empty-state"><div class="es-icon">🤖</div><div class="es-title">Todavía no hay datos de Atenti</div></div></div></div>
         <div id="atenti-content" style="display:none">
           <div class="kpi-row" style="margin-bottom:20px">
@@ -655,7 +660,10 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             <div class="card-header"><div class="card-title">Salud técnica (errores/warnings por log)</div></div>
             <div class="card-body-flush"><table class="data-table"><thead><tr><th>Log</th><th>Errores</th></tr></thead><tbody id="at-errores-body"></tbody></table></div>
           </div>
-          <div class="card" style="margin-top:20px">
+        </div>
+        </div>
+        <div id="at-tab-chats" style="display:none">
+          <div class="card">
             <div class="card-header">
               <div class="card-title">🔎 Búsqueda de clientes (en vivo)</div>
               <div class="card-sub">Acceso restringido a usuarios logueados — re-lee el mail de Gmail de esa fecha en cada búsqueda, no se guarda nada en el dashboard.</div>
@@ -1514,6 +1522,14 @@ function mergeAtentiDays(days){
     }
   };
 }
+function switchAtentiTab(tab){
+  document.getElementById("at-tab-dashboard").style.display=tab==="dashboard"?"":"none";
+  document.getElementById("at-tab-chats").style.display=tab==="chats"?"":"none";
+  document.getElementById("at-range-controls").style.display=tab==="dashboard"?"":"none";
+  document.getElementById("at-tabbtn-dashboard").classList.toggle("primary",tab==="dashboard");
+  document.getElementById("at-tabbtn-chats").classList.toggle("primary",tab==="chats");
+}
+
 async function loadAtenti(){
   document.getElementById("atenti-empty").style.display="none";
   document.getElementById("atenti-content").style.display="none";
@@ -1624,10 +1640,26 @@ function renderAtentiRanking(d){
 
 const AT_EVENT_ICON={login:"🔑",categorizar:"🍳",busqueda:"🔍",carrito:"🛒"};
 
+function renderAtentiAtribucion(a){
+  if(!a) return "";
+  if(a.error) return `<div style="margin-bottom:12px;padding:10px 14px;border-radius:10px;font-size:12px;background:#fdecec;border:1px solid #f3b9b9;color:#8a1f1f">⚠️ No se pudo cruzar con pedidos VTEX: ${escapeHtml(a.error)}</div>`;
+  if(!a.compro){
+    return `<div style="margin-bottom:12px;padding:10px 14px;border-radius:10px;font-size:12px;background:#f1f4f8;color:var(--ink-2)">🛒 Atenti sugirió ${a.productos_sugeridos} producto(s) ese día, pero no se encontró una compra de la app asociada a este DNI en los 7 días siguientes.</div>`;
+  }
+  const comprados=a.productos_sugeridos_comprados||[];
+  const lista=comprados.length
+    ? `<ul style="margin:6px 0 0 18px;padding:0">${comprados.map(c=>`<li>${escapeHtml(c.sugerido)} ${c.sugerido!==c.comprado?`(comprado como "${escapeHtml(c.comprado)}")`:""} × ${c.cantidad_comprada}</li>`).join("")}</ul>`
+    : `<div style="margin-top:4px">Ninguno de los ${a.productos_sugeridos} producto(s) sugeridos por Atenti coincide con los items de ese pedido (puede haber comprado por otra vía).</div>`;
+  return `<div style="margin-bottom:12px;padding:10px 14px;border-radius:10px;font-size:12px;background:#eafaf0;border:1px solid #b8e6c9;color:#0f5132">
+    ✅ <b>Compró</b> — Pedido <b>${escapeHtml(a.pedido.order_id)}</b> · $${Math.round(a.pedido.total).toLocaleString("es-AR")} · ${escapeHtml(new Date(a.pedido.fecha).toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires"}))}
+    ${comprados.length?`<br><b>Productos sugeridos por Atenti que compró:</b>${lista}`:lista}
+  </div>`;
+}
+
 function renderAtentiConversation(d){
   const box=document.getElementById("at-search-result");
   const p=d.perfil;
-  const head=`<div style="margin-bottom:12px;font-size:13px"><b>DNI:</b> ${escapeHtml(d.dni)}${p?` · <b>${escapeHtml(p.nombre||"")}</b> · ${escapeHtml(p.email||"")}${p.telefono?` · ${escapeHtml(p.telefono)}`:""}`:" · sin perfil de login ese día"}</div>`;
+  const head=`<div style="margin-bottom:12px;font-size:13px"><b>DNI:</b> ${escapeHtml(d.dni)}${p?` · <b>${escapeHtml(p.nombre||"")}</b> · ${escapeHtml(p.email||"")}${p.telefono?` · ${escapeHtml(p.telefono)}`:""}`:" · sin perfil de login ese día"}</div>`+renderAtentiAtribucion(d.atribucion);
   if(!d.timeline||!d.timeline.length){
     box.innerHTML=head+'<div class="empty-state"><div class="es-title">Sin actividad de Atenti ese día</div></div>';
     return;

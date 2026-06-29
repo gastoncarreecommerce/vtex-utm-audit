@@ -8,13 +8,16 @@
  * GET /api/atenti-search?date=YYYY-MM-DD                → ranking de uso ese día
  * GET /api/atenti-search?date=YYYY-MM-DD&dni=12345678   → perfil + línea de tiempo
  *                                                          (login, mensajes, búsquedas,
- *                                                          recetas pedidas, carritos)
+ *                                                          recetas pedidas, carritos) +
+ *                                                          atribución (cruce en vivo con
+ *                                                          pedidos VTEX por documento)
  * GET /api/atenti-search?format=csv&from=...&to=...     → CSV (1 columna, sin header)
  *                                                          de DNIs que usaron Atenti
  *                                                          en el rango (máx 31 días)
  */
 import { createHmac, timingSafeEqual } from "crypto";
-import { fetchLogsForDate, getLoginMap, getRanking, getTimeline, getChatParticipants } from "../lib/atenti-source.js";
+import { fetchLogsForDate, getLoginMap, getRanking, getTimeline, getChatParticipants, getCartAdds } from "../lib/atenti-source.js";
+import { findAttributedOrder } from "../lib/order-attribution.js";
 
 const SECRET = process.env.SESSION_SECRET;
 
@@ -80,7 +83,19 @@ export default async function handler(req, res) {
     if (!/^\d+$/.test(dni)) return res.status(400).json({ error: "DNI inválido" });
     const perfil = getLoginMap(logs.loginLog).get(dni) || null;
     const timeline = getTimeline(logs, dni);
-    return res.json({ date, dni, perfil, timeline });
+
+    const cartItems = getCartAdds(logs.agregarLog, dni).flatMap(c => c.items);
+    let atribucion = null;
+    if (cartItems.length) {
+      try {
+        const match = await findAttributedOrder(dni, date, cartItems);
+        atribucion = { productos_sugeridos: cartItems.length, compro: !!match, ...(match || {}) };
+      } catch (e) {
+        atribucion = { error: e.message };
+      }
+    }
+
+    return res.json({ date, dni, perfil, timeline, atribucion });
   }
 
   const loginMap = getLoginMap(logs.loginLog);
