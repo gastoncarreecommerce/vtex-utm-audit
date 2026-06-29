@@ -14,10 +14,19 @@
  * GET /api/atenti-search?format=csv&from=...&to=...     → CSV (1 columna, sin header)
  *                                                          de DNIs que usaron Atenti
  *                                                          en el rango (máx 31 días)
+ * GET /api/atenti-search?format=attribution&from=...&to=... → estadística agregada
+ *                                                          de conversión: de todos los
+ *                                                          DNIs que metieron al carrito
+ *                                                          algo sugerido por Atenti en
+ *                                                          el rango (máx 31 días), cuántos
+ *                                                          terminaron comprando un pedido
+ *                                                          con al menos uno de esos
+ *                                                          productos (cruce EN VIVO con
+ *                                                          VTEX, sin exponer DNIs)
  */
 import { createHmac, timingSafeEqual } from "crypto";
-import { fetchLogsForDate, getLoginMap, getRanking, getTimeline, getChatParticipants, getCartAdds } from "../lib/atenti-source.js";
-import { findAttributedOrder } from "../lib/order-attribution.js";
+import { fetchLogsForDate, getLoginMap, getRanking, getTimeline, getChatParticipants, getCartAdds, getAllCartAdds } from "../lib/atenti-source.js";
+import { findAttributedOrder, getAttributionStats } from "../lib/order-attribution.js";
 
 const SECRET = process.env.SESSION_SECRET;
 
@@ -71,6 +80,31 @@ export default async function handler(req, res) {
     res.setHeader("Content-Type", "text/csv; charset=utf-8");
     res.setHeader("Content-Disposition", `attachment; filename="atenti-dnis-${from}_${to}.csv"`);
     return res.send([...dniSet].join("\n"));
+  }
+
+  if (format === "attribution") {
+    if (!from || !to) return res.status(400).json({ error: "Faltan from/to" });
+    const dates = enumerateDates(from, to);
+    if (dates.length > 31) return res.status(400).json({ error: "Rango máximo: 31 días" });
+    if (!process.env.VTEX_APP_KEY || !process.env.VTEX_APP_TOKEN) {
+      return res.status(500).json({ error: "Faltan credenciales VTEX en las env vars de Vercel" });
+    }
+
+    const total = { usuarios_con_sugerencia: 0, compraron: 0, compraron_con_sugerido: 0 };
+    for (const d of dates) {
+      let logs;
+      try { logs = await fetchLogsForDate(d); } catch (e) { return res.status(502).json({ error: e.message }); }
+      if (!logs) continue;
+      const cartAddsByDni = getAllCartAdds(logs.agregarLog);
+      let stats;
+      try { stats = await getAttributionStats(cartAddsByDni, d); } catch (e) { return res.status(502).json({ error: e.message }); }
+      total.usuarios_con_sugerencia += stats.usuarios_con_sugerencia;
+      total.compraron += stats.compraron;
+      total.compraron_con_sugerido += stats.compraron_con_sugerido;
+    }
+    total.tasa_conversion_pct = total.usuarios_con_sugerencia > 0
+      ? Math.round(total.compraron_con_sugerido / total.usuarios_con_sugerencia * 1000) / 10 : 0;
+    return res.json({ from, to, ...total });
   }
 
   if (!date) return res.status(400).json({ error: "Falta date" });
