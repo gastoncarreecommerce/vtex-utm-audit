@@ -22,6 +22,9 @@ const path = require("path");
 
 const SENDER  = "atenti@carrefour.com";
 const SUBJECT = "Se envian los logs del dia";
+// Mail único con un .zip adjunto por día viejo (logs_YYYYMMDD.zip), para fechas
+// que ya no llegan por el mail diario normal.
+const BACKFILL_SUBJECT = "Logs Atenti completo";
 const MONTHS  = { Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12" };
 
 function gmailClient() {
@@ -82,7 +85,37 @@ async function findZipAttachmentForDate(gmail, date) {
     const found = `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}`;
     if (found === date) return zipBuffer;
   }
+
+  const backfillZip = await findBackfillZipForDate(gmail, date);
+  if (backfillZip) return backfillZip;
+
   throw new Error(`No se encontraron logs de Atenti para ${date}`);
+}
+
+// Busca el .zip de `date` dentro del mail único de backfill (varios adjuntos
+// logs_YYYYMMDD.zip, uno por día). Verifica contra chat.log igual que arriba,
+// por si el nombre del archivo no coincidiera exactamente con la fecha real.
+async function findBackfillZipForDate(gmail, date) {
+  const q = `subject:"${BACKFILL_SUBJECT}" has:attachment`;
+  const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 5 });
+  const filename = `logs_${date.replace(/-/g, "")}.zip`;
+
+  for (const m of (list.data.messages || [])) {
+    const msg = await gmail.users.messages.get({ userId: "me", id: m.id });
+    const parts = msg.data.payload?.parts || [];
+    const zipPart = parts.find(p => p.filename && p.filename.toLowerCase() === filename);
+    if (!zipPart) continue;
+    const att = await gmail.users.messages.attachments.get({
+      userId: "me", messageId: m.id, id: zipPart.body.attachmentId
+    });
+    const zipBuffer = Buffer.from(att.data.data, "base64");
+    const zip = new AdmZip(zipBuffer);
+    const entry = zip.getEntries().find(e => e.entryName.toLowerCase().endsWith("chat.log"));
+    const chatLog = entry ? entry.getData().toString("utf8") : "";
+    const ts = chatLog.match(/^\[(\d{2})-(\w{3})-(\d{4})/m);
+    if (ts && `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}` === date) return zipBuffer;
+  }
+  return null;
 }
 
 // --- Parser genérico de logs: agrupa líneas de continuación (JSON pretty-printed
