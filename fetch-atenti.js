@@ -41,9 +41,21 @@ function gmailDateStr(d) {
   return `${d.getUTCFullYear()}/${String(d.getUTCMonth() + 1).padStart(2, "0")}/${String(d.getUTCDate()).padStart(2, "0")}`;
 }
 
+// Aplana recursivamente payload.parts: con varios adjuntos Gmail suele anidar
+// multipart/mixed dentro de multipart/mixed en vez de listarlos todos en el
+// primer nivel.
+function flattenParts(parts) {
+  const out = [];
+  for (const p of (parts || [])) {
+    out.push(p);
+    if (p.parts) out.push(...flattenParts(p.parts));
+  }
+  return out;
+}
+
 async function downloadZip(gmail, msgId) {
   const msg = await gmail.users.messages.get({ userId: "me", id: msgId });
-  const parts = msg.data.payload?.parts || [];
+  const parts = flattenParts(msg.data.payload?.parts);
   const zipPart = parts.find(p => p.filename && p.filename.toLowerCase().endsWith(".zip"));
   if (!zipPart) return null;
   const att = await gmail.users.messages.attachments.get({
@@ -99,10 +111,12 @@ async function findBackfillZipForDate(gmail, date) {
   const q = `subject:"${BACKFILL_SUBJECT}" has:attachment`;
   const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 5 });
   const filename = `logs_${date.replace(/-/g, "")}.zip`;
+  console.log(`   🔎 Backfill: ${list.data.messages?.length || 0} mail(s) con asunto "${BACKFILL_SUBJECT}"`);
 
   for (const m of (list.data.messages || [])) {
     const msg = await gmail.users.messages.get({ userId: "me", id: m.id });
-    const parts = msg.data.payload?.parts || [];
+    const parts = flattenParts(msg.data.payload?.parts);
+    console.log(`   🔎 Backfill: adjuntos en el mail = ${parts.filter(p => p.filename).map(p => p.filename).join(", ") || "(ninguno)"}`);
     const zipPart = parts.find(p => p.filename && p.filename.toLowerCase() === filename);
     if (!zipPart) continue;
     const att = await gmail.users.messages.attachments.get({
