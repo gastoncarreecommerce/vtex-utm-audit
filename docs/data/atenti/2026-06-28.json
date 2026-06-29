@@ -1,0 +1,359 @@
+{
+  "date": "2026-06-28",
+  "chat": {
+    "llamadas": 76,
+    "usuarios_unicos": 43,
+    "con_productos_identificados": 33,
+    "con_sugerencia": 8,
+    "por_hora": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      21,
+      8,
+      5,
+      3,
+      9,
+      2,
+      1,
+      7,
+      1,
+      6,
+      4,
+      1,
+      2
+    ],
+    "errores": 17
+  },
+  "categorizar": {
+    "total": 26,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Jabón líquido ",
+        "count": 1
+      },
+      {
+        "key": "set de vajilla",
+        "count": 1
+      },
+      {
+        "key": "asi ",
+        "count": 1
+      },
+      {
+        "key": "necesito hacer esta compra y que cupones aplican:",
+        "count": 1
+      },
+      {
+        "key": "Necesito yerba, manteca ",
+        "count": 1
+      },
+      {
+        "key": "Manteca la serenisima ",
+        "count": 1
+      },
+      {
+        "key": "Favoritos ",
+        "count": 1
+      },
+      {
+        "key": "Perchas para colgar ropa ",
+        "count": 1
+      },
+      {
+        "key": "Leche ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "papel higiénico",
+        "count": 4
+      },
+      {
+        "key": "set de vajilla",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "jugo en polvo",
+        "count": 2
+      },
+      {
+        "key": "acondicionador",
+        "count": 2
+      },
+      {
+        "key": "figuritas",
+        "count": 2
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "antigrasa",
+        "count": 2
+      },
+      {
+        "key": "arroz",
+        "count": 2
+      },
+      {
+        "key": "boldo",
+        "count": 2
+      },
+      {
+        "key": "bolsas de residuo",
+        "count": 2
+      },
+      {
+        "key": "fideos coditos",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 78,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "papel higienico",
+        "count": 4
+      },
+      {
+        "key": "set de vajilla",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "acondicionador",
+        "count": 2
+      },
+      {
+        "key": "figuritas",
+        "count": 2
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "jabon liquido",
+        "count": 1
+      },
+      {
+        "key": "perchas",
+        "count": 1
+      },
+      {
+        "key": "alimento para perro tiernitos",
+        "count": 1
+      },
+      {
+        "key": "leche sancor bb1",
+        "count": 1
+      },
+      {
+        "key": "fideos",
+        "count": 1
+      },
+      {
+        "key": "turron",
+        "count": 1
+      },
+      {
+        "key": "cerveza quilmes",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 5
+      },
+      {
+        "key": "Leches enteras",
+        "count": 4
+      },
+      {
+        "key": "Papeles higienicos",
+        "count": 4
+      },
+      {
+        "key": "Acondicionadores",
+        "count": 3
+      },
+      {
+        "key": "Palillos, velas y fosforos",
+        "count": 2
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 2
+      },
+      {
+        "key": "Yerba",
+        "count": 2
+      },
+      {
+        "key": "Fideos largos",
+        "count": 2
+      },
+      {
+        "key": "Cervezas",
+        "count": 2
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 2,
+    "valor_total": 1870.6,
+    "ticket_promedio": 935.3,
+    "descuento_total": 119.4,
+    "canal": {
+      "inmediato": 0,
+      "programado": 2
+    },
+    "top_productos": [
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 1
+      },
+      {
+        "key": "Galletitas crackers Criollitas sin sal 3 x 169 g.",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 1
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 5,
+    "top_marcas": [
+      {
+        "key": "Wassington",
+        "count": 10
+      },
+      {
+        "key": "Sancor",
+        "count": 6
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "308",
+        "count": 3
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 3
+      },
+      {
+        "key": "Algabo",
+        "count": 3
+      },
+      {
+        "key": "Lucchetti",
+        "count": 2
+      },
+      {
+        "key": "Majora",
+        "count": 1
+      },
+      {
+        "key": "Pantene",
+        "count": 1
+      },
+      {
+        "key": "Elvive",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 17
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 6
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 121,
+    "carrito_promedio": 46774.23,
+    "pct_con_carrito": 47.6,
+    "errores": 14
+  },
+  "origen": {
+    "total_requests": 161,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-29T09:10:46.800Z"
+}
