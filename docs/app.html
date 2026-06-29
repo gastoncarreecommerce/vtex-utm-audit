@@ -611,6 +611,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
             <div class="card kpi-card"><div class="kpi-label">Usuarios logueados (únicos)</div><div class="kpi-value" id="at-login">—</div><div class="kpi-sub" id="at-carrito-login"></div></div>
             <div class="card kpi-card"><div class="kpi-label">Descuento total aplicado</div><div class="kpi-value" id="at-descuento">—</div></div>
             <div class="card kpi-card"><div class="kpi-label">% Entrega inmediata</div><div class="kpi-value" id="at-inmediato">—</div></div>
+            <div class="card kpi-card"><div class="kpi-label">Conversión Atenti → compra</div><div class="kpi-value" id="at-conversion">—</div><div class="kpi-sub" id="at-conversion-sub">Calculando (cruce en vivo con VTEX)...</div></div>
           </div>
           <div class="card" style="margin-bottom:20px">
             <div class="card-header"><div class="card-title">Conversaciones por hora del día</div><div class="card-sub">Horario de mayor uso del chat</div></div>
@@ -1610,6 +1611,25 @@ async function loadAtenti(){
   if(sd&&!sd.value) sd.value=lastDate;
   if(ef&&!ef.value) ef.value=lastDate;
   if(et&&!et.value) et.value=lastDate;
+  loadAtentiConversion(dias[0].date,lastDate);
+}
+
+// Estadística agregada de conversión Atenti → compra (cruce en vivo con VTEX por
+// rango de fechas). Se carga aparte porque puede tardar más que el resto del
+// dashboard (un lookup VTEX por cada DNI que metió algo al carrito sugerido).
+async function loadAtentiConversion(from,to){
+  const val=document.getElementById("at-conversion"), sub=document.getElementById("at-conversion-sub");
+  val.textContent="—";
+  sub.textContent="Calculando (cruce en vivo con VTEX)...";
+  try{
+    const qs=new URLSearchParams({format:"attribution",from,to});
+    const r=await fetch(`/api/atenti-search?${qs}`,{headers:atentiAuthHeader()});
+    const d=await r.json();
+    if(!r.ok){ val.textContent="—"; sub.textContent=d.error||"Error"; return; }
+    if(!d.usuarios_con_sugerencia){ val.textContent="—"; sub.textContent="Nadie agregó productos sugeridos al carrito"; return; }
+    val.textContent=`${d.tasa_conversion_pct}%`;
+    sub.textContent=`${d.compraron_con_sugerido} de ${d.usuarios_con_sugerencia} usuarios compraron con al menos 1 sugerido (${d.compraron} compraron en total)`;
+  }catch(e){ val.textContent="—"; sub.textContent="Error de red"; }
 }
 
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
