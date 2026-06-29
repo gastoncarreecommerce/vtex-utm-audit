@@ -22,6 +22,7 @@ const path = require("path");
 
 const SENDER  = "atenti@carrefour.com";
 const SUBJECT = "Se envian los logs del dia";
+const MONTHS  = { Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12" };
 
 function gmailClient() {
   const { GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN } = process.env;
@@ -33,21 +34,55 @@ function gmailClient() {
   return google.gmail({ version: "v1", auth });
 }
 
-async function findZipAttachment(gmail) {
-  const q = `from:${SENDER} subject:"${SUBJECT}" has:attachment newer_than:2d`;
-  const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 5 });
-  const msgId = list.data.messages?.[0]?.id;
-  if (!msgId) throw new Error(`No se encontró ningún mail reciente de ${SENDER} con asunto "${SUBJECT}"`);
+function gmailDateStr(d) {
+  return `${d.getUTCFullYear()}/${String(d.getUTCMonth() + 1).padStart(2, "0")}/${String(d.getUTCDate()).padStart(2, "0")}`;
+}
 
+async function downloadZip(gmail, msgId) {
   const msg = await gmail.users.messages.get({ userId: "me", id: msgId });
   const parts = msg.data.payload?.parts || [];
   const zipPart = parts.find(p => p.filename && p.filename.toLowerCase().endsWith(".zip"));
-  if (!zipPart) throw new Error("El mail no tiene ningún adjunto .zip");
-
+  if (!zipPart) return null;
   const att = await gmail.users.messages.attachments.get({
     userId: "me", messageId: msgId, id: zipPart.body.attachmentId
   });
   return Buffer.from(att.data.data, "base64");
+}
+
+// Sin fecha puntual: toma el mail más reciente (uso normal del cron diario).
+async function findLatestZipAttachment(gmail) {
+  const q = `from:${SENDER} subject:"${SUBJECT}" has:attachment newer_than:2d`;
+  const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 5 });
+  const msgId = list.data.messages?.[0]?.id;
+  if (!msgId) throw new Error(`No se encontró ningún mail reciente de ${SENDER} con asunto "${SUBJECT}"`);
+  const zipBuffer = await downloadZip(gmail, msgId);
+  if (!zipBuffer) throw new Error("El mail no tiene ningún adjunto .zip");
+  return zipBuffer;
+}
+
+// Backfill: busca el mail del día puntual `date` (YYYY-MM-DD) en una ventana de
+// 3 días (el mail llega ~1am AR del día siguiente, zona horaria ambigua en Gmail)
+// y verifica contra el timestamp real dentro de chat.log.
+async function findZipAttachmentForDate(gmail, date) {
+  const base   = new Date(`${date}T00:00:00Z`);
+  const after  = gmailDateStr(base);
+  const before = gmailDateStr(new Date(base.getTime() + 3 * 86400000));
+  const q = `from:${SENDER} subject:"${SUBJECT}" has:attachment after:${after} before:${before}`;
+  const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 10 });
+  const msgIds = (list.data.messages || []).map(m => m.id);
+
+  for (const msgId of msgIds) {
+    const zipBuffer = await downloadZip(gmail, msgId);
+    if (!zipBuffer) continue;
+    const zip = new AdmZip(zipBuffer);
+    const entry = zip.getEntries().find(e => e.entryName.toLowerCase().endsWith("chat.log"));
+    const chatLog = entry ? entry.getData().toString("utf8") : "";
+    const ts = chatLog.match(/^\[(\d{2})-(\w{3})-(\d{4})/m);
+    if (!ts) continue;
+    const found = `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}`;
+    if (found === date) return zipBuffer;
+  }
+  throw new Error(`No se encontraron logs de Atenti para ${date}`);
 }
 
 // --- Parser genérico de logs: agrupa líneas de continuación (JSON pretty-printed
@@ -278,8 +313,10 @@ function analyzeOrigen(content) {
 
 async function main() {
   const gmail = gmailClient();
-  console.log(`📬 Buscando mail de ${SENDER}...`);
-  const zipBuffer = await findZipAttachment(gmail);
+  const targetDate = (process.env.FETCH_ATENTI_DATE || "").trim() || null;
+
+  console.log(targetDate ? `📬 Buscando mail de ${SENDER} para el ${targetDate}...` : `📬 Buscando mail de ${SENDER}...`);
+  const zipBuffer = targetDate ? await findZipAttachmentForDate(gmail, targetDate) : await findLatestZipAttachment(gmail);
   console.log(`📦 Adjunto descargado (${(zipBuffer.length / 1024).toFixed(0)} KB)`);
 
   const zip = new AdmZip(zipBuffer);
@@ -292,7 +329,6 @@ async function main() {
   // (el mail llega a la 1am con los logs del día anterior).
   const chatLog = read("chat.log");
   const firstTs = chatLog.match(/^\[(\d{2})-(\w{3})-(\d{4})/m);
-  const MONTHS = { Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12" };
   const date = firstTs ? `${firstTs[3]}-${MONTHS[firstTs[2]]}-${firstTs[1]}` : new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 10);
 
   const result = {
