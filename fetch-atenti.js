@@ -124,9 +124,11 @@ async function findBackfillZipForDate(gmail, date) {
     });
     const zipBuffer = Buffer.from(att.data.data, "base64");
     const zip = new AdmZip(zipBuffer);
+    console.log(`   🔎 Backfill: entradas en ${filename} = ${zip.getEntries().map(e => e.entryName).join(", ") || "(ninguna)"}`);
     const entry = zip.getEntries().find(e => e.entryName.toLowerCase().endsWith("chat.log"));
     const chatLog = entry ? entry.getData().toString("utf8") : "";
     const ts = chatLog.match(/^\[(\d{2})-(\w{3})-(\d{4})/m);
+    console.log(`   🔎 Backfill: fecha encontrada en chat.log = ${ts ? `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}` : "(no parseable)"} (buscando ${date})`);
     if (ts && `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}` === date) return zipBuffer;
   }
   return null;
