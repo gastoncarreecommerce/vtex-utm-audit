@@ -90,7 +90,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: "Faltan credenciales VTEX en las env vars de Vercel" });
     }
 
-    const total = { usuarios_con_sugerencia: 0, compraron: 0, compraron_con_sugerido: 0 };
+    const total = { usuarios_con_sugerencia: 0, compraron: 0, compraron_con_sugerido: 0, errores: 0 };
     for (const d of dates) {
       let logs;
       try { logs = await fetchLogsForDate(d); } catch (e) { return res.status(502).json({ error: e.message }); }
@@ -101,9 +101,13 @@ export default async function handler(req, res) {
       total.usuarios_con_sugerencia += stats.usuarios_con_sugerencia;
       total.compraron += stats.compraron;
       total.compraron_con_sugerido += stats.compraron_con_sugerido;
+      total.errores += stats.errores;
     }
-    total.tasa_conversion_pct = total.usuarios_con_sugerencia > 0
-      ? Math.round(total.compraron_con_sugerido / total.usuarios_con_sugerencia * 1000) / 10 : 0;
+    // Base de la tasa: solo usuarios cuyo lookup VTEX respondió OK (excluye los que
+    // fallaron por error, para no mezclar "no compró" con "no se pudo consultar").
+    const base = total.usuarios_con_sugerencia - total.errores;
+    total.tasa_conversion_pct = base > 0
+      ? Math.round(total.compraron_con_sugerido / base * 1000) / 10 : 0;
     return res.json({ from, to, ...total });
   }
 
