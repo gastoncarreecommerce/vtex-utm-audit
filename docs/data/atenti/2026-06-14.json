@@ -1,0 +1,423 @@
+{
+  "date": "2026-06-14",
+  "chat": {
+    "llamadas": 64,
+    "usuarios_unicos": 26,
+    "con_productos_identificados": 36,
+    "con_sugerencia": 9,
+    "por_hora": [
+      0,
+      2,
+      3,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      5,
+      1,
+      3,
+      7,
+      0,
+      7,
+      1,
+      5,
+      4,
+      4,
+      11,
+      6,
+      2
+    ],
+    "errores": 8
+  },
+  "categorizar": {
+    "total": 23,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Figuritas del mundial ",
+        "count": 2
+      },
+      {
+        "key": "Asado",
+        "count": 1
+      },
+      {
+        "key": "Tira de asado ",
+        "count": 1
+      },
+      {
+        "key": "[14/6, 10:58] Pichichicha: Guiso [14/6, 10:59] Pichichicha: Anco batata [14/6, 10:59] Pichichicha: Morron [14/6, 10:59] Pichichicha: Zhanaorias [14/6, 10:59] Pichichicha: Cebolla [14/6, 10:59] Pichichicha: Zuquini uno o dos [14/6, 10:59] Pichichicha: Puerro [14/6, 11:00] Pichichicha: Cebolla repollada [14/6, 11:00] Pichichicha: Palta [14/6, 11:01] Pichichicha: Bananas [14/6, 11:01] Pichichicha: Huevos",
+        "count": 1
+      },
+      {
+        "key": "Figuritas ",
+        "count": 1
+      },
+      {
+        "key": "Quiero leche deslactosada y piedras para gatos",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer un asado ",
+        "count": 1
+      },
+      {
+        "key": "Costilla",
+        "count": 1
+      },
+      {
+        "key": "Quiero unas galletitas oreo",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "figuritas del mundial",
+        "count": 6
+      },
+      {
+        "key": "carbón",
+        "count": 3
+      },
+      {
+        "key": "carne vacuna",
+        "count": 2
+      },
+      {
+        "key": "chorizos",
+        "count": 2
+      },
+      {
+        "key": "morcillas",
+        "count": 2
+      },
+      {
+        "key": "tira de asado",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "huevos",
+        "count": 2
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 2
+      },
+      {
+        "key": "sal gruesa",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "sal",
+        "count": 2
+      },
+      {
+        "key": "pan",
+        "count": 1
+      },
+      {
+        "key": "jabón de tocador",
+        "count": 1
+      },
+      {
+        "key": "galletitas de agua",
+        "count": 1
+      }
+    ],
+    "errores": 2
+  },
+  "buscar_eans": {
+    "busquedas": 56,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "figuritas del mundial",
+        "count": 6
+      },
+      {
+        "key": "carbon",
+        "count": 3
+      },
+      {
+        "key": "carne vacuna",
+        "count": 2
+      },
+      {
+        "key": "morcillas",
+        "count": 2
+      },
+      {
+        "key": "chorizos",
+        "count": 2
+      },
+      {
+        "key": "tira de asado",
+        "count": 2
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 2
+      },
+      {
+        "key": "sal gruesa",
+        "count": 2
+      },
+      {
+        "key": "pan",
+        "count": 1
+      },
+      {
+        "key": "zapallo anco",
+        "count": 1
+      },
+      {
+        "key": "morron",
+        "count": 1
+      },
+      {
+        "key": "banana",
+        "count": 1
+      },
+      {
+        "key": "batata",
+        "count": 1
+      },
+      {
+        "key": "puerro",
+        "count": 1
+      },
+      {
+        "key": "zucchini",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "None",
+        "count": 29
+      },
+      {
+        "key": "Accesorios de libreria",
+        "count": 6
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 4
+      },
+      {
+        "key": "Sal",
+        "count": 3
+      },
+      {
+        "key": "Leches enteras",
+        "count": 2
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 1
+      },
+      {
+        "key": "Complementos",
+        "count": 1
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 1
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 1
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 1
+      }
+    ],
+    "errores": 900
+  },
+  "agregar": {
+    "total_agregados": 17,
+    "valor_total": 203336.47,
+    "ticket_promedio": 11960.97,
+    "descuento_total": 19723.45,
+    "canal": {
+      "inmediato": 1,
+      "programado": 16
+    },
+    "top_productos": [
+      {
+        "key": "Cebolla x kg.",
+        "count": 50
+      },
+      {
+        "key": "Pimiento rojo x kg",
+        "count": 12
+      },
+      {
+        "key": "Chorizo puro de cerdo ev 220 g.",
+        "count": 12
+      },
+      {
+        "key": "Puerro x atado",
+        "count": 9
+      },
+      {
+        "key": "Palta x uni",
+        "count": 9
+      },
+      {
+        "key": "Zapallo anco x kg",
+        "count": 8
+      },
+      {
+        "key": "Zanahoria Huella Natural x kg.",
+        "count": 7
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 6
+      },
+      {
+        "key": "Cuarto trasero congelado x kg.",
+        "count": 6
+      },
+      {
+        "key": "Limpiador cremoso Cif bioactive 500 cc.",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 86
+      },
+      {
+        "key": "Frutas",
+        "count": 15
+      },
+      {
+        "key": "Achuras y embutidos",
+        "count": 15
+      },
+      {
+        "key": "Pollo",
+        "count": 6
+      },
+      {
+        "key": "Limpiadores cremosos",
+        "count": 6
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 5
+      },
+      {
+        "key": "Cápsulas de café",
+        "count": 3
+      },
+      {
+        "key": "Sal",
+        "count": 2
+      },
+      {
+        "key": "Té",
+        "count": 2
+      },
+      {
+        "key": "Huevos",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 6,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 10
+      },
+      {
+        "key": "Taragui",
+        "count": 10
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 8
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 4
+      },
+      {
+        "key": "La Serenísima",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "Casanto",
+        "count": 1
+      },
+      {
+        "key": "El Mercado",
+        "count": 1
+      },
+      {
+        "key": "Bulnez",
+        "count": 1
+      },
+      {
+        "key": "Dharam Singh",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Carnes y pescados",
+        "count": 14
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 79,
+    "carrito_promedio": 64629.12,
+    "pct_con_carrito": 49.5,
+    "errores": 83
+  },
+  "origen": {
+    "total_requests": 128,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:16.600Z"
+}

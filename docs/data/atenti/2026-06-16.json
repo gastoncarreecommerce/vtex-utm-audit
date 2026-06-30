@@ -1,0 +1,431 @@
+{
+  "date": "2026-06-16",
+  "chat": {
+    "llamadas": 72,
+    "usuarios_unicos": 28,
+    "con_productos_identificados": 39,
+    "con_sugerencia": 9,
+    "por_hora": [
+      0,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      4,
+      1,
+      5,
+      7,
+      4,
+      5,
+      5,
+      6,
+      1,
+      7,
+      3,
+      6,
+      3,
+      9,
+      0,
+      1
+    ],
+    "errores": 14
+  },
+  "categorizar": {
+    "total": 32,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Cepillo de dientes ",
+        "count": 1
+      },
+      {
+        "key": "Cerdas medias",
+        "count": 1
+      },
+      {
+        "key": "Hola acondicionador elvive ",
+        "count": 1
+      },
+      {
+        "key": "Liso de 750",
+        "count": 1
+      },
+      {
+        "key": "Hola buen día estoy buscando sillones ",
+        "count": 1
+      },
+      {
+        "key": "Ver factura anterior ",
+        "count": 1
+      },
+      {
+        "key": "Hummus kyros",
+        "count": 1
+      },
+      {
+        "key": "yerba la merced ",
+        "count": 1
+      },
+      {
+        "key": "yerba ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "suerox manzana",
+        "count": 3
+      },
+      {
+        "key": "cepillo de dientes",
+        "count": 2
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "mayonesa",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "bocaditos de pollo",
+        "count": 2
+      },
+      {
+        "key": "afeitadora recargable para pelo y barba",
+        "count": 2
+      },
+      {
+        "key": "acondicionador elvive",
+        "count": 1
+      },
+      {
+        "key": "acondicionador pelo liso",
+        "count": 1
+      },
+      {
+        "key": "sillones",
+        "count": 1
+      },
+      {
+        "key": "atún en aceite",
+        "count": 1
+      },
+      {
+        "key": "jamón cocido",
+        "count": 1
+      },
+      {
+        "key": "huevos",
+        "count": 1
+      },
+      {
+        "key": "bombón de chocolate",
+        "count": 1
+      },
+      {
+        "key": "queso cremoso",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 53,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "suerox manzana",
+        "count": 3
+      },
+      {
+        "key": "cepillo de dientes",
+        "count": 2
+      },
+      {
+        "key": "mayonesa",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "bocaditos de pollo",
+        "count": 2
+      },
+      {
+        "key": "afeitadora recargable para pelo y barba",
+        "count": 2
+      },
+      {
+        "key": "acondicionador elvive",
+        "count": 1
+      },
+      {
+        "key": "acondicionador pelo liso",
+        "count": 1
+      },
+      {
+        "key": "galletitas crackers 5 semillas",
+        "count": 1
+      },
+      {
+        "key": "jugo de limon",
+        "count": 1
+      },
+      {
+        "key": "queso rallado",
+        "count": 1
+      },
+      {
+        "key": "batata",
+        "count": 1
+      },
+      {
+        "key": "zapallito redondo",
+        "count": 1
+      },
+      {
+        "key": "bizcochos de grasa",
+        "count": 1
+      },
+      {
+        "key": "carne picada",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Salsas y aderezos",
+        "count": 7
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 4
+      },
+      {
+        "key": "Bebidas isotonicas",
+        "count": 4
+      },
+      {
+        "key": "Gaseosas limon",
+        "count": 4
+      },
+      {
+        "key": "Verduras",
+        "count": 3
+      },
+      {
+        "key": "Afeitado",
+        "count": 3
+      },
+      {
+        "key": "Cepillos de dientes",
+        "count": 2
+      },
+      {
+        "key": "Acondicionadores",
+        "count": 2
+      },
+      {
+        "key": "Yerba",
+        "count": 2
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 2
+      }
+    ],
+    "errores": 1032
+  },
+  "agregar": {
+    "total_agregados": 4,
+    "valor_total": 665538.36,
+    "ticket_promedio": 166384.59,
+    "descuento_total": 72538.56,
+    "canal": {
+      "inmediato": 0,
+      "programado": 4
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT parcialmente descremada Carrefour classic brik 1 lt.",
+        "count": 16
+      },
+      {
+        "key": "Atún en trozos en aceite Bulnez en lata 170 g.",
+        "count": 16
+      },
+      {
+        "key": "Premezcla Natural pop sin tacc falafel natural 210 cc.",
+        "count": 12
+      },
+      {
+        "key": "Jugo en Polvo Clight Naranja Mango 7grs",
+        "count": 12
+      },
+      {
+        "key": "Premezcla Natural pop sin tacc hamburgesa vegetal 210 g.",
+        "count": 8
+      },
+      {
+        "key": "Premezcla sin tacc Natural Pop cookies veg natural 200 g.",
+        "count": 8
+      },
+      {
+        "key": "Jugo en Polvo Clight Naranja Durazno 7,5 grs",
+        "count": 8
+      },
+      {
+        "key": "Jugo en Polvo Clight Limonada Arandanos 7,5 grs",
+        "count": 8
+      },
+      {
+        "key": "Fideos spaghetti N7 Lucchetti 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Ravioles La salteña de pollo y verdura 450 g.",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Premezclas saladas",
+        "count": 32
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 32
+      },
+      {
+        "key": "Sopas",
+        "count": 20
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 18
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 16
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 16
+      },
+      {
+        "key": "Otros snacks salados",
+        "count": 16
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 12
+      },
+      {
+        "key": "Otras harinas",
+        "count": 8
+      },
+      {
+        "key": "Premezclas de bizcochuelos",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "Sprite",
+        "count": 10
+      },
+      {
+        "key": "Natura",
+        "count": 6
+      },
+      {
+        "key": "Hellmanns",
+        "count": 6
+      },
+      {
+        "key": "Adelgamate",
+        "count": 5
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 4
+      },
+      {
+        "key": "Amanda",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Dánica",
+        "count": 3
+      },
+      {
+        "key": "Fiesta",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 30
+      },
+      {
+        "key": "Bebidas",
+        "count": 16
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      },
+      {
+        "key": "Congelados",
+        "count": 9
+      },
+      {
+        "key": "Panadería",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 100,
+    "carrito_promedio": 69258.23,
+    "pct_con_carrito": 57.1,
+    "errores": 185
+  },
+  "origen": {
+    "total_requests": 165,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:16.923Z"
+}

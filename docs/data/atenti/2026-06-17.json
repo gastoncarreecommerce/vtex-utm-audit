@@ -1,0 +1,427 @@
+{
+  "date": "2026-06-17",
+  "chat": {
+    "llamadas": 99,
+    "usuarios_unicos": 29,
+    "con_productos_identificados": 65,
+    "con_sugerencia": 15,
+    "por_hora": [
+      8,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      2,
+      4,
+      8,
+      7,
+      10,
+      10,
+      1,
+      5,
+      4,
+      10,
+      8,
+      1,
+      6,
+      4,
+      0
+    ],
+    "errores": 16
+  },
+  "categorizar": {
+    "total": 52,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "productos y receta de lasaña",
+        "count": 2
+      },
+      {
+        "key": "Juegos de mesa",
+        "count": 2
+      },
+      {
+        "key": "Quiero agregar los baguettines ",
+        "count": 1
+      },
+      {
+        "key": "Galletas Carrefour ",
+        "count": 1
+      },
+      {
+        "key": "Agrégame yerbas de la merced",
+        "count": 1
+      },
+      {
+        "key": "Leche fórmula la serenísima baby crecer 3 ",
+        "count": 1
+      },
+      {
+        "key": "Manteca ",
+        "count": 1
+      },
+      {
+        "key": "Jabón dove x3",
+        "count": 1
+      },
+      {
+        "key": "Pastel de papa prod",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "cebolla",
+        "count": 23
+      },
+      {
+        "key": "aceite",
+        "count": 18
+      },
+      {
+        "key": "morrón",
+        "count": 15
+      },
+      {
+        "key": "queso rallado",
+        "count": 13
+      },
+      {
+        "key": "arroz",
+        "count": 13
+      },
+      {
+        "key": "tomate",
+        "count": 11
+      },
+      {
+        "key": "pollo",
+        "count": 11
+      },
+      {
+        "key": "carne picada",
+        "count": 10
+      },
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "caldo",
+        "count": 9
+      },
+      {
+        "key": "puré de tomate",
+        "count": 8
+      },
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "zanahoria",
+        "count": 6
+      },
+      {
+        "key": "sal",
+        "count": 5
+      },
+      {
+        "key": "papas fritas carrefour",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 240,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "cebolla",
+        "count": 19
+      },
+      {
+        "key": "aceite",
+        "count": 16
+      },
+      {
+        "key": "queso rallado",
+        "count": 11
+      },
+      {
+        "key": "morron",
+        "count": 11
+      },
+      {
+        "key": "arroz",
+        "count": 10
+      },
+      {
+        "key": "caldo",
+        "count": 8
+      },
+      {
+        "key": "tomate",
+        "count": 8
+      },
+      {
+        "key": "pollo",
+        "count": 8
+      },
+      {
+        "key": "carne picada",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "pure de tomate",
+        "count": 6
+      },
+      {
+        "key": "papas fritas carrefour",
+        "count": 5
+      },
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "zanahoria",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 51
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 16
+      },
+      {
+        "key": "Quesos rallados y en hebras",
+        "count": 13
+      },
+      {
+        "key": "Caldos",
+        "count": 10
+      },
+      {
+        "key": "Arroz",
+        "count": 10
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 9
+      },
+      {
+        "key": "Leches enteras",
+        "count": 8
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 8
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 8
+      },
+      {
+        "key": "Pollo y granja",
+        "count": 8
+      }
+    ],
+    "errores": 12149
+  },
+  "agregar": {
+    "total_agregados": 17,
+    "valor_total": 3912755.1,
+    "ticket_promedio": 230162.06,
+    "descuento_total": 31777.6,
+    "canal": {
+      "inmediato": 0,
+      "programado": 17
+    },
+    "top_productos": [
+      {
+        "key": "Jabon de tocador Dove exfoliación diaria 90 g.",
+        "count": 24
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 17
+      },
+      {
+        "key": "Pan con Cereales y Semillas Fargo 400 grs",
+        "count": 12
+      },
+      {
+        "key": "Papas fritas Carrefour Classic 140 g.",
+        "count": 12
+      },
+      {
+        "key": "Arroz largo fino Bulnez 500 grs",
+        "count": 11
+      },
+      {
+        "key": "Fideos sin tacc tirabuzon Matarazzo 500 g.",
+        "count": 10
+      },
+      {
+        "key": "Roast beef Novillo x kg.",
+        "count": 10
+      },
+      {
+        "key": "Calabaza anco en rodajas Song 400 grs",
+        "count": 8
+      },
+      {
+        "key": "Leche Protein La Serenisima 1L",
+        "count": 8
+      },
+      {
+        "key": "Palta x uni",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 36
+      },
+      {
+        "key": "Limpieza facial y exfoliantes",
+        "count": 24
+      },
+      {
+        "key": "Arroz",
+        "count": 15
+      },
+      {
+        "key": "Frutas",
+        "count": 14
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 14
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 12
+      },
+      {
+        "key": "Papas fritas y snacks de maíz",
+        "count": 12
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 10
+      },
+      {
+        "key": "Verduras cortadas y ensaladas preparadas",
+        "count": 8
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 10,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "Genérico",
+        "count": 7
+      },
+      {
+        "key": "Lucchetti",
+        "count": 5
+      },
+      {
+        "key": "9 De Oro",
+        "count": 4
+      },
+      {
+        "key": "La Merced",
+        "count": 4
+      },
+      {
+        "key": "Cocinero",
+        "count": 4
+      },
+      {
+        "key": "La Serenísima",
+        "count": 3
+      },
+      {
+        "key": "Nescafé",
+        "count": 3
+      },
+      {
+        "key": "Bauducco",
+        "count": 2
+      },
+      {
+        "key": "Amanda",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 33
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 27
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 7
+      },
+      {
+        "key": "Panadería",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 81,
+    "carrito_promedio": 84243.91,
+    "pct_con_carrito": 62.5,
+    "errores": 106
+  },
+  "origen": {
+    "total_requests": 160,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:17.158Z"
+}

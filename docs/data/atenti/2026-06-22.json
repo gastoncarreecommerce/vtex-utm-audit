@@ -1,0 +1,431 @@
+{
+  "date": "2026-06-22",
+  "chat": {
+    "llamadas": 205,
+    "usuarios_unicos": 74,
+    "con_productos_identificados": 120,
+    "con_sugerencia": 31,
+    "por_hora": [
+      1,
+      2,
+      4,
+      1,
+      0,
+      0,
+      4,
+      4,
+      5,
+      17,
+      12,
+      14,
+      14,
+      4,
+      4,
+      32,
+      10,
+      17,
+      10,
+      10,
+      13,
+      16,
+      6,
+      5
+    ],
+    "errores": 45
+  },
+  "categorizar": {
+    "total": 94,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 7
+      },
+      {
+        "key": "Leche",
+        "count": 4
+      },
+      {
+        "key": "Galletitas ",
+        "count": 2
+      },
+      {
+        "key": "Hola! Quiero hacer un asado para ver el partido de argentina con mi familia, somos 6 personas. Que me recomendas?",
+        "count": 2
+      },
+      {
+        "key": "Aceite girasol",
+        "count": 2
+      },
+      {
+        "key": "Fideos tirabuzon",
+        "count": 2
+      },
+      {
+        "key": "que galletitas dulces de Carrefour aplican al cupon de descuento ",
+        "count": 1
+      },
+      {
+        "key": "Productos bulnes ",
+        "count": 1
+      },
+      {
+        "key": "Durasno en lata , galletitas surtidas",
+        "count": 1
+      },
+      {
+        "key": "Galletitas Bulnes ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "cebolla",
+        "count": 12
+      },
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "aceite",
+        "count": 8
+      },
+      {
+        "key": "leche entera",
+        "count": 7
+      },
+      {
+        "key": "queso rallado",
+        "count": 5
+      },
+      {
+        "key": "leche descremada",
+        "count": 5
+      },
+      {
+        "key": "papel higiénico",
+        "count": 5
+      },
+      {
+        "key": "pimiento rojo",
+        "count": 5
+      },
+      {
+        "key": "zanahoria",
+        "count": 5
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "crema de leche",
+        "count": 4
+      },
+      {
+        "key": "pimiento verde",
+        "count": 4
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 4
+      }
+    ],
+    "errores": 5
+  },
+  "buscar_eans": {
+    "busquedas": 259,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "cebolla",
+        "count": 11
+      },
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "aceite",
+        "count": 8
+      },
+      {
+        "key": "leche entera",
+        "count": 6
+      },
+      {
+        "key": "fideos tirabuzon",
+        "count": 6
+      },
+      {
+        "key": "queso rallado",
+        "count": 4
+      },
+      {
+        "key": "sal",
+        "count": 4
+      },
+      {
+        "key": "pimiento rojo",
+        "count": 4
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 4
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "pure de tomate",
+        "count": 3
+      },
+      {
+        "key": "zanahoria",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 36
+      },
+      {
+        "key": "Leches enteras",
+        "count": 15
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 13
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 12
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 7
+      },
+      {
+        "key": "Fideos largos",
+        "count": 6
+      },
+      {
+        "key": "Sal",
+        "count": 5
+      },
+      {
+        "key": "Resmas y accesorios de oficina",
+        "count": 5
+      },
+      {
+        "key": "Huevos",
+        "count": 4
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 38,
+    "valor_total": 1918088.78,
+    "ticket_promedio": 50476.02,
+    "descuento_total": 182478.01,
+    "canal": {
+      "inmediato": 0,
+      "programado": 38
+    },
+    "top_productos": [
+      {
+        "key": "Leche parcialmente descremada UAT Carrefour classic tetra 1 lt.",
+        "count": 60
+      },
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 55
+      },
+      {
+        "key": "Oblea de arroz yogur Gallo con frutilla 20 g.",
+        "count": 54
+      },
+      {
+        "key": "Oblea Tita chocolate 19 g.",
+        "count": 36
+      },
+      {
+        "key": "Leche clásica UAT Bulnez 1 lt",
+        "count": 36
+      },
+      {
+        "key": "Leche liviana UAT clásica Bulnez 1 lt",
+        "count": 36
+      },
+      {
+        "key": "Agua mineral con gas Villavicencio 1,5 lts",
+        "count": 30
+      },
+      {
+        "key": "Oblea Rhodesia clásica 22 g.",
+        "count": 24
+      },
+      {
+        "key": "Harina de trigo Morixe 0000 1 kg.",
+        "count": 24
+      },
+      {
+        "key": "Lomito de atún en aceite Carrefour Classic 170 grs",
+        "count": 24
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 103
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 96
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 91
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 61
+      },
+      {
+        "key": "Barritas de cereales",
+        "count": 54
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 54
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 39
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 36
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 36
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 33
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 16,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 20
+      },
+      {
+        "key": "Carrefour",
+        "count": 10
+      },
+      {
+        "key": "La Serenísima",
+        "count": 10
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 7
+      },
+      {
+        "key": "Pureza",
+        "count": 5
+      },
+      {
+        "key": "Smams",
+        "count": 5
+      },
+      {
+        "key": "Bonafide",
+        "count": 4
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Lechelita",
+        "count": 3
+      },
+      {
+        "key": "Nesquik",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 58
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 40
+      },
+      {
+        "key": "Almacén",
+        "count": 14
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 13
+      },
+      {
+        "key": "Panadería",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 156,
+    "carrito_promedio": 42534.59,
+    "pct_con_carrito": 52.4,
+    "errores": 75
+  },
+  "origen": {
+    "total_requests": 250,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:18.081Z"
+}

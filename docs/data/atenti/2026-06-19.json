@@ -1,0 +1,431 @@
+{
+  "date": "2026-06-19",
+  "chat": {
+    "llamadas": 127,
+    "usuarios_unicos": 60,
+    "con_productos_identificados": 75,
+    "con_sugerencia": 13,
+    "por_hora": [
+      0,
+      1,
+      6,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      12,
+      4,
+      8,
+      12,
+      7,
+      13,
+      7,
+      3,
+      9,
+      8,
+      6,
+      5,
+      9,
+      10,
+      6
+    ],
+    "errores": 21
+  },
+  "categorizar": {
+    "total": 68,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Manteca aceite harina",
+        "count": 2
+      },
+      {
+        "key": "Coca cola",
+        "count": 2
+      },
+      {
+        "key": "Verdura",
+        "count": 1
+      },
+      {
+        "key": "Busco sal de mesa",
+        "count": 1
+      },
+      {
+        "key": "Pepsi",
+        "count": 1
+      },
+      {
+        "key": "Busconlos que ya he comprado ",
+        "count": 1
+      },
+      {
+        "key": "Jabón dove ",
+        "count": 1
+      },
+      {
+        "key": "Aceite de girasol",
+        "count": 1
+      },
+      {
+        "key": "Hola quiero hacer un asado para 4 personas",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "carne vacuna",
+        "count": 12
+      },
+      {
+        "key": "aceite",
+        "count": 10
+      },
+      {
+        "key": "ensaladas",
+        "count": 10
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 9
+      },
+      {
+        "key": "tomates",
+        "count": 9
+      },
+      {
+        "key": "harina",
+        "count": 6
+      },
+      {
+        "key": "pan",
+        "count": 6
+      },
+      {
+        "key": "azúcar",
+        "count": 6
+      },
+      {
+        "key": "salsa de tomate",
+        "count": 5
+      },
+      {
+        "key": "whisky",
+        "count": 5
+      },
+      {
+        "key": "cerveza",
+        "count": 5
+      },
+      {
+        "key": "helado",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "yogur",
+        "count": 2
+      },
+      {
+        "key": "hamburguesas",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 187,
+    "sin_resultado": 3,
+    "top_terminos": [
+      {
+        "key": "carne vacuna",
+        "count": 12
+      },
+      {
+        "key": "ensaladas",
+        "count": 10
+      },
+      {
+        "key": "aceite",
+        "count": 9
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 9
+      },
+      {
+        "key": "tomates",
+        "count": 9
+      },
+      {
+        "key": "azucar",
+        "count": 7
+      },
+      {
+        "key": "pan",
+        "count": 6
+      },
+      {
+        "key": "harina",
+        "count": 5
+      },
+      {
+        "key": "salsa de tomate",
+        "count": 5
+      },
+      {
+        "key": "whisky",
+        "count": 5
+      },
+      {
+        "key": "cerveza",
+        "count": 5
+      },
+      {
+        "key": "helado",
+        "count": 3
+      },
+      {
+        "key": "yogur",
+        "count": 2
+      },
+      {
+        "key": "hamburguesas",
+        "count": 2
+      },
+      {
+        "key": "detergente",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Carne vacuna",
+        "count": 15
+      },
+      {
+        "key": "Verduras",
+        "count": 13
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 12
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 11
+      },
+      {
+        "key": "Verduras cortadas y ensaladas preparadas",
+        "count": 10
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 9
+      },
+      {
+        "key": "Azucar",
+        "count": 8
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 7
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 6
+      },
+      {
+        "key": "Whisky",
+        "count": 5
+      }
+    ],
+    "errores": 33
+  },
+  "agregar": {
+    "total_agregados": 6,
+    "valor_total": 86271,
+    "ticket_promedio": 14378.5,
+    "descuento_total": 29561,
+    "canal": {
+      "inmediato": 0,
+      "programado": 6
+    },
+    "top_productos": [
+      {
+        "key": "Leche Protein La Serenisima 1L",
+        "count": 6
+      },
+      {
+        "key": "Salsa filetto Knorr 340 g.",
+        "count": 4
+      },
+      {
+        "key": "Pack Pasta Dental Colgate Triple Acción 180 G 3 uni",
+        "count": 3
+      },
+      {
+        "key": "Salsa pizza Knorr 340 g.",
+        "count": 3
+      },
+      {
+        "key": "Acondicionador Dove óleo nutrición 400 ml",
+        "count": 2
+      },
+      {
+        "key": "Detergente Cif Bioactive Lima Botella 500 ml",
+        "count": 2
+      },
+      {
+        "key": "Salmas horneadas Zenissimo 90 grs",
+        "count": 1
+      },
+      {
+        "key": "Sal fina Dos Anclas en paquete 500 grs",
+        "count": 1
+      },
+      {
+        "key": "Shampoo Dove reconstrucción completa 400 ml",
+        "count": 1
+      },
+      {
+        "key": "Galletitas de vainillas Mellizas rellenas de limón x3 330 grs",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 8
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 6
+      },
+      {
+        "key": "Pasta dental",
+        "count": 3
+      },
+      {
+        "key": "Acondicionadores",
+        "count": 2
+      },
+      {
+        "key": "Detergentes",
+        "count": 2
+      },
+      {
+        "key": "Tostadas, grisines y marineras",
+        "count": 1
+      },
+      {
+        "key": "Sal",
+        "count": 1
+      },
+      {
+        "key": "Shampoos",
+        "count": 1
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 1
+      },
+      {
+        "key": "Otras harinas",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 10,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 7
+      },
+      {
+        "key": "NotCo",
+        "count": 6
+      },
+      {
+        "key": "Giacomo",
+        "count": 6
+      },
+      {
+        "key": "Tonadita",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "Mendia",
+        "count": 4
+      },
+      {
+        "key": "Verdeflor",
+        "count": 4
+      },
+      {
+        "key": "Pepitos",
+        "count": 3
+      },
+      {
+        "key": "Andes",
+        "count": 3
+      },
+      {
+        "key": "Amanda",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 19
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 16
+      },
+      {
+        "key": "Congelados",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 161,
+    "carrito_promedio": 57645.26,
+    "pct_con_carrito": 52.9,
+    "errores": 46
+  },
+  "origen": {
+    "total_requests": 298,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:17.603Z"
+}

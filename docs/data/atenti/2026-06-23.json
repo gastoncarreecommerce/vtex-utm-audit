@@ -1,0 +1,447 @@
+{
+  "date": "2026-06-23",
+  "chat": {
+    "llamadas": 95,
+    "usuarios_unicos": 47,
+    "con_productos_identificados": 63,
+    "con_sugerencia": 23,
+    "por_hora": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      10,
+      8,
+      2,
+      14,
+      9,
+      13,
+      2,
+      4,
+      8,
+      5,
+      5,
+      4,
+      4,
+      2,
+      2
+    ],
+    "errores": 14
+  },
+  "categorizar": {
+    "total": 54,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 9
+      },
+      {
+        "key": "Capsulas nescafe",
+        "count": 1
+      },
+      {
+        "key": "Que tengan descuento, marca nescafe",
+        "count": 1
+      },
+      {
+        "key": "Suprema de pollo congelada",
+        "count": 1
+      },
+      {
+        "key": "Super - [ ] Rollo de cocina - [ ] Pan lactal - [ ] Molida especial - [ ] Pizzera - [ ] Jabón Dove - [ ] Esponja - [ ] Jabón de ropa - [ ] Fuente pirex para horno - [ ] Accesorios p airfryer - [ ] Platos hondos",
+        "count": 1
+      },
+      {
+        "key": "Alimento para perros por 15k",
+        "count": 1
+      },
+      {
+        "key": "Adulto",
+        "count": 1
+      },
+      {
+        "key": "Si",
+        "count": 1
+      },
+      {
+        "key": "Crema de leche",
+        "count": 1
+      },
+      {
+        "key": "Pan , lácteos , agua, pollo",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 5
+      },
+      {
+        "key": "crema de leche",
+        "count": 4
+      },
+      {
+        "key": "agua",
+        "count": 4
+      },
+      {
+        "key": "puré de tomate",
+        "count": 4
+      },
+      {
+        "key": "cerveza",
+        "count": 3
+      },
+      {
+        "key": "atún",
+        "count": 3
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "cápsulas de café",
+        "count": 2
+      },
+      {
+        "key": "productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "agua de mesa sin gas",
+        "count": 2
+      },
+      {
+        "key": "leche reducida en lactosa",
+        "count": 2
+      },
+      {
+        "key": "pan lactal",
+        "count": 2
+      },
+      {
+        "key": "alimento para perros adultos 15kg",
+        "count": 2
+      },
+      {
+        "key": "papa",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 180,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 5
+      },
+      {
+        "key": "agua",
+        "count": 4
+      },
+      {
+        "key": "atun",
+        "count": 3
+      },
+      {
+        "key": "cerveza",
+        "count": 3
+      },
+      {
+        "key": "crema de leche",
+        "count": 3
+      },
+      {
+        "key": "pure de tomate",
+        "count": 3
+      },
+      {
+        "key": "productos mas comprados",
+        "count": 2
+      },
+      {
+        "key": "leche reducida en lactosa",
+        "count": 2
+      },
+      {
+        "key": "agua de mesa sin gas",
+        "count": 2
+      },
+      {
+        "key": "alimento para perros adultos 15kg",
+        "count": 2
+      },
+      {
+        "key": "papa",
+        "count": 2
+      },
+      {
+        "key": "pan sin tacc y sin sal",
+        "count": 2
+      },
+      {
+        "key": "pollo",
+        "count": 2
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Cervezas",
+        "count": 10
+      },
+      {
+        "key": "Leches enteras",
+        "count": 10
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 9
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 6
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 6
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 6
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 5
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 5
+      },
+      {
+        "key": "Verduras",
+        "count": 5
+      },
+      {
+        "key": "Fiambres feteados",
+        "count": 4
+      }
+    ],
+    "errores": 27
+  },
+  "agregar": {
+    "total_agregados": 11,
+    "valor_total": 841185.6,
+    "ticket_promedio": 76471.42,
+    "descuento_total": 79860.84,
+    "canal": {
+      "inmediato": 3,
+      "programado": 8
+    },
+    "top_productos": [
+      {
+        "key": "Leche con proteina Las Tres Niñas Vida Activa 1 lt",
+        "count": 8
+      },
+      {
+        "key": "Puré de Papas Maggi Original 200 grs",
+        "count": 6
+      },
+      {
+        "key": "Barra proteica Íntegra pasta de maní y arándanos 43 grs",
+        "count": 6
+      },
+      {
+        "key": "Barra de chocolate Íntegra sin tacc 38 grs",
+        "count": 6
+      },
+      {
+        "key": "Bebida isotónica Gatorade Manzana 1,25 lts",
+        "count": 6
+      },
+      {
+        "key": "Yogur cremoso Milkaut sabor natural en pote 180 g.",
+        "count": 6
+      },
+      {
+        "key": "Yogur entero Tregar natural 140 g.",
+        "count": 6
+      },
+      {
+        "key": "Nachos Macritas originales en bolsa 150 g.",
+        "count": 6
+      },
+      {
+        "key": "Puré Chef 100 grs",
+        "count": 6
+      },
+      {
+        "key": "Preservativo Prime ultra fino x 6 uni",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Purés instantáneos",
+        "count": 15
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 15
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 12
+      },
+      {
+        "key": "Barritas de cereales",
+        "count": 12
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 10
+      },
+      {
+        "key": "Preservativos",
+        "count": 9
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 8
+      },
+      {
+        "key": "Esponjas",
+        "count": 6
+      },
+      {
+        "key": "Comidas instantáneas",
+        "count": 6
+      },
+      {
+        "key": "Bebidas isotónicas",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 20,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 17
+      },
+      {
+        "key": "La Serenísima",
+        "count": 11
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 10
+      },
+      {
+        "key": "Genérico",
+        "count": 10
+      },
+      {
+        "key": "Magistral",
+        "count": 9
+      },
+      {
+        "key": "Raid",
+        "count": 7
+      },
+      {
+        "key": "Molinos Ala",
+        "count": 7
+      },
+      {
+        "key": "7 Up",
+        "count": 6
+      },
+      {
+        "key": "Glaciar",
+        "count": 5
+      },
+      {
+        "key": "Tregar",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 41
+      },
+      {
+        "key": "Almacén",
+        "count": 31
+      },
+      {
+        "key": "Limpieza",
+        "count": 19
+      },
+      {
+        "key": "Bebidas",
+        "count": 17
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 13
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 11
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 10
+      },
+      {
+        "key": "Panadería",
+        "count": 7
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 2
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 121,
+    "carrito_promedio": 61592.37,
+    "pct_con_carrito": 47.2,
+    "errores": 18
+  },
+  "origen": {
+    "total_requests": 181,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:18.183Z"
+}
