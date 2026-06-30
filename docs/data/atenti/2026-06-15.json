@@ -1,0 +1,443 @@
+{
+  "date": "2026-06-15",
+  "chat": {
+    "llamadas": 98,
+    "usuarios_unicos": 55,
+    "con_productos_identificados": 52,
+    "con_sugerencia": 21,
+    "por_hora": [
+      2,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      3,
+      2,
+      6,
+      4,
+      4,
+      8,
+      12,
+      2,
+      5,
+      5,
+      6,
+      5,
+      7,
+      9,
+      11,
+      4
+    ],
+    "errores": 24
+  },
+  "categorizar": {
+    "total": 39,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 9
+      },
+      {
+        "key": "Chocolate águila 80",
+        "count": 1
+      },
+      {
+        "key": "Carne de cerdo fresca",
+        "count": 1
+      },
+      {
+        "key": "Leche deslactosada la serenisima",
+        "count": 1
+      },
+      {
+        "key": "A ver",
+        "count": 1
+      },
+      {
+        "key": "Leche, galletitas saladas, harina leudante, harina integral, queso crema, papel higiénico, papas fritas, aceite, mermelada",
+        "count": 1
+      },
+      {
+        "key": "Esas son las opciones más baratas?",
+        "count": 1
+      },
+      {
+        "key": "Un asado simple",
+        "count": 1
+      },
+      {
+        "key": "Quiero ver mis favoritos",
+        "count": 1
+      },
+      {
+        "key": "Yo elegí como favoritos varios productos, donde los puedo ver",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "harina de maíz",
+        "count": 2
+      },
+      {
+        "key": "atún en trozos",
+        "count": 2
+      },
+      {
+        "key": "queso fundido",
+        "count": 2
+      },
+      {
+        "key": "atún en lomitos",
+        "count": 2
+      }
+    ],
+    "errores": 2
+  },
+  "buscar_eans": {
+    "busquedas": 169,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "harina de maiz",
+        "count": 2
+      },
+      {
+        "key": "tartaleta de frutilla",
+        "count": 2
+      },
+      {
+        "key": "atun en lomitos",
+        "count": 2
+      },
+      {
+        "key": "atun en trozos",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "None",
+        "count": 22
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 8
+      },
+      {
+        "key": "Leches enteras",
+        "count": 7
+      },
+      {
+        "key": "Verduras",
+        "count": 7
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 6
+      },
+      {
+        "key": "Accesorios de libreria",
+        "count": 6
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 4
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 4
+      },
+      {
+        "key": "Arroz",
+        "count": 4
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 4
+      }
+    ],
+    "errores": 738
+  },
+  "agregar": {
+    "total_agregados": 39,
+    "valor_total": 1474492.4,
+    "ticket_promedio": 37807.5,
+    "descuento_total": 199798.39,
+    "canal": {
+      "inmediato": 1,
+      "programado": 38
+    },
+    "top_productos": [
+      {
+        "key": "Jugo Pura Frutta manzana roja tetra 1 l.",
+        "count": 56
+      },
+      {
+        "key": "Tomate x kg.",
+        "count": 56
+      },
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 54
+      },
+      {
+        "key": "Esencia de vainilla Dos Anclas pet 100 cc.",
+        "count": 48
+      },
+      {
+        "key": "Pan Integral Fargo 400 grs",
+        "count": 42
+      },
+      {
+        "key": "Suprema congelada x kg.",
+        "count": 38
+      },
+      {
+        "key": "Batata x kg.",
+        "count": 36
+      },
+      {
+        "key": "Rebozador Preferido horno en bolsa 500 g.",
+        "count": 32
+      },
+      {
+        "key": "Puré de tomate La Campagnola tetra 530 g.",
+        "count": 24
+      },
+      {
+        "key": "Rollo de cocina Sussex clásico 50 paños 3 uni",
+        "count": 23
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 158
+      },
+      {
+        "key": "Jugos listos",
+        "count": 57
+      },
+      {
+        "key": "Pollo",
+        "count": 55
+      },
+      {
+        "key": "Leches enteras",
+        "count": 54
+      },
+      {
+        "key": "Complementos",
+        "count": 48
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 44
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 40
+      },
+      {
+        "key": "Pan rallado y rebozadores",
+        "count": 32
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 24
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 23
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 22,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 30
+      },
+      {
+        "key": "Carrefour",
+        "count": 16
+      },
+      {
+        "key": "Hileret",
+        "count": 10
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 8
+      },
+      {
+        "key": "Bulnez",
+        "count": 7
+      },
+      {
+        "key": "La Perla",
+        "count": 6
+      },
+      {
+        "key": "Casancrem",
+        "count": 4
+      },
+      {
+        "key": "Santa Clara",
+        "count": 4
+      },
+      {
+        "key": "Tonadita",
+        "count": 4
+      },
+      {
+        "key": "Elegante",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 37
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 34
+      },
+      {
+        "key": "Almacén",
+        "count": 30
+      },
+      {
+        "key": "Panadería",
+        "count": 20
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 15
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 9
+      },
+      {
+        "key": "Congelados",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 160,
+    "carrito_promedio": 40980.08,
+    "pct_con_carrito": 53.3,
+    "errores": 196
+  },
+  "origen": {
+    "total_requests": 253,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:16.780Z"
+}

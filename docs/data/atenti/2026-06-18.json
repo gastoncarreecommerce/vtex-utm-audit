@@ -1,0 +1,443 @@
+{
+  "date": "2026-06-18",
+  "chat": {
+    "llamadas": 202,
+    "usuarios_unicos": 67,
+    "con_productos_identificados": 145,
+    "con_sugerencia": 29,
+    "por_hora": [
+      28,
+      6,
+      1,
+      2,
+      1,
+      8,
+      11,
+      0,
+      0,
+      0,
+      8,
+      14,
+      15,
+      7,
+      9,
+      12,
+      6,
+      16,
+      7,
+      10,
+      9,
+      20,
+      10,
+      2
+    ],
+    "errores": 22
+  },
+  "categorizar": {
+    "total": 123,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 11
+      },
+      {
+        "key": "Leche",
+        "count": 5
+      },
+      {
+        "key": "Cola",
+        "count": 2
+      },
+      {
+        "key": "Lomitos de atún ",
+        "count": 2
+      },
+      {
+        "key": "Manteca danica",
+        "count": 2
+      },
+      {
+        "key": "Rexona Clínical ",
+        "count": 1
+      },
+      {
+        "key": "Desodorante antitransirante rexona ",
+        "count": 1
+      },
+      {
+        "key": "Crema ",
+        "count": 1
+      },
+      {
+        "key": "Roll on",
+        "count": 1
+      },
+      {
+        "key": "Takis",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 22
+      },
+      {
+        "key": "manteca",
+        "count": 11
+      },
+      {
+        "key": "cebolla",
+        "count": 8
+      },
+      {
+        "key": "cerveza",
+        "count": 7
+      },
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "carne picada",
+        "count": 5
+      },
+      {
+        "key": "queso rallado",
+        "count": 5
+      },
+      {
+        "key": "azúcar",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 4
+      },
+      {
+        "key": "morrón",
+        "count": 4
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "yogur natural",
+        "count": 4
+      },
+      {
+        "key": "atún",
+        "count": 4
+      },
+      {
+        "key": "huevo",
+        "count": 4
+      },
+      {
+        "key": "desodorante clínico",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 326,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 21
+      },
+      {
+        "key": "manteca",
+        "count": 10
+      },
+      {
+        "key": "cebolla",
+        "count": 8
+      },
+      {
+        "key": "cerveza",
+        "count": 7
+      },
+      {
+        "key": "carne picada",
+        "count": 5
+      },
+      {
+        "key": "queso rallado",
+        "count": 5
+      },
+      {
+        "key": "huevos",
+        "count": 5
+      },
+      {
+        "key": "morron",
+        "count": 5
+      },
+      {
+        "key": "desodorante clinico",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola sin azucar",
+        "count": 4
+      },
+      {
+        "key": "atun",
+        "count": 4
+      },
+      {
+        "key": "huevo",
+        "count": 4
+      },
+      {
+        "key": "azucar",
+        "count": 4
+      },
+      {
+        "key": "papas fritas",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leches enteras",
+        "count": 33
+      },
+      {
+        "key": "Verduras",
+        "count": 21
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 20
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 14
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 14
+      },
+      {
+        "key": "Cervezas",
+        "count": 12
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 9
+      },
+      {
+        "key": "Huevos",
+        "count": 9
+      },
+      {
+        "key": "Sal",
+        "count": 9
+      },
+      {
+        "key": "Fiambres feteados",
+        "count": 8
+      }
+    ],
+    "errores": 2366
+  },
+  "agregar": {
+    "total_agregados": 32,
+    "valor_total": 1664258.59,
+    "ticket_promedio": 52008.08,
+    "descuento_total": 65578.02,
+    "canal": {
+      "inmediato": 4,
+      "programado": 28
+    },
+    "top_productos": [
+      {
+        "key": "Leche La serenisima clásica 3% 1L.",
+        "count": 19
+      },
+      {
+        "key": "Papa x kg.",
+        "count": 18
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 12
+      },
+      {
+        "key": "Pan de papa para hamburguesa Bimbo Artesano 4 uni",
+        "count": 12
+      },
+      {
+        "key": "Aceite de girasol Carrefour Classic  alto omega pet 900 cc. Aceite de girasol Carrefour Classic alto omega pet 900 cc.",
+        "count": 10
+      },
+      {
+        "key": "Sal fina Carrefour Classic en bolsa 500 grs",
+        "count": 9
+      },
+      {
+        "key": "Palta x uni",
+        "count": 8
+      },
+      {
+        "key": "Azúcar Ledesma molida superior bolsa 1 kg.",
+        "count": 8
+      },
+      {
+        "key": "Naranja de jugo x kg.",
+        "count": 8
+      },
+      {
+        "key": "Harina leudante Blancaflor 1 kg.",
+        "count": 7
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 36
+      },
+      {
+        "key": "Verduras",
+        "count": 35
+      },
+      {
+        "key": "Leches enteras",
+        "count": 25
+      },
+      {
+        "key": "Sal",
+        "count": 24
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 14
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 13
+      },
+      {
+        "key": "Pan para hamburguesas y panchos",
+        "count": 12
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 10
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 10
+      },
+      {
+        "key": "Azúcar",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 47,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 39
+      },
+      {
+        "key": "Carrefour",
+        "count": 39
+      },
+      {
+        "key": "La Serenísima",
+        "count": 25
+      },
+      {
+        "key": "Bulnez",
+        "count": 18
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 17
+      },
+      {
+        "key": "Integra",
+        "count": 12
+      },
+      {
+        "key": "Knorr",
+        "count": 9
+      },
+      {
+        "key": "Pureza",
+        "count": 9
+      },
+      {
+        "key": "Pehuamar",
+        "count": 8
+      },
+      {
+        "key": "Cofler",
+        "count": 7
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 153
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 110
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 91
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 35
+      },
+      {
+        "key": "Bebidas",
+        "count": 15
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 180,
+    "carrito_promedio": 79422.81,
+    "pct_con_carrito": 53.1,
+    "errores": 39
+  },
+  "origen": {
+    "total_requests": 302,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:17.482Z"
+}

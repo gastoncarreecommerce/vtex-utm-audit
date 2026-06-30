@@ -1,0 +1,411 @@
+{
+  "date": "2026-06-10",
+  "chat": {
+    "llamadas": 92,
+    "usuarios_unicos": 47,
+    "con_productos_identificados": 44,
+    "con_sugerencia": 12,
+    "por_hora": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      16,
+      7,
+      8,
+      11,
+      10,
+      9,
+      4,
+      5,
+      4,
+      6,
+      9
+    ],
+    "errores": 28
+  },
+  "categorizar": {
+    "total": 38,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 6
+      },
+      {
+        "key": "Figuritas ",
+        "count": 2
+      },
+      {
+        "key": "Tengo un carrito armado agregar harina pre mezcla pizza",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer un guiso de lentejas",
+        "count": 1
+      },
+      {
+        "key": "Leche",
+        "count": 1
+      },
+      {
+        "key": "Nesecito tambien dulce de leche,arroz,fideos,salsa de tomate,mayonesa,ketchup",
+        "count": 1
+      },
+      {
+        "key": "Si llevo de a 3 me hacen descuento igual que en el máxi??",
+        "count": 1
+      },
+      {
+        "key": "Empanaditas chinas",
+        "count": 1
+      },
+      {
+        "key": "Necesito hacer un pollo al disco para 7 personas dame los ingredientes y recetas",
+        "count": 1
+      },
+      {
+        "key": "Cuando tienen stock de Pañales Huggies Rn?",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "puré de tomate",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "papa",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "papas fritas",
+        "count": 3
+      },
+      {
+        "key": "yogur griego",
+        "count": 3
+      },
+      {
+        "key": "morrón",
+        "count": 2
+      },
+      {
+        "key": "zanahoria",
+        "count": 2
+      },
+      {
+        "key": "crema de leche",
+        "count": 2
+      },
+      {
+        "key": "galletitas",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 140,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "pure de tomate",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "papa",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "yogur griego",
+        "count": 3
+      },
+      {
+        "key": "zanahoria",
+        "count": 2
+      },
+      {
+        "key": "morron",
+        "count": 2
+      },
+      {
+        "key": "crema de leche",
+        "count": 2
+      },
+      {
+        "key": "galletitas",
+        "count": 2
+      },
+      {
+        "key": "salsa de tomate",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "None",
+        "count": 48
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 7
+      },
+      {
+        "key": "Leches enteras",
+        "count": 7
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 6
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 5
+      },
+      {
+        "key": "Fideos largos",
+        "count": 5
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 5
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 5
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 4
+      },
+      {
+        "key": "Arroz",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 9,
+    "valor_total": 710241.85,
+    "ticket_promedio": 78915.76,
+    "descuento_total": 122433.57,
+    "canal": {
+      "inmediato": 0,
+      "programado": 9
+    },
+    "top_productos": [
+      {
+        "key": "Leche ultra entera Carrefour classic sachet 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 12
+      },
+      {
+        "key": "Queso blanco Tregar light 290 g.",
+        "count": 12
+      },
+      {
+        "key": "Ricotta Tregar magra bajo sodio en pote 290 g.",
+        "count": 12
+      },
+      {
+        "key": "Yogur entero natural Tregar sin azúcar en pote 140 g.",
+        "count": 12
+      },
+      {
+        "key": "Yogur bebible descremado de frutilla Ilolay en sachet 900 g.",
+        "count": 12
+      },
+      {
+        "key": "Manteca Tonadita calidad extra 200 g.",
+        "count": 8
+      },
+      {
+        "key": "Vino tinto Malbec Finjamos Demencia en botella 750 ml",
+        "count": 6
+      },
+      {
+        "key": "Vino tinto Blend corte de tintas Finjamos Demencia 750 ml",
+        "count": 6
+      },
+      {
+        "key": "Vino blanco dulce Finjamos Demencia en botella 750 ml",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Quesos cremas y untables",
+        "count": 14
+      },
+      {
+        "key": "Leches enteras",
+        "count": 12
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 12
+      },
+      {
+        "key": "Vinos tintos",
+        "count": 12
+      },
+      {
+        "key": "Pasta dental",
+        "count": 12
+      },
+      {
+        "key": "Ricota",
+        "count": 12
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 12
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 12
+      },
+      {
+        "key": "Verduras",
+        "count": 11
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 3,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 17
+      },
+      {
+        "key": "Paladini",
+        "count": 4
+      },
+      {
+        "key": "Don José",
+        "count": 2
+      },
+      {
+        "key": "Maniax",
+        "count": 2
+      },
+      {
+        "key": "Pep",
+        "count": 2
+      },
+      {
+        "key": "Lario",
+        "count": 1
+      },
+      {
+        "key": "Espuña",
+        "count": 1
+      },
+      {
+        "key": "Macritas",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 145,
+    "carrito_promedio": 81450.9,
+    "pct_con_carrito": 54.1,
+    "errores": 29
+  },
+  "origen": {
+    "total_requests": 173,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:16.364Z"
+}

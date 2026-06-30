@@ -1,0 +1,419 @@
+{
+  "date": "2026-06-20",
+  "chat": {
+    "llamadas": 104,
+    "usuarios_unicos": 52,
+    "con_productos_identificados": 58,
+    "con_sugerencia": 20,
+    "por_hora": [
+      2,
+      2,
+      0,
+      4,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      10,
+      5,
+      10,
+      9,
+      8,
+      8,
+      14,
+      3,
+      5,
+      2,
+      0,
+      7,
+      4,
+      7
+    ],
+    "errores": 19
+  },
+  "categorizar": {
+    "total": 51,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 10
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "hola, quiero hacer un tiramisú pero con los productores más baratos porfa ",
+        "count": 1
+      },
+      {
+        "key": "Coca Zero",
+        "count": 1
+      },
+      {
+        "key": "Gaseosa kunington",
+        "count": 1
+      },
+      {
+        "key": "Leche en polvo protein la serenisima ",
+        "count": 1
+      },
+      {
+        "key": "Arroz con azafran",
+        "count": 1
+      },
+      {
+        "key": "Mostrame los 2 anteultimos perdidos ",
+        "count": 1
+      },
+      {
+        "key": "Repasador",
+        "count": 1
+      },
+      {
+        "key": "Beige",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "puré de tomate",
+        "count": 5
+      },
+      {
+        "key": "atún",
+        "count": 5
+      },
+      {
+        "key": "cerveza",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "crema de leche",
+        "count": 3
+      },
+      {
+        "key": "pan integral",
+        "count": 3
+      },
+      {
+        "key": "tostadas de arroz",
+        "count": 3
+      },
+      {
+        "key": "shampoo",
+        "count": 3
+      },
+      {
+        "key": "premezcla sin tacc",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "azúcar",
+        "count": 2
+      },
+      {
+        "key": "jabón de tocador",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 183,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "pure de tomate",
+        "count": 5
+      },
+      {
+        "key": "atun",
+        "count": 5
+      },
+      {
+        "key": "cerveza",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "crema de leche",
+        "count": 3
+      },
+      {
+        "key": "pan integral",
+        "count": 3
+      },
+      {
+        "key": "shampoo",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "jabon de tocador",
+        "count": 2
+      },
+      {
+        "key": "mayonesa",
+        "count": 2
+      },
+      {
+        "key": "fideos tirabuzon",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Conservas de pescado",
+        "count": 8
+      },
+      {
+        "key": "Verduras",
+        "count": 8
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 7
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 7
+      },
+      {
+        "key": "Leches enteras",
+        "count": 7
+      },
+      {
+        "key": "Cervezas",
+        "count": 6
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 6
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 5
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 5
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 16,
+    "valor_total": 259313.99,
+    "ticket_promedio": 16207.12,
+    "descuento_total": 34298.61,
+    "canal": {
+      "inmediato": 5,
+      "programado": 10
+    },
+    "top_productos": [
+      {
+        "key": "Chuleta de jamon MP x kg",
+        "count": 36
+      },
+      {
+        "key": "Cerveza Lager República Artesanal en lata 473 ml",
+        "count": 11
+      },
+      {
+        "key": "Harina de trigo 000 Bulnez 1 kg",
+        "count": 8
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 354 grs",
+        "count": 6
+      },
+      {
+        "key": "Tostadas de arroz Molinos del Bosque sin sal 150 g.",
+        "count": 6
+      },
+      {
+        "key": "Cerveza blanca Stella Artois 975 ml",
+        "count": 5
+      },
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 4
+      },
+      {
+        "key": "Gaseosa Coca-Cola sabor original 600 ml",
+        "count": 3
+      },
+      {
+        "key": "Yogur Griego natural sin endulzar Yogurísimo 300 grs",
+        "count": 3
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 2,25 lts",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Carne de cerdo",
+        "count": 36
+      },
+      {
+        "key": "Cervezas",
+        "count": 16
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 8
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 7
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 6
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 6
+      },
+      {
+        "key": "Leches enteras",
+        "count": 4
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 3
+      },
+      {
+        "key": "Lustramuebles",
+        "count": 2
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 5,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 8
+      },
+      {
+        "key": "Estilo Spa",
+        "count": 3
+      },
+      {
+        "key": "Algabo",
+        "count": 3
+      },
+      {
+        "key": "Dicomere",
+        "count": 3
+      },
+      {
+        "key": "Lux",
+        "count": 2
+      },
+      {
+        "key": "Elvive",
+        "count": 2
+      },
+      {
+        "key": "Bonalma",
+        "count": 2
+      },
+      {
+        "key": "Cocinero",
+        "count": 2
+      },
+      {
+        "key": "Genérico",
+        "count": 1
+      },
+      {
+        "key": "Pantene",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 15
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 144,
+    "carrito_promedio": 46490.91,
+    "pct_con_carrito": 46.4,
+    "errores": 16
+  },
+  "origen": {
+    "total_requests": 200,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:17.739Z"
+}

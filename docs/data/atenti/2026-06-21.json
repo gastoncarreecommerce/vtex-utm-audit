@@ -1,0 +1,423 @@
+{
+  "date": "2026-06-21",
+  "chat": {
+    "llamadas": 124,
+    "usuarios_unicos": 45,
+    "con_productos_identificados": 91,
+    "con_sugerencia": 18,
+    "por_hora": [
+      6,
+      0,
+      2,
+      2,
+      0,
+      0,
+      3,
+      0,
+      0,
+      3,
+      1,
+      6,
+      25,
+      7,
+      20,
+      3,
+      4,
+      4,
+      16,
+      8,
+      5,
+      8,
+      0,
+      1
+    ],
+    "errores": 16
+  },
+  "categorizar": {
+    "total": 78,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 6
+      },
+      {
+        "key": "Alimentación saludable",
+        "count": 2
+      },
+      {
+        "key": "Speed",
+        "count": 2
+      },
+      {
+        "key": "Cosas para el día del padre ",
+        "count": 1
+      },
+      {
+        "key": "Si.. necesito una. Receta de escabeche de berenjena ",
+        "count": 1
+      },
+      {
+        "key": "Leche económica ",
+        "count": 1
+      },
+      {
+        "key": "Aceite",
+        "count": 1
+      },
+      {
+        "key": "Arroz ",
+        "count": 1
+      },
+      {
+        "key": "Parboil",
+        "count": 1
+      },
+      {
+        "key": "Cafe tostado molido",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "arroz",
+        "count": 14
+      },
+      {
+        "key": "azúcar",
+        "count": 14
+      },
+      {
+        "key": "fideos cinta",
+        "count": 12
+      },
+      {
+        "key": "leche entera en caja",
+        "count": 11
+      },
+      {
+        "key": "fideos largos",
+        "count": 11
+      },
+      {
+        "key": "dulce de leche",
+        "count": 9
+      },
+      {
+        "key": "leche",
+        "count": 8
+      },
+      {
+        "key": "puré de tomate",
+        "count": 8
+      },
+      {
+        "key": "harina",
+        "count": 8
+      },
+      {
+        "key": "legumbres",
+        "count": 7
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "fideos municiones",
+        "count": 6
+      },
+      {
+        "key": "pan",
+        "count": 6
+      },
+      {
+        "key": "jabón de tocador",
+        "count": 5
+      },
+      {
+        "key": "carne vacuna",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 365,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "azucar",
+        "count": 15
+      },
+      {
+        "key": "arroz",
+        "count": 14
+      },
+      {
+        "key": "fideos cinta",
+        "count": 12
+      },
+      {
+        "key": "leche entera en caja",
+        "count": 11
+      },
+      {
+        "key": "fideos largos",
+        "count": 11
+      },
+      {
+        "key": "dulce de leche",
+        "count": 9
+      },
+      {
+        "key": "leche",
+        "count": 8
+      },
+      {
+        "key": "pure de tomate",
+        "count": 8
+      },
+      {
+        "key": "harina",
+        "count": 8
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "fideos municiones",
+        "count": 6
+      },
+      {
+        "key": "pan",
+        "count": 6
+      },
+      {
+        "key": "legumbres",
+        "count": 6
+      },
+      {
+        "key": "jabon de tocador",
+        "count": 5
+      },
+      {
+        "key": "carne vacuna",
+        "count": 5
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Fideos largos",
+        "count": 31
+      },
+      {
+        "key": "Leches enteras",
+        "count": 25
+      },
+      {
+        "key": "Azucar",
+        "count": 16
+      },
+      {
+        "key": "Arroz",
+        "count": 15
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 12
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 12
+      },
+      {
+        "key": "Verduras",
+        "count": 10
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 9
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 9
+      },
+      {
+        "key": "Dulce de leche",
+        "count": 9
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 10,
+    "valor_total": 423670.7,
+    "ticket_promedio": 42367.07,
+    "descuento_total": 128089.2,
+    "canal": {
+      "inmediato": 0,
+      "programado": 10
+    },
+    "top_productos": [
+      {
+        "key": "Bebida energizante Speed 473 ml",
+        "count": 72
+      },
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Leche La Serenísima ultra entera multivit 3% sachet 1 lt",
+        "count": 4
+      },
+      {
+        "key": "Cacao en polvo choco Bulnez 180 grs",
+        "count": 4
+      },
+      {
+        "key": "Aceite de girasol Natura 1.5 l.",
+        "count": 4
+      },
+      {
+        "key": "Mate cocido niños con vitamina A + C + zinc Taragüi 20 u.",
+        "count": 4
+      },
+      {
+        "key": "Aceite de girasol Cocinero 1.5 l.",
+        "count": 3
+      },
+      {
+        "key": "Pollo entero congelado x kg.",
+        "count": 3
+      },
+      {
+        "key": "Vodka Absolut raspberri botella 700 cc.",
+        "count": 3
+      },
+      {
+        "key": "Té en saquitos Saint Gottard limon lima jengibre menta 20 u.",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Bebidas energizantes",
+        "count": 72
+      },
+      {
+        "key": "Leches enteras",
+        "count": 16
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 7
+      },
+      {
+        "key": "Vodka",
+        "count": 6
+      },
+      {
+        "key": "Cacao",
+        "count": 4
+      },
+      {
+        "key": "Mate cocido",
+        "count": 4
+      },
+      {
+        "key": "Té",
+        "count": 3
+      },
+      {
+        "key": "Pollo",
+        "count": 3
+      },
+      {
+        "key": "Lavandinas",
+        "count": 2
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "Bulnez",
+        "count": 7
+      },
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Genérico",
+        "count": 4
+      },
+      {
+        "key": "Maizena",
+        "count": 4
+      },
+      {
+        "key": "Absolut",
+        "count": 4
+      },
+      {
+        "key": "Smams",
+        "count": 3
+      },
+      {
+        "key": "Paladini",
+        "count": 3
+      },
+      {
+        "key": "Smirnoff",
+        "count": 3
+      },
+      {
+        "key": "Molinos Ala",
+        "count": 2
+      },
+      {
+        "key": "Lucchetti",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 24
+      },
+      {
+        "key": "Almacén",
+        "count": 17
+      },
+      {
+        "key": "Bebidas",
+        "count": 11
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 87,
+    "carrito_promedio": 65281.29,
+    "pct_con_carrito": 56.5,
+    "errores": 15
+  },
+  "origen": {
+    "total_requests": 141,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:17.900Z"
+}

@@ -1,0 +1,435 @@
+{
+  "date": "2026-06-11",
+  "chat": {
+    "llamadas": 128,
+    "usuarios_unicos": 71,
+    "con_productos_identificados": 61,
+    "con_sugerencia": 20,
+    "por_hora": [
+      2,
+      4,
+      7,
+      0,
+      4,
+      1,
+      0,
+      0,
+      9,
+      8,
+      6,
+      4,
+      4,
+      12,
+      3,
+      10,
+      6,
+      8,
+      10,
+      10,
+      4,
+      6,
+      6,
+      4
+    ],
+    "errores": 20
+  },
+  "categorizar": {
+    "total": 49,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 10
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "Yerba playadito",
+        "count": 1
+      },
+      {
+        "key": "Café en saquito ",
+        "count": 1
+      },
+      {
+        "key": "Los 10",
+        "count": 1
+      },
+      {
+        "key": "Leche Carrefour ",
+        "count": 1
+      },
+      {
+        "key": "Lavandina",
+        "count": 1
+      },
+      {
+        "key": "Saca esmalte uñas",
+        "count": 1
+      },
+      {
+        "key": "Estoy buscando lacteos con descuento , leche, manteca, ricota , queso por salir, crema",
+        "count": 1
+      },
+      {
+        "key": "figuritas del mundial ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "leche descremada",
+        "count": 6
+      },
+      {
+        "key": "atún al natural",
+        "count": 4
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "jabón líquido para ropa",
+        "count": 2
+      },
+      {
+        "key": "cerveza blanca",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "papa",
+        "count": 2
+      },
+      {
+        "key": "lavandina",
+        "count": 2
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "chicles",
+        "count": 2
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "carne picada",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 131,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "leche descremada",
+        "count": 6
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "papa",
+        "count": 2
+      },
+      {
+        "key": "lavandina",
+        "count": 2
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "chicles",
+        "count": 2
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "carne picada",
+        "count": 2
+      },
+      {
+        "key": "protectores diarios con perfume",
+        "count": 2
+      },
+      {
+        "key": "jabon para la ropa",
+        "count": 2
+      },
+      {
+        "key": "pan lactal",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "None",
+        "count": 42
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 6
+      },
+      {
+        "key": "Leches enteras",
+        "count": 6
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 5
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 3
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 3
+      },
+      {
+        "key": "Accesorios de libreria",
+        "count": 3
+      },
+      {
+        "key": "Alfajores",
+        "count": 3
+      },
+      {
+        "key": "Protectores diarios",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 19,
+    "valor_total": 1488406.2,
+    "ticket_promedio": 78337.17,
+    "descuento_total": 60508.02,
+    "canal": {
+      "inmediato": 0,
+      "programado": 19
+    },
+    "top_productos": [
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 70
+      },
+      {
+        "key": "Tableta dulce de leche Vauquita 25 g.",
+        "count": 48
+      },
+      {
+        "key": "Leche Protein La Serenisima 1L",
+        "count": 47
+      },
+      {
+        "key": "Milanesa de soja Vegetalex 4 uni",
+        "count": 36
+      },
+      {
+        "key": "Jugo en polvo Arcor de naranja 15 grs",
+        "count": 30
+      },
+      {
+        "key": "Leche UAT parcialmente descremada Carrefour classic brik 1 lt.",
+        "count": 22
+      },
+      {
+        "key": "Yerba mate Amanda selección especial 1 kg.",
+        "count": 18
+      },
+      {
+        "key": "Arroz parboil Gallo oro en bolsa 1 kg.",
+        "count": 18
+      },
+      {
+        "key": "Queso crema clásico Casancrem 290 grs",
+        "count": 18
+      },
+      {
+        "key": "Galletitas chocolate rellena de vainillas Rumba x3 330 grs",
+        "count": 12
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 77
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 70
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 48
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 41
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 36
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 36
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 26
+      },
+      {
+        "key": "Yerba",
+        "count": 19
+      },
+      {
+        "key": "Arroz",
+        "count": 18
+      },
+      {
+        "key": "Premezclas saladas",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 9,
+    "top_marcas": [
+      {
+        "key": "La Serenísima",
+        "count": 10
+      },
+      {
+        "key": "Genérico",
+        "count": 6
+      },
+      {
+        "key": "Carrefour",
+        "count": 5
+      },
+      {
+        "key": "Ades",
+        "count": 5
+      },
+      {
+        "key": "Cabrales",
+        "count": 4
+      },
+      {
+        "key": "Cafe Martinez",
+        "count": 4
+      },
+      {
+        "key": "Nosotras",
+        "count": 4
+      },
+      {
+        "key": "Playadito",
+        "count": 3
+      },
+      {
+        "key": "Que Rico",
+        "count": 3
+      },
+      {
+        "key": "Mate y Co",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 44
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 11
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 8
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 7
+      },
+      {
+        "key": "Congelados",
+        "count": 3
+      },
+      {
+        "key": "Almacén",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 178,
+    "carrito_promedio": 45473.69,
+    "pct_con_carrito": 55,
+    "errores": 35
+  },
+  "origen": {
+    "total_requests": 240,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T14:24:16.545Z"
+}
