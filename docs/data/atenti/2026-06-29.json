@@ -1,0 +1,423 @@
+{
+  "date": "2026-06-29",
+  "chat": {
+    "llamadas": 92,
+    "usuarios_unicos": 52,
+    "con_productos_identificados": 38,
+    "con_sugerencia": 8,
+    "por_hora": [
+      5,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      5,
+      4,
+      14,
+      8,
+      7,
+      0,
+      2,
+      9,
+      5,
+      5,
+      3,
+      3,
+      7,
+      7
+    ],
+    "errores": 22
+  },
+  "categorizar": {
+    "total": 31,
+    "top_recetas": [
+      {
+        "key": "Fideos, aceite, vinagre, azúcar, yerba, shampoo y acondicionador, café instantáneo, leche, queso cremoso, arroz. No quiero mucho lujo",
+        "count": 1
+      },
+      {
+        "key": "Yogurt griego ",
+        "count": 1
+      },
+      {
+        "key": "Estufas eléctricas ",
+        "count": 1
+      },
+      {
+        "key": "Papa",
+        "count": 1
+      },
+      {
+        "key": "café instantáneo,  fideos guisados,  fideos spaguetti ,fideos municiones , arroz que no se pasa, pure de tomate, miel , aceite girasol",
+        "count": 1
+      },
+      {
+        "key": "Leche sin lactosa",
+        "count": 1
+      },
+      {
+        "key": "Leche deslactosada",
+        "count": 1
+      },
+      {
+        "key": "Jugo de naranja",
+        "count": 1
+      },
+      {
+        "key": "Jugo de naranja citric",
+        "count": 1
+      },
+      {
+        "key": "Champán extra brut chandon 187",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "arroz",
+        "count": 10
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 4
+      },
+      {
+        "key": "arvejas en lata",
+        "count": 4
+      },
+      {
+        "key": "azúcar",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "jugo de naranja",
+        "count": 3
+      },
+      {
+        "key": "atún en lomitos",
+        "count": 3
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "café instantáneo",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "cápsulas de café",
+        "count": 2
+      },
+      {
+        "key": "bicarbonato de sodio",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 77,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "arroz",
+        "count": 9
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 4
+      },
+      {
+        "key": "arvejas en lata",
+        "count": 4
+      },
+      {
+        "key": "azucar",
+        "count": 3
+      },
+      {
+        "key": "jugo de naranja",
+        "count": 3
+      },
+      {
+        "key": "atun en lomitos",
+        "count": 3
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "capsulas de cafe",
+        "count": 2
+      },
+      {
+        "key": "bicarbonato de sodio",
+        "count": 2
+      },
+      {
+        "key": "cafe instantaneo",
+        "count": 1
+      },
+      {
+        "key": "yerba",
+        "count": 1
+      },
+      {
+        "key": "queso cremoso",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Arroz",
+        "count": 9
+      },
+      {
+        "key": "Fideos largos",
+        "count": 4
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 4
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 4
+      },
+      {
+        "key": "Azucar",
+        "count": 3
+      },
+      {
+        "key": "Leches enteras",
+        "count": 3
+      },
+      {
+        "key": "Jugos listos",
+        "count": 3
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 3
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 3
+      }
+    ],
+    "errores": 246
+  },
+  "agregar": {
+    "total_agregados": 12,
+    "valor_total": 938846.84,
+    "ticket_promedio": 78237.24,
+    "descuento_total": 80229.6,
+    "canal": {
+      "inmediato": 0,
+      "programado": 12
+    },
+    "top_productos": [
+      {
+        "key": "Arroz largo fino Bulnez 1 kg",
+        "count": 28
+      },
+      {
+        "key": "Arvejas secas remojadas Carrefour classic en lata 300 g.",
+        "count": 24
+      },
+      {
+        "key": "Leche descremada larga vida Las tres niñas 1 l.",
+        "count": 24
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 20
+      },
+      {
+        "key": "Papa x kg.",
+        "count": 17
+      },
+      {
+        "key": "Queso cremoso Puyehue horma x kg.",
+        "count": 14
+      },
+      {
+        "key": "Azúcar común Bulnez 1 kg",
+        "count": 10
+      },
+      {
+        "key": "Fideos spaghetti N3 Matarazzo 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Tapa para pascualina La salteña balance 2 uni",
+        "count": 8
+      },
+      {
+        "key": "Jabón líquido Carrefour Soft de té verde y limón dp 300 cc.",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Arroz",
+        "count": 37
+      },
+      {
+        "key": "Verduras",
+        "count": 31
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 27
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 24
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 20
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 20
+      },
+      {
+        "key": "Fideos largos",
+        "count": 13
+      },
+      {
+        "key": "Azúcar",
+        "count": 13
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 10
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 6,
+    "top_marcas": [
+      {
+        "key": "Chandon",
+        "count": 7
+      },
+      {
+        "key": "Amanda",
+        "count": 5
+      },
+      {
+        "key": "Ades",
+        "count": 5
+      },
+      {
+        "key": "Bonafide",
+        "count": 5
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "308",
+        "count": 3
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 3
+      },
+      {
+        "key": "Verdeflor",
+        "count": 3
+      },
+      {
+        "key": "Lucchetti",
+        "count": 2
+      },
+      {
+        "key": "Las Brisas",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 118,
+    "carrito_promedio": 67253.85,
+    "pct_con_carrito": 52.4,
+    "errores": 25
+  },
+  "origen": {
+    "total_requests": 166,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-06-30T08:03:07.217Z"
+}
