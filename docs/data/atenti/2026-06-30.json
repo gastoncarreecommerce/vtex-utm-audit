@@ -1,0 +1,439 @@
+{
+  "date": "2026-06-30",
+  "chat": {
+    "llamadas": 115,
+    "usuarios_unicos": 56,
+    "con_productos_identificados": 66,
+    "con_sugerencia": 12,
+    "por_hora": [
+      2,
+      7,
+      0,
+      4,
+      0,
+      0,
+      0,
+      8,
+      2,
+      5,
+      3,
+      7,
+      3,
+      6,
+      4,
+      1,
+      3,
+      14,
+      9,
+      12,
+      7,
+      7,
+      10,
+      1
+    ],
+    "errores": 24
+  },
+  "categorizar": {
+    "total": 55,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Salchicha",
+        "count": 3
+      },
+      {
+        "key": "Mermeladas ",
+        "count": 2
+      },
+      {
+        "key": "Camara de seguridad para cuna de bebes",
+        "count": 2
+      },
+      {
+        "key": "Suprema de pollo",
+        "count": 2
+      },
+      {
+        "key": "Rollo de cocina",
+        "count": 1
+      },
+      {
+        "key": "Clasico",
+        "count": 1
+      },
+      {
+        "key": "Milanesa 1kg",
+        "count": 1
+      },
+      {
+        "key": "Leche larga vida descremada ",
+        "count": 1
+      },
+      {
+        "key": "Leche",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "azúcar",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "salchichas",
+        "count": 5
+      },
+      {
+        "key": "jabón en polvo",
+        "count": 4
+      },
+      {
+        "key": "gaseosa lima limón",
+        "count": 4
+      },
+      {
+        "key": "leche larga vida descremada",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "atún",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "pimentón",
+        "count": 3
+      },
+      {
+        "key": "orégano",
+        "count": 3
+      },
+      {
+        "key": "condimento para pizza",
+        "count": 3
+      },
+      {
+        "key": "provenzal",
+        "count": 3
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 120,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "azucar",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "salchichas",
+        "count": 4
+      },
+      {
+        "key": "leche larga vida descremada",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "atun",
+        "count": 3
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 3
+      },
+      {
+        "key": "jabon en polvo",
+        "count": 3
+      },
+      {
+        "key": "gaseosa lima limon",
+        "count": 3
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 2
+      },
+      {
+        "key": "mermelada",
+        "count": 2
+      },
+      {
+        "key": "aceto balsamico",
+        "count": 2
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "fideos largos",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Azucar",
+        "count": 8
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 8
+      },
+      {
+        "key": "Leches enteras",
+        "count": 7
+      },
+      {
+        "key": "Salchichas",
+        "count": 5
+      },
+      {
+        "key": "Jabones para la ropa",
+        "count": 5
+      },
+      {
+        "key": "Mermeladas, dulces y jaleas",
+        "count": 4
+      },
+      {
+        "key": "Vinagres, acetos y limon",
+        "count": 4
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 4
+      },
+      {
+        "key": "Fideos largos",
+        "count": 4
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 3
+      }
+    ],
+    "errores": 2
+  },
+  "agregar": {
+    "total_agregados": 27,
+    "valor_total": 1267547.37,
+    "ticket_promedio": 46946.2,
+    "descuento_total": 180707.63,
+    "canal": {
+      "inmediato": 0,
+      "programado": 27
+    },
+    "top_productos": [
+      {
+        "key": "Leche descremada larga vida Las tres niñas 1 l.",
+        "count": 24
+      },
+      {
+        "key": "Gaseosa lima limón 7 Up sin azúcar 1,5 lts",
+        "count": 19
+      },
+      {
+        "key": "Jabon en polvo Skip Bio-Enzimas Baja espuma 2,5 Kg",
+        "count": 17
+      },
+      {
+        "key": "Azúcar mascabo Beepure zip pack 700 g.",
+        "count": 16
+      },
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 16
+      },
+      {
+        "key": "Queso cremoso Puyehue horma x kg.",
+        "count": 14
+      },
+      {
+        "key": "Pimentón 50 g.",
+        "count": 14
+      },
+      {
+        "key": "Adobo para pizza 50 g.",
+        "count": 13
+      },
+      {
+        "key": "Orégano Alicante sobre 50 g.",
+        "count": 12
+      },
+      {
+        "key": "Fideos spaghetti N3 Matarazzo 500 g.",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Hierbas secas y especias",
+        "count": 40
+      },
+      {
+        "key": "Leches enteras",
+        "count": 25
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 24
+      },
+      {
+        "key": "Gaseosas limón",
+        "count": 19
+      },
+      {
+        "key": "Fideos largos",
+        "count": 18
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 17
+      },
+      {
+        "key": "Jabones para la ropa",
+        "count": 17
+      },
+      {
+        "key": "Azúcar",
+        "count": 16
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 9
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 14,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 16
+      },
+      {
+        "key": "Fructis",
+        "count": 10
+      },
+      {
+        "key": "La Serenísima",
+        "count": 8
+      },
+      {
+        "key": "Genérico",
+        "count": 8
+      },
+      {
+        "key": "Bulnez",
+        "count": 5
+      },
+      {
+        "key": "Pureza",
+        "count": 5
+      },
+      {
+        "key": "Casalta",
+        "count": 4
+      },
+      {
+        "key": "Gomes Da Costa",
+        "count": 4
+      },
+      {
+        "key": "308",
+        "count": 3
+      },
+      {
+        "key": "Sussex",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 50
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 30
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 6
+      },
+      {
+        "key": "Congelados",
+        "count": 6
+      },
+      {
+        "key": "Panadería",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 148,
+    "carrito_promedio": 91179.72,
+    "pct_con_carrito": 53.3,
+    "errores": 41
+  },
+  "origen": {
+    "total_requests": 196,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-01T08:32:45.903Z"
+}
