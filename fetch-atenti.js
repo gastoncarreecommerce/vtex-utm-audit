@@ -110,7 +110,10 @@ async function findZipAttachmentForDate(gmail, date) {
 async function findBackfillZipForDate(gmail, date) {
   const q = `subject:"${BACKFILL_SUBJECT}" has:attachment`;
   const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 5 });
-  const filename = `logs_${date.replace(/-/g, "")}.zip`;
+  // Los zips se nombran con la fecha del mail (data date + 1 día), ya que el
+  // servidor los genera a la 1am del día siguiente al que contienen los logs.
+  const nextDay = new Date(new Date(`${date}T00:00:00Z`).getTime() + 86400000);
+  const filename = `logs_${nextDay.toISOString().slice(0, 10).replace(/-/g, "")}.zip`;
   console.log(`   🔎 Backfill: ${list.data.messages?.length || 0} mail(s) con asunto "${BACKFILL_SUBJECT}"`);
 
   for (const m of (list.data.messages || [])) {
