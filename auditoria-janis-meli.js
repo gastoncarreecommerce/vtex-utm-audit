@@ -9,23 +9,24 @@ const H = {
   'janis-client': JANIS_CLIENT,
 };
 
-async function probe(label, url) {
-  try {
-    const res = await fetch(url, { headers: { ...H, 'x-janis-page': '1', 'x-janis-page-size': '3' } });
-    console.log(label.padEnd(24) + ' -> HTTP ' + res.status);
-    if (!res.ok) console.log('     ' + (await res.text()).slice(0, 120));
-  } catch (e) {
-    console.log(label + ' ERROR ' + e.message);
-  }
+async function get(url) {
+  const res = await fetch(url, { headers: { ...H, 'x-janis-page': '1', 'x-janis-page-size': '2' } });
+  return { status: res.status, data: res.ok ? await res.json() : await res.text() };
 }
 
 async function run() {
-  console.log('Client:', JANIS_CLIENT, '\n');
-  await probe('catalog/sku',   'https://catalog.janis.in/api/sku');
-  await probe('catalog/product','https://catalog.janis.in/api/product');
-  await probe('pricing/base-price', 'https://pricing.janis.in/api/base-price');
-  await probe('pricing/price-sheet','https://pricing.janis.in/api/price-sheet');
-  await probe('pricing/price',  'https://pricing.janis.in/api/price?filters[priceSheet]=68cd5054eaa341977f783fef');
+  // 1. Un product completo (ver estructura)
+  console.log('=== catalog/product (2 registros) ===');
+  const prod = await get('https://catalog.janis.in/api/product');
+  console.log(JSON.stringify(prod.data, null, 2).slice(0, 2500));
+
+  // 2. Un precio del price-sheet MELI (para ver el sku hex que hay que traducir)
+  console.log('\n=== un price del sheet MELI (ver campo sku) ===');
+  const price = await get('https://pricing.janis.in/api/price?filters[priceSheet]=68cd5054eaa341977f783fef');
+  if (Array.isArray(price.data) && price.data[0]) {
+    console.log('sku hex a traducir:', price.data[0].sku);
+    console.log('registro completo:', JSON.stringify(price.data[0], null, 2));
+  }
 }
 
 run().catch(e => { console.error(e); process.exit(1); });
