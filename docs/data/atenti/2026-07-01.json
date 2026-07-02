@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-01",
+  "chat": {
+    "llamadas": 129,
+    "usuarios_unicos": 54,
+    "con_productos_identificados": 87,
+    "con_sugerencia": 22,
+    "por_hora": [
+      3,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      20,
+      22,
+      5,
+      18,
+      0,
+      12,
+      5,
+      6,
+      6,
+      3,
+      1,
+      5,
+      9,
+      7
+    ],
+    "errores": 20
+  },
+  "categorizar": {
+    "total": 65,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Leche",
+        "count": 3
+      },
+      {
+        "key": "Pan de panadería ",
+        "count": 2
+      },
+      {
+        "key": "Fideos fusili bulnez",
+        "count": 1
+      },
+      {
+        "key": "Si los quiero.Me refería a que quiero esa marca y clase de fideos frescos",
+        "count": 1
+      },
+      {
+        "key": "Salsa rica fileto",
+        "count": 1
+      },
+      {
+        "key": "Hola Atenti. Me haces un listado para probar productos Carrefour dulces con chocolate?",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer una tarta de atún, qué ingredientes necesito?",
+        "count": 1
+      },
+      {
+        "key": "Pasta de mani king",
+        "count": 1
+      },
+      {
+        "key": "Sin lactosa ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "manteca",
+        "count": 8
+      },
+      {
+        "key": "huevos",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "hamburguesas",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "leche de almendras",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "azúcar",
+        "count": 3
+      },
+      {
+        "key": "pan",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "gaseosa",
+        "count": 3
+      },
+      {
+        "key": "aceite de cocina",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 198,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "manteca",
+        "count": 8
+      },
+      {
+        "key": "huevos",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "hamburguesas",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "leche de almendras",
+        "count": 4
+      },
+      {
+        "key": "papel higienico",
+        "count": 4
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "azucar",
+        "count": 3
+      },
+      {
+        "key": "pan",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "pure de tomate",
+        "count": 3
+      },
+      {
+        "key": "gaseosa",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 12
+      },
+      {
+        "key": "Leches enteras",
+        "count": 11
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 9
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 8
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 8
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "Bizcochitos",
+        "count": 6
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 6
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 6
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 6
+      }
+    ],
+    "errores": 33
+  },
+  "agregar": {
+    "total_agregados": 35,
+    "valor_total": 712931.67,
+    "ticket_promedio": 20369.48,
+    "descuento_total": 151807.82,
+    "canal": {
+      "inmediato": 0,
+      "programado": 35
+    },
+    "top_productos": [
+      {
+        "key": "Puré Chef 100 grs",
+        "count": 30
+      },
+      {
+        "key": "Mini obleas Carrefour Classic de chocolate y avellanas 100 grs",
+        "count": 25
+      },
+      {
+        "key": "Leche La serenisima clásica 3% 1L.",
+        "count": 22
+      },
+      {
+        "key": "Chocolate con almendras Cadbury 82 g.",
+        "count": 18
+      },
+      {
+        "key": "Yerba mate Amanda tradicional 500 grs",
+        "count": 14
+      },
+      {
+        "key": "Arroz Molinos Ala largo fino 00000 bolsa 500 g.",
+        "count": 13
+      },
+      {
+        "key": "Gaseosa cola Coca Cola sabor original 2,25 lts",
+        "count": 12
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 12
+      },
+      {
+        "key": "Fideos cintas nido n4 al huevo 308 500 g.",
+        "count": 10
+      },
+      {
+        "key": "Chocolate Milka con almendras 155 g.",
+        "count": 10
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 64
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 45
+      },
+      {
+        "key": "Purés instantáneos",
+        "count": 32
+      },
+      {
+        "key": "Leches enteras",
+        "count": 32
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 22
+      },
+      {
+        "key": "Fideos largos",
+        "count": 20
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 17
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 17
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 16
+      },
+      {
+        "key": "Hamburguesas y medallones",
+        "count": 15
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 22,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 21
+      },
+      {
+        "key": "Bulnez",
+        "count": 14
+      },
+      {
+        "key": "La Serenísima",
+        "count": 10
+      },
+      {
+        "key": "Genérico",
+        "count": 9
+      },
+      {
+        "key": "Bonafide",
+        "count": 9
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 7
+      },
+      {
+        "key": "Dale",
+        "count": 7
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 6
+      },
+      {
+        "key": "Cocinero",
+        "count": 6
+      },
+      {
+        "key": "Hogareñas",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 93
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 62
+      },
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Congelados",
+        "count": 10
+      },
+      {
+        "key": "Panadería",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 143,
+    "carrito_promedio": 42283.86,
+    "pct_con_carrito": 52.9,
+    "errores": 58
+  },
+  "origen": {
+    "total_requests": 221,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-02T07:44:52.042Z"
+}
