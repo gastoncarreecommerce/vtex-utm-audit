@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-02",
+  "chat": {
+    "llamadas": 146,
+    "usuarios_unicos": 70,
+    "con_productos_identificados": 79,
+    "con_sugerencia": 17,
+    "por_hora": [
+      12,
+      4,
+      4,
+      1,
+      3,
+      0,
+      0,
+      9,
+      4,
+      11,
+      5,
+      9,
+      4,
+      19,
+      8,
+      21,
+      4,
+      4,
+      5,
+      2,
+      7,
+      6,
+      2,
+      2
+    ],
+    "errores": 35
+  },
+  "categorizar": {
+    "total": 69,
+    "top_recetas": [
+      {
+        "key": "Aceite girasol ",
+        "count": 2
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Quiero tener alimento porque estoy de paso en un alojamiento temporal. Cómo pastas, poco de carne, leche, avena, poco de pan integral. Cosas asi",
+        "count": 2
+      },
+      {
+        "key": "Queso cremoso",
+        "count": 1
+      },
+      {
+        "key": "Galletitas saladas crackers ",
+        "count": 1
+      },
+      {
+        "key": "Crackers carrefour ",
+        "count": 1
+      },
+      {
+        "key": "Esponja de acero tusk",
+        "count": 1
+      },
+      {
+        "key": "tienen nesquik de frutilla?",
+        "count": 1
+      },
+      {
+        "key": "Nesquik sabor frutilla",
+        "count": 1
+      },
+      {
+        "key": "Promos quesos",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "manteca",
+        "count": 8
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 7
+      },
+      {
+        "key": "queso untable descremado",
+        "count": 7
+      },
+      {
+        "key": "papel higiénico",
+        "count": 6
+      },
+      {
+        "key": "fideos integrales",
+        "count": 6
+      },
+      {
+        "key": "not chicken",
+        "count": 6
+      },
+      {
+        "key": "café en saquito",
+        "count": 6
+      },
+      {
+        "key": "pan integral",
+        "count": 6
+      },
+      {
+        "key": "carne",
+        "count": 5
+      },
+      {
+        "key": "fideos tirabuzón",
+        "count": 4
+      },
+      {
+        "key": "puré de tomate",
+        "count": 4
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "avena",
+        "count": 4
+      },
+      {
+        "key": "fideos mostachol",
+        "count": 3
+      },
+      {
+        "key": "fideos moños",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 177,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "manteca",
+        "count": 8
+      },
+      {
+        "key": "queso untable descremado",
+        "count": 7
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 6
+      },
+      {
+        "key": "papel higienico",
+        "count": 6
+      },
+      {
+        "key": "not chicken",
+        "count": 6
+      },
+      {
+        "key": "fideos integrales",
+        "count": 6
+      },
+      {
+        "key": "cafe en saquito",
+        "count": 6
+      },
+      {
+        "key": "pan integral",
+        "count": 5
+      },
+      {
+        "key": "carne",
+        "count": 4
+      },
+      {
+        "key": "fideos tirabuzon",
+        "count": 4
+      },
+      {
+        "key": "pure de tomate",
+        "count": 4
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "fideos mostachol",
+        "count": 3
+      },
+      {
+        "key": "fideos monos",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 11
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 10
+      },
+      {
+        "key": "Fideos largos",
+        "count": 10
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 9
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 9
+      },
+      {
+        "key": "Cervezas",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 6
+      },
+      {
+        "key": "Verduras",
+        "count": 6
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 6
+      },
+      {
+        "key": "Papeles higienicos",
+        "count": 6
+      }
+    ],
+    "errores": 37
+  },
+  "agregar": {
+    "total_agregados": 31,
+    "valor_total": 541663.51,
+    "ticket_promedio": 17473.02,
+    "descuento_total": 64899.3,
+    "canal": {
+      "inmediato": 4,
+      "programado": 27
+    },
+    "top_productos": [
+      {
+        "key": "Queso cremoso Puyehue horma x kg.",
+        "count": 16
+      },
+      {
+        "key": "Leche La Serenísima ultra parc descremada multivit 1% sachet 1 lt",
+        "count": 16
+      },
+      {
+        "key": "Yogur batido Ser PRO + con proteínas sabor frutos rojos 175 grs",
+        "count": 16
+      },
+      {
+        "key": "Cerveza rubia Quilmes Bajo cero Retornable 1 lt",
+        "count": 12
+      },
+      {
+        "key": "Fideos mostacholes N52 Lucchetti rayado 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Pan blanco Bimbo Artesano con Masa Madre 500 grs",
+        "count": 8
+      },
+      {
+        "key": "Galletitas dulces Melba rellenas con crema 120 g.",
+        "count": 7
+      },
+      {
+        "key": "Carré de cerdo con hueso congelado x kg",
+        "count": 6
+      },
+      {
+        "key": "Cerveza blanca Brahma en lata 710 ml",
+        "count": 6
+      },
+      {
+        "key": "Leche La serenisima liviana 1% 1L",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 24
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 18
+      },
+      {
+        "key": "Cervezas",
+        "count": 18
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 17
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 11
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 9
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 7
+      },
+      {
+        "key": "Carne de cerdo",
+        "count": 6
+      },
+      {
+        "key": "Fideos largos",
+        "count": 6
+      },
+      {
+        "key": "Avena",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 9,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 12
+      },
+      {
+        "key": "NotCo",
+        "count": 5
+      },
+      {
+        "key": "Green Life",
+        "count": 4
+      },
+      {
+        "key": "308",
+        "count": 3
+      },
+      {
+        "key": "Cachafaz",
+        "count": 3
+      },
+      {
+        "key": "Formis",
+        "count": 3
+      },
+      {
+        "key": "Granja Del Sol",
+        "count": 3
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 3
+      },
+      {
+        "key": "Lays",
+        "count": 3
+      },
+      {
+        "key": "Patito",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Congelados",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 11
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 198,
+    "carrito_promedio": 41770.01,
+    "pct_con_carrito": 57.4,
+    "errores": 64
+  },
+  "origen": {
+    "total_requests": 278,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-03T07:39:03.050Z"
+}
