@@ -1,0 +1,419 @@
+{
+  "date": "2026-07-03",
+  "chat": {
+    "llamadas": 89,
+    "usuarios_unicos": 48,
+    "con_productos_identificados": 49,
+    "con_sugerencia": 15,
+    "por_hora": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0,
+      2,
+      6,
+      16,
+      11,
+      5,
+      8,
+      6,
+      9,
+      7,
+      4,
+      3,
+      0,
+      2,
+      4
+    ],
+    "errores": 14
+  },
+  "categorizar": {
+    "total": 41,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Tengo un asado para cinco personas. Qué necesito comprar?",
+        "count": 2
+      },
+      {
+        "key": "Estoy buscando un bidon de agua de 6lts",
+        "count": 1
+      },
+      {
+        "key": "Folios A4 marca Carrefour ",
+        "count": 1
+      },
+      {
+        "key": "Shampoo grande familiar marca media ",
+        "count": 1
+      },
+      {
+        "key": "Soft humectante.  Crema manos y cuerpo con aloe vera Carrefur ",
+        "count": 1
+      },
+      {
+        "key": "Polenta",
+        "count": 1
+      },
+      {
+        "key": "Puré de tomate",
+        "count": 1
+      },
+      {
+        "key": "Necesito hacer un asado para cinco persobas",
+        "count": 1
+      },
+      {
+        "key": "Ahí estoy haciendo la compra, podés recordarme algo que compre anteriormente y capaz me estoy olvidando?",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "polenta",
+        "count": 3
+      },
+      {
+        "key": "carne vacuna",
+        "count": 3
+      },
+      {
+        "key": "chorizo",
+        "count": 3
+      },
+      {
+        "key": "morcilla",
+        "count": 3
+      },
+      {
+        "key": "carbón",
+        "count": 3
+      },
+      {
+        "key": "pan",
+        "count": 3
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "azúcar",
+        "count": 2
+      },
+      {
+        "key": "lechuga",
+        "count": 2
+      },
+      {
+        "key": "tomate",
+        "count": 2
+      },
+      {
+        "key": "cerveza ipa",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 110,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "polenta",
+        "count": 2
+      },
+      {
+        "key": "carne vacuna",
+        "count": 2
+      },
+      {
+        "key": "chorizo",
+        "count": 2
+      },
+      {
+        "key": "morcilla",
+        "count": 2
+      },
+      {
+        "key": "pan",
+        "count": 2
+      },
+      {
+        "key": "carbon",
+        "count": 2
+      },
+      {
+        "key": "galletas saladas sin tacc",
+        "count": 2
+      },
+      {
+        "key": "amargo carrefour limon",
+        "count": 2
+      },
+      {
+        "key": "amargo",
+        "count": 2
+      },
+      {
+        "key": "ron",
+        "count": 2
+      },
+      {
+        "key": "jamon cocido",
+        "count": 2
+      },
+      {
+        "key": "bidon de agua de 6lts",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 7
+      },
+      {
+        "key": "Verduras",
+        "count": 5
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 5
+      },
+      {
+        "key": "Aperitivos sin alcohol",
+        "count": 5
+      },
+      {
+        "key": "Achuras y embutidos",
+        "count": 4
+      },
+      {
+        "key": "Arroz",
+        "count": 3
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 3
+      },
+      {
+        "key": "Fideos largos",
+        "count": 3
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 3
+      },
+      {
+        "key": "Algodones e hisopos",
+        "count": 3
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 10,
+    "valor_total": 424374.38,
+    "ticket_promedio": 42437.44,
+    "descuento_total": 34652.72,
+    "canal": {
+      "inmediato": 4,
+      "programado": 6
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Leche descremada Casanto 1 ultra para sachet 1 l.",
+        "count": 12
+      },
+      {
+        "key": "Cerveza rubia Budweiser 473 ml",
+        "count": 8
+      },
+      {
+        "key": "Caldo de Verdura Maggi 12 uni",
+        "count": 6
+      },
+      {
+        "key": "Queso cremoso Puyehue horma x kg.",
+        "count": 5
+      },
+      {
+        "key": "Galletitas pepas Carrefour classic 300 g.",
+        "count": 4
+      },
+      {
+        "key": "Harina leudante Pureza con vitamina D 1 kg.",
+        "count": 4
+      },
+      {
+        "key": "Agua mineral Carrefour bidón 6,25 lts",
+        "count": 3
+      },
+      {
+        "key": "Jugo en polvo Tang naranja 15 g.",
+        "count": 3
+      },
+      {
+        "key": "Jugo en polvo Tang naranja durazno en sobre 15 g.",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 12
+      },
+      {
+        "key": "Caldos",
+        "count": 12
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 12
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 9
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 9
+      },
+      {
+        "key": "Cervezas",
+        "count": 8
+      },
+      {
+        "key": "Verduras",
+        "count": 7
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 6
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 5
+      },
+      {
+        "key": "En aerosol",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 6,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Presto Pronta",
+        "count": 2
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 2
+      },
+      {
+        "key": "Molinos Ala",
+        "count": 2
+      },
+      {
+        "key": "Legitimo",
+        "count": 2
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      },
+      {
+        "key": "Byna",
+        "count": 2
+      },
+      {
+        "key": "Smams",
+        "count": 2
+      },
+      {
+        "key": "Mellizas",
+        "count": 2
+      },
+      {
+        "key": "Dicomere",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 24
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 126,
+    "carrito_promedio": 149329.06,
+    "pct_con_carrito": 48.3,
+    "errores": 61
+  },
+  "origen": {
+    "total_requests": 289,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-04T07:16:20.044Z"
+}
