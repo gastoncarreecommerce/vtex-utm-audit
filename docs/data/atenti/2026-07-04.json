@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-04",
+  "chat": {
+    "llamadas": 92,
+    "usuarios_unicos": 43,
+    "con_productos_identificados": 50,
+    "con_sugerencia": 10,
+    "por_hora": [
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      4,
+      6,
+      22,
+      7,
+      7,
+      8,
+      1,
+      13,
+      3,
+      5,
+      5,
+      0,
+      3,
+      3,
+      0
+    ],
+    "errores": 18
+  },
+  "categorizar": {
+    "total": 44,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 4
+      },
+      {
+        "key": "Leche  Dulce de leche  Galletitas saladas  Queso untable  Desodorante de pies Fideos duros  Papel higiénico  Puré  Sahumerio ",
+        "count": 2
+      },
+      {
+        "key": "Hola aceite natura 1,50 lt",
+        "count": 1
+      },
+      {
+        "key": "Cremac queso cremoso",
+        "count": 1
+      },
+      {
+        "key": "queso Cremoso Tregar",
+        "count": 1
+      },
+      {
+        "key": "Aceite de girasol ",
+        "count": 1
+      },
+      {
+        "key": "Papel higiénico doble hoja",
+        "count": 1
+      },
+      {
+        "key": "Papel de cocina",
+        "count": 1
+      },
+      {
+        "key": "Coca cola zero de 125ml",
+        "count": 1
+      },
+      {
+        "key": "Perdón coca zero de 1.25l",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite de girasol",
+        "count": 10
+      },
+      {
+        "key": "papel higiénico doble hoja",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 8
+      },
+      {
+        "key": "papel de cocina",
+        "count": 7
+      },
+      {
+        "key": "vinagre de alcohol",
+        "count": 6
+      },
+      {
+        "key": "banana",
+        "count": 6
+      },
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "gaseosa cola sin azúcar",
+        "count": 5
+      },
+      {
+        "key": "arroz integral",
+        "count": 5
+      },
+      {
+        "key": "espinaca congelada",
+        "count": 5
+      },
+      {
+        "key": "brócoli congelado",
+        "count": 5
+      },
+      {
+        "key": "palta",
+        "count": 5
+      },
+      {
+        "key": "ciruela",
+        "count": 5
+      },
+      {
+        "key": "manzana",
+        "count": 5
+      },
+      {
+        "key": "mandarina",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 252,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite de girasol",
+        "count": 10
+      },
+      {
+        "key": "papel higienico doble hoja",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 8
+      },
+      {
+        "key": "papel de cocina",
+        "count": 7
+      },
+      {
+        "key": "vinagre de alcohol",
+        "count": 6
+      },
+      {
+        "key": "banana",
+        "count": 6
+      },
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "gaseosa cola sin azucar",
+        "count": 5
+      },
+      {
+        "key": "mandarina",
+        "count": 5
+      },
+      {
+        "key": "palta",
+        "count": 5
+      },
+      {
+        "key": "arroz integral",
+        "count": 5
+      },
+      {
+        "key": "ciruela",
+        "count": 5
+      },
+      {
+        "key": "brocoli congelado",
+        "count": 5
+      },
+      {
+        "key": "zanahoria",
+        "count": 5
+      },
+      {
+        "key": "zapallo anco",
+        "count": 5
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 32
+      },
+      {
+        "key": "Frutas",
+        "count": 23
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 11
+      },
+      {
+        "key": "Papeles higienicos",
+        "count": 11
+      },
+      {
+        "key": "Vegetales congelados",
+        "count": 10
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 9
+      },
+      {
+        "key": "Leches enteras",
+        "count": 9
+      },
+      {
+        "key": "Huevos",
+        "count": 9
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 8
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 39,
+    "valor_total": 2125772.65,
+    "ticket_promedio": 54506.99,
+    "descuento_total": 149253.39,
+    "canal": {
+      "inmediato": 24,
+      "programado": 15
+    },
+    "top_productos": [
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 45
+      },
+      {
+        "key": "Leche ulta parcial descremada Carrefour classic sachet 1 lt.",
+        "count": 25
+      },
+      {
+        "key": "Atún en trozos al natural Bulnez en lata 170 g.",
+        "count": 24
+      },
+      {
+        "key": "Manzana granny especial x kg.",
+        "count": 22
+      },
+      {
+        "key": "Aceite de girasol Carrefour Classic  alto omega pet 900 cc. Aceite de girasol Carrefour Classic alto omega pet 900 cc.",
+        "count": 20
+      },
+      {
+        "key": "Oblea Rhodesia clásica 22 g.",
+        "count": 20
+      },
+      {
+        "key": "Rollo de cocina Carrefour Essential maxi blanco x 200 paños",
+        "count": 19
+      },
+      {
+        "key": "Mandarina x kg.",
+        "count": 18
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 1,25 lts",
+        "count": 17
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 16
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 84
+      },
+      {
+        "key": "Verduras",
+        "count": 82
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 69
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 40
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 33
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 32
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 26
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 23
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 20
+      },
+      {
+        "key": "Cervezas",
+        "count": 20
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 12,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 12
+      },
+      {
+        "key": "Higienol",
+        "count": 8
+      },
+      {
+        "key": "Ala",
+        "count": 6
+      },
+      {
+        "key": "La Serenísima",
+        "count": 4
+      },
+      {
+        "key": "Tremblay",
+        "count": 4
+      },
+      {
+        "key": "Nivea",
+        "count": 4
+      },
+      {
+        "key": "Dermaglós",
+        "count": 4
+      },
+      {
+        "key": "Genérico",
+        "count": 4
+      },
+      {
+        "key": "Lario",
+        "count": 4
+      },
+      {
+        "key": "Silvia",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 40
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 30
+      },
+      {
+        "key": "Limpieza",
+        "count": 17
+      },
+      {
+        "key": "Almacén",
+        "count": 11
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 6
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 112,
+    "carrito_promedio": 67218.96,
+    "pct_con_carrito": 51.9,
+    "errores": 14
+  },
+  "origen": {
+    "total_requests": 158,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-05T07:38:36.742Z"
+}
