@@ -1,0 +1,443 @@
+{
+  "date": "2026-07-05",
+  "chat": {
+    "llamadas": 111,
+    "usuarios_unicos": 48,
+    "con_productos_identificados": 72,
+    "con_sugerencia": 10,
+    "por_hora": [
+      0,
+      0,
+      6,
+      0,
+      2,
+      1,
+      0,
+      0,
+      3,
+      5,
+      3,
+      10,
+      1,
+      7,
+      8,
+      16,
+      5,
+      9,
+      9,
+      4,
+      5,
+      7,
+      1,
+      9
+    ],
+    "errores": 18
+  },
+  "categorizar": {
+    "total": 61,
+    "top_recetas": [
+      {
+        "key": "Arroz",
+        "count": 3
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Jabón líquido ",
+        "count": 2
+      },
+      {
+        "key": "Figuritas del mundial",
+        "count": 1
+      },
+      {
+        "key": "Dulce de leche ",
+        "count": 1
+      },
+      {
+        "key": "Campo",
+        "count": 1
+      },
+      {
+        "key": "Dulce de leche campo de milkau",
+        "count": 1
+      },
+      {
+        "key": "Pepsi black",
+        "count": 1
+      },
+      {
+        "key": "Leche 0 a 6 meses ",
+        "count": 1
+      },
+      {
+        "key": "Fideos ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "productos sin tacc",
+        "count": 5
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 4
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "harinas sin tacc",
+        "count": 4
+      },
+      {
+        "key": "pan",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "pan sin tacc",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche sin tacc",
+        "count": 3
+      },
+      {
+        "key": "harina 0000",
+        "count": 3
+      },
+      {
+        "key": "carne vacuna",
+        "count": 3
+      },
+      {
+        "key": "chorizos",
+        "count": 3
+      },
+      {
+        "key": "morcillas",
+        "count": 3
+      },
+      {
+        "key": "queso provolone",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 116,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "productos sin tacc",
+        "count": 5
+      },
+      {
+        "key": "figuritas del mundial",
+        "count": 4
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "harinas sin tacc",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "pan sin tacc",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche sin tacc",
+        "count": 3
+      },
+      {
+        "key": "pan",
+        "count": 3
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "galletitas sin tacc",
+        "count": 2
+      },
+      {
+        "key": "chocolinas",
+        "count": 2
+      },
+      {
+        "key": "crema de leche",
+        "count": 2
+      },
+      {
+        "key": "sal fina",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Otras harinas",
+        "count": 10
+      },
+      {
+        "key": "Arroz",
+        "count": 7
+      },
+      {
+        "key": "Dulce de leche",
+        "count": 6
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 6
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 6
+      },
+      {
+        "key": "Accesorios de libreria",
+        "count": 5
+      },
+      {
+        "key": "Sal",
+        "count": 5
+      },
+      {
+        "key": "Jabones liquidos",
+        "count": 5
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 4
+      },
+      {
+        "key": "Carbon y encendido",
+        "count": 4
+      }
+    ],
+    "errores": 5
+  },
+  "agregar": {
+    "total_agregados": 11,
+    "valor_total": 259545.43,
+    "ticket_promedio": 23595.04,
+    "descuento_total": 27075.37,
+    "canal": {
+      "inmediato": 5,
+      "programado": 6
+    },
+    "top_productos": [
+      {
+        "key": "Asado congelado x kg.",
+        "count": 18
+      },
+      {
+        "key": "Agua mineralizada sin gas Glaciar bajo sodio bidón 6,3 lts",
+        "count": 7
+      },
+      {
+        "key": "Asado x kg",
+        "count": 6
+      },
+      {
+        "key": "Bondiola congelada BR x kg",
+        "count": 6
+      },
+      {
+        "key": "Galletitas Chocolina de chocolate 250 g.",
+        "count": 5
+      },
+      {
+        "key": "Leche La Serenísima ultra entera multivit 3% sachet 1 lt",
+        "count": 3
+      },
+      {
+        "key": "Freidora Eléctrica De Aire Gadnic 8067 6.5L 1400W",
+        "count": 3
+      },
+      {
+        "key": "Fernet Vittone 750 cc.",
+        "count": 3
+      },
+      {
+        "key": "Galletitas crackers Cerealitas clásicas 636 g.",
+        "count": 3
+      },
+      {
+        "key": "Papel higiénico hoja simple Carrefour Essential x4 80 mts.",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Carne vacuna",
+        "count": 24
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 9
+      },
+      {
+        "key": "Carne de cerdo",
+        "count": 6
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 5
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 4
+      },
+      {
+        "key": "Leches enteras",
+        "count": 3
+      },
+      {
+        "key": "Cocción",
+        "count": 3
+      },
+      {
+        "key": "Fernet",
+        "count": 3
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 3
+      },
+      {
+        "key": "Pan rallado y rebozadores",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 27,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 18
+      },
+      {
+        "key": "Coca Cola",
+        "count": 16
+      },
+      {
+        "key": "La Serenísima",
+        "count": 14
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 12
+      },
+      {
+        "key": "Smams",
+        "count": 10
+      },
+      {
+        "key": "Granja Del Sol",
+        "count": 6
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 6
+      },
+      {
+        "key": "Life Quality",
+        "count": 6
+      },
+      {
+        "key": "Bulnez",
+        "count": 5
+      },
+      {
+        "key": "Dicomere",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 73
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 40
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 35
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 23
+      },
+      {
+        "key": "Bebidas",
+        "count": 17
+      },
+      {
+        "key": "Panadería",
+        "count": 11
+      },
+      {
+        "key": "Congelados",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 132,
+    "carrito_promedio": 46428.52,
+    "pct_con_carrito": 52.8,
+    "errores": 42
+  },
+  "origen": {
+    "total_requests": 179,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-06T08:41:49.643Z"
+}
