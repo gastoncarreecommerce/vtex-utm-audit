@@ -1,141 +1,20 @@
 /**
  * fetch-atenti.js
- * Lee el mail diario de Atenti (logs del chat de IA) vía Gmail API, parsea el
- * zip adjunto y guarda SOLO métricas agregadas en docs/data/atenti/YYYY-MM-DD.json.
+ * Obtiene los logs diarios de Atenti vía Google Apps Script y guarda SOLO
+ * métricas agregadas en docs/data/atenti/YYYY-MM-DD.json.
  *
- * Los logs crudos traen PII real (email, nombre, teléfono, DNI/CUIL — sobre
- * todo en login.log y partes de chat.log/categorizar.log). Como docs/ se sirve
- * público vía GitHub Pages, este script NUNCA debe escribir nada per-cliente:
- * solo conteos y rankings agregados (productos, recetas, ingredientes — nunca
- * emails/nombres/teléfonos/documentos/IPs individuales).
+ * Los logs crudos traen PII real (email, nombre, teléfono, DNI/CUIL). Como
+ * docs/ se sirve público vía GitHub Pages, este script NUNCA debe escribir
+ * nada per-cliente: solo conteos y rankings agregados.
  *
  * Env:
- *   GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN  (proyecto "chimi")
+ *   APPSCRIPT_URL, APPSCRIPT_SECRET  (ver apps-script/atenti-logs.gs)
  *
  * Usage: node fetch-atenti.js
  */
 
-const { google } = require("googleapis");
-const AdmZip = require("adm-zip");
 const fs   = require("fs");
 const path = require("path");
-
-const SENDER  = "atenti@carrefour.com";
-const SUBJECT = "Se envian los logs del dia";
-// Mail único con un .zip adjunto por día viejo (logs_YYYYMMDD.zip), para fechas
-// que ya no llegan por el mail diario normal.
-const BACKFILL_SUBJECT = "Logs Atenti completo";
-const MONTHS  = { Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12" };
-
-function gmailClient() {
-  const { GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN } = process.env;
-  if (!GMAIL_CLIENT_ID || !GMAIL_CLIENT_SECRET || !GMAIL_REFRESH_TOKEN) {
-    throw new Error("Faltan GMAIL_CLIENT_ID / GMAIL_CLIENT_SECRET / GMAIL_REFRESH_TOKEN");
-  }
-  const auth = new google.auth.OAuth2(GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET);
-  auth.setCredentials({ refresh_token: GMAIL_REFRESH_TOKEN });
-  return google.gmail({ version: "v1", auth });
-}
-
-function gmailDateStr(d) {
-  return `${d.getUTCFullYear()}/${String(d.getUTCMonth() + 1).padStart(2, "0")}/${String(d.getUTCDate()).padStart(2, "0")}`;
-}
-
-// Aplana recursivamente payload.parts: con varios adjuntos Gmail suele anidar
-// multipart/mixed dentro de multipart/mixed en vez de listarlos todos en el
-// primer nivel.
-function flattenParts(parts) {
-  const out = [];
-  for (const p of (parts || [])) {
-    out.push(p);
-    if (p.parts) out.push(...flattenParts(p.parts));
-  }
-  return out;
-}
-
-async function downloadZip(gmail, msgId) {
-  const msg = await gmail.users.messages.get({ userId: "me", id: msgId });
-  const parts = flattenParts(msg.data.payload?.parts);
-  const zipPart = parts.find(p => p.filename && p.filename.toLowerCase().endsWith(".zip"));
-  if (!zipPart) return null;
-  const att = await gmail.users.messages.attachments.get({
-    userId: "me", messageId: msgId, id: zipPart.body.attachmentId
-  });
-  return Buffer.from(att.data.data, "base64");
-}
-
-// Sin fecha puntual: toma el mail más reciente (uso normal del cron diario).
-async function findLatestZipAttachment(gmail) {
-  const q = `from:${SENDER} subject:"${SUBJECT}" has:attachment newer_than:2d`;
-  const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 5 });
-  const msgId = list.data.messages?.[0]?.id;
-  if (!msgId) throw new Error(`No se encontró ningún mail reciente de ${SENDER} con asunto "${SUBJECT}"`);
-  const zipBuffer = await downloadZip(gmail, msgId);
-  if (!zipBuffer) throw new Error("El mail no tiene ningún adjunto .zip");
-  return zipBuffer;
-}
-
-// Backfill: busca el mail del día puntual `date` (YYYY-MM-DD) en una ventana de
-// 3 días (el mail llega ~1am AR del día siguiente, zona horaria ambigua en Gmail)
-// y verifica contra el timestamp real dentro de chat.log.
-async function findZipAttachmentForDate(gmail, date) {
-  const base   = new Date(`${date}T00:00:00Z`);
-  const after  = gmailDateStr(base);
-  const before = gmailDateStr(new Date(base.getTime() + 3 * 86400000));
-  const q = `from:${SENDER} subject:"${SUBJECT}" has:attachment after:${after} before:${before}`;
-  const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 10 });
-  const msgIds = (list.data.messages || []).map(m => m.id);
-
-  for (const msgId of msgIds) {
-    const zipBuffer = await downloadZip(gmail, msgId);
-    if (!zipBuffer) continue;
-    const zip = new AdmZip(zipBuffer);
-    const entry = zip.getEntries().find(e => e.entryName.toLowerCase().endsWith("chat.log"));
-    const chatLog = entry ? entry.getData().toString("utf8") : "";
-    const ts = chatLog.match(/^\[(\d{2})-(\w{3})-(\d{4})/m);
-    if (!ts) continue;
-    const found = `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}`;
-    if (found === date) return zipBuffer;
-  }
-
-  const backfillZip = await findBackfillZipForDate(gmail, date);
-  if (backfillZip) return backfillZip;
-
-  throw new Error(`No se encontraron logs de Atenti para ${date}`);
-}
-
-// Busca el .zip de `date` dentro del mail único de backfill (varios adjuntos
-// logs_YYYYMMDD.zip, uno por día). Verifica contra chat.log igual que arriba,
-// por si el nombre del archivo no coincidiera exactamente con la fecha real.
-async function findBackfillZipForDate(gmail, date) {
-  const q = `subject:"${BACKFILL_SUBJECT}" has:attachment`;
-  const list = await gmail.users.messages.list({ userId: "me", q, maxResults: 5 });
-  // Los zips se nombran con la fecha del mail (data date + 1 día), ya que el
-  // servidor los genera a la 1am del día siguiente al que contienen los logs.
-  const nextDay = new Date(new Date(`${date}T00:00:00Z`).getTime() + 86400000);
-  const filename = `logs_${nextDay.toISOString().slice(0, 10).replace(/-/g, "")}.zip`;
-  console.log(`   🔎 Backfill: ${list.data.messages?.length || 0} mail(s) con asunto "${BACKFILL_SUBJECT}"`);
-
-  for (const m of (list.data.messages || [])) {
-    const msg = await gmail.users.messages.get({ userId: "me", id: m.id });
-    const parts = flattenParts(msg.data.payload?.parts);
-    console.log(`   🔎 Backfill: adjuntos en el mail = ${parts.filter(p => p.filename).map(p => p.filename).join(", ") || "(ninguno)"}`);
-    const zipPart = parts.find(p => p.filename && p.filename.toLowerCase() === filename);
-    if (!zipPart) continue;
-    const att = await gmail.users.messages.attachments.get({
-      userId: "me", messageId: m.id, id: zipPart.body.attachmentId
-    });
-    const zipBuffer = Buffer.from(att.data.data, "base64");
-    const zip = new AdmZip(zipBuffer);
-    console.log(`   🔎 Backfill: entradas en ${filename} = ${zip.getEntries().map(e => e.entryName).join(", ") || "(ninguna)"}`);
-    const entry = zip.getEntries().find(e => e.entryName.toLowerCase().endsWith("chat.log"));
-    const chatLog = entry ? entry.getData().toString("utf8") : "";
-    const ts = chatLog.match(/^\[(\d{2})-(\w{3})-(\d{4})/m);
-    console.log(`   🔎 Backfill: fecha encontrada en chat.log = ${ts ? `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}` : "(no parseable)"} (buscando ${date})`);
-    if (ts && `${ts[3]}-${MONTHS[ts[2]]}-${ts[1]}` === date) return zipBuffer;
-  }
-  return null;
-}
 
 // --- Parser genérico de logs: agrupa líneas de continuación (JSON pretty-printed
 // multilínea) bajo la entrada cuyo timestamp las encabeza. ---
@@ -363,33 +242,33 @@ function analyzeOrigen(content) {
   return { total_requests: total, ips_unicas: ips.size };
 }
 
-async function processOneDate(gmail, targetDate) {
-  console.log(targetDate ? `📬 Buscando mail de ${SENDER} para el ${targetDate}...` : `📬 Buscando mail de ${SENDER}...`);
-  const zipBuffer = targetDate ? await findZipAttachmentForDate(gmail, targetDate) : await findLatestZipAttachment(gmail);
-  console.log(`📦 Adjunto descargado (${(zipBuffer.length / 1024).toFixed(0)} KB)`);
+async function processOneDate(targetDate) {
+  const { APPSCRIPT_URL, APPSCRIPT_SECRET } = process.env;
+  if (!APPSCRIPT_URL || !APPSCRIPT_SECRET)
+    throw new Error("Faltan APPSCRIPT_URL / APPSCRIPT_SECRET");
 
-  const zip = new AdmZip(zipBuffer);
-  const read = name => {
-    const entry = zip.getEntries().find(e => e.entryName.toLowerCase().endsWith(name));
-    return entry ? entry.getData().toString("utf8") : "";
-  };
+  console.log(`📬 Descargando logs de Atenti para ${targetDate}...`);
+  const url = `${APPSCRIPT_URL}?key=${encodeURIComponent(APPSCRIPT_SECRET)}&date=${encodeURIComponent(targetDate)}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Apps Script HTTP ${res.status} para ${targetDate}`);
+  const data = await res.json();
 
-  // El propio chat.log tiene timestamps reales — de ahí sacamos la fecha de los logs
-  // (el mail llega a la 1am con los logs del día anterior).
-  const chatLog = read("chat.log");
-  const firstTs = chatLog.match(/^\[(\d{2})-(\w{3})-(\d{4})/m);
-  const date = firstTs ? `${firstTs[3]}-${MONTHS[firstTs[2]]}-${firstTs[1]}` : new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 10);
+  if (data.error === "not_found") throw new Error(`No se encontraron logs de Atenti para ${targetDate}`);
+  if (data.error) throw new Error(`Apps Script: ${data.error}`);
+
+  const date = data.date || targetDate;
+  console.log(`📦 Logs recibidos para ${date}`);
 
   const result = {
     date,
-    chat:             analyzeChat(chatLog),
-    categorizar:      analyzeCategorizar(read("categorizar.log")),
-    buscar_eans:      analyzeBuscarEans(read("buscar_eans.log")),
-    agregar:          analyzeAgregar(read("agregar.log")),
-    buscar_similares: analyzeBuscarSimilares(read("buscar_similares.log")),
-    login:            analyzeLogin(read("login.log")),
-    origen:           analyzeOrigen(read("origen.log")),
-    fetched_at: new Date().toISOString()
+    chat:             analyzeChat(data.chatLog            || ""),
+    categorizar:      analyzeCategorizar(data.categorizarLog    || ""),
+    buscar_eans:      analyzeBuscarEans(data.buscarEansLog      || ""),
+    agregar:          analyzeAgregar(data.agregarLog            || ""),
+    buscar_similares: analyzeBuscarSimilares(data.buscarSimilaresLog || ""),
+    login:            analyzeLogin(data.loginLog               || ""),
+    origen:           analyzeOrigen(data.origenLog             || ""),
+    fetched_at:       new Date().toISOString()
   };
 
   const outDir = path.join("docs", "data", "atenti");
@@ -402,16 +281,22 @@ async function processOneDate(gmail, targetDate) {
 }
 
 async function main() {
-  const gmail = gmailClient();
   const raw = (process.env.FETCH_ATENTI_DATE || "").trim();
-  const dates = raw ? raw.split(",").map(d => d.trim()).filter(Boolean) : [null];
+  let dates;
+  if (raw) {
+    dates = raw.split(",").map(d => d.trim()).filter(Boolean);
+  } else {
+    // Sin fecha explícita: ayer en hora AR (UTC-3)
+    const arNow = new Date(Date.now() - 3 * 3600000);
+    dates = [new Date(arNow.getTime() - 86400000).toISOString().slice(0, 10)];
+  }
 
   const fails = [];
   for (const date of dates) {
     try {
-      await processOneDate(gmail, date);
+      await processOneDate(date);
     } catch (e) {
-      console.error(`⚠️  Falló ${date || "(último)"}: ${e.message}`);
+      console.error(`⚠️  Falló ${date}: ${e.message}`);
       fails.push(date);
     }
   }

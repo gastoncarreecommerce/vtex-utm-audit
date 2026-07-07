@@ -310,8 +310,8 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       </div>
       <div class="lc-heading">Bienvenido de nuevo</div>
       <div class="lc-desc">Ingresá para ver el dashboard de la app.</div>
-      <label class="lc-label">Tu usuario</label>
-      <select id="login-user" class="lc-select"><option value="">Elegí tu usuario...</option></select>
+      <label class="lc-label">Usuario de Windows</label>
+      <input id="login-user" type="text" class="lc-input" placeholder="ej: gaston.ruiz" autocomplete="username" autocapitalize="none" spellcheck="false">
       <label class="lc-label">Contraseña</label>
       <input id="login-pass" type="password" class="lc-input" placeholder="••••••••">
       <button class="lc-btn" onclick="doLogin()">Ingresar →</button>
@@ -793,9 +793,7 @@ function tokenValid(){
 
 // ── INIT ──────────────────────────────────────────────
 (function(){
-  const sel=document.getElementById("login-user");
-  USERS.forEach(u=>{ const o=document.createElement("option"); o.value=u.username; o.textContent=u.name; sel.appendChild(o); });
-  document.getElementById("login-pass").addEventListener("keydown",e=>{ if(e.key==="Enter") doLogin(); });
+  ["login-user","login-pass"].forEach(id=>document.getElementById(id).addEventListener("keydown",e=>{ if(e.key==="Enter") doLogin(); }));
   const sess=localStorage.getItem("appdash_sess");
   if(sess&&tokenValid()){ try{ const s=JSON.parse(sess); const u=USERS.find(x=>x.username===s.u); if(u){loginAs(u);return;} }catch{} }
   // Token expirado o inválido → limpiar
@@ -807,7 +805,7 @@ async function doLogin(){
   const u=document.getElementById("login-user").value, p=document.getElementById("login-pass").value;
   const er=document.getElementById("login-error"), pi=document.getElementById("login-pass");
   const btn=document.querySelector(".lc-btn");
-  if(!u){ er.textContent="Seleccioná un usuario"; return; }
+  if(!u){ er.textContent="Ingresá tu usuario de Windows"; return; }
   if(!p){ er.textContent="Ingresá la contraseña"; return; }
   btn.textContent="Verificando..."; btn.disabled=true;
   try{
