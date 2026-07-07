@@ -2,252 +2,264 @@
   "date": "2026-07-07",
   "events": {
     "screen_view": {
-      "count": 7999,
-      "users": 2122
+      "count": 16851,
+      "users": 4438
     },
     "user_engagement": {
-      "count": 6592,
-      "users": 1815
+      "count": 14094,
+      "users": 4061
     },
     "notification_dismiss": {
-      "count": 3261,
-      "users": 2082
+      "count": 9408,
+      "users": 5807
     },
     "cupon_sn_qr_activacion": {
-      "count": 2569,
-      "users": 286
+      "count": 6210,
+      "users": 649
     },
     "session_start": {
-      "count": 2259,
-      "users": 2216
+      "count": 4874,
+      "users": 4705
     },
     "mis_cupones": {
-      "count": 1615,
-      "users": 1096
-    },
-    "search": {
-      "count": 608,
-      "users": 146
+      "count": 3309,
+      "users": 2237
     },
     "view_item_list": {
-      "count": 578,
-      "users": 182
+      "count": 1633,
+      "users": 392
     },
     "add_to_cart": {
-      "count": 548,
-      "users": 80
+      "count": 1469,
+      "users": 170
+    },
+    "search": {
+      "count": 1266,
+      "users": 315
     },
     "notification_receive": {
-      "count": 482,
-      "users": 375
+      "count": 1147,
+      "users": 849
     },
     "switch_to_ecommerce": {
-      "count": 465,
-      "users": 291
-    },
-    "filter_cupones": {
-      "count": 286,
-      "users": 160
-    },
-    "remove_from_cart": {
-      "count": 285,
-      "users": 58
-    },
-    "view_cart": {
-      "count": 281,
-      "users": 93
-    },
-    "folletos": {
-      "count": 274,
-      "users": 202
+      "count": 1010,
+      "users": 607
     },
     "select_item": {
-      "count": 220,
-      "users": 80
+      "count": 646,
+      "users": 193
+    },
+    "view_cart": {
+      "count": 626,
+      "users": 195
+    },
+    "remove_from_cart": {
+      "count": 613,
+      "users": 128
+    },
+    "folletos": {
+      "count": 606,
+      "users": 447
     },
     "view_item": {
-      "count": 197,
-      "users": 86
+      "count": 575,
+      "users": 193
+    },
+    "filter_cupones": {
+      "count": 564,
+      "users": 331
     },
     "notification_open": {
-      "count": 195,
-      "users": 174
+      "count": 369,
+      "users": 340
     },
     "tickets_compra": {
-      "count": 144,
-      "users": 117
-    },
-    "favorito_mes_renovar": {
-      "count": 129,
-      "users": 114
-    },
-    "calculadora_home": {
-      "count": 122,
-      "users": 95
+      "count": 281,
+      "users": 238
     },
     "first_open": {
-      "count": 116,
-      "users": 116
+      "count": 275,
+      "users": 275
     },
     "app_remove": {
-      "count": 107,
-      "users": 100
+      "count": 256,
+      "users": 241
     },
-    "listado_notificaciones": {
-      "count": 105,
-      "users": 93
-    },
-    "mi_perfil": {
-      "count": 95,
-      "users": 67
-    },
-    "escaner_precios": {
-      "count": 94,
-      "users": 79
-    },
-    "re_escaner_precios": {
-      "count": 94,
-      "users": 19
+    "favorito_mes_renovar": {
+      "count": 249,
+      "users": 223
     },
     "inicio_registro": {
-      "count": 93,
-      "users": 64
+      "count": 234,
+      "users": 160
     },
-    "chat_bot": {
-      "count": 89,
-      "users": 63
+    "calculadora_home": {
+      "count": 232,
+      "users": 188
     },
-    "app_update": {
-      "count": 81,
-      "users": 81
+    "escaner_precios": {
+      "count": 225,
+      "users": 180
     },
-    "favorito_semanal_activacion": {
-      "count": 80,
-      "users": 78
+    "listado_notificaciones": {
+      "count": 215,
+      "users": 189
     },
-    "promociones": {
-      "count": 77,
-      "users": 71
+    "mi_perfil": {
+      "count": 202,
+      "users": 139
     },
     "view_promotion": {
-      "count": 75,
-      "users": 58
+      "count": 201,
+      "users": 148
     },
-    "switch_to_sucursales": {
-      "count": 69,
-      "users": 44
+    "chat_bot": {
+      "count": 194,
+      "users": 146
     },
-    "home_ahorros": {
-      "count": 65,
-      "users": 59
+    "promociones": {
+      "count": 176,
+      "users": 153
     },
-    "add_shipping_info": {
-      "count": 62,
-      "users": 38
+    "re_escaner_precios": {
+      "count": 169,
+      "users": 37
     },
-    "lista_compras": {
-      "count": 59,
-      "users": 55
+    "app_update": {
+      "count": 159,
+      "users": 159
     },
     "ahorros_tips": {
-      "count": 44,
-      "users": 12
+      "count": 153,
+      "users": 36
+    },
+    "home_ahorros": {
+      "count": 153,
+      "users": 137
+    },
+    "favorito_semanal_activacion": {
+      "count": 148,
+      "users": 142
+    },
+    "switch_to_sucursales": {
+      "count": 123,
+      "users": 85
     },
     "listado_notificaciones_click": {
-      "count": 41,
-      "users": 35
+      "count": 109,
+      "users": 80
+    },
+    "lista_compras": {
+      "count": 107,
+      "users": 98
+    },
+    "add_shipping_info": {
+      "count": 102,
+      "users": 62
     },
     "favorito_mes_nuevo": {
-      "count": 39,
-      "users": 38
-    },
-    "favorito_semanal_volver_a_elegir": {
-      "count": 35,
-      "users": 31
-    },
-    "favorito_mes": {
-      "count": 34,
-      "users": 25
+      "count": 85,
+      "users": 80
     },
     "tarjeta_mi_carrefour": {
-      "count": 32,
-      "users": 26
+      "count": 80,
+      "users": 64
     },
-    "ahorros_cambio_mes": {
-      "count": 31,
-      "users": 4
+    "favorito_mes": {
+      "count": 77,
+      "users": 57
     },
     "os_update": {
-      "count": 31,
-      "users": 31
+      "count": 68,
+      "users": 68
     },
-    "calculadora_agregar_producto": {
-      "count": 26,
-      "users": 6
+    "favorito_semanal_volver_a_elegir": {
+      "count": 63,
+      "users": 58
     },
-    "buscar_precio_ean": {
-      "count": 21,
+    "ahorros_cambio_mes": {
+      "count": 54,
       "users": 8
     },
     "ahorros_analisis": {
-      "count": 19,
-      "users": 17
-    },
-    "sucursales": {
-      "count": 17,
-      "users": 16
-    },
-    "cerrar_sesion": {
-      "count": 16,
-      "users": 16
-    },
-    "select_promotion": {
-      "count": 13,
-      "users": 10
-    },
-    "purchase": {
-      "count": 8,
-      "users": 8
-    },
-    "filter_escaner": {
-      "count": 7,
-      "users": 3
-    },
-    "preguntas_frecuentes": {
-      "count": 5,
-      "users": 5
+      "count": 46,
+      "users": 40
     },
     "add_to_wishlist": {
+      "count": 45,
+      "users": 15
+    },
+    "sucursales": {
+      "count": 42,
+      "users": 35
+    },
+    "calculadora_agregar_producto": {
+      "count": 41,
+      "users": 11
+    },
+    "select_promotion": {
+      "count": 34,
+      "users": 19
+    },
+    "cerrar_sesion": {
+      "count": 32,
+      "users": 27
+    },
+    "(other)": {
+      "count": 28,
+      "users": 187
+    },
+    "buscar_precio_ean": {
+      "count": 28,
+      "users": 12
+    },
+    "filter_escaner": {
+      "count": 21,
+      "users": 7
+    },
+    "purchase": {
+      "count": 15,
+      "users": 15
+    },
+    "app_exception": {
+      "count": 10,
+      "users": 8
+    },
+    "preguntas_frecuentes": {
+      "count": 9,
+      "users": 9
+    },
+    "consultas": {
+      "count": 7,
+      "users": 7
+    },
+    "favorito_semanal_favorito": {
       "count": 4,
       "users": 4
     },
-    "app_exception": {
+    "scanner_maxi_branch_list": {
+      "count": 4,
+      "users": 4
+    },
+    "terminos_y_condiciones": {
       "count": 3,
       "users": 3
     },
-    "consultas": {
+    "app_clear_data": {
       "count": 2,
       "users": 2
     },
-    "scanner_maxi_branch_list": {
-      "count": 2,
-      "users": 2
-    },
-    "terminos_y_condiciones": {
-      "count": 2,
-      "users": 2
+    "consultas_app": {
+      "count": 1,
+      "users": 1
     },
     "consultas_bsf": {
       "count": 1,
       "users": 1
     },
-    "favorito_semanal_favorito": {
+    "notification_foreground": {
       "count": 1,
       "users": 1
-    },
-    "(other)": {
-      "count": 0,
-      "users": 75
     }
   }
 }
