@@ -1,0 +1,427 @@
+{
+  "date": "2026-07-06",
+  "chat": {
+    "llamadas": 202,
+    "usuarios_unicos": 78,
+    "con_productos_identificados": 98,
+    "con_sugerencia": 28,
+    "por_hora": [
+      6,
+      0,
+      0,
+      0,
+      0,
+      2,
+      3,
+      0,
+      1,
+      3,
+      11,
+      18,
+      12,
+      17,
+      4,
+      9,
+      16,
+      44,
+      12,
+      9,
+      11,
+      2,
+      15,
+      7
+    ],
+    "errores": 51
+  },
+  "categorizar": {
+    "total": 77,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 8
+      },
+      {
+        "key": "Dulce de leche",
+        "count": 2
+      },
+      {
+        "key": "Salchicha union ganadera",
+        "count": 2
+      },
+      {
+        "key": "Pan rallado Mamá Cocina 1 kg x2 Sal fina Light x1 Fósforos 400 x2 Azúcar x4 Polvo de hornear Dicomere x1 Café descafeinado x1 Leche en polvo x1 Aceite Carre 1,5 L x2 Manteca 200 g x5 Zapallo Kabutia x5 Colgate Extra Blancura x2 Nivea Afeitar x1 Gillette Sensitive 4 x1 Rollo de cocina Carre x200 x4 Papel higiénico Higenol Premium 4x30 x2 Canasta Pato x1 Repuesto Antigrasa Procenex x2 Avena Tradicional Morixe x2 Lentejones 400 g x4 Choclo en lata Carre x4 Arvejas Carre x5 Arroz Gallo Dorado x4 Harina Pureza 0000 x10 Durazno Light x4",
+        "count": 1
+      },
+      {
+        "key": "Golosinas",
+        "count": 1
+      },
+      {
+        "key": "Alimento para perros marca raza",
+        "count": 1
+      },
+      {
+        "key": "Dentrifico",
+        "count": 1
+      },
+      {
+        "key": "Pendrive Sandisk 64GB USB 3.0 Ultra Shift negro",
+        "count": 1
+      },
+      {
+        "key": "No",
+        "count": 1
+      },
+      {
+        "key": "Bisicleta ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 11
+      },
+      {
+        "key": "salchichas",
+        "count": 8
+      },
+      {
+        "key": "cebolla",
+        "count": 7
+      },
+      {
+        "key": "sal",
+        "count": 7
+      },
+      {
+        "key": "mayonesa",
+        "count": 5
+      },
+      {
+        "key": "fideos",
+        "count": 5
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "choclo en lata",
+        "count": 4
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 4
+      },
+      {
+        "key": "carne vacuna",
+        "count": 4
+      },
+      {
+        "key": "crema de leche",
+        "count": 3
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 281,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 10
+      },
+      {
+        "key": "salchichas",
+        "count": 8
+      },
+      {
+        "key": "cebolla",
+        "count": 6
+      },
+      {
+        "key": "sal",
+        "count": 6
+      },
+      {
+        "key": "mayonesa",
+        "count": 5
+      },
+      {
+        "key": "fideos",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "choclo en lata",
+        "count": 4
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 4
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "crema de leche",
+        "count": 3
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 21
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 12
+      },
+      {
+        "key": "Leches enteras",
+        "count": 11
+      },
+      {
+        "key": "Salchichas",
+        "count": 11
+      },
+      {
+        "key": "Fideos largos",
+        "count": 9
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 9
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 8
+      },
+      {
+        "key": "Sal",
+        "count": 7
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 7
+      },
+      {
+        "key": "Chocolates",
+        "count": 7
+      }
+    ],
+    "errores": 807
+  },
+  "agregar": {
+    "total_agregados": 48,
+    "valor_total": 1784465.71,
+    "ticket_promedio": 37176.37,
+    "descuento_total": 212016.82,
+    "canal": {
+      "inmediato": 0,
+      "programado": 44
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 66
+      },
+      {
+        "key": "Mandarina x kg.",
+        "count": 39
+      },
+      {
+        "key": "Suprema congelada x kg.",
+        "count": 32
+      },
+      {
+        "key": "Mayonesa Heinz con jugo de limón 350 g.",
+        "count": 30
+      },
+      {
+        "key": "Jugo Pura Frutta manzana roja tetra 1 l.",
+        "count": 28
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 24
+      },
+      {
+        "key": "Palta x uni",
+        "count": 18
+      },
+      {
+        "key": "Yogur Griego natural sin endulzar Yogurísimo 190 grs",
+        "count": 17
+      },
+      {
+        "key": "Queso port salut Punta del Agua horma x kg.",
+        "count": 16
+      },
+      {
+        "key": "Mango x uni",
+        "count": 14
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 95
+      },
+      {
+        "key": "Leches enteras",
+        "count": 78
+      },
+      {
+        "key": "Pollo",
+        "count": 42
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 36
+      },
+      {
+        "key": "Hamburguesas y medallones",
+        "count": 31
+      },
+      {
+        "key": "Jugos listos",
+        "count": 28
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 26
+      },
+      {
+        "key": "Papas fritas y snacks de maíz",
+        "count": 24
+      },
+      {
+        "key": "Edulcorantes y endulzantes",
+        "count": 20
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 17
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 23,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 22
+      },
+      {
+        "key": "La Serenísima",
+        "count": 10
+      },
+      {
+        "key": "Akbar",
+        "count": 10
+      },
+      {
+        "key": "Tonadita",
+        "count": 9
+      },
+      {
+        "key": "Cabrales",
+        "count": 8
+      },
+      {
+        "key": "Genérico",
+        "count": 8
+      },
+      {
+        "key": "Bulnez",
+        "count": 7
+      },
+      {
+        "key": "Hellmanns",
+        "count": 6
+      },
+      {
+        "key": "Natura",
+        "count": 5
+      },
+      {
+        "key": "Casancrem",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 117
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 57
+      },
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 6
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 253,
+    "carrito_promedio": 45054.38,
+    "pct_con_carrito": 51.7,
+    "errores": 368
+  },
+  "origen": {
+    "total_requests": 383,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-07T07:53:35.989Z"
+}
