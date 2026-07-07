@@ -765,14 +765,6 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 <div class="toast" id="toast"></div>
 
 <script>
-const USERS = [
-  {username:"gaston",  name:"Gastón Ruiz",    avatar:"GR"},
-  {username:"daiana",  name:"Daiana Molina",  avatar:"DM"},
-  {username:"berenice",name:"Berenice Fraga", avatar:"BF"},
-  {username:"samuel",  name:"Samuel Moreira", avatar:"SM"},
-  {username:"leonardo",name:"Leonardo Arcas", avatar:"LA"},
-  {username:"mariano", name:"Mariano Wegier", avatar:"MW"},
-];
 // Sin PASSWORD acá — la validación es server-side en /api/login
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 function getGHToken(){ return localStorage.getItem("gh_token")||""; }
@@ -795,7 +787,7 @@ function tokenValid(){
 (function(){
   ["login-user","login-pass"].forEach(id=>document.getElementById(id).addEventListener("keydown",e=>{ if(e.key==="Enter") doLogin(); }));
   const sess=localStorage.getItem("appdash_sess");
-  if(sess&&tokenValid()){ try{ const s=JSON.parse(sess); const u=USERS.find(x=>x.username===s.u); if(u){loginAs(u);return;} }catch{} }
+  if(sess&&tokenValid()){ try{ const s=JSON.parse(sess); if(s.u){loginAs(s.user||{username:s.u,name:s.u,avatar:s.u[0].toUpperCase()});return;} }catch{} }
   // Token expirado o inválido → limpiar
   localStorage.removeItem("appdash_sess"); localStorage.removeItem("appdash_token");
 })();
@@ -819,7 +811,7 @@ async function doLogin(){
 }
 function loginAs(u){
   S.user=u;
-  localStorage.setItem("appdash_sess",JSON.stringify({u:u.username}));
+  localStorage.setItem("appdash_sess",JSON.stringify({u:u.username,user:u}));
   document.getElementById("login-screen").style.display="none";
   document.getElementById("app").style.cssText="display:flex;height:100vh";
   document.getElementById("su-avatar").textContent=u.avatar;

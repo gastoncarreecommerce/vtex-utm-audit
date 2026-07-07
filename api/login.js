@@ -10,20 +10,18 @@ import { createHmac } from "crypto";
 const PASSWORD = process.env.DASHBOARD_PASSWORD;
 const SECRET   = process.env.SESSION_SECRET;
 
-const USERS = [
-  { username: "gaston",   name: "Gastón Ruiz",   avatar: "GR" },
-  { username: "daiana",   name: "Daiana Molina",  avatar: "DM" },
-  { username: "berenice", name: "Berenice Fraga", avatar: "BF" },
-  { username: "samuel",   name: "Samuel Moreira", avatar: "SM" },
-  { username: "leonardo", name: "Leonardo Arcas", avatar: "LA" },
-  { username: "mariano",  name: "Mariano Wegier", avatar: "MW" },
-];
-
 function makeToken(username) {
   const expiry  = Date.now() + 12 * 3600 * 1000;
   const payload = `${username}:${expiry}`;
   const sig     = createHmac("sha256", SECRET).update(payload).digest("hex");
   return Buffer.from(`${payload}:${sig}`).toString("base64url");
+}
+
+function buildUser(username) {
+  const parts  = username.replace(/_/g, " ").split(" ");
+  const name   = parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
+  const avatar = parts.map(p => p.charAt(0).toUpperCase()).join("").slice(0, 2);
+  return { username, name, avatar };
 }
 
 export default async function handler(req, res) {
@@ -34,14 +32,11 @@ export default async function handler(req, res) {
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
 
   const { username, password } = body || {};
-  const user = USERS.find(u => u.username === username);
 
-  if (!user || password !== PASSWORD) {
+  if (!username || !username.trim() || password !== PASSWORD) {
     return res.status(401).json({ error: "Credenciales incorrectas" });
   }
 
-  res.json({
-    token: makeToken(username),
-    user:  { username: user.username, name: user.name, avatar: user.avatar }
-  });
+  const user = buildUser(username.trim().toLowerCase());
+  res.json({ token: makeToken(user.username), user });
 }
