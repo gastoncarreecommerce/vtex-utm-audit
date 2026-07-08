@@ -1,4 +1,225 @@
 {
   "date": "2026-07-08",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 3209,
+      "users": 972
+    },
+    "user_engagement": {
+      "count": 2373,
+      "users": 700
+    },
+    "session_start": {
+      "count": 1047,
+      "users": 1038
+    },
+    "mis_cupones": {
+      "count": 656,
+      "users": 473
+    },
+    "notification_dismiss": {
+      "count": 572,
+      "users": 360
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 551,
+      "users": 90
+    },
+    "view_item_list": {
+      "count": 301,
+      "users": 92
+    },
+    "switch_to_ecommerce": {
+      "count": 210,
+      "users": 142
+    },
+    "search": {
+      "count": 177,
+      "users": 66
+    },
+    "add_to_cart": {
+      "count": 156,
+      "users": 42
+    },
+    "filter_cupones": {
+      "count": 132,
+      "users": 98
+    },
+    "notification_receive": {
+      "count": 117,
+      "users": 110
+    },
+    "folletos": {
+      "count": 89,
+      "users": 76
+    },
+    "view_cart": {
+      "count": 86,
+      "users": 41
+    },
+    "favorito_mes_renovar": {
+      "count": 71,
+      "users": 67
+    },
+    "tickets_compra": {
+      "count": 71,
+      "users": 66
+    },
+    "remove_from_cart": {
+      "count": 69,
+      "users": 26
+    },
+    "select_item": {
+      "count": 68,
+      "users": 33
+    },
+    "view_item": {
+      "count": 62,
+      "users": 34
+    },
+    "first_open": {
+      "count": 58,
+      "users": 58
+    },
+    "escaner_precios": {
+      "count": 53,
+      "users": 46
+    },
+    "calculadora_home": {
+      "count": 48,
+      "users": 33
+    },
+    "favorito_semanal_activacion": {
+      "count": 44,
+      "users": 44
+    },
+    "app_remove": {
+      "count": 43,
+      "users": 41
+    },
+    "notification_open": {
+      "count": 40,
+      "users": 40
+    },
+    "mi_perfil": {
+      "count": 36,
+      "users": 26
+    },
+    "promociones": {
+      "count": 35,
+      "users": 30
+    },
+    "chat_bot": {
+      "count": 34,
+      "users": 29
+    },
+    "view_promotion": {
+      "count": 31,
+      "users": 23
+    },
+    "home_ahorros": {
+      "count": 29,
+      "users": 29
+    },
+    "app_update": {
+      "count": 27,
+      "users": 27
+    },
+    "lista_compras": {
+      "count": 27,
+      "users": 25
+    },
+    "listado_notificaciones": {
+      "count": 26,
+      "users": 24
+    },
+    "inicio_registro": {
+      "count": 22,
+      "users": 20
+    },
+    "switch_to_sucursales": {
+      "count": 21,
+      "users": 18
+    },
+    "favorito_semanal_volver_a_elegir": {
+      "count": 20,
+      "users": 19
+    },
+    "ahorros_tips": {
+      "count": 19,
+      "users": 5
+    },
+    "favorito_mes_nuevo": {
+      "count": 18,
+      "users": 17
+    },
+    "add_shipping_info": {
+      "count": 17,
+      "users": 6
+    },
+    "favorito_mes": {
+      "count": 15,
+      "users": 15
+    },
+    "re_escaner_precios": {
+      "count": 15,
+      "users": 10
+    },
+    "calculadora_agregar_producto": {
+      "count": 13,
+      "users": 4
+    },
+    "os_update": {
+      "count": 13,
+      "users": 13
+    },
+    "sucursales": {
+      "count": 11,
+      "users": 9
+    },
+    "tarjeta_mi_carrefour": {
+      "count": 10,
+      "users": 10
+    },
+    "add_to_wishlist": {
+      "count": 7,
+      "users": 5
+    },
+    "cerrar_sesion": {
+      "count": 7,
+      "users": 6
+    },
+    "ahorros_analisis": {
+      "count": 5,
+      "users": 5
+    },
+    "listado_notificaciones_click": {
+      "count": 4,
+      "users": 4
+    },
+    "preguntas_frecuentes": {
+      "count": 4,
+      "users": 4
+    },
+    "purchase": {
+      "count": 3,
+      "users": 3
+    },
+    "scanner_maxi_branch_list": {
+      "count": 2,
+      "users": 2
+    },
+    "buscar_precio_ean": {
+      "count": 1,
+      "users": 1
+    },
+    "consultas": {
+      "count": 1,
+      "users": 1
+    },
+    "(other)": {
+      "count": 0,
+      "users": 32
+    }
+  }
 }
