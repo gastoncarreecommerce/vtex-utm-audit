@@ -1,4 +1,193 @@
 {
   "date": "2026-07-10",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 860,
+      "users": 161
+    },
+    "user_engagement": {
+      "count": 710,
+      "users": 161
+    },
+    "session_start": {
+      "count": 196,
+      "users": 187
+    },
+    "add_to_cart": {
+      "count": 136,
+      "users": 18
+    },
+    "view_item_list": {
+      "count": 126,
+      "users": 34
+    },
+    "mis_cupones": {
+      "count": 123,
+      "users": 74
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 113,
+      "users": 18
+    },
+    "notification_dismiss": {
+      "count": 113,
+      "users": 90
+    },
+    "search": {
+      "count": 85,
+      "users": 26
+    },
+    "switch_to_ecommerce": {
+      "count": 77,
+      "users": 46
+    },
+    "view_cart": {
+      "count": 56,
+      "users": 20
+    },
+    "select_item": {
+      "count": 43,
+      "users": 17
+    },
+    "view_item": {
+      "count": 39,
+      "users": 14
+    },
+    "remove_from_cart": {
+      "count": 34,
+      "users": 10
+    },
+    "tickets_compra": {
+      "count": 29,
+      "users": 24
+    },
+    "notification_receive": {
+      "count": 25,
+      "users": 19
+    },
+    "add_to_wishlist": {
+      "count": 18,
+      "users": 2
+    },
+    "add_shipping_info": {
+      "count": 17,
+      "users": 8
+    },
+    "favorito_mes": {
+      "count": 13,
+      "users": 7
+    },
+    "home_ahorros": {
+      "count": 12,
+      "users": 11
+    },
+    "mi_perfil": {
+      "count": 11,
+      "users": 10
+    },
+    "calculadora_home": {
+      "count": 9,
+      "users": 8
+    },
+    "folletos": {
+      "count": 9,
+      "users": 7
+    },
+    "favorito_mes_renovar": {
+      "count": 8,
+      "users": 8
+    },
+    "listado_notificaciones": {
+      "count": 8,
+      "users": 7
+    },
+    "ahorros_tips": {
+      "count": 7,
+      "users": 3
+    },
+    "favorito_semanal_activacion": {
+      "count": 7,
+      "users": 7
+    },
+    "promociones": {
+      "count": 7,
+      "users": 6
+    },
+    "switch_to_sucursales": {
+      "count": 7,
+      "users": 6
+    },
+    "view_promotion": {
+      "count": 7,
+      "users": 5
+    },
+    "escaner_precios": {
+      "count": 6,
+      "users": 5
+    },
+    "filter_cupones": {
+      "count": 6,
+      "users": 6
+    },
+    "lista_compras": {
+      "count": 6,
+      "users": 5
+    },
+    "app_remove": {
+      "count": 5,
+      "users": 5
+    },
+    "chat_bot": {
+      "count": 5,
+      "users": 5
+    },
+    "ahorros_analisis": {
+      "count": 4,
+      "users": 4
+    },
+    "ahorros_cambio_mes": {
+      "count": 4,
+      "users": 1
+    },
+    "inicio_registro": {
+      "count": 4,
+      "users": 4
+    },
+    "notification_open": {
+      "count": 4,
+      "users": 4
+    },
+    "favorito_mes_nuevo": {
+      "count": 3,
+      "users": 3
+    },
+    "listado_notificaciones_click": {
+      "count": 3,
+      "users": 2
+    },
+    "calculadora_agregar_producto": {
+      "count": 2,
+      "users": 1
+    },
+    "favorito_semanal_volver_a_elegir": {
+      "count": 2,
+      "users": 2
+    },
+    "purchase": {
+      "count": 2,
+      "users": 1
+    },
+    "sucursales": {
+      "count": 2,
+      "users": 2
+    },
+    "preguntas_frecuentes": {
+      "count": 1,
+      "users": 1
+    },
+    "re_escaner_precios": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
