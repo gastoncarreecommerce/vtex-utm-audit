@@ -1,0 +1,415 @@
+{
+  "date": "2026-07-07",
+  "chat": {
+    "llamadas": 66,
+    "usuarios_unicos": 33,
+    "con_productos_identificados": 26,
+    "con_sugerencia": 2,
+    "por_hora": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      5,
+      7,
+      5,
+      5,
+      1,
+      2,
+      4,
+      4,
+      2,
+      6,
+      4,
+      2,
+      12,
+      4
+    ],
+    "errores": 21
+  },
+  "categorizar": {
+    "total": 22,
+    "top_recetas": [
+      {
+        "key": "Coca",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer una chocotorta",
+        "count": 1
+      },
+      {
+        "key": "Aceite ",
+        "count": 1
+      },
+      {
+        "key": "Hoja simple ",
+        "count": 1
+      },
+      {
+        "key": "Mayonesa 250 gr",
+        "count": 1
+      },
+      {
+        "key": "Palitos saborizados ",
+        "count": 1
+      },
+      {
+        "key": "Savora 250 gr",
+        "count": 1
+      },
+      {
+        "key": "Exquisita",
+        "count": 1
+      },
+      {
+        "key": "Pack de leche",
+        "count": 1
+      },
+      {
+        "key": "Shampoo Dove",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "azúcar",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "café instantáneo",
+        "count": 4
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "palitos saborizados",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva extra virgen",
+        "count": 2
+      },
+      {
+        "key": "bizcochuelo en taza sin tacc",
+        "count": 2
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 1
+      },
+      {
+        "key": "dulce de leche",
+        "count": 1
+      },
+      {
+        "key": "queso crema",
+        "count": 1
+      },
+      {
+        "key": "papel higiénico hoja simple",
+        "count": 1
+      },
+      {
+        "key": "mostaza",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 45,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "azucar",
+        "count": 5
+      },
+      {
+        "key": "yerba",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "cafe instantaneo",
+        "count": 4
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "palitos saborizados",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva extra virgen",
+        "count": 2
+      },
+      {
+        "key": "bizcochuelo en taza sin tacc",
+        "count": 2
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 1
+      },
+      {
+        "key": "queso crema",
+        "count": 1
+      },
+      {
+        "key": "dulce de leche",
+        "count": 1
+      },
+      {
+        "key": "papel higienico hoja simple",
+        "count": 1
+      },
+      {
+        "key": "mostaza",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leches enteras",
+        "count": 5
+      },
+      {
+        "key": "Azucar",
+        "count": 5
+      },
+      {
+        "key": "Yerba",
+        "count": 5
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 4
+      },
+      {
+        "key": "Cafe instantaneo",
+        "count": 4
+      },
+      {
+        "key": "Aceites de oliva",
+        "count": 3
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 2
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 2
+      },
+      {
+        "key": "Nachos, mani y palitos",
+        "count": 2
+      },
+      {
+        "key": "Shampoos",
+        "count": 2
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 3,
+    "valor_total": 269523,
+    "ticket_promedio": 89841,
+    "descuento_total": 15867,
+    "canal": {
+      "inmediato": 1,
+      "programado": 2
+    },
+    "top_productos": [
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 8
+      },
+      {
+        "key": "Jugo Tang Galáctico 15 grs",
+        "count": 7
+      },
+      {
+        "key": "Jugo en polvo Tang naranja durazno en sobre 15 g.",
+        "count": 6
+      },
+      {
+        "key": "Tostadas Carrefour classic clásicas con gluten 180 g.",
+        "count": 6
+      },
+      {
+        "key": "Jugo en polvo Tang uva 15 g.",
+        "count": 5
+      },
+      {
+        "key": "La Paulina queso reggianito rallado 150 grs",
+        "count": 4
+      },
+      {
+        "key": "Jugo Clight Pomelada Hibiscus 8 grs",
+        "count": 4
+      },
+      {
+        "key": "Galletitas Pepitos con chips de chocolate 357 g. Pack x3 de 119 g.",
+        "count": 4
+      },
+      {
+        "key": "Limpiador multiuso Multimax para diluir marina (rinde 5 litros) 150 ml.",
+        "count": 3
+      },
+      {
+        "key": "Aceite de oliva Carrefour extra virgen orgánico botella 500 cc.",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 22
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 8
+      },
+      {
+        "key": "Tostadas, grisines y marineras",
+        "count": 6
+      },
+      {
+        "key": "Aceites de oliva",
+        "count": 5
+      },
+      {
+        "key": "Quesos rallados y en hebras",
+        "count": 4
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 3
+      },
+      {
+        "key": "Limpiadores de piso",
+        "count": 3
+      },
+      {
+        "key": "Cacao",
+        "count": 2
+      },
+      {
+        "key": "Hamburguesas y medallones",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 5,
+    "top_marcas": [
+      {
+        "key": "Adelgamate",
+        "count": 5
+      },
+      {
+        "key": "Cabrales",
+        "count": 5
+      },
+      {
+        "key": "Pehuamar",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "Maizena",
+        "count": 4
+      },
+      {
+        "key": "Krachitos",
+        "count": 3
+      },
+      {
+        "key": "Amanda",
+        "count": 3
+      },
+      {
+        "key": "Pep",
+        "count": 2
+      },
+      {
+        "key": "Cortijo el Olivar",
+        "count": 2
+      },
+      {
+        "key": "Natura",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 29
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 98,
+    "carrito_promedio": 43811.03,
+    "pct_con_carrito": 49.6,
+    "errores": 28
+  },
+  "origen": {
+    "total_requests": 158,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-13T20:08:41.514Z"
+}
