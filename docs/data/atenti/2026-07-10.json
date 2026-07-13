@@ -1,0 +1,355 @@
+{
+  "date": "2026-07-10",
+  "chat": {
+    "llamadas": 76,
+    "usuarios_unicos": 42,
+    "con_productos_identificados": 33,
+    "con_sugerencia": 10,
+    "por_hora": [
+      1,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      5,
+      8,
+      3,
+      4,
+      2,
+      7,
+      11,
+      7,
+      10,
+      5,
+      2,
+      4,
+      2,
+      0,
+      0
+    ],
+    "errores": 24
+  },
+  "categorizar": {
+    "total": 25,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Chocolates",
+        "count": 2
+      },
+      {
+        "key": "En rama, con avellanas y chocolate blanco",
+        "count": 1
+      },
+      {
+        "key": "Chocolate en rama, blanco, avellanas, ",
+        "count": 1
+      },
+      {
+        "key": "Pan lactal barato",
+        "count": 1
+      },
+      {
+        "key": "Tapas de empanadas rotiseras ",
+        "count": 1
+      },
+      {
+        "key": "Jamón apto celiacos",
+        "count": 1
+      },
+      {
+        "key": "Leche deslactosada ",
+        "count": 1
+      },
+      {
+        "key": "Capsulas de cafe cabrales",
+        "count": 1
+      },
+      {
+        "key": "Acondicionador Dove 400",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "chocolates",
+        "count": 2
+      },
+      {
+        "key": "chocolate en rama",
+        "count": 2
+      },
+      {
+        "key": "chocolate con avellanas",
+        "count": 2
+      },
+      {
+        "key": "chocolate blanco",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "medialuna",
+        "count": 1
+      },
+      {
+        "key": "chocolate con maní",
+        "count": 1
+      },
+      {
+        "key": "turrón",
+        "count": 1
+      },
+      {
+        "key": "palta",
+        "count": 1
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 1
+      },
+      {
+        "key": "cerveza sin alcohol",
+        "count": 1
+      },
+      {
+        "key": "tortillas de trigo",
+        "count": 1
+      },
+      {
+        "key": "cerveza blanca",
+        "count": 1
+      },
+      {
+        "key": "galletitas azucaradas",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 40,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "productos mas comprados",
+        "count": 2
+      },
+      {
+        "key": "chocolates",
+        "count": 2
+      },
+      {
+        "key": "chocolate en rama",
+        "count": 2
+      },
+      {
+        "key": "chocolate blanco",
+        "count": 2
+      },
+      {
+        "key": "chocolate con avellanas",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "turron",
+        "count": 1
+      },
+      {
+        "key": "galletitas azucaradas",
+        "count": 1
+      },
+      {
+        "key": "cerveza blanca",
+        "count": 1
+      },
+      {
+        "key": "medialuna",
+        "count": 1
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 1
+      },
+      {
+        "key": "cerveza sin alcohol",
+        "count": 1
+      },
+      {
+        "key": "chocolate con mani",
+        "count": 1
+      },
+      {
+        "key": "tortillas de trigo",
+        "count": 1
+      },
+      {
+        "key": "limon",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Chocolates",
+        "count": 9
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "Cervezas",
+        "count": 3
+      },
+      {
+        "key": "Leches enteras",
+        "count": 3
+      },
+      {
+        "key": "Comidas instantaneas",
+        "count": 2
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 2
+      },
+      {
+        "key": "Hamburguesas y medallones",
+        "count": 2
+      },
+      {
+        "key": "Bocaditos, confites y turrones",
+        "count": 1
+      },
+      {
+        "key": "Especialidades dulces",
+        "count": 1
+      },
+      {
+        "key": "Tortillas",
+        "count": 1
+      }
+    ],
+    "errores": 642
+  },
+  "agregar": {
+    "total_agregados": 2,
+    "valor_total": 380,
+    "ticket_promedio": 190,
+    "descuento_total": 218.9,
+    "canal": {
+      "inmediato": 0,
+      "programado": 1
+    },
+    "top_productos": [
+      {
+        "key": "Medialuna x uni 30 g.",
+        "count": 1
+      },
+      {
+        "key": "Tortillas de trigo Carrefour classic 300 g.",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Especialidades dulces",
+        "count": 1
+      },
+      {
+        "key": "Tortillas",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 4,
+    "top_marcas": [
+      {
+        "key": "NotCo",
+        "count": 9
+      },
+      {
+        "key": "Takis",
+        "count": 9
+      },
+      {
+        "key": "Carrefour",
+        "count": 5
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 4
+      },
+      {
+        "key": "La Serenísima",
+        "count": 4
+      },
+      {
+        "key": "Not Chicken",
+        "count": 2
+      },
+      {
+        "key": "Good Mark",
+        "count": 2
+      },
+      {
+        "key": "Genérico",
+        "count": 1
+      },
+      {
+        "key": "Superbe",
+        "count": 1
+      },
+      {
+        "key": "Tregar",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Congelados",
+        "count": 20
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 9
+      },
+      {
+        "key": "Almacén",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 128,
+    "carrito_promedio": 59923.62,
+    "pct_con_carrito": 53.2,
+    "errores": 127
+  },
+  "origen": {
+    "total_requests": 281,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-13T20:08:52.860Z"
+}
