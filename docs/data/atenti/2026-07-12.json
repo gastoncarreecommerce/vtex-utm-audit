@@ -1,0 +1,423 @@
+{
+  "date": "2026-07-12",
+  "chat": {
+    "llamadas": 58,
+    "usuarios_unicos": 29,
+    "con_productos_identificados": 41,
+    "con_sugerencia": 7,
+    "por_hora": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2,
+      10,
+      1,
+      8,
+      1,
+      1,
+      0,
+      5,
+      8,
+      6,
+      13,
+      0,
+      1,
+      0
+    ],
+    "errores": 9
+  },
+  "categorizar": {
+    "total": 32,
+    "top_recetas": [
+      {
+        "key": "galletitas",
+        "count": 2
+      },
+      {
+        "key": "Sin tacc",
+        "count": 1
+      },
+      {
+        "key": "Quiero sumar el carrito de mi compra anterior",
+        "count": 1
+      },
+      {
+        "key": "Necesito pollo entero de buena calidad y buen precio",
+        "count": 1
+      },
+      {
+        "key": "Tapa de tarta la mas barata ",
+        "count": 1
+      },
+      {
+        "key": "Combo de branca",
+        "count": 1
+      },
+      {
+        "key": "Con coca cola sería mejor",
+        "count": 1
+      },
+      {
+        "key": "Alimento para perros",
+        "count": 1
+      },
+      {
+        "key": "Mozzarella bulnez",
+        "count": 1
+      },
+      {
+        "key": "Comida para perros marca sabrositos",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "puré de tomate",
+        "count": 4
+      },
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "figuritas panini",
+        "count": 4
+      },
+      {
+        "key": "atún",
+        "count": 3
+      },
+      {
+        "key": "lentejas",
+        "count": 3
+      },
+      {
+        "key": "granola",
+        "count": 3
+      },
+      {
+        "key": "yogur bebible",
+        "count": 3
+      },
+      {
+        "key": "queso rallado",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "fernet",
+        "count": 3
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 3
+      },
+      {
+        "key": "galletitas",
+        "count": 3
+      },
+      {
+        "key": "pollo entero",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 111,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "pure de tomate",
+        "count": 4
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "figuritas panini",
+        "count": 4
+      },
+      {
+        "key": "atun",
+        "count": 3
+      },
+      {
+        "key": "lentejas",
+        "count": 3
+      },
+      {
+        "key": "granola",
+        "count": 3
+      },
+      {
+        "key": "yogur bebible",
+        "count": 3
+      },
+      {
+        "key": "queso rallado",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "fernet",
+        "count": 3
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 3
+      },
+      {
+        "key": "galletitas",
+        "count": 3
+      },
+      {
+        "key": "pollo entero",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 8
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 6
+      },
+      {
+        "key": "Fideos largos",
+        "count": 6
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 5
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 5
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 5
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 4
+      },
+      {
+        "key": "Huevos",
+        "count": 4
+      },
+      {
+        "key": "Yerba",
+        "count": 4
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 4
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 15,
+    "valor_total": 856682.45,
+    "ticket_promedio": 57112.16,
+    "descuento_total": 164892.3,
+    "canal": {
+      "inmediato": 0,
+      "programado": 15
+    },
+    "top_productos": [
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 32
+      },
+      {
+        "key": "Leche descremada larga vida Las tres niñas 1 l.",
+        "count": 32
+      },
+      {
+        "key": "Bizcochos 9 de Oro agridulces 200 g.",
+        "count": 22
+      },
+      {
+        "key": "Gaseosa lima limón 7 Up sin azúcar 2.25 lts",
+        "count": 16
+      },
+      {
+        "key": "Fideos cinta caserito Don vicente en bolsa 500 g.",
+        "count": 16
+      },
+      {
+        "key": "Lentejas secas remojadas Carrefour Classic 340 grs",
+        "count": 16
+      },
+      {
+        "key": "Leche liviana UAT clásica Bulnez 1 lt",
+        "count": 12
+      },
+      {
+        "key": "Yogur bebible descremado Carrefour Classic sabor vainilla 900 ml",
+        "count": 9
+      },
+      {
+        "key": "Manteca Tonadita calidad extra 200 g.",
+        "count": 8
+      },
+      {
+        "key": "Rollo de cocina Elegante x3 50 paños",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 44
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 41
+      },
+      {
+        "key": "Bizcochitos",
+        "count": 32
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 24
+      },
+      {
+        "key": "Gaseosas limón",
+        "count": 16
+      },
+      {
+        "key": "Fideos largos",
+        "count": 16
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 14
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 13
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 12
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Coca Cola",
+        "count": 5
+      },
+      {
+        "key": "La Serenísima",
+        "count": 3
+      },
+      {
+        "key": "Dulcor",
+        "count": 3
+      },
+      {
+        "key": "Caserita",
+        "count": 3
+      },
+      {
+        "key": "9 De Oro",
+        "count": 3
+      },
+      {
+        "key": "Genérico",
+        "count": 2
+      },
+      {
+        "key": "Dr. Cormillot",
+        "count": 2
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      },
+      {
+        "key": "Pureza",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 17
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 15
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 90,
+    "carrito_promedio": 50163.24,
+    "pct_con_carrito": 65.1,
+    "errores": 2
+  },
+  "origen": {
+    "total_requests": 149,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-13T20:08:59.838Z"
+}
