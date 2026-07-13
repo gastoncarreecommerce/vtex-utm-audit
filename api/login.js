@@ -10,6 +10,34 @@ import { createHmac } from "crypto";
 const PASSWORD = process.env.DASHBOARD_PASSWORD;
 const SECRET   = process.env.SESSION_SECRET;
 
+const ALLOWED = new Set([
+  "aura_solano",
+  "bautista_arrechea",
+  "berenice_fraga",
+  "carlos_alberto_jauck",
+  "daiana_molina",
+  "daniela_alejandra_guassardi",
+  "elias_gonzalo_barreto",
+  "evelin_loza",
+  "evelyn_peyran",
+  "gaston_ruiz",
+  "gustavo_galitiello",
+  "karen_lorena_florez",
+  "leonardo_arcas",
+  "maria_florencia_calatroni",
+  "mariana_leon_pirker",
+  "mariano_weiger",
+  "martina_amalla",
+  "melisa_evelyn_armstrong",
+  "milagros_imoberdoff",
+  "naajia_satoba",
+  "nelida_rosana_czwyl",
+  "pilar_tojo",
+  "samuel_moreira_6",
+  "santiago_lorito",
+  "solange_misdaris",
+]);
+
 function makeToken(username) {
   const expiry  = Date.now() + 12 * 3600 * 1000;
   const payload = `${username}:${expiry}`;
@@ -32,11 +60,16 @@ export default async function handler(req, res) {
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
 
   const { username, password } = body || {};
+  const u = (username || "").trim().toLowerCase();
 
-  if (!username || !username.trim() || password !== PASSWORD) {
+  if (!u || password !== PASSWORD) {
     return res.status(401).json({ error: "Credenciales incorrectas" });
   }
 
-  const user = buildUser(username.trim().toLowerCase());
+  if (!ALLOWED.has(u)) {
+    return res.status(401).json({ error: "Usuario no autorizado. Para solicitar acceso escribir a gaston_ruiz@carrefour.com" });
+  }
+
+  const user = buildUser(u);
   res.json({ token: makeToken(user.username), user });
 }
