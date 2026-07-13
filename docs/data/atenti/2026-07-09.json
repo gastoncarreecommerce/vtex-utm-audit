@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-09",
+  "chat": {
+    "llamadas": 118,
+    "usuarios_unicos": 56,
+    "con_productos_identificados": 65,
+    "con_sugerencia": 15,
+    "por_hora": [
+      0,
+      1,
+      0,
+      0,
+      6,
+      6,
+      0,
+      2,
+      4,
+      2,
+      6,
+      15,
+      7,
+      13,
+      11,
+      10,
+      6,
+      5,
+      4,
+      12,
+      4,
+      1,
+      2,
+      1
+    ],
+    "errores": 33
+  },
+  "categorizar": {
+    "total": 57,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 9
+      },
+      {
+        "key": "Whiskas ",
+        "count": 2
+      },
+      {
+        "key": "Desodorante de pisos y lavandina",
+        "count": 1
+      },
+      {
+        "key": "Quiero la lista de los productos habituales ",
+        "count": 1
+      },
+      {
+        "key": "Yerba pero no me diste las opciones correctas, galletitas, Cereales ",
+        "count": 1
+      },
+      {
+        "key": "Lavandina, Cereales y desodorante de piso ",
+        "count": 1
+      },
+      {
+        "key": "Precios baratos Cereales ",
+        "count": 1
+      },
+      {
+        "key": "Fideos Materazzo tirabuzón y tallarines ",
+        "count": 1
+      },
+      {
+        "key": "Bolsas de compra grande",
+        "count": 1
+      },
+      {
+        "key": "Café, yogures, pan, queso crema, acondicionador,pasta de dientes,desodorante en barra mujer, maquinista depilar mujer, leche descremada, galletas, sancks salados, jugos, azúcar, harina leudante, congelados",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "fideos tirabuzón",
+        "count": 8
+      },
+      {
+        "key": "yerba mate",
+        "count": 7
+      },
+      {
+        "key": "toallas femeninas",
+        "count": 6
+      },
+      {
+        "key": "coco rallado",
+        "count": 6
+      },
+      {
+        "key": "barra de cereal",
+        "count": 6
+      },
+      {
+        "key": "tostaditas de arroz",
+        "count": 5
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 5
+      },
+      {
+        "key": "fernet",
+        "count": 5
+      },
+      {
+        "key": "turrón",
+        "count": 4
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 4
+      },
+      {
+        "key": "alimento para gatos",
+        "count": 4
+      },
+      {
+        "key": "turrón y maní",
+        "count": 3
+      },
+      {
+        "key": "almohaditas rellenas",
+        "count": 3
+      },
+      {
+        "key": "lavandina",
+        "count": 3
+      },
+      {
+        "key": "cereales",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 187,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "fideos tirabuzon",
+        "count": 7
+      },
+      {
+        "key": "toallas femeninas",
+        "count": 6
+      },
+      {
+        "key": "coco rallado",
+        "count": 6
+      },
+      {
+        "key": "barra de cereal",
+        "count": 6
+      },
+      {
+        "key": "yerba mate",
+        "count": 6
+      },
+      {
+        "key": "tostaditas de arroz",
+        "count": 5
+      },
+      {
+        "key": "fernet",
+        "count": 5
+      },
+      {
+        "key": "turron",
+        "count": 4
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 4
+      },
+      {
+        "key": "alimento para gatos",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "turron y mani",
+        "count": 3
+      },
+      {
+        "key": "almohaditas rellenas",
+        "count": 3
+      },
+      {
+        "key": "lavandina",
+        "count": 3
+      },
+      {
+        "key": "cereales",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Yerba",
+        "count": 10
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 10
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 9
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 8
+      },
+      {
+        "key": "Bocaditos, confites y turrones",
+        "count": 7
+      },
+      {
+        "key": "Cereales",
+        "count": 7
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 6
+      },
+      {
+        "key": "Toallitas femeninas",
+        "count": 6
+      },
+      {
+        "key": "Complementos",
+        "count": 6
+      },
+      {
+        "key": "Barritas de cereales",
+        "count": 6
+      }
+    ],
+    "errores": 4
+  },
+  "agregar": {
+    "total_agregados": 13,
+    "valor_total": 424254.9,
+    "ticket_promedio": 32634.99,
+    "descuento_total": 47651.24,
+    "canal": {
+      "inmediato": 0,
+      "programado": 13
+    },
+    "top_productos": [
+      {
+        "key": "Tostaditas de arroz clásica Molinos ala 100 grs",
+        "count": 15
+      },
+      {
+        "key": "Roast beef Novillo x kg.",
+        "count": 10
+      },
+      {
+        "key": "Oblea Arcor turrón y maní 10 u. x 25 g.",
+        "count": 8
+      },
+      {
+        "key": "Fideos tirabuzon N28 Lucchetti 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Toallas femeninas Ladysoft normal soft 16 uni",
+        "count": 6
+      },
+      {
+        "key": "Queso cremoso La Paulina x kg.",
+        "count": 6
+      },
+      {
+        "key": "Yerba mate La tranquera liviana 1 kg.",
+        "count": 5
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 5
+      },
+      {
+        "key": "Mandarina x kg.",
+        "count": 4
+      },
+      {
+        "key": "Yogur cremoso entero de vainilla Milkaut en pote 120 g.",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Galletas de arroz",
+        "count": 15
+      },
+      {
+        "key": "Verduras",
+        "count": 13
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 12
+      },
+      {
+        "key": "Frutas",
+        "count": 11
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 11
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Yerba",
+        "count": 7
+      },
+      {
+        "key": "Toallitas femeninas",
+        "count": 6
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 6
+      },
+      {
+        "key": "Fideos largos",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "Ladysoft",
+        "count": 14
+      },
+      {
+        "key": "Whiskas",
+        "count": 10
+      },
+      {
+        "key": "Odex",
+        "count": 4
+      },
+      {
+        "key": "Ayudín",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 3
+      },
+      {
+        "key": "Levité",
+        "count": 3
+      },
+      {
+        "key": "Aquarius",
+        "count": 3
+      },
+      {
+        "key": "Nosotras",
+        "count": 2
+      },
+      {
+        "key": "Mañanita",
+        "count": 2
+      },
+      {
+        "key": "Unión",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Perfumería y farmacia",
+        "count": 16
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 13
+      },
+      {
+        "key": "Mascotas",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 9
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 160,
+    "carrito_promedio": 62370.73,
+    "pct_con_carrito": 59,
+    "errores": 24
+  },
+  "origen": {
+    "total_requests": 233,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-13T20:08:49.413Z"
+}
