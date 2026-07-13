@@ -72,18 +72,8 @@ function removeTrigger() {
 // ---------------------------------------------------------------------------
 // Pipeline principal
 // ---------------------------------------------------------------------------
-function processDate(date) {
-  Logger.log("📬 Buscando logs de Atenti para " + date + "...");
-
-  var logs = fetchLogsForDate(date);
-  if (!logs) {
-    Logger.log("⚠️  No se encontraron logs para " + date);
-    return;
-  }
-
-  Logger.log("📦 Logs encontrados. Analizando...");
-
-  var result = {
+function buildResult(logs) {
+  return {
     date:             logs.date,
     chat:             analyzeChat(logs.chatLog            || ""),
     categorizar:      analyzeCategorizar(logs.categorizarLog    || ""),
@@ -94,14 +84,86 @@ function processDate(date) {
     origen:           analyzeOrigen(logs.origenLog             || ""),
     fetched_at:       new Date().toISOString()
   };
+}
 
-  var json = JSON.stringify(result, null, 2);
-  pushToGitHub(logs.date, json);
+function processDate(date) {
+  Logger.log("📬 Buscando logs de Atenti para " + date + "...");
+  var logs = fetchLogsForDate(date);
+  if (!logs) { Logger.log("⚠️  No se encontraron logs para " + date); return false; }
+  Logger.log("📦 Logs encontrados. Analizando...");
+  var result = buildResult(logs);
+  pushToGitHub(logs.date, JSON.stringify(result, null, 2));
+  Logger.log("✅ " + logs.date + " | Chat: " + result.chat.llamadas + " llamadas | Carritos: " + result.agregar.total_agregados + " ($" + result.agregar.valor_total + ")");
+  return true;
+}
 
-  Logger.log("✅ Listo para " + logs.date
-    + " | Chat: " + result.chat.llamadas + " llamadas"
-    + " | Carritos: " + result.agregar.total_agregados
-    + " ($" + result.agregar.valor_total + ")");
+// ---------------------------------------------------------------------------
+// Backfill completo — lee TODOS los mails disponibles (diarios + históricos)
+// ---------------------------------------------------------------------------
+function runFullBackfill() {
+  Logger.log("🔍 Recolectando todas las fechas disponibles...");
+  var dates = {}; // { "YYYY-MM-DD": true }
+
+  // 1 — Mails de backfill histórico: zip externo que contiene un zip por día
+  var bfThreads = GmailApp.search('subject:"' + BACKFILL_SUBJECT + '" has:attachment', 0, 20);
+  for (var ti = 0; ti < bfThreads.length; ti++) {
+    var msgs = bfThreads[ti].getMessages();
+    for (var mi = 0; mi < msgs.length; mi++) {
+      var atts = msgs[mi].getAttachments();
+      for (var ai = 0; ai < atts.length; ai++) {
+        if (!atts[ai].getName().toLowerCase().endsWith(".zip")) continue;
+        try {
+          var outer = atts[ai].copyBlob().setContentType("application/zip");
+          var inner = Utilities.unzip(outer);
+          for (var bi = 0; bi < inner.length; bi++) {
+            var name = inner[bi].getName().toLowerCase();
+            var fnMatch = name.match(/logs_(\d{4})(\d{2})(\d{2})\.zip/);
+            if (!fnMatch) continue;
+            // El nombre es la fecha del MAIL (= fecha del dato + 1 día)
+            var mailDate = new Date(Date.UTC(+fnMatch[1], +fnMatch[2]-1, +fnMatch[3]));
+            var dataDate = new Date(mailDate.getTime() - 86400*1000);
+            dates[Utilities.formatDate(dataDate, "UTC", "yyyy-MM-dd")] = true;
+          }
+        } catch(e) { Logger.log("Error zip backfill: " + e.message); }
+      }
+    }
+  }
+
+  // 2 — Mails diarios: busca hasta 500 mails sin ventana de fechas
+  var dailyThreads = GmailApp.search(
+    'from:' + SENDER + ' subject:"' + DAILY_SUBJECT + '" has:attachment', 0, 500);
+  for (var dt = 0; dt < dailyThreads.length; dt++) {
+    var dMsgs = dailyThreads[dt].getMessages();
+    for (var dm = 0; dm < dMsgs.length; dm++) {
+      var dAtts = dMsgs[dm].getAttachments();
+      for (var da = 0; da < dAtts.length; da++) {
+        var dName = dAtts[da].getName().toLowerCase();
+        var dMatch = dName.match(/logs_(\d{4})(\d{2})(\d{2})\.zip/);
+        if (!dMatch) continue;
+        var mailDt2  = new Date(Date.UTC(+dMatch[1], +dMatch[2]-1, +dMatch[3]));
+        var dataDt2  = new Date(mailDt2.getTime() - 86400*1000);
+        dates[Utilities.formatDate(dataDt2, "UTC", "yyyy-MM-dd")] = true;
+      }
+    }
+  }
+
+  var sortedDates = Object.keys(dates).sort();
+  Logger.log("📅 " + sortedDates.length + " fechas encontradas: " + sortedDates[0] + " → " + sortedDates[sortedDates.length-1]);
+
+  var ok = 0, fail = 0, notFound = 0;
+  for (var i = 0; i < sortedDates.length; i++) {
+    var d = sortedDates[i];
+    try {
+      var found = processDate(d);
+      if (found) ok++; else notFound++;
+    } catch(e) {
+      Logger.log("❌ " + d + ": " + e.message);
+      fail++;
+    }
+    Utilities.sleep(1500); // pausa entre requests a GitHub API
+  }
+
+  Logger.log("🏁 Backfill terminado: " + ok + " subidos | " + notFound + " sin mail | " + fail + " errores");
 }
 
 // ---------------------------------------------------------------------------
