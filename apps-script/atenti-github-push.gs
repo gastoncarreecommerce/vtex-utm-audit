@@ -11,8 +11,9 @@
  *   1. script.google.com → Nuevo proyecto → pegar este archivo.
  *   2. Engranaje (⚙) → Propiedades del proyecto → Propiedades de secuencia
  *      de comandos → añadir:
- *        GITHUB_TOKEN  =  ghp_...  (token GitHub con permiso "contents:write")
- *        GITHUB_REPO   =  gastoncarreecommerce/vtex-utm-audit
+ *        GITHUB_TOKEN        =  ghp_...  (token con "contents:write" en ambos repos)
+ *        GITHUB_REPO         =  gastoncarreecommerce/vtex-utm-audit
+ *        GITHUB_PRIVATE_REPO =  gastoncarreecommerce/atenti-logs-raw
  *   3. Ejecutar setupTrigger() una sola vez desde el editor para instalar
  *      el trigger diario. Autorizar los permisos de Gmail cuando pregunte.
  *   4. Opcional: ejecutar runForDate("2025-06-20") para backfill manual.
@@ -93,6 +94,7 @@ function processDate(date) {
   Logger.log("📦 Logs encontrados. Analizando...");
   var result = buildResult(logs);
   pushToGitHub(logs.date, JSON.stringify(result, null, 2));
+  pushRawLogsToPrivateRepo(logs.date, logs);
   Logger.log("✅ " + logs.date + " | Chat: " + result.chat.llamadas + " llamadas | Carritos: " + result.agregar.total_agregados + " ($" + result.agregar.valor_total + ")");
   return true;
 }
@@ -167,7 +169,7 @@ function runFullBackfill() {
 }
 
 // ---------------------------------------------------------------------------
-// GitHub API — sube el JSON al repo
+// GitHub API — sube el JSON al repo público (solo métricas agregadas, sin PII)
 // ---------------------------------------------------------------------------
 function pushToGitHub(date, jsonContent) {
   var props = PropertiesService.getScriptProperties();
@@ -209,6 +211,57 @@ function pushToGitHub(date, jsonContent) {
     throw new Error("GitHub API " + code + ": " + putResp.getContentText().slice(0, 300));
   }
   Logger.log("💾 Pusheado: " + filePath);
+}
+
+// ---------------------------------------------------------------------------
+// GitHub API — sube los logs crudos al repo privado (contienen PII)
+// ---------------------------------------------------------------------------
+function pushRawLogsToPrivateRepo(date, logs) {
+  var props       = PropertiesService.getScriptProperties();
+  var token       = props.getProperty("GITHUB_TOKEN");
+  var privateRepo = props.getProperty("GITHUB_PRIVATE_REPO") || "gastoncarreecommerce/atenti-logs-raw";
+  if (!token) throw new Error("Falta GITHUB_TOKEN en Script Properties");
+
+  var headers = {
+    "Authorization": "token " + token,
+    "User-Agent":    "Apps-Script-Atenti",
+    "Content-Type":  "application/json"
+  };
+
+  var files = [
+    { name: "chat.log",             content: logs.chatLog            || "" },
+    { name: "login.log",            content: logs.loginLog           || "" },
+    { name: "agregar.log",          content: logs.agregarLog         || "" },
+    { name: "categorizar.log",      content: logs.categorizarLog     || "" },
+    { name: "buscar_eans.log",      content: logs.buscarEansLog      || "" },
+    { name: "buscar_similares.log", content: logs.buscarSimilaresLog || "" },
+    { name: "origen.log",           content: logs.origenLog          || "" }
+  ];
+
+  for (var fi = 0; fi < files.length; fi++) {
+    var f = files[fi];
+    if (!f.content) continue;
+    var filePath = date + "/" + f.name;
+    var apiUrl   = "https://api.github.com/repos/" + privateRepo + "/contents/" + filePath;
+
+    var sha = null;
+    var getResp = UrlFetchApp.fetch(apiUrl, { method:"GET", headers:headers, muteHttpExceptions:true });
+    if (getResp.getResponseCode() === 200) sha = JSON.parse(getResp.getContentText()).sha;
+
+    var bytes   = Utilities.newBlob(f.content, "text/plain").getBytes();
+    var b64     = Utilities.base64Encode(bytes);
+    var payload = { message: "logs(atenti): " + date + " " + f.name, content: b64 };
+    if (sha) payload.sha = sha;
+
+    var putResp = UrlFetchApp.fetch(apiUrl, { method:"PUT", headers:headers, payload:JSON.stringify(payload), muteHttpExceptions:true });
+    var code = putResp.getResponseCode();
+    if (code !== 200 && code !== 201) {
+      Logger.log("⚠️  Error subiendo " + f.name + ": " + putResp.getContentText().slice(0, 200));
+    } else {
+      Logger.log("🔒 " + privateRepo + "/" + filePath);
+    }
+    Utilities.sleep(300);
+  }
 }
 
 // ---------------------------------------------------------------------------
