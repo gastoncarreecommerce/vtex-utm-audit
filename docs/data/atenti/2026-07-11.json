@@ -1,0 +1,365 @@
+{
+  "date": "2026-07-11",
+  "chat": {
+    "llamadas": 51,
+    "usuarios_unicos": 27,
+    "con_productos_identificados": 16,
+    "con_sugerencia": 3,
+    "por_hora": [
+      0,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      8,
+      2,
+      5,
+      10,
+      2,
+      4,
+      1,
+      1,
+      1,
+      5,
+      2,
+      4,
+      0,
+      0
+    ],
+    "errores": 19
+  },
+  "categorizar": {
+    "total": 13,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Hola, quiero 8 cervezas al domicilio en calle San Luis 1659,San Juan, San Juan, Argentina",
+        "count": 1
+      },
+      {
+        "key": "8 rubias",
+        "count": 1
+      },
+      {
+        "key": "Estoy buscando picaduras, fiambres quesos ",
+        "count": 1
+      },
+      {
+        "key": "Busco ya armados",
+        "count": 1
+      },
+      {
+        "key": "Picaditas armadas no hay ?",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer un budín de limón me armas un carrito con lo que necesito",
+        "count": 1
+      },
+      {
+        "key": "Pan sin tacc",
+        "count": 1
+      },
+      {
+        "key": "Vos podrias ayudarme a ver si tengo puesto en mi carrito este producto: bolitas dulces (bolsa grande)",
+        "count": 1
+      },
+      {
+        "key": "Dale, gracias Atenti, cualquier cosa regreso luego 👍",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "quesos",
+        "count": 2
+      },
+      {
+        "key": "bolitas dulces",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "cerveza",
+        "count": 1
+      },
+      {
+        "key": "cerveza rubia",
+        "count": 1
+      },
+      {
+        "key": "productos más comprados",
+        "count": 1
+      },
+      {
+        "key": "fiambres",
+        "count": 1
+      },
+      {
+        "key": "picada",
+        "count": 1
+      },
+      {
+        "key": "picada armada",
+        "count": 1
+      },
+      {
+        "key": "fiambres feteados",
+        "count": 1
+      },
+      {
+        "key": "aceitunas",
+        "count": 1
+      },
+      {
+        "key": "harina leudante",
+        "count": 1
+      },
+      {
+        "key": "azúcar",
+        "count": 1
+      },
+      {
+        "key": "huevos",
+        "count": 1
+      },
+      {
+        "key": "manteca",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 30,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "quesos",
+        "count": 2
+      },
+      {
+        "key": "bolitas dulces",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "cerveza",
+        "count": 1
+      },
+      {
+        "key": "cerveza rubia",
+        "count": 1
+      },
+      {
+        "key": "productos mas comprados",
+        "count": 1
+      },
+      {
+        "key": "fiambres",
+        "count": 1
+      },
+      {
+        "key": "picada",
+        "count": 1
+      },
+      {
+        "key": "picada armada",
+        "count": 1
+      },
+      {
+        "key": "fiambres feteados",
+        "count": 1
+      },
+      {
+        "key": "aceitunas",
+        "count": 1
+      },
+      {
+        "key": "harina leudante",
+        "count": 1
+      },
+      {
+        "key": "huevos",
+        "count": 1
+      },
+      {
+        "key": "manteca",
+        "count": 1
+      },
+      {
+        "key": "azucar",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Fiambres feteados",
+        "count": 3
+      },
+      {
+        "key": "Cervezas",
+        "count": 2
+      },
+      {
+        "key": "Quesos duros y semi duros",
+        "count": 2
+      },
+      {
+        "key": "Aceitunas y encurtidos",
+        "count": 2
+      },
+      {
+        "key": "Complementos",
+        "count": 2
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 2
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 2
+      },
+      {
+        "key": "Comidas instantaneas",
+        "count": 1
+      },
+      {
+        "key": "Otros snacks salados",
+        "count": 1
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 8,
+    "valor_total": 528594.19,
+    "ticket_promedio": 66074.27,
+    "descuento_total": 160047.39,
+    "canal": {
+      "inmediato": 0,
+      "programado": 8
+    },
+    "top_productos": [
+      {
+        "key": "Galletitas crackers Traviata + Kesitas 96 g.",
+        "count": 28
+      },
+      {
+        "key": "Queso crema Casancrem clásico 500 grs",
+        "count": 14
+      },
+      {
+        "key": "Yogur Griego natural sin endulzar Yogurísimo 300 grs",
+        "count": 14
+      },
+      {
+        "key": "Galletitas crackers Traviata Rex x3 288 grs",
+        "count": 14
+      },
+      {
+        "key": "Arroz parboil Gallo oro en bolsa 500 g.",
+        "count": 14
+      },
+      {
+        "key": "Tomate perita cubeteado Arcor 400 g.",
+        "count": 14
+      },
+      {
+        "key": "Gaseosa cola Pepsi Black pet 2 lts",
+        "count": 12
+      },
+      {
+        "key": "Servilletas Carrefour Essential 70 uni",
+        "count": 10
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 7
+      },
+      {
+        "key": "Bizcochos 9 de Oro agridulces 200 g.",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Galletitas de agua",
+        "count": 42
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 20
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 16
+      },
+      {
+        "key": "Cervezas",
+        "count": 16
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 16
+      },
+      {
+        "key": "Arroz",
+        "count": 15
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 14
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 14
+      },
+      {
+        "key": "Verduras",
+        "count": 13
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 0,
+    "top_marcas": [],
+    "top_categorias": [],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 85,
+    "carrito_promedio": 54799.33,
+    "pct_con_carrito": 59.2,
+    "errores": 10
+  },
+  "origen": {
+    "total_requests": 152,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-13T20:08:56.281Z"
+}
