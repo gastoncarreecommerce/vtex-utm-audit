@@ -58,9 +58,6 @@ function enumerateDates(from, to) {
 
 export default async function handler(req, res) {
   if (!verifyToken(req)) return res.status(401).json({ error: "No autorizado" });
-  if (!process.env.GMAIL_CLIENT_ID || !process.env.GMAIL_CLIENT_SECRET || !process.env.GMAIL_REFRESH_TOKEN) {
-    return res.status(500).json({ error: "Faltan credenciales de Gmail en las env vars de Vercel" });
-  }
 
   res.setHeader("Cache-Control", "no-store");
   const { date, dni, from, to, format } = req.query;
