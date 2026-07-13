@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "engines": { "node": "24.x" },
   "dependencies": {
-    "googleapis": "^144.0.0",
-    "adm-zip": "^0.5.16"
+    "googleapis": "^144.0.0"
   }
 }
