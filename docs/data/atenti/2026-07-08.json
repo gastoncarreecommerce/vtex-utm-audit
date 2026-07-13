@@ -1,0 +1,415 @@
+{
+  "date": "2026-07-08",
+  "chat": {
+    "llamadas": 96,
+    "usuarios_unicos": 41,
+    "con_productos_identificados": 46,
+    "con_sugerencia": 12,
+    "por_hora": [
+      3,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      11,
+      12,
+      1,
+      6,
+      6,
+      3,
+      4,
+      3,
+      11,
+      5,
+      13,
+      2,
+      3,
+      10
+    ],
+    "errores": 25
+  },
+  "categorizar": {
+    "total": 36,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Las tres niñas",
+        "count": 2
+      },
+      {
+        "key": "Hola atenti! Realice mi pedido on line para que me lo entreguen el viernes Pero me olvidé de comprar leche larga vida... Puedo agregar? La compra anterior ya la pague",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer una fiesta de tacos para 5 personas",
+        "count": 1
+      },
+      {
+        "key": "Figuritas panini",
+        "count": 1
+      },
+      {
+        "key": "Figuritas ",
+        "count": 1
+      },
+      {
+        "key": "Alimento para perros ",
+        "count": 1
+      },
+      {
+        "key": "Seco y el mejor precio o sea el más barato por kilo ",
+        "count": 1
+      },
+      {
+        "key": "Leche",
+        "count": 1
+      },
+      {
+        "key": "Oferta Deslactosada ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 4
+      },
+      {
+        "key": "leche baja en lactosa",
+        "count": 4
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "crema de leche",
+        "count": 2
+      },
+      {
+        "key": "leche común",
+        "count": 2
+      },
+      {
+        "key": "leche las tres niñas",
+        "count": 2
+      },
+      {
+        "key": "café",
+        "count": 2
+      },
+      {
+        "key": "papel higiénico",
+        "count": 2
+      },
+      {
+        "key": "leche descremada sachet",
+        "count": 2
+      },
+      {
+        "key": "leche descremada en sachet",
+        "count": 2
+      },
+      {
+        "key": "leche con proteinas",
+        "count": 2
+      },
+      {
+        "key": "leche larga vida",
+        "count": 1
+      },
+      {
+        "key": "leche entera",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 151,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 4
+      },
+      {
+        "key": "leche baja en lactosa",
+        "count": 4
+      },
+      {
+        "key": "leche con proteinas",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "crema de leche",
+        "count": 2
+      },
+      {
+        "key": "leche comun",
+        "count": 2
+      },
+      {
+        "key": "leche las tres ninas",
+        "count": 2
+      },
+      {
+        "key": "cafe",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "leche descremada sachet",
+        "count": 2
+      },
+      {
+        "key": "leche descremada en sachet",
+        "count": 2
+      },
+      {
+        "key": "banana",
+        "count": 1
+      },
+      {
+        "key": "jugo de manzana",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 17
+      },
+      {
+        "key": "Leches enteras",
+        "count": 16
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 14
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 7
+      },
+      {
+        "key": "Verduras",
+        "count": 6
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 6
+      },
+      {
+        "key": "Legumbres",
+        "count": 4
+      },
+      {
+        "key": "Alfajores",
+        "count": 4
+      },
+      {
+        "key": "Jugos listos",
+        "count": 3
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 3
+      }
+    ],
+    "errores": 4
+  },
+  "agregar": {
+    "total_agregados": 15,
+    "valor_total": 2787576.69,
+    "ticket_promedio": 185838.45,
+    "descuento_total": 357374.45,
+    "canal": {
+      "inmediato": 0,
+      "programado": 15
+    },
+    "top_productos": [
+      {
+        "key": "Leche ulta parcial descremada Carrefour classic sachet 1 lt.",
+        "count": 36
+      },
+      {
+        "key": "Yogur Griego con Arándanos Yogurísimo 125 grs",
+        "count": 30
+      },
+      {
+        "key": "Leche La serenisima liviana 1% 1L",
+        "count": 20
+      },
+      {
+        "key": "Agua mineralizada sin gas Glaciar bajo sodio bidón 6,3 lts",
+        "count": 20
+      },
+      {
+        "key": "Yogur Griego con Frutilla Yogurísimo 125 grs",
+        "count": 20
+      },
+      {
+        "key": "Fideos tallarines N5 Matarazzo 500 g.",
+        "count": 20
+      },
+      {
+        "key": "Jugo natural Smudis de naranja brick 1 lt.",
+        "count": 20
+      },
+      {
+        "key": "Manzana roja Huella Natural x kg.",
+        "count": 20
+      },
+      {
+        "key": "Gaseosa cola regular Pepsi 2 lts.",
+        "count": 15
+      },
+      {
+        "key": "Agua saborizada de naranja Levité 2,25 lts",
+        "count": 15
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 75
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 65
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 60
+      },
+      {
+        "key": "Verduras",
+        "count": 30
+      },
+      {
+        "key": "Frutas",
+        "count": 30
+      },
+      {
+        "key": "Fideos largos",
+        "count": 22
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 20
+      },
+      {
+        "key": "Jugos listos",
+        "count": 20
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 17
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 16
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 7,
+    "top_marcas": [
+      {
+        "key": "Las Tres Niñas",
+        "count": 18
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "Tregar",
+        "count": 4
+      },
+      {
+        "key": "Tonadita",
+        "count": 3
+      },
+      {
+        "key": "Primer Premio",
+        "count": 2
+      },
+      {
+        "key": "Criollitas",
+        "count": 2
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      },
+      {
+        "key": "Conaprole",
+        "count": 1
+      },
+      {
+        "key": "Ilolay",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 37
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 144,
+    "carrito_promedio": 61995.5,
+    "pct_con_carrito": 53.3,
+    "errores": 33
+  },
+  "origen": {
+    "total_requests": 204,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-13T20:08:45.106Z"
+}
