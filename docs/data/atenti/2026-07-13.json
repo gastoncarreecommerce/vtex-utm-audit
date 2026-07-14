@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-13",
+  "chat": {
+    "llamadas": 93,
+    "usuarios_unicos": 39,
+    "con_productos_identificados": 55,
+    "con_sugerencia": 10,
+    "por_hora": [
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      1,
+      4,
+      0,
+      1,
+      6,
+      5,
+      3,
+      12,
+      4,
+      7,
+      3,
+      1,
+      12,
+      12,
+      0,
+      9,
+      7
+    ],
+    "errores": 15
+  },
+  "categorizar": {
+    "total": 46,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Necesito saver si en la sucursal de la av españa hay salchichas marca carcaraña",
+        "count": 1
+      },
+      {
+        "key": "Salchichas carcaraña",
+        "count": 1
+      },
+      {
+        "key": "harina ",
+        "count": 1
+      },
+      {
+        "key": "Hola! Busco sancor bebe 1",
+        "count": 1
+      },
+      {
+        "key": "Que sucursulaes tienen stock? Asi puedo retirar. ",
+        "count": 1
+      },
+      {
+        "key": "En qie sucursal la puedo retirar hoy?",
+        "count": 1
+      },
+      {
+        "key": "Vasos",
+        "count": 1
+      },
+      {
+        "key": "Agregar el último carrito",
+        "count": 1
+      },
+      {
+        "key": "Queso crema",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "leche infantil etapa 1",
+        "count": 3
+      },
+      {
+        "key": "cerveza blanca",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "agua mineral 6 litros",
+        "count": 3
+      },
+      {
+        "key": "caballa",
+        "count": 3
+      },
+      {
+        "key": "salchichas",
+        "count": 2
+      },
+      {
+        "key": "harina",
+        "count": 2
+      },
+      {
+        "key": "agua saborizada manzana",
+        "count": 2
+      },
+      {
+        "key": "ravioles",
+        "count": 2
+      },
+      {
+        "key": "yogur entero",
+        "count": 2
+      },
+      {
+        "key": "puré de tomate",
+        "count": 2
+      },
+      {
+        "key": "toallas femeninas",
+        "count": 2
+      },
+      {
+        "key": "huevo de chocolate",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 126,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche infantil etapa 1",
+        "count": 3
+      },
+      {
+        "key": "cerveza blanca",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "agua mineral 6 litros",
+        "count": 3
+      },
+      {
+        "key": "caballa",
+        "count": 3
+      },
+      {
+        "key": "salchichas",
+        "count": 2
+      },
+      {
+        "key": "agua saborizada manzana",
+        "count": 2
+      },
+      {
+        "key": "huevo de chocolate",
+        "count": 2
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "toallas femeninas",
+        "count": 2
+      },
+      {
+        "key": "yogur entero",
+        "count": 2
+      },
+      {
+        "key": "ravioles",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 9
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 7
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 6
+      },
+      {
+        "key": "Leches enteras",
+        "count": 5
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 5
+      },
+      {
+        "key": "Cervezas",
+        "count": 4
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 4
+      },
+      {
+        "key": "Azucar",
+        "count": 4
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 4
+      },
+      {
+        "key": "Alimentos secos para gatos",
+        "count": 4
+      }
+    ],
+    "errores": 90
+  },
+  "agregar": {
+    "total_agregados": 7,
+    "valor_total": 344727.6,
+    "ticket_promedio": 49246.8,
+    "descuento_total": 448.2,
+    "canal": {
+      "inmediato": 0,
+      "programado": 7
+    },
+    "top_productos": [
+      {
+        "key": "Agua mineral sin gas Villavicencio 2 lts",
+        "count": 48
+      },
+      {
+        "key": "Zapallito redondo x kg.",
+        "count": 6
+      },
+      {
+        "key": "Asadera Fuente Alta 27X18 Cm C Antiadherente P Horno Panelux",
+        "count": 4
+      },
+      {
+        "key": "Pollo entero congelado x kg.",
+        "count": 3
+      },
+      {
+        "key": "Yogur bebible entero Carrefour Classic sabor vainilla 900 ml",
+        "count": 2
+      },
+      {
+        "key": "Leche en polvo advanced Sancor Bebé Etapa 1 800 grs",
+        "count": 1
+      },
+      {
+        "key": "Colita de cuadril Huella Natural x kg.",
+        "count": 1
+      },
+      {
+        "key": "Jamón cocido feteado Bulnez 150 grs",
+        "count": 1
+      },
+      {
+        "key": "Queso tybo Bulnez feteados 150 grs",
+        "count": 1
+      },
+      {
+        "key": "Acondicionador Sedal crema balance 190 cc.",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 48
+      },
+      {
+        "key": "Verduras",
+        "count": 6
+      },
+      {
+        "key": "Ollas, sartenes y fuentes",
+        "count": 4
+      },
+      {
+        "key": "Pollo",
+        "count": 3
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 2
+      },
+      {
+        "key": "Cereales",
+        "count": 2
+      },
+      {
+        "key": "Leches infantiles",
+        "count": 1
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 1
+      },
+      {
+        "key": "Fiambres feteados",
+        "count": 1
+      },
+      {
+        "key": "Quesos feteados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 13
+      },
+      {
+        "key": "Takis",
+        "count": 8
+      },
+      {
+        "key": "Genérico",
+        "count": 7
+      },
+      {
+        "key": "Ala",
+        "count": 7
+      },
+      {
+        "key": "Exquisita",
+        "count": 6
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Granja Tres Arroyos",
+        "count": 2
+      },
+      {
+        "key": "Maizena",
+        "count": 2
+      },
+      {
+        "key": "Mamá Cocina",
+        "count": 2
+      },
+      {
+        "key": "Gomes Da Costa",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 39
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 11
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 9
+      },
+      {
+        "key": "Limpieza",
+        "count": 8
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 117,
+    "carrito_promedio": 44534.67,
+    "pct_con_carrito": 48.3,
+    "errores": 3
+  },
+  "origen": {
+    "total_requests": 154,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-14T12:42:38.565Z"
+}
