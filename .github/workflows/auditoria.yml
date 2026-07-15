@@ -15,6 +15,9 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Instalar dependencias
+        run: npm install
+
       - name: Correr auditoria Janis
         env:
           JANIS_API_KEY: ${{ secrets.JANIS_API_KEY }}
@@ -30,7 +33,7 @@ jobs:
         with:
           name: resultados-auditoria
           path: |
-            meli0002-completo.csv
-            meli0002-desfasados.csv
-            meli0002-pegados.csv
+            meli0002-completo.xlsx
+            meli0002-desfasados.xlsx
+            meli0002-pegados.xlsx
           if-no-files-found: warn
