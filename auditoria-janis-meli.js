@@ -144,26 +144,18 @@ async function run() {
     const hexId    = String(p.sku || p.skuId || p._id || '');
     const info     = skuMap.get(hexId) || { ean: '', nombre: '', skuVtex: '' };
     const status   = p.status || 'active';
-    const dateModStr = p.updatedAt || p.date || p.createdAt || '';
+    const dateModStr = p.dateModified || p.updatedAt || p.date || p.createdAt || '';
     const dateMod  = dateModStr ? new Date(dateModStr) : null;
     const diasSin  = dateMod && !isNaN(dateMod)
       ? Math.floor((runDate - dateMod) / 86400000) : '';
 
-    // precio_janis_meli en centavos → convertir a pesos si >1000 comparado a VTEX
-    // El xlsx muestra valores como 15990 → asumimos que la API devuelve en centavos y /100, o ya en pesos.
-    // Tomamos el valor tal cual y si es >1000x el esperado lo dividimos.
-    let precioJanis = Number(p.price ?? p.value ?? p.basePrice ?? 0);
-    // Si la API devuelve en centavos (precio > 100000 para productos normales), dividir por 100
-    if (precioJanis > 0 && precioJanis >= 100000 && precioJanis % 1 === 0) {
-      precioJanis = precioJanis / 100;
-    }
-    precioJanis = Math.round(precioJanis * 100) / 100;
+    // Precio Janis ya está en pesos ARS (confirmado por la API: "price": 2490)
+    const precioJanis = Math.round(Number(p.price ?? p.value ?? p.basePrice ?? 0) * 100) / 100;
 
-    // VTEX price
+    // VTEX price: basePrice está en pesos ARS
     const vData = info.skuVtex ? vtexPrices.get(info.skuVtex) : undefined;
     let precioVtex = null;
     if (vData) {
-      // VTEX pricing API: basePrice, costPrice, markup, listPrice, sellingPrice
       precioVtex = Number(vData.basePrice ?? vData.listPrice ?? vData.sellingPrice ?? 0) || null;
     }
 
@@ -171,14 +163,9 @@ async function run() {
     let estado     = '';
     if (precioVtex != null) {
       diferencia = Math.round((precioVtex - precioJanis) * 100) / 100;
-      if (diferencia < 0) {
-        estado = 'MELI MAS BARATO (riesgo)';
-      } else {
-        estado = 'OK';
-      }
+      estado = diferencia < 0 ? 'MELI MAS BARATO (riesgo)' : 'OK';
     } else {
-      diferencia = '';
-      estado     = 'SIN PRECIO EN VTEX';
+      estado = 'SIN PRECIO EN VTEX';
     }
 
     const row = csvRow([
