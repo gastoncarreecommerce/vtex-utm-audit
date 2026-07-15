@@ -1,9 +1,11 @@
 /**
  * auditoria-janis-meli.js
- * Genera 3 xlsx comparando precios Janis-MELI vs VTEX:
+ * Compara, EAN por EAN, el precio del price-sheet MELI de Janis contra el precio
+ * del seller carrefourar0002 en VTEX, y reporta cuáles están desfasados y hace
+ * cuánto no se actualiza el precio de Janis. Genera 3 xlsx:
  *   meli0002-completo.xlsx     — todos los SKUs del price-sheet
  *   meli0002-pegados.xlsx      — solo status "active"
- *   meli0002-desfasados.xlsx   — solo estado "MELI MAS BARATO (riesgo)"
+ *   meli0002-desfasados.xlsx   — solo los que NO matchean (MELI más barato/caro)
  */
 
 import { utils, writeFile } from 'xlsx';
@@ -11,12 +13,17 @@ import { utils, writeFile } from 'xlsx';
 const JANIS_KEY    = process.env.JANIS_API_KEY;
 const JANIS_SECRET = process.env.JANIS_API_SECRET;
 const JANIS_CLIENT = process.env.JANIS_CLIENT;
-const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 
 const PRICE_SHEET      = '68cd5054eaa341977f783fef';
 const VTEX_CONCURRENCY = 20;
+
+// En VTEX el precio no varía por política comercial, solo por seller/tienda.
+// El seller a revisar en esta auditoría es carrefourar0002 (mismo "0002" que
+// el price-sheet meli0002). Consultamos el pricing de esa cuenta.
+// Las credenciales VTEX_APP_KEY / VTEX_APP_TOKEN deben ser válidas para ella.
+const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT || 'carrefourar0002';
 
 const JANIS_H = {
   'Content-Type':     'application/json',
@@ -69,6 +76,18 @@ async function vtexPrice(skuId) {
   return res.json();
 }
 
+// Precio de venta del seller en VTEX. No varía por política comercial, así que
+// tomamos el basePrice del pricing de la cuenta (con fallback defensivo).
+function vtexSellerPrice(vData) {
+  if (!vData) return null;
+  let v = Number(vData.basePrice ?? 0);
+  if (!(v > 0)) {
+    const fixed = Array.isArray(vData.fixedPrices) ? vData.fixedPrices : [];
+    v = Number(fixed[0]?.value ?? vData.listPrice ?? 0);
+  }
+  return v > 0 ? v : null;
+}
+
 async function batchVtex(skuIds) {
   const results = new Map();
   for (let i = 0; i < skuIds.length; i += VTEX_CONCURRENCY) {
@@ -98,6 +117,7 @@ function writeXlsx(filename, sheetName, rows) {
 
 async function run() {
   const runDate = new Date();
+  console.log(`Seller VTEX a revisar: ${VTEX_ACCOUNT}`);
 
   // 1. Precios Janis MELI
   console.log('1/4 Obteniendo precios Janis MELI...');
@@ -158,7 +178,13 @@ async function run() {
   if (vtexIds.size > 0) {
     vtexPrices = await batchVtex([...vtexIds]);
     const encontrados = [...vtexPrices.values()].filter(v => v != null).length;
-    console.log(`   VTEX: ${encontrados} con precio, ${vtexIds.size - encontrados} sin precio`);
+    console.log(`   VTEX: ${encontrados} respondieron, ${vtexIds.size - encontrados} sin registro (404)`);
+    // Debug: estructura de la primera respuesta VTEX con datos, para ver fixedPrices
+    const sample = [...vtexPrices.values()].find(v => v != null);
+    if (sample) {
+      console.log('   Debug VTEX[0]:', JSON.stringify(sample).slice(0, 600));
+      console.log('   Debug precio seller:', vtexSellerPrice(sample));
+    }
   }
 
   // 4. Armar filas y escribir xlsx
@@ -184,16 +210,20 @@ async function run() {
 
     const precioJanis = Math.round(Number(p.price ?? p.value ?? p.basePrice ?? 0) * 100) / 100;
 
-    const vData    = info.skuVtex ? vtexPrices.get(info.skuVtex) : undefined;
-    let precioVtex = null;
-    if (vData) {
-      precioVtex = Number(vData.basePrice ?? vData.listPrice ?? vData.sellingPrice ?? 0) || null;
-    }
+    const vData      = info.skuVtex ? vtexPrices.get(info.skuVtex) : undefined;
+    const precioVtex = vtexSellerPrice(vData);
 
+    // diferencia = precio_vtex - precio_janis_meli
+    //   > 0  → VTEX cobra más caro que MELI  → MELI MÁS BARATO (riesgo: se vende
+    //          más barato en MercadoLibre que en la web)
+    //   < 0  → VTEX cobra más barato que MELI → MELI MÁS CARO
+    //   = 0  → precios alineados → OK
     let diferencia, estado;
     if (precioVtex != null) {
       diferencia = Math.round((precioVtex - precioJanis) * 100) / 100;
-      estado     = diferencia < 0 ? 'MELI MAS BARATO (riesgo)' : 'OK';
+      if (Math.abs(diferencia) < 0.01)      estado = 'OK';
+      else if (diferencia > 0)              estado = 'MELI MAS BARATO (riesgo)';
+      else                                  estado = 'MELI MAS CARO';
     } else {
       diferencia = '';
       estado     = 'SIN PRECIO EN VTEX';
@@ -214,8 +244,8 @@ async function run() {
     ];
 
     allRows.push(row);
-    if (status === 'active')                       pegados.push(row);
-    if (estado === 'MELI MAS BARATO (riesgo)')     desfasados.push(row);
+    if (status === 'active')                                          pegados.push(row);
+    if (estado === 'MELI MAS BARATO (riesgo)' || estado === 'MELI MAS CARO') desfasados.push(row);
   }
 
   writeXlsx('meli0002-completo.xlsx',    'Completo',    allRows);
