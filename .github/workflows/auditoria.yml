@@ -2,6 +2,11 @@ name: Auditoria Precios Janis-MELI
 
 on:
   workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Registros a procesar (0 = todos; ej: 30 = prueba rápida)'
+        required: false
+        default: '0'
 
 jobs:
   ejecutar-auditoria:
@@ -26,6 +31,7 @@ jobs:
           VTEX_ACCOUNT: ${{ secrets.VTEX_ACCOUNT }}
           VTEX_APP_KEY: ${{ secrets.VTEX_APP_KEY }}
           VTEX_APP_TOKEN: ${{ secrets.VTEX_APP_TOKEN }}
+          LIMIT: ${{ github.event.inputs.limit }}
         run: node auditoria-janis-meli.js
 
       - name: Subir resultados como artefacto
