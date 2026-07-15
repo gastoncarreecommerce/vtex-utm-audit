@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-14",
+  "chat": {
+    "llamadas": 136,
+    "usuarios_unicos": 64,
+    "con_productos_identificados": 81,
+    "con_sugerencia": 12,
+    "por_hora": [
+      2,
+      0,
+      2,
+      0,
+      3,
+      0,
+      0,
+      2,
+      0,
+      0,
+      3,
+      3,
+      14,
+      14,
+      13,
+      2,
+      6,
+      13,
+      12,
+      14,
+      12,
+      9,
+      5,
+      7
+    ],
+    "errores": 31
+  },
+  "categorizar": {
+    "total": 70,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Aceite",
+        "count": 2
+      },
+      {
+        "key": "Recetas para una sola persona que es estudiante y no tiene mucho tiempo ",
+        "count": 1
+      },
+      {
+        "key": "Paleta feteada",
+        "count": 1
+      },
+      {
+        "key": "Quesos",
+        "count": 1
+      },
+      {
+        "key": "Mortadela",
+        "count": 1
+      },
+      {
+        "key": "Bueno quiero saber las mejores ofertas de leche",
+        "count": 1
+      },
+      {
+        "key": "Mi pedido",
+        "count": 1
+      },
+      {
+        "key": "Este fin de semana quiero festejarle el cumpleaños a mi sobrino y le quiero hacer un bizcochuelo. ¿Qué necesito? ",
+        "count": 1
+      },
+      {
+        "key": "Hola este fin de semana cumple años mi sobrino y quiero hacerle un bizcochuelo que necesito?",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 13
+      },
+      {
+        "key": "cebolla",
+        "count": 8
+      },
+      {
+        "key": "huevos",
+        "count": 8
+      },
+      {
+        "key": "azúcar",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "tender plegable de pie",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "queso",
+        "count": 6
+      },
+      {
+        "key": "morrón",
+        "count": 6
+      },
+      {
+        "key": "queso crema",
+        "count": 6
+      },
+      {
+        "key": "arroz",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "dulce de leche",
+        "count": 5
+      },
+      {
+        "key": "atún",
+        "count": 5
+      },
+      {
+        "key": "tapas para tarta",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 232,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 13
+      },
+      {
+        "key": "azucar",
+        "count": 8
+      },
+      {
+        "key": "cebolla",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "huevos",
+        "count": 7
+      },
+      {
+        "key": "tender plegable de pie",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "queso crema",
+        "count": 6
+      },
+      {
+        "key": "arroz",
+        "count": 5
+      },
+      {
+        "key": "queso",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "morron",
+        "count": 5
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 4
+      },
+      {
+        "key": "atun",
+        "count": 4
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 23
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 14
+      },
+      {
+        "key": "Azucar",
+        "count": 13
+      },
+      {
+        "key": "Leches enteras",
+        "count": 11
+      },
+      {
+        "key": "Huevos",
+        "count": 8
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 7
+      },
+      {
+        "key": "Fideos largos",
+        "count": 7
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 7
+      },
+      {
+        "key": "Arroz",
+        "count": 6
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 6
+      }
+    ],
+    "errores": 2
+  },
+  "agregar": {
+    "total_agregados": 40,
+    "valor_total": 1379021.09,
+    "ticket_promedio": 34475.53,
+    "descuento_total": 195383.9,
+    "canal": {
+      "inmediato": 0,
+      "programado": 38
+    },
+    "top_productos": [
+      {
+        "key": "Galletitas pepas Carrefour classic 300 g.",
+        "count": 70
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 36
+      },
+      {
+        "key": "Pimiento rojo x kg",
+        "count": 20
+      },
+      {
+        "key": "Leche chocolatada Las 3 niñas 200 cc.",
+        "count": 12
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 11
+      },
+      {
+        "key": "Cerveza Andes Ipa retornable 1 lt",
+        "count": 10
+      },
+      {
+        "key": "Puré de tomate Carrefour classic 520 g.",
+        "count": 8
+      },
+      {
+        "key": "Tapa para empanada criolla La salteña mas crocantes 12 uni",
+        "count": 7
+      },
+      {
+        "key": "Queso cremoso Cremac x kg.",
+        "count": 6
+      },
+      {
+        "key": "Agua tónica Carrefour Classic light 2,25 lts",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Galletitas dulces",
+        "count": 89
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 36
+      },
+      {
+        "key": "Verduras",
+        "count": 31
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 17
+      },
+      {
+        "key": "Pan para hamburguesas y panchos",
+        "count": 17
+      },
+      {
+        "key": "Cervezas",
+        "count": 16
+      },
+      {
+        "key": "Yerba",
+        "count": 15
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 15
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 14
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 14
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 22,
+    "top_marcas": [
+      {
+        "key": "La Serenísima",
+        "count": 17
+      },
+      {
+        "key": "Carrefour",
+        "count": 13
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 8
+      },
+      {
+        "key": "Imperial",
+        "count": 8
+      },
+      {
+        "key": "Paladini",
+        "count": 7
+      },
+      {
+        "key": "Nucete",
+        "count": 7
+      },
+      {
+        "key": "Casancrem",
+        "count": 6
+      },
+      {
+        "key": "Granja Del Sol",
+        "count": 6
+      },
+      {
+        "key": "Mendia",
+        "count": 5
+      },
+      {
+        "key": "Genérico",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 114
+      },
+      {
+        "key": "Bebidas",
+        "count": 28
+      },
+      {
+        "key": "Almacén",
+        "count": 21
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Congelados",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 117,
+    "carrito_promedio": 75469.92,
+    "pct_con_carrito": 57.3,
+    "errores": 20
+  },
+  "origen": {
+    "total_requests": 177,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-15T12:42:38.049Z"
+}
