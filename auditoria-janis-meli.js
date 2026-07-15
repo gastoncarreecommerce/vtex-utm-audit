@@ -1,23 +1,27 @@
 /**
  * auditoria-janis-meli.js
  * Compara, EAN por EAN, el precio del price-sheet MELI de Janis contra el precio
- * del seller carrefourar0002 en VTEX, y reporta cuáles están desfasados y hace
- * cuánto no se actualiza el precio de Janis.
+ * en VTEX (cuenta carrefourar), y reporta cuáles están desfasados y hace cuánto
+ * no se actualiza el precio de Janis.
  *
- * El SKU de Janis NO guarda el ID numérico de VTEX; solo tiene referenceId y
- * eans (el código de barras). Para consultar el precio en VTEX hay que resolver
- * primero ese referenceId/EAN → SKU ID de VTEX vía el catálogo de VTEX
- * (stockkeepingunitidsbyrefid), y recién ahí pedir el precio.
+ * Flujo (confirmado con probes):
+ *   1. Precios del price-sheet MELI de Janis (pricing.janis.in)          → precio_janis
+ *   2. Catálogo de SKUs de Janis (catalog.janis.in)   hex → EAN, nombre
+ *   3. EAN → skuId de VTEX vía catálogo (pub/products/search?fq=alternateIds_Ean)
+ *   4. skuId → precio VTEX (pricing/prices/{skuId}, basePrice)           → precio_vtex
+ *
+ * El SKU de Janis no guarda el skuId de VTEX; hay que resolver el EAN contra el
+ * catálogo de VTEX. El RefId de VTEX NO es el EAN (stockkeepingunitidsbyrefid da
+ * 404), por eso se busca por alternateIds_Ean. El precio no varía por política
+ * comercial, solo por cuenta/seller; usamos la cuenta del env VTEX_ACCOUNT.
  *
  * Genera 3 xlsx:
  *   meli0002-completo.xlsx     — todos los SKUs del price-sheet
  *   meli0002-pegados.xlsx      — solo status "active"
  *   meli0002-desfasados.xlsx   — los que NO matchean (MELI más barato o más caro)
  *
- * Env opcional LIMIT=30 → modo diagnóstico: procesa solo los primeros 30
- * registros (trae los SKUs por id, no pagina todo el catálogo) e imprime el
- * detalle de la resolución EAN→skuId. Ideal para validar rápido antes del run
- * completo. LIMIT=0 (default) = todos.
+ * Env LIMIT=N (opcional) → procesa solo N registros trayendo los SKUs por id
+ * (sin paginar todo el catálogo). Ideal para validar rápido. LIMIT=0 = todos.
  */
 
 import { utils, writeFile } from 'xlsx';
@@ -27,7 +31,7 @@ const JANIS_SECRET = process.env.JANIS_API_SECRET;
 const JANIS_CLIENT = process.env.JANIS_CLIENT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
-const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT || 'carrefourar0002';
+const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT || 'carrefourar';
 
 const PRICE_SHEET = '68cd5054eaa341977f783fef';
 const CONCURRENCY = 20;
@@ -56,8 +60,8 @@ async function janisGet(url, page, pageSize) {
   return { data: await res.json(), total: Number(res.headers.get('x-janis-total') || '0') };
 }
 
-// Pagina un endpoint de Janis. Intenta con pageSize; si el servicio lo rechaza
-// con 400 (el de pricing no lo soporta), reintenta sin ese header.
+// Pagina un endpoint de Janis. Intenta con pageSize; si lo rechaza con 400 (el
+// de pricing no lo soporta), reintenta sin ese header. Corta en página vacía.
 async function paginateAll(url, wantPageSize = 0) {
   let pageSize = wantPageSize, first;
   try { first = await janisGet(url, 1, pageSize || undefined); }
@@ -89,21 +93,23 @@ async function janisSkuById(hexId) {
 function skuInfo(s) {
   const ean = Array.isArray(s.eans) && s.eans[0] ? String(s.eans[0]) : '';
   const ref = s.referenceId != null ? String(s.referenceId) : '';
-  // Candidatos de RefId para buscar el skuId en VTEX (referenceId primero, luego EAN).
-  const refCandidates = [...new Set([ref, ean].filter(Boolean))];
-  return { ean: ean || ref, nombre: s.name || '', refCandidates };
+  return { ean: ean || ref, nombre: s.name || '' };
 }
 
 // ── VTEX ──────────────────────────────────────────────────────────────────────
 
-// EAN / RefId → array de skuIds de VTEX en la cuenta del seller.
-async function vtexSkuIdsByRefId(refId) {
-  const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitidsbyrefid/${encodeURIComponent(refId)}`;
+// EAN → skuId de VTEX buscando en el catálogo por alternateIds_Ean.
+async function vtexSkuIdByEan(ean) {
+  const url = `https://${VTEX_ACCOUNT}.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=alternateIds_Ean:${encodeURIComponent(ean)}&_from=0&_to=0`;
   const res = await fetch(url, { headers: VTEX_H });
-  if (res.status === 404) return [];
-  if (!res.ok) throw new Error(`refId ${refId} → ${res.status}`);
+  if (!res.ok) return null;
   const arr = await res.json().catch(() => []);
-  return Array.isArray(arr) ? arr.map(String) : [];
+  const items = [];
+  for (const prod of Array.isArray(arr) ? arr : [])
+    for (const it of prod.items || [])
+      items.push({ itemId: String(it.itemId), ean: it.ean });
+  const m = items.find(i => String(i.ean) === String(ean)) || items[0];
+  return m ? m.itemId : null;
 }
 
 async function vtexPrice(skuId) {
@@ -114,7 +120,7 @@ async function vtexPrice(skuId) {
   return res.json();
 }
 
-// Precio de venta del seller. No varía por política comercial; tomamos basePrice.
+// Precio de venta en VTEX. No varía por política comercial; tomamos basePrice.
 function vtexSellerPrice(v) {
   if (!v) return null;
   let n = Number(v.basePrice ?? 0);
@@ -125,44 +131,7 @@ function vtexSellerPrice(v) {
   return n > 0 ? n : null;
 }
 
-// GET crudo a VTEX: devuelve status + primeros chars del body, sin tirar error.
-async function vtexRaw(account, path) {
-  try {
-    const res  = await fetch(`https://${account}.vtexcommercestable.com.br${path}`, { headers: VTEX_H });
-    const body = await res.text();
-    return `${res.status} ${body.slice(0, 220).replace(/\s+/g, ' ')}`;
-  } catch (e) { return `ERR ${e.message}`; }
-}
-
-// EAN → skuIds de VTEX buscando en el catálogo de `account` por alternateIds_Ean.
-async function vtexSearchByEan(account, ean) {
-  const url = `https://${account}.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=alternateIds_Ean:${encodeURIComponent(ean)}&_from=0&_to=0`;
-  const res = await fetch(url, { headers: VTEX_H });
-  if (!res.ok) return { status: res.status, items: [] };
-  const arr = await res.json().catch(() => []);
-  const items = [];
-  for (const prod of Array.isArray(arr) ? arr : [])
-    for (const it of prod.items || [])
-      items.push({ itemId: String(it.itemId), ean: it.ean });
-  return { status: res.status, items };
-}
-
-// Resuelve el EAN a skuId (via search en `account`) y pide el precio de ese
-// skuId en las dos cuentas candidatas, para ver dónde vive el precio del seller.
-async function probeVtex(samples) {
-  console.log(`   VTEX_ACCOUNT secret == 'carrefourar0002'? ${VTEX_ACCOUNT === 'carrefourar0002'} (len=${(VTEX_ACCOUNT || '').length})`);
-  for (const ean of samples) {
-    console.log(`\n   ===== EAN ${ean} =====`);
-    const r = await vtexSearchByEan(VTEX_ACCOUNT, ean);
-    console.log(`   search@secret: ${r.status} items=${JSON.stringify(r.items)}`);
-    const skuId = (r.items.find(i => String(i.ean) === String(ean)) || r.items[0] || {}).itemId;
-    if (!skuId) { console.log('   (sin skuId)'); continue; }
-    console.log(`   skuId=${skuId} price@secret          → ` + await vtexRaw(VTEX_ACCOUNT, `/api/pricing/prices/${skuId}`));
-    console.log(`   skuId=${skuId} price@carrefourar0002  → ` + await vtexRaw('carrefourar0002', `/api/pricing/prices/${skuId}`));
-  }
-}
-
-// ── util concurrencia ──────────────────────────────────────────────────────────
+// ── util ───────────────────────────────────────────────────────────────────────
 
 async function mapPool(items, fn, onProgress) {
   const results = new Array(items.length);
@@ -190,70 +159,45 @@ function writeXlsx(filename, sheetName, rows) {
 // ── main ───────────────────────────────────────────────────────────────────────
 
 async function run() {
-  const runDate = new Date();
-  console.log(`Seller VTEX: ${VTEX_ACCOUNT}${LIMIT ? ` · MODO DIAGNÓSTICO (LIMIT=${LIMIT})` : ''}`);
-
+  const runDate  = new Date();
   const PRICE_URL = `https://pricing.janis.in/api/price?filters[priceSheet]=${PRICE_SHEET}`;
-
-  // MODO DIAGNÓSTICO: solo 1 página de precios, resuelve sus SKUs por id y
-  // prueba endpoints de VTEX contra ambas cuentas. Rápido, no arma xlsx.
-  if (LIMIT) {
-    const { data } = await janisGet(PRICE_URL, 1);
-    const prices   = data.slice(0, LIMIT);
-    const hexes    = [...new Set(prices.map(p => String(p.sku)))];
-    const skus     = await mapPool(hexes, h => janisSkuById(h));
-    const smap      = new Map();
-    hexes.forEach((h, k) => { if (skus[k]) smap.set(h, skuInfo(skus[k])); });
-    const samples  = [...new Set(prices.flatMap(p => smap.get(String(p.sku))?.refCandidates || []))].slice(0, 3);
-    console.log(`\n=== PROBE VTEX (muestras: ${samples.join(', ')}) ===`);
-    await probeVtex(samples);
-    console.log('\nProbe listo.');
-    return;
-  }
+  console.log(`VTEX account: ${VTEX_ACCOUNT === 'carrefourar' ? 'carrefourar' : '(env)'}${LIMIT ? ` · LIMIT=${LIMIT}` : ''}`);
 
   // 1. Precios del price-sheet MELI
   console.log('1/5 Precios Janis MELI...');
-  const prices = await paginateAll(PRICE_URL, 0);
+  const prices = LIMIT
+    ? (await janisGet(PRICE_URL, 1)).data.slice(0, LIMIT)
+    : await paginateAll(PRICE_URL, 0);
   console.log(`   ${prices.length} precios`);
 
-  // 2. SKUs de Janis (hex → referenceId, ean, nombre)
+  // 2. SKUs de Janis (hex → EAN, nombre)
   console.log('2/5 SKUs Janis...');
   const skuMap = new Map();
-  const skus = await paginateAll('https://catalog.janis.in/api/sku', 100);
-  console.log(`   ${skus.length} SKUs`);
-  for (const s of skus) { const h = String(s.id || ''); if (h) skuMap.set(h, skuInfo(s)); }
-
-  // 3. Resolver referenceId/EAN → skuId de VTEX
-  console.log('3/5 Resolviendo SKU IDs de VTEX (por referenceId/EAN)...');
-  const refToSku = new Map();     // refId → skuId VTEX (o null)
-  for (const p of prices) {
-    const info = skuMap.get(String(p.sku));
-    if (!info) continue;
-    for (const c of info.refCandidates) if (!refToSku.has(c)) refToSku.set(c, null);
-  }
-  const refList = [...refToSku.keys()];
-  const skuIds = await mapPool(refList, r => vtexSkuIdsByRefId(r), (d, t) => console.log(`  refId ${d}/${t}`));
-  refList.forEach((r, k) => refToSku.set(r, (skuIds[k] && skuIds[k][0]) || null));
-  const resueltos = refList.filter(r => refToSku.get(r)).length;
-  console.log(`   ${resueltos}/${refList.length} referenceIds resueltos a skuId de VTEX`);
-
-  // Detalle de los primeros registros para validar la resolución.
-  const muestra = prices.slice(0, Math.min(LIMIT ? 20 : 8, prices.length));
-  console.log('   --- muestra hex → refId → skuId ---');
-  for (const p of muestra) {
-    const info  = skuMap.get(String(p.sku));
-    const cands = info?.refCandidates || [];
-    const trace = cands.map(c => `${c}→${refToSku.get(c) || '∅'}`).join('  ') || '(sin SKU en Janis)';
-    console.log(`   ${p.sku} | ${(info?.nombre || '').slice(0, 28).padEnd(28)} | ${trace}`);
+  if (LIMIT) {
+    const hexes = [...new Set(prices.map(p => String(p.sku)))];
+    const skus  = await mapPool(hexes, h => janisSkuById(h));
+    hexes.forEach((h, k) => { if (skus[k]) skuMap.set(h, skuInfo(skus[k])); });
+  } else {
+    const skus = await paginateAll('https://catalog.janis.in/api/sku', 100);
+    console.log(`   ${skus.length} SKUs`);
+    for (const s of skus) { const h = String(s.id || ''); if (h) skuMap.set(h, skuInfo(s)); }
   }
 
-  // 4. Precios VTEX de los skuIds resueltos
+  // 3. EAN → skuId de VTEX (search por alternateIds_Ean)
+  console.log('3/5 Resolviendo EAN → skuId de VTEX...');
+  const eans = [...new Set(prices.map(p => skuMap.get(String(p.sku))?.ean).filter(Boolean))];
+  const skuIds = await mapPool(eans, e => vtexSkuIdByEan(e), (d, t) => console.log(`  ean ${d}/${t}`));
+  const eanToSku = new Map();
+  eans.forEach((e, k) => eanToSku.set(e, skuIds[k] || null));
+  console.log(`   ${[...eanToSku.values()].filter(Boolean).length}/${eans.length} EANs resueltos a skuId`);
+
+  // 4. skuId → precio VTEX
   console.log('4/5 Precios VTEX...');
-  const skuIdSet   = [...new Set([...refToSku.values()].filter(Boolean))];
-  const priceRes   = await mapPool(skuIdSet, id => vtexPrice(id), (d, t) => console.log(`  precio ${d}/${t}`));
-  const vtexPrices = new Map();
-  skuIdSet.forEach((id, k) => vtexPrices.set(id, priceRes[k]));
-  console.log(`   ${[...vtexPrices.values()].filter(Boolean).length}/${skuIdSet.length} skuIds con precio`);
+  const idSet   = [...new Set([...eanToSku.values()].filter(Boolean))];
+  const priceRs = await mapPool(idSet, id => vtexPrice(id), (d, t) => console.log(`  precio ${d}/${t}`));
+  const priceMap = new Map();
+  idSet.forEach((id, k) => priceMap.set(id, priceRs[k]));
+  console.log(`   ${[...priceMap.values()].filter(Boolean).length}/${idSet.length} skuIds con precio`);
 
   // 5. Armar filas
   console.log('5/5 Armando xlsx...');
@@ -263,21 +207,19 @@ async function run() {
     'estado', 'status', 'date_modified', 'dias_sin_cambio',
   ];
   const allRows = [HEADER], pegados = [HEADER], desfasados = [HEADER];
+  const muestra = [];
 
   for (const p of prices) {
     const hexId      = String(p.sku || '');
-    const info       = skuMap.get(hexId) || { ean: '', nombre: '', refCandidates: [] };
+    const info       = skuMap.get(hexId) || { ean: '', nombre: '' };
     const status     = p.status || 'active';
     const dateModStr = p.dateModified || p.updateDate || p.dateCreated || '';
     const dateMod    = dateModStr ? new Date(dateModStr) : null;
     const diasSin    = dateMod && !isNaN(dateMod) ? Math.floor((runDate - dateMod) / 86400000) : '';
     const precioJanis = Math.round(Number(p.price ?? p.value ?? 0) * 100) / 100;
 
-    // skuId VTEX = primer candidato de RefId que se resolvió.
-    let skuVtex = '';
-    for (const c of info.refCandidates) { const id = refToSku.get(c); if (id) { skuVtex = id; break; } }
-
-    const precioVtex = vtexSellerPrice(skuVtex ? vtexPrices.get(skuVtex) : null);
+    const skuVtex    = (info.ean && eanToSku.get(info.ean)) || '';
+    const precioVtex = vtexSellerPrice(skuVtex ? priceMap.get(skuVtex) : null);
 
     let diferencia, estado;
     if (precioVtex != null) {
@@ -298,12 +240,18 @@ async function run() {
     allRows.push(row);
     if (status === 'active')                                                  pegados.push(row);
     if (estado === 'MELI MAS BARATO (riesgo)' || estado === 'MELI MAS CARO')  desfasados.push(row);
+    if (muestra.length < 8) muestra.push(`   ${info.ean} | ${(info.nombre || '').slice(0, 26).padEnd(26)} | vtex ${skuVtex || '∅'} | janis ${precioJanis} vs vtex ${precioVtex ?? '—'} | ${estado}`);
   }
+
+  console.log('   --- muestra ---\n' + muestra.join('\n'));
 
   writeXlsx('meli0002-completo.xlsx',   'Completo',   allRows);
   writeXlsx('meli0002-pegados.xlsx',    'Pegados',    pegados);
   writeXlsx('meli0002-desfasados.xlsx', 'Desfasados', desfasados);
-  console.log('\nListo.');
+
+  const desf = desfasados.length - 1, ok = allRows.length - 1;
+  console.log(`\nResumen: ${ok} filas · ${desf} desfasados · ${[...priceMap.values()].filter(Boolean).length} con precio VTEX`);
+  console.log('Listo.');
 }
 
 run().catch(e => { console.error(e.message); process.exit(1); });
