@@ -134,19 +134,31 @@ async function vtexRaw(account, path) {
   } catch (e) { return `ERR ${e.message}`; }
 }
 
-// Prueba varios endpoints × cuentas para descubrir cómo resolver EAN → skuId.
+// EAN → skuIds de VTEX buscando en el catálogo de `account` por alternateIds_Ean.
+async function vtexSearchByEan(account, ean) {
+  const url = `https://${account}.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=alternateIds_Ean:${encodeURIComponent(ean)}&_from=0&_to=0`;
+  const res = await fetch(url, { headers: VTEX_H });
+  if (!res.ok) return { status: res.status, items: [] };
+  const arr = await res.json().catch(() => []);
+  const items = [];
+  for (const prod of Array.isArray(arr) ? arr : [])
+    for (const it of prod.items || [])
+      items.push({ itemId: String(it.itemId), ean: it.ean });
+  return { status: res.status, items };
+}
+
+// Resuelve el EAN a skuId (via search en `account`) y pide el precio de ese
+// skuId en las dos cuentas candidatas, para ver dónde vive el precio del seller.
 async function probeVtex(samples) {
-  const isSeller = VTEX_ACCOUNT === 'carrefourar0002';
-  console.log(`   VTEX_ACCOUNT secret == 'carrefourar0002'? ${isSeller} (len=${(VTEX_ACCOUNT || '').length})`);
-  const accounts = [...new Set([VTEX_ACCOUNT, 'carrefourar0002'])];
-  for (const v of samples) {
-    console.log(`\n   ===== muestra: ${v} =====`);
-    for (const acc of accounts) {
-      const tag = acc === 'carrefourar0002' ? 'carrefourar0002' : 'secret';
-      console.log(`   [${tag}] pvt/refId      → ` + await vtexRaw(acc, `/api/catalog_system/pvt/sku/stockkeepingunitidsbyrefid/${encodeURIComponent(v)}`));
-      console.log(`   [${tag}] pub/eanSearch  → ` + await vtexRaw(acc, `/api/catalog_system/pub/products/search?fq=alternateIds_Ean:${encodeURIComponent(v)}`));
-      console.log(`   [${tag}] pub/eanSearch1 → ` + await vtexRaw(acc, `/api/catalog_system/pub/products/search?fq=alternateIds_Ean:${encodeURIComponent(v)}&sc=1`));
-    }
+  console.log(`   VTEX_ACCOUNT secret == 'carrefourar0002'? ${VTEX_ACCOUNT === 'carrefourar0002'} (len=${(VTEX_ACCOUNT || '').length})`);
+  for (const ean of samples) {
+    console.log(`\n   ===== EAN ${ean} =====`);
+    const r = await vtexSearchByEan(VTEX_ACCOUNT, ean);
+    console.log(`   search@secret: ${r.status} items=${JSON.stringify(r.items)}`);
+    const skuId = (r.items.find(i => String(i.ean) === String(ean)) || r.items[0] || {}).itemId;
+    if (!skuId) { console.log('   (sin skuId)'); continue; }
+    console.log(`   skuId=${skuId} price@secret          → ` + await vtexRaw(VTEX_ACCOUNT, `/api/pricing/prices/${skuId}`));
+    console.log(`   skuId=${skuId} price@carrefourar0002  → ` + await vtexRaw('carrefourar0002', `/api/pricing/prices/${skuId}`));
   }
 }
 
