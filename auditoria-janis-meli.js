@@ -125,6 +125,31 @@ function vtexSellerPrice(v) {
   return n > 0 ? n : null;
 }
 
+// GET crudo a VTEX: devuelve status + primeros chars del body, sin tirar error.
+async function vtexRaw(account, path) {
+  try {
+    const res  = await fetch(`https://${account}.vtexcommercestable.com.br${path}`, { headers: VTEX_H });
+    const body = await res.text();
+    return `${res.status} ${body.slice(0, 220).replace(/\s+/g, ' ')}`;
+  } catch (e) { return `ERR ${e.message}`; }
+}
+
+// Prueba varios endpoints × cuentas para descubrir cómo resolver EAN → skuId.
+async function probeVtex(samples) {
+  const isSeller = VTEX_ACCOUNT === 'carrefourar0002';
+  console.log(`   VTEX_ACCOUNT secret == 'carrefourar0002'? ${isSeller} (len=${(VTEX_ACCOUNT || '').length})`);
+  const accounts = [...new Set([VTEX_ACCOUNT, 'carrefourar0002'])];
+  for (const v of samples) {
+    console.log(`\n   ===== muestra: ${v} =====`);
+    for (const acc of accounts) {
+      const tag = acc === 'carrefourar0002' ? 'carrefourar0002' : 'secret';
+      console.log(`   [${tag}] pvt/refId      → ` + await vtexRaw(acc, `/api/catalog_system/pvt/sku/stockkeepingunitidsbyrefid/${encodeURIComponent(v)}`));
+      console.log(`   [${tag}] pub/eanSearch  → ` + await vtexRaw(acc, `/api/catalog_system/pub/products/search?fq=alternateIds_Ean:${encodeURIComponent(v)}`));
+      console.log(`   [${tag}] pub/eanSearch1 → ` + await vtexRaw(acc, `/api/catalog_system/pub/products/search?fq=alternateIds_Ean:${encodeURIComponent(v)}&sc=1`));
+    }
+  }
+}
+
 // ── util concurrencia ──────────────────────────────────────────────────────────
 
 async function mapPool(items, fn, onProgress) {
@@ -156,24 +181,35 @@ async function run() {
   const runDate = new Date();
   console.log(`Seller VTEX: ${VTEX_ACCOUNT}${LIMIT ? ` · MODO DIAGNÓSTICO (LIMIT=${LIMIT})` : ''}`);
 
+  const PRICE_URL = `https://pricing.janis.in/api/price?filters[priceSheet]=${PRICE_SHEET}`;
+
+  // MODO DIAGNÓSTICO: solo 1 página de precios, resuelve sus SKUs por id y
+  // prueba endpoints de VTEX contra ambas cuentas. Rápido, no arma xlsx.
+  if (LIMIT) {
+    const { data } = await janisGet(PRICE_URL, 1);
+    const prices   = data.slice(0, LIMIT);
+    const hexes    = [...new Set(prices.map(p => String(p.sku)))];
+    const skus     = await mapPool(hexes, h => janisSkuById(h));
+    const smap      = new Map();
+    hexes.forEach((h, k) => { if (skus[k]) smap.set(h, skuInfo(skus[k])); });
+    const samples  = [...new Set(prices.flatMap(p => smap.get(String(p.sku))?.refCandidates || []))].slice(0, 3);
+    console.log(`\n=== PROBE VTEX (muestras: ${samples.join(', ')}) ===`);
+    await probeVtex(samples);
+    console.log('\nProbe listo.');
+    return;
+  }
+
   // 1. Precios del price-sheet MELI
   console.log('1/5 Precios Janis MELI...');
-  let prices = await paginateAll(`https://pricing.janis.in/api/price?filters[priceSheet]=${PRICE_SHEET}`, 0);
+  const prices = await paginateAll(PRICE_URL, 0);
   console.log(`   ${prices.length} precios`);
-  if (LIMIT) prices = prices.slice(0, LIMIT);
 
   // 2. SKUs de Janis (hex → referenceId, ean, nombre)
   console.log('2/5 SKUs Janis...');
   const skuMap = new Map();
-  if (LIMIT) {
-    const hexes = [...new Set(prices.map(p => String(p.sku)))];
-    const skus  = await mapPool(hexes, h => janisSkuById(h));
-    hexes.forEach((h, k) => { if (skus[k]) skuMap.set(h, skuInfo(skus[k])); });
-  } else {
-    const skus = await paginateAll('https://catalog.janis.in/api/sku', 100);
-    console.log(`   ${skus.length} SKUs`);
-    for (const s of skus) { const h = String(s.id || ''); if (h) skuMap.set(h, skuInfo(s)); }
-  }
+  const skus = await paginateAll('https://catalog.janis.in/api/sku', 100);
+  console.log(`   ${skus.length} SKUs`);
+  for (const s of skus) { const h = String(s.id || ''); if (h) skuMap.set(h, skuInfo(s)); }
 
   // 3. Resolver referenceId/EAN → skuId de VTEX
   console.log('3/5 Resolviendo SKU IDs de VTEX (por referenceId/EAN)...');
