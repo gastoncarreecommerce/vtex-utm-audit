@@ -15,8 +15,7 @@ const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT;
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
 
-const PRICE_SHEET  = '68cd5054eaa341977f783fef';
-const PAGE_SIZE    = 500;
+const PRICE_SHEET      = '68cd5054eaa341977f783fef';
 const VTEX_CONCURRENCY = 20;
 
 const JANIS_H = {
@@ -28,13 +27,9 @@ const JANIS_H = {
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
-async function janisGet(url, page, pageSize = PAGE_SIZE) {
+async function janisGet(url, page) {
   const res = await fetch(url, {
-    headers: {
-      ...JANIS_H,
-      'x-janis-page':      String(page),
-      'x-janis-page-size': String(pageSize),
-    }
+    headers: { ...JANIS_H, 'x-janis-page': String(page) }
   });
   if (!res.ok) throw new Error(`Janis ${url} p${page} → ${res.status}: ${await res.text()}`);
   const total = Number(res.headers.get('x-janis-total') || '0');
@@ -43,14 +38,19 @@ async function janisGet(url, page, pageSize = PAGE_SIZE) {
 }
 
 async function paginateAll(url) {
-  const first = await janisGet(url, 1);
-  const items = [...first.data];
-  const total = first.total || items.length;
-  const pages = Math.ceil(total / PAGE_SIZE);
+  const first    = await janisGet(url, 1);
+  const items    = [...first.data];
+  const total    = first.total;
+  const pageSize = first.data.length;     // infer page size from first response
+  if (!pageSize || (total > 0 && items.length >= total)) return items;
+  const pages = total > 0 ? Math.ceil(total / pageSize) : 9999;
+  const label = url.split('/api/')[1]?.split('?')[0] || url;
   for (let p = 2; p <= pages; p++) {
     const { data } = await janisGet(url, p);
+    if (!data.length) break;
     items.push(...data);
-    if (p % 10 === 0) console.log(`  ${url.split('/api/')[1]} página ${p}/${pages} (${items.length}/${total})`);
+    if (p % 20 === 0) console.log(`  ${label} p${p}/${pages} (${items.length}/${total})`);
+    if (total > 0 && items.length >= total) break;
   }
   return items;
 }
