@@ -1,0 +1,435 @@
+{
+  "date": "2026-07-15",
+  "chat": {
+    "llamadas": 103,
+    "usuarios_unicos": 54,
+    "con_productos_identificados": 66,
+    "con_sugerencia": 14,
+    "por_hora": [
+      7,
+      2,
+      3,
+      2,
+      0,
+      1,
+      0,
+      7,
+      1,
+      10,
+      15,
+      13,
+      11,
+      7,
+      7,
+      6,
+      1,
+      1,
+      1,
+      0,
+      2,
+      0,
+      1,
+      5
+    ],
+    "errores": 17
+  },
+  "categorizar": {
+    "total": 55,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 6
+      },
+      {
+        "key": "Harina leudante y cuatro ceros",
+        "count": 2
+      },
+      {
+        "key": "Crema de enjuague ",
+        "count": 1
+      },
+      {
+        "key": "Leche",
+        "count": 1
+      },
+      {
+        "key": "Pack de papel higiénico",
+        "count": 1
+      },
+      {
+        "key": "Vi el de carrefour",
+        "count": 1
+      },
+      {
+        "key": "Pack de 24 rollos",
+        "count": 1
+      },
+      {
+        "key": "Hola buen día! Quiero hacer una tarta de atún!",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer una tarta de atún!",
+        "count": 1
+      },
+      {
+        "key": "Y súmame una coca sin azúcar por fsvor",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "huevos",
+        "count": 14
+      },
+      {
+        "key": "aceite",
+        "count": 8
+      },
+      {
+        "key": "cebolla",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "atún",
+        "count": 6
+      },
+      {
+        "key": "sal",
+        "count": 6
+      },
+      {
+        "key": "morrón",
+        "count": 5
+      },
+      {
+        "key": "pimienta",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "leche deslactosada botella",
+        "count": 5
+      },
+      {
+        "key": "yogur natural",
+        "count": 4
+      },
+      {
+        "key": "harina leudante",
+        "count": 4
+      },
+      {
+        "key": "azúcar",
+        "count": 4
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 4
+      },
+      {
+        "key": "aceite en aerosol",
+        "count": 4
+      }
+    ],
+    "errores": 2
+  },
+  "buscar_eans": {
+    "busquedas": 198,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "huevos",
+        "count": 10
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "cebolla",
+        "count": 5
+      },
+      {
+        "key": "leche deslactosada botella",
+        "count": 5
+      },
+      {
+        "key": "atun",
+        "count": 4
+      },
+      {
+        "key": "sal",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "azucar",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      },
+      {
+        "key": "morron",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "pimienta",
+        "count": 3
+      },
+      {
+        "key": "yogur natural",
+        "count": 3
+      },
+      {
+        "key": "harina leudante",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leches enteras",
+        "count": 12
+      },
+      {
+        "key": "Verduras",
+        "count": 11
+      },
+      {
+        "key": "Huevos",
+        "count": 10
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 10
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 8
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "Azucar",
+        "count": 7
+      },
+      {
+        "key": "Complementos",
+        "count": 7
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 6
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 6
+      }
+    ],
+    "errores": 2
+  },
+  "agregar": {
+    "total_agregados": 28,
+    "valor_total": 928666.86,
+    "ticket_promedio": 33166.67,
+    "descuento_total": 109815.34,
+    "canal": {
+      "inmediato": 0,
+      "programado": 28
+    },
+    "top_productos": [
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 26
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 1,25 lts",
+        "count": 22
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 2,25 lts",
+        "count": 16
+      },
+      {
+        "key": "Mila con provenzal Notmila 110 grs",
+        "count": 12
+      },
+      {
+        "key": "NotChickenMila 2.0 220 g.",
+        "count": 12
+      },
+      {
+        "key": "Leche descremada uat Tregar brik 1 l.",
+        "count": 12
+      },
+      {
+        "key": "Cerveza Mecklenburger Ipa 500 ml",
+        "count": 12
+      },
+      {
+        "key": "Aceite de girasol Natura 1.5 l.",
+        "count": 11
+      },
+      {
+        "key": "Huevos libres de jaula Huella Natural 6 uni",
+        "count": 8
+      },
+      {
+        "key": "Cerveza sin alcohol Mecklenburger 500 ml",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Gaseosas cola",
+        "count": 38
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 31
+      },
+      {
+        "key": "Cervezas",
+        "count": 28
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 24
+      },
+      {
+        "key": "Verduras",
+        "count": 17
+      },
+      {
+        "key": "Aceites en aerosol",
+        "count": 15
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 13
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 12
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 12
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 10,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 13
+      },
+      {
+        "key": "Genérico",
+        "count": 9
+      },
+      {
+        "key": "La Serenísima",
+        "count": 7
+      },
+      {
+        "key": "Granja Del Sol",
+        "count": 4
+      },
+      {
+        "key": "Silvia",
+        "count": 3
+      },
+      {
+        "key": "Tremblay",
+        "count": 3
+      },
+      {
+        "key": "Smams",
+        "count": 3
+      },
+      {
+        "key": "NotCo",
+        "count": 3
+      },
+      {
+        "key": "Tonadita",
+        "count": 3
+      },
+      {
+        "key": "La Perla",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 30
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 18
+      },
+      {
+        "key": "Congelados",
+        "count": 10
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Panadería",
+        "count": 9
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 7
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 109,
+    "carrito_promedio": 47493.51,
+    "pct_con_carrito": 61.9,
+    "errores": 7
+  },
+  "origen": {
+    "total_requests": 155,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-16T12:42:37.631Z"
+}
