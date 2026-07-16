@@ -1,0 +1,62 @@
+name: Backfill UTM Marzo-Abril
+
+# Se auto-dispara al pushear/cambiar este archivo (no depende del botón Run).
+# Recorre 15-mar → 30-abr contando participación de la app POR UTM (app_ecomm),
+# porque en ese período todavía no existía el parámetro from=app.
+# Salida: docs/data/utm-backfill/{date}.json (solo agregados, sin datos personales).
+on:
+  push:
+    paths:
+      - ".github/workflows/backfill-marzo-abril.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: backfill-marzo-abril
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install axios
+
+      - name: Backfill 2026-03-15 → 2026-04-30 (por UTM)
+        env:
+          VTEX_APP_KEY:   ${{ secrets.VTEX_APP_KEY }}
+          VTEX_APP_TOKEN: ${{ secrets.VTEX_APP_TOKEN }}
+          VTEX_ACCOUNT:   ${{ secrets.VTEX_ACCOUNT }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          start="2026-03-15"
+          end="2026-04-30"
+          current="$start"
+          while [[ "$current" < "$end" ]] || [[ "$current" == "$end" ]]; do
+            echo "▶ $current"
+            node fetch-orders-utm.js "$current" || echo "⚠ Error en $current, sigo..."
+            git add docs/data/utm-backfill/ || true
+            if ! git diff --staged --quiet; then
+              git commit -m "utm-backfill: $current" -q
+              for i in 1 2 3 4; do
+                if git push; then break; fi
+                echo "push falló, reintento..."; sleep $((i*5)); git pull --rebase --autostash || true
+              done
+            fi
+            current=$(date -d "$current + 1 day" +%Y-%m-%d)
+          done
+
+      - name: Resumen
+        run: |
+          echo "Días procesados:"
+          ls docs/data/utm-backfill/ 2>/dev/null | wc -l
