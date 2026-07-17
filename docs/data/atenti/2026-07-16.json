@@ -1,0 +1,439 @@
+{
+  "date": "2026-07-16",
+  "chat": {
+    "llamadas": 122,
+    "usuarios_unicos": 64,
+    "con_productos_identificados": 74,
+    "con_sugerencia": 14,
+    "por_hora": [
+      7,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      10,
+      3,
+      4,
+      8,
+      7,
+      2,
+      21,
+      15,
+      7,
+      7,
+      5,
+      4,
+      3,
+      12
+    ],
+    "errores": 21
+  },
+  "categorizar": {
+    "total": 57,
+    "top_recetas": [
+      {
+        "key": "Talco para el cuerpo también ",
+        "count": 2
+      },
+      {
+        "key": "Leche larga vida ",
+        "count": 2
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Coca cola",
+        "count": 1
+      },
+      {
+        "key": "Churrasco con chimichurri y puré ",
+        "count": 1
+      },
+      {
+        "key": "Busco tostis y shampoo y acondicionador ",
+        "count": 1
+      },
+      {
+        "key": "Fructis",
+        "count": 1
+      },
+      {
+        "key": "Leche protei ",
+        "count": 1
+      },
+      {
+        "key": "Necesito carne a buen precio , cortes como peceto , lomo , ojo de bife , peceto , tapa de asado , y alguna otra sugerencia de carne que pueda estar en oferta . Teniendo en cuenta que hoy es jueves. Como me conviene pagar para agotar más ",
+        "count": 1
+      },
+      {
+        "key": "Nuez moscada entera Alicante ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "fideos",
+        "count": 5
+      },
+      {
+        "key": "cebolla",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "shampoo",
+        "count": 4
+      },
+      {
+        "key": "fernet",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "harina leudante",
+        "count": 4
+      },
+      {
+        "key": "carne vacuna",
+        "count": 4
+      },
+      {
+        "key": "carbón",
+        "count": 4
+      },
+      {
+        "key": "atún",
+        "count": 4
+      },
+      {
+        "key": "choclo",
+        "count": 4
+      },
+      {
+        "key": "zanahoria",
+        "count": 4
+      },
+      {
+        "key": "fiambre feteado",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 229,
+    "sin_resultado": 6,
+    "top_terminos": [
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "fideos",
+        "count": 5
+      },
+      {
+        "key": "cebolla",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "shampoo",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "harina leudante",
+        "count": 4
+      },
+      {
+        "key": "carbon",
+        "count": 4
+      },
+      {
+        "key": "carne vacuna",
+        "count": 4
+      },
+      {
+        "key": "atun",
+        "count": 4
+      },
+      {
+        "key": "choclo",
+        "count": 4
+      },
+      {
+        "key": "zanahoria",
+        "count": 4
+      },
+      {
+        "key": "queso en fetas",
+        "count": 4
+      },
+      {
+        "key": "pollo",
+        "count": 4
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 23
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 11
+      },
+      {
+        "key": "Leches enteras",
+        "count": 9
+      },
+      {
+        "key": "Tostadas, grisines y marineras",
+        "count": 7
+      },
+      {
+        "key": "Quesos rallados y en hebras",
+        "count": 7
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 6
+      },
+      {
+        "key": "Cervezas",
+        "count": 6
+      },
+      {
+        "key": "Fideos largos",
+        "count": 6
+      },
+      {
+        "key": "Huevos",
+        "count": 6
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 6
+      }
+    ],
+    "errores": 6
+  },
+  "agregar": {
+    "total_agregados": 29,
+    "valor_total": 371449.56,
+    "ticket_promedio": 12808.61,
+    "descuento_total": 10046.04,
+    "canal": {
+      "inmediato": 0,
+      "programado": 29
+    },
+    "top_productos": [
+      {
+        "key": "La Paulina queso en hebras italiano 125 grs",
+        "count": 11
+      },
+      {
+        "key": "Zapallo japones cabutian x kg",
+        "count": 10
+      },
+      {
+        "key": "Galletitas marineras saladas Bulnez 200 grs",
+        "count": 9
+      },
+      {
+        "key": "Copos de maíz 3 Arroyos en bolsa 150 g.",
+        "count": 9
+      },
+      {
+        "key": "Bizcochos 9 de Oro light 170 g.",
+        "count": 8
+      },
+      {
+        "key": "Jugo en Polvo Clight Limonada Arandanos 7,5 grs",
+        "count": 8
+      },
+      {
+        "key": "Fideos monos Lucchetti bolsa 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 7
+      },
+      {
+        "key": "Harina leudante Blancaflor 1 kg.",
+        "count": 7
+      },
+      {
+        "key": "Choclo amarillo en granos Carrefour Classic 300 grs",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 17
+      },
+      {
+        "key": "Quesos rallados y en hebras",
+        "count": 14
+      },
+      {
+        "key": "Tostadas, grisines y marineras",
+        "count": 9
+      },
+      {
+        "key": "Cereales",
+        "count": 9
+      },
+      {
+        "key": "Bizcochitos",
+        "count": 8
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 8
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 7
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 7
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 20,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 20
+      },
+      {
+        "key": "Carrefour",
+        "count": 20
+      },
+      {
+        "key": "Bulnez",
+        "count": 7
+      },
+      {
+        "key": "Krachitos",
+        "count": 6
+      },
+      {
+        "key": "Plusbelle",
+        "count": 6
+      },
+      {
+        "key": "7 Up",
+        "count": 6
+      },
+      {
+        "key": "Zafrán",
+        "count": 6
+      },
+      {
+        "key": "La Paulina",
+        "count": 5
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Cheetos",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 41
+      },
+      {
+        "key": "Almacén",
+        "count": 30
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 21
+      },
+      {
+        "key": "Bebidas",
+        "count": 16
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 14
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 8
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 6
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 129,
+    "carrito_promedio": 58728.86,
+    "pct_con_carrito": 56.7,
+    "errores": 28
+  },
+  "origen": {
+    "total_requests": 189,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-17T12:42:43.083Z"
+}
