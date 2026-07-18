@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-17",
+  "chat": {
+    "llamadas": 179,
+    "usuarios_unicos": 84,
+    "con_productos_identificados": 88,
+    "con_sugerencia": 14,
+    "por_hora": [
+      2,
+      1,
+      1,
+      1,
+      0,
+      0,
+      2,
+      3,
+      3,
+      4,
+      21,
+      19,
+      12,
+      10,
+      15,
+      13,
+      7,
+      12,
+      13,
+      8,
+      10,
+      9,
+      6,
+      7
+    ],
+    "errores": 37
+  },
+  "categorizar": {
+    "total": 82,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Durazno en lata Carrefour ",
+        "count": 2
+      },
+      {
+        "key": "Necesito hacer tragos con alcohol",
+        "count": 1
+      },
+      {
+        "key": "Compararme leches",
+        "count": 1
+      },
+      {
+        "key": "Mani saborizado",
+        "count": 1
+      },
+      {
+        "key": "Krachitos",
+        "count": 1
+      },
+      {
+        "key": "Para merendar",
+        "count": 1
+      },
+      {
+        "key": "6 sodas. Arroz. Ariel líquido. Detergente. Cloro. Limpiador multisuperficie. Galletitas de chocolate .  Papa. Calabacita..",
+        "count": 1
+      },
+      {
+        "key": "Tomate.berenjena. banana. Pimientos",
+        "count": 1
+      },
+      {
+        "key": "6 sodas",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "lavandina",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "papel higiénico",
+        "count": 6
+      },
+      {
+        "key": "sal",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 5
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "soda",
+        "count": 4
+      },
+      {
+        "key": "salchichas",
+        "count": 4
+      },
+      {
+        "key": "atún",
+        "count": 4
+      },
+      {
+        "key": "crema de leche",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 284,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "lavandina",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "papel higienico",
+        "count": 6
+      },
+      {
+        "key": "sal",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "azucar",
+        "count": 5
+      },
+      {
+        "key": "yerba",
+        "count": 4
+      },
+      {
+        "key": "soda",
+        "count": 4
+      },
+      {
+        "key": "salchichas",
+        "count": 4
+      },
+      {
+        "key": "atun",
+        "count": 4
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 4
+      },
+      {
+        "key": "cafe instantaneo",
+        "count": 4
+      },
+      {
+        "key": "crema de leche",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 27
+      },
+      {
+        "key": "Leches enteras",
+        "count": 10
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 9
+      },
+      {
+        "key": "Frutas",
+        "count": 9
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 9
+      },
+      {
+        "key": "Lavandinas",
+        "count": 8
+      },
+      {
+        "key": "Fideos largos",
+        "count": 8
+      },
+      {
+        "key": "Papeles higienicos",
+        "count": 8
+      },
+      {
+        "key": "Sal",
+        "count": 8
+      },
+      {
+        "key": "Cervezas",
+        "count": 7
+      }
+    ],
+    "errores": 43
+  },
+  "agregar": {
+    "total_agregados": 36,
+    "valor_total": 950982.86,
+    "ticket_promedio": 26416.19,
+    "descuento_total": 228564.21,
+    "canal": {
+      "inmediato": 2,
+      "programado": 34
+    },
+    "top_productos": [
+      {
+        "key": "Pasta dental Everfresh anticaries 90 grs",
+        "count": 40
+      },
+      {
+        "key": "Queso cremoso La Paulina x kg.",
+        "count": 14
+      },
+      {
+        "key": "Crema de leche Carrefour Classic 200 ml",
+        "count": 13
+      },
+      {
+        "key": "Salchichas Swift kids 6 u.",
+        "count": 13
+      },
+      {
+        "key": "Leche ulta parcial descremada Carrefour classic sachet 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Nescafé Dolca Suave 170 grs",
+        "count": 10
+      },
+      {
+        "key": "Pan blanco Bimbo Artesano con Masa Madre 500 grs",
+        "count": 9
+      },
+      {
+        "key": "Yogur batido Ser PRO+ con proteínas sabor natural 175 grs",
+        "count": 8
+      },
+      {
+        "key": "Azúcar común Azucel tipo A bolsa 1 kg.",
+        "count": 8
+      },
+      {
+        "key": "Pasta dental Everfresh Whitening 90 grs",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Pasta dental",
+        "count": 51
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 18
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 18
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 14
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 13
+      },
+      {
+        "key": "Salchichas",
+        "count": 13
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 12
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 11
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 11
+      },
+      {
+        "key": "Café instantáneo",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 10,
+    "top_marcas": [
+      {
+        "key": "Odex",
+        "count": 8
+      },
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Bulnez",
+        "count": 5
+      },
+      {
+        "key": "Cabrales",
+        "count": 5
+      },
+      {
+        "key": "Amanda",
+        "count": 4
+      },
+      {
+        "key": "Genérico",
+        "count": 3
+      },
+      {
+        "key": "Villa Del Sur",
+        "count": 3
+      },
+      {
+        "key": "Verdeflor",
+        "count": 3
+      },
+      {
+        "key": "Imperial",
+        "count": 3
+      },
+      {
+        "key": "Miller",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 28
+      },
+      {
+        "key": "Bebidas",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 9
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 2
+      }
+    ],
+    "errores": 3
+  },
+  "login": {
+    "usuarios_unicos": 163,
+    "carrito_promedio": 76560.07,
+    "pct_con_carrito": 57.3,
+    "errores": 35
+  },
+  "origen": {
+    "total_requests": 334,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-18T12:42:38.301Z"
+}
