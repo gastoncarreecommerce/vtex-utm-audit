@@ -1,0 +1,435 @@
+{
+  "date": "2026-07-18",
+  "chat": {
+    "llamadas": 192,
+    "usuarios_unicos": 84,
+    "con_productos_identificados": 118,
+    "con_sugerencia": 24,
+    "por_hora": [
+      10,
+      5,
+      3,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      11,
+      27,
+      28,
+      4,
+      7,
+      18,
+      8,
+      28,
+      2,
+      6,
+      17,
+      9,
+      1,
+      2,
+      0
+    ],
+    "errores": 33
+  },
+  "categorizar": {
+    "total": 97,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Esencia de vainilla ",
+        "count": 2
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "Café en saquitos ",
+        "count": 2
+      },
+      {
+        "key": "Aceite natural 1,5L",
+        "count": 1
+      },
+      {
+        "key": "Brownies ",
+        "count": 1
+      },
+      {
+        "key": "Fideos",
+        "count": 1
+      },
+      {
+        "key": "Necesito armar un desayuno de cumpleaños ",
+        "count": 1
+      },
+      {
+        "key": "Notco",
+        "count": 1
+      },
+      {
+        "key": "Carne molida especial barata",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 19
+      },
+      {
+        "key": "té en saquitos",
+        "count": 13
+      },
+      {
+        "key": "café en saquitos",
+        "count": 13
+      },
+      {
+        "key": "puré de tomates",
+        "count": 11
+      },
+      {
+        "key": "polenta instantánea",
+        "count": 11
+      },
+      {
+        "key": "sal fina",
+        "count": 10
+      },
+      {
+        "key": "manteca",
+        "count": 9
+      },
+      {
+        "key": "sal gruesa",
+        "count": 9
+      },
+      {
+        "key": "provenzal",
+        "count": 8
+      },
+      {
+        "key": "especias para tuco",
+        "count": 8
+      },
+      {
+        "key": "tomillo",
+        "count": 8
+      },
+      {
+        "key": "romero",
+        "count": 8
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "papel higiénico",
+        "count": 8
+      },
+      {
+        "key": "detergente",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 375,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 17
+      },
+      {
+        "key": "te en saquitos",
+        "count": 13
+      },
+      {
+        "key": "cafe en saquitos",
+        "count": 12
+      },
+      {
+        "key": "pure de tomates",
+        "count": 11
+      },
+      {
+        "key": "polenta instantanea",
+        "count": 11
+      },
+      {
+        "key": "sal fina",
+        "count": 10
+      },
+      {
+        "key": "manteca",
+        "count": 9
+      },
+      {
+        "key": "sal gruesa",
+        "count": 9
+      },
+      {
+        "key": "tomillo",
+        "count": 8
+      },
+      {
+        "key": "provenzal",
+        "count": 8
+      },
+      {
+        "key": "especias para tuco",
+        "count": 8
+      },
+      {
+        "key": "romero",
+        "count": 8
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "papel higienico",
+        "count": 8
+      },
+      {
+        "key": "detergente",
+        "count": 7
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Hierbas secas y especias",
+        "count": 38
+      },
+      {
+        "key": "Sal",
+        "count": 22
+      },
+      {
+        "key": "Leches enteras",
+        "count": 21
+      },
+      {
+        "key": "Verduras",
+        "count": 16
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 14
+      },
+      {
+        "key": "Te",
+        "count": 13
+      },
+      {
+        "key": "Lavandinas",
+        "count": 13
+      },
+      {
+        "key": "Cafe molido y en grano",
+        "count": 12
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 11
+      },
+      {
+        "key": "Polentas",
+        "count": 11
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 27,
+    "valor_total": 1124054.31,
+    "ticket_promedio": 41631.64,
+    "descuento_total": 288552.96,
+    "canal": {
+      "inmediato": 2,
+      "programado": 25
+    },
+    "top_productos": [
+      {
+        "key": "Leche entera larga vida Tregar 1 l.",
+        "count": 288
+      },
+      {
+        "key": "Puré de tomates Bulnez 520 g.",
+        "count": 32
+      },
+      {
+        "key": "Polenta instantánea Presto Pronta en bolsa 490 g.",
+        "count": 15
+      },
+      {
+        "key": "Té clásico en saquitos diamantado Taragüi x 50 uni",
+        "count": 14
+      },
+      {
+        "key": "Cerveza Andes Ipa retornable 1 lt",
+        "count": 12
+      },
+      {
+        "key": "Alfajor triple Milka Oreo 61 g.",
+        "count": 12
+      },
+      {
+        "key": "Leche Protein La Serenisima 1L",
+        "count": 12
+      },
+      {
+        "key": "Café en saquitos Carrefour Classic caja x 18 uni",
+        "count": 11
+      },
+      {
+        "key": "Alfajor Pepitos triple 57 g.",
+        "count": 11
+      },
+      {
+        "key": "Sal fina Bulnez en bolsa 500 g.",
+        "count": 10
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 293
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 46
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 37
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 16
+      },
+      {
+        "key": "Polentas",
+        "count": 15
+      },
+      {
+        "key": "Té",
+        "count": 14
+      },
+      {
+        "key": "Cervezas",
+        "count": 14
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 12
+      },
+      {
+        "key": "Café instantáneo",
+        "count": 11
+      },
+      {
+        "key": "Sal",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 34,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 35
+      },
+      {
+        "key": "Genérico",
+        "count": 11
+      },
+      {
+        "key": "La Serenísima",
+        "count": 10
+      },
+      {
+        "key": "Andes",
+        "count": 9
+      },
+      {
+        "key": "Ayudín",
+        "count": 8
+      },
+      {
+        "key": "Imperial",
+        "count": 7
+      },
+      {
+        "key": "Legitimo",
+        "count": 6
+      },
+      {
+        "key": "Bulnez",
+        "count": 6
+      },
+      {
+        "key": "Magistral",
+        "count": 6
+      },
+      {
+        "key": "Cocinero",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 60
+      },
+      {
+        "key": "Almacén",
+        "count": 57
+      },
+      {
+        "key": "Bebidas",
+        "count": 50
+      },
+      {
+        "key": "Limpieza",
+        "count": 42
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      },
+      {
+        "key": "Panadería",
+        "count": 15
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 159,
+    "carrito_promedio": 44599.88,
+    "pct_con_carrito": 53.7,
+    "errores": 8
+  },
+  "origen": {
+    "total_requests": 263,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-19T12:42:44.521Z"
+}
