@@ -1,0 +1,423 @@
+{
+  "date": "2026-07-19",
+  "chat": {
+    "llamadas": 50,
+    "usuarios_unicos": 26,
+    "con_productos_identificados": 31,
+    "con_sugerencia": 4,
+    "por_hora": [
+      2,
+      1,
+      1,
+      0,
+      6,
+      0,
+      0,
+      2,
+      4,
+      4,
+      4,
+      2,
+      0,
+      6,
+      0,
+      3,
+      2,
+      0,
+      0,
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "errores": 9
+  },
+  "categorizar": {
+    "total": 28,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Yerba ",
+        "count": 2
+      },
+      {
+        "key": "Espuma Facial Antioxidante Carrefour Soft, Crema Hidratante Gel Nivea Rose Care 50 ml, Neutrogena Deep Clean Gel de Limpieza Facial, Nivea Sun Protector Solar Facial UV Control Anti-Brillo FPS 50, Dermaglós Protector Solar Facial Efecto Seco FPS 50",
+        "count": 2
+      },
+      {
+        "key": "Jabón en barra, papel higiénico todo lo mas barato",
+        "count": 1
+      },
+      {
+        "key": "Tiramisú ",
+        "count": 1
+      },
+      {
+        "key": "Caballa ",
+        "count": 1
+      },
+      {
+        "key": "Jurel en aceite en lata ",
+        "count": 1
+      },
+      {
+        "key": "Ferretería con coca",
+        "count": 1
+      },
+      {
+        "key": "Fernet y coca",
+        "count": 1
+      },
+      {
+        "key": "Jugo para deluir",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "caballa",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "jugo en polvo multifruta",
+        "count": 2
+      },
+      {
+        "key": "cerveza",
+        "count": 2
+      },
+      {
+        "key": "espuma facial",
+        "count": 2
+      },
+      {
+        "key": "crema hidratante facial",
+        "count": 2
+      },
+      {
+        "key": "gel de limpieza facial",
+        "count": 2
+      },
+      {
+        "key": "protector solar facial",
+        "count": 2
+      },
+      {
+        "key": "jabón en barra",
+        "count": 1
+      },
+      {
+        "key": "papel higiénico",
+        "count": 1
+      },
+      {
+        "key": "vainillas",
+        "count": 1
+      },
+      {
+        "key": "queso crema",
+        "count": 1
+      },
+      {
+        "key": "crema de leche",
+        "count": 1
+      },
+      {
+        "key": "azúcar",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 73,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "caballa",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "jugo en polvo multifruta",
+        "count": 2
+      },
+      {
+        "key": "cerveza",
+        "count": 2
+      },
+      {
+        "key": "espuma facial",
+        "count": 2
+      },
+      {
+        "key": "protector solar facial",
+        "count": 2
+      },
+      {
+        "key": "crema hidratante facial",
+        "count": 2
+      },
+      {
+        "key": "gel de limpieza facial",
+        "count": 2
+      },
+      {
+        "key": "jabon en barra",
+        "count": 1
+      },
+      {
+        "key": "papel higienico",
+        "count": 1
+      },
+      {
+        "key": "crema de leche",
+        "count": 1
+      },
+      {
+        "key": "azucar",
+        "count": 1
+      },
+      {
+        "key": "queso crema",
+        "count": 1
+      },
+      {
+        "key": "cacao amargo en polvo",
+        "count": 1
+      },
+      {
+        "key": "cafe",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Cervezas",
+        "count": 6
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 5
+      },
+      {
+        "key": "Alimentos secos para perros",
+        "count": 4
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 4
+      },
+      {
+        "key": "Verduras",
+        "count": 4
+      },
+      {
+        "key": "Limpieza facial y exfoliantes",
+        "count": 4
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 3
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 3
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 7,
+    "valor_total": 1110350.5,
+    "ticket_promedio": 158621.5,
+    "descuento_total": 43963.5,
+    "canal": {
+      "inmediato": 0,
+      "programado": 7
+    },
+    "top_productos": [
+      {
+        "key": "Yogur batido sabor natural sin endulzar Ser 175 grs",
+        "count": 30
+      },
+      {
+        "key": "Yogur batido sabor frutilla y arándanos Ser Calci+ 120 grs",
+        "count": 30
+      },
+      {
+        "key": "Pañuelos Elite box 90 uni",
+        "count": 20
+      },
+      {
+        "key": "Cerveza rubia Imperial Lager 710 ml",
+        "count": 15
+      },
+      {
+        "key": "Papa x kg.",
+        "count": 14
+      },
+      {
+        "key": "Queso cremoso La Paulina x kg.",
+        "count": 10
+      },
+      {
+        "key": "Leche La Serenísima UAT parc descremada liviana 1% pet 1 lt",
+        "count": 10
+      },
+      {
+        "key": "Pasta dental Kolynos White Protection 90 grs",
+        "count": 10
+      },
+      {
+        "key": "Palta x uni",
+        "count": 10
+      },
+      {
+        "key": "Jabón tocador St tropez glicerina frutal x3 90 g.",
+        "count": 10
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Yogures descremados",
+        "count": 60
+      },
+      {
+        "key": "Verduras",
+        "count": 42
+      },
+      {
+        "key": "Pañuelos descartables",
+        "count": 20
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 18
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 18
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 16
+      },
+      {
+        "key": "Cervezas",
+        "count": 15
+      },
+      {
+        "key": "Jabones en barra",
+        "count": 14
+      },
+      {
+        "key": "Frutas y vegetales congelados",
+        "count": 10
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 7,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 11
+      },
+      {
+        "key": "Bulnez",
+        "count": 5
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Maggi",
+        "count": 5
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 4
+      },
+      {
+        "key": "Elegante",
+        "count": 3
+      },
+      {
+        "key": "Don Felipe",
+        "count": 3
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 3
+      },
+      {
+        "key": "308",
+        "count": 2
+      },
+      {
+        "key": "La Campagnola",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 30
+      },
+      {
+        "key": "Bebidas",
+        "count": 12
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 63,
+    "carrito_promedio": 35978.51,
+    "pct_con_carrito": 57.7,
+    "errores": 6
+  },
+  "origen": {
+    "total_requests": 91,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-20T12:42:39.075Z"
+}
