@@ -1,0 +1,447 @@
+{
+  "date": "2026-07-20",
+  "chat": {
+    "llamadas": 203,
+    "usuarios_unicos": 83,
+    "con_productos_identificados": 114,
+    "con_sugerencia": 28,
+    "por_hora": [
+      2,
+      1,
+      4,
+      3,
+      0,
+      8,
+      18,
+      0,
+      0,
+      2,
+      11,
+      20,
+      9,
+      19,
+      16,
+      11,
+      4,
+      13,
+      17,
+      18,
+      4,
+      11,
+      9,
+      3
+    ],
+    "errores": 38
+  },
+  "categorizar": {
+    "total": 99,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 4
+      },
+      {
+        "key": "Coca cola 2,5 retornable ",
+        "count": 3
+      },
+      {
+        "key": "Aceite natura",
+        "count": 3
+      },
+      {
+        "key": "Aceite",
+        "count": 2
+      },
+      {
+        "key": "Cafe",
+        "count": 2
+      },
+      {
+        "key": "Café capsulas, mermelada, leche, queso untable, queso fresco, queso rallado arroz, champiñones en lata, detergente repuesto, spray blrnd para limpiar muebles, tapa para tarta , huevos, yerba cbc con miel",
+        "count": 1
+      },
+      {
+        "key": "Leche en polvo descremada",
+        "count": 1
+      },
+      {
+        "key": "Arroz tipo gallo oro",
+        "count": 1
+      },
+      {
+        "key": "Mermelada light",
+        "count": 1
+      },
+      {
+        "key": "Quedó rallado el que tenga mejor precio ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 12
+      },
+      {
+        "key": "yerba",
+        "count": 9
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "queso rallado",
+        "count": 7
+      },
+      {
+        "key": "huevos",
+        "count": 7
+      },
+      {
+        "key": "queso untable",
+        "count": 6
+      },
+      {
+        "key": "queso fresco",
+        "count": 6
+      },
+      {
+        "key": "champiñones en lata",
+        "count": 6
+      },
+      {
+        "key": "lustramuebles",
+        "count": 6
+      },
+      {
+        "key": "yerba con miel",
+        "count": 6
+      },
+      {
+        "key": "cápsulas de café",
+        "count": 5
+      },
+      {
+        "key": "leche en polvo descremada",
+        "count": 5
+      },
+      {
+        "key": "puré de tomate",
+        "count": 5
+      },
+      {
+        "key": "pan integral",
+        "count": 5
+      },
+      {
+        "key": "mermelada",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 353,
+    "sin_resultado": 7,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 12
+      },
+      {
+        "key": "yerba",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "huevos",
+        "count": 7
+      },
+      {
+        "key": "queso rallado",
+        "count": 7
+      },
+      {
+        "key": "queso untable",
+        "count": 6
+      },
+      {
+        "key": "queso fresco",
+        "count": 6
+      },
+      {
+        "key": "champinones en lata",
+        "count": 6
+      },
+      {
+        "key": "yerba con miel",
+        "count": 6
+      },
+      {
+        "key": "lustramuebles",
+        "count": 6
+      },
+      {
+        "key": "capsulas de cafe",
+        "count": 5
+      },
+      {
+        "key": "leche en polvo descremada",
+        "count": 5
+      },
+      {
+        "key": "pure de tomate",
+        "count": 5
+      },
+      {
+        "key": "pan integral",
+        "count": 5
+      },
+      {
+        "key": "mermelada",
+        "count": 4
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 33
+      },
+      {
+        "key": "Yerba",
+        "count": 15
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 15
+      },
+      {
+        "key": "Frutas",
+        "count": 15
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 13
+      },
+      {
+        "key": "Leches enteras",
+        "count": 10
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 10
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 9
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 9
+      },
+      {
+        "key": "Detergentes",
+        "count": 9
+      }
+    ],
+    "errores": 4963
+  },
+  "agregar": {
+    "total_agregados": 81,
+    "valor_total": 3598936.78,
+    "ticket_promedio": 44431.32,
+    "descuento_total": 321572.45,
+    "canal": {
+      "inmediato": 0,
+      "programado": 81
+    },
+    "top_productos": [
+      {
+        "key": "Queso cremoso Punta del Agua horma x kg.",
+        "count": 147
+      },
+      {
+        "key": "Queso port salut La Pauilna tradicional x kg",
+        "count": 72
+      },
+      {
+        "key": "Tomate x kg.",
+        "count": 64
+      },
+      {
+        "key": "Jabón en barra Dove original individual 90 grs",
+        "count": 52
+      },
+      {
+        "key": "Suprema congelada x kg.",
+        "count": 51
+      },
+      {
+        "key": "Pan Integral Fargo 400 grs",
+        "count": 43
+      },
+      {
+        "key": "Galletitas de banana Smookies Baby 150 grs",
+        "count": 42
+      },
+      {
+        "key": "Tomate perita Arcor 400 g.",
+        "count": 36
+      },
+      {
+        "key": "Manzana roja x kg.",
+        "count": 33
+      },
+      {
+        "key": "Leche UAT parcialmente descremada Carrefour classic brik 1 lt.",
+        "count": 32
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 231
+      },
+      {
+        "key": "Verduras",
+        "count": 174
+      },
+      {
+        "key": "Frutas",
+        "count": 99
+      },
+      {
+        "key": "Pollo",
+        "count": 59
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 55
+      },
+      {
+        "key": "Jabones en barra",
+        "count": 54
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 53
+      },
+      {
+        "key": "Cápsulas de café",
+        "count": 45
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 43
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 43
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 42,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 63
+      },
+      {
+        "key": "Carrefour",
+        "count": 34
+      },
+      {
+        "key": "Cabrales",
+        "count": 10
+      },
+      {
+        "key": "Bulnez",
+        "count": 9
+      },
+      {
+        "key": "Ala",
+        "count": 9
+      },
+      {
+        "key": "Procenex",
+        "count": 8
+      },
+      {
+        "key": "La Serenísima",
+        "count": 6
+      },
+      {
+        "key": "Tremblay",
+        "count": 6
+      },
+      {
+        "key": "Magistral",
+        "count": 5
+      },
+      {
+        "key": "Bonafide",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 90
+      },
+      {
+        "key": "Limpieza",
+        "count": 47
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 40
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 36
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 35
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 25
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 23
+      },
+      {
+        "key": "Bebidas",
+        "count": 20
+      },
+      {
+        "key": "Panadería",
+        "count": 19
+      },
+      {
+        "key": "Congelados",
+        "count": 3
+      }
+    ],
+    "errores": 3
+  },
+  "login": {
+    "usuarios_unicos": 177,
+    "carrito_promedio": 49533.92,
+    "pct_con_carrito": 62.1,
+    "errores": 206
+  },
+  "origen": {
+    "total_requests": 318,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-21T12:42:40.001Z"
+}
