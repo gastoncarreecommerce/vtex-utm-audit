@@ -1,4 +1,77 @@
 {
   "date": "2026-07-21",
-  "events": {}
+  "events": {
+    "user_engagement": {
+      "count": 13,
+      "users": 7
+    },
+    "select_item": {
+      "count": 11,
+      "users": 1
+    },
+    "view_item": {
+      "count": 9,
+      "users": 1
+    },
+    "session_start": {
+      "count": 7,
+      "users": 7
+    },
+    "view_item_list": {
+      "count": 7,
+      "users": 4
+    },
+    "switch_to_ecommerce": {
+      "count": 6,
+      "users": 4
+    },
+    "screen_view": {
+      "count": 5,
+      "users": 5
+    },
+    "mis_cupones": {
+      "count": 3,
+      "users": 3
+    },
+    "calculadora_home": {
+      "count": 2,
+      "users": 1
+    },
+    "folletos": {
+      "count": 2,
+      "users": 1
+    },
+    "chat_bot": {
+      "count": 1,
+      "users": 1
+    },
+    "escaner_precios": {
+      "count": 1,
+      "users": 1
+    },
+    "notification_dismiss": {
+      "count": 1,
+      "users": 1
+    },
+    "notification_receive": {
+      "count": 1,
+      "users": 1
+    },
+    "promociones": {
+      "count": 1,
+      "users": 1
+    },
+    "search": {
+      "count": 1,
+      "users": 1
+    },
+    "switch_to_sucursales": {
+      "count": 1,
+      "users": 1
+    },
+    "view_cart": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
