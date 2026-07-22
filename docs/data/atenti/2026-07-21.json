@@ -1,0 +1,447 @@
+{
+  "date": "2026-07-21",
+  "chat": {
+    "llamadas": 144,
+    "usuarios_unicos": 68,
+    "con_productos_identificados": 74,
+    "con_sugerencia": 16,
+    "por_hora": [
+      5,
+      1,
+      7,
+      0,
+      1,
+      0,
+      7,
+      1,
+      2,
+      4,
+      5,
+      13,
+      13,
+      11,
+      11,
+      5,
+      5,
+      6,
+      3,
+      13,
+      13,
+      7,
+      6,
+      5
+    ],
+    "errores": 25
+  },
+  "categorizar": {
+    "total": 60,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Queso paulina",
+        "count": 2
+      },
+      {
+        "key": "Quiero el carrito que ya arme",
+        "count": 1
+      },
+      {
+        "key": "Alimento húmedo mascotas en promoción ",
+        "count": 1
+      },
+      {
+        "key": "Perro",
+        "count": 1
+      },
+      {
+        "key": "Alimento para perros ",
+        "count": 1
+      },
+      {
+        "key": "Seco por 15kg",
+        "count": 1
+      },
+      {
+        "key": "Alimento fe perro ",
+        "count": 1
+      },
+      {
+        "key": "Arma una lista de compras para una dieta saludable",
+        "count": 1
+      },
+      {
+        "key": "Arma una lista para una semana completa de recetas saludables",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "arroz",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "papel higiénico",
+        "count": 5
+      },
+      {
+        "key": "yerba 1 kg",
+        "count": 5
+      },
+      {
+        "key": "sal",
+        "count": 4
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "café instantáneo",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "atún",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "gelatina light",
+        "count": 2
+      },
+      {
+        "key": "frutas",
+        "count": 2
+      },
+      {
+        "key": "pollo",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 212,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "arroz",
+        "count": 6
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "papel higienico",
+        "count": 5
+      },
+      {
+        "key": "yerba 1 kg",
+        "count": 5
+      },
+      {
+        "key": "cafe",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "atun",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "gelatina light",
+        "count": 2
+      },
+      {
+        "key": "frutas",
+        "count": 2
+      },
+      {
+        "key": "pollo",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "galletitas sin tacc",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leches enteras",
+        "count": 10
+      },
+      {
+        "key": "Frutas",
+        "count": 9
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 9
+      },
+      {
+        "key": "Yerba",
+        "count": 9
+      },
+      {
+        "key": "Verduras",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 8
+      },
+      {
+        "key": "Arroz",
+        "count": 7
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 7
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 7
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 6
+      }
+    ],
+    "errores": 64
+  },
+  "agregar": {
+    "total_agregados": 58,
+    "valor_total": 6130729.68,
+    "ticket_promedio": 105702.24,
+    "descuento_total": 177838.42,
+    "canal": {
+      "inmediato": 2,
+      "programado": 56
+    },
+    "top_productos": [
+      {
+        "key": "Queso cremoso Punta del Agua horma x kg.",
+        "count": 203
+      },
+      {
+        "key": "Tomate x kg.",
+        "count": 116
+      },
+      {
+        "key": "Jabón en barra Dove original individual 90 grs",
+        "count": 116
+      },
+      {
+        "key": "Mandarina nova Huella Natural x kg.",
+        "count": 116
+      },
+      {
+        "key": "Queso port salut Punta del Agua horma x kg.",
+        "count": 92
+      },
+      {
+        "key": "NotChickenMila 2.0 220 g.",
+        "count": 87
+      },
+      {
+        "key": "Tomate perita Arcor 400 g.",
+        "count": 58
+      },
+      {
+        "key": "Pimiento amarillo x kg.",
+        "count": 58
+      },
+      {
+        "key": "Milanesa bola de lomo Novillo x kg",
+        "count": 58
+      },
+      {
+        "key": "Galletitas mini crackers Paseo 300 g.",
+        "count": 52
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 299
+      },
+      {
+        "key": "Verduras",
+        "count": 203
+      },
+      {
+        "key": "Frutas",
+        "count": 127
+      },
+      {
+        "key": "Jabones en barra",
+        "count": 117
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 94
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 87
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 75
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 68
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 67
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 60
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 26,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 15
+      },
+      {
+        "key": "Genérico",
+        "count": 13
+      },
+      {
+        "key": "Axe",
+        "count": 10
+      },
+      {
+        "key": "Bulnez",
+        "count": 9
+      },
+      {
+        "key": "Colgate",
+        "count": 8
+      },
+      {
+        "key": "Plusbelle",
+        "count": 8
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 8
+      },
+      {
+        "key": "Higienol",
+        "count": 8
+      },
+      {
+        "key": "Nivea",
+        "count": 6
+      },
+      {
+        "key": "Huella Natural",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 60
+      },
+      {
+        "key": "Almacén",
+        "count": 50
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 49
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 30
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 11
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 7
+      },
+      {
+        "key": "Panadería",
+        "count": 2
+      },
+      {
+        "key": "Congelados",
+        "count": 2
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 156,
+    "carrito_promedio": 47182.89,
+    "pct_con_carrito": 44,
+    "errores": 61
+  },
+  "origen": {
+    "total_requests": 229,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-22T12:42:39.788Z"
+}
