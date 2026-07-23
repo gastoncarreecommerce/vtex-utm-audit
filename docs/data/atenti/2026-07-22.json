@@ -1,0 +1,443 @@
+{
+  "date": "2026-07-22",
+  "chat": {
+    "llamadas": 196,
+    "usuarios_unicos": 75,
+    "con_productos_identificados": 120,
+    "con_sugerencia": 17,
+    "por_hora": [
+      6,
+      0,
+      0,
+      2,
+      1,
+      3,
+      1,
+      1,
+      5,
+      10,
+      29,
+      8,
+      13,
+      18,
+      13,
+      10,
+      2,
+      3,
+      15,
+      15,
+      3,
+      21,
+      3,
+      14
+    ],
+    "errores": 34
+  },
+  "categorizar": {
+    "total": 105,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Semolin chacabuco ",
+        "count": 2
+      },
+      {
+        "key": "Arroz",
+        "count": 2
+      },
+      {
+        "key": "Leche economica",
+        "count": 2
+      },
+      {
+        "key": "Galletitas avena cachafaz",
+        "count": 2
+      },
+      {
+        "key": "Leche la serenisima protein ",
+        "count": 1
+      },
+      {
+        "key": "Queso la serenisima protein ",
+        "count": 1
+      },
+      {
+        "key": "Shampoo y acondicionador Capilatis",
+        "count": 1
+      },
+      {
+        "key": "Papas congrladas",
+        "count": 1
+      },
+      {
+        "key": "Corte fino",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "arroz",
+        "count": 10
+      },
+      {
+        "key": "papel higiénico",
+        "count": 8
+      },
+      {
+        "key": "queso crema",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 7
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "puré de tomate",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 6
+      },
+      {
+        "key": "leche parcialmente descremada",
+        "count": 6
+      },
+      {
+        "key": "leche entera larga vida",
+        "count": 5
+      },
+      {
+        "key": "yerba mate",
+        "count": 5
+      },
+      {
+        "key": "café",
+        "count": 5
+      },
+      {
+        "key": "semolín",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 430,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "arroz",
+        "count": 8
+      },
+      {
+        "key": "papel higienico",
+        "count": 8
+      },
+      {
+        "key": "queso crema",
+        "count": 8
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "pure de tomate",
+        "count": 6
+      },
+      {
+        "key": "cafe",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 6
+      },
+      {
+        "key": "leche parcialmente descremada",
+        "count": 6
+      },
+      {
+        "key": "semolin",
+        "count": 5
+      },
+      {
+        "key": "yerba mate",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "leche descremada",
+        "count": 4
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 40
+      },
+      {
+        "key": "Frutas",
+        "count": 20
+      },
+      {
+        "key": "Leches enteras",
+        "count": 16
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 15
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 14
+      },
+      {
+        "key": "Yerba",
+        "count": 13
+      },
+      {
+        "key": "Legumbres",
+        "count": 13
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 12
+      },
+      {
+        "key": "Otras harinas",
+        "count": 11
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 10
+      }
+    ],
+    "errores": 36
+  },
+  "agregar": {
+    "total_agregados": 53,
+    "valor_total": 1462280.33,
+    "ticket_promedio": 27590.19,
+    "descuento_total": 125027.15,
+    "canal": {
+      "inmediato": 0,
+      "programado": 53
+    },
+    "top_productos": [
+      {
+        "key": "Batata x kg.",
+        "count": 133
+      },
+      {
+        "key": "Mandarina x kg.",
+        "count": 109
+      },
+      {
+        "key": "Palta x uni",
+        "count": 87
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 72
+      },
+      {
+        "key": "Garbanzos secos remojados Carrefour classic en lata 300 g.",
+        "count": 45
+      },
+      {
+        "key": "Zanahoria Huella Natural x kg.",
+        "count": 42
+      },
+      {
+        "key": "Brócoli x kg.",
+        "count": 40
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 40
+      },
+      {
+        "key": "Jabón en barra Dove original individual 90 grs",
+        "count": 40
+      },
+      {
+        "key": "Rollo de cocina maxi rollo Felpita x 200 paños",
+        "count": 36
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 334
+      },
+      {
+        "key": "Frutas",
+        "count": 268
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 85
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 68
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 43
+      },
+      {
+        "key": "Jabones en barra",
+        "count": 40
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 36
+      },
+      {
+        "key": "Yerba",
+        "count": 32
+      },
+      {
+        "key": "Leches enteras",
+        "count": 29
+      },
+      {
+        "key": "Aguas saborizadas",
+        "count": 26
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 39,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 40
+      },
+      {
+        "key": "Carrefour",
+        "count": 29
+      },
+      {
+        "key": "Bulnez",
+        "count": 22
+      },
+      {
+        "key": "Huella Natural",
+        "count": 9
+      },
+      {
+        "key": "Pureza",
+        "count": 8
+      },
+      {
+        "key": "Higienol",
+        "count": 8
+      },
+      {
+        "key": "Equalsweet",
+        "count": 7
+      },
+      {
+        "key": "Cocinero",
+        "count": 6
+      },
+      {
+        "key": "NotCo",
+        "count": 5
+      },
+      {
+        "key": "9 De Oro",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 128
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 80
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 33
+      },
+      {
+        "key": "Congelados",
+        "count": 24
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 4
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 2
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 169,
+    "carrito_promedio": 46393.08,
+    "pct_con_carrito": 54,
+    "errores": 46
+  },
+  "origen": {
+    "total_requests": 249,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-23T12:42:43.850Z"
+}
