@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-23",
+  "chat": {
+    "llamadas": 167,
+    "usuarios_unicos": 82,
+    "con_productos_identificados": 106,
+    "con_sugerencia": 12,
+    "por_hora": [
+      4,
+      1,
+      6,
+      4,
+      1,
+      0,
+      0,
+      1,
+      0,
+      4,
+      9,
+      7,
+      22,
+      22,
+      5,
+      11,
+      16,
+      6,
+      5,
+      1,
+      9,
+      15,
+      13,
+      5
+    ],
+    "errores": 30
+  },
+  "categorizar": {
+    "total": 93,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 6
+      },
+      {
+        "key": "Leche",
+        "count": 3
+      },
+      {
+        "key": "Tiernitos",
+        "count": 2
+      },
+      {
+        "key": "pan integral ",
+        "count": 1
+      },
+      {
+        "key": "Esponjita de cocina ",
+        "count": 1
+      },
+      {
+        "key": "Vino santa Julia sauvignon blanc ",
+        "count": 1
+      },
+      {
+        "key": "Rollo de cocina ",
+        "count": 1
+      },
+      {
+        "key": "Paté a la pimienta ",
+        "count": 1
+      },
+      {
+        "key": "Mani salado",
+        "count": 1
+      },
+      {
+        "key": "Galletas duquesa",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "pan integral",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "manteca",
+        "count": 7
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 5
+      },
+      {
+        "key": "papel higiénico",
+        "count": 5
+      },
+      {
+        "key": "anchoas en aceite",
+        "count": 4
+      },
+      {
+        "key": "esponja de cocina",
+        "count": 4
+      },
+      {
+        "key": "leche larga vida",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "yogures",
+        "count": 3
+      },
+      {
+        "key": "agua saborizada manzana",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "café",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 216,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "pan integral",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "manteca",
+        "count": 7
+      },
+      {
+        "key": "papel higienico",
+        "count": 5
+      },
+      {
+        "key": "anchoas en aceite",
+        "count": 4
+      },
+      {
+        "key": "esponja de cocina",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "leche larga vida",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "yogures",
+        "count": 3
+      },
+      {
+        "key": "agua saborizada manzana",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "cafe",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leches enteras",
+        "count": 17
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 10
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 10
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 8
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 8
+      },
+      {
+        "key": "Bizcochitos",
+        "count": 6
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 6
+      },
+      {
+        "key": "Aguas saborizadas",
+        "count": 6
+      },
+      {
+        "key": "Vinos blancos",
+        "count": 5
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 5
+      }
+    ],
+    "errores": 4
+  },
+  "agregar": {
+    "total_agregados": 27,
+    "valor_total": 792004.64,
+    "ticket_promedio": 29333.51,
+    "descuento_total": 79373.36,
+    "canal": {
+      "inmediato": 0,
+      "programado": 27
+    },
+    "top_productos": [
+      {
+        "key": "Leche La Serenísima reducida en lactosa sachet 1 l.",
+        "count": 25
+      },
+      {
+        "key": "Barra de cereales Brava chocolate nueces y coco 45 grs",
+        "count": 20
+      },
+      {
+        "key": "Barra de cereal Brava Mundial castañas de cajú y datiles 45 grs",
+        "count": 20
+      },
+      {
+        "key": "Gaseosa lima limón 7 Up sin azúcar 2.25 lts",
+        "count": 12
+      },
+      {
+        "key": "Nachos sabor a queso Doritos 129 g.",
+        "count": 12
+      },
+      {
+        "key": "Arroz largo fino 00000 Carrefour Classic en bolsa 1 kg.",
+        "count": 12
+      },
+      {
+        "key": "Bicarbonato de sodio Carrefour Classic 50 g.",
+        "count": 12
+      },
+      {
+        "key": "Queso crema sin lactosa Carrefour Classic 290 grs",
+        "count": 10
+      },
+      {
+        "key": "Pate con pimienta verde Bocatti 90 g.",
+        "count": 9
+      },
+      {
+        "key": "Cerveza rubia Budweiser 473 ml",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Barritas de cereales",
+        "count": 40
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 25
+      },
+      {
+        "key": "Bizcochitos",
+        "count": 22
+      },
+      {
+        "key": "Nachos, maní y palitos",
+        "count": 14
+      },
+      {
+        "key": "Gaseosas limón",
+        "count": 12
+      },
+      {
+        "key": "Arroz",
+        "count": 12
+      },
+      {
+        "key": "Complementos",
+        "count": 12
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 12
+      },
+      {
+        "key": "Cervezas",
+        "count": 11
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 14,
+    "top_marcas": [
+      {
+        "key": "Magistral",
+        "count": 9
+      },
+      {
+        "key": "9 De Oro",
+        "count": 8
+      },
+      {
+        "key": "Genérico",
+        "count": 5
+      },
+      {
+        "key": "Granix",
+        "count": 4
+      },
+      {
+        "key": "Amanda",
+        "count": 4
+      },
+      {
+        "key": "Verdeflor",
+        "count": 4
+      },
+      {
+        "key": "Smams",
+        "count": 4
+      },
+      {
+        "key": "Natura",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "Hogareñas",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 58
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 9
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 4
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 1
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 176,
+    "carrito_promedio": 63924.76,
+    "pct_con_carrito": 57,
+    "errores": 33
+  },
+  "origen": {
+    "total_requests": 238,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-24T12:42:40.594Z"
+}
