@@ -1125,15 +1125,20 @@ function metricVal(a,key){
     default: return 0;
   }
 }
-// invert=true → subir es malo (Sin UTM)
-function deltaHTML(cur,prev,invert){
-  if(prev===null||prev===undefined||prev===0) return "";
-  const pct=(cur-prev)/prev*100;
-  if(!isFinite(pct)) return "";
-  const up=pct>=0, good=invert?!up:up;
+// invert=true → subir es malo (Sin UTM).
+// isRate=true → la métrica YA es un %/tasa (participación, margen, conversión):
+//   la variación se muestra en puntos porcentuales (resta simple cur-prev, sufijo "pp"),
+//   no en % relativo, para no mezclar escalas (ej: 19.3%→22.8% = +3.5pp, no +18.1%).
+function deltaHTML(cur,prev,invert,isRate){
+  if(prev===null||prev===undefined) return "";
+  if(!isRate && prev===0) return "";
+  const magnitude=isRate ? (cur-prev) : ((cur-prev)/prev*100);
+  const unit=isRate ? "pp" : "%";
+  if(!isFinite(magnitude)) return "";
+  const up=magnitude>=0, good=invert?!up:up, zero=Math.abs(magnitude)<0.05;
   const arrow=up?"↑":"↓";
-  const sign=Math.abs(pct)<0.05?"→ 0%":`${arrow} ${Math.abs(pct).toFixed(1)}%`;
-  const cls=Math.abs(pct)<0.05?"":(good?"good":"bad");
+  const sign=zero?`→ 0${unit}`:`${arrow} ${Math.abs(magnitude).toFixed(1)}${unit}`;
+  const cls=zero?"":(good?"good":"bad");
   return `<div class="kpi-delta ${cls}">${sign} <span class="kd-vs">vs ant.</span></div>`;
 }
 function renderKPIs(a,pa){
@@ -1144,7 +1149,7 @@ function renderKPIs(a,pa){
     {key:"non_food",icon:"🏠",cbg:"#f0f9ff",cc:"#0284c7",label:"H&E (Non Food)",value:fmt(a.non_food.o),sub:fmtARS(a.non_food.g),bar:a.app>0?a.non_food.o/a.app:0},
     {key:"marketplace",icon:"🛒",cbg:"#f5f3ff",cc:"#7c3aed",label:"Marketplace",value:fmt(a.marketplace.o),sub:fmtARS(a.marketplace.g),bar:a.app>0?a.marketplace.o/a.app:0},
     {key:"quickcommerce",icon:"⚡",cbg:"#fffbeb",cc:"#d97706",label:"Quickcommerce",value:fmt(a.quickcommerce.o),sub:fmtARS(a.quickcommerce.g),bar:a.app>0?a.quickcommerce.o/a.app:0},
-    {key:"part",icon:"📈",cbg:"#eef2ff",cc:"#4f46e5",label:"Participación App",value:a.part_pct+"%",sub:fmt(a.ecomm)+" total ecomm",bar:a.part_pct/100},
+    {key:"part",icon:"📈",cbg:"#eef2ff",cc:"#4f46e5",label:"Participación App",value:a.part_pct+"%",sub:fmt(a.ecomm)+" total ecomm",bar:a.part_pct/100,isRate:true},
     {key:"con_utm",icon:"✅",cbg:"#ecfdf5",cc:"#059669",label:"Con UTM",value:fmt(a.con_utm),sub:(100-a.utm_sin_pct).toFixed(1)+"% del total",bar:a.app>0?a.con_utm/a.app:0},
     {key:"sin_utm",icon:"⚠️",cbg:"#fef2f2",cc:"#dc2626",label:"Sin UTM",value:fmt(a.sin_utm),sub:a.utm_sin_pct+"% sin atribución",bar:a.utm_sin_pct/100,invert:true},
   ];
@@ -1152,7 +1157,7 @@ function renderKPIs(a,pa){
     <div class="kpi-card" style="--cc:${c.cc};animation-delay:${i*40}ms">
       <div class="kpi-icon-row"><div class="kpi-icon" style="background:${c.cbg}">${c.icon}</div>${c.bar!==null?`<div class="kpi-trend">${(c.bar*100).toFixed(1)}%</div>`:""}</div>
       <div class="kpi-value">${c.value}</div><div class="kpi-label">${c.label}</div><div class="kpi-sub">${c.sub}</div>
-      ${pa?deltaHTML(metricVal(a,c.key),metricVal(pa,c.key),c.invert):""}
+      ${pa?deltaHTML(metricVal(a,c.key),metricVal(pa,c.key),c.invert,c.isRate):""}
       ${c.bar!==null?`<div class="kpi-bar"><div class="kpi-bar-fill" style="width:0;background:${c.cc}"></div></div>`:""}
     </div>`).join("");
   setTimeout(()=>{ document.querySelectorAll(".kpi-bar-fill").forEach((el,i)=>{ el.style.width=Math.min(cards.filter(c=>c.bar!==null)[i].bar*100,100)+"%"; }); },50);
