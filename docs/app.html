@@ -311,7 +311,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       <div class="lc-heading">Bienvenido de nuevo</div>
       <div class="lc-desc">Ingresá para ver el dashboard de la app.</div>
       <label class="lc-label">Usuario de Windows</label>
-      <input id="login-user" type="text" class="lc-input" placeholder="ej: gaston" autocomplete="username" autocapitalize="none" spellcheck="false">
+      <input id="login-user" type="text" class="lc-input" placeholder="Usuario sin @" autocomplete="username" autocapitalize="none" spellcheck="false">
       <label class="lc-label">Contraseña</label>
       <input id="login-pass" type="password" class="lc-input" placeholder="••••••••">
       <button class="lc-btn" onclick="doLogin()">Ingresar →</button>
@@ -568,7 +568,23 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
       <div id="view-monthly" style="display:none">
         <div style="margin-bottom:20px"><h2 style="font-size:21px;font-weight:800;letter-spacing:-.4px">Resumen por Mes</h2><p style="font-size:13px;color:var(--ink-3);margin-top:4px">Acumulados por mes y segmento</p></div>
         <div class="card" style="margin-bottom:20px">
-          <div class="card-header"><div><div class="card-title">Tendencia Mensual</div></div></div>
+          <div class="card-header"><div><div class="card-title">Evolución mes a mes</div><div class="card-sub">Pedidos de la app y participación vs total ecommerce, desde que hay datos</div></div></div>
+          <div class="card-body">
+            <div style="display:flex;gap:26px;flex-wrap:wrap">
+              <div style="flex:1;min-width:280px">
+                <div style="font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Pedidos App / mes</div>
+                <div style="height:210px"><canvas id="monthly-evo-orders"></canvas></div>
+              </div>
+              <div style="flex:1;min-width:280px">
+                <div style="font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Participación % / mes</div>
+                <div style="height:210px"><canvas id="monthly-evo-part"></canvas></div>
+              </div>
+            </div>
+            <div id="monthly-evo-note" style="font-size:12px;color:var(--ink-3);margin-top:12px;display:none"></div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header"><div><div class="card-title">Tendencia Mensual</div><div class="card-sub">Pedidos de la app por segmento</div></div></div>
           <div class="card-body"><div style="height:220px"><canvas id="monthly-chart"></canvas></div></div>
         </div>
         <div class="card">
@@ -1109,15 +1125,20 @@ function metricVal(a,key){
     default: return 0;
   }
 }
-// invert=true → subir es malo (Sin UTM)
-function deltaHTML(cur,prev,invert){
-  if(prev===null||prev===undefined||prev===0) return "";
-  const pct=(cur-prev)/prev*100;
-  if(!isFinite(pct)) return "";
-  const up=pct>=0, good=invert?!up:up;
+// invert=true → subir es malo (Sin UTM).
+// isRate=true → la métrica YA es un %/tasa (participación, margen, conversión):
+//   la variación se muestra en puntos porcentuales (resta simple cur-prev, sufijo "pp"),
+//   no en % relativo, para no mezclar escalas (ej: 19.3%→22.8% = +3.5pp, no +18.1%).
+function deltaHTML(cur,prev,invert,isRate){
+  if(prev===null||prev===undefined) return "";
+  if(!isRate && prev===0) return "";
+  const magnitude=isRate ? (cur-prev) : ((cur-prev)/prev*100);
+  const unit=isRate ? "pp" : "%";
+  if(!isFinite(magnitude)) return "";
+  const up=magnitude>=0, good=invert?!up:up, zero=Math.abs(magnitude)<0.05;
   const arrow=up?"↑":"↓";
-  const sign=Math.abs(pct)<0.05?"→ 0%":`${arrow} ${Math.abs(pct).toFixed(1)}%`;
-  const cls=Math.abs(pct)<0.05?"":(good?"good":"bad");
+  const sign=zero?`→ 0${unit}`:`${arrow} ${Math.abs(magnitude).toFixed(1)}${unit}`;
+  const cls=zero?"":(good?"good":"bad");
   return `<div class="kpi-delta ${cls}">${sign} <span class="kd-vs">vs ant.</span></div>`;
 }
 function renderKPIs(a,pa){
@@ -1128,7 +1149,7 @@ function renderKPIs(a,pa){
     {key:"non_food",icon:"🏠",cbg:"#f0f9ff",cc:"#0284c7",label:"H&E (Non Food)",value:fmt(a.non_food.o),sub:fmtARS(a.non_food.g),bar:a.app>0?a.non_food.o/a.app:0},
     {key:"marketplace",icon:"🛒",cbg:"#f5f3ff",cc:"#7c3aed",label:"Marketplace",value:fmt(a.marketplace.o),sub:fmtARS(a.marketplace.g),bar:a.app>0?a.marketplace.o/a.app:0},
     {key:"quickcommerce",icon:"⚡",cbg:"#fffbeb",cc:"#d97706",label:"Quickcommerce",value:fmt(a.quickcommerce.o),sub:fmtARS(a.quickcommerce.g),bar:a.app>0?a.quickcommerce.o/a.app:0},
-    {key:"part",icon:"📈",cbg:"#eef2ff",cc:"#4f46e5",label:"Participación App",value:a.part_pct+"%",sub:fmt(a.ecomm)+" total ecomm",bar:a.part_pct/100},
+    {key:"part",icon:"📈",cbg:"#eef2ff",cc:"#4f46e5",label:"Participación App",value:a.part_pct+"%",sub:fmt(a.ecomm)+" total ecomm",bar:a.part_pct/100,isRate:true},
     {key:"con_utm",icon:"✅",cbg:"#ecfdf5",cc:"#059669",label:"Con UTM",value:fmt(a.con_utm),sub:(100-a.utm_sin_pct).toFixed(1)+"% del total",bar:a.app>0?a.con_utm/a.app:0},
     {key:"sin_utm",icon:"⚠️",cbg:"#fef2f2",cc:"#dc2626",label:"Sin UTM",value:fmt(a.sin_utm),sub:a.utm_sin_pct+"% sin atribución",bar:a.utm_sin_pct/100,invert:true},
   ];
@@ -1136,7 +1157,7 @@ function renderKPIs(a,pa){
     <div class="kpi-card" style="--cc:${c.cc};animation-delay:${i*40}ms">
       <div class="kpi-icon-row"><div class="kpi-icon" style="background:${c.cbg}">${c.icon}</div>${c.bar!==null?`<div class="kpi-trend">${(c.bar*100).toFixed(1)}%</div>`:""}</div>
       <div class="kpi-value">${c.value}</div><div class="kpi-label">${c.label}</div><div class="kpi-sub">${c.sub}</div>
-      ${pa?deltaHTML(metricVal(a,c.key),metricVal(pa,c.key),c.invert):""}
+      ${pa?deltaHTML(metricVal(a,c.key),metricVal(pa,c.key),c.invert,c.isRate):""}
       ${c.bar!==null?`<div class="kpi-bar"><div class="kpi-bar-fill" style="width:0;background:${c.cc}"></div></div>`:""}
     </div>`).join("");
   setTimeout(()=>{ document.querySelectorAll(".kpi-bar-fill").forEach((el,i)=>{ el.style.width=Math.min(cards.filter(c=>c.bar!==null)[i].bar*100,100)+"%"; }); },50);
@@ -1918,6 +1939,28 @@ async function renderMonthly(){
   const rows=months.map(month=>({month,label:MES[month.slice(5)]+" "+month.slice(0,4),...agg(byMonth[month])}));
   document.getElementById("monthly-body").innerHTML=rows.map(r=>`<tr><td><strong>${r.label}</strong></td><td><strong>${r.app.toLocaleString("es-AR")}</strong></td><td><span class="badge food">${r.food.o.toLocaleString("es-AR")}</span></td><td><span class="badge non_food">${r.non_food.o.toLocaleString("es-AR")}</span></td><td><span class="badge marketplace">${r.marketplace.o.toLocaleString("es-AR")}</span></td><td><span class="badge quickcommerce">${r.quickcommerce.o.toLocaleString("es-AR")}</span></td><td><span class="badge con-utm">${r.con_utm.toLocaleString("es-AR")}</span></td><td><span class="badge ${r.utm_sin_pct>35?"sin-utm":"con-utm"}">${r.utm_sin_pct}%</span></td><td>${r.part_pct}%</td></tr>`).join("");
   dc("monthly");
+
+  // ── Evolución mes a mes: pedidos App y participación % (más viejo → más nuevo) ──
+  const evoRows=[...rows].reverse();
+  const evoLabels=evoRows.map(r=>r.label);
+  const evoOrders=evoRows.map(r=>r.app);
+  const evoPart=evoRows.map(r=>r.part_pct);
+  // ¿el último mes (en curso) está incompleto?
+  const lastM=evoRows[evoRows.length-1].month;
+  const daysIn=new Date(+lastM.slice(0,4),+lastM.slice(5),0).getDate();
+  const maxDay=Math.max(...byMonth[lastM].map(d=>+d.slice(8,10)));
+  const parcial=maxDay<daysIn;
+  if(parcial) evoLabels[evoLabels.length-1]+=" *";
+  const note=document.getElementById("monthly-evo-note");
+  if(parcial){ note.style.display=""; note.innerHTML=`<b>*</b> ${evoRows[evoRows.length-1].label} en curso — datos hasta el día ${maxDay} (parcial). La participación % es representativa; el total de pedidos aún no cerró.`; }
+  else note.style.display="none";
+  // etiqueta de valor sobre cada punto
+  const ptLabels=fmtV=>({id:"ptLabels",afterDatasetsDraw(ch){const {ctx}=ch;ctx.save();ctx.font="700 11px Inter, sans-serif";ctx.fillStyle="#374151";ctx.textAlign="center";ch.getDatasetMeta(0).data.forEach((el,i)=>ctx.fillText(fmtV(ch.data.datasets[0].data[i]),el.x,el.y-9));ctx.restore();}});
+  const dashLast=c=>(parcial&&c.p1DataIndex===evoOrders.length-1)?[5,4]:undefined;
+  dc("evoOrders"); dc("evoPart");
+  S.charts.evoOrders=new Chart(document.getElementById("monthly-evo-orders").getContext("2d"),{type:"line",data:{labels:evoLabels,datasets:[{label:"Pedidos App",data:evoOrders,borderColor:"#4f46e5",backgroundColor:"#4f46e518",fill:true,tension:.35,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:"#4f46e5",borderWidth:2.6,segment:{borderDash:dashLast}}]},options:{...cOpts,layout:{padding:{top:22}},plugins:{...cOpts.plugins,legend:{display:false},tooltip:{...cOpts.plugins.tooltip,callbacks:{label:c=>` ${Number(c.raw).toLocaleString("es-AR")} pedidos`}}},scales:{x:{ticks:{color:"#9ca3af",font:{size:11,weight:"600"}},grid:{display:false}},y:{beginAtZero:true,ticks:{color:"#9ca3af",callback:v=>v.toLocaleString("es-AR")},grid:{color:"#f1f4f8"}}}},plugins:[ptLabels(v=>Number(v).toLocaleString("es-AR"))]});
+  S.charts.evoPart=new Chart(document.getElementById("monthly-evo-part").getContext("2d"),{type:"line",data:{labels:evoLabels,datasets:[{label:"Participación %",data:evoPart,borderColor:"#10b981",backgroundColor:"#10b98118",fill:true,tension:.35,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:"#10b981",borderWidth:2.6}]},options:{...cOpts,layout:{padding:{top:22}},plugins:{...cOpts.plugins,legend:{display:false},tooltip:{...cOpts.plugins.tooltip,callbacks:{label:c=>` ${c.raw}% participación`}}},scales:{x:{ticks:{color:"#9ca3af",font:{size:11,weight:"600"}},grid:{display:false}},y:{beginAtZero:true,ticks:{color:"#9ca3af",callback:v=>v+"%"},grid:{color:"#f1f4f8"}}}},plugins:[ptLabels(v=>v+"%")]});
+
   const mLabels=rows.map(r=>r.label).reverse();
   // plugin local: imprime el valor arriba de cada barra (resuelve la ilegibilidad por escala)
   const barLabels={id:"barLabels",afterDatasetsDraw(chart){
