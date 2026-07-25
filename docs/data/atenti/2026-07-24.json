@@ -1,0 +1,435 @@
+{
+  "date": "2026-07-24",
+  "chat": {
+    "llamadas": 163,
+    "usuarios_unicos": 71,
+    "con_productos_identificados": 102,
+    "con_sugerencia": 23,
+    "por_hora": [
+      1,
+      1,
+      2,
+      4,
+      1,
+      0,
+      0,
+      0,
+      4,
+      8,
+      3,
+      8,
+      22,
+      6,
+      2,
+      34,
+      9,
+      3,
+      19,
+      6,
+      16,
+      9,
+      0,
+      5
+    ],
+    "errores": 28
+  },
+  "categorizar": {
+    "total": 79,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 7
+      },
+      {
+        "key": "Crema de leche deslactosada",
+        "count": 2
+      },
+      {
+        "key": "Galletitas de agua paquete por 5",
+        "count": 1
+      },
+      {
+        "key": "Leche descremada ",
+        "count": 1
+      },
+      {
+        "key": "Matambre de cerdo ",
+        "count": 1
+      },
+      {
+        "key": "Tintura excellence n 8 ",
+        "count": 1
+      },
+      {
+        "key": "Quiet detergents magisterial x 500 ml",
+        "count": 1
+      },
+      {
+        "key": "Purity bamboo dulce y salad pawuete Lila ",
+        "count": 1
+      },
+      {
+        "key": "Pre pizza",
+        "count": 1
+      },
+      {
+        "key": "Penoso todo ésto ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "harina",
+        "count": 5
+      },
+      {
+        "key": "crema de leche deslactosada",
+        "count": 5
+      },
+      {
+        "key": "leche descremada",
+        "count": 4
+      },
+      {
+        "key": "azúcar",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "levadura",
+        "count": 4
+      },
+      {
+        "key": "aceite",
+        "count": 4
+      },
+      {
+        "key": "limpiador en crema",
+        "count": 4
+      },
+      {
+        "key": "antigrasa",
+        "count": 4
+      },
+      {
+        "key": "lavandina",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "jugo en polvo manzana",
+        "count": 3
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "pastillas de cloro",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 221,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "harina",
+        "count": 5
+      },
+      {
+        "key": "crema de leche deslactosada",
+        "count": 5
+      },
+      {
+        "key": "papel higienico",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "aceite",
+        "count": 4
+      },
+      {
+        "key": "limpiador en crema",
+        "count": 4
+      },
+      {
+        "key": "antigrasa",
+        "count": 4
+      },
+      {
+        "key": "lavandina",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "azucar",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "levadura",
+        "count": 3
+      },
+      {
+        "key": "pastillas de cloro",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 13
+      },
+      {
+        "key": "Detergentes",
+        "count": 10
+      },
+      {
+        "key": "Esponjas",
+        "count": 9
+      },
+      {
+        "key": "Lavandinas",
+        "count": 8
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 7
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 7
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 7
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 6
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 6
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 6
+      }
+    ],
+    "errores": 7
+  },
+  "agregar": {
+    "total_agregados": 40,
+    "valor_total": 4095962.34,
+    "ticket_promedio": 102399.06,
+    "descuento_total": 315546.85,
+    "canal": {
+      "inmediato": 0,
+      "programado": 40
+    },
+    "top_productos": [
+      {
+        "key": "Pastilla para inodoro Poett con red Brisa Polar 1 uni",
+        "count": 64
+      },
+      {
+        "key": "Lavandina Odex 1 l.",
+        "count": 58
+      },
+      {
+        "key": "Papel higiénico hoja simple Carrefour 18 x 30 m.",
+        "count": 54
+      },
+      {
+        "key": "Aperitivo sin alcohol Citrus Carrefour Classic 1,5 lts",
+        "count": 46
+      },
+      {
+        "key": "Aperitivo sin alcohol Limón Carrefour Classic 1,5 lts",
+        "count": 44
+      },
+      {
+        "key": "Provenzal El Mercado 50 g.",
+        "count": 41
+      },
+      {
+        "key": "Limpiador multiuso Multimax para diluir lavanda (rinde 1 litro) 35 ml.",
+        "count": 38
+      },
+      {
+        "key": "Desinfectante en aerosol Carrefour Expert bebé 340 ml",
+        "count": 36
+      },
+      {
+        "key": "Secador de Pelo Gadnic Care S2400 PRO",
+        "count": 32
+      },
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 32
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Canastas y bloques",
+        "count": 115
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 95
+      },
+      {
+        "key": "Aperitivos sin alcohol",
+        "count": 90
+      },
+      {
+        "key": "Lavandinas",
+        "count": 68
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 56
+      },
+      {
+        "key": "Limpiadores de piso",
+        "count": 53
+      },
+      {
+        "key": "Detergentes",
+        "count": 46
+      },
+      {
+        "key": "Verduras",
+        "count": 41
+      },
+      {
+        "key": "Desodorantes y desinfectantes",
+        "count": 40
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 36
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 35,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 25
+      },
+      {
+        "key": "Higienol",
+        "count": 16
+      },
+      {
+        "key": "Genérico",
+        "count": 14
+      },
+      {
+        "key": "Poett",
+        "count": 13
+      },
+      {
+        "key": "Ayudín",
+        "count": 11
+      },
+      {
+        "key": "Odex",
+        "count": 11
+      },
+      {
+        "key": "La Perla",
+        "count": 11
+      },
+      {
+        "key": "Bulnez",
+        "count": 8
+      },
+      {
+        "key": "Magistral",
+        "count": 7
+      },
+      {
+        "key": "Terma",
+        "count": 7
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Limpieza",
+        "count": 112
+      },
+      {
+        "key": "Almacén",
+        "count": 60
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 55
+      },
+      {
+        "key": "Panadería",
+        "count": 28
+      },
+      {
+        "key": "Bebidas",
+        "count": 20
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 19
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 167,
+    "carrito_promedio": 64501.82,
+    "pct_con_carrito": 56.9,
+    "errores": 53
+  },
+  "origen": {
+    "total_requests": 318,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-25T12:42:37.977Z"
+}
