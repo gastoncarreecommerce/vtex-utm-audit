@@ -1,0 +1,423 @@
+{
+  "date": "2026-07-25",
+  "chat": {
+    "llamadas": 78,
+    "usuarios_unicos": 45,
+    "con_productos_identificados": 39,
+    "con_sugerencia": 11,
+    "por_hora": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      4,
+      3,
+      5,
+      11,
+      5,
+      3,
+      7,
+      4,
+      6,
+      3,
+      8,
+      4,
+      8,
+      4,
+      0
+    ],
+    "errores": 16
+  },
+  "categorizar": {
+    "total": 34,
+    "top_recetas": [
+      {
+        "key": "Crema dental, cepillos de dientes desodorantes ",
+        "count": 1
+      },
+      {
+        "key": "Shampoo",
+        "count": 1
+      },
+      {
+        "key": "El más barato",
+        "count": 1
+      },
+      {
+        "key": "Pasta italiana",
+        "count": 1
+      },
+      {
+        "key": "Chocotorta",
+        "count": 1
+      },
+      {
+        "key": "Hamburguesas queso untable queso cremoso leche una torta por mi cumpleaños pizzas congrladas rossbeef yogurt firme",
+        "count": 1
+      },
+      {
+        "key": "Y cafe tostado molido también ",
+        "count": 1
+      },
+      {
+        "key": "Quiero armar una picada para una cena con 6 amigas. Económico y sería de entrada ya que hay plato principal ",
+        "count": 1
+      },
+      {
+        "key": "Sería sin snack y aceitunas ",
+        "count": 1
+      },
+      {
+        "key": "Solo fiambres y económicos",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "hamburguesas",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "roast beef",
+        "count": 3
+      },
+      {
+        "key": "salame",
+        "count": 3
+      },
+      {
+        "key": "queso",
+        "count": 3
+      },
+      {
+        "key": "ñoquis",
+        "count": 3
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "queso untable",
+        "count": 2
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "torta",
+        "count": 2
+      },
+      {
+        "key": "pizzas congeladas",
+        "count": 2
+      },
+      {
+        "key": "yogur firme",
+        "count": 2
+      },
+      {
+        "key": "queso pategrás",
+        "count": 2
+      },
+      {
+        "key": "galletitas de agua",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 97,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "hamburguesas",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "roast beef",
+        "count": 3
+      },
+      {
+        "key": "salame",
+        "count": 3
+      },
+      {
+        "key": "queso",
+        "count": 3
+      },
+      {
+        "key": "noquis",
+        "count": 3
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "torta",
+        "count": 2
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "queso untable",
+        "count": 2
+      },
+      {
+        "key": "yogur firme",
+        "count": 2
+      },
+      {
+        "key": "pizzas congeladas",
+        "count": 2
+      },
+      {
+        "key": "queso pategras",
+        "count": 2
+      },
+      {
+        "key": "galletitas de agua",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 9
+      },
+      {
+        "key": "Leches enteras",
+        "count": 7
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 5
+      },
+      {
+        "key": "Hamburguesas y medallones",
+        "count": 4
+      },
+      {
+        "key": "Quesos duros y semi duros",
+        "count": 4
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 4
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "Dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 3
+      },
+      {
+        "key": "Especialidades dulces",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 21,
+    "valor_total": 340818.81,
+    "ticket_promedio": 16229.47,
+    "descuento_total": 32878.39,
+    "canal": {
+      "inmediato": 0,
+      "programado": 21
+    },
+    "top_productos": [
+      {
+        "key": "Cerveza blanca Quilmes sin alcohol 473 ml",
+        "count": 18
+      },
+      {
+        "key": "Galletitas Hogareñas mix de cereales x3 555 grs",
+        "count": 12
+      },
+      {
+        "key": "Puré de papas instantáneo Carrefour classic 100 g.",
+        "count": 6
+      },
+      {
+        "key": "Jamón cocido feteado Bulnez 150 grs",
+        "count": 6
+      },
+      {
+        "key": "Queso danbo La Paulina x kg.",
+        "count": 6
+      },
+      {
+        "key": "Sal fina Celusal salero 250 g.",
+        "count": 5
+      },
+      {
+        "key": "Tapa para empanadas criolla Carrefour classic 12 uni",
+        "count": 4
+      },
+      {
+        "key": "Mozzarella Carrefour Classic 500 g.",
+        "count": 4
+      },
+      {
+        "key": "Morcilla rosca en gancho x kg",
+        "count": 4
+      },
+      {
+        "key": "Leche La Serenísima ultra entera multivit 3% sachet 1 lt",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Cervezas",
+        "count": 18
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 12
+      },
+      {
+        "key": "Quesos duros y semi duros",
+        "count": 9
+      },
+      {
+        "key": "Purés instantáneos",
+        "count": 8
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 7
+      },
+      {
+        "key": "Achuras y embutidos",
+        "count": 7
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 6
+      },
+      {
+        "key": "Fiambres feteados",
+        "count": 6
+      },
+      {
+        "key": "Sal",
+        "count": 5
+      },
+      {
+        "key": "Leches enteras",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 16,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 18
+      },
+      {
+        "key": "Genérico",
+        "count": 10
+      },
+      {
+        "key": "La Serenísima",
+        "count": 9
+      },
+      {
+        "key": "Mendia",
+        "count": 9
+      },
+      {
+        "key": "La Salteña",
+        "count": 7
+      },
+      {
+        "key": "Noly",
+        "count": 6
+      },
+      {
+        "key": "Bulnez",
+        "count": 5
+      },
+      {
+        "key": "Bonafide",
+        "count": 5
+      },
+      {
+        "key": "La Paulina",
+        "count": 4
+      },
+      {
+        "key": "Silvia",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 73
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 28
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 109,
+    "carrito_promedio": 49968.11,
+    "pct_con_carrito": 53.7,
+    "errores": 15
+  },
+  "origen": {
+    "total_requests": 208,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-26T12:42:37.679Z"
+}
