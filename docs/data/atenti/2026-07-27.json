@@ -1,0 +1,439 @@
+{
+  "date": "2026-07-27",
+  "chat": {
+    "llamadas": 120,
+    "usuarios_unicos": 49,
+    "con_productos_identificados": 67,
+    "con_sugerencia": 9,
+    "por_hora": [
+      13,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      1,
+      9,
+      1,
+      13,
+      11,
+      5,
+      10,
+      5,
+      8,
+      5,
+      6,
+      10,
+      4,
+      5,
+      0,
+      5,
+      2
+    ],
+    "errores": 20
+  },
+  "categorizar": {
+    "total": 60,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 4
+      },
+      {
+        "key": "Fideos sin tacc",
+        "count": 2
+      },
+      {
+        "key": "Barril de cerveza ",
+        "count": 2
+      },
+      {
+        "key": "Queso cremoso por media horma",
+        "count": 1
+      },
+      {
+        "key": "Queso cremoso por media horma, jabón líquido lavarropa automático,leche sin lactosa,",
+        "count": 1
+      },
+      {
+        "key": "Tintura excellence n 8 ",
+        "count": 1
+      },
+      {
+        "key": "Excellence L’Oréal n 8",
+        "count": 1
+      },
+      {
+        "key": "Excellence n 8",
+        "count": 1
+      },
+      {
+        "key": "Alimento para gatos Whiskas pavo ",
+        "count": 1
+      },
+      {
+        "key": "Coca cola zero",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "carne",
+        "count": 4
+      },
+      {
+        "key": "barril de cerveza",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "fideos sin tacc",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "tintura",
+        "count": 2
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "chips de chocolate",
+        "count": 2
+      },
+      {
+        "key": "banana",
+        "count": 2
+      },
+      {
+        "key": "papel higiénico",
+        "count": 2
+      },
+      {
+        "key": "zanahoria",
+        "count": 2
+      },
+      {
+        "key": "frutas",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "yerba suave",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 128,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "carne",
+        "count": 4
+      },
+      {
+        "key": "barril de cerveza",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "tintura",
+        "count": 2
+      },
+      {
+        "key": "chips de chocolate",
+        "count": 2
+      },
+      {
+        "key": "banana",
+        "count": 2
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "zanahoria",
+        "count": 2
+      },
+      {
+        "key": "frutas",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "fideos sin tacc",
+        "count": 2
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 16
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 9
+      },
+      {
+        "key": "Frutas",
+        "count": 6
+      },
+      {
+        "key": "Yerba",
+        "count": 6
+      },
+      {
+        "key": "Coloracion",
+        "count": 4
+      },
+      {
+        "key": "Fideos largos",
+        "count": 4
+      },
+      {
+        "key": "Pollo y granja",
+        "count": 4
+      },
+      {
+        "key": "Cervezas",
+        "count": 4
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 3
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 38,
+    "valor_total": 1896547.69,
+    "ticket_promedio": 49909.15,
+    "descuento_total": 407874.77,
+    "canal": {
+      "inmediato": 0,
+      "programado": 38
+    },
+    "top_productos": [
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 76
+      },
+      {
+        "key": "Mandarina x kg.",
+        "count": 69
+      },
+      {
+        "key": "Palta x uni",
+        "count": 60
+      },
+      {
+        "key": "Huevos libres de jaula Huella Natural 6 uni",
+        "count": 44
+      },
+      {
+        "key": "Pan Integral Bimbo 420 grs",
+        "count": 42
+      },
+      {
+        "key": "Leche UAT parcialmente descremada Carrefour classic brik 1 lt.",
+        "count": 36
+      },
+      {
+        "key": "Queso cremoso Cremac x kg.",
+        "count": 32
+      },
+      {
+        "key": "Jugo Pura Frutta manzana roja tetra 1 l.",
+        "count": 32
+      },
+      {
+        "key": "Granola Natural candy peanut butter dp 200 g.",
+        "count": 30
+      },
+      {
+        "key": "Queso neufchatel Tregar light en pote 180 g.",
+        "count": 28
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 140
+      },
+      {
+        "key": "Verduras",
+        "count": 96
+      },
+      {
+        "key": "Leches enteras",
+        "count": 76
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 61
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 48
+      },
+      {
+        "key": "Huevos",
+        "count": 46
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 43
+      },
+      {
+        "key": "Jugos listos",
+        "count": 40
+      },
+      {
+        "key": "Granola",
+        "count": 30
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 30
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 27,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 29
+      },
+      {
+        "key": "Carrefour",
+        "count": 18
+      },
+      {
+        "key": "Cabrales",
+        "count": 8
+      },
+      {
+        "key": "Imperial",
+        "count": 8
+      },
+      {
+        "key": "Denninghoffs",
+        "count": 8
+      },
+      {
+        "key": "La Serenísima",
+        "count": 6
+      },
+      {
+        "key": "Higienol",
+        "count": 6
+      },
+      {
+        "key": "Lactal",
+        "count": 5
+      },
+      {
+        "key": "Bonafide",
+        "count": 5
+      },
+      {
+        "key": "St Dalfour",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 77
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 40
+      },
+      {
+        "key": "Bebidas",
+        "count": 30
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 24
+      },
+      {
+        "key": "Panadería",
+        "count": 18
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Congelados",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 99,
+    "carrito_promedio": 103083.58,
+    "pct_con_carrito": 59.2,
+    "errores": 37
+  },
+  "origen": {
+    "total_requests": 179,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-28T12:42:37.742Z"
+}
