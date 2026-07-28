@@ -119,7 +119,7 @@ export default async function handler(req, res) {
     const perfil = getLoginMap(logs.loginLog).get(dni) || null;
     const timeline = getTimeline(logs, dni);
 
-    const cartItems = getCartAdds(logs.agregarLog, dni).flatMap(c => c.items);
+    const cartRaw = getCartAdds(logs.agregarLog, dni).flatMap(c => c.items);     const cartItems = [...new Map(cartRaw.map(it => [it.nombre, it])).values()];
     let atribucion = null;
     if (cartItems.length) {
       try {
