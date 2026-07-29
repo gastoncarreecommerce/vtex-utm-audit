@@ -1,0 +1,431 @@
+{
+  "date": "2026-07-28",
+  "chat": {
+    "llamadas": 144,
+    "usuarios_unicos": 58,
+    "con_productos_identificados": 99,
+    "con_sugerencia": 9,
+    "por_hora": [
+      5,
+      14,
+      0,
+      0,
+      2,
+      0,
+      4,
+      0,
+      0,
+      4,
+      18,
+      9,
+      8,
+      6,
+      4,
+      6,
+      8,
+      6,
+      5,
+      11,
+      2,
+      11,
+      20,
+      1
+    ],
+    "errores": 22
+  },
+  "categorizar": {
+    "total": 95,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Mermelada carrefour",
+        "count": 2
+      },
+      {
+        "key": "Riñón de cerdo ",
+        "count": 2
+      },
+      {
+        "key": "Si",
+        "count": 2
+      },
+      {
+        "key": "Azucar 1 kg",
+        "count": 2
+      },
+      {
+        "key": "Salmas Acelga congelada Rollo de cocina  Tomate cherry Zucchini  Cebolla Morron rojo y verde  Calabaza cortada Huevos Carne/ Pollo Atún  Tapa de tarta  Agua",
+        "count": 1
+      },
+      {
+        "key": "Mermeladas",
+        "count": 1
+      },
+      {
+        "key": "Que otro gusto tenés  de mermelada carrefour?",
+        "count": 1
+      },
+      {
+        "key": "Papel higiénico higienol doble hoja",
+        "count": 1
+      },
+      {
+        "key": "Harina 0000",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "azúcar",
+        "count": 9
+      },
+      {
+        "key": "leche",
+        "count": 8
+      },
+      {
+        "key": "queso cremoso",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 7
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "cebolla",
+        "count": 5
+      },
+      {
+        "key": "pollo",
+        "count": 5
+      },
+      {
+        "key": "mermelada",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 5
+      },
+      {
+        "key": "sal",
+        "count": 5
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 4
+      },
+      {
+        "key": "harina",
+        "count": 4
+      },
+      {
+        "key": "harina 4 ceros",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 280,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "azucar",
+        "count": 9
+      },
+      {
+        "key": "leche",
+        "count": 8
+      },
+      {
+        "key": "queso cremoso",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 7
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "cebolla",
+        "count": 5
+      },
+      {
+        "key": "pollo",
+        "count": 5
+      },
+      {
+        "key": "mermelada",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 5
+      },
+      {
+        "key": "sal",
+        "count": 5
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 4
+      },
+      {
+        "key": "harina",
+        "count": 4
+      },
+      {
+        "key": "harina 4 ceros",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 20
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 16
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 14
+      },
+      {
+        "key": "Leches enteras",
+        "count": 12
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 10
+      },
+      {
+        "key": "Azucar",
+        "count": 10
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 8
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 8
+      },
+      {
+        "key": "Fideos largos",
+        "count": 8
+      },
+      {
+        "key": "Mermeladas, dulces y jaleas",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 41,
+    "valor_total": 9341868.52,
+    "ticket_promedio": 227850.45,
+    "descuento_total": 303144.46,
+    "canal": {
+      "inmediato": 0,
+      "programado": 41
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 288
+      },
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 288
+      },
+      {
+        "key": "Tomate perita entero Bulnez en lata 400 g.",
+        "count": 120
+      },
+      {
+        "key": "Harina de Trigo 000 Caserita x 1 kg",
+        "count": 96
+      },
+      {
+        "key": "Asado Novillito x kg",
+        "count": 96
+      },
+      {
+        "key": "Puré de tomate Carrefour classic 520 g.",
+        "count": 84
+      },
+      {
+        "key": "Tapa para pascualina hojaldre Bulnez 2 uni",
+        "count": 72
+      },
+      {
+        "key": "Harina leudante Bulnez 1 kg",
+        "count": 70
+      },
+      {
+        "key": "Bizcochos Don Satur salados 200 g.",
+        "count": 60
+      },
+      {
+        "key": "Yogur batido Ilolay Kids de frutilla 90 grs",
+        "count": 48
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 576
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 249
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 246
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 218
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 194
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 192
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 135
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 108
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 96
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 74
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 12,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 12
+      },
+      {
+        "key": "Pureza",
+        "count": 8
+      },
+      {
+        "key": "Bulnez",
+        "count": 8
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 7
+      },
+      {
+        "key": "Oreo",
+        "count": 5
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Emeth",
+        "count": 4
+      },
+      {
+        "key": "Chocolinas",
+        "count": 3
+      },
+      {
+        "key": "Dr. Cormillot",
+        "count": 2
+      },
+      {
+        "key": "Dulcor",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 38
+      },
+      {
+        "key": "Almacén",
+        "count": 33
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 10
+      },
+      {
+        "key": "Panadería",
+        "count": 7
+      },
+      {
+        "key": "Bebidas",
+        "count": 4
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 126,
+    "carrito_promedio": 64664.76,
+    "pct_con_carrito": 54.4,
+    "errores": 18
+  },
+  "origen": {
+    "total_requests": 200,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-29T12:42:44.818Z"
+}
