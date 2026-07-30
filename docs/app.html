@@ -252,6 +252,9 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 .kpi-delta.good{color:var(--green)}
 .kpi-delta.bad{color:var(--red)}
 .kpi-delta .kd-vs{font-weight:500;color:var(--ink-4)}
+.cmp-toggle{margin-left:auto;display:inline-flex;gap:2px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:2px}
+.cmp-opt{border:none;background:none;font-family:inherit;font-size:11px;font-weight:600;color:var(--ink-3);padding:3px 9px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.cmp-opt.active{background:var(--indigo);color:#fff}
 
 /* HEATMAP */
 .heatmap-grid{display:grid;grid-template-columns:46px repeat(24,1fr);gap:3px}
@@ -389,6 +392,10 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
         <div id="compare-note" style="display:none;font-size:12px;color:var(--ink-3);margin-bottom:14px;display:flex;align-items:center;gap:7px">
           <span style="display:inline-flex;align-items:center;gap:5px;background:var(--indigo-bg);color:var(--indigo);font-weight:600;padding:3px 10px;border-radius:7px">↔ Comparando</span>
           <span id="compare-note-txt"></span>
+          <span class="cmp-toggle">
+            <button id="cmp-prev" class="cmp-opt active" onclick="setCmpMode('prev')">Período anterior</button>
+            <button id="cmp-week" class="cmp-opt" onclick="setCmpMode('week')">Semana pasada</button>
+          </span>
         </div>
         <div class="kpi-row" id="kpi-row">
           <div class="skeleton sk-kpi"></div><div class="skeleton sk-kpi"></div>
@@ -786,7 +793,7 @@ const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 function getGHToken(){ return localStorage.getItem("gh_token")||""; }
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
-const S = {user:null,from:null,to:null,data:{},rows:{},todayState:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"}};
+const S = {user:null,from:null,to:null,data:{},rows:{},todayState:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"},cmpMode:"prev"};
 let currentMsType="promo", liveInterval=null, lastFetch=null, liveActive=false;
 
 // ── DATE FORMAT (Argentina dd/mm/yyyy) ────────────────
@@ -1066,9 +1073,49 @@ function agg(dates){
 
 // ── PERIOD COMPARISON ─────────────────────────────────
 function prevRange(from,to){
+  if(S.cmpMode==="week"){ return [addDays(from,-7), addDays(to,-7)]; }
   const n=getDates(from,to).length;
   const pTo=addDays(from,-1), pFrom=addDays(pTo,-(n-1));
   return [pFrom,pTo];
+}
+function setCmpMode(m){ if(S.cmpMode===m) return; S.cmpMode=m; if(S.from&&S.to) loadAll(S.from,S.to); }
+
+// ── INTRADAY CUTOFF ───────────────────────────────────
+// Si el período incluye HOY (día parcial), el día base alineado (el último del
+// período de comparación) se recorta SOLO hasta la misma hora del día, recomputado
+// desde sus rows. Así no se compara "hoy hasta ahora" contra "ayer día completo".
+// La participación se deja como tasa del día completo (no hay ecommerce por hora histórico).
+function nowSecOfDayAR(){ const d=new Date(Date.now()-3*3600000); return d.getUTCHours()*3600+d.getUTCMinutes()*60+d.getUTCSeconds(); }
+function rowSecOfDay(fecha){ const m=String(fecha||"").match(/(\d{1,2}):(\d{2}):(\d{2})/); return m?(+m[1])*3600+(+m[2])*60+(+m[3]):Infinity; }
+function aggRowsCut(rows,cutoff){
+  const r={app:0,gmv:0,con_utm:0,sin_utm:0,food:{o:0,g:0},non_food:{o:0,g:0},marketplace:{o:0,g:0},quickcommerce:{o:0,g:0}};
+  for(const row of rows){
+    if(rowSecOfDay(row.fecha)>cutoff) continue;
+    r.app++; const g=Number(row.total)||0; r.gmv+=g;
+    if(row.utm_source) r.con_utm++; else r.sin_utm++;
+    const s=row.segment; if(r[s]){ r[s].o++; r[s].g+=g; }
+  }
+  return r;
+}
+async function aggBaseline(pdates,cutoff){
+  const pa=agg(pdates);
+  if(cutoff==null||!pdates.length) return pa;
+  const day=pdates[pdates.length-1];
+  const full=S.data[day]; if(!full) return pa;
+  const rows=await fetchRows(day);
+  if(!rows.length) return pa;                 // sin rows (o fetch falló) → no recortar
+  const cut=aggRowsCut(rows,cutoff);
+  pa.app     += cut.app     - (full.app?.total||0);
+  pa.gmv     += cut.gmv     - (full.app?.gmv||0);
+  pa.con_utm += cut.con_utm - (full.app?.con_utm||0);
+  pa.sin_utm += cut.sin_utm - (full.app?.sin_utm||0);
+  for(const s of ["food","non_food","marketplace","quickcommerce"]){
+    pa[s].o += cut[s].o - (full.app?.segments?.[s]?.orders||0);
+    pa[s].g += cut[s].g - (full.app?.segments?.[s]?.gmv||0);
+  }
+  pa.aov=pa.app>0?Math.round(pa.gmv/pa.app):0;
+  pa.utm_sin_pct=pa.app>0?Math.round(pa.sin_utm/pa.app*1000)/10:0;
+  return pa;                                   // pa.part_pct se deja como día completo
 }
 
 // ── FORMAT ────────────────────────────────────────────
@@ -1078,10 +1125,12 @@ function fmtARS(n){ return "$"+(n>=1000000?(n/1000000).toFixed(1)+"M":n>=1000?(n
 // ── RENDER DASH ───────────────────────────────────────
 async function renderDash(dates,pdates){
   const a=agg(dates);
-  const pa=pdates?agg(pdates):null;
+  const partial = dates.length && dates[dates.length-1]===todayAR();
+  const cutoff = partial ? nowSecOfDayAR() : null;
+  const pa = pdates ? await aggBaseline(pdates,cutoff) : null;
   const hasPrev=pa && pa.app>0;
   renderAlerts(dates,a);
-  renderCompareNote(hasPrev,pdates);
+  renderCompareNote(hasPrev,pdates,cutoff);
   renderKPIs(a,hasPrev?pa:null); renderDonut(a); renderUTM(a.daily); renderPart(a.daily); renderTimeline(dates,a.daily);
   renderAOV(a); renderCompare(a.daily,hasPrev?pa.daily:null);
   if(dates.length===1){
@@ -1174,11 +1223,16 @@ function renderAlerts(dates,a){
   }
   el.innerHTML=alerts.map(al=>`<div class="alert-banner ${al.cls}"><div class="ab-icon">${al.icon}</div><div><div class="ab-title">${al.title}</div><div class="ab-desc">${al.desc}</div></div></div>`).join("");
 }
-function renderCompareNote(hasPrev,pdates){
+function renderCompareNote(hasPrev,pdates,cutoff){
   const el=document.getElementById("compare-note");
+  document.getElementById("cmp-prev")?.classList.toggle("active",S.cmpMode!=="week");
+  document.getElementById("cmp-week")?.classList.toggle("active",S.cmpMode==="week");
   if(!hasPrev||!pdates||!pdates.length){ el.style.display="none"; return; }
   el.style.display="flex";
-  document.getElementById("compare-note-txt").textContent=`vs período anterior · ${fmtRangeAR(pdates[0],pdates[pdates.length-1])}`;
+  const base=S.cmpMode==="week"?"semana pasada":"período anterior";
+  const p2=n=>String(n).padStart(2,"0");
+  const hasta=(cutoff!=null)?` · hasta ${p2(Math.floor(cutoff/3600))}:${p2(Math.floor(cutoff%3600/60))}hs`:"";
+  document.getElementById("compare-note-txt").textContent=`vs ${base} · ${fmtRangeAR(pdates[0],pdates[pdates.length-1])}${hasta}`;
 }
 
 // ── AOV CHART ─────────────────────────────────────────
