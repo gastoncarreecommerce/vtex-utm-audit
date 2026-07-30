@@ -1,0 +1,423 @@
+{
+  "date": "2026-07-29",
+  "chat": {
+    "llamadas": 86,
+    "usuarios_unicos": 52,
+    "con_productos_identificados": 54,
+    "con_sugerencia": 10,
+    "por_hora": [
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      1,
+      1,
+      3,
+      4,
+      3,
+      3,
+      10,
+      4,
+      9,
+      4,
+      1,
+      6,
+      5,
+      3,
+      7,
+      1,
+      6,
+      12
+    ],
+    "errores": 17
+  },
+  "categorizar": {
+    "total": 51,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 7
+      },
+      {
+        "key": "Redbull fruta de dragon",
+        "count": 2
+      },
+      {
+        "key": "Yerba",
+        "count": 1
+      },
+      {
+        "key": "Cualquiera ",
+        "count": 1
+      },
+      {
+        "key": "Quiero saber si hay tofu en stock en la sucursal",
+        "count": 1
+      },
+      {
+        "key": "Juguetes en promoción",
+        "count": 1
+      },
+      {
+        "key": "Gaseosa Pepsi ",
+        "count": 1
+      },
+      {
+        "key": "Jamón cocido puente de ronda",
+        "count": 1
+      },
+      {
+        "key": "Aceite, yerba, té de saquitos, atún en lata, dentrifico, cepillo de dientes todo en ofertas si puede ser",
+        "count": 1
+      },
+      {
+        "key": "Aderezo ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "pollo",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "mozzarella",
+        "count": 3
+      },
+      {
+        "key": "castañas",
+        "count": 3
+      },
+      {
+        "key": "tableta chocolate con leche",
+        "count": 2
+      },
+      {
+        "key": "tableta chocolate con leche milka",
+        "count": 2
+      },
+      {
+        "key": "galletitas rellenas vainilla",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola regular",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola black",
+        "count": 2
+      },
+      {
+        "key": "cerveza rubia",
+        "count": 2
+      },
+      {
+        "key": "pochoclo vainilla",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 178,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "pollo",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "mozzarella",
+        "count": 3
+      },
+      {
+        "key": "castanas",
+        "count": 3
+      },
+      {
+        "key": "juguetes",
+        "count": 2
+      },
+      {
+        "key": "tableta chocolate con leche",
+        "count": 2
+      },
+      {
+        "key": "tableta chocolate con leche milka",
+        "count": 2
+      },
+      {
+        "key": "galletitas rellenas vainilla",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola black",
+        "count": 2
+      },
+      {
+        "key": "pochoclo vainilla",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola regular",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 14
+      },
+      {
+        "key": "Chocolates",
+        "count": 11
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 8
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 7
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 6
+      },
+      {
+        "key": "Yerba",
+        "count": 5
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 5
+      },
+      {
+        "key": "Juegos didacticos",
+        "count": 4
+      },
+      {
+        "key": "Accesorios de libreria",
+        "count": 4
+      },
+      {
+        "key": "Adhesivos",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 11,
+    "valor_total": 125705.77,
+    "ticket_promedio": 11427.8,
+    "descuento_total": 12751.23,
+    "canal": {
+      "inmediato": 5,
+      "programado": 6
+    },
+    "top_productos": [
+      {
+        "key": "Yerba mate Mañanita bajo polvo 4flex 1 kg.",
+        "count": 6
+      },
+      {
+        "key": "Granos de café con chocolate 150 g.",
+        "count": 5
+      },
+      {
+        "key": "Té negro La Virginia en saquitos x 25 uni",
+        "count": 4
+      },
+      {
+        "key": "Atún desmenuzado Bulnez al natural 170 g.",
+        "count": 4
+      },
+      {
+        "key": "Rúcula hidroponica El Mercado 100 grs",
+        "count": 4
+      },
+      {
+        "key": "Aceite de girasol Cocinero 900 cc.",
+        "count": 3
+      },
+      {
+        "key": "Chocolate SHOT con maní 170 g.",
+        "count": 3
+      },
+      {
+        "key": "Gaseosa Coca-Cola Zero 600 ml",
+        "count": 2
+      },
+      {
+        "key": "Leche parcialmente descremada UAT Carrefour classic tetra 1 lt.",
+        "count": 1
+      },
+      {
+        "key": "Oblea Tita chocolate 19 g.",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Yerba",
+        "count": 6
+      },
+      {
+        "key": "Café molido y en grano",
+        "count": 5
+      },
+      {
+        "key": "Té",
+        "count": 4
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 4
+      },
+      {
+        "key": "Verduras cortadas y ensaladas preparadas",
+        "count": 4
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 4
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 3
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 2
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 2
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 9,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 11
+      },
+      {
+        "key": "Colgate",
+        "count": 8
+      },
+      {
+        "key": "Amanda",
+        "count": 4
+      },
+      {
+        "key": "Cocinero",
+        "count": 4
+      },
+      {
+        "key": "Saint Gottard",
+        "count": 4
+      },
+      {
+        "key": "Verdeflor",
+        "count": 3
+      },
+      {
+        "key": "Inti Zen",
+        "count": 3
+      },
+      {
+        "key": "Oral B",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Lux",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 28
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 21
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 115,
+    "carrito_promedio": 43536.9,
+    "pct_con_carrito": 54.3,
+    "errores": 0
+  },
+  "origen": {
+    "total_requests": 160,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-30T12:42:37.118Z"
+}
