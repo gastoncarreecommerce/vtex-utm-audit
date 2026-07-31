@@ -1,0 +1,443 @@
+{
+  "date": "2026-07-30",
+  "chat": {
+    "llamadas": 228,
+    "usuarios_unicos": 109,
+    "con_productos_identificados": 130,
+    "con_sugerencia": 23,
+    "por_hora": [
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      6,
+      14,
+      13,
+      20,
+      10,
+      17,
+      28,
+      14,
+      19,
+      17,
+      8,
+      4,
+      25,
+      10,
+      12
+    ],
+    "errores": 42
+  },
+  "categorizar": {
+    "total": 114,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 8
+      },
+      {
+        "key": "Leche",
+        "count": 3
+      },
+      {
+        "key": "Solomillo",
+        "count": 2
+      },
+      {
+        "key": "Asado",
+        "count": 2
+      },
+      {
+        "key": "Quiero afeitarme las bolas",
+        "count": 2
+      },
+      {
+        "key": "Aceite de oliva la toscana ",
+        "count": 2
+      },
+      {
+        "key": "Fideos ",
+        "count": 1
+      },
+      {
+        "key": "Pan casero ",
+        "count": 1
+      },
+      {
+        "key": "Hola quiero cocinar carne al horno ",
+        "count": 1
+      },
+      {
+        "key": "Tarta de choclo ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 12
+      },
+      {
+        "key": "cebolla",
+        "count": 12
+      },
+      {
+        "key": "huevos",
+        "count": 10
+      },
+      {
+        "key": "leche",
+        "count": 10
+      },
+      {
+        "key": "leche descremada",
+        "count": 8
+      },
+      {
+        "key": "sal",
+        "count": 7
+      },
+      {
+        "key": "puré de tomate",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "morrón",
+        "count": 6
+      },
+      {
+        "key": "azúcar",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 6
+      },
+      {
+        "key": "leche entera",
+        "count": 5
+      },
+      {
+        "key": "queso cremoso",
+        "count": 5
+      },
+      {
+        "key": "chorizo",
+        "count": 5
+      },
+      {
+        "key": "dulce de leche",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 372,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 12
+      },
+      {
+        "key": "cebolla",
+        "count": 12
+      },
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "huevos",
+        "count": 8
+      },
+      {
+        "key": "leche descremada",
+        "count": 8
+      },
+      {
+        "key": "sal",
+        "count": 7
+      },
+      {
+        "key": "morron",
+        "count": 7
+      },
+      {
+        "key": "pure de tomate",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "azucar",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 6
+      },
+      {
+        "key": "leche entera",
+        "count": 5
+      },
+      {
+        "key": "queso cremoso",
+        "count": 5
+      },
+      {
+        "key": "chorizo",
+        "count": 5
+      },
+      {
+        "key": "harina",
+        "count": 4
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 9
+      },
+      {
+        "key": "Sal",
+        "count": 8
+      },
+      {
+        "key": "Huevos",
+        "count": 7
+      },
+      {
+        "key": "Fideos largos",
+        "count": 6
+      },
+      {
+        "key": "Leche descremada",
+        "count": 6
+      },
+      {
+        "key": "Aceite",
+        "count": 6
+      },
+      {
+        "key": "Cebolla",
+        "count": 6
+      },
+      {
+        "key": "Manteca",
+        "count": 6
+      },
+      {
+        "key": "Pure de tomate",
+        "count": 5
+      },
+      {
+        "key": "Chorizo",
+        "count": 5
+      }
+    ],
+    "errores": 34
+  },
+  "agregar": {
+    "total_agregados": 34,
+    "valor_total": 446421.3,
+    "ticket_promedio": 13130.04,
+    "descuento_total": 56954.26,
+    "canal": {
+      "inmediato": 4,
+      "programado": 30
+    },
+    "top_productos": [
+      {
+        "key": "Pulpa de tomate Carrefour Classic tetra 520 grs",
+        "count": 42
+      },
+      {
+        "key": "Plancha de asado Novillo x kg",
+        "count": 32
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 23
+      },
+      {
+        "key": "Choclo amarillo cremoso Inalpa 300 grs",
+        "count": 16
+      },
+      {
+        "key": "Fideos dedalitos Favorita bolsa 500 g.",
+        "count": 12
+      },
+      {
+        "key": "Leche liviana UAT clásica Bulnez 1 lt",
+        "count": 12
+      },
+      {
+        "key": "Huevos color El Mercado extra 6 uni",
+        "count": 9
+      },
+      {
+        "key": "Solomillo congelado x kg",
+        "count": 8
+      },
+      {
+        "key": "Queso rallado reggianito La Serenísima sobre 35 g.",
+        "count": 8
+      },
+      {
+        "key": "Aceite de girasol Cañuelas 1.5 l.",
+        "count": 7
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 44
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 32
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 29
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 18
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 16
+      },
+      {
+        "key": "Carne de cerdo",
+        "count": 14
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 13
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 9
+      },
+      {
+        "key": "Huevos",
+        "count": 9
+      },
+      {
+        "key": "Quesos rallados y en hebras",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 21,
+    "top_marcas": [
+      {
+        "key": "La Serenísima",
+        "count": 13
+      },
+      {
+        "key": "Carrefour",
+        "count": 12
+      },
+      {
+        "key": "Cif",
+        "count": 10
+      },
+      {
+        "key": "La Salteña",
+        "count": 10
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 9
+      },
+      {
+        "key": "Higienol",
+        "count": 8
+      },
+      {
+        "key": "Coca Cola",
+        "count": 7
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 5
+      },
+      {
+        "key": "Lucchetti",
+        "count": 5
+      },
+      {
+        "key": "308",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 42
+      },
+      {
+        "key": "Almacén",
+        "count": 40
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 14
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 9
+      },
+      {
+        "key": "Panadería",
+        "count": 7
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 4
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 197,
+    "carrito_promedio": 50151.42,
+    "pct_con_carrito": 56.3,
+    "errores": 63
+  },
+  "origen": {
+    "total_requests": 276,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-07-31T12:42:38.510Z"
+}
