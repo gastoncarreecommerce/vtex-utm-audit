@@ -1,4 +1,141 @@
 {
   "date": "2026-08-01",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 161,
+      "users": 25
+    },
+    "user_engagement": {
+      "count": 127,
+      "users": 25
+    },
+    "session_start": {
+      "count": 28,
+      "users": 28
+    },
+    "mis_cupones": {
+      "count": 22,
+      "users": 13
+    },
+    "add_to_cart": {
+      "count": 17,
+      "users": 1
+    },
+    "notification_dismiss": {
+      "count": 16,
+      "users": 11
+    },
+    "remove_from_cart": {
+      "count": 16,
+      "users": 3
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 9,
+      "users": 2
+    },
+    "notification_receive": {
+      "count": 7,
+      "users": 5
+    },
+    "switch_to_ecommerce": {
+      "count": 7,
+      "users": 6
+    },
+    "mi_perfil": {
+      "count": 6,
+      "users": 4
+    },
+    "view_cart": {
+      "count": 6,
+      "users": 2
+    },
+    "folletos": {
+      "count": 5,
+      "users": 5
+    },
+    "view_item_list": {
+      "count": 5,
+      "users": 3
+    },
+    "calculadora_home": {
+      "count": 4,
+      "users": 3
+    },
+    "search": {
+      "count": 4,
+      "users": 1
+    },
+    "chat_bot": {
+      "count": 3,
+      "users": 2
+    },
+    "escaner_precios": {
+      "count": 3,
+      "users": 3
+    },
+    "lista_compras": {
+      "count": 3,
+      "users": 3
+    },
+    "favorito_mes": {
+      "count": 2,
+      "users": 2
+    },
+    "favorito_mes_renovar": {
+      "count": 2,
+      "users": 2
+    },
+    "favorito_semanal_activacion": {
+      "count": 2,
+      "users": 2
+    },
+    "inicio_registro": {
+      "count": 2,
+      "users": 1
+    },
+    "promociones": {
+      "count": 2,
+      "users": 2
+    },
+    "switch_to_sucursales": {
+      "count": 2,
+      "users": 1
+    },
+    "view_promotion": {
+      "count": 2,
+      "users": 2
+    },
+    "app_update": {
+      "count": 1,
+      "users": 1
+    },
+    "favorito_semanal_volver_a_elegir": {
+      "count": 1,
+      "users": 1
+    },
+    "filter_cupones": {
+      "count": 1,
+      "users": 1
+    },
+    "os_update": {
+      "count": 1,
+      "users": 1
+    },
+    "select_item": {
+      "count": 1,
+      "users": 1
+    },
+    "sucursales": {
+      "count": 1,
+      "users": 1
+    },
+    "tickets_compra": {
+      "count": 1,
+      "users": 1
+    },
+    "view_item": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
