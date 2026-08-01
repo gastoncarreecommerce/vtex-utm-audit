@@ -1,0 +1,443 @@
+{
+  "date": "2026-07-31",
+  "chat": {
+    "llamadas": 151,
+    "usuarios_unicos": 61,
+    "con_productos_identificados": 78,
+    "con_sugerencia": 22,
+    "por_hora": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      4,
+      0,
+      1,
+      2,
+      5,
+      11,
+      26,
+      11,
+      9,
+      6,
+      15,
+      7,
+      9,
+      10,
+      7,
+      17,
+      8,
+      1
+    ],
+    "errores": 34
+  },
+  "categorizar": {
+    "total": 66,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Leche ",
+        "count": 3
+      },
+      {
+        "key": "Vainillas y mascarpone ",
+        "count": 2
+      },
+      {
+        "key": "No sé que hacer de comer",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer un tiramisú ",
+        "count": 1
+      },
+      {
+        "key": "Que puedo cocinar ",
+        "count": 1
+      },
+      {
+        "key": "Cómo puedo repetir última compra? ",
+        "count": 1
+      },
+      {
+        "key": "Leche entera, manteca,",
+        "count": 1
+      },
+      {
+        "key": "Agua en bidon",
+        "count": 1
+      },
+      {
+        "key": "Oferta de galletitas?",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "puré de tomate",
+        "count": 11
+      },
+      {
+        "key": "fideos tallarines",
+        "count": 7
+      },
+      {
+        "key": "queso rallado",
+        "count": 7
+      },
+      {
+        "key": "galletas traviata",
+        "count": 5
+      },
+      {
+        "key": "gelatina",
+        "count": 5
+      },
+      {
+        "key": "pollo",
+        "count": 5
+      },
+      {
+        "key": "zanahoria",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "atún al natural",
+        "count": 4
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "galletitas",
+        "count": 4
+      },
+      {
+        "key": "tomate cherry",
+        "count": 4
+      },
+      {
+        "key": "mandarina",
+        "count": 4
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "vainillas",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 204,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "pure de tomate",
+        "count": 10
+      },
+      {
+        "key": "fideos tallarines",
+        "count": 7
+      },
+      {
+        "key": "galletas traviata",
+        "count": 5
+      },
+      {
+        "key": "gelatina",
+        "count": 5
+      },
+      {
+        "key": "pollo",
+        "count": 5
+      },
+      {
+        "key": "zanahoria",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "queso rallado",
+        "count": 5
+      },
+      {
+        "key": "galletitas",
+        "count": 4
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "atun al natural",
+        "count": 3
+      },
+      {
+        "key": "fideos spaghetti",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "verduras",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Fideos Largos",
+        "count": 11
+      },
+      {
+        "key": "Pure de Tomate",
+        "count": 9
+      },
+      {
+        "key": "Galletitas Saladas",
+        "count": 9
+      },
+      {
+        "key": "Carne Picada",
+        "count": 6
+      },
+      {
+        "key": "Galletitas Dulces",
+        "count": 6
+      },
+      {
+        "key": "Zanahoria",
+        "count": 5
+      },
+      {
+        "key": "Pollo",
+        "count": 4
+      },
+      {
+        "key": "Galletitas de Agua",
+        "count": 4
+      },
+      {
+        "key": "Leche liquida",
+        "count": 4
+      },
+      {
+        "key": "Atun",
+        "count": 3
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 37,
+    "valor_total": 1448168.85,
+    "ticket_promedio": 39139.7,
+    "descuento_total": 131120.65,
+    "canal": {
+      "inmediato": 0,
+      "programado": 37
+    },
+    "top_productos": [
+      {
+        "key": "Puré de tomate Carrefour classic 520 g.",
+        "count": 58
+      },
+      {
+        "key": "Queso cremoso Cremac x kg.",
+        "count": 56
+      },
+      {
+        "key": "Fideo spaghetti Bulnez en paquete 500 g.",
+        "count": 52
+      },
+      {
+        "key": "Tapas para pascualinas Carrefour Classic hojaldre x 2 uni",
+        "count": 34
+      },
+      {
+        "key": "Atún desmenuzado Bulnez al natural 170 g.",
+        "count": 33
+      },
+      {
+        "key": "Queso rallado Ilolay 120 g.",
+        "count": 30
+      },
+      {
+        "key": "Harina de trigo Morixe 0000 1 kg.",
+        "count": 25
+      },
+      {
+        "key": "Aceite de girasol Cocinero 1.5 l.",
+        "count": 24
+      },
+      {
+        "key": "Jamón cocido Puente de Ronda 200 grs",
+        "count": 14
+      },
+      {
+        "key": "Yogur batido Ser PRO + con proteínas sabor frutos rojos 175 grs",
+        "count": 13
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 88
+      },
+      {
+        "key": "Fideos largos",
+        "count": 66
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 56
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 51
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 34
+      },
+      {
+        "key": "Quesos rallados y en hebras",
+        "count": 30
+      },
+      {
+        "key": "Verduras",
+        "count": 27
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 25
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 25
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 24
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 23,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 24
+      },
+      {
+        "key": "Carrefour",
+        "count": 22
+      },
+      {
+        "key": "La Lacteo",
+        "count": 9
+      },
+      {
+        "key": "Higienol",
+        "count": 8
+      },
+      {
+        "key": "La Serenísima",
+        "count": 6
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 5
+      },
+      {
+        "key": "Huella Natural",
+        "count": 5
+      },
+      {
+        "key": "Aleluya",
+        "count": 5
+      },
+      {
+        "key": "Ilolay",
+        "count": 4
+      },
+      {
+        "key": "Bulnez",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 49
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 43
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 40
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 18
+      },
+      {
+        "key": "Congelados",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 9
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 153,
+    "carrito_promedio": 83722.84,
+    "pct_con_carrito": 52.6,
+    "errores": 37
+  },
+  "origen": {
+    "total_requests": 296,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-01T12:42:39.192Z"
+}
