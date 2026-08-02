@@ -1,0 +1,431 @@
+{
+  "date": "2026-08-01",
+  "chat": {
+    "llamadas": 93,
+    "usuarios_unicos": 48,
+    "con_productos_identificados": 46,
+    "con_sugerencia": 6,
+    "por_hora": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      2,
+      9,
+      4,
+      3,
+      12,
+      10,
+      10,
+      2,
+      5,
+      2,
+      20,
+      2,
+      4,
+      0,
+      0,
+      3
+    ],
+    "errores": 25
+  },
+  "categorizar": {
+    "total": 42,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Queso leche yogur ",
+        "count": 1
+      },
+      {
+        "key": "Ecole x 5 ",
+        "count": 1
+      },
+      {
+        "key": "Leche sancor bb 2",
+        "count": 1
+      },
+      {
+        "key": "Queso cremoso",
+        "count": 1
+      },
+      {
+        "key": "Yerba",
+        "count": 1
+      },
+      {
+        "key": "Yerba playadito",
+        "count": 1
+      },
+      {
+        "key": "Mermelada damasco la campagnola",
+        "count": 1
+      },
+      {
+        "key": "Papas fritas carrefour",
+        "count": 1
+      },
+      {
+        "key": "Fideos ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "mayonesa clásica",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "queso",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "mostaza",
+        "count": 2
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "masa para lasagna",
+        "count": 2
+      },
+      {
+        "key": "jamón cocido",
+        "count": 2
+      },
+      {
+        "key": "queso mozzarella",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 93,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "mayonesa clasica",
+        "count": 3
+      },
+      {
+        "key": "queso",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "mostaza",
+        "count": 2
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "queso mozzarella",
+        "count": 2
+      },
+      {
+        "key": "carne picada",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "patitas",
+        "count": 2
+      },
+      {
+        "key": "fernet",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Mayonesa",
+        "count": 6
+      },
+      {
+        "key": "Shampoo",
+        "count": 4
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 3
+      },
+      {
+        "key": "Mermeladas",
+        "count": 3
+      },
+      {
+        "key": "Galletitas Dulces",
+        "count": 2
+      },
+      {
+        "key": "Papas Fritas",
+        "count": 2
+      },
+      {
+        "key": "Mostaza",
+        "count": 2
+      },
+      {
+        "key": "Alimento Humedo",
+        "count": 2
+      },
+      {
+        "key": "Carne Picada",
+        "count": 2
+      },
+      {
+        "key": "Pure de Tomate",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 18,
+    "valor_total": 1447576.17,
+    "ticket_promedio": 80420.9,
+    "descuento_total": 79559.75,
+    "canal": {
+      "inmediato": 8,
+      "programado": 10
+    },
+    "top_productos": [
+      {
+        "key": "Leche parcialmente descremada UAT Carrefour classic tetra 1 lt.",
+        "count": 24
+      },
+      {
+        "key": "Agua mineral sin gas Villavicencio 2 lts",
+        "count": 18
+      },
+      {
+        "key": "Queso cremoso Puyehue horma x kg.",
+        "count": 14
+      },
+      {
+        "key": "Alfajor Terrabusi chocolate clásico 50 g.",
+        "count": 12
+      },
+      {
+        "key": "Tapa para pascualina La salteña balance 2 uni",
+        "count": 11
+      },
+      {
+        "key": "Jamón cocido feteado Bulnez 150 grs",
+        "count": 10
+      },
+      {
+        "key": "Arroz parboil Lucchetti 1 kg.",
+        "count": 8
+      },
+      {
+        "key": "Fideos spaghetti N3 Matarazzo 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Jabón líquido Carrefour Soft de té verde y limón dp 300 cc.",
+        "count": 8
+      },
+      {
+        "key": "Bebida vegetal de almendras Biba tetra 1 lt.",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 30
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 18
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 17
+      },
+      {
+        "key": "Pollo",
+        "count": 16
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 14
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 12
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 11
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 11
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 10
+      },
+      {
+        "key": "Mermeladas, dulces y jaleas",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 11,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 7
+      },
+      {
+        "key": "Higienol",
+        "count": 7
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Mate y Co",
+        "count": 5
+      },
+      {
+        "key": "Dove",
+        "count": 5
+      },
+      {
+        "key": "Amanda",
+        "count": 4
+      },
+      {
+        "key": "Elegante",
+        "count": 4
+      },
+      {
+        "key": "Sussex",
+        "count": 3
+      },
+      {
+        "key": "Salsati",
+        "count": 3
+      },
+      {
+        "key": "Casancrem",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 5
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 113,
+    "carrito_promedio": 33713.37,
+    "pct_con_carrito": 43.1,
+    "errores": 36
+  },
+  "origen": {
+    "total_requests": 188,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-02T12:42:37.164Z"
+}
