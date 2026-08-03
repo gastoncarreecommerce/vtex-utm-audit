@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-02",
+  "chat": {
+    "llamadas": 65,
+    "usuarios_unicos": 28,
+    "con_productos_identificados": 34,
+    "con_sugerencia": 8,
+    "por_hora": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      1,
+      7,
+      2,
+      5,
+      4,
+      3,
+      4,
+      1,
+      3,
+      4,
+      8,
+      9,
+      1,
+      4
+    ],
+    "errores": 14
+  },
+  "categorizar": {
+    "total": 31,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "con nuggets vegetariana ",
+        "count": 1
+      },
+      {
+        "key": "Tienen café en grano ",
+        "count": 1
+      },
+      {
+        "key": " Es molido ",
+        "count": 1
+      },
+      {
+        "key": "El que me mostras es molido y yo quiero en grano ",
+        "count": 1
+      },
+      {
+        "key": " Ahí dice molido ",
+        "count": 1
+      },
+      {
+        "key": "Fideos con queso y crema",
+        "count": 1
+      },
+      {
+        "key": "Asado para toda la familia ",
+        "count": 1
+      },
+      {
+        "key": "Hola! Quiero hacer unas hamburguesas a la parrilla para 4 personas",
+        "count": 1
+      },
+      {
+        "key": "Hamburguesas paty",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "café en grano",
+        "count": 3
+      },
+      {
+        "key": "crema de leche",
+        "count": 3
+      },
+      {
+        "key": "carbón",
+        "count": 3
+      },
+      {
+        "key": "tomate",
+        "count": 3
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "pan para hamburguesas",
+        "count": 2
+      },
+      {
+        "key": "lechuga",
+        "count": 2
+      },
+      {
+        "key": "aderezos",
+        "count": 2
+      },
+      {
+        "key": "milanesitas de carne",
+        "count": 2
+      },
+      {
+        "key": "aderezo caesar",
+        "count": 2
+      },
+      {
+        "key": "chorizo puro cerdo",
+        "count": 2
+      },
+      {
+        "key": "pan flautita",
+        "count": 2
+      },
+      {
+        "key": "milanesa de bola de lomo",
+        "count": 2
+      },
+      {
+        "key": "jamón cocido feteado",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 92,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "cafe en grano",
+        "count": 3
+      },
+      {
+        "key": "carbon",
+        "count": 3
+      },
+      {
+        "key": "tomate",
+        "count": 3
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "crema de leche",
+        "count": 2
+      },
+      {
+        "key": "pan para hamburguesas",
+        "count": 2
+      },
+      {
+        "key": "lechuga",
+        "count": 2
+      },
+      {
+        "key": "aderezos",
+        "count": 2
+      },
+      {
+        "key": "jamon cocido feteado",
+        "count": 2
+      },
+      {
+        "key": "milanesitas de carne",
+        "count": 2
+      },
+      {
+        "key": "aderezo caesar",
+        "count": 2
+      },
+      {
+        "key": "chorizo puro cerdo",
+        "count": 2
+      },
+      {
+        "key": "pan flautita",
+        "count": 2
+      },
+      {
+        "key": "milanesa de bola de lomo",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Cafe en grano",
+        "count": 3
+      },
+      {
+        "key": "Fideos",
+        "count": 3
+      },
+      {
+        "key": "Crema de leche",
+        "count": 2
+      },
+      {
+        "key": "Pan para Hamburguesas",
+        "count": 2
+      },
+      {
+        "key": "Tomate",
+        "count": 2
+      },
+      {
+        "key": "Lechuga",
+        "count": 2
+      },
+      {
+        "key": "Aderezos",
+        "count": 2
+      },
+      {
+        "key": "Atun",
+        "count": 2
+      },
+      {
+        "key": "Huevos",
+        "count": 2
+      },
+      {
+        "key": "Carbon y Lena",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 8,
+    "valor_total": 731773.39,
+    "ticket_promedio": 91471.67,
+    "descuento_total": 15591.11,
+    "canal": {
+      "inmediato": 0,
+      "programado": 8
+    },
+    "top_productos": [
+      {
+        "key": "Jamón cocido feteado Bulnez 150 grs",
+        "count": 18
+      },
+      {
+        "key": "Toallitas húmedas Kimbies 48 uni",
+        "count": 18
+      },
+      {
+        "key": "Yogur entero Milkaut de vainilla 0 lact en pote 120 g.",
+        "count": 18
+      },
+      {
+        "key": "Milanesitas de carne Swift 400 grs",
+        "count": 16
+      },
+      {
+        "key": "Bocaditos de pollo Patitas sabor original fp 1.1 kg",
+        "count": 12
+      },
+      {
+        "key": "Leche UAT Zero lactosa La Serenisima 1L",
+        "count": 12
+      },
+      {
+        "key": "Obleas Carrefour classic limón 200 g. Obleas Carrefour classic  limón 200 g.",
+        "count": 12
+      },
+      {
+        "key": "Rollo de cocina maxi rollo Felpita x 200 paños",
+        "count": 12
+      },
+      {
+        "key": "Amoladora Angular 115Mm 600W",
+        "count": 6
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Yogures enteros",
+        "count": 24
+      },
+      {
+        "key": "Fiambres feteados",
+        "count": 18
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 18
+      },
+      {
+        "key": "Toallitas húmedas",
+        "count": 18
+      },
+      {
+        "key": "Comidas y panificados",
+        "count": 16
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 12
+      },
+      {
+        "key": "Verduras",
+        "count": 12
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 12
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 12
+      },
+      {
+        "key": "Herramientas y escaleras",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 15
+      },
+      {
+        "key": "Genérico",
+        "count": 13
+      },
+      {
+        "key": "Higienol",
+        "count": 5
+      },
+      {
+        "key": "Pura Frutta",
+        "count": 4
+      },
+      {
+        "key": "Don Bernabeu",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      },
+      {
+        "key": "Del Valle",
+        "count": 2
+      },
+      {
+        "key": "Lucchetti",
+        "count": 2
+      },
+      {
+        "key": "Elegante",
+        "count": 2
+      },
+      {
+        "key": "El Mercado",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Carnes y pescados",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 8
+      },
+      {
+        "key": "Congelados",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 90,
+    "carrito_promedio": 71378.1,
+    "pct_con_carrito": 55.7,
+    "errores": 10
+  },
+  "origen": {
+    "total_requests": 148,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-03T12:42:46.304Z"
+}
