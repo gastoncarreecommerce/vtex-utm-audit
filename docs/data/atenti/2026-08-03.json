@@ -1,0 +1,447 @@
+{
+  "date": "2026-08-03",
+  "chat": {
+    "llamadas": 142,
+    "usuarios_unicos": 70,
+    "con_productos_identificados": 68,
+    "con_sugerencia": 24,
+    "por_hora": [
+      10,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      3,
+      1,
+      16,
+      4,
+      11,
+      17,
+      5,
+      6,
+      4,
+      8,
+      9,
+      14,
+      3,
+      11,
+      11,
+      5
+    ],
+    "errores": 36
+  },
+  "categorizar": {
+    "total": 53,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Cif baño Virulana  Nalga para milanesa Rebozador o pan rallado preferido para horno 1kg Lomo",
+        "count": 2
+      },
+      {
+        "key": "Papel higiénico ",
+        "count": 2
+      },
+      {
+        "key": "Repetir carrito",
+        "count": 1
+      },
+      {
+        "key": "Papel higiénico Jugo manzana pura frutta 6 huevos 4 leche descremada 3 leche entera Hileret Manteca Queso blanco Pan integral Harina blanca flor leudante Azúcar Fideos Queso rallado Ketchup Salmas",
+        "count": 1
+      },
+      {
+        "key": "Quitamanchas rex",
+        "count": 1
+      },
+      {
+        "key": "Cápsulas de café Miel  Morron Papa Batata Boniato  Uvas Frutilla Mandarina Manzana Banana",
+        "count": 1
+      },
+      {
+        "key": "Quitamanchas Rex de wassington",
+        "count": 1
+      },
+      {
+        "key": "Nalga",
+        "count": 1
+      },
+      {
+        "key": "Virulana",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "papel higiénico",
+        "count": 7
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "leche descremada",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "nalga",
+        "count": 3
+      },
+      {
+        "key": "café",
+        "count": 3
+      },
+      {
+        "key": "fideos tirabuzón",
+        "count": 3
+      },
+      {
+        "key": "toallas femeninas",
+        "count": 2
+      },
+      {
+        "key": "barra de cereal",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "edulcorante",
+        "count": 2
+      },
+      {
+        "key": "pan integral",
+        "count": 2
+      },
+      {
+        "key": "ketchup",
+        "count": 2
+      },
+      {
+        "key": "quitamanchas",
+        "count": 2
+      },
+      {
+        "key": "papa",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 170,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "papel higienico",
+        "count": 7
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "leche descremada",
+        "count": 4
+      },
+      {
+        "key": "cafe",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "fideos tirabuzon",
+        "count": 3
+      },
+      {
+        "key": "edulcorante",
+        "count": 2
+      },
+      {
+        "key": "pan integral",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "ketchup",
+        "count": 2
+      },
+      {
+        "key": "quitamanchas",
+        "count": 2
+      },
+      {
+        "key": "papa",
+        "count": 2
+      },
+      {
+        "key": "nalga",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "mate cocido",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Papel Higienico",
+        "count": 7
+      },
+      {
+        "key": "Cafe",
+        "count": 5
+      },
+      {
+        "key": "Aceitunas",
+        "count": 4
+      },
+      {
+        "key": "Sin Gluten",
+        "count": 4
+      },
+      {
+        "key": "Manteca",
+        "count": 3
+      },
+      {
+        "key": "Quesos Untables",
+        "count": 3
+      },
+      {
+        "key": "Desodorantes",
+        "count": 3
+      },
+      {
+        "key": "Mate Cocido",
+        "count": 3
+      },
+      {
+        "key": "Mermeladas",
+        "count": 3
+      },
+      {
+        "key": "Edulcorante",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 64,
+    "valor_total": 3523921.92,
+    "ticket_promedio": 55061.28,
+    "descuento_total": 559422.84,
+    "canal": {
+      "inmediato": 0,
+      "programado": 64
+    },
+    "top_productos": [
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 97
+      },
+      {
+        "key": "Leche UAT parcialmente descremada Carrefour classic brik 1 lt.",
+        "count": 92
+      },
+      {
+        "key": "Alimento a base de queso rallado La Quesera 40 grs",
+        "count": 54
+      },
+      {
+        "key": "Papel higiénico Higienol Premium doble hoja 30 mts 4 uni",
+        "count": 48
+      },
+      {
+        "key": "Pan integral Bimbo Artesano con Masa Madre 500 grs",
+        "count": 38
+      },
+      {
+        "key": "Manteca Tonadita calidad extra 200 g.",
+        "count": 38
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 38
+      },
+      {
+        "key": "Jugo Pura Frutta manzana roja tetra 1 l.",
+        "count": 36
+      },
+      {
+        "key": "Papa cepillada x kg.",
+        "count": 36
+      },
+      {
+        "key": "Manteca Classic calidad extra 200 g.",
+        "count": 36
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 114
+      },
+      {
+        "key": "Leches enteras",
+        "count": 103
+      },
+      {
+        "key": "Frutas",
+        "count": 100
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 79
+      },
+      {
+        "key": "Verduras",
+        "count": 74
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 71
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 59
+      },
+      {
+        "key": "Quesos rallados y en hebras",
+        "count": 55
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 43
+      },
+      {
+        "key": "Jugos listos",
+        "count": 36
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 28,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 22
+      },
+      {
+        "key": "Higienol",
+        "count": 17
+      },
+      {
+        "key": "La Serenísima",
+        "count": 16
+      },
+      {
+        "key": "Bulnez",
+        "count": 13
+      },
+      {
+        "key": "Santa María",
+        "count": 10
+      },
+      {
+        "key": "Casancrem",
+        "count": 9
+      },
+      {
+        "key": "Patrichs",
+        "count": 7
+      },
+      {
+        "key": "Adler",
+        "count": 6
+      },
+      {
+        "key": "Milkaut",
+        "count": 4
+      },
+      {
+        "key": "Tregar",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 65
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 45
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 29
+      },
+      {
+        "key": "Limpieza",
+        "count": 21
+      },
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Panadería",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 8
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 8
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 169,
+    "carrito_promedio": 49742.74,
+    "pct_con_carrito": 49.1,
+    "errores": 101
+  },
+  "origen": {
+    "total_requests": 245,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-04T12:42:37.748Z"
+}
