@@ -939,10 +939,12 @@ function recomputeTodaySummary(date,state){
   }
   const appTotal=state.rows.length;
   const totalEcomm=Math.max(state.totalOrders,appTotal);
+  const appGmv=Math.round(gmv), ecommGmv=state.totalGmv||0;
   return {
-    date, total_ecomm_orders:totalEcomm, total_ecomm_gmv:0,
-    app:{ total:appTotal, gmv:Math.round(gmv), con_utm:conUtm, sin_utm:sinUtm, segments:segs },
+    date, total_ecomm_orders:totalEcomm, total_ecomm_gmv:ecommGmv,
+    app:{ total:appTotal, gmv:appGmv, con_utm:conUtm, sin_utm:sinUtm, segments:segs },
     participation_pct: totalEcomm>0 ? Math.min(100,Math.round(appTotal/totalEcomm*1000)/10) : 0,
+    participation_gmv_pct: ecommGmv>0 ? Math.min(100,Math.round(appGmv/ecommGmv*1000)/10) : 0,
     utm_pct_sin: appTotal>0 ? Math.round(sinUtm/appTotal*1000)/10 : 0
   };
 }
@@ -968,6 +970,7 @@ async function seedFromSnapshot(date,state){
       state.rows.push(row);
     }
     state.totalOrders=summary.total_ecomm_orders||0;
+    state.totalGmv=summary.total_ecomm_gmv||0;
     state.lastTo=summary.fetched_at;
     return true;
   }catch{ return false; }
@@ -977,7 +980,7 @@ let _liveP=null;
 async function fetchTodayLive(date){
   if(_liveP) return _liveP;
   setDeltaLoading(true);
-  const state=S.todayState[date]||(S.todayState[date]={rows:[],seen:new Set(),totalOrders:0,lastTo:null});
+  const state=S.todayState[date]||(S.todayState[date]={rows:[],seen:new Set(),totalOrders:0,totalGmv:0,lastTo:null});
   _liveP=(async()=>{
     if(state.lastTo===null){
       const seeded=await seedFromSnapshot(date,state);
@@ -996,6 +999,7 @@ async function fetchTodayLive(date){
         state.rows.push(row);
       }
       state.totalOrders+=d.summary.total_ecomm_orders||0;
+      state.totalGmv=(state.totalGmv||0)+(d.summary.total_ecomm_gmv||0);
       if(d.window_to) state.lastTo=d.window_to;
       S.data[date]=recomputeTodaySummary(date,state);
       S.rows[date]=state.rows;
@@ -1054,17 +1058,19 @@ async function loadAll(from,to){
 
 // ── AGGREGATE ─────────────────────────────────────────
 function agg(dates){
-  const r={ecomm:0,app:0,gmv:0,con_utm:0,sin_utm:0,food:{o:0,g:0},non_food:{o:0,g:0},marketplace:{o:0,g:0},quickcommerce:{o:0,g:0},daily:[]};
+  const r={ecomm:0,ecomm_gmv:0,app:0,gmv:0,con_utm:0,sin_utm:0,food:{o:0,g:0},non_food:{o:0,g:0},marketplace:{o:0,g:0},quickcommerce:{o:0,g:0},daily:[]};
   dates.forEach(date=>{
     const d=S.data[date];
     if(!d){ r.daily.push({date,app:0,food:0,non_food:0,marketplace:0,quickcommerce:0,utm_pct:0,part:0}); return; }
-    r.ecomm+=d.total_ecomm_orders||0; r.app+=d.app?.total||0; r.gmv+=d.app?.gmv||0;
+    r.ecomm+=d.total_ecomm_orders||0; r.app+=d.app?.total||0; r.gmv+=d.app?.gmv||0; r.ecomm_gmv+=d.total_ecomm_gmv||0;
     r.con_utm+=d.app?.con_utm||0; r.sin_utm+=d.app?.sin_utm||0;
     ["food","non_food","marketplace","quickcommerce"].forEach(s=>{ r[s].o+=d.app?.segments?.[s]?.orders||0; r[s].g+=d.app?.segments?.[s]?.gmv||0; });
     const dayApp=d.app?.total||0, dayGmv=d.app?.gmv||0;
     r.daily.push({date,app:dayApp,gmv:dayGmv,aov:dayApp>0?Math.round(dayGmv/dayApp):0,food:d.app?.segments?.food?.orders||0,non_food:d.app?.segments?.non_food?.orders||0,marketplace:d.app?.segments?.marketplace?.orders||0,quickcommerce:d.app?.segments?.quickcommerce?.orders||0,utm_pct:d.utm_pct_sin||0,part:d.participation_pct||0});
   });
   r.part_pct=r.ecomm>0?Math.round(r.app/r.ecomm*1000)/10:0;
+  // Participación a nivel $: null si no hay GMV total de ecommerce (días viejos sin backfill) → la card muestra "—".
+  r.part_gmv_pct=r.ecomm_gmv>0?Math.round(r.gmv/r.ecomm_gmv*1000)/10:null;
   r.utm_sin_pct=r.app>0?Math.round(r.sin_utm/r.app*1000)/10:0;
   r.aov=r.app>0?Math.round(r.gmv/r.app):0;
   ["food","non_food","marketplace","quickcommerce"].forEach(s=>{ r[s].aov=r[s].o>0?Math.round(r[s].g/r[s].o):0; });
@@ -1170,7 +1176,7 @@ function metricVal(a,key){
     case "aov": return a.aov;
     case "food": return a.food.o+a.quickcommerce.o; case "non_food": return a.non_food.o;
     case "marketplace": return a.marketplace.o; case "quickcommerce": return a.quickcommerce.o;
-    case "part": return a.part_pct; case "con_utm": return a.con_utm; case "sin_utm": return a.sin_utm;
+    case "part": return a.part_pct; case "part_gmv": return a.part_gmv_pct; case "con_utm": return a.con_utm; case "sin_utm": return a.sin_utm;
     default: return 0;
   }
 }
@@ -1199,6 +1205,7 @@ function renderKPIs(a,pa){
     {key:"marketplace",icon:"🛒",cbg:"#f5f3ff",cc:"#7c3aed",label:"Marketplace",value:fmt(a.marketplace.o),sub:fmtARS(a.marketplace.g),bar:a.app>0?a.marketplace.o/a.app:0},
     {key:"quickcommerce",icon:"⚡",cbg:"#fffbeb",cc:"#d97706",label:"Quickcommerce",value:fmt(a.quickcommerce.o),sub:fmtARS(a.quickcommerce.g),bar:a.app>0?a.quickcommerce.o/a.app:0},
     {key:"part",icon:"📈",cbg:"#eef2ff",cc:"#4f46e5",label:"Participación App",value:a.part_pct+"%",sub:fmt(a.ecomm)+" total ecomm",bar:a.part_pct/100,isRate:true},
+    {key:"part_gmv",icon:"💰",cbg:"#eef2ff",cc:"#4f46e5",label:"Participación App ($)",value:a.part_gmv_pct==null?"—":a.part_gmv_pct+"%",sub:a.ecomm_gmv>0?fmtARS(a.ecomm_gmv)+" ecomm $":"sin GMV total (falta backfill)",bar:a.part_gmv_pct==null?null:a.part_gmv_pct/100,isRate:true},
     {key:"con_utm",icon:"✅",cbg:"#ecfdf5",cc:"#059669",label:"Con UTM",value:fmt(a.con_utm),sub:(100-a.utm_sin_pct).toFixed(1)+"% del total",bar:a.app>0?a.con_utm/a.app:0},
     {key:"sin_utm",icon:"⚠️",cbg:"#fef2f2",cc:"#dc2626",label:"Sin UTM",value:fmt(a.sin_utm),sub:a.utm_sin_pct+"% sin atribución",bar:a.utm_sin_pct/100,invert:true},
   ];

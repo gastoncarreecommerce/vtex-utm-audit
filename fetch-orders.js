@@ -244,6 +244,10 @@ async function processRange(from, to, seen, result) {
       if (!total) break;
     }
 
+    // GMV total del ecommerce: el totalValue (centavos) ya viene en cada item de
+    // la lista, así que se suma sin llamadas extra a VTEX.
+    result.total_ecomm_gmv += (data.list || []).reduce((s, o) => s + (Number(o.totalValue) || 0), 0);
+
     const ids = (data.list || []).map(o => o.orderId).filter(Boolean);
     if (ids.length) await processBatch(ids, seen, result);
 
@@ -254,6 +258,7 @@ async function processRange(from, to, seen, result) {
   for (const p of failed) {
     try {
       const data = await fetchOrderList(from, to, p);
+      result.total_ecomm_gmv += (data.list || []).reduce((s, o) => s + (Number(o.totalValue) || 0), 0);
       const ids  = (data.list || []).map(o => o.orderId).filter(Boolean);
       if (ids.length) await processBatch(ids, seen, result);
     } catch (e) {
@@ -304,8 +309,13 @@ async function main() {
   result.app.segments.non_food.gmv     = Math.round(result.app.segments.non_food.gmv);
   result.app.segments.marketplace.gmv  = Math.round(result.app.segments.marketplace.gmv);
   result.app.segments.quickcommerce.gmv= Math.round(result.app.segments.quickcommerce.gmv);
+  result.total_ecomm_gmv = Math.round(result.total_ecomm_gmv / 100); // centavos → pesos
   result.participation_pct = result.total_ecomm_orders > 0
     ? Math.round((result.app.total / result.total_ecomm_orders) * 1000) / 10
+    : 0;
+  // Participación a nivel $ (GMV app / GMV total ecommerce).
+  result.participation_gmv_pct = result.total_ecomm_gmv > 0
+    ? Math.round((result.app.gmv / result.total_ecomm_gmv) * 1000) / 10
     : 0;
   result.utm_pct_sin = result.app.total > 0
     ? Math.round((result.app.sin_utm / result.app.total) * 1000) / 10
@@ -339,8 +349,8 @@ async function main() {
   const pct = result.participation_pct;
   console.log(`\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
   console.log(`✅ ${targetDate}`);
-  console.log(`   Total ecomm:       ${result.total_ecomm_orders.toLocaleString()}`);
-  console.log(`   App total:         ${result.app.total.toLocaleString()} (${pct}% participación)`);
+  console.log(`   Total ecomm:       ${result.total_ecomm_orders.toLocaleString()} · $${result.total_ecomm_gmv.toLocaleString()} GMV`);
+  console.log(`   App total:         ${result.app.total.toLocaleString()} (${pct}% pedidos · ${result.participation_gmv_pct}% $)`);
   console.log(`   Con UTM:           ${result.app.con_utm}`);
   console.log(`   Sin UTM:           ${result.app.sin_utm} (${result.utm_pct_sin}%)`);
   console.log(`   Food:              ${result.app.segments.food.orders}`);
