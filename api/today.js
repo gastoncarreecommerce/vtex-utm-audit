@@ -246,6 +246,11 @@ export default async function handler(req, res) {
   ["food","non_food","marketplace","quickcommerce"].forEach(s => {
     result.app.segments[s].gmv = Math.round(result.app.segments[s].gmv);
   });
+  // GMV total del ecommerce de esta ventana: totalValue (centavos) de cada item
+  // del listado (página 1 + resto), sin llamadas extra.
+  const ecommGmvCents = (firstPage?.list || []).reduce((s, o) => s + (Number(o.totalValue) || 0), 0)
+    + restLists.reduce((s, d) => s + (d?.list || []).reduce((a, o) => a + (Number(o.totalValue) || 0), 0), 0);
+  result.total_ecomm_gmv = Math.round(ecommGmvCents / 100);
   result.total_ecomm_orders = Math.max(result.total_ecomm_orders, result.app.total);
   result.participation_pct = result.total_ecomm_orders > 0
     ? Math.min(100, Math.round(result.app.total / result.total_ecomm_orders * 1000) / 10) : 0;
