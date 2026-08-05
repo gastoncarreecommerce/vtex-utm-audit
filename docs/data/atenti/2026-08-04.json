@@ -1,0 +1,439 @@
+{
+  "date": "2026-08-04",
+  "chat": {
+    "llamadas": 118,
+    "usuarios_unicos": 54,
+    "con_productos_identificados": 67,
+    "con_sugerencia": 16,
+    "por_hora": [
+      8,
+      2,
+      0,
+      2,
+      3,
+      0,
+      1,
+      0,
+      0,
+      8,
+      2,
+      7,
+      5,
+      18,
+      8,
+      3,
+      14,
+      8,
+      0,
+      10,
+      10,
+      3,
+      5,
+      1
+    ],
+    "errores": 26
+  },
+  "categorizar": {
+    "total": 52,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 4
+      },
+      {
+        "key": "Yerba",
+        "count": 2
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "Leches descremada larga vida",
+        "count": 1
+      },
+      {
+        "key": "Jamón cocido feteado Bulnez ",
+        "count": 1
+      },
+      {
+        "key": "Carne osobuco",
+        "count": 1
+      },
+      {
+        "key": "Vodka ",
+        "count": 1
+      },
+      {
+        "key": "Energizante",
+        "count": 1
+      },
+      {
+        "key": "Hola quisiera saber si cuentan con azúcar mascabo ",
+        "count": 1
+      },
+      {
+        "key": "Aceite , yerba , papel higiénico, pan lactar,  lata de tomate en cubos , pure de tomate , arroz , atún,  fideos largos , fideo código,  pasta dental, pan para pancho , salchichas, pan para hamburguesas, manteca , perfumina , lavandina , detergente , bolsa de basura pequeña y grandes , caldo de verduras , lentejas , harina para pizza.",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "yerba",
+        "count": 5
+      },
+      {
+        "key": "papel higiénico",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "atún",
+        "count": 4
+      },
+      {
+        "key": "leche descremada larga vida",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "pan para panchos",
+        "count": 3
+      },
+      {
+        "key": "harina para pizza",
+        "count": 3
+      },
+      {
+        "key": "cerezas",
+        "count": 3
+      },
+      {
+        "key": "sandía",
+        "count": 3
+      },
+      {
+        "key": "melón",
+        "count": 3
+      },
+      {
+        "key": "jamón cocido feteado",
+        "count": 2
+      },
+      {
+        "key": "vodka",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 170,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "yerba",
+        "count": 5
+      },
+      {
+        "key": "papel higienico",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "atun",
+        "count": 4
+      },
+      {
+        "key": "melon",
+        "count": 4
+      },
+      {
+        "key": "sandia",
+        "count": 4
+      },
+      {
+        "key": "leche descremada larga vida",
+        "count": 3
+      },
+      {
+        "key": "pure de tomate",
+        "count": 3
+      },
+      {
+        "key": "pan para panchos",
+        "count": 3
+      },
+      {
+        "key": "harina para pizza",
+        "count": 3
+      },
+      {
+        "key": "cerezas",
+        "count": 3
+      },
+      {
+        "key": "jamon cocido feteado",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "pan lactal",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Yerba Mate",
+        "count": 7
+      },
+      {
+        "key": "Manteca",
+        "count": 6
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 5
+      },
+      {
+        "key": "Leche Entera",
+        "count": 5
+      },
+      {
+        "key": "Bolsas de Residuos",
+        "count": 4
+      },
+      {
+        "key": "Melon",
+        "count": 4
+      },
+      {
+        "key": "Sandia",
+        "count": 4
+      },
+      {
+        "key": "Pure de Tomate",
+        "count": 3
+      },
+      {
+        "key": "Tomates",
+        "count": 3
+      },
+      {
+        "key": "Pan para Panchos",
+        "count": 3
+      }
+    ],
+    "errores": 3
+  },
+  "agregar": {
+    "total_agregados": 20,
+    "valor_total": 281033.52,
+    "ticket_promedio": 14051.68,
+    "descuento_total": 39507.12,
+    "canal": {
+      "inmediato": 0,
+      "programado": 20
+    },
+    "top_productos": [
+      {
+        "key": "Manzana roja x kg.",
+        "count": 24
+      },
+      {
+        "key": "Leche La serenisima liviana 1% 1L",
+        "count": 8
+      },
+      {
+        "key": "Puré de tomate Arcor brik 520 g.",
+        "count": 8
+      },
+      {
+        "key": "Fideos tallarines Don Vicente en bolsa 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Gaseosa cola Coca Cola sabor original 2,25 lts",
+        "count": 6
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 2,25 lts",
+        "count": 6
+      },
+      {
+        "key": "Leche descremada larga vida Las tres niñas 1 l.",
+        "count": 6
+      },
+      {
+        "key": "Leche UAT Zero lactosa La Serenisima 1L",
+        "count": 4
+      },
+      {
+        "key": "Osobuco x kg",
+        "count": 4
+      },
+      {
+        "key": "Queso neufchatel Tregar light en pote 180 g.",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 24
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 19
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 14
+      },
+      {
+        "key": "Conservas de frutas",
+        "count": 12
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 12
+      },
+      {
+        "key": "Fideos largos",
+        "count": 8
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 5
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 4
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 23,
+    "top_marcas": [
+      {
+        "key": "Las Tres Niñas",
+        "count": 21
+      },
+      {
+        "key": "La Serenísima",
+        "count": 21
+      },
+      {
+        "key": "Genérico",
+        "count": 16
+      },
+      {
+        "key": "Carrefour",
+        "count": 12
+      },
+      {
+        "key": "Alicante",
+        "count": 8
+      },
+      {
+        "key": "Fargo",
+        "count": 7
+      },
+      {
+        "key": "CBSé",
+        "count": 7
+      },
+      {
+        "key": "Angiola",
+        "count": 6
+      },
+      {
+        "key": "Tregar",
+        "count": 6
+      },
+      {
+        "key": "Secret",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 95
+      },
+      {
+        "key": "Almacén",
+        "count": 28
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 21
+      },
+      {
+        "key": "Panadería",
+        "count": 20
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 13
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 138,
+    "carrito_promedio": 62703.67,
+    "pct_con_carrito": 54.7,
+    "errores": 28
+  },
+  "origen": {
+    "total_requests": 212,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-05T12:42:37.945Z"
+}
