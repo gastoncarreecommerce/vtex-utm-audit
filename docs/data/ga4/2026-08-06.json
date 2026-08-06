@@ -1,4 +1,97 @@
 {
   "date": "2026-08-06",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 86,
+      "users": 21
+    },
+    "user_engagement": {
+      "count": 68,
+      "users": 11
+    },
+    "session_start": {
+      "count": 21,
+      "users": 21
+    },
+    "mis_cupones": {
+      "count": 11,
+      "users": 8
+    },
+    "add_to_cart": {
+      "count": 5,
+      "users": 1
+    },
+    "view_cart": {
+      "count": 5,
+      "users": 1
+    },
+    "view_item_list": {
+      "count": 5,
+      "users": 1
+    },
+    "filter_escaner": {
+      "count": 4,
+      "users": 1
+    },
+    "notification_dismiss": {
+      "count": 3,
+      "users": 3
+    },
+    "search": {
+      "count": 3,
+      "users": 1
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 2,
+      "users": 2
+    },
+    "escaner_precios": {
+      "count": 2,
+      "users": 2
+    },
+    "favorito_mes_renovar": {
+      "count": 2,
+      "users": 2
+    },
+    "favorito_semanal_activacion": {
+      "count": 2,
+      "users": 2
+    },
+    "notification_receive": {
+      "count": 2,
+      "users": 2
+    },
+    "remove_from_cart": {
+      "count": 2,
+      "users": 1
+    },
+    "view_item": {
+      "count": 2,
+      "users": 1
+    },
+    "view_promotion": {
+      "count": 2,
+      "users": 2
+    },
+    "favorito_semanal_volver_a_elegir": {
+      "count": 1,
+      "users": 1
+    },
+    "filter_cupones": {
+      "count": 1,
+      "users": 1
+    },
+    "lista_compras": {
+      "count": 1,
+      "users": 1
+    },
+    "select_item": {
+      "count": 1,
+      "users": 1
+    },
+    "tickets_compra": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
