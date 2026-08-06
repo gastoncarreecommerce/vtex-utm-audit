@@ -1,0 +1,439 @@
+{
+  "date": "2026-08-05",
+  "chat": {
+    "llamadas": 100,
+    "usuarios_unicos": 43,
+    "con_productos_identificados": 38,
+    "con_sugerencia": 11,
+    "por_hora": [
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      4,
+      0,
+      0,
+      4,
+      5,
+      14,
+      7,
+      8,
+      15,
+      5,
+      2,
+      9,
+      4,
+      7,
+      7,
+      1
+    ],
+    "errores": 31
+  },
+  "categorizar": {
+    "total": 34,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Yerba de 500 gr cbse ",
+        "count": 1
+      },
+      {
+        "key": "Como  de td ",
+        "count": 1
+      },
+      {
+        "key": "Fresco",
+        "count": 1
+      },
+      {
+        "key": "Palta ",
+        "count": 1
+      },
+      {
+        "key": "Lomo",
+        "count": 1
+      },
+      {
+        "key": "Papas fritas para airfryer",
+        "count": 1
+      },
+      {
+        "key": "Vainillas y smookies y arvejas congeladas y jugo de naranja y frutillas y detergente",
+        "count": 1
+      },
+      {
+        "key": "Carnes",
+        "count": 1
+      },
+      {
+        "key": "Lamparas led de mario bros. Las vi en sucirsal en la parte de jugieteria",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "papel higiénico",
+        "count": 6
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "puré de tomate",
+        "count": 4
+      },
+      {
+        "key": "galletitas",
+        "count": 4
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "fernet",
+        "count": 3
+      },
+      {
+        "key": "atún",
+        "count": 2
+      },
+      {
+        "key": "carne picada",
+        "count": 2
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "morrón",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 114,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "papel higienico",
+        "count": 6
+      },
+      {
+        "key": "galletitas",
+        "count": 4
+      },
+      {
+        "key": "pure de tomate",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "fernet",
+        "count": 3
+      },
+      {
+        "key": "atun",
+        "count": 2
+      },
+      {
+        "key": "lamparas led de mario bros",
+        "count": 2
+      },
+      {
+        "key": "carne picada",
+        "count": 2
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Papel Higienico",
+        "count": 5
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 3
+      },
+      {
+        "key": "Galletitas",
+        "count": 3
+      },
+      {
+        "key": "Pure de Tomate",
+        "count": 3
+      },
+      {
+        "key": "Arroz",
+        "count": 3
+      },
+      {
+        "key": "Huevos",
+        "count": 3
+      },
+      {
+        "key": "Cebolla",
+        "count": 3
+      },
+      {
+        "key": "Fernet",
+        "count": 3
+      },
+      {
+        "key": "Fideos",
+        "count": 2
+      },
+      {
+        "key": "Detergente",
+        "count": 2
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 11,
+    "valor_total": 1064795.05,
+    "ticket_promedio": 96799.55,
+    "descuento_total": 205392.21,
+    "canal": {
+      "inmediato": 1,
+      "programado": 10
+    },
+    "top_productos": [
+      {
+        "key": "Queso cremoso Punta del Agua horma x kg.",
+        "count": 8
+      },
+      {
+        "key": "Papel higiénico Higienol Fresh hoja simple 30 mts 4 uni",
+        "count": 6
+      },
+      {
+        "key": "Pollo entero congelado x kg",
+        "count": 6
+      },
+      {
+        "key": "Leche entera larga vida Tregar 1 l.",
+        "count": 6
+      },
+      {
+        "key": "Lomo Etiqueta Negra x kg",
+        "count": 6
+      },
+      {
+        "key": "Puré de tomate Arcor brik 520 g.",
+        "count": 4
+      },
+      {
+        "key": "Queso cuartirolo Tremblay x kg.",
+        "count": 4
+      },
+      {
+        "key": "Carré de cerdo con hueso x kg",
+        "count": 4
+      },
+      {
+        "key": "Fideos guiseros moños Don vicente en bolsa 500 g.",
+        "count": 4
+      },
+      {
+        "key": "Aperitivo sin alcohol Pomelo Terma Cero 1,35 lts",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 15
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 12
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 12
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 11
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 10
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 10
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 9
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 9
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 8
+      },
+      {
+        "key": "Pollo",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 12,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 20
+      },
+      {
+        "key": "Carrefour",
+        "count": 14
+      },
+      {
+        "key": "Magistral",
+        "count": 10
+      },
+      {
+        "key": "Bulnez",
+        "count": 4
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 4
+      },
+      {
+        "key": "Amanda",
+        "count": 3
+      },
+      {
+        "key": "Lario",
+        "count": 3
+      },
+      {
+        "key": "Arcor",
+        "count": 3
+      },
+      {
+        "key": "La Serenísima",
+        "count": 3
+      },
+      {
+        "key": "Andes",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 38
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 21
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 10
+      },
+      {
+        "key": "Congelados",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 126,
+    "carrito_promedio": 63661.53,
+    "pct_con_carrito": 49.4,
+    "errores": 35
+  },
+  "origen": {
+    "total_requests": 206,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-06T12:42:44.243Z"
+}
