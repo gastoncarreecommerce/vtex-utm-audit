@@ -867,7 +867,7 @@ function loginAs(u){
 function doLogout(){ localStorage.removeItem("appdash_sess"); localStorage.removeItem("appdash_token"); location.reload(); }
 // Aviso de cambio a VPN corporativa — se muestra en cada inicio de sesión (loginAs
 // corre tanto en login fresco como en el auto-login por token válido).
-function showVpnNotice(){ document.getElementById("vpn-modal").classList.remove("hidden"); }
+function showVpnNotice(){ if(todayAR()>="2026-08-12") return; document.getElementById("vpn-modal").classList.remove("hidden"); } // se apaga solo el miércoles 12 (AR)
 function closeVpnNotice(){ document.getElementById("vpn-modal").classList.add("hidden"); }
 
 // ── NAV ───────────────────────────────────────────────
