@@ -24,6 +24,8 @@ const ALLOWED = new Set([
   "gustavo_galitiello",
   "maria_florencia_calatroni",
   "mariana_leon_pirker",
+  "mariano_wegier",
+  "mariano_weiger",
   "martina_amalla",
   "melisa_evelyn_armstrong",
   "milagros_imoberdoff",
