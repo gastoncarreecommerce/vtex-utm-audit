@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-06",
+  "chat": {
+    "llamadas": 133,
+    "usuarios_unicos": 67,
+    "con_productos_identificados": 59,
+    "con_sugerencia": 14,
+    "por_hora": [
+      2,
+      2,
+      2,
+      1,
+      0,
+      0,
+      0,
+      8,
+      3,
+      2,
+      18,
+      6,
+      5,
+      3,
+      15,
+      13,
+      4,
+      4,
+      7,
+      10,
+      14,
+      4,
+      7,
+      3
+    ],
+    "errores": 35
+  },
+  "categorizar": {
+    "total": 51,
+    "top_recetas": [
+      {
+        "key": "Supremas ",
+        "count": 3
+      },
+      {
+        "key": "Salsa de soja",
+        "count": 1
+      },
+      {
+        "key": "Fideos",
+        "count": 1
+      },
+      {
+        "key": "Fideos  coditos",
+        "count": 1
+      },
+      {
+        "key": "Carnes y pollo ",
+        "count": 1
+      },
+      {
+        "key": "Papel higiénico ",
+        "count": 1
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 1
+      },
+      {
+        "key": "Tosti",
+        "count": 1
+      },
+      {
+        "key": "Aceite arcor",
+        "count": 1
+      },
+      {
+        "key": "Aceite de maiz",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "tostadas",
+        "count": 5
+      },
+      {
+        "key": "azúcar",
+        "count": 5
+      },
+      {
+        "key": "supremas",
+        "count": 4
+      },
+      {
+        "key": "arroz para risotto",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "pañales duffy",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "aceite de maiz",
+        "count": 2
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "vino blanco",
+        "count": 2
+      },
+      {
+        "key": "cervezas",
+        "count": 2
+      },
+      {
+        "key": "pata muslo",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 93,
+    "sin_resultado": 7,
+    "top_terminos": [
+      {
+        "key": "tostadas",
+        "count": 5
+      },
+      {
+        "key": "supremas",
+        "count": 4
+      },
+      {
+        "key": "azucar",
+        "count": 4
+      },
+      {
+        "key": "arroz para risotto",
+        "count": 4
+      },
+      {
+        "key": "aceite de maiz",
+        "count": 3
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "vino blanco",
+        "count": 2
+      },
+      {
+        "key": "cervezas",
+        "count": 2
+      },
+      {
+        "key": "pata muslo",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "harina comun",
+        "count": 2
+      },
+      {
+        "key": "pan lactal",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Tostadas",
+        "count": 5
+      },
+      {
+        "key": "Arroz Especial",
+        "count": 4
+      },
+      {
+        "key": "Supremas",
+        "count": 3
+      },
+      {
+        "key": "Aguas Saborizadas",
+        "count": 3
+      },
+      {
+        "key": "Aceite de Maiz",
+        "count": 2
+      },
+      {
+        "key": "Aceite de Oliva",
+        "count": 2
+      },
+      {
+        "key": "Azucar Comun",
+        "count": 2
+      },
+      {
+        "key": "Leche Entera",
+        "count": 2
+      },
+      {
+        "key": "Vino Blanco",
+        "count": 2
+      },
+      {
+        "key": "Cerveza",
+        "count": 2
+      }
+    ],
+    "errores": 7
+  },
+  "agregar": {
+    "total_agregados": 18,
+    "valor_total": 680293.3,
+    "ticket_promedio": 37794.07,
+    "descuento_total": 46127.48,
+    "canal": {
+      "inmediato": 0,
+      "programado": 18
+    },
+    "top_productos": [
+      {
+        "key": "Gelatina sin sabor Carrefour Classic 14 grs",
+        "count": 30
+      },
+      {
+        "key": "Leche La serenisima clásica 3% 1L.",
+        "count": 24
+      },
+      {
+        "key": "Leche La serenísima clásica más liviana 2% 1L",
+        "count": 24
+      },
+      {
+        "key": "Tostadas clásicas Carrefour classic 200 g.",
+        "count": 20
+      },
+      {
+        "key": "Suprema congelada x kg",
+        "count": 13
+      },
+      {
+        "key": "Aceite de maíz Arcor 900 cc.",
+        "count": 12
+      },
+      {
+        "key": "Leche UAT Zero lactosa La Serenisima 1L",
+        "count": 12
+      },
+      {
+        "key": "Mayonesa Clásica Hellmanns sin tacc doypack 475 g.",
+        "count": 7
+      },
+      {
+        "key": "Galletitas de salvado La Providencia 120 g.",
+        "count": 6
+      },
+      {
+        "key": "Fideos integrales spaghetti Matarazzo 500 g.",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 40
+      },
+      {
+        "key": "Gelatinas en polvo",
+        "count": 30
+      },
+      {
+        "key": "Leches enteras",
+        "count": 27
+      },
+      {
+        "key": "Tostadas, grisines y marineras",
+        "count": 23
+      },
+      {
+        "key": "Pollo",
+        "count": 14
+      },
+      {
+        "key": "Verduras",
+        "count": 13
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 12
+      },
+      {
+        "key": "Yerba",
+        "count": 11
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 10
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 7,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 17
+      },
+      {
+        "key": "Cocinero",
+        "count": 3
+      },
+      {
+        "key": "Natura",
+        "count": 3
+      },
+      {
+        "key": "La Serenísima",
+        "count": 3
+      },
+      {
+        "key": "Maizena",
+        "count": 2
+      },
+      {
+        "key": "Lira",
+        "count": 2
+      },
+      {
+        "key": "Coca Cola",
+        "count": 2
+      },
+      {
+        "key": "Granja Del Sol",
+        "count": 1
+      },
+      {
+        "key": "Tosti",
+        "count": 1
+      },
+      {
+        "key": "Mazola",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 23
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 6
+      },
+      {
+        "key": "Bebidas",
+        "count": 4
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 186,
+    "carrito_promedio": 85180.7,
+    "pct_con_carrito": 58.2,
+    "errores": 37
+  },
+  "origen": {
+    "total_requests": 342,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-07T12:42:41.274Z"
+}
