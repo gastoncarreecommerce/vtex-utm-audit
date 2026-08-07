@@ -775,6 +775,21 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
   </div>
 </div>
 
+<div class="overlay hidden" id="vpn-modal">
+  <div class="modal" style="max-width:460px">
+    <div style="font-size:46px;text-align:center;margin-bottom:4px">🔒</div>
+    <div class="modal-title" style="text-align:center;margin-bottom:16px">Cambio de acceso — VPN corporativa</div>
+    <div style="font-size:14.5px;color:var(--ink-2);line-height:1.65">
+      A partir del <b>Miércoles 12</b>, este dashboard va a funcionar <b>solo bajo la VPN corporativa</b> o mediante la <b>red de la Sede</b>.
+      <br><br>
+      Si no tenés la VPN activa, contactá a <b>AR_GESTION DE USUARIOS</b>.
+    </div>
+    <div class="modal-actions" style="justify-content:center">
+      <button class="tbtn primary" onclick="closeVpnNotice()">Entendido</button>
+    </div>
+  </div>
+</div>
+
 <!-- ORDER DETAIL DRAWER -->
 <div class="drawer-overlay hidden" id="detail-overlay" onclick="closeDetail()"></div>
 <div class="drawer hidden" id="detail-drawer">
@@ -809,6 +824,13 @@ function tokenValid(){
 // ── INIT ──────────────────────────────────────────────
 (function(){
   ["login-user","login-pass"].forEach(id=>document.getElementById(id).addEventListener("keydown",e=>{ if(e.key==="Enter") doLogin(); }));
+  // Forzar re-login de TODOS al publicar un aviso: al bumpear EPOCH, el próximo
+  // load limpia la sesión guardada → cada uno vuelve a loguearse y ve el modal.
+  const EPOCH="vpn-2026-08-12";
+  if(localStorage.getItem("appdash_epoch")!==EPOCH){
+    localStorage.removeItem("appdash_sess"); localStorage.removeItem("appdash_token");
+    localStorage.setItem("appdash_epoch",EPOCH);
+  }
   const sess=localStorage.getItem("appdash_sess");
   if(sess&&tokenValid()){ try{ const s=JSON.parse(sess); if(s.u){loginAs(s.user||{username:s.u,name:s.u,avatar:s.u[0].toUpperCase()});return;} }catch{} }
   // Token expirado o inválido → limpiar
@@ -840,8 +862,13 @@ function loginAs(u){
   document.getElementById("su-avatar").textContent=u.avatar;
   document.getElementById("su-name").textContent=u.name.split(" ")[0];
   setPreset(1,document.querySelectorAll(".preset-btn")[0]);
+  showVpnNotice();
 }
 function doLogout(){ localStorage.removeItem("appdash_sess"); localStorage.removeItem("appdash_token"); location.reload(); }
+// Aviso de cambio a VPN corporativa — se muestra en cada inicio de sesión (loginAs
+// corre tanto en login fresco como en el auto-login por token válido).
+function showVpnNotice(){ document.getElementById("vpn-modal").classList.remove("hidden"); }
+function closeVpnNotice(){ document.getElementById("vpn-modal").classList.add("hidden"); }
 
 // ── NAV ───────────────────────────────────────────────
 function switchView(v,btn){
