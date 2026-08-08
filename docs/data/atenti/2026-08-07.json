@@ -1,0 +1,435 @@
+{
+  "date": "2026-08-07",
+  "chat": {
+    "llamadas": 166,
+    "usuarios_unicos": 68,
+    "con_productos_identificados": 73,
+    "con_sugerencia": 14,
+    "por_hora": [
+      5,
+      1,
+      3,
+      0,
+      1,
+      0,
+      0,
+      5,
+      5,
+      2,
+      16,
+      18,
+      9,
+      11,
+      15,
+      8,
+      15,
+      4,
+      23,
+      9,
+      6,
+      4,
+      6,
+      0
+    ],
+    "errores": 49
+  },
+  "categorizar": {
+    "total": 56,
+    "top_recetas": [
+      {
+        "key": "Jabón líquido para la ropa",
+        "count": 2
+      },
+      {
+        "key": "Aceite ",
+        "count": 1
+      },
+      {
+        "key": "Jabón de tocador ",
+        "count": 1
+      },
+      {
+        "key": "Aceite",
+        "count": 1
+      },
+      {
+        "key": "Girasol de 1.5",
+        "count": 1
+      },
+      {
+        "key": "Copas barrocas",
+        "count": 1
+      },
+      {
+        "key": "Copas ",
+        "count": 1
+      },
+      {
+        "key": "Como encuentro mi último pedido",
+        "count": 1
+      },
+      {
+        "key": "Harina integral ",
+        "count": 1
+      },
+      {
+        "key": "Harina integral para pizza ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 8
+      },
+      {
+        "key": "snacks para perros",
+        "count": 6
+      },
+      {
+        "key": "leche descremada larga vida",
+        "count": 6
+      },
+      {
+        "key": "guantes de latex talle l",
+        "count": 4
+      },
+      {
+        "key": "terma cero",
+        "count": 4
+      },
+      {
+        "key": "jabón líquido para la ropa",
+        "count": 4
+      },
+      {
+        "key": "lavandina",
+        "count": 4
+      },
+      {
+        "key": "azúcar",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "levadura seca",
+        "count": 3
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "yogurt natural endulzado",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 180,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 7
+      },
+      {
+        "key": "snacks para perros",
+        "count": 6
+      },
+      {
+        "key": "leche descremada larga vida",
+        "count": 6
+      },
+      {
+        "key": "guantes de latex talle l",
+        "count": 5
+      },
+      {
+        "key": "azucar",
+        "count": 5
+      },
+      {
+        "key": "terma cero",
+        "count": 4
+      },
+      {
+        "key": "jabon liquido para la ropa",
+        "count": 4
+      },
+      {
+        "key": "lavandina",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "levadura seca",
+        "count": 3
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "yogurt natural endulzado",
+        "count": 3
+      },
+      {
+        "key": "pure de tomate",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Snacks y Golosinas",
+        "count": 6
+      },
+      {
+        "key": "Larga Vida Descremada",
+        "count": 5
+      },
+      {
+        "key": "Guantes",
+        "count": 5
+      },
+      {
+        "key": "Aceite",
+        "count": 4
+      },
+      {
+        "key": "Harina de Trigo",
+        "count": 4
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 4
+      },
+      {
+        "key": "Levaduras",
+        "count": 3
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 3
+      },
+      {
+        "key": "Rollo de Cocina",
+        "count": 3
+      },
+      {
+        "key": "Azucar",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 24,
+    "valor_total": 1008018.64,
+    "ticket_promedio": 42000.78,
+    "descuento_total": 165259.05,
+    "canal": {
+      "inmediato": 16,
+      "programado": 8
+    },
+    "top_productos": [
+      {
+        "key": "Yogur firme vainilla Gran Compra 120 grs",
+        "count": 20
+      },
+      {
+        "key": "Leche liviana UAT clásica Bulnez 1 lt",
+        "count": 18
+      },
+      {
+        "key": "Puré de tomate Carrefour classic 520 g.",
+        "count": 16
+      },
+      {
+        "key": "Limpiador Multisuperficies Cif Original Ultra Brillo Gatillo 400 ml",
+        "count": 15
+      },
+      {
+        "key": "Limpiador de vidiro Cif expert mutliuso gatillo 500 cc.",
+        "count": 15
+      },
+      {
+        "key": "Limpiador cremoso Cif bioactive 500 cc.",
+        "count": 15
+      },
+      {
+        "key": "Lavandina Ayudín original 1 l.",
+        "count": 14
+      },
+      {
+        "key": "Limpiador multiuso Multimax para diluir lavanda (rinde 1 litro) 35 ml.",
+        "count": 14
+      },
+      {
+        "key": "Limpiador de cocina Carrefour Expert antigrasa doypack 450 ml",
+        "count": 13
+      },
+      {
+        "key": "Puré de papas instantáneo Carrefour classic 100 g.",
+        "count": 12
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Limpiadores líquidos",
+        "count": 30
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 28
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 26
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 26
+      },
+      {
+        "key": "Limpiadores de piso",
+        "count": 25
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 24
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 20
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 20
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 16
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 16
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 12,
+    "top_marcas": [
+      {
+        "key": "Milkaut",
+        "count": 12
+      },
+      {
+        "key": "Ayudín",
+        "count": 8
+      },
+      {
+        "key": "La Serenísima",
+        "count": 7
+      },
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Comfort",
+        "count": 5
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Querubín",
+        "count": 3
+      },
+      {
+        "key": "Granja Tres Arroyos",
+        "count": 3
+      },
+      {
+        "key": "Ala",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Limpieza",
+        "count": 30
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 29
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 6
+      },
+      {
+        "key": "Congelados",
+        "count": 3
+      },
+      {
+        "key": "Almacén",
+        "count": 3
+      },
+      {
+        "key": "Panadería",
+        "count": 1
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 171,
+    "carrito_promedio": 94025.31,
+    "pct_con_carrito": 64.4,
+    "errores": 20
+  },
+  "origen": {
+    "total_requests": 244,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-08T12:42:39.190Z"
+}
