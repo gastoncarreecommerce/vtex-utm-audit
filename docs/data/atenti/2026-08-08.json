@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-08",
+  "chat": {
+    "llamadas": 114,
+    "usuarios_unicos": 58,
+    "con_productos_identificados": 56,
+    "con_sugerencia": 6,
+    "por_hora": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      6,
+      8,
+      8,
+      12,
+      8,
+      8,
+      14,
+      13,
+      13,
+      8,
+      5,
+      0,
+      7,
+      0,
+      1
+    ],
+    "errores": 33
+  },
+  "categorizar": {
+    "total": 54,
+    "top_recetas": [
+      {
+        "key": "Asado",
+        "count": 2
+      },
+      {
+        "key": "Tira de asado ",
+        "count": 2
+      },
+      {
+        "key": "Leche",
+        "count": 1
+      },
+      {
+        "key": "Descremada",
+        "count": 1
+      },
+      {
+        "key": "Galletitas en oferta",
+        "count": 1
+      },
+      {
+        "key": "Dulces",
+        "count": 1
+      },
+      {
+        "key": "Galletitas dulces en oferta o con descuento",
+        "count": 1
+      },
+      {
+        "key": "Necesito que me muestres los precios más baratos ya sea porque se está por vencer me sirve igual busco harina aceite azúcar leche tapas de empanadas y aderezos como más barato que este en el local ",
+        "count": 1
+      },
+      {
+        "key": "Juguetes",
+        "count": 1
+      },
+      {
+        "key": "Jueg9 de mesa 3 años o ropa muñeca",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "harina común 0000",
+        "count": 6
+      },
+      {
+        "key": "arroz",
+        "count": 6
+      },
+      {
+        "key": "harina para pizza de masa madre",
+        "count": 5
+      },
+      {
+        "key": "premezcla para bizcochuelo de vainilla",
+        "count": 5
+      },
+      {
+        "key": "flan de vainilla",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "asado",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "gelatina sabor frambuesa",
+        "count": 3
+      },
+      {
+        "key": "fideos spaghetti",
+        "count": 3
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "azúcar",
+        "count": 2
+      },
+      {
+        "key": "matambre",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 131,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "harina comun 0000",
+        "count": 6
+      },
+      {
+        "key": "arroz",
+        "count": 6
+      },
+      {
+        "key": "harina para pizza de masa madre",
+        "count": 5
+      },
+      {
+        "key": "premezcla para bizcochuelo de vainilla",
+        "count": 5
+      },
+      {
+        "key": "flan de vainilla",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "asado",
+        "count": 3
+      },
+      {
+        "key": "gelatina sabor frambuesa",
+        "count": 3
+      },
+      {
+        "key": "fideos spaghetti",
+        "count": 3
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "matambre",
+        "count": 2
+      },
+      {
+        "key": "tapa de asado",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Arroz",
+        "count": 5
+      },
+      {
+        "key": "Asado",
+        "count": 4
+      },
+      {
+        "key": "Harina de Trigo",
+        "count": 4
+      },
+      {
+        "key": "Gelatinas",
+        "count": 4
+      },
+      {
+        "key": "Dulces",
+        "count": 3
+      },
+      {
+        "key": "Pepinillos",
+        "count": 3
+      },
+      {
+        "key": "Harinas Especiales",
+        "count": 3
+      },
+      {
+        "key": "Flanes",
+        "count": 3
+      },
+      {
+        "key": "Leche liquida",
+        "count": 2
+      },
+      {
+        "key": "Leche Descremada",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 13,
+    "valor_total": 96785.6,
+    "ticket_promedio": 7445.05,
+    "descuento_total": 3508.9,
+    "canal": {
+      "inmediato": 0,
+      "programado": 13
+    },
+    "top_productos": [
+      {
+        "key": "Harina Pureza con masa madre para pizza 1 kg.",
+        "count": 8
+      },
+      {
+        "key": "Flan vainilla Exquisita sobre 40 g.",
+        "count": 8
+      },
+      {
+        "key": "Bizcochuelo Morixe de vainilla 540 g.",
+        "count": 6
+      },
+      {
+        "key": "Leche parcialmente descremada UAT Carrefour classic tetra 1 lt.",
+        "count": 6
+      },
+      {
+        "key": "Harina de Trigo 000 Caserita x 1 kg",
+        "count": 5
+      },
+      {
+        "key": "Harina de trigo Pureza 0000 1 kg.",
+        "count": 5
+      },
+      {
+        "key": "Matambre Novillo x kg",
+        "count": 4
+      },
+      {
+        "key": "Fideos spaghetti N3 Matarazzo 500 g.",
+        "count": 4
+      },
+      {
+        "key": "Tapa de asado x kg",
+        "count": 3
+      },
+      {
+        "key": "Gelatina Royal sabor frambuesa 25 g.",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 18
+      },
+      {
+        "key": "Postres y flanes en polvo",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 7
+      },
+      {
+        "key": "Premezclas de bizcochuelos",
+        "count": 6
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 6
+      },
+      {
+        "key": "Fideos largos",
+        "count": 4
+      },
+      {
+        "key": "Gelatinas en polvo",
+        "count": 2
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 2
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 2
+      },
+      {
+        "key": "Aperitivos sin alcohol",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 14,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 15
+      },
+      {
+        "key": "La Serenísima",
+        "count": 10
+      },
+      {
+        "key": "Terma",
+        "count": 9
+      },
+      {
+        "key": "Genérico",
+        "count": 7
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 7
+      },
+      {
+        "key": "Bulnez",
+        "count": 5
+      },
+      {
+        "key": "Estancia los Naranjos",
+        "count": 5
+      },
+      {
+        "key": "Mamá Cocina",
+        "count": 4
+      },
+      {
+        "key": "Byna",
+        "count": 4
+      },
+      {
+        "key": "Casancrem",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 47
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 27
+      },
+      {
+        "key": "Bebidas",
+        "count": 20
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 12
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 153,
+    "carrito_promedio": 39470.94,
+    "pct_con_carrito": 52.9,
+    "errores": 32
+  },
+  "origen": {
+    "total_requests": 207,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-09T12:42:40.901Z"
+}
