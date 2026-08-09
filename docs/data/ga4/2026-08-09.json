@@ -1,4 +1,229 @@
 {
   "date": "2026-08-09",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 3141,
+      "users": 1035
+    },
+    "user_engagement": {
+      "count": 1985,
+      "users": 591
+    },
+    "session_start": {
+      "count": 1139,
+      "users": 1132
+    },
+    "notification_dismiss": {
+      "count": 728,
+      "users": 567
+    },
+    "mis_cupones": {
+      "count": 410,
+      "users": 308
+    },
+    "view_item_list": {
+      "count": 191,
+      "users": 90
+    },
+    "notification_receive": {
+      "count": 166,
+      "users": 157
+    },
+    "switch_to_ecommerce": {
+      "count": 164,
+      "users": 122
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 155,
+      "users": 25
+    },
+    "search": {
+      "count": 121,
+      "users": 68
+    },
+    "add_to_cart": {
+      "count": 102,
+      "users": 36
+    },
+    "select_item": {
+      "count": 93,
+      "users": 48
+    },
+    "view_item": {
+      "count": 90,
+      "users": 46
+    },
+    "first_open": {
+      "count": 82,
+      "users": 82
+    },
+    "filter_cupones": {
+      "count": 75,
+      "users": 53
+    },
+    "app_remove": {
+      "count": 69,
+      "users": 68
+    },
+    "notification_open": {
+      "count": 64,
+      "users": 64
+    },
+    "tickets_compra": {
+      "count": 63,
+      "users": 60
+    },
+    "escaner_precios": {
+      "count": 59,
+      "users": 50
+    },
+    "calculadora_home": {
+      "count": 54,
+      "users": 45
+    },
+    "remove_from_cart": {
+      "count": 46,
+      "users": 19
+    },
+    "inicio_registro": {
+      "count": 45,
+      "users": 31
+    },
+    "re_escaner_precios": {
+      "count": 43,
+      "users": 21
+    },
+    "view_promotion": {
+      "count": 42,
+      "users": 33
+    },
+    "view_cart": {
+      "count": 39,
+      "users": 25
+    },
+    "folletos": {
+      "count": 35,
+      "users": 31
+    },
+    "os_update": {
+      "count": 35,
+      "users": 35
+    },
+    "favorito_mes_renovar": {
+      "count": 34,
+      "users": 32
+    },
+    "chat_bot": {
+      "count": 33,
+      "users": 25
+    },
+    "app_update": {
+      "count": 32,
+      "users": 32
+    },
+    "favorito_mes": {
+      "count": 29,
+      "users": 19
+    },
+    "listado_notificaciones": {
+      "count": 26,
+      "users": 17
+    },
+    "mi_perfil": {
+      "count": 22,
+      "users": 17
+    },
+    "lista_compras": {
+      "count": 21,
+      "users": 21
+    },
+    "favorito_semanal_activacion": {
+      "count": 20,
+      "users": 20
+    },
+    "switch_to_sucursales": {
+      "count": 17,
+      "users": 13
+    },
+    "home_ahorros": {
+      "count": 14,
+      "users": 14
+    },
+    "promociones": {
+      "count": 14,
+      "users": 13
+    },
+    "favorito_mes_nuevo": {
+      "count": 13,
+      "users": 13
+    },
+    "listado_notificaciones_click": {
+      "count": 12,
+      "users": 6
+    },
+    "add_shipping_info": {
+      "count": 10,
+      "users": 8
+    },
+    "ahorros_tips": {
+      "count": 10,
+      "users": 4
+    },
+    "calculadora_agregar_producto": {
+      "count": 6,
+      "users": 1
+    },
+    "favorito_semanal_volver_a_elegir": {
+      "count": 6,
+      "users": 6
+    },
+    "ahorros_analisis": {
+      "count": 5,
+      "users": 4
+    },
+    "add_to_wishlist": {
+      "count": 4,
+      "users": 3
+    },
+    "notification_foreground": {
+      "count": 4,
+      "users": 4
+    },
+    "select_promotion": {
+      "count": 4,
+      "users": 4
+    },
+    "sucursales": {
+      "count": 4,
+      "users": 4
+    },
+    "buscar_precio_ean": {
+      "count": 3,
+      "users": 2
+    },
+    "purchase": {
+      "count": 3,
+      "users": 3
+    },
+    "tarjeta_mi_carrefour": {
+      "count": 3,
+      "users": 3
+    },
+    "app_clear_data": {
+      "count": 1,
+      "users": 1
+    },
+    "app_exception": {
+      "count": 1,
+      "users": 1
+    },
+    "cerrar_sesion": {
+      "count": 1,
+      "users": 1
+    },
+    "filter_escaner": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
