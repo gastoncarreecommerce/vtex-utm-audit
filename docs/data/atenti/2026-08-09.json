@@ -1,0 +1,423 @@
+{
+  "date": "2026-08-09",
+  "chat": {
+    "llamadas": 49,
+    "usuarios_unicos": 23,
+    "con_productos_identificados": 22,
+    "con_sugerencia": 3,
+    "por_hora": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      7,
+      0,
+      4,
+      2,
+      1,
+      7,
+      7,
+      2,
+      1,
+      5,
+      1,
+      5,
+      2,
+      3
+    ],
+    "errores": 12
+  },
+  "categorizar": {
+    "total": 18,
+    "top_recetas": [
+      {
+        "key": "Carne de cerdo",
+        "count": 1
+      },
+      {
+        "key": "Pechito",
+        "count": 1
+      },
+      {
+        "key": "Si estoy queriendo comprar un tacho de basura y un tender ",
+        "count": 1
+      },
+      {
+        "key": "Quiera ver todo",
+        "count": 1
+      },
+      {
+        "key": "Premesclas fideos panificados snack alfajores",
+        "count": 1
+      },
+      {
+        "key": "Aceite oliva",
+        "count": 1
+      },
+      {
+        "key": "Y no puedo ver mi carrito de compras para borrar productos ",
+        "count": 1
+      },
+      {
+        "key": "Crema",
+        "count": 1
+      },
+      {
+        "key": "Económica ",
+        "count": 1
+      },
+      {
+        "key": "Carnes Rousseff paleta Bigelow de asado",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "paños para baño de perros",
+        "count": 3
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      },
+      {
+        "key": "crema",
+        "count": 2
+      },
+      {
+        "key": "alfombras para perros",
+        "count": 2
+      },
+      {
+        "key": "carne de cerdo",
+        "count": 1
+      },
+      {
+        "key": "pechito de cerdo",
+        "count": 1
+      },
+      {
+        "key": "tacho de basura",
+        "count": 1
+      },
+      {
+        "key": "tender",
+        "count": 1
+      },
+      {
+        "key": "sin tacc",
+        "count": 1
+      },
+      {
+        "key": "premezclas",
+        "count": 1
+      },
+      {
+        "key": "fideos",
+        "count": 1
+      },
+      {
+        "key": "panificados",
+        "count": 1
+      },
+      {
+        "key": "snacks",
+        "count": 1
+      },
+      {
+        "key": "alfajores",
+        "count": 1
+      },
+      {
+        "key": "paleta",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 34,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "panos para bano de perros",
+        "count": 3
+      },
+      {
+        "key": "alfombras para perros",
+        "count": 2
+      },
+      {
+        "key": "carne de cerdo",
+        "count": 1
+      },
+      {
+        "key": "pechito de cerdo",
+        "count": 1
+      },
+      {
+        "key": "tacho de basura",
+        "count": 1
+      },
+      {
+        "key": "tender",
+        "count": 1
+      },
+      {
+        "key": "sin tacc",
+        "count": 1
+      },
+      {
+        "key": "premezclas",
+        "count": 1
+      },
+      {
+        "key": "fideos",
+        "count": 1
+      },
+      {
+        "key": "panificados",
+        "count": 1
+      },
+      {
+        "key": "snacks",
+        "count": 1
+      },
+      {
+        "key": "alfajores",
+        "count": 1
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 1
+      },
+      {
+        "key": "crema",
+        "count": 1
+      },
+      {
+        "key": "paleta",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Accesorios",
+        "count": 2
+      },
+      {
+        "key": "Higiene y Cuidado",
+        "count": 2
+      },
+      {
+        "key": "Cortes de cerdo",
+        "count": 1
+      },
+      {
+        "key": "Pechito",
+        "count": 1
+      },
+      {
+        "key": "Cestos de basura",
+        "count": 1
+      },
+      {
+        "key": "Tenders",
+        "count": 1
+      },
+      {
+        "key": "Libre de Gluten",
+        "count": 1
+      },
+      {
+        "key": "Premezclas",
+        "count": 1
+      },
+      {
+        "key": "Fideos",
+        "count": 1
+      },
+      {
+        "key": "Panificados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 3,
+    "valor_total": 116966.6,
+    "ticket_promedio": 38988.87,
+    "descuento_total": 1838.4,
+    "canal": {
+      "inmediato": 0,
+      "programado": 3
+    },
+    "top_productos": [
+      {
+        "key": "Roast beef Novillo x kg",
+        "count": 20
+      },
+      {
+        "key": "Fideos tirabuzones Favorita fortificado 500 g.",
+        "count": 6
+      },
+      {
+        "key": "Queso cuartirolo Tremblay x kg.",
+        "count": 4
+      },
+      {
+        "key": "Galletitas Oreo Mini rellenas con crema sabor original 50 g.",
+        "count": 4
+      },
+      {
+        "key": "Asado Novillo x kg",
+        "count": 4
+      },
+      {
+        "key": "Medialunas con manteca x 12 uni",
+        "count": 2
+      },
+      {
+        "key": "Papas baston caseras Carrefour classic 700 g.",
+        "count": 2
+      },
+      {
+        "key": "Campos verdes jabón de tocador aromaterapia 120 grs",
+        "count": 2
+      },
+      {
+        "key": "Celular Motorola g15se (xt2521-2) 6.72\" 4gb/256gb  50mp/8mp  sunrise orange (pb6d0089ar)",
+        "count": 2
+      },
+      {
+        "key": "Pañal Huggies Protect Plus XXG 50 uni",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Carne vacuna",
+        "count": 25
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 7
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 4
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 4
+      },
+      {
+        "key": "Especialidades dulces",
+        "count": 2
+      },
+      {
+        "key": "Papas",
+        "count": 2
+      },
+      {
+        "key": "Jabones en barra",
+        "count": 2
+      },
+      {
+        "key": "Celulares libres",
+        "count": 2
+      },
+      {
+        "key": "Pañales",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 7,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 8
+      },
+      {
+        "key": "Mendia",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 3
+      },
+      {
+        "key": "Permitido",
+        "count": 3
+      },
+      {
+        "key": "La Salteña",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      },
+      {
+        "key": "Slices",
+        "count": 2
+      },
+      {
+        "key": "Camely",
+        "count": 2
+      },
+      {
+        "key": "Granix",
+        "count": 2
+      },
+      {
+        "key": "La Parmesana",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 29
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      },
+      {
+        "key": "Panadería",
+        "count": 8
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 83,
+    "carrito_promedio": 74101.95,
+    "pct_con_carrito": 54.3,
+    "errores": 24
+  },
+  "origen": {
+    "total_requests": 120,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-10T12:42:42.325Z"
+}
