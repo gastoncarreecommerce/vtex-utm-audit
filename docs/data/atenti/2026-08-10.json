@@ -1,0 +1,443 @@
+{
+  "date": "2026-08-10",
+  "chat": {
+    "llamadas": 129,
+    "usuarios_unicos": 62,
+    "con_productos_identificados": 49,
+    "con_sugerencia": 10,
+    "por_hora": [
+      12,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      14,
+      5,
+      6,
+      10,
+      4,
+      17,
+      9,
+      2,
+      8,
+      7,
+      6,
+      9,
+      10,
+      1
+    ],
+    "errores": 39
+  },
+  "categorizar": {
+    "total": 44,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Bife ancho",
+        "count": 2
+      },
+      {
+        "key": "Tarta de atun",
+        "count": 1
+      },
+      {
+        "key": "Supremas",
+        "count": 1
+      },
+      {
+        "key": "Harina paraguaya",
+        "count": 1
+      },
+      {
+        "key": "Necesito comprar alimentos de almacén. Por packs, yerba, fideos, arroz... Esas cosas ",
+        "count": 1
+      },
+      {
+        "key": "Me trajiste ojo de bife y no es lo que te pedí ",
+        "count": 1
+      },
+      {
+        "key": "Jajaja que porquería, como sacan a producción una ia que no puede encontrar un bife ancho en la 1er búsqueda... laburen bien antes de sacar producto final",
+        "count": 1
+      },
+      {
+        "key": "Que corte de cerdo me combiene comprar ",
+        "count": 1
+      },
+      {
+        "key": "Uno que sea más flexible y se pueden hacer más variado platos",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "papel higiénico",
+        "count": 5
+      },
+      {
+        "key": "bife ancho",
+        "count": 4
+      },
+      {
+        "key": "yerba mate",
+        "count": 3
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 3
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "supremas",
+        "count": 2
+      },
+      {
+        "key": "arroz",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "café",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "papas fritas",
+        "count": 2
+      },
+      {
+        "key": "mayonesa",
+        "count": 2
+      },
+      {
+        "key": "puré de tomate",
+        "count": 2
+      },
+      {
+        "key": "juguetes",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 118,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "bife ancho",
+        "count": 4
+      },
+      {
+        "key": "papel higienico",
+        "count": 4
+      },
+      {
+        "key": "cafe",
+        "count": 3
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 3
+      },
+      {
+        "key": "supremas",
+        "count": 2
+      },
+      {
+        "key": "arroz",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "papas fritas",
+        "count": 2
+      },
+      {
+        "key": "yerba mate",
+        "count": 2
+      },
+      {
+        "key": "sandwiches de miga",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "juguetes",
+        "count": 2
+      },
+      {
+        "key": "queso untable",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Yerba Mate",
+        "count": 6
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 5
+      },
+      {
+        "key": "Bife Ancho",
+        "count": 3
+      },
+      {
+        "key": "Cafe",
+        "count": 3
+      },
+      {
+        "key": "Atun",
+        "count": 2
+      },
+      {
+        "key": "Papas",
+        "count": 2
+      },
+      {
+        "key": "Dulces",
+        "count": 2
+      },
+      {
+        "key": "Papas Fritas",
+        "count": 2
+      },
+      {
+        "key": "Saladas",
+        "count": 2
+      },
+      {
+        "key": "Bolsas de Residuos",
+        "count": 2
+      }
+    ],
+    "errores": 255
+  },
+  "agregar": {
+    "total_agregados": 25,
+    "valor_total": 1780143.74,
+    "ticket_promedio": 71205.75,
+    "descuento_total": 97607.35,
+    "canal": {
+      "inmediato": 0,
+      "programado": 25
+    },
+    "top_productos": [
+      {
+        "key": "Jugo Pura Frutta manzana roja tetra 1 l.",
+        "count": 52
+      },
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 48
+      },
+      {
+        "key": "Cápsulas de café Morenita Brasil caja x 10 uni",
+        "count": 32
+      },
+      {
+        "key": "Suprema congelada x kg",
+        "count": 30
+      },
+      {
+        "key": "Plancha de asado Novillo x kg",
+        "count": 24
+      },
+      {
+        "key": "Pan integral Bimbo Artesano con Masa Madre 500 grs",
+        "count": 22
+      },
+      {
+        "key": "Frutillas x kg.",
+        "count": 20
+      },
+      {
+        "key": "Sal fina Dos Anclas caja 500 g.",
+        "count": 14
+      },
+      {
+        "key": "Manteca Classic calidad extra 200 g.",
+        "count": 12
+      },
+      {
+        "key": "Zapallo anco x kg",
+        "count": 12
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Jugos listos",
+        "count": 52
+      },
+      {
+        "key": "Leches enteras",
+        "count": 48
+      },
+      {
+        "key": "Cápsulas de café",
+        "count": 32
+      },
+      {
+        "key": "Pollo",
+        "count": 30
+      },
+      {
+        "key": "Frutas",
+        "count": 26
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 24
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 22
+      },
+      {
+        "key": "Sal",
+        "count": 17
+      },
+      {
+        "key": "Verduras",
+        "count": 16
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 23,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 30
+      },
+      {
+        "key": "Carrefour",
+        "count": 21
+      },
+      {
+        "key": "Smams",
+        "count": 9
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 7
+      },
+      {
+        "key": "La Serenísima",
+        "count": 7
+      },
+      {
+        "key": "Bonafide",
+        "count": 6
+      },
+      {
+        "key": "Citric",
+        "count": 6
+      },
+      {
+        "key": "Procenex",
+        "count": 6
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 5
+      },
+      {
+        "key": "Pureza",
+        "count": 5
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 59
+      },
+      {
+        "key": "Almacén",
+        "count": 41
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 32
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 16
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 15
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 14
+      },
+      {
+        "key": "Congelados",
+        "count": 8
+      },
+      {
+        "key": "Panadería",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 186,
+    "carrito_promedio": 74853.09,
+    "pct_con_carrito": 62.8,
+    "errores": 40
+  },
+  "origen": {
+    "total_requests": 263,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-11T12:42:37.034Z"
+}
