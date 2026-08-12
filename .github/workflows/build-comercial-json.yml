@@ -1,0 +1,56 @@
+name: Build Comercial JSON (hoja APP)
+
+# Genera docs/data/comercial-app.json con los KPIs mensuales de la hoja "APP"
+# del Dashboard Comercial (Pedidos, VCT, Ticket, % Participación, Unidades y
+# segmentos). Es público y solo agregados (sin PII). Lo consume el Apps Script
+# del Google Sheet, que corre con la cuenta de Carrefour y escribe las celdas
+# (así no hace falta compartir el Sheet con ninguna cuenta externa).
+#
+# Corre diario (para refrescar el mes en curso), al pushear el script/workflow,
+# y a demanda.
+on:
+  schedule:
+    - cron: "30 11 * * *"   # 08:30 AR, después del fetch diario
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/build-comercial-json.yml"
+      - "scripts/build-comercial-json.mjs"
+      - "scripts/comercial-lib.mjs"
+
+concurrency:
+  group: build-comercial-json
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generar comercial-app.json
+        run: |
+          SOURCE_DATE="$(TZ=America/Argentina/Buenos_Aires date +%Y-%m-%dT%H:%M:%S%:z)" \
+            node scripts/build-comercial-json.mjs
+
+      - name: Commit si cambió
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/comercial-app.json
+          if git diff --staged --quiet; then
+            echo "Sin cambios."
+          else
+            git commit -m "comercial: refresh comercial-app.json" -q
+            for i in 1 2 3 4; do
+              if git push; then break; fi
+              echo "push falló, reintento..."; sleep $((i*5)); git pull --rebase --autostash || true
+            done
+          fi
