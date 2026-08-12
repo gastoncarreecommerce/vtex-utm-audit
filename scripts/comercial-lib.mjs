@@ -9,7 +9,7 @@ import path from 'path';
 
 export const DAILY = 'docs/data/daily';
 
-// Fila (1-indexed en el Sheet) por KPI.
+// Fila (1-indexed en el Sheet) por KPI — fallback si no se encuentra por etiqueta.
 export const ROW = {
   pedidos: 2, vct: 3, ticket: 4, participacion: 5,
   unidades: 10, unidades_prom: 11,
@@ -18,6 +18,26 @@ export const ROW = {
   marketplace: 16, marketplace_pct: 17,
   quick: 18, quick_pct: 19,
 };
+
+// Etiqueta exacta del KPI en la columna B del Sheet (para ubicar la fila por texto,
+// robusto ante inserción/movimiento de filas). Se normaliza (trim/acentos/case) al comparar.
+export const ROW_LABELS = {
+  pedidos: 'Pedidos Criterio Checkout',
+  vct: 'VCT Criterio Checkout',
+  ticket: 'Ticket Promedio',
+  participacion: '% Participacion Criterio Checkout',
+  unidades: 'Unidades',
+  unidades_prom: 'Unidades Promedio',
+  food: 'Pedidos Food',                food_pct: '% Pedidos Food',
+  non_food: 'Pedidos NonFood',         non_food_pct: '% Pedidos NonFood',
+  marketplace: 'Pedidos Marketplace',  marketplace_pct: '% Pedidos Marketplace',
+  quick: 'Pedidos Quick',              quick_pct: '% Pedidos Quick',
+};
+
+const MONTH_NAMES = ['enero','febrero','marzo','abril','mayo','junio',
+  'julio','agosto','septiembre','octubre','noviembre','diciembre'];
+export function monthName(ym) { return MONTH_NAMES[Number(ym.slice(5, 7)) - 1]; }
+function daysInMonth(ym) { return new Date(Number(ym.slice(0, 4)), Number(ym.slice(5, 7)), 0).getDate(); }
 
 // Columna por mes: Marzo=C, Abril=D, Mayo=E, Junio=F, Julio=G, agosto=H...
 export function monthCol(ym) {
@@ -62,9 +82,13 @@ export function computeMonth(ym) {
     for (const r of rows) if (Array.isArray(r.items)) for (const it of r.items) unidades += Number(it.qty) || 0;
   }
 
+  const through = dailies[dailies.length - 1].slice(0, 10); // último día con dato (orden asc)
+  const dim = daysInMonth(ym);
+  const daysCovered = Number(through.slice(8, 10));
   const p = (n, den) => (den ? n / den : 0);
   return {
-    ym, days: dailies.length, rowsDays,
+    ym, name: monthName(ym), days: dailies.length, rowsDays,
+    through, days_in_month: dim, partial: daysCovered < dim,
     pedidos, vct, totalEcomm,
     ticket:        pedidos ? Math.round(vct / pedidos) : 0,
     participacion: p(pedidos, totalEcomm),
