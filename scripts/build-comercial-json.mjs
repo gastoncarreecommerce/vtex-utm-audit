@@ -10,15 +10,21 @@
  *
  * Solo contiene AGREGADOS (conteos, GMV, unidades, % de segmentos): nada de PII.
  *
+ * Solo emite meses >= COMERCIAL_MIN_MONTH (default 2026-07), para NO pisar lo
+ * ya cargado a mano en el Sheet (marzo–junio). Julio en adelante se llena solo.
+ *
  * Uso:
- *   node scripts/build-comercial-json.mjs            # todos los meses con datos
- *   node scripts/build-comercial-json.mjs 2026-06    # uno o varios meses puntuales
+ *   node scripts/build-comercial-json.mjs            # meses con datos, desde el piso
+ *   node scripts/build-comercial-json.mjs 2026-08    # uno o varios meses puntuales
+ *   COMERCIAL_MIN_MONTH=2026-08 node scripts/build-comercial-json.mjs   # cambiar el piso
  */
 import fs from 'fs';
 import path from 'path';
 import { computeMonth, availableMonths, monthCol, ROW, KPI_KEYS } from './comercial-lib.mjs';
 
 const OUT = 'docs/data/comercial-app.json';
+// Piso: no emitir meses anteriores a este (marzo–junio ya están cargados a mano).
+const MIN_MONTH = process.env.COMERCIAL_MIN_MONTH || '2026-07';
 
 function stampNow() {
   // Date.now()/new Date() no están disponibles en algunos entornos; usamos SOURCE_DATE si viene.
@@ -28,7 +34,8 @@ function stampNow() {
 function main() {
   let months = process.argv.slice(2).filter(a => /^\d{4}-\d{2}$/.test(a));
   if (!months.length) months = availableMonths();
-  if (!months.length) { console.error('No hay datos en docs/data/daily.'); process.exit(1); }
+  months = months.filter(m => m >= MIN_MONTH);   // no pisar lo cargado a mano
+  if (!months.length) { console.error(`No hay datos desde ${MIN_MONTH} en docs/data/daily.`); process.exit(1); }
 
   const out = { generated_at: stampNow(),
     source: 'vtex-utm-audit dashboard (docs/data/daily) — solo agregados, sin PII',
