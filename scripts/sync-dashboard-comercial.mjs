@@ -28,9 +28,12 @@
  *   DRY_RUN=1 node scripts/sync-dashboard-comercial.mjs 2026-06   # solo imprime, no escribe
  *
  * Env necesarias:
- *   SHEET_ID        id del Google Sheet (de la URL .../d/<SHEET_ID>/edit)
- *   GOOGLE_SA_KEY   JSON de la service account (con Sheets API) — como string
- *   SHEET_TAB       (opcional) nombre de la pestaña, default "APP"
+ *   SHEET_ID                id del Google Sheet (de la URL .../d/<SHEET_ID>/edit)
+ *   GOOGLE_SERVICE_ACCOUNT  JSON de la service account (la MISMA que lee GA4).
+ *                           Alias aceptado: GOOGLE_SA_KEY.
+ *                           → hay que compartir el Sheet como Editor con su client_email
+ *                             y tener habilitada la Google Sheets API en el proyecto.
+ *   SHEET_TAB               (opcional) nombre de la pestaña, default "APP"
  */
 import fs from 'fs';
 import path from 'path';
@@ -142,13 +145,14 @@ async function main() {
   }
 
   const SHEET_ID = process.env.SHEET_ID;
-  const RAW_KEY  = process.env.GOOGLE_SA_KEY;
+  const RAW_KEY  = process.env.GOOGLE_SERVICE_ACCOUNT || process.env.GOOGLE_SA_KEY;
   if (!SHEET_ID) { console.error('Falta SHEET_ID.'); process.exit(1); }
-  if (!RAW_KEY)  { console.error('Falta GOOGLE_SA_KEY.'); process.exit(1); }
+  if (!RAW_KEY)  { console.error('Falta GOOGLE_SERVICE_ACCOUNT (o GOOGLE_SA_KEY).'); process.exit(1); }
 
   let creds;
   try { creds = JSON.parse(RAW_KEY); }
-  catch { console.error('GOOGLE_SA_KEY no es un JSON válido.'); process.exit(1); }
+  catch { console.error('El JSON de la service account no es válido.'); process.exit(1); }
+  console.log(`Service account: ${creds.client_email}`);
 
   const { google } = await import('googleapis');
   const auth = new google.auth.JWT(

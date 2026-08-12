@@ -58,9 +58,9 @@ jobs:
 
       - name: Sync a Google Sheet
         env:
-          SHEET_ID:      ${{ secrets.SHEET_ID }}
-          GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SA_KEY }}
-          SHEET_TAB:     APP
+          SHEET_ID:               ${{ secrets.SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          SHEET_TAB:              APP
         run: |
           echo "Sincronizando meses: ${{ steps.months.outputs.value }}"
           node scripts/sync-dashboard-comercial.mjs ${{ steps.months.outputs.value }}
