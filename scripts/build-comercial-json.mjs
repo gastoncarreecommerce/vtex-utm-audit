@@ -46,10 +46,15 @@ function main() {
     const d = computeMonth(ym);
     if (!d) { console.warn(`⚠ ${ym}: sin datos, salteo.`); continue; }
     out.col_by_month[ym] = monthCol(ym);
+    const kobj = Object.fromEntries(KPI_KEYS.map(k => [k, d[k]]));
+    // Recompra/frecuencia son tasas que suben a lo largo del mes: en meses
+    // parciales quedan en blanco (null) hasta que el mes cierre, para no mostrar
+    // un valor bajo engañoso. Los conteos (pedidos/VCT/unidades) sí se llenan.
+    if (d.partial) { kobj.recompra = null; kobj.frecuencia = null; kobj.frecuencia_qc = null; }
     out.months[ym] = {
       name: d.name, days: d.days, through: d.through,
       days_in_month: d.days_in_month, partial: d.partial,
-      ...Object.fromEntries(KPI_KEYS.map(k => [k, d[k]])),
+      ...kobj,
     };
     console.log(`${ym} ${d.name}${d.partial ? ` (PARCIAL, ${d.days}/${d.days_in_month} días, hasta ${d.through})` : ' (completo)'}`
       + `: Pedidos ${d.pedidos} · VCT ${d.vct.toLocaleString()} · Ticket ${d.ticket.toLocaleString()}`
