@@ -12,6 +12,7 @@ export const DAILY = 'docs/data/daily';
 // Fila (1-indexed en el Sheet) por KPI — fallback si no se encuentra por etiqueta.
 export const ROW = {
   pedidos: 2, vct: 3, ticket: 4, participacion: 5,
+  recompra: 6, frecuencia: 7, frecuencia_qc: 8,
   unidades: 10, unidades_prom: 11,
   food: 12, food_pct: 13,
   non_food: 14, non_food_pct: 15,
@@ -26,6 +27,9 @@ export const ROW_LABELS = {
   vct: 'VCT Criterio Checkout',
   ticket: 'Ticket Promedio',
   participacion: '% Participacion Criterio Checkout',
+  recompra: '% de Recompra (2 o mas)',
+  frecuencia: 'Frecuencia de Compra',
+  frecuencia_qc: 'Frecuencia de Compra QuickCommerce',
   unidades: 'Unidades',
   unidades_prom: 'Unidades Promedio',
   food: 'Pedidos Food',                food_pct: '% Pedidos Food',
@@ -46,6 +50,14 @@ export function monthCol(ym) {
 }
 
 function readJson(p) { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; } }
+
+// VTEX anonimiza el email por-orden: <email>@<dom>-<orderref>.ct.vtex.com.br.
+// Sacando ese sufijo recuperamos una clave estable de cliente (el email real).
+// Se usa SOLO en memoria para contar clientes únicos; nunca se escribe a ningún lado.
+export function realEmail(e) {
+  if (!e) return null;
+  return String(e).replace(/-[^-@]*\.ct\.vtex\.com\.br$/i, '').toLowerCase() || null;
+}
 
 function monthFiles(ym, suffix) {
   if (!fs.existsSync(DAILY)) return [];
@@ -73,14 +85,23 @@ export function computeMonth(ym) {
     for (const k of Object.keys(seg)) seg[k] += j.app?.segments?.[k]?.orders || 0;
   }
 
-  // Unidades: suma de qty de items en los -rows.json del mes.
-  let unidades = 0, rowsDays = 0;
+  // Unidades (Σ qty de items) y clientes únicos (por email normalizado), leyendo los rows.
+  let unidades = 0, rowsDays = 0, ordersWithEmail = 0, qcOrders = 0;
+  const cust = new Map(), custQc = new Map();
   for (const f of monthFiles(ym, '-rows.json')) {
     const rows = readJson(path.join(DAILY, f));
     if (!Array.isArray(rows)) continue;
     rowsDays++;
-    for (const r of rows) if (Array.isArray(r.items)) for (const it of r.items) unidades += Number(it.qty) || 0;
+    for (const r of rows) {
+      if (Array.isArray(r.items)) for (const it of r.items) unidades += Number(it.qty) || 0;
+      const k = realEmail(r.email);
+      if (!k) continue;
+      ordersWithEmail++; cust.set(k, (cust.get(k) || 0) + 1);
+      if (r.segment === 'quickcommerce') { qcOrders++; custQc.set(k, (custQc.get(k) || 0) + 1); }
+    }
   }
+  const clientes = cust.size;
+  const recompraCnt = [...cust.values()].filter(c => c >= 2).length;
 
   const through = dailies[dailies.length - 1].slice(0, 10); // último día con dato (orden asc)
   const dim = daysInMonth(ym);
@@ -92,6 +113,10 @@ export function computeMonth(ym) {
     pedidos, vct, totalEcomm,
     ticket:        pedidos ? Math.round(vct / pedidos) : 0,
     participacion: p(pedidos, totalEcomm),
+    clientes,
+    recompra:      p(recompraCnt, clientes),
+    frecuencia:    p(ordersWithEmail, clientes),
+    frecuencia_qc: p(qcOrders, custQc.size),
     unidades,
     unidades_prom: p(unidades, pedidos),
     food: seg.food,               food_pct: p(seg.food, pedidos),
