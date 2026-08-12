@@ -1,0 +1,419 @@
+{
+  "date": "2026-08-11",
+  "chat": {
+    "llamadas": 97,
+    "usuarios_unicos": 45,
+    "con_productos_identificados": 37,
+    "con_sugerencia": 4,
+    "por_hora": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      2,
+      8,
+      3,
+      5,
+      4,
+      6,
+      6,
+      3,
+      4,
+      5,
+      3,
+      3,
+      8,
+      11,
+      3,
+      7,
+      9
+    ],
+    "errores": 35
+  },
+  "categorizar": {
+    "total": 36,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Una bondiola al disco desmechada",
+        "count": 1
+      },
+      {
+        "key": "Si arroz",
+        "count": 1
+      },
+      {
+        "key": "Clasico",
+        "count": 1
+      },
+      {
+        "key": "Necesito carne para milanesa ",
+        "count": 1
+      },
+      {
+        "key": "Café ",
+        "count": 1
+      },
+      {
+        "key": "Yerba",
+        "count": 1
+      },
+      {
+        "key": "Espatula ultrasonica Gagnic",
+        "count": 1
+      },
+      {
+        "key": "Eso solamente ya lo cargue al carrito y ahora no se que hacer",
+        "count": 1
+      },
+      {
+        "key": "Pan rallado, tallarines, yerba, masitas secas , azúcar, harina para torta fritas, lavandina en gel, jabón líquido para ropa, suavizante, jugos en polvo,spray,coca, Fernet, Gancia, servilletas, paño microfibra, regilla, tostadas, harina integral, detergente, aceite, limón en botella, puré de tomate, choclo en lata, arvejas, atún , durazno en lata, pimentón, chimichurri, sal condimentada, orégano, provenzal, sopas crema, gelatina, manteca,quedo mantecoso,jamón cocido feteada, tapa tarta integral, tapa empanada, queso crema,, pure de pizza,pasta de dientes, papel higiénico, toallas femeninas, shampoo, acondicionador,jabon tocador,pino luz, removedor de suciedad,alimento perro, escarbsdiebtes,pan lactal , leche ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "lavandina",
+        "count": 3
+      },
+      {
+        "key": "trapo de piso",
+        "count": 3
+      },
+      {
+        "key": "escoba",
+        "count": 3
+      },
+      {
+        "key": "bolsas de residuo",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "atún en aceite",
+        "count": 2
+      },
+      {
+        "key": "azúcar",
+        "count": 2
+      },
+      {
+        "key": "agua",
+        "count": 2
+      },
+      {
+        "key": "desodorante de piso lavanda",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "leche larga vida",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 123,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "atun en aceite",
+        "count": 2
+      },
+      {
+        "key": "espatula ultrasonica",
+        "count": 2
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "agua",
+        "count": 2
+      },
+      {
+        "key": "bolsas de residuo",
+        "count": 2
+      },
+      {
+        "key": "trapo de piso",
+        "count": 2
+      },
+      {
+        "key": "escoba",
+        "count": 2
+      },
+      {
+        "key": "lavandina",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "leche larga vida",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Especias",
+        "count": 4
+      },
+      {
+        "key": "Pescados",
+        "count": 3
+      },
+      {
+        "key": "Mayonesa",
+        "count": 3
+      },
+      {
+        "key": "Lavandinas",
+        "count": 3
+      },
+      {
+        "key": "Aceite de Girasol",
+        "count": 3
+      },
+      {
+        "key": "Sal",
+        "count": 2
+      },
+      {
+        "key": "Pimiento",
+        "count": 2
+      },
+      {
+        "key": "Aceite",
+        "count": 2
+      },
+      {
+        "key": "Arroz Blanco",
+        "count": 2
+      },
+      {
+        "key": "Cerveza Negra",
+        "count": 2
+      }
+    ],
+    "errores": 382
+  },
+  "agregar": {
+    "total_agregados": 6,
+    "valor_total": 819054.83,
+    "ticket_promedio": 136509.14,
+    "descuento_total": 16651.95,
+    "canal": {
+      "inmediato": 0,
+      "programado": 6
+    },
+    "top_productos": [
+      {
+        "key": "Fideos tirabuzones Favorita fortificado 500 g.",
+        "count": 6
+      },
+      {
+        "key": "Fideos spaghetti fortificado Favorita 500 g.",
+        "count": 6
+      },
+      {
+        "key": "Cerveza rubia Imperial 473 ml",
+        "count": 4
+      },
+      {
+        "key": "Lavandina Ayudín original 1 l.",
+        "count": 3
+      },
+      {
+        "key": "Puré de manzana Zummy pouch 90 g.",
+        "count": 2
+      },
+      {
+        "key": "Puré mix frutal Zummy pouch 110 g.",
+        "count": 2
+      },
+      {
+        "key": "Puré de durazno y manzana Zummy pouch 90 g.",
+        "count": 2
+      },
+      {
+        "key": "Puré de ciruela Zummy desecada pouch 110 g.",
+        "count": 2
+      },
+      {
+        "key": "Bizcochos 9 de Oro de grasa 200 g.",
+        "count": 2
+      },
+      {
+        "key": "Yogur Griego sabor vainilla Yogurísimo 140 grs",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 9
+      },
+      {
+        "key": "Cereales y papillas",
+        "count": 8
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 7
+      },
+      {
+        "key": "Fideos largos",
+        "count": 7
+      },
+      {
+        "key": "Cervezas",
+        "count": 6
+      },
+      {
+        "key": "Vasos y copas",
+        "count": 5
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 4
+      },
+      {
+        "key": "Bizcochitos",
+        "count": 3
+      },
+      {
+        "key": "Cubiertos y utensilios",
+        "count": 3
+      },
+      {
+        "key": "Lavandinas",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 3,
+    "top_marcas": [
+      {
+        "key": "Yogurísimo",
+        "count": 7
+      },
+      {
+        "key": "Gulden Draak",
+        "count": 2
+      },
+      {
+        "key": "Tregar",
+        "count": 2
+      },
+      {
+        "key": "Procenex",
+        "count": 2
+      },
+      {
+        "key": "Poett",
+        "count": 2
+      },
+      {
+        "key": "Ayudín",
+        "count": 2
+      },
+      {
+        "key": "Carrefour Eco Planet",
+        "count": 2
+      },
+      {
+        "key": "Andes",
+        "count": 1
+      },
+      {
+        "key": "Quilmes",
+        "count": 1
+      },
+      {
+        "key": "Denninghoffs",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 127,
+    "carrito_promedio": 50521.45,
+    "pct_con_carrito": 45.5,
+    "errores": 53
+  },
+  "origen": {
+    "total_requests": 194,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-12T12:42:38.153Z"
+}
