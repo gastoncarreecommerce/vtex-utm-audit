@@ -18,6 +18,22 @@
     "quick": 18,
     "quick_pct": 19
   },
+  "row_labels": {
+    "pedidos": "Pedidos Criterio Checkout",
+    "vct": "VCT Criterio Checkout",
+    "ticket": "Ticket Promedio",
+    "participacion": "% Participacion Criterio Checkout",
+    "unidades": "Unidades",
+    "unidades_prom": "Unidades Promedio",
+    "food": "Pedidos Food",
+    "food_pct": "% Pedidos Food",
+    "non_food": "Pedidos NonFood",
+    "non_food_pct": "% Pedidos NonFood",
+    "marketplace": "Pedidos Marketplace",
+    "marketplace_pct": "% Pedidos Marketplace",
+    "quick": "Pedidos Quick",
+    "quick_pct": "% Pedidos Quick"
+  },
   "kpi_keys": [
     "pedidos",
     "vct",
@@ -40,6 +56,11 @@
   },
   "months": {
     "2026-07": {
+      "name": "julio",
+      "days": 31,
+      "through": "2026-07-31",
+      "days_in_month": 31,
+      "partial": false,
       "pedidos": 22836,
       "vct": 1927628287,
       "ticket": 84412,
@@ -56,6 +77,11 @@
       "quick_pct": 0.1013750218952531
     },
     "2026-08": {
+      "name": "agosto",
+      "days": 12,
+      "through": "2026-08-12",
+      "days_in_month": 31,
+      "partial": true,
       "pedidos": 9988,
       "vct": 940871378,
       "ticket": 94200,

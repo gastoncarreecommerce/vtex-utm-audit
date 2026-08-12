@@ -20,7 +20,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { computeMonth, availableMonths, monthCol, ROW, KPI_KEYS } from './comercial-lib.mjs';
+import { computeMonth, availableMonths, monthCol, ROW, ROW_LABELS, KPI_KEYS } from './comercial-lib.mjs';
 
 const OUT = 'docs/data/comercial-app.json';
 // Piso: no emitir meses anteriores a este (marzo–junio ya están cargados a mano).
@@ -39,16 +39,21 @@ function main() {
 
   const out = { generated_at: stampNow(),
     source: 'vtex-utm-audit dashboard (docs/data/daily) — solo agregados, sin PII',
-    tab: 'APP', rows: ROW, kpi_keys: KPI_KEYS,
+    tab: 'APP', rows: ROW, row_labels: ROW_LABELS, kpi_keys: KPI_KEYS,
     col_by_month: {}, months: {} };
 
   for (const ym of months) {
     const d = computeMonth(ym);
     if (!d) { console.warn(`⚠ ${ym}: sin datos, salteo.`); continue; }
     out.col_by_month[ym] = monthCol(ym);
-    out.months[ym] = Object.fromEntries(KPI_KEYS.map(k => [k, d[k]]));
-    console.log(`${ym} (col ${monthCol(ym)}, ${d.days} días): Pedidos ${d.pedidos} · VCT ${d.vct.toLocaleString()}`
-      + ` · Ticket ${d.ticket.toLocaleString()} · Part ${(d.participacion*100).toFixed(2)}% · Unid ${d.unidades.toLocaleString()}`);
+    out.months[ym] = {
+      name: d.name, days: d.days, through: d.through,
+      days_in_month: d.days_in_month, partial: d.partial,
+      ...Object.fromEntries(KPI_KEYS.map(k => [k, d[k]])),
+    };
+    console.log(`${ym} ${d.name}${d.partial ? ` (PARCIAL, ${d.days}/${d.days_in_month} días, hasta ${d.through})` : ' (completo)'}`
+      + `: Pedidos ${d.pedidos} · VCT ${d.vct.toLocaleString()} · Ticket ${d.ticket.toLocaleString()}`
+      + ` · Part ${(d.participacion*100).toFixed(2)}% · Unid ${d.unidades.toLocaleString()}`);
   }
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
