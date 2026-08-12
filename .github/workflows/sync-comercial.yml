@@ -1,0 +1,66 @@
+name: Sync Dashboard Comercial (Google Sheet)
+
+# Llena la hoja "APP" del Google Sheet Dashboard_Comercial con los KPIs del
+# dashboard, mes a mes. Escribe DIRECTO al Sheet vía la Sheets API.
+#
+# Se dispara:
+#   - Automático el día 2 de cada mes 09:00 AR (12:00 UTC) → sincroniza el mes ANTERIOR.
+#   - Manual (workflow_dispatch) con "months" opcional (ej: "2026-05 2026-06 2026-07").
+#   - Al pushear/cambiar este archivo → corre el backfill inicial (BACKFILL_MONTHS).
+on:
+  schedule:
+    - cron: "0 12 2 * *"
+  workflow_dispatch:
+    inputs:
+      months:
+        description: 'Meses a sincronizar (YYYY-MM separados por espacio). Vacío = mes anterior.'
+        required: false
+        default: ''
+  push:
+    paths:
+      - ".github/workflows/sync-comercial.yml"
+      - "scripts/sync-dashboard-comercial.mjs"
+
+concurrency:
+  group: sync-comercial
+  cancel-in-progress: false
+
+env:
+  # Backfill inicial que corre cuando se pushea/cambia el workflow.
+  BACKFILL_MONTHS: "2026-03 2026-04 2026-05 2026-06 2026-07"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install googleapis
+        run: npm install googleapis
+
+      - name: Resolver meses a sincronizar
+        id: months
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "value=${BACKFILL_MONTHS}" >> "$GITHUB_OUTPUT"
+          elif [ -n "${{ github.event.inputs.months }}" ]; then
+            echo "value=${{ github.event.inputs.months }}" >> "$GITHUB_OUTPUT"
+          else
+            # Mes anterior en horario Argentina (UTC-3).
+            prev=$(TZ=America/Argentina/Buenos_Aires date -d "$(date +%Y-%m-01) -1 day" +%Y-%m)
+            echo "value=${prev}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync a Google Sheet
+        env:
+          SHEET_ID:      ${{ secrets.SHEET_ID }}
+          GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SA_KEY }}
+          SHEET_TAB:     APP
+        run: |
+          echo "Sincronizando meses: ${{ steps.months.outputs.value }}"
+          node scripts/sync-dashboard-comercial.mjs ${{ steps.months.outputs.value }}
