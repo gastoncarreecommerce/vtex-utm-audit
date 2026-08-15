@@ -1,4 +1,125 @@
 {
   "date": "2026-08-15",
-  "events": {}
+  "events": {
+    "screen_view": {
+      "count": 154,
+      "users": 46
+    },
+    "user_engagement": {
+      "count": 86,
+      "users": 27
+    },
+    "session_start": {
+      "count": 44,
+      "users": 44
+    },
+    "mis_cupones": {
+      "count": 24,
+      "users": 18
+    },
+    "cupon_sn_qr_activacion": {
+      "count": 10,
+      "users": 2
+    },
+    "first_open": {
+      "count": 8,
+      "users": 8
+    },
+    "notification_dismiss": {
+      "count": 8,
+      "users": 2
+    },
+    "switch_to_ecommerce": {
+      "count": 5,
+      "users": 5
+    },
+    "view_cart": {
+      "count": 5,
+      "users": 3
+    },
+    "add_shipping_info": {
+      "count": 4,
+      "users": 1
+    },
+    "app_remove": {
+      "count": 3,
+      "users": 3
+    },
+    "notification_receive": {
+      "count": 3,
+      "users": 3
+    },
+    "view_item_list": {
+      "count": 3,
+      "users": 3
+    },
+    "add_to_cart": {
+      "count": 2,
+      "users": 1
+    },
+    "os_update": {
+      "count": 2,
+      "users": 2
+    },
+    "re_escaner_precios": {
+      "count": 2,
+      "users": 1
+    },
+    "select_item": {
+      "count": 2,
+      "users": 1
+    },
+    "view_item": {
+      "count": 2,
+      "users": 1
+    },
+    "view_promotion": {
+      "count": 2,
+      "users": 1
+    },
+    "escaner_precios": {
+      "count": 1,
+      "users": 1
+    },
+    "favorito_mes_renovar": {
+      "count": 1,
+      "users": 1
+    },
+    "filter_cupones": {
+      "count": 1,
+      "users": 1
+    },
+    "folletos": {
+      "count": 1,
+      "users": 1
+    },
+    "lista_compras": {
+      "count": 1,
+      "users": 1
+    },
+    "notification_foreground": {
+      "count": 1,
+      "users": 1
+    },
+    "notification_open": {
+      "count": 1,
+      "users": 1
+    },
+    "search": {
+      "count": 1,
+      "users": 1
+    },
+    "sucursales": {
+      "count": 1,
+      "users": 1
+    },
+    "tarjeta_mi_carrefour": {
+      "count": 1,
+      "users": 1
+    },
+    "tickets_compra": {
+      "count": 1,
+      "users": 1
+    }
+  }
 }
