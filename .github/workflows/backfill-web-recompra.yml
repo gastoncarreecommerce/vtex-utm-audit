@@ -1,10 +1,12 @@
-name: Backfill Web Recompra (Julio)
+name: Backfill Web Recompra (Agosto parcial)
 
 # Trae Recompra / Frecuencia / Basket size de WEB (pedidos que NO son de la
-# app) para julio 2026 completo, para poder compararlo contra la app.
-# Se auto-dispara al pushear/cambiar este archivo. Puede tardar 1-3 horas
-# (~92.500 pedidos de detalle) — por eso corre en background como Action.
-# Salida: docs/data/web-recompra/2026-07-01_2026-07-31.json (solo agregados).
+# app) para un rango de fechas, para poder compararlo contra la app.
+# Se auto-dispara al pushear/cambiar este archivo, usando el rango de abajo
+# (cambiarlo + pushear es la forma de re-disparar un rango distinto, ya que
+# el bot no tiene permiso para dispatch manual). Puede tardar entre 15 min y
+# 3 horas según el volumen de pedidos del rango.
+# Salida: docs/data/web-recompra/{from}_{to}.json (solo agregados).
 on:
   push:
     paths:
@@ -14,11 +16,11 @@ on:
       from:
         description: "Fecha inicio (YYYY-MM-DD)"
         required: false
-        default: "2026-07-01"
+        default: "2026-08-01"
       to:
         description: "Fecha fin (YYYY-MM-DD)"
         required: false
-        default: "2026-07-31"
+        default: "2026-08-20"
 
 concurrency:
   group: backfill-web-recompra
@@ -48,8 +50,8 @@ jobs:
         run: |
           FROM="${{ github.event.inputs.from }}"
           TO="${{ github.event.inputs.to }}"
-          FROM="${FROM:-2026-07-01}"
-          TO="${TO:-2026-07-31}"
+          FROM="${FROM:-2026-08-01}"
+          TO="${TO:-2026-08-20}"
           SOURCE_DATE="$(date -u +%Y-%m-%dT%H:%M:%S%:z)" node scripts/fetch-web-recompra.mjs "$FROM" "$TO"
 
       - name: Commit resultado
