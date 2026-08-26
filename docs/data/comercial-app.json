@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T08:53:40-03:00",
+  "generated_at": "2026-08-26T08:55:13-03:00",
   "source": "vtex-utm-audit dashboard (docs/data/daily) — solo agregados, sin PII",
   "tab": "APP",
   "rows": {
@@ -90,27 +90,27 @@
     },
     "2026-08": {
       "name": "agosto",
-      "days": 25,
-      "through": "2026-08-25",
+      "days": 26,
+      "through": "2026-08-26",
       "days_in_month": 31,
       "partial": true,
-      "pedidos": 20997,
-      "vct": 1801180301,
-      "ticket": 85783,
-      "participacion": 0.2140126999011324,
+      "pedidos": 21581,
+      "vct": 1855047760,
+      "ticket": 85957,
+      "participacion": 0.21204201342149995,
       "recompra": null,
       "frecuencia": null,
       "frecuencia_qc": null,
-      "unidades": 641416,
-      "unidades_prom": 30.547983045196933,
-      "food": 18632,
-      "food_pct": 0.887364861646902,
-      "non_food": 114,
-      "non_food_pct": 0.005429347049578512,
-      "marketplace": 83,
-      "marketplace_pct": 0.003952945658903653,
-      "quick": 2168,
-      "quick_pct": 0.1032528456446159
+      "unidades": 660160,
+      "unidades_prom": 30.589870719614474,
+      "food": 19126,
+      "food_pct": 0.8862425281497613,
+      "non_food": 116,
+      "non_food_pct": 0.0053750984662434545,
+      "marketplace": 85,
+      "marketplace_pct": 0.003938649738195635,
+      "quick": 2254,
+      "quick_pct": 0.10444372364579954
     }
   }
 }
