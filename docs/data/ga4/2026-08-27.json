@@ -1,0 +1,53 @@
+{
+  "date": "2026-08-27",
+  "events": {
+    "user_engagement": {
+      "count": 7,
+      "users": 4
+    },
+    "screen_view": {
+      "count": 6,
+      "users": 4
+    },
+    "session_start": {
+      "count": 3,
+      "users": 3
+    },
+    "notification_receive": {
+      "count": 2,
+      "users": 2
+    },
+    "search": {
+      "count": 2,
+      "users": 1
+    },
+    "view_item": {
+      "count": 2,
+      "users": 1
+    },
+    "add_shipping_info": {
+      "count": 1,
+      "users": 1
+    },
+    "favorito_semanal_activacion": {
+      "count": 1,
+      "users": 1
+    },
+    "lista_compras": {
+      "count": 1,
+      "users": 1
+    },
+    "mis_cupones": {
+      "count": 1,
+      "users": 1
+    },
+    "purchase": {
+      "count": 1,
+      "users": 1
+    },
+    "tickets_compra": {
+      "count": 1,
+      "users": 1
+    }
+  }
+}
