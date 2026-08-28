@@ -151,13 +151,14 @@ async function getProductDetail(productId) {
 
   if (!res.ok) {
     console.warn(`  [aviso] producto ${productId} falló (${res.status}), se omite.`);
-    return [];
+    return { rows: [], skipped: 0 };
   }
 
   const products = await res.json();
-  if (!Array.isArray(products) || products.length === 0) return [];
+  if (!Array.isArray(products) || products.length === 0) return { rows: [], skipped: 0 };
 
   const rows = [];
+  let skipped = 0;
 
   for (const product of products) {
     const productType = (product.categories && product.categories[0]) || "";
@@ -175,6 +176,15 @@ async function getProductDetail(productId) {
       const offer = seller.commertialOffer || {};
       const listPrice = offer.ListPrice ?? "";
       const price = offer.Price ?? "";
+
+      // Si el precio viene en 0, VTEX está diciendo que el SKU no tiene stock/oferta
+      // activa en este canal de venta. No tiene sentido recomendarlo por email si
+      // no se puede comprar, así que lo salteamos.
+      if (!listPrice || Number(listPrice) <= 0) {
+        skipped += 1;
+        continue;
+      }
+
       // Si no hay descuento activo, dejamos SalePrice vacío en vez de repetir el precio.
       const salePrice = price && listPrice && price < listPrice ? price : "";
       const imageLink = (item.images && item.images[0] && item.images[0].imageUrl) || "";
@@ -196,7 +206,7 @@ async function getProductDetail(productId) {
     }
   }
 
-  return rows;
+  return { rows, skipped };
 }
 
 async function main() {
@@ -205,11 +215,15 @@ async function main() {
   console.log(`Encontrados ${productIds.length} productos. Buscando detalle...`);
 
   const allRows = [];
+  let totalSkipped = 0;
 
   for (let i = 0; i < productIds.length; i += CONCURRENCY) {
     const batch = productIds.slice(i, i + CONCURRENCY);
     const results = await Promise.all(batch.map((id) => getProductDetail(id)));
-    results.forEach((rows) => allRows.push(...rows));
+    results.forEach(({ rows, skipped }) => {
+      allRows.push(...rows);
+      totalSkipped += skipped;
+    });
 
     if (i % (CONCURRENCY * 4) === 0 || i + CONCURRENCY >= productIds.length) {
       console.log(`  ...${Math.min(i + CONCURRENCY, productIds.length)}/${productIds.length} productos procesados`);
@@ -223,6 +237,7 @@ async function main() {
   fs.writeFileSync(OUTPUT_PATH, lines.join("\n"), "utf8");
 
   console.log(`Listo. ${allRows.length} SKUs escritos en ${OUTPUT_PATH}`);
+  console.log(`(${totalSkipped} SKUs sin stock/oferta activa fueron excluidos del feed)`);
 }
 
 main().catch((err) => {
