@@ -75,8 +75,6 @@ const HEADER = [
   "ProductType",
   "ProductLink",
   "ImageLink",
-  "RegularPrice",
-  "SalePrice",
   "BrandName",
   "Color",
   "ReleaseDate",
@@ -180,8 +178,8 @@ async function getRegionId(postalCode, country) {
  * marca, categoría, link) vía Search API clásica filtrando por productId.
  * Un producto puede tener varios SKUs (items) -> devolvemos una fila por SKU.
  */
-async function getProductDetail(productId, regionId) {
-  const url = `${BASE_URL}/api/catalog_system/pub/products/search?fq=productId:${productId}&sc=${SALES_CHANNEL}&regionId=${regionId}`;
+async function getProductDetail(productId) {
+  const url = `${BASE_URL}/api/catalog_system/pub/products/search?fq=productId:${productId}&sc=${SALES_CHANNEL}`;
   const res = await fetch(url);
 
   if (!res.ok) {
@@ -209,19 +207,16 @@ async function getProductDetail(productId, regionId) {
       const skuId = item.itemId;
       const seller = (item.sellers && item.sellers[0]) || {};
       const offer = seller.commertialOffer || {};
-      const listPrice = offer.ListPrice ?? "";
-      const price = offer.Price ?? "";
 
-      // Si el precio viene en 0, VTEX está diciendo que el SKU no tiene stock/oferta
-      // activa en este canal de venta. No tiene sentido recomendarlo por email si
-      // no se puede comprar, así que lo salteamos.
-      if (!listPrice || Number(listPrice) <= 0) {
+      // Sin precio en el feed (decisión: mostrar solo producto+link en el mail,
+      // no arriesgar mostrar un precio regionalizado incorrecto). Igual usamos el
+      // ListPrice como señal de disponibilidad: si viene en 0, el SKU no tiene
+      // oferta activa y no tiene sentido recomendarlo.
+      if (!offer.ListPrice || Number(offer.ListPrice) <= 0) {
         skipped += 1;
         continue;
       }
 
-      // Si no hay descuento activo, dejamos SalePrice vacío en vez de repetir el precio.
-      const salePrice = price && listPrice && price < listPrice ? price : "";
       const imageLink = (item.images && item.images[0] && item.images[0].imageUrl) || "";
 
       rows.push([
@@ -231,8 +226,6 @@ async function getProductDetail(productId, regionId) {
         sanitize(categoryName),
         sanitize(product.link),
         sanitize(imageLink),
-        sanitize(listPrice),
-        sanitize(salePrice),
         sanitize(brandName),
         "", // Color: vacío por ahora
         sanitize(releaseDate),
@@ -384,14 +377,12 @@ async function main() {
   const productIds = await getAllProductIds();
   console.log(`Encontrados ${productIds.length} productos. Buscando detalle...`);
 
-  const regionId = await getRegionId(REFERENCE_POSTAL_CODE, REFERENCE_COUNTRY);
-
   const allRows = [];
   let totalSkipped = 0;
 
   for (let i = 0; i < productIds.length; i += CONCURRENCY) {
     const batch = productIds.slice(i, i + CONCURRENCY);
-    const results = await Promise.all(batch.map((id) => getProductDetail(id, regionId)));
+    const results = await Promise.all(batch.map((id) => getProductDetail(id)));
     results.forEach(({ rows, skipped }) => {
       allRows.push(...rows);
       totalSkipped += skipped;
