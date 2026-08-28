@@ -252,23 +252,39 @@ async function getProductDetail(productId, regionId) {
  * Docs: https://developers.vtex.com/docs/api-reference/seller-register-api
  */
 async function listAllSellers() {
-  const url = `${BASE_URL}/api/seller-register/pvt/sellers`;
-  const res = await fetch(url, { headers: AUTH_HEADERS });
+  const allSellers = [];
+  let page = 1;
 
-  if (!res.ok) {
-    throw new Error(`No se pudo traer la lista de sellers (${res.status})`);
+  while (true) {
+    const url = `${BASE_URL}/api/seller-register/pvt/sellers?page=${page}`;
+    const res = await fetch(url, { headers: AUTH_HEADERS });
+
+    if (!res.ok) {
+      throw new Error(`No se pudo traer la lista de sellers (${res.status}) en la página ${page}`);
+    }
+
+    const data = await res.json();
+    const pageItems = Array.isArray(data) ? data : data.items || [];
+
+    if (pageItems.length === 0) break;
+
+    allSellers.push(...pageItems);
+    console.log(`  ...página ${page}: ${pageItems.length} sellers (${allSellers.length} acumulados)`);
+
+    // Si esta página vino con menos de 100, asumimos que es la última.
+    if (pageItems.length < 100) break;
+
+    page += 1;
+    await sleep(BATCH_DELAY_MS);
   }
 
-  const sellers = await res.json();
-  const list = Array.isArray(sellers) ? sellers : sellers.items || [];
-
-  console.log(`\n=== ${list.length} sellers encontrados ===`);
-  list.forEach((s) => {
+  console.log(`\n=== ${allSellers.length} sellers encontrados en total ===`);
+  allSellers.forEach((s) => {
     console.log(`  id: ${s.id ?? s.sellerId}  |  name: ${s.name}`);
   });
   console.log("=== fin de la lista ===\n");
 
-  return list;
+  return allSellers;
 }
 
 async function main() {
