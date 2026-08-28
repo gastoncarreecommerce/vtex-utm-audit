@@ -1,0 +1,34 @@
+name: Generar catálogo para Einstein Recommendations
+
+# Por ahora, solo manual: lo corrés vos desde la pestaña "Actions" en GitHub
+# con el botón "Run workflow". Más adelante, cuando esto funcione bien,
+# se puede sumar un "schedule:" para que corra solo todos los días.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generar el archivo del catálogo
+        working-directory: vtex-to-sfmc-feed
+        env:
+          VTEX_ACCOUNT: ${{ secrets.VTEX_ACCOUNT }}
+        run: node build-catalog-feed.js
+
+      # Subimos el archivo como "artifact" del workflow, no lo pusheamos al repo.
+      # Se descarga manualmente desde la pantalla del run, en GitHub -> Actions.
+      - name: Subir el catálogo como artifact descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalogo-einstein
+          path: vtex-to-sfmc-feed/output/catalog.psv
+          retention-days: 7
