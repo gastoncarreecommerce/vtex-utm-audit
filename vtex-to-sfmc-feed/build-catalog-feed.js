@@ -33,6 +33,9 @@ const VTEX_APP_TOKEN = process.env.VTEX_APP_TOKEN; // requerido
 const SALES_CHANNEL = process.env.VTEX_SALES_CHANNEL || "1";
 const OUTPUT_PATH = process.env.OUTPUT_PATH || path.join(__dirname, "output", "catalog.psv");
 
+// Para probar rápido sin correr sobre todo el catálogo: si seteás esta variable,
+// corta después de juntar esta cantidad de productos (no de SKUs).
+const MAX_PRODUCTS_FOR_TEST = process.env.FEED_MAX_PRODUCTS ? Number(process.env.FEED_MAX_PRODUCTS) : null;
 // Cuántos productos pedir en paralelo al ir a buscar el detalle (para no saturar la API)
 const CONCURRENCY = Number(process.env.FEED_CONCURRENCY || 5);
 // Pausa entre tandas, en ms, como colchón extra de rate limit
@@ -119,6 +122,12 @@ async function getAllProductIds() {
     if (pageIds.length === 0) break;
 
     pageIds.forEach((id) => productIds.add(id));
+    console.log(
+      `  ...${productIds.size} productos juntados hasta ahora` + (total !== null ? ` (de ${total} totales)` : "")
+    );
+
+    // Si estamos en modo de prueba, no hace falta seguir pidiendo más páginas.
+    if (MAX_PRODUCTS_FOR_TEST && productIds.size >= MAX_PRODUCTS_FOR_TEST) break;
 
     from += PAGE_SIZE;
     if (total !== null && from > total) break;
@@ -127,7 +136,8 @@ async function getAllProductIds() {
     await sleep(BATCH_DELAY_MS);
   }
 
-  return Array.from(productIds);
+  const ids = Array.from(productIds);
+  return MAX_PRODUCTS_FOR_TEST ? ids.slice(0, MAX_PRODUCTS_FOR_TEST) : ids;
 }
 
 /**
@@ -201,7 +211,7 @@ async function main() {
     const results = await Promise.all(batch.map((id) => getProductDetail(id)));
     results.forEach((rows) => allRows.push(...rows));
 
-    if (i % 200 === 0) {
+    if (i % (CONCURRENCY * 4) === 0 || i + CONCURRENCY >= productIds.length) {
       console.log(`  ...${Math.min(i + CONCURRENCY, productIds.length)}/${productIds.length} productos procesados`);
     }
     await sleep(BATCH_DELAY_MS);
