@@ -10,6 +10,10 @@ on:
         description: "Límite de productos para probar rápido (vacío = todo el catálogo)"
         required: false
         default: "100"
+      list_sellers_only:
+        description: "Poné 'true' para solo listar los sellers de la cuenta (no genera el catálogo)"
+        required: false
+        default: "false"
 
 jobs:
   build-catalog:
@@ -30,6 +34,7 @@ jobs:
           VTEX_APP_KEY: ${{ secrets.VTEX_APP_KEY }}
           VTEX_APP_TOKEN: ${{ secrets.VTEX_APP_TOKEN }}
           FEED_MAX_PRODUCTS: ${{ github.event.inputs.max_products }}
+          LIST_SELLERS_ONLY: ${{ github.event.inputs.list_sellers_only }}
         run: node build-catalog-feed.js
 
       # Subimos el archivo como "artifact" del workflow, no lo pusheamos al repo.
