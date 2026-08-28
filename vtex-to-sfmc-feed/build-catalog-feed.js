@@ -28,6 +28,8 @@ const path = require("path");
 // ---- Configuración (viene de variables de entorno / GitHub Secrets) ----
 const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT; // ej: "carrefourar"
 const VTEX_ENVIRONMENT = process.env.VTEX_ENVIRONMENT || "vtexcommercestable.com.br";
+const VTEX_APP_KEY = process.env.VTEX_APP_KEY; // requerido: GetProductAndSkuIds es un endpoint privado
+const VTEX_APP_TOKEN = process.env.VTEX_APP_TOKEN; // requerido
 const SALES_CHANNEL = process.env.VTEX_SALES_CHANNEL || "1";
 const OUTPUT_PATH = process.env.OUTPUT_PATH || path.join(__dirname, "output", "catalog.psv");
 
@@ -40,8 +42,23 @@ if (!VTEX_ACCOUNT) {
   console.error("Falta la variable de entorno VTEX_ACCOUNT (ej: 'carrefourar').");
   process.exit(1);
 }
+if (!VTEX_APP_KEY || !VTEX_APP_TOKEN) {
+  console.error(
+    "Faltan VTEX_APP_KEY y/o VTEX_APP_TOKEN. GetProductAndSkuIds es un endpoint privado y" +
+      " necesita un par de credenciales de un usuario de aplicación de VTEX (Admin > Cuenta > Claves de aplicación)."
+  );
+  process.exit(1);
+}
 
 const BASE_URL = `https://${VTEX_ACCOUNT}.${VTEX_ENVIRONMENT}`;
+
+// Headers de autenticación para los endpoints privados (pvt).
+// Los endpoints públicos (pub), como la Search API, no los necesitan pero no molesta enviarlos igual.
+const AUTH_HEADERS = {
+  "X-VTEX-API-AppKey": VTEX_APP_KEY,
+  "X-VTEX-API-AppToken": VTEX_APP_TOKEN,
+  Accept: "application/json",
+};
 
 const HEADER = [
   "SkuID",
@@ -73,33 +90,40 @@ function sanitize(value) {
  * Paso 1: trae TODOS los pares productId/skuId del catálogo.
  * Catalog API - GetProductAndSkuIds pagina con _from/_to y no tiene el
  * límite de 2500 de la Search API clásica.
- * Docs: https://developers.vtex.com/docs/api-reference/catalog-api#get-/api/catalog_system/pub/products/GetProductAndSkuIds
+ * OJO: es un endpoint PRIVADO (/pvt/), necesita AppKey/AppToken.
+ * Docs: https://developers.vtex.com/docs/api-reference/catalog-api#get-/api/catalog_system/pvt/products/GetProductAndSkuIds
  */
 async function getAllProductIds() {
   const productIds = new Set();
   const PAGE_SIZE = 1000;
   let from = 0;
+  let total = null; // lo sacamos de la respuesta (range.total) para saber cuándo cortar
 
   while (true) {
     const to = from + PAGE_SIZE - 1;
-    const url = `${BASE_URL}/api/catalog_system/pub/products/GetProductAndSkuIds?_from=${from}&_to=${to}`;
-    const res = await fetch(url);
+    const url = `${BASE_URL}/api/catalog_system/pvt/products/GetProductAndSkuIds?_from=${from}&_to=${to}`;
+    const res = await fetch(url, { headers: AUTH_HEADERS });
 
     if (!res.ok) {
-      throw new Error(`GetProductAndSkuIds falló (${res.status}) en el rango ${from}-${to}`);
+      const body = await res.text().catch(() => "");
+      throw new Error(
+        `GetProductAndSkuIds falló (${res.status}) en el rango ${from}-${to}. ` +
+          `Revisá que VTEX_APP_KEY/VTEX_APP_TOKEN tengan permiso de lectura sobre Catálogo. Respuesta: ${body.slice(0, 300)}`
+      );
     }
 
     const json = await res.json();
     const pageIds = Object.keys(json.data || {});
+    total = json.range && typeof json.range.total === "number" ? json.range.total : total;
 
     if (pageIds.length === 0) break;
 
     pageIds.forEach((id) => productIds.add(id));
 
-    // Si esta página vino incompleta, ya llegamos al final del catálogo.
-    if (pageIds.length < PAGE_SIZE) break;
-
     from += PAGE_SIZE;
+    if (total !== null && from > total) break;
+    if (total === null && pageIds.length < PAGE_SIZE) break; // fallback si la API no devuelve "range"
+
     await sleep(BATCH_DELAY_MS);
   }
 
