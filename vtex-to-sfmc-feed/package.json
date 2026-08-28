@@ -1,0 +1,12 @@
+{
+  "name": "vtex-to-sfmc-catalog-feed",
+  "version": "1.0.0",
+  "description": "Genera el catálogo PSV para Einstein Recommendations (Marketing Cloud) desde VTEX",
+  "main": "build-catalog-feed.js",
+  "scripts": {
+    "build": "node build-catalog-feed.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
