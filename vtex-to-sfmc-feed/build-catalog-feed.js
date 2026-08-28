@@ -305,14 +305,80 @@ async function listAllSellers() {
   return allSellers;
 }
 
+/**
+ * En vez de depender del endpoint administrativo de sellers (que no pudimos paginar
+ * de forma confiable), recorremos el catálogo real y juntamos los sellers que
+ * efectivamente aparecen vendiendo productos. Es más confiable: son los sellers
+ * activos de verdad, no una lista administrativa que puede incluir dados de baja.
+ */
+async function collectSellersFromCatalog(productIds, regionId) {
+  const sellersSeen = new Map(); // id -> { name, exampleProduct }
+
+  for (let i = 0; i < productIds.length; i += CONCURRENCY) {
+    const batch = productIds.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map(async (productId) => {
+        const url = `${BASE_URL}/api/catalog_system/pub/products/search?fq=productId:${productId}&sc=${SALES_CHANNEL}&regionId=${regionId}`;
+        const res = await fetch(url);
+        if (!res.ok) return [];
+        const products = await res.json();
+        if (!Array.isArray(products)) return [];
+
+        const found = [];
+        for (const product of products) {
+          for (const item of product.items || []) {
+            const seller = (item.sellers && item.sellers[0]) || {};
+            if (seller.sellerId) {
+              found.push({
+                id: seller.sellerId,
+                name: seller.sellerName || "(sin nombre)",
+                example: item.nameComplete || product.productName || "",
+              });
+            }
+          }
+        }
+        return found;
+      })
+    );
+
+    results.flat().forEach((s) => {
+      if (!sellersSeen.has(s.id)) {
+        sellersSeen.set(s.id, { name: s.name, example: s.example });
+      }
+    });
+
+    if (i % (CONCURRENCY * 4) === 0 || i + CONCURRENCY >= productIds.length) {
+      console.log(
+        `  ...${Math.min(i + CONCURRENCY, productIds.length)}/${productIds.length} productos revisados ` +
+          `(${sellersSeen.size} sellers distintos hasta ahora)`
+      );
+    }
+    await sleep(BATCH_DELAY_MS);
+  }
+
+  console.log(`\n=== ${sellersSeen.size} sellers distintos encontrados en el catálogo ===`);
+  Array.from(sellersSeen.entries())
+    .sort((a, b) => a[1].name.localeCompare(b[1].name))
+    .forEach(([id, info]) => {
+      console.log(`  id: ${id}  |  name: ${info.name}  |  ej: ${info.example}`);
+    });
+  console.log("=== fin de la lista ===\n");
+
+  return sellersSeen;
+}
+
 async function main() {
-  // Modo especial: si seteás LIST_SELLERS_ONLY=true, el script solo imprime la
-  // lista de sellers y termina (no genera el catálogo). Sirve para el paso manual
-  // de clasificar cuáles tienen precio fijo.
+  // Modo especial: si seteás LIST_SELLERS_ONLY=true, el script recorre el catálogo
+  // (o el subconjunto de FEED_MAX_PRODUCTS) y solo imprime los sellers distintos que
+  // encuentra vendiendo productos, sin generar el archivo final.
   if (process.env.LIST_SELLERS_ONLY === "true") {
-    await listAllSellers();
+    console.log(`Buscando IDs de productos en ${VTEX_ACCOUNT}...`);
+    const productIds = await getAllProductIds();
+    const regionId = await getRegionId(REFERENCE_POSTAL_CODE, REFERENCE_COUNTRY);
+    await collectSellersFromCatalog(productIds, regionId);
     return;
   }
+
 
   console.log(`Buscando IDs de productos en ${VTEX_ACCOUNT}...`);
   const productIds = await getAllProductIds();
