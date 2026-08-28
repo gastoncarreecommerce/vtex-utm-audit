@@ -31,6 +31,11 @@ const VTEX_ENVIRONMENT = process.env.VTEX_ENVIRONMENT || "vtexcommercestable.com
 const VTEX_APP_KEY = process.env.VTEX_APP_KEY; // requerido: GetProductAndSkuIds es un endpoint privado
 const VTEX_APP_TOKEN = process.env.VTEX_APP_TOKEN; // requerido
 const SALES_CHANNEL = process.env.VTEX_SALES_CHANNEL || "1";
+// Código postal de referencia para calcular el regionId (regionalización de precios/stock).
+// Sin esto, VTEX devuelve el precio de un seller genérico que puede no representar ninguna
+// tienda real -> precios incorrectos como el que encontramos en la prueba (gaseosa a $46,50).
+const REFERENCE_POSTAL_CODE = process.env.VTEX_POSTAL_CODE || "C1426AJS"; // CABA
+const REFERENCE_COUNTRY = process.env.VTEX_COUNTRY || "ARG";
 const OUTPUT_PATH = process.env.OUTPUT_PATH || path.join(__dirname, "output", "catalog.psv");
 
 // Para probar rápido sin correr sobre todo el catálogo: si seteás esta variable,
@@ -141,12 +146,42 @@ async function getAllProductIds() {
 }
 
 /**
+ * Busca el regionId correspondiente a un código postal real. VTEX usa esto para saber
+ * qué sellers/depósito atienden esa zona y así devolver el precio y stock correctos
+ * (lo mismo que hace la sesión del navegador cuando alguien navega la PWA).
+ * Docs: https://developers.vtex.com/docs/guides/get-sellers-by-region-or-address
+ */
+async function getRegionId(postalCode, country) {
+  const url = `${BASE_URL}/api/checkout/pub/regions?country=${country}&postalCode=${encodeURIComponent(postalCode)}`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`No se pudo resolver el regionId para ${postalCode} (${res.status})`);
+  }
+
+  const sellers = await res.json();
+
+  if (!Array.isArray(sellers) || sellers.length === 0) {
+    throw new Error(
+      `La API de regiones no devolvió sellers para el código postal ${postalCode}. ` +
+        `Probá con otro código postal real dentro de la cobertura de Carrefour.`
+    );
+  }
+
+  // La respuesta trae la lista de sellers habilitados para esa dirección; tomamos el
+  // regionId del primero (todos los sellers de la lista comparten el mismo regionId).
+  const regionId = sellers[0].id;
+  console.log(`regionId resuelto para ${postalCode}: ${regionId} (${sellers.length} sellers)`);
+  return regionId;
+}
+
+/**
  * Paso 2: trae el detalle completo de un producto puntual (precio, imagen,
  * marca, categoría, link) vía Search API clásica filtrando por productId.
  * Un producto puede tener varios SKUs (items) -> devolvemos una fila por SKU.
  */
-async function getProductDetail(productId) {
-  const url = `${BASE_URL}/api/catalog_system/pub/products/search?fq=productId:${productId}&sc=${SALES_CHANNEL}`;
+async function getProductDetail(productId, regionId) {
+  const url = `${BASE_URL}/api/catalog_system/pub/products/search?fq=productId:${productId}&sc=${SALES_CHANNEL}&regionId=${regionId}`;
   const res = await fetch(url);
 
   if (!res.ok) {
@@ -209,17 +244,54 @@ async function getProductDetail(productId) {
   return { rows, skipped };
 }
 
+/**
+ * Trae la lista completa de sellers de la cuenta (Seller Register API). La usamos
+ * una sola vez, de forma manual, para identificar cuáles tienen precio fijo nacional
+ * (Hogar&Electro + los 3P) y cuáles son tiendas de food con precio regionalizado —
+ * esa clasificación no se puede inferir de forma confiable solo por el nombre.
+ * Docs: https://developers.vtex.com/docs/api-reference/seller-register-api
+ */
+async function listAllSellers() {
+  const url = `${BASE_URL}/api/seller-register/pvt/sellers`;
+  const res = await fetch(url, { headers: AUTH_HEADERS });
+
+  if (!res.ok) {
+    throw new Error(`No se pudo traer la lista de sellers (${res.status})`);
+  }
+
+  const sellers = await res.json();
+  const list = Array.isArray(sellers) ? sellers : sellers.items || [];
+
+  console.log(`\n=== ${list.length} sellers encontrados ===`);
+  list.forEach((s) => {
+    console.log(`  id: ${s.id ?? s.sellerId}  |  name: ${s.name}`);
+  });
+  console.log("=== fin de la lista ===\n");
+
+  return list;
+}
+
 async function main() {
+  // Modo especial: si seteás LIST_SELLERS_ONLY=true, el script solo imprime la
+  // lista de sellers y termina (no genera el catálogo). Sirve para el paso manual
+  // de clasificar cuáles tienen precio fijo.
+  if (process.env.LIST_SELLERS_ONLY === "true") {
+    await listAllSellers();
+    return;
+  }
+
   console.log(`Buscando IDs de productos en ${VTEX_ACCOUNT}...`);
   const productIds = await getAllProductIds();
   console.log(`Encontrados ${productIds.length} productos. Buscando detalle...`);
+
+  const regionId = await getRegionId(REFERENCE_POSTAL_CODE, REFERENCE_COUNTRY);
 
   const allRows = [];
   let totalSkipped = 0;
 
   for (let i = 0; i < productIds.length; i += CONCURRENCY) {
     const batch = productIds.slice(i, i + CONCURRENCY);
-    const results = await Promise.all(batch.map((id) => getProductDetail(id)));
+    const results = await Promise.all(batch.map((id) => getProductDetail(id, regionId)));
     results.forEach(({ rows, skipped }) => {
       allRows.push(...rows);
       totalSkipped += skipped;
