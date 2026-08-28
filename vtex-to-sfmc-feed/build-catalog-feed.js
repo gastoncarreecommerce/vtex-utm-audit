@@ -95,7 +95,7 @@ function sanitize(value) {
  */
 async function getAllProductIds() {
   const productIds = new Set();
-  const PAGE_SIZE = 1000;
+  const PAGE_SIZE = 250; // límite real de la API: "Page can have at most 250 registers"
   let from = 0;
   let total = null; // lo sacamos de la respuesta (range.total) para saber cuándo cortar
 
