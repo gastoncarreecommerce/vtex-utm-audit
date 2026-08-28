@@ -4,7 +4,12 @@ name: Generar catálogo para Einstein Recommendations
 # con el botón "Run workflow". Más adelante, cuando esto funcione bien,
 # se puede sumar un "schedule:" para que corra solo todos los días.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      max_products:
+        description: "Límite de productos para probar rápido (vacío = todo el catálogo)"
+        required: false
+        default: "100"
 
 jobs:
   build-catalog:
@@ -24,6 +29,7 @@ jobs:
           VTEX_ACCOUNT: ${{ secrets.VTEX_ACCOUNT }}
           VTEX_APP_KEY: ${{ secrets.VTEX_APP_KEY }}
           VTEX_APP_TOKEN: ${{ secrets.VTEX_APP_TOKEN }}
+          FEED_MAX_PRODUCTS: ${{ github.event.inputs.max_products }}
         run: node build-catalog-feed.js
 
       # Subimos el archivo como "artifact" del workflow, no lo pusheamos al repo.
