@@ -11,6 +11,8 @@ name: Fetch Atenti (logs chat IA)
 # Restricted) se puede publicar sin pasar por la revisión de seguridad de
 # Google — solo hay que aceptar el cartel de "app no verificada" una vez al
 # volver a autorizar.
+# Refresh token regenerado 2026-08-31 con proyecto nuevo ("atenti-fetch",
+# Publishing status In production) + client OAuth tipo Web application.
 on:
   push:
     branches: [main]
