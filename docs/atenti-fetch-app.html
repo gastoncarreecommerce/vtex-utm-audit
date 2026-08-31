@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atenti Fetch — sobre esta app</title>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 20px;line-height:1.6;color:#1a1f2e}
+  h1{font-size:22px}
+  h2{font-size:16px;margin-top:28px}
+  p{color:#333}
+  .muted{color:#666;font-size:14px}
+</style>
+</head>
+<body>
+  <h1>Atenti Fetch</h1>
+  <p class="muted">Herramienta interna, uso personal — no distribuida ni ofrecida a terceros.</p>
+
+  <h2>Qué hace</h2>
+  <p>
+    Atenti Fetch es un script automatizado que lee, una vez por día, el correo enviado por
+    <code>atenti@carrefour.com</code> con el asunto "Se envian los logs del dia", descarga el
+    archivo adjunto y extrae métricas agregadas de uso (cantidad de conversaciones, búsquedas,
+    errores, etc.) para un panel interno de reporting.
+  </p>
+
+  <h2>Qué acceso pide</h2>
+  <p>
+    Solicita el permiso <code>gmail.readonly</code> (solo lectura) de la casilla de correo del
+    usuario que autoriza la app. El script <strong>únicamente busca y lee</strong> los mensajes
+    del remitente y asunto mencionados arriba — nunca envía, modifica ni elimina correos, y no
+    accede a ningún otro mensaje de la casilla.
+  </p>
+
+  <h2>Qué hace con los datos</h2>
+  <p>
+    Del contenido de esos mensajes solo se conservan <strong>conteos y rankings agregados</strong>
+    (cantidad de conversaciones por día, términos más buscados, etc.). No se extrae ni almacena
+    ningún dato personal individual (nombres, emails, teléfonos, direcciones) proveniente del
+    contenido de los mensajes.
+  </p>
+
+  <h2>Quién la usa</h2>
+  <p>
+    Un único usuario (el desarrollador/dueño de esta app), de forma automatizada vía un job
+    programado. No es una aplicación pública ni se ofrece a otros usuarios.
+  </p>
+
+  <h2>Contacto</h2>
+  <p class="muted">Repositorio: github.com/gastoncarreecommerce/vtex-utm-audit</p>
+</body>
+</html>
