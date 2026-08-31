@@ -6,6 +6,8 @@ name: Fetch Atenti (logs chat IA)
 # lo que rompió el módulo entre el 11 y el 31 de agosto tras un intento previo
 # de volver a Gmail). Necesita 2 secrets en el repo: APPSCRIPT_URL y
 # APPSCRIPT_SECRET (instrucciones de deploy en apps-script/atenti-logs.gs).
+# APPSCRIPT_URL/APPSCRIPT_SECRET cargados el 2026-08-31, desplegado desde una
+# cuenta personal (no Workspace) para poder usar acceso "Cualquier persona".
 on:
   push:
     branches: [main]
