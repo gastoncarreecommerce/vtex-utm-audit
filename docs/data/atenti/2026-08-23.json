@@ -1,0 +1,435 @@
+{
+  "date": "2026-08-23",
+  "chat": {
+    "llamadas": 75,
+    "usuarios_unicos": 33,
+    "con_productos_identificados": 35,
+    "con_sugerencia": 5,
+    "por_hora": [
+      3,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      3,
+      12,
+      15,
+      2,
+      2,
+      2,
+      0,
+      3,
+      8,
+      4,
+      2,
+      4,
+      4,
+      4,
+      2
+    ],
+    "errores": 21
+  },
+  "categorizar": {
+    "total": 31,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Leche la serenisima en sachet reducida en lactosa ",
+        "count": 1
+      },
+      {
+        "key": "Leche la serenisima reducida en lactosa ",
+        "count": 1
+      },
+      {
+        "key": "Palo para limpiador de fondo de piletas",
+        "count": 1
+      },
+      {
+        "key": "Gaseosas , cervezas, snacks, cosas de cumpleaños ",
+        "count": 1
+      },
+      {
+        "key": "quiero un polvo texturizador para el pelo",
+        "count": 1
+      },
+      {
+        "key": "Pañales",
+        "count": 1
+      },
+      {
+        "key": "Pañales huggies talle L confort",
+        "count": 1
+      },
+      {
+        "key": "Aceites de oliva",
+        "count": 1
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "snacks",
+        "count": 2
+      },
+      {
+        "key": "pañales",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "crema para cocinar",
+        "count": 2
+      },
+      {
+        "key": "papel higiénico",
+        "count": 2
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "leche reducida en lactosa sachet",
+        "count": 1
+      },
+      {
+        "key": "leche reducida en lactosa",
+        "count": 1
+      },
+      {
+        "key": "palo para limpiador de fondo de piletas",
+        "count": 1
+      },
+      {
+        "key": "gaseosas",
+        "count": 1
+      },
+      {
+        "key": "cervezas",
+        "count": 1
+      },
+      {
+        "key": "polvo texturizador para el pelo",
+        "count": 1
+      },
+      {
+        "key": "aceites de oliva",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 80,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "snacks",
+        "count": 2
+      },
+      {
+        "key": "panales",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "crema para cocinar",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "queso cremoso",
+        "count": 2
+      },
+      {
+        "key": "leche reducida en lactosa sachet",
+        "count": 1
+      },
+      {
+        "key": "leche reducida en lactosa",
+        "count": 1
+      },
+      {
+        "key": "palo para limpiador de fondo de piletas",
+        "count": 1
+      },
+      {
+        "key": "gaseosas",
+        "count": 1
+      },
+      {
+        "key": "cervezas",
+        "count": 1
+      },
+      {
+        "key": "polvo texturizador para el pelo",
+        "count": 1
+      },
+      {
+        "key": "aceites de oliva",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leche Entera",
+        "count": 3
+      },
+      {
+        "key": "Aceite de Oliva",
+        "count": 2
+      },
+      {
+        "key": "Fideos Largos",
+        "count": 2
+      },
+      {
+        "key": "Crema de leche",
+        "count": 2
+      },
+      {
+        "key": "Fideos secos",
+        "count": 2
+      },
+      {
+        "key": "Saborizadores",
+        "count": 2
+      },
+      {
+        "key": "Milanesas",
+        "count": 2
+      },
+      {
+        "key": "Cafe",
+        "count": 2
+      },
+      {
+        "key": "Leche Deslactosada",
+        "count": 1
+      },
+      {
+        "key": "Leche deslactosada",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 8,
+    "valor_total": 287686.62,
+    "ticket_promedio": 35960.83,
+    "descuento_total": 77397.38,
+    "canal": {
+      "inmediato": 4,
+      "programado": 4
+    },
+    "top_productos": [
+      {
+        "key": "Galletitas Oreo Rellenas con crema sabor original 354 g.",
+        "count": 8
+      },
+      {
+        "key": "Agua mineralizada bajo sodio sin gas Benedictino 6 lts",
+        "count": 4
+      },
+      {
+        "key": "Yerba mate Playadito suave con palo 1 kg.",
+        "count": 4
+      },
+      {
+        "key": "Papel higiénico Higienol Max hoja simple 80 mts 4 uni",
+        "count": 4
+      },
+      {
+        "key": "Lentejas secas remojadas Carrefour Classic 340 grs",
+        "count": 4
+      },
+      {
+        "key": "Leche ulta parcial descremada Carrefour classic sachet 1 lt.",
+        "count": 4
+      },
+      {
+        "key": "Tableta de chocolate amargo 60% cacao Aguila 130 grs",
+        "count": 4
+      },
+      {
+        "key": "Yerba mate Amanda tradicional 500 grs",
+        "count": 3
+      },
+      {
+        "key": "Palitos salados Bulnez 120 g.",
+        "count": 3
+      },
+      {
+        "key": "Galletas de arroz sin sal multicereal Carrefour Classic 100 grs",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Galletitas dulces",
+        "count": 11
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Yerba",
+        "count": 7
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 6
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 6
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 4
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 4
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 4
+      },
+      {
+        "key": "Nachos, maní y palitos",
+        "count": 3
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 10,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 7
+      },
+      {
+        "key": "Bonafide",
+        "count": 5
+      },
+      {
+        "key": "Saladix",
+        "count": 4
+      },
+      {
+        "key": "Antares",
+        "count": 3
+      },
+      {
+        "key": "Amanda",
+        "count": 3
+      },
+      {
+        "key": "Cabrales",
+        "count": 3
+      },
+      {
+        "key": "Imperial",
+        "count": 2
+      },
+      {
+        "key": "Mecklenburger",
+        "count": 2
+      },
+      {
+        "key": "Babysec",
+        "count": 2
+      },
+      {
+        "key": "Gallo Snacks",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 19
+      },
+      {
+        "key": "Almacén",
+        "count": 12
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 8
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 6
+      },
+      {
+        "key": "Congelados",
+        "count": 5
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 89,
+    "carrito_promedio": 41005.14,
+    "pct_con_carrito": 54.1,
+    "errores": 11
+  },
+  "origen": {
+    "total_requests": 175,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:11.993Z"
+}

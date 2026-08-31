@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-21",
+  "chat": {
+    "llamadas": 126,
+    "usuarios_unicos": 47,
+    "con_productos_identificados": 60,
+    "con_sugerencia": 5,
+    "por_hora": [
+      7,
+      2,
+      0,
+      0,
+      1,
+      1,
+      0,
+      2,
+      3,
+      6,
+      4,
+      7,
+      2,
+      1,
+      16,
+      4,
+      4,
+      3,
+      10,
+      8,
+      6,
+      18,
+      9,
+      12
+    ],
+    "errores": 32
+  },
+  "categorizar": {
+    "total": 45,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Huevos, lácteos y proteínas  * Huevos — 4 docenas (48 unidades) * Atún al natural — 6 latas chicas * Yogur proteico / alto en proteína — 6 unidades * Yogur griego — 4 unidades * Queso Port Salut light — 600–700 g * Queso untable descremado/light — 2 potes * Ricota magra — 500 g * Jamón cocido — 250–300 g * Queso semiduro — 200 g (opcional) * Leche — 4 litros * Proteína en polvo — 1 pote de 500 g a 1 kg  Panes, cereales e hidratos  * Pan integral — 2 paquetes/panes grandes * Fajitas / wraps — 1 paquete * Galletas de arroz — 2 paquetes * Avena — 1 kg * Arroz integral — 1 kg * Fideos Protein Plus / altos en proteína — 2 paquetes * Quinoa pop / cereal sin azúcar / granola — 500 g aprox. * Barritas proteicas de 18–20 g de proteína o más — 4 unidades * Barritas de cereal — 4 unidades * Tapas de tarta — 2 paquetes * Prepizza / base de pizza — 1–2 unidades (opcional)  Grasas, semillas y frutos secos  * Aceite de oliva — 1 botella de 1 L * Pasta de maní — 1 frasco de 350–500 g * Nueces / almendras / mix de frutos secos — 500 g * Semillas mixtas — 300 g * Semillas de chía — 250 g * Semillas de zapallo — 1 paquete chico  Despensa y recetas  * Cacao amargo — 200 g * Esencia de vainilla — 1 frasco * Polvo para hornear — 1 envase * Canela — 1 envase * Endulzante — 1 envase * Coco rallado — 200 g * Chips de chocolate sin azúcar — 1 paquete (opcional) * Miel o mermelada — 1 frasco * Dulce de membrillo o batata — 1 paquete chico * Pasas de uva — 250 g * Harina integral — 1 kg * Harina de garbanzos — 500 g * Fécula de mandioca — 500 g * Levadura seca — 1 paquete * Papel manteca — 1 rollo/paquete  Legumbres y conservas  * Garbanzos — 2 latas o paquetes cocidos * Lentejas — 2 latas o paquetes cocidos * Puré / salsa de tomate — 4 unidades * Tomate triturado — 2 unidades  Condimentos  * Sal * Pimienta * Orégano * Pimentón * Vinagre * Mostaza",
+        "count": 2
+      },
+      {
+        "key": "Hola. Quiero un aspirador de mocos automático ",
+        "count": 1
+      },
+      {
+        "key": "Aspirador nasal ",
+        "count": 1
+      },
+      {
+        "key": "Tomates 1/2 kg",
+        "count": 1
+      },
+      {
+        "key": "Papas 1/2kg",
+        "count": 1
+      },
+      {
+        "key": "Zanahoria 1kg",
+        "count": 1
+      },
+      {
+        "key": "Lechuga la más barata una planta chica",
+        "count": 1
+      },
+      {
+        "key": "Busco cerveza negra ",
+        "count": 1
+      },
+      {
+        "key": "Hacer una lista con los precio y analizar el precio final por litro y cuál conviene mas",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "tomate",
+        "count": 4
+      },
+      {
+        "key": "jabón líquido para manos",
+        "count": 4
+      },
+      {
+        "key": "papa",
+        "count": 3
+      },
+      {
+        "key": "fideos tirabuzón tricolor",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "café",
+        "count": 3
+      },
+      {
+        "key": "helado",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "mostaza",
+        "count": 3
+      },
+      {
+        "key": "zanahoria",
+        "count": 2
+      },
+      {
+        "key": "cerveza negra",
+        "count": 2
+      },
+      {
+        "key": "salsa de tomate",
+        "count": 2
+      },
+      {
+        "key": "papel higiénico",
+        "count": 2
+      },
+      {
+        "key": "caldo",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 100,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "tomate",
+        "count": 4
+      },
+      {
+        "key": "jabon liquido para manos",
+        "count": 4
+      },
+      {
+        "key": "papa",
+        "count": 3
+      },
+      {
+        "key": "fideos tirabuzon tricolor",
+        "count": 3
+      },
+      {
+        "key": "helado",
+        "count": 3
+      },
+      {
+        "key": "zanahoria",
+        "count": 2
+      },
+      {
+        "key": "cerveza negra",
+        "count": 2
+      },
+      {
+        "key": "salsa de tomate",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "cafe",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "mostaza",
+        "count": 2
+      },
+      {
+        "key": "aspirador nasal automatico",
+        "count": 1
+      },
+      {
+        "key": "aspirador nasal",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 7
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 6
+      },
+      {
+        "key": "Tomate",
+        "count": 4
+      },
+      {
+        "key": "Papa",
+        "count": 3
+      },
+      {
+        "key": "Cerveza Negra",
+        "count": 3
+      },
+      {
+        "key": "Cafe",
+        "count": 3
+      },
+      {
+        "key": "Helados",
+        "count": 3
+      },
+      {
+        "key": "Aspiradores Nasales",
+        "count": 2
+      },
+      {
+        "key": "Zanahoria",
+        "count": 2
+      },
+      {
+        "key": "Cola",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 8,
+    "valor_total": 165384.85,
+    "ticket_promedio": 20673.11,
+    "descuento_total": 39768.49,
+    "canal": {
+      "inmediato": 0,
+      "programado": 8
+    },
+    "top_productos": [
+      {
+        "key": "Jugo en polvo diet Carrefour classic de manzana 7.5 g.",
+        "count": 24
+      },
+      {
+        "key": "Aromatizante de ambientes Aer rosa 10 grs",
+        "count": 5
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 5
+      },
+      {
+        "key": "Puré de tomates Bulnez 520 g.",
+        "count": 4
+      },
+      {
+        "key": "Queso untable Finlandia light pote 290 g.",
+        "count": 4
+      },
+      {
+        "key": "Tostadas de arroz Molinos Ala integrales 150 g.",
+        "count": 4
+      },
+      {
+        "key": "Aceite de girasol alto omega Carrefour Classic pet 1.5 lts",
+        "count": 3
+      },
+      {
+        "key": "Tomate perita entero Carrefour Classic en lata 400 g.",
+        "count": 3
+      },
+      {
+        "key": "Atún en trozos al natural Bulnez en lata 170 g.",
+        "count": 3
+      },
+      {
+        "key": "Aromatizante de ambientes Aer marina 10 grs",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 24
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 10
+      },
+      {
+        "key": "Difusores y repuestos",
+        "count": 8
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 7
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 4
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 4
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 4
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 4
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 3
+      },
+      {
+        "key": "Hierbas secas y especias",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 7,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 12
+      },
+      {
+        "key": "Skip",
+        "count": 8
+      },
+      {
+        "key": "Carrefour",
+        "count": 5
+      },
+      {
+        "key": "Coca Cola",
+        "count": 3
+      },
+      {
+        "key": "Matarazzo",
+        "count": 3
+      },
+      {
+        "key": "Salsati",
+        "count": 3
+      },
+      {
+        "key": "Imperial",
+        "count": 2
+      },
+      {
+        "key": "Luchetti",
+        "count": 2
+      },
+      {
+        "key": "Terrabusi",
+        "count": 2
+      },
+      {
+        "key": "Cica",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 13
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 153,
+    "carrito_promedio": 50688.68,
+    "pct_con_carrito": 58.1,
+    "errores": 4
+  },
+  "origen": {
+    "total_requests": 228,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:09.575Z"
+}

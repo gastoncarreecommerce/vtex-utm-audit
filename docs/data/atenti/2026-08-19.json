@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-19",
+  "chat": {
+    "llamadas": 107,
+    "usuarios_unicos": 54,
+    "con_productos_identificados": 57,
+    "con_sugerencia": 11,
+    "por_hora": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      5,
+      1,
+      11,
+      20,
+      6,
+      7,
+      11,
+      3,
+      5,
+      6,
+      4,
+      4,
+      2,
+      9,
+      5,
+      1
+    ],
+    "errores": 21
+  },
+  "categorizar": {
+    "total": 49,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Takis de salsa ranch",
+        "count": 1
+      },
+      {
+        "key": "No me aparece mi pedido en el carrito ",
+        "count": 1
+      },
+      {
+        "key": "Combo fernet ",
+        "count": 1
+      },
+      {
+        "key": "En la tienda hay un combo fernet más cola cola ",
+        "count": 1
+      },
+      {
+        "key": "Hola quiero comprar una bicicleta, vienen armadas ?",
+        "count": 1
+      },
+      {
+        "key": "Tengo un asado con 5 amigos. Quiero tomar unos traguitos.  Que me recomendaste?",
+        "count": 1
+      },
+      {
+        "key": "Quiero saber como hacer una receta de un chop suey de pollo",
+        "count": 1
+      },
+      {
+        "key": "Arroz y pollo ",
+        "count": 1
+      },
+      {
+        "key": "Quiero cenar con amigas y hacer un pastel de papá ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 8
+      },
+      {
+        "key": "cebolla",
+        "count": 7
+      },
+      {
+        "key": "café en saquito",
+        "count": 7
+      },
+      {
+        "key": "queso untable",
+        "count": 7
+      },
+      {
+        "key": "fernet",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "pollo",
+        "count": 5
+      },
+      {
+        "key": "morrón",
+        "count": 5
+      },
+      {
+        "key": "queso rallado",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "queso por salut",
+        "count": 5
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "puré de tomate",
+        "count": 4
+      },
+      {
+        "key": "yerba",
+        "count": 4
+      },
+      {
+        "key": "zanahoria",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 221,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 9
+      },
+      {
+        "key": "cebolla",
+        "count": 8
+      },
+      {
+        "key": "cafe en saquito",
+        "count": 7
+      },
+      {
+        "key": "queso untable",
+        "count": 7
+      },
+      {
+        "key": "morron",
+        "count": 6
+      },
+      {
+        "key": "pollo",
+        "count": 6
+      },
+      {
+        "key": "azucar",
+        "count": 6
+      },
+      {
+        "key": "fernet",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "zanahoria",
+        "count": 5
+      },
+      {
+        "key": "salsa de soja",
+        "count": 5
+      },
+      {
+        "key": "queso rallado",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "cafe",
+        "count": 5
+      },
+      {
+        "key": "queso por salut",
+        "count": 5
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Cafe",
+        "count": 9
+      },
+      {
+        "key": "Aceite",
+        "count": 7
+      },
+      {
+        "key": "Morron",
+        "count": 6
+      },
+      {
+        "key": "Cebolla",
+        "count": 6
+      },
+      {
+        "key": "Azucar",
+        "count": 6
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 5
+      },
+      {
+        "key": "Manteca",
+        "count": 5
+      },
+      {
+        "key": "Pollo",
+        "count": 5
+      },
+      {
+        "key": "Queso untable",
+        "count": 5
+      },
+      {
+        "key": "Zanahoria",
+        "count": 4
+      }
+    ],
+    "errores": 32
+  },
+  "agregar": {
+    "total_agregados": 19,
+    "valor_total": 1981814.63,
+    "ticket_promedio": 104306.03,
+    "descuento_total": 116465.21,
+    "canal": {
+      "inmediato": 0,
+      "programado": 19
+    },
+    "top_productos": [
+      {
+        "key": "Café en saquitos Bonafide intenso 18 uni",
+        "count": 18
+      },
+      {
+        "key": "Lomito de atún en aceite Carrefour Classic 170 grs",
+        "count": 12
+      },
+      {
+        "key": "Agua mineral sin gas Villavicencio 2 lts",
+        "count": 8
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 2,25 lts",
+        "count": 8
+      },
+      {
+        "key": "Gaseosa cola Coca Cola sabor original 2,25 lts",
+        "count": 6
+      },
+      {
+        "key": "Bebida isotónica Gatorade Frutas Tropicales 1,25 lts",
+        "count": 6
+      },
+      {
+        "key": "Bebida isotónica Gatorade Cool Blue 1,25 lts",
+        "count": 6
+      },
+      {
+        "key": "Queso untable Tonadita clásico 180 g.",
+        "count": 5
+      },
+      {
+        "key": "Starbucks Nespresso Blonde Espresso 10 uni",
+        "count": 4
+      },
+      {
+        "key": "Cerveza rubia Corona 710 ml",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Café instantáneo",
+        "count": 18
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 18
+      },
+      {
+        "key": "Bebidas isotónicas",
+        "count": 15
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 14
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 12
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 11
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 10
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 9
+      },
+      {
+        "key": "Otros snacks salados",
+        "count": 8
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 14,
+    "top_marcas": [
+      {
+        "key": "CBSé",
+        "count": 10
+      },
+      {
+        "key": "Coca Cola",
+        "count": 7
+      },
+      {
+        "key": "La Paulina",
+        "count": 5
+      },
+      {
+        "key": "1882",
+        "count": 4
+      },
+      {
+        "key": "Branca",
+        "count": 4
+      },
+      {
+        "key": "Capri",
+        "count": 4
+      },
+      {
+        "key": "Cocinero",
+        "count": 4
+      },
+      {
+        "key": "Carrefour",
+        "count": 4
+      },
+      {
+        "key": "Celosas",
+        "count": 4
+      },
+      {
+        "key": "Sinfonia",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Bebidas",
+        "count": 34
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 25
+      },
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 20
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 129,
+    "carrito_promedio": 55780.2,
+    "pct_con_carrito": 50.6,
+    "errores": 34
+  },
+  "origen": {
+    "total_requests": 201,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:06.719Z"
+}

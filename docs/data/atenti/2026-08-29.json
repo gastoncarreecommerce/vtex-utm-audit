@@ -1,0 +1,431 @@
+{
+  "date": "2026-08-29",
+  "chat": {
+    "llamadas": 120,
+    "usuarios_unicos": 52,
+    "con_productos_identificados": 54,
+    "con_sugerencia": 15,
+    "por_hora": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      8,
+      15,
+      13,
+      16,
+      4,
+      11,
+      10,
+      0,
+      8,
+      1,
+      7,
+      13,
+      0,
+      7
+    ],
+    "errores": 30
+  },
+  "categorizar": {
+    "total": 48,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Arroz",
+        "count": 2
+      },
+      {
+        "key": "Aceite papas fritas café leche",
+        "count": 1
+      },
+      {
+        "key": "Leche entera café instantáneo ",
+        "count": 1
+      },
+      {
+        "key": "Aceite de girasol ",
+        "count": 1
+      },
+      {
+        "key": "Aceite de girasol",
+        "count": 1
+      },
+      {
+        "key": "Empanadas",
+        "count": 1
+      },
+      {
+        "key": "Papel higiénico en oferta x 30 metros",
+        "count": 1
+      },
+      {
+        "key": "Marca zen",
+        "count": 1
+      },
+      {
+        "key": "No me gusta la marca",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "papel higiénico",
+        "count": 6
+      },
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "papas fritas",
+        "count": 3
+      },
+      {
+        "key": "café instantáneo",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 3
+      },
+      {
+        "key": "lechuga",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "arroz blanco",
+        "count": 3
+      },
+      {
+        "key": "fideos espagueti",
+        "count": 3
+      },
+      {
+        "key": "fideos codito",
+        "count": 3
+      },
+      {
+        "key": "lomitos de atún al natural",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 171,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "papel higienico",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "papas fritas",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "cafe instantaneo",
+        "count": 3
+      },
+      {
+        "key": "lechuga",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "arroz blanco",
+        "count": 3
+      },
+      {
+        "key": "fideos espagueti",
+        "count": 3
+      },
+      {
+        "key": "fideos codito",
+        "count": 3
+      },
+      {
+        "key": "lomitos de atun al natural",
+        "count": 3
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Tabletas",
+        "count": 6
+      },
+      {
+        "key": "Rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "Papas Fritas",
+        "count": 3
+      },
+      {
+        "key": "Cafe",
+        "count": 3
+      },
+      {
+        "key": "Leche",
+        "count": 3
+      },
+      {
+        "key": "Leche Entera",
+        "count": 3
+      },
+      {
+        "key": "Arroz",
+        "count": 3
+      },
+      {
+        "key": "Turrones",
+        "count": 3
+      },
+      {
+        "key": "Gaseosas",
+        "count": 3
+      },
+      {
+        "key": "Queso rallado",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 36,
+    "valor_total": 3981121.28,
+    "ticket_promedio": 110586.7,
+    "descuento_total": 138280.66,
+    "canal": {
+      "inmediato": 0,
+      "programado": 36
+    },
+    "top_productos": [
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 52
+      },
+      {
+        "key": "Tostadas Carrefour classic dulces 200 g.",
+        "count": 33
+      },
+      {
+        "key": "Pañales Pampers talle M deluxe 52 uni",
+        "count": 28
+      },
+      {
+        "key": "Dulce de leche clásico La Serenísima 400 g.",
+        "count": 28
+      },
+      {
+        "key": "Queso untable Finlandia light pote 290 g.",
+        "count": 28
+      },
+      {
+        "key": "Tostadas integrales Libres Riera 200 grs",
+        "count": 28
+      },
+      {
+        "key": "Jardinera Inalpa hortalizas y legumbres lata 300 g.",
+        "count": 28
+      },
+      {
+        "key": "Papel higiénico Felpita doble hoja super suave 30 mts. x 6 uni",
+        "count": 28
+      },
+      {
+        "key": "Lavandina clásica desinfectante Ayudín 2 lts.",
+        "count": 28
+      },
+      {
+        "key": "Mermelada ligth de frutilla Arcor 390 g",
+        "count": 16
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Mermeladas, dulces y jaleas",
+        "count": 61
+      },
+      {
+        "key": "Tostadas, grisines y marineras",
+        "count": 61
+      },
+      {
+        "key": "Leches enteras",
+        "count": 54
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 51
+      },
+      {
+        "key": "Lavandinas",
+        "count": 42
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 38
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 37
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 36
+      },
+      {
+        "key": "Dulce de leche",
+        "count": 31
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 30
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 22,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 32
+      },
+      {
+        "key": "Bulnez",
+        "count": 10
+      },
+      {
+        "key": "Genérico",
+        "count": 9
+      },
+      {
+        "key": "Higienol",
+        "count": 8
+      },
+      {
+        "key": "Arcor",
+        "count": 8
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 7
+      },
+      {
+        "key": "Adler",
+        "count": 6
+      },
+      {
+        "key": "Formis",
+        "count": 4
+      },
+      {
+        "key": "Elegante",
+        "count": 4
+      },
+      {
+        "key": "La Campagnola",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 69
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 66
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 20
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Panadería",
+        "count": 11
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 120,
+    "carrito_promedio": 60973.68,
+    "pct_con_carrito": 56.2,
+    "errores": 47
+  },
+  "origen": {
+    "total_requests": 188,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:21.884Z"
+}

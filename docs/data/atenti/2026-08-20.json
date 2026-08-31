@@ -1,0 +1,423 @@
+{
+  "date": "2026-08-20",
+  "chat": {
+    "llamadas": 130,
+    "usuarios_unicos": 49,
+    "con_productos_identificados": 75,
+    "con_sugerencia": 7,
+    "por_hora": [
+      6,
+      2,
+      3,
+      0,
+      0,
+      0,
+      1,
+      6,
+      4,
+      3,
+      7,
+      7,
+      9,
+      4,
+      11,
+      15,
+      6,
+      2,
+      4,
+      8,
+      8,
+      1,
+      16,
+      7
+    ],
+    "errores": 23
+  },
+  "categorizar": {
+    "total": 69,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 4
+      },
+      {
+        "key": "Leche",
+        "count": 3
+      },
+      {
+        "key": "Leche, galletas de agua, chocolinas, postres en polvo, yogurt, sémola, durazno en lata",
+        "count": 2
+      },
+      {
+        "key": "Fideos sin gluten",
+        "count": 2
+      },
+      {
+        "key": "Salchichas las más económicas ",
+        "count": 1
+      },
+      {
+        "key": "protector solar Nivea ",
+        "count": 1
+      },
+      {
+        "key": "Busco la opción donde pongo mis favoritos ",
+        "count": 1
+      },
+      {
+        "key": "Tarta de choclo",
+        "count": 1
+      },
+      {
+        "key": "Cambié de idea. Pollo a la portuguesa",
+        "count": 1
+      },
+      {
+        "key": "Alimento para gatos",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 13
+      },
+      {
+        "key": "fideos sin gluten",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 6
+      },
+      {
+        "key": "arroz",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "puré de tomate",
+        "count": 5
+      },
+      {
+        "key": "tapas para pascualina",
+        "count": 5
+      },
+      {
+        "key": "dulce de leche",
+        "count": 4
+      },
+      {
+        "key": "papel higiénico",
+        "count": 4
+      },
+      {
+        "key": "mate cocido sin tacc",
+        "count": 4
+      },
+      {
+        "key": "tapas para empanadas rotiseras",
+        "count": 4
+      },
+      {
+        "key": "queso rallado",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 220,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 12
+      },
+      {
+        "key": "fideos sin gluten",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "arroz",
+        "count": 6
+      },
+      {
+        "key": "yerba",
+        "count": 6
+      },
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "pure de tomate",
+        "count": 5
+      },
+      {
+        "key": "tapas para pascualina",
+        "count": 5
+      },
+      {
+        "key": "dulce de leche",
+        "count": 4
+      },
+      {
+        "key": "papel higienico",
+        "count": 4
+      },
+      {
+        "key": "mate cocido sin tacc",
+        "count": 4
+      },
+      {
+        "key": "tapas para empanadas rotiseras",
+        "count": 4
+      },
+      {
+        "key": "queso rallado",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Yerba Mate",
+        "count": 7
+      },
+      {
+        "key": "Mate Cocido",
+        "count": 6
+      },
+      {
+        "key": "Arroz",
+        "count": 6
+      },
+      {
+        "key": "Manteca",
+        "count": 5
+      },
+      {
+        "key": "Leche Entera",
+        "count": 5
+      },
+      {
+        "key": "Fideos",
+        "count": 5
+      },
+      {
+        "key": "Atun",
+        "count": 5
+      },
+      {
+        "key": "Jugos en Polvo",
+        "count": 5
+      },
+      {
+        "key": "Choclo",
+        "count": 4
+      },
+      {
+        "key": "Cafe",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 27,
+    "valor_total": 1041869.9,
+    "ticket_promedio": 38587.77,
+    "descuento_total": 201676.9,
+    "canal": {
+      "inmediato": 0,
+      "programado": 27
+    },
+    "top_productos": [
+      {
+        "key": "Jugo en Polvo Clight Naranja Dulce 7,5 grs",
+        "count": 50
+      },
+      {
+        "key": "Fideos sin tacc spaghetti Matarazzo 500 g.",
+        "count": 48
+      },
+      {
+        "key": "Atún desmenuzado en aceite Bulnez 170 grs",
+        "count": 30
+      },
+      {
+        "key": "Galletas de arroz Dos Hermanos slim sin sal 100 g.",
+        "count": 24
+      },
+      {
+        "key": "Lomito de atún en aceite Carrefour Classic 170 grs",
+        "count": 24
+      },
+      {
+        "key": "Harina de Trigo 000 Caserita x 1 kg",
+        "count": 24
+      },
+      {
+        "key": "Polenta Carrefour Classic bolsa 1 kg.",
+        "count": 18
+      },
+      {
+        "key": "Azúcar común Azucel tipo A bolsa 1 kg.",
+        "count": 16
+      },
+      {
+        "key": "Mate cocido en saquitos Nobleza Gaucha x 100 uni",
+        "count": 14
+      },
+      {
+        "key": "Agua mineral sin gas Carrefour Classic 2 lts",
+        "count": 13
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 56
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 54
+      },
+      {
+        "key": "Fideos largos",
+        "count": 48
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 48
+      },
+      {
+        "key": "Mate cocido",
+        "count": 27
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 24
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 24
+      },
+      {
+        "key": "Polentas",
+        "count": 18
+      },
+      {
+        "key": "Sopas",
+        "count": 18
+      },
+      {
+        "key": "Azúcar",
+        "count": 16
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 21,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 24
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 13
+      },
+      {
+        "key": "La Virginia",
+        "count": 7
+      },
+      {
+        "key": "Bulnez",
+        "count": 7
+      },
+      {
+        "key": "La Serenísima",
+        "count": 6
+      },
+      {
+        "key": "Nobleza Gaucha",
+        "count": 6
+      },
+      {
+        "key": "Amanda",
+        "count": 5
+      },
+      {
+        "key": "Pureza",
+        "count": 5
+      },
+      {
+        "key": "Cafe Martinez",
+        "count": 4
+      },
+      {
+        "key": "Yuka",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 76
+      },
+      {
+        "key": "Almacén",
+        "count": 48
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 39
+      },
+      {
+        "key": "Panadería",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 147,
+    "carrito_promedio": 60205,
+    "pct_con_carrito": 55.3,
+    "errores": 26
+  },
+  "origen": {
+    "total_requests": 326,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:08.408Z"
+}

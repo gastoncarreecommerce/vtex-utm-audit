@@ -1,0 +1,423 @@
+{
+  "date": "2026-08-14",
+  "chat": {
+    "llamadas": 115,
+    "usuarios_unicos": 50,
+    "con_productos_identificados": 68,
+    "con_sugerencia": 13,
+    "por_hora": [
+      0,
+      6,
+      2,
+      0,
+      0,
+      0,
+      6,
+      1,
+      1,
+      0,
+      10,
+      3,
+      3,
+      15,
+      10,
+      6,
+      7,
+      8,
+      8,
+      14,
+      6,
+      4,
+      4,
+      1
+    ],
+    "errores": 21
+  },
+  "categorizar": {
+    "total": 58,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "Aderezos ",
+        "count": 2
+      },
+      {
+        "key": "Jugos de naranja",
+        "count": 1
+      },
+      {
+        "key": "Listo para tomar",
+        "count": 1
+      },
+      {
+        "key": "Jugo naranja cepita campo del valle",
+        "count": 1
+      },
+      {
+        "key": "Jugo naranja cepita ",
+        "count": 1
+      },
+      {
+        "key": "Hola, busco juguetes de cocinita",
+        "count": 1
+      },
+      {
+        "key": "Comiditas",
+        "count": 1
+      },
+      {
+        "key": "Cómo me vas a ofrecer Pepsi?? Jamás la compré ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "mini sierra para podar",
+        "count": 5
+      },
+      {
+        "key": "jugo de naranja",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "jugo de naranja listo para tomar",
+        "count": 2
+      },
+      {
+        "key": "juegos didácticos",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola regular",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "papel higiénico",
+        "count": 2
+      },
+      {
+        "key": "atún al natural",
+        "count": 2
+      },
+      {
+        "key": "higado",
+        "count": 2
+      },
+      {
+        "key": "ravioles",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "ajo",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 141,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "mini sierra para podar",
+        "count": 4
+      },
+      {
+        "key": "jugo de naranja",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "higado",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "jugo de naranja listo para tomar",
+        "count": 2
+      },
+      {
+        "key": "juegos didacticos",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola regular",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "atun al natural",
+        "count": 2
+      },
+      {
+        "key": "ravioles",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "ajo",
+        "count": 2
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Atun",
+        "count": 6
+      },
+      {
+        "key": "Galletitas Saladas",
+        "count": 6
+      },
+      {
+        "key": "Jugo de Naranja",
+        "count": 3
+      },
+      {
+        "key": "Cola",
+        "count": 3
+      },
+      {
+        "key": "Higado",
+        "count": 3
+      },
+      {
+        "key": "Verduras",
+        "count": 3
+      },
+      {
+        "key": "Leche Entera",
+        "count": 3
+      },
+      {
+        "key": "Jugo de naranja",
+        "count": 2
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "Descremada",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 24,
+    "valor_total": 1110912.02,
+    "ticket_promedio": 46288,
+    "descuento_total": 166778.23,
+    "canal": {
+      "inmediato": 1,
+      "programado": 23
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 24
+      },
+      {
+        "key": "Milanesa de cerdo congelada Carnes Carrefour 500 grs",
+        "count": 24
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 19
+      },
+      {
+        "key": "Pizza congelada Carrefour classic mozzarella y jamón estuche 650 g.",
+        "count": 16
+      },
+      {
+        "key": "Margarina dorada Danica en pote 210 g.",
+        "count": 15
+      },
+      {
+        "key": "Gaseosa pomelo Paso de los Toros sin azúcar pet 1,5 lts",
+        "count": 14
+      },
+      {
+        "key": "Leche Protein La Serenisima 1L",
+        "count": 12
+      },
+      {
+        "key": "Galletitas surtidas Bagley en bolsa 400 g.",
+        "count": 9
+      },
+      {
+        "key": "Jugo multifruta Carrefour Classic tetra 1 lt.",
+        "count": 9
+      },
+      {
+        "key": "Vinagre de vino Menoyo 1 lt",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas de pescado",
+        "count": 26
+      },
+      {
+        "key": "Leches enteras",
+        "count": 24
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 24
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 17
+      },
+      {
+        "key": "Comidas y panificados",
+        "count": 16
+      },
+      {
+        "key": "Carne de cerdo",
+        "count": 16
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 15
+      },
+      {
+        "key": "Gaseosas pomelo",
+        "count": 14
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 9
+      },
+      {
+        "key": "Jugos concentrados",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 12,
+    "top_marcas": [
+      {
+        "key": "Bulnez",
+        "count": 13
+      },
+      {
+        "key": "La Serenísima",
+        "count": 7
+      },
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Casalta",
+        "count": 4
+      },
+      {
+        "key": "Ades",
+        "count": 3
+      },
+      {
+        "key": "Eco De Los Andes",
+        "count": 3
+      },
+      {
+        "key": "Paseo",
+        "count": 3
+      },
+      {
+        "key": "Cerealitas",
+        "count": 3
+      },
+      {
+        "key": "Criollitas",
+        "count": 3
+      },
+      {
+        "key": "Lucchetti",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 22
+      },
+      {
+        "key": "Almacén",
+        "count": 21
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 151,
+    "carrito_promedio": 117690.63,
+    "pct_con_carrito": 54.9,
+    "errores": 26
+  },
+  "origen": {
+    "total_requests": 212,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:00.113Z"
+}

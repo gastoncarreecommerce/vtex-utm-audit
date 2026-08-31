@@ -1,0 +1,439 @@
+{
+  "date": "2026-08-13",
+  "chat": {
+    "llamadas": 151,
+    "usuarios_unicos": 84,
+    "con_productos_identificados": 72,
+    "con_sugerencia": 13,
+    "por_hora": [
+      0,
+      0,
+      4,
+      0,
+      1,
+      0,
+      2,
+      0,
+      1,
+      6,
+      16,
+      8,
+      16,
+      19,
+      4,
+      8,
+      4,
+      13,
+      9,
+      12,
+      6,
+      5,
+      11,
+      6
+    ],
+    "errores": 42
+  },
+  "categorizar": {
+    "total": 60,
+    "top_recetas": [
+      {
+        "key": "Mostrame",
+        "count": 2
+      },
+      {
+        "key": "Leche entera",
+        "count": 2
+      },
+      {
+        "key": "Agua saborizada livra manzana ",
+        "count": 2
+      },
+      {
+        "key": "yerba azúcar todo lo de una compra del mes, todo económico porfa ",
+        "count": 1
+      },
+      {
+        "key": "si",
+        "count": 1
+      },
+      {
+        "key": "Arroz, fideos, yogur natural, manteca, fajitas, queso untable, pan lactal ",
+        "count": 1
+      },
+      {
+        "key": "Arroz blanco",
+        "count": 1
+      },
+      {
+        "key": "Papa",
+        "count": 1
+      },
+      {
+        "key": "Rejilla",
+        "count": 1
+      },
+      {
+        "key": "Harina para pan",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "fideos",
+        "count": 5
+      },
+      {
+        "key": "arroz",
+        "count": 5
+      },
+      {
+        "key": "papel higiénico",
+        "count": 5
+      },
+      {
+        "key": "aceite",
+        "count": 4
+      },
+      {
+        "key": "azúcar",
+        "count": 3
+      },
+      {
+        "key": "pollo",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "yogur natural",
+        "count": 2
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "fajitas",
+        "count": 2
+      },
+      {
+        "key": "queso untable",
+        "count": 2
+      },
+      {
+        "key": "pan lactal",
+        "count": 2
+      },
+      {
+        "key": "rejilla",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 117,
+    "sin_resultado": 6,
+    "top_terminos": [
+      {
+        "key": "arroz",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      },
+      {
+        "key": "pollo",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "fajitas",
+        "count": 2
+      },
+      {
+        "key": "pan lactal",
+        "count": 2
+      },
+      {
+        "key": "yogur natural",
+        "count": 2
+      },
+      {
+        "key": "queso untable",
+        "count": 2
+      },
+      {
+        "key": "rejilla",
+        "count": 2
+      },
+      {
+        "key": "rollos de cocina",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Cafe",
+        "count": 4
+      },
+      {
+        "key": "Arroz",
+        "count": 3
+      },
+      {
+        "key": "Fideos",
+        "count": 3
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 3
+      },
+      {
+        "key": "Azucar",
+        "count": 2
+      },
+      {
+        "key": "Manteca",
+        "count": 2
+      },
+      {
+        "key": "Yogur natural",
+        "count": 2
+      },
+      {
+        "key": "Arroz blanco",
+        "count": 2
+      },
+      {
+        "key": "Panos y Rejillas",
+        "count": 2
+      },
+      {
+        "key": "Harina de Trigo",
+        "count": 2
+      }
+    ],
+    "errores": 6
+  },
+  "agregar": {
+    "total_agregados": 22,
+    "valor_total": 501897.53,
+    "ticket_promedio": 22813.52,
+    "descuento_total": 61016.05,
+    "canal": {
+      "inmediato": 0,
+      "programado": 22
+    },
+    "top_productos": [
+      {
+        "key": "Rollo de cocina maxi rollo Felpita x 200 paños",
+        "count": 36
+      },
+      {
+        "key": "Yogur natural sin azúcar Tregar en pote 280 g.",
+        "count": 10
+      },
+      {
+        "key": "Aceite Cocinero mezcla soja girasol 900 g.",
+        "count": 9
+      },
+      {
+        "key": "Nesquik Original Cacao en Polvo Menos azúcar 300 grs",
+        "count": 8
+      },
+      {
+        "key": "Puré de tomate Carrefour classic 520 g.",
+        "count": 8
+      },
+      {
+        "key": "Lavandina Ayudín original 1 l.",
+        "count": 7
+      },
+      {
+        "key": "Picada tartare x kg",
+        "count": 6
+      },
+      {
+        "key": "Yogur entero Milkaut de vainilla 0 lact en pote 120 g.",
+        "count": 6
+      },
+      {
+        "key": "Tapas para empanada La Salteña hojaldradas x 22 uni",
+        "count": 5
+      },
+      {
+        "key": "Papa cepillada x kg.",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 38
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 12
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 12
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 10
+      },
+      {
+        "key": "Verduras",
+        "count": 10
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 10
+      },
+      {
+        "key": "Cacao",
+        "count": 9
+      },
+      {
+        "key": "Aceites especiales",
+        "count": 9
+      },
+      {
+        "key": "Lavandinas",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 15,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "Higienol",
+        "count": 8
+      },
+      {
+        "key": "Genérico",
+        "count": 4
+      },
+      {
+        "key": "Dove",
+        "count": 4
+      },
+      {
+        "key": "Natura",
+        "count": 4
+      },
+      {
+        "key": "Elegante",
+        "count": 4
+      },
+      {
+        "key": "Procenex",
+        "count": 4
+      },
+      {
+        "key": "Tía Maruca",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Magistral",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Limpieza",
+        "count": 34
+      },
+      {
+        "key": "Almacén",
+        "count": 22
+      },
+      {
+        "key": "Bebidas",
+        "count": 20
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 15
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 8
+      },
+      {
+        "key": "Panadería",
+        "count": 5
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 4
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 173,
+    "carrito_promedio": 43846.96,
+    "pct_con_carrito": 58.3,
+    "errores": 43
+  },
+  "origen": {
+    "total_requests": 332,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:44:58.785Z"
+}

@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-18",
+  "chat": {
+    "llamadas": 87,
+    "usuarios_unicos": 32,
+    "con_productos_identificados": 48,
+    "con_sugerencia": 11,
+    "por_hora": [
+      9,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      3,
+      4,
+      10,
+      2,
+      4,
+      2,
+      6,
+      9,
+      17,
+      3,
+      5,
+      6,
+      1,
+      3,
+      0
+    ],
+    "errores": 20
+  },
+  "categorizar": {
+    "total": 35,
+    "top_recetas": [
+      {
+        "key": "Whisky ",
+        "count": 2
+      },
+      {
+        "key": "Whisky Jameson ",
+        "count": 2
+      },
+      {
+        "key": "Quiero encontrar mis favoritos",
+        "count": 1
+      },
+      {
+        "key": "Cafe aceite harina fideos queso cremoso queso crema",
+        "count": 1
+      },
+      {
+        "key": "Desmaquillante teatrical",
+        "count": 1
+      },
+      {
+        "key": "Toallitas desmaquillantes",
+        "count": 1
+      },
+      {
+        "key": "Teatrical ",
+        "count": 1
+      },
+      {
+        "key": "Crema dental",
+        "count": 1
+      },
+      {
+        "key": "Fideos luchetti",
+        "count": 1
+      },
+      {
+        "key": "Los 3",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "queso crema",
+        "count": 6
+      },
+      {
+        "key": "pañales xxg",
+        "count": 6
+      },
+      {
+        "key": "puré de tomate",
+        "count": 5
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "whisky",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 3
+      },
+      {
+        "key": "arvejas en lata",
+        "count": 3
+      },
+      {
+        "key": "choclo en lata",
+        "count": 3
+      },
+      {
+        "key": "mayonesa",
+        "count": 3
+      },
+      {
+        "key": "mostaza",
+        "count": 3
+      },
+      {
+        "key": "ketchup",
+        "count": 3
+      },
+      {
+        "key": "arroz parboil",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "leche larga vida",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 126,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "queso crema",
+        "count": 6
+      },
+      {
+        "key": "panales xxg",
+        "count": 6
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "pure de tomate",
+        "count": 4
+      },
+      {
+        "key": "whisky",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 3
+      },
+      {
+        "key": "arroz parboil",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "leche larga vida",
+        "count": 3
+      },
+      {
+        "key": "pollo",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 3
+      },
+      {
+        "key": "cerdo",
+        "count": 3
+      },
+      {
+        "key": "protectores diarios",
+        "count": 3
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Whisky",
+        "count": 5
+      },
+      {
+        "key": "Queso Crema",
+        "count": 4
+      },
+      {
+        "key": "Arvejas",
+        "count": 4
+      },
+      {
+        "key": "Queso Cremoso",
+        "count": 3
+      },
+      {
+        "key": "Fideos",
+        "count": 3
+      },
+      {
+        "key": "Desmaquillantes",
+        "count": 3
+      },
+      {
+        "key": "Pure de Tomate",
+        "count": 3
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 3
+      },
+      {
+        "key": "Choclo",
+        "count": 3
+      },
+      {
+        "key": "Mayonesa",
+        "count": 3
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 32,
+    "valor_total": 2246647.82,
+    "ticket_promedio": 70207.74,
+    "descuento_total": 163312.07,
+    "canal": {
+      "inmediato": 0,
+      "programado": 32
+    },
+    "top_productos": [
+      {
+        "key": "Leche liviana UAT Las tres niñas 2 fortificada 1 lt.",
+        "count": 84
+      },
+      {
+        "key": "Arvejas secas remojadas Carrefour classic en lata 300 g.",
+        "count": 79
+      },
+      {
+        "key": "Puré de tomate Carrefour classic 520 g.",
+        "count": 69
+      },
+      {
+        "key": "Choclo amarillo en granos Carrefour Classic 300 grs",
+        "count": 66
+      },
+      {
+        "key": "Pollo entero congelado x kg",
+        "count": 60
+      },
+      {
+        "key": "Yerba mate Rosamonte 55 aniversario 1 kg.",
+        "count": 54
+      },
+      {
+        "key": "Pañal Carrefour baby talle XXG hiperpack 26 uni",
+        "count": 36
+      },
+      {
+        "key": "Leche entera larga vida Tregar 1 l.",
+        "count": 32
+      },
+      {
+        "key": "Tapa para empanada hojaldrada La Salteña mas crocante 12 uni",
+        "count": 24
+      },
+      {
+        "key": "Carré de cerdo x kg",
+        "count": 24
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 145
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 84
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 72
+      },
+      {
+        "key": "Pollo",
+        "count": 60
+      },
+      {
+        "key": "Yerba",
+        "count": 55
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 37
+      },
+      {
+        "key": "Pañales",
+        "count": 37
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 36
+      },
+      {
+        "key": "Leches enteras",
+        "count": 34
+      },
+      {
+        "key": "Carne de cerdo",
+        "count": 24
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 12,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 11
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 9
+      },
+      {
+        "key": "Magistral",
+        "count": 9
+      },
+      {
+        "key": "La Serenísima",
+        "count": 8
+      },
+      {
+        "key": "Casancrem",
+        "count": 7
+      },
+      {
+        "key": "Matarazzo",
+        "count": 5
+      },
+      {
+        "key": "Bulnez",
+        "count": 4
+      },
+      {
+        "key": "La Salteña",
+        "count": 4
+      },
+      {
+        "key": "Ilolay",
+        "count": 4
+      },
+      {
+        "key": "Tregar",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 51
+      },
+      {
+        "key": "Almacén",
+        "count": 30
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 100,
+    "carrito_promedio": 93832.43,
+    "pct_con_carrito": 55.9,
+    "errores": 18
+  },
+  "origen": {
+    "total_requests": 147,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:05.282Z"
+}

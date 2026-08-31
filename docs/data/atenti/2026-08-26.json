@@ -1,0 +1,419 @@
+{
+  "date": "2026-08-26",
+  "chat": {
+    "llamadas": 104,
+    "usuarios_unicos": 55,
+    "con_productos_identificados": 58,
+    "con_sugerencia": 13,
+    "por_hora": [
+      3,
+      1,
+      2,
+      0,
+      0,
+      0,
+      4,
+      2,
+      1,
+      3,
+      9,
+      3,
+      15,
+      4,
+      3,
+      6,
+      5,
+      12,
+      5,
+      7,
+      5,
+      6,
+      2,
+      6
+    ],
+    "errores": 27
+  },
+  "categorizar": {
+    "total": 49,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 7
+      },
+      {
+        "key": "Bizcochuelo exquisita huevos frutilla crema dulce de leche",
+        "count": 2
+      },
+      {
+        "key": "Harina pureza masa madrr",
+        "count": 1
+      },
+      {
+        "key": "Torta 3 leches",
+        "count": 1
+      },
+      {
+        "key": "Busco quesos crema, dulces de leche y cremas para batir",
+        "count": 1
+      },
+      {
+        "key": "Yogur natural",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer una torta invertida dr manzana",
+        "count": 1
+      },
+      {
+        "key": "Hacer una lasaña ",
+        "count": 1
+      },
+      {
+        "key": "Tarta de jamon y queso",
+        "count": 1
+      },
+      {
+        "key": "Milanesas napolitanas con pure",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "jamón cocido",
+        "count": 6
+      },
+      {
+        "key": "crema de leche",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "yerba",
+        "count": 4
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "azúcar",
+        "count": 3
+      },
+      {
+        "key": "esencia de vainilla",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "yogur",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "queso feteado",
+        "count": 3
+      },
+      {
+        "key": "picadillo",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 275,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "huevos",
+        "count": 6
+      },
+      {
+        "key": "jamon cocido",
+        "count": 6
+      },
+      {
+        "key": "crema de leche",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "yerba",
+        "count": 4
+      },
+      {
+        "key": "papel higienico",
+        "count": 4
+      },
+      {
+        "key": "pure de tomate",
+        "count": 3
+      },
+      {
+        "key": "azucar",
+        "count": 3
+      },
+      {
+        "key": "esencia de vainilla",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "atun",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      },
+      {
+        "key": "yogur",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 10
+      },
+      {
+        "key": "Gaseosas",
+        "count": 8
+      },
+      {
+        "key": "Galletitas Dulces",
+        "count": 6
+      },
+      {
+        "key": "Jugos en Polvo",
+        "count": 4
+      },
+      {
+        "key": "Crema de leche",
+        "count": 4
+      },
+      {
+        "key": "Arroz",
+        "count": 4
+      },
+      {
+        "key": "Fiambres",
+        "count": 4
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 4
+      },
+      {
+        "key": "Pastas Rellenas",
+        "count": 4
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 4
+      }
+    ],
+    "errores": 32
+  },
+  "agregar": {
+    "total_agregados": 28,
+    "valor_total": 1341229.65,
+    "ticket_promedio": 47901.06,
+    "descuento_total": 89110.35,
+    "canal": {
+      "inmediato": 4,
+      "programado": 24
+    },
+    "top_productos": [
+      {
+        "key": "Barra proteica Íntegra pasta de maní y arándanos 43 grs",
+        "count": 48
+      },
+      {
+        "key": "Garbanzos secos remojados Carrefour classic en lata 300 g.",
+        "count": 30
+      },
+      {
+        "key": "Lentejas secas remojadas Carrefour Classic 340 grs",
+        "count": 27
+      },
+      {
+        "key": "Tortillas Integrales Rapiditas 275 grs",
+        "count": 22
+      },
+      {
+        "key": "Té de manzanilla Green Hills 20 uni",
+        "count": 17
+      },
+      {
+        "key": "Chocolate Milka aireado con leche 110 g.",
+        "count": 17
+      },
+      {
+        "key": "Chocolate Milka aireado combinado 50 g.",
+        "count": 17
+      },
+      {
+        "key": "Té La Virginia mandarina naranja pomelo x 20 uni",
+        "count": 16
+      },
+      {
+        "key": "Té verde x 50 g.",
+        "count": 15
+      },
+      {
+        "key": "Nescafé Gold Tostado y Molido Equilibrado 250 grs",
+        "count": 14
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 57
+      },
+      {
+        "key": "Té",
+        "count": 48
+      },
+      {
+        "key": "Barritas de cereales",
+        "count": 48
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 40
+      },
+      {
+        "key": "Tortillas",
+        "count": 22
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 18
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 16
+      },
+      {
+        "key": "Café molido y en grano",
+        "count": 14
+      },
+      {
+        "key": "Yerba",
+        "count": 13
+      },
+      {
+        "key": "Leches vegetales",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 5,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 10
+      },
+      {
+        "key": "Saladix",
+        "count": 5
+      },
+      {
+        "key": "Gallo Snacks",
+        "count": 4
+      },
+      {
+        "key": "Akbar",
+        "count": 3
+      },
+      {
+        "key": "Genérico",
+        "count": 2
+      },
+      {
+        "key": "Green Hills",
+        "count": 2
+      },
+      {
+        "key": "Virgin Islands",
+        "count": 2
+      },
+      {
+        "key": "La Virginia",
+        "count": 2
+      },
+      {
+        "key": "Nestlé",
+        "count": 1
+      },
+      {
+        "key": "Nuestros Sabores",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 15
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 11
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 131,
+    "carrito_promedio": 44577.11,
+    "pct_con_carrito": 51.9,
+    "errores": 12
+  },
+  "origen": {
+    "total_requests": 228,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:16.625Z"
+}

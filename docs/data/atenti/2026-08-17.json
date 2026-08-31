@@ -1,0 +1,439 @@
+{
+  "date": "2026-08-17",
+  "chat": {
+    "llamadas": 158,
+    "usuarios_unicos": 45,
+    "con_productos_identificados": 93,
+    "con_sugerencia": 11,
+    "por_hora": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      18,
+      15,
+      23,
+      13,
+      15,
+      2,
+      3,
+      14,
+      7,
+      15,
+      12,
+      9,
+      4,
+      0,
+      4
+    ],
+    "errores": 34
+  },
+  "categorizar": {
+    "total": 75,
+    "top_recetas": [
+      {
+        "key": "azúcar Ledesma ",
+        "count": 3
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Queso ",
+        "count": 1
+      },
+      {
+        "key": "Descremada y azúcar ",
+        "count": 1
+      },
+      {
+        "key": "Contame un poco más,  inclui la palabra banana",
+        "count": 1
+      },
+      {
+        "key": "Leche descremada tetrapack",
+        "count": 1
+      },
+      {
+        "key": "Galletitas dulces del tipo mana sin relleno",
+        "count": 1
+      },
+      {
+        "key": "Pasta de mani crocante",
+        "count": 1
+      },
+      {
+        "key": "Papel higienico hoja simple higienol o elegante",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "azúcar",
+        "count": 6
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "leche descremada tetrapack",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 4
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "papel higiénico",
+        "count": 4
+      },
+      {
+        "key": "pasta de mani crocante",
+        "count": 3
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "pan lactal",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "levadura",
+        "count": 3
+      },
+      {
+        "key": "pollo",
+        "count": 3
+      },
+      {
+        "key": "arroz",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 177,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "azucar",
+        "count": 7
+      },
+      {
+        "key": "leche descremada tetrapack",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 4
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "galletitas dulces tipo mana",
+        "count": 3
+      },
+      {
+        "key": "pasta de mani crocante",
+        "count": 3
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "pan lactal",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "papel higienico",
+        "count": 3
+      },
+      {
+        "key": "cubretorta",
+        "count": 3
+      },
+      {
+        "key": "margarina",
+        "count": 3
+      },
+      {
+        "key": "galletitas",
+        "count": 3
+      },
+      {
+        "key": "papel higienico hoja simple",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Galletitas Dulces",
+        "count": 5
+      },
+      {
+        "key": "Galletitas Saladas",
+        "count": 5
+      },
+      {
+        "key": "Azucar",
+        "count": 4
+      },
+      {
+        "key": "Rollo de Cocina",
+        "count": 4
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 4
+      },
+      {
+        "key": "Dulces",
+        "count": 3
+      },
+      {
+        "key": "Leche entera",
+        "count": 3
+      },
+      {
+        "key": "Queso Crema",
+        "count": 3
+      },
+      {
+        "key": "Te",
+        "count": 3
+      },
+      {
+        "key": "Margarina",
+        "count": 3
+      }
+    ],
+    "errores": 21
+  },
+  "agregar": {
+    "total_agregados": 20,
+    "valor_total": 802874.72,
+    "ticket_promedio": 40143.74,
+    "descuento_total": 181504.72,
+    "canal": {
+      "inmediato": 0,
+      "programado": 20
+    },
+    "top_productos": [
+      {
+        "key": "Leche descremada larga vida Las tres niñas 1 l.",
+        "count": 120
+      },
+      {
+        "key": "Puré de tomate Corper sin gluten 520 grs",
+        "count": 24
+      },
+      {
+        "key": "Jugo en Polvo Clight Manzana Deliciosa 7 grs",
+        "count": 18
+      },
+      {
+        "key": "Galletitas Maná de vainilla livianas x3 408 grs",
+        "count": 12
+      },
+      {
+        "key": "Galletitas crackers Traviata Rex x3 288 grs",
+        "count": 10
+      },
+      {
+        "key": "Vainillas Carrefour Classic 6 uni",
+        "count": 9
+      },
+      {
+        "key": "Papel higiénico Higienol Max hoja simple 80 mts 4 uni",
+        "count": 8
+      },
+      {
+        "key": "Rollo de cocina maxi rollo Felpita x 200 paños",
+        "count": 6
+      },
+      {
+        "key": "Jugo en Polvo Clight Limonada Maracuyá 7,5 grs",
+        "count": 6
+      },
+      {
+        "key": "Lomito de atún en aceite Carrefour Classic 170 grs",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 123
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 44
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 25
+      },
+      {
+        "key": "Jugos en polvo",
+        "count": 24
+      },
+      {
+        "key": "Pasta de maní y crema de avellanas",
+        "count": 11
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 10
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 9
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 8
+      },
+      {
+        "key": "Arroz",
+        "count": 7
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 17,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 16
+      },
+      {
+        "key": "Sedal",
+        "count": 9
+      },
+      {
+        "key": "Comfort",
+        "count": 7
+      },
+      {
+        "key": "La Serenísima",
+        "count": 5
+      },
+      {
+        "key": "Lactal",
+        "count": 5
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Elegante",
+        "count": 3
+      },
+      {
+        "key": "Genérico",
+        "count": 3
+      },
+      {
+        "key": "Purísima",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Perfumería y farmacia",
+        "count": 42
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 24
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 14
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 6
+      },
+      {
+        "key": "Panadería",
+        "count": 5
+      },
+      {
+        "key": "Bebidas",
+        "count": 3
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 129,
+    "carrito_promedio": 38680.53,
+    "pct_con_carrito": 48,
+    "errores": 74
+  },
+  "origen": {
+    "total_requests": 200,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:04.021Z"
+}

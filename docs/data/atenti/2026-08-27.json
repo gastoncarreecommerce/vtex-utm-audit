@@ -1,0 +1,447 @@
+{
+  "date": "2026-08-27",
+  "chat": {
+    "llamadas": 187,
+    "usuarios_unicos": 75,
+    "con_productos_identificados": 109,
+    "con_sugerencia": 22,
+    "por_hora": [
+      5,
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      4,
+      5,
+      8,
+      17,
+      7,
+      8,
+      14,
+      5,
+      5,
+      11,
+      43,
+      4,
+      23,
+      8,
+      10,
+      5
+    ],
+    "errores": 41
+  },
+  "categorizar": {
+    "total": 92,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 6
+      },
+      {
+        "key": "我想要米饭",
+        "count": 3
+      },
+      {
+        "key": "Leche",
+        "count": 2
+      },
+      {
+        "key": "Cafe",
+        "count": 2
+      },
+      {
+        "key": "Harinas ",
+        "count": 2
+      },
+      {
+        "key": "Fideos ",
+        "count": 2
+      },
+      {
+        "key": "Arroz, pasta, aceite, salsa inglesa, salsa ajo, salsa soja, salsa de tomate, salsa mayonesa, café, atún, puré de tomate, mantequilla, queso crema, crema de leche, Maizena, galletas de soda, Toddy, salchichas, jabón para ropa, enjuague para ropa, champú y enjuague cabello, alcohol de limpieza ",
+        "count": 1
+      },
+      {
+        "key": "Juguetes ",
+        "count": 1
+      },
+      {
+        "key": "Si ",
+        "count": 1
+      },
+      {
+        "key": "Autos y juegos de mesa",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "fideos",
+        "count": 14
+      },
+      {
+        "key": "arroz",
+        "count": 12
+      },
+      {
+        "key": "detergente",
+        "count": 11
+      },
+      {
+        "key": "manteca",
+        "count": 9
+      },
+      {
+        "key": "queso cremoso",
+        "count": 8
+      },
+      {
+        "key": "galletitas de agua",
+        "count": 7
+      },
+      {
+        "key": "desodorante de ambiente",
+        "count": 7
+      },
+      {
+        "key": "puré de tomate",
+        "count": 6
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "papel higiénico",
+        "count": 6
+      },
+      {
+        "key": "pan lactal integral",
+        "count": 6
+      },
+      {
+        "key": "jugo de limón",
+        "count": 6
+      },
+      {
+        "key": "batata",
+        "count": 6
+      },
+      {
+        "key": "zanahoria",
+        "count": 6
+      },
+      {
+        "key": "pepino",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 446,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "fideos",
+        "count": 13
+      },
+      {
+        "key": "detergente",
+        "count": 10
+      },
+      {
+        "key": "arroz",
+        "count": 9
+      },
+      {
+        "key": "manteca",
+        "count": 8
+      },
+      {
+        "key": "queso cremoso",
+        "count": 8
+      },
+      {
+        "key": "pure de tomate",
+        "count": 6
+      },
+      {
+        "key": "galletitas de agua",
+        "count": 6
+      },
+      {
+        "key": "desodorante de ambiente",
+        "count": 6
+      },
+      {
+        "key": "zanahoria",
+        "count": 6
+      },
+      {
+        "key": "pan lactal integral",
+        "count": 6
+      },
+      {
+        "key": "jugo de limon",
+        "count": 6
+      },
+      {
+        "key": "pepino",
+        "count": 6
+      },
+      {
+        "key": "batata",
+        "count": 6
+      },
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "papel higienico",
+        "count": 5
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Arroz",
+        "count": 8
+      },
+      {
+        "key": "Manteca",
+        "count": 8
+      },
+      {
+        "key": "Fideos",
+        "count": 8
+      },
+      {
+        "key": "Galletitas Saladas",
+        "count": 7
+      },
+      {
+        "key": "Pan Integral",
+        "count": 7
+      },
+      {
+        "key": "Papas",
+        "count": 6
+      },
+      {
+        "key": "Jugo de Limon",
+        "count": 6
+      },
+      {
+        "key": "Frutos Rojos",
+        "count": 6
+      },
+      {
+        "key": "Queso Cremoso",
+        "count": 5
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 5
+      }
+    ],
+    "errores": 528
+  },
+  "agregar": {
+    "total_agregados": 70,
+    "valor_total": 2840146.26,
+    "ticket_promedio": 40573.52,
+    "descuento_total": 193936.32,
+    "canal": {
+      "inmediato": 0,
+      "programado": 70
+    },
+    "top_productos": [
+      {
+        "key": "Batata x kg.",
+        "count": 105
+      },
+      {
+        "key": "Pera x kg.",
+        "count": 54
+      },
+      {
+        "key": "Lechuga mantecosa x kg.",
+        "count": 52
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 49
+      },
+      {
+        "key": "Fideos tallarines Favorita 500 g.",
+        "count": 48
+      },
+      {
+        "key": "Tomate x kg.",
+        "count": 44
+      },
+      {
+        "key": "Harina Pureza especial para pizzas 1 kg.",
+        "count": 38
+      },
+      {
+        "key": "Tomate redondo Huella Natural x kg.",
+        "count": 38
+      },
+      {
+        "key": "Salchichas clásicas Carrefour Classic flowpack 6 uni",
+        "count": 35
+      },
+      {
+        "key": "Pepino x kg.",
+        "count": 33
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 325
+      },
+      {
+        "key": "Frutas",
+        "count": 141
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 70
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 62
+      },
+      {
+        "key": "Fideos largos",
+        "count": 52
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 40
+      },
+      {
+        "key": "Salchichas",
+        "count": 37
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 26
+      },
+      {
+        "key": "Arroz",
+        "count": 26
+      },
+      {
+        "key": "Desodorantes y desinfectantes",
+        "count": 23
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 39,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 36
+      },
+      {
+        "key": "Genérico",
+        "count": 20
+      },
+      {
+        "key": "Bulnez",
+        "count": 17
+      },
+      {
+        "key": "Bonafide",
+        "count": 13
+      },
+      {
+        "key": "La Serenísima",
+        "count": 11
+      },
+      {
+        "key": "Lysoform",
+        "count": 10
+      },
+      {
+        "key": "Adler",
+        "count": 10
+      },
+      {
+        "key": "Pepsi",
+        "count": 10
+      },
+      {
+        "key": "Magistral",
+        "count": 9
+      },
+      {
+        "key": "Pureza",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 101
+      },
+      {
+        "key": "Almacén",
+        "count": 98
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 49
+      },
+      {
+        "key": "Bebidas",
+        "count": 40
+      },
+      {
+        "key": "Limpieza",
+        "count": 39
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 15
+      },
+      {
+        "key": "Panadería",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 3
+      },
+      {
+        "key": "Congelados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 176,
+    "carrito_promedio": 42798.29,
+    "pct_con_carrito": 58.5,
+    "errores": 132
+  },
+  "origen": {
+    "total_requests": 346,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:18.623Z"
+}

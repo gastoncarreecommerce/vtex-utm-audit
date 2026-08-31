@@ -1,0 +1,419 @@
+{
+  "date": "2026-08-25",
+  "chat": {
+    "llamadas": 93,
+    "usuarios_unicos": 48,
+    "con_productos_identificados": 35,
+    "con_sugerencia": 9,
+    "por_hora": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      2,
+      2,
+      0,
+      17,
+      3,
+      6,
+      2,
+      4,
+      7,
+      10,
+      12,
+      9,
+      2,
+      8,
+      3,
+      0
+    ],
+    "errores": 28
+  },
+  "categorizar": {
+    "total": 28,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Elegido de la semana",
+        "count": 1
+      },
+      {
+        "key": "Galletitas ",
+        "count": 1
+      },
+      {
+        "key": "Tortas dulces",
+        "count": 1
+      },
+      {
+        "key": "Milanesas",
+        "count": 1
+      },
+      {
+        "key": "Leche la serenisima descremada ",
+        "count": 1
+      },
+      {
+        "key": "  Yerba playadito  Tofu mucho Matarazo fideos tallarines x 6 Don Vicente tallarines x 2 Pampa gourmet Espinaca x 2 Mayonesa  Hamburguesas parrilleras  Pan de Hamburguesas  Galle bruni Aceite de oliva cocinero 2 Suavizante Papas mcain  Jabon liquido  Detergente Salsa de tomate  Jabon dove Rollo de cocina Papel higiénico",
+        "count": 1
+      },
+      {
+        "key": "Pastillas para lavavajillas ",
+        "count": 1
+      },
+      {
+        "key": "Chipa",
+        "count": 1
+      },
+      {
+        "key": "8 rollosde papel higienico doble hoja",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "leche proteica",
+        "count": 3
+      },
+      {
+        "key": "atún al agua",
+        "count": 3
+      },
+      {
+        "key": "jamón cocido natural",
+        "count": 3
+      },
+      {
+        "key": "lentejas",
+        "count": 3
+      },
+      {
+        "key": "garbanzos",
+        "count": 3
+      },
+      {
+        "key": "fécula de mandioca",
+        "count": 2
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "galletitas",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      },
+      {
+        "key": "gomitas de mora",
+        "count": 2
+      },
+      {
+        "key": "leche fermentada frutilla",
+        "count": 1
+      },
+      {
+        "key": "manteca extra",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 85,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "leche proteica",
+        "count": 3
+      },
+      {
+        "key": "atun al agua",
+        "count": 3
+      },
+      {
+        "key": "lentejas",
+        "count": 3
+      },
+      {
+        "key": "jamon cocido natural",
+        "count": 3
+      },
+      {
+        "key": "garbanzos",
+        "count": 3
+      },
+      {
+        "key": "fecula de mandioca",
+        "count": 2
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "galletitas",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      },
+      {
+        "key": "gomitas de mora",
+        "count": 2
+      },
+      {
+        "key": "rucula",
+        "count": 1
+      },
+      {
+        "key": "suprema congelada",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Papel Higienico",
+        "count": 3
+      },
+      {
+        "key": "Huevos de Gallina",
+        "count": 3
+      },
+      {
+        "key": "Lentejas",
+        "count": 3
+      },
+      {
+        "key": "Jamon Cocido",
+        "count": 3
+      },
+      {
+        "key": "Garbanzos",
+        "count": 3
+      },
+      {
+        "key": "Manteca",
+        "count": 2
+      },
+      {
+        "key": "Dulces",
+        "count": 2
+      },
+      {
+        "key": "Leche descremada",
+        "count": 2
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 2
+      },
+      {
+        "key": "Aceite de Oliva",
+        "count": 2
+      }
+    ],
+    "errores": 480
+  },
+  "agregar": {
+    "total_agregados": 10,
+    "valor_total": 934510.32,
+    "ticket_promedio": 93451.03,
+    "descuento_total": 67252.2,
+    "canal": {
+      "inmediato": 0,
+      "programado": 10
+    },
+    "top_productos": [
+      {
+        "key": "Tofu Soyland finas hierbas 320 grs",
+        "count": 18
+      },
+      {
+        "key": "Bocadito de arándano y chocolate Integra 26 g.",
+        "count": 12
+      },
+      {
+        "key": "Piedras sanitarias Pipicat aglutinante ultra control 4 kg",
+        "count": 12
+      },
+      {
+        "key": "Rollo de cocina Carrefour Essential x3 50 paños",
+        "count": 12
+      },
+      {
+        "key": "Cerveza blanca sin alcohol Corona 0.0% 330 ml",
+        "count": 6
+      },
+      {
+        "key": "Bizcochuelo Exquisita de vainilla 540 g.",
+        "count": 6
+      },
+      {
+        "key": "Manteca La Serenísima extra para untar 200 g.",
+        "count": 6
+      },
+      {
+        "key": "Acolchado RIETI By GADNIC 4 Estaciones Queen 230x240 Blanco Microfibra",
+        "count": 6
+      },
+      {
+        "key": "Ojo de bife Novillito x kg",
+        "count": 6
+      },
+      {
+        "key": "Galletas de arroz lino sin sellos Macrobiotica 102 g.",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Quesos duros y semi duros",
+        "count": 18
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 15
+      },
+      {
+        "key": "Fideos largos",
+        "count": 15
+      },
+      {
+        "key": "Higiene para mascotas",
+        "count": 12
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 12
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 12
+      },
+      {
+        "key": "Arroz",
+        "count": 9
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 7
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 4,
+    "top_marcas": [
+      {
+        "key": "Finish",
+        "count": 4
+      },
+      {
+        "key": "Palmolive",
+        "count": 3
+      },
+      {
+        "key": "Estrella",
+        "count": 3
+      },
+      {
+        "key": "Amanda",
+        "count": 3
+      },
+      {
+        "key": "Sun",
+        "count": 3
+      },
+      {
+        "key": "Plusbelle",
+        "count": 2
+      },
+      {
+        "key": "Nobleza Gaucha",
+        "count": 2
+      },
+      {
+        "key": "Wassington",
+        "count": 2
+      },
+      {
+        "key": "Lux",
+        "count": 1
+      },
+      {
+        "key": "Botik",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Perfumería y farmacia",
+        "count": 10
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 129,
+    "carrito_promedio": 44530.44,
+    "pct_con_carrito": 53.9,
+    "errores": 13
+  },
+  "origen": {
+    "total_requests": 189,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:15.047Z"
+}

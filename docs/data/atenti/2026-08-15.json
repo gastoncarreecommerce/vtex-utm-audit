@@ -1,0 +1,375 @@
+{
+  "date": "2026-08-15",
+  "chat": {
+    "llamadas": 66,
+    "usuarios_unicos": 35,
+    "con_productos_identificados": 34,
+    "con_sugerencia": 6,
+    "por_hora": [
+      3,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      1,
+      3,
+      8,
+      4,
+      7,
+      5,
+      0,
+      5,
+      4,
+      11,
+      2,
+      4,
+      0,
+      0
+    ],
+    "errores": 13
+  },
+  "categorizar": {
+    "total": 31,
+    "top_recetas": [
+      {
+        "key": "Juguetes ",
+        "count": 2
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Pincho de cocina utensilio",
+        "count": 1
+      },
+      {
+        "key": "Cubierto de 2 dientes u horquilla de cocina",
+        "count": 1
+      },
+      {
+        "key": "Leche ",
+        "count": 1
+      },
+      {
+        "key": "Leche entera",
+        "count": 1
+      },
+      {
+        "key": "La serenísima ",
+        "count": 1
+      },
+      {
+        "key": "Mostrar",
+        "count": 1
+      },
+      {
+        "key": "Bombones de fruta mogul ",
+        "count": 1
+      },
+      {
+        "key": "Quiero poner tintura como producto favorito de  la semana",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "pincho de cocina",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "juguetes",
+        "count": 2
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 2
+      },
+      {
+        "key": "galletitas carrefour",
+        "count": 2
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "juego de mesa",
+        "count": 2
+      },
+      {
+        "key": "harina",
+        "count": 2
+      },
+      {
+        "key": "horquilla de cocina",
+        "count": 1
+      },
+      {
+        "key": "bombones de fruta",
+        "count": 1
+      },
+      {
+        "key": "tintura",
+        "count": 1
+      },
+      {
+        "key": "tintura negra",
+        "count": 1
+      },
+      {
+        "key": "jabón de tocador",
+        "count": 1
+      },
+      {
+        "key": "pollo",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 55,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche entera",
+        "count": 3
+      },
+      {
+        "key": "pincho de cocina",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "juguetes",
+        "count": 2
+      },
+      {
+        "key": "galletitas carrefour",
+        "count": 2
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "juego de mesa",
+        "count": 2
+      },
+      {
+        "key": "harina",
+        "count": 2
+      },
+      {
+        "key": "horquilla de cocina",
+        "count": 1
+      },
+      {
+        "key": "bombones de fruta",
+        "count": 1
+      },
+      {
+        "key": "tintura",
+        "count": 1
+      },
+      {
+        "key": "tintura negra",
+        "count": 1
+      },
+      {
+        "key": "jabon de tocador",
+        "count": 1
+      },
+      {
+        "key": "pollo",
+        "count": 1
+      },
+      {
+        "key": "macarons",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Galletitas Dulces",
+        "count": 5
+      },
+      {
+        "key": "Obleas",
+        "count": 4
+      },
+      {
+        "key": "Accesorios de Cocina",
+        "count": 2
+      },
+      {
+        "key": "Leche entera",
+        "count": 2
+      },
+      {
+        "key": "Yogur Griego",
+        "count": 2
+      },
+      {
+        "key": "Queso Crema",
+        "count": 2
+      },
+      {
+        "key": "Pinchos y Brochetas",
+        "count": 1
+      },
+      {
+        "key": "Leche liquida",
+        "count": 1
+      },
+      {
+        "key": "Leche Entera",
+        "count": 1
+      },
+      {
+        "key": "Bombones de fruta",
+        "count": 1
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 4,
+    "valor_total": 39075,
+    "ticket_promedio": 9768.75,
+    "descuento_total": 1409,
+    "canal": {
+      "inmediato": 1,
+      "programado": 3
+    },
+    "top_productos": [
+      {
+        "key": "Harina de trigo Pureza 0000 1 kg.",
+        "count": 6
+      },
+      {
+        "key": "Crema La serenisima para batir 200 cc.",
+        "count": 3
+      },
+      {
+        "key": "Galletitas Chocolina de chocolate 250 g.",
+        "count": 3
+      },
+      {
+        "key": "Harina de trigo Morixe 000 1 kg.",
+        "count": 2
+      },
+      {
+        "key": "Carré deshuesado de cerdo x kg",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 8
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 3
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 3
+      },
+      {
+        "key": "Carne de cerdo",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 3,
+    "top_marcas": [
+      {
+        "key": "Yogurísimo",
+        "count": 8
+      },
+      {
+        "key": "Tregar",
+        "count": 2
+      },
+      {
+        "key": "Favorita",
+        "count": 2
+      },
+      {
+        "key": "Pureza",
+        "count": 2
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      },
+      {
+        "key": "Caserita",
+        "count": 2
+      },
+      {
+        "key": "Genérico",
+        "count": 2
+      },
+      {
+        "key": "Cañuelas",
+        "count": 1
+      },
+      {
+        "key": "Morixe",
+        "count": 1
+      },
+      {
+        "key": "Huella Natural",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 10
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 124,
+    "carrito_promedio": 31144.96,
+    "pct_con_carrito": 49.3,
+    "errores": 10
+  },
+  "origen": {
+    "total_requests": 192,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:01.321Z"
+}

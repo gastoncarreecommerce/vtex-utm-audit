@@ -1,0 +1,371 @@
+{
+  "date": "2026-08-22",
+  "chat": {
+    "llamadas": 99,
+    "usuarios_unicos": 45,
+    "con_productos_identificados": 31,
+    "con_sugerencia": 0,
+    "por_hora": [
+      1,
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      1,
+      6,
+      10,
+      14,
+      4,
+      7,
+      11,
+      4,
+      3,
+      4,
+      4,
+      7,
+      5,
+      3,
+      6,
+      4
+    ],
+    "errores": 34
+  },
+  "categorizar": {
+    "total": 29,
+    "top_recetas": [
+      {
+        "key": "Para hacer tarta",
+        "count": 1
+      },
+      {
+        "key": "Agua mineral Carrefour ",
+        "count": 1
+      },
+      {
+        "key": "Buscar en mis últimas compras cuáles son las tabletas de cereales que compré ",
+        "count": 1
+      },
+      {
+        "key": "Morcilla sin gluten",
+        "count": 1
+      },
+      {
+        "key": "Tengo compradas la marca integra ",
+        "count": 1
+      },
+      {
+        "key": "Necesito cif limpia baño",
+        "count": 1
+      },
+      {
+        "key": "Esponja de cocina ",
+        "count": 1
+      },
+      {
+        "key": "Fanta 3L",
+        "count": 1
+      },
+      {
+        "key": " Esponja",
+        "count": 1
+      },
+      {
+        "key": "Cafe instantaneo",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "esponja",
+        "count": 3
+      },
+      {
+        "key": "mate",
+        "count": 3
+      },
+      {
+        "key": "barritas de cereales",
+        "count": 2
+      },
+      {
+        "key": "limpiador de baño",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "bombilla",
+        "count": 2
+      },
+      {
+        "key": "bananas",
+        "count": 2
+      },
+      {
+        "key": "alimento seco para perros adultos",
+        "count": 2
+      },
+      {
+        "key": "tapas para tarta",
+        "count": 1
+      },
+      {
+        "key": "jamón cocido",
+        "count": 1
+      },
+      {
+        "key": "queso cremoso",
+        "count": 1
+      },
+      {
+        "key": "huevos",
+        "count": 1
+      },
+      {
+        "key": "crema de leche",
+        "count": 1
+      },
+      {
+        "key": "agua mineral",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 43,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "esponja",
+        "count": 3
+      },
+      {
+        "key": "mate",
+        "count": 3
+      },
+      {
+        "key": "barritas de cereales",
+        "count": 2
+      },
+      {
+        "key": "limpiador de bano",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "yerba",
+        "count": 2
+      },
+      {
+        "key": "bombilla",
+        "count": 2
+      },
+      {
+        "key": "bananas",
+        "count": 2
+      },
+      {
+        "key": "alimento seco para perros adultos",
+        "count": 2
+      },
+      {
+        "key": "queso cremoso",
+        "count": 1
+      },
+      {
+        "key": "huevos",
+        "count": 1
+      },
+      {
+        "key": "tapas para tarta",
+        "count": 1
+      },
+      {
+        "key": "crema de leche",
+        "count": 1
+      },
+      {
+        "key": "jamon cocido",
+        "count": 1
+      },
+      {
+        "key": "agua mineral",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Yerba Mate",
+        "count": 4
+      },
+      {
+        "key": "Esponjas",
+        "count": 3
+      },
+      {
+        "key": "Alimento Seco",
+        "count": 3
+      },
+      {
+        "key": "Barras de Cereal",
+        "count": 2
+      },
+      {
+        "key": "Cola",
+        "count": 2
+      },
+      {
+        "key": "Bombillas",
+        "count": 2
+      },
+      {
+        "key": "Bananas",
+        "count": 2
+      },
+      {
+        "key": "Queso cremoso",
+        "count": 1
+      },
+      {
+        "key": "Huevos",
+        "count": 1
+      },
+      {
+        "key": "Tapas para tarta",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 4,
+    "valor_total": 19485.86,
+    "ticket_promedio": 4871.47,
+    "descuento_total": 4049.2,
+    "canal": {
+      "inmediato": 0,
+      "programado": 4
+    },
+    "top_productos": [
+      {
+        "key": "Fideos coditos rayados Favorita fortificado 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Fideos spaghetti fortificado Favorita 500 g.",
+        "count": 6
+      },
+      {
+        "key": "Agua mineral sin gas Carrefour Classic 2 lts",
+        "count": 4
+      },
+      {
+        "key": "Limpiador para baño Cif Expert Doypack 450 ml",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 8
+      },
+      {
+        "key": "Fideos largos",
+        "count": 6
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 4
+      },
+      {
+        "key": "Limpiadores de baño",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 4,
+    "top_marcas": [
+      {
+        "key": "Eco De Los Andes",
+        "count": 4
+      },
+      {
+        "key": "Coca Cola",
+        "count": 4
+      },
+      {
+        "key": "Glaciar",
+        "count": 3
+      },
+      {
+        "key": "Villa Del Sur",
+        "count": 3
+      },
+      {
+        "key": "Pepsi",
+        "count": 2
+      },
+      {
+        "key": "Carrefour",
+        "count": 2
+      },
+      {
+        "key": "CBSé",
+        "count": 2
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      },
+      {
+        "key": "Amanda",
+        "count": 1
+      },
+      {
+        "key": "Arroyo verde",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Bebidas",
+        "count": 16
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 8
+      },
+      {
+        "key": "Almacén",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 144,
+    "carrito_promedio": 48908.68,
+    "pct_con_carrito": 47.9,
+    "errores": 12
+  },
+  "origen": {
+    "total_requests": 193,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:10.779Z"
+}

@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-28",
+  "chat": {
+    "llamadas": 133,
+    "usuarios_unicos": 65,
+    "con_productos_identificados": 63,
+    "con_sugerencia": 16,
+    "por_hora": [
+      4,
+      1,
+      0,
+      0,
+      0,
+      0,
+      5,
+      1,
+      3,
+      6,
+      26,
+      13,
+      8,
+      7,
+      10,
+      8,
+      6,
+      2,
+      6,
+      14,
+      2,
+      4,
+      3,
+      4
+    ],
+    "errores": 31
+  },
+  "categorizar": {
+    "total": 47,
+    "top_recetas": [
+      {
+        "key": "Papel higenico  Rollo de cocina  Bolsa de consorcio  Fideos 308  Arroz  Sal  Pure de tomate  Aceite  Jugos  Manteca  Ddl  Galletita  Galletita seca   Desodorante de hombre  Espuma de afeitar  Jabon dove  Shampo y acondic Shampoo Dove Baby  Pasta herbal  Guilett prestob   Pastilla para el Baño Skip  Lavandina ropa blanca  Antigrasa",
+        "count": 2
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Cafe molido barato",
+        "count": 1
+      },
+      {
+        "key": "carne a la olla",
+        "count": 1
+      },
+      {
+        "key": "HAMBURGUESAS COMPLETAS",
+        "count": 1
+      },
+      {
+        "key": "Busco snacks para cumple ",
+        "count": 1
+      },
+      {
+        "key": "Leche chocolatads ",
+        "count": 1
+      },
+      {
+        "key": "Necesito papitas , chisitos,  bastonsito kranchitos  , palitos, takis",
+        "count": 1
+      },
+      {
+        "key": "Leche larga vida 4",
+        "count": 1
+      },
+      {
+        "key": "Manteca tonadita 2",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "manteca",
+        "count": 5
+      },
+      {
+        "key": "leche larga vida",
+        "count": 5
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 4
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 3
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "puré de tomate",
+        "count": 3
+      },
+      {
+        "key": "pasta dental",
+        "count": 3
+      },
+      {
+        "key": "galletas de arroz",
+        "count": 3
+      },
+      {
+        "key": "avena",
+        "count": 3
+      },
+      {
+        "key": "arroz integral",
+        "count": 3
+      },
+      {
+        "key": "fideos altos en proteína",
+        "count": 3
+      },
+      {
+        "key": "vino tinto",
+        "count": 2
+      },
+      {
+        "key": "bolsa de consorcio",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 169,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "leche larga vida",
+        "count": 5
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "arroz integral",
+        "count": 3
+      },
+      {
+        "key": "avena",
+        "count": 3
+      },
+      {
+        "key": "fideos altos en proteina",
+        "count": 3
+      },
+      {
+        "key": "galletas de arroz",
+        "count": 3
+      },
+      {
+        "key": "sal",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "vino tinto",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "pasta dental",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "agua saborizada pera o naranja",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Manteca",
+        "count": 4
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 4
+      },
+      {
+        "key": "Rollo de Cocina",
+        "count": 3
+      },
+      {
+        "key": "Larga Vida",
+        "count": 3
+      },
+      {
+        "key": "Arroz Integral",
+        "count": 3
+      },
+      {
+        "key": "Galletas de Arroz",
+        "count": 3
+      },
+      {
+        "key": "Cereales",
+        "count": 3
+      },
+      {
+        "key": "Crema de Leche",
+        "count": 3
+      },
+      {
+        "key": "Prepizzas",
+        "count": 3
+      },
+      {
+        "key": "Sal",
+        "count": 2
+      }
+    ],
+    "errores": 2
+  },
+  "agregar": {
+    "total_agregados": 21,
+    "valor_total": 1139012.72,
+    "ticket_promedio": 54238.7,
+    "descuento_total": 211799.91,
+    "canal": {
+      "inmediato": 0,
+      "programado": 21
+    },
+    "top_productos": [
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 25
+      },
+      {
+        "key": "Leche UAT parcialmente descremada Carrefour classic brik 1 lt.",
+        "count": 20
+      },
+      {
+        "key": "Yogur batido Ser PRO+ con proteínas sabor natural 175 grs",
+        "count": 20
+      },
+      {
+        "key": "Tostadas de arroz Molinos Ala integrales 150 g.",
+        "count": 20
+      },
+      {
+        "key": "Jugo en Polvo Clight Naranja 8 grs",
+        "count": 18
+      },
+      {
+        "key": "Manteca extra calidad Ilolay 200 g.",
+        "count": 16
+      },
+      {
+        "key": "Agua mineralizada bajo sodio sin gas Benedictino 6 lts",
+        "count": 14
+      },
+      {
+        "key": "Puré de tomates Bulnez 520 g.",
+        "count": 12
+      },
+      {
+        "key": "Jugo en polvo Clight ananá 7grs",
+        "count": 12
+      },
+      {
+        "key": "Jugo en polvo Tang uva 15 g.",
+        "count": 12
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 48
+      },
+      {
+        "key": "Mantecas, margarinas y levaduras",
+        "count": 35
+      },
+      {
+        "key": "Yogures descremados",
+        "count": 35
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 31
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 27
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 22
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 20
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 19
+      },
+      {
+        "key": "Fideos largos",
+        "count": 17
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 15
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 7,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "Skip",
+        "count": 9
+      },
+      {
+        "key": "Twistos",
+        "count": 5
+      },
+      {
+        "key": "Cheetos",
+        "count": 5
+      },
+      {
+        "key": "Amanda",
+        "count": 3
+      },
+      {
+        "key": "9 De Oro",
+        "count": 2
+      },
+      {
+        "key": "Krachitos",
+        "count": 2
+      },
+      {
+        "key": "Nobleza Gaucha",
+        "count": 2
+      },
+      {
+        "key": "Gomes Da Costa",
+        "count": 2
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 30
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Congelados",
+        "count": 4
+      },
+      {
+        "key": "Bebidas",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 154,
+    "carrito_promedio": 42585.2,
+    "pct_con_carrito": 51.3,
+    "errores": 48
+  },
+  "origen": {
+    "total_requests": 238,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:20.268Z"
+}

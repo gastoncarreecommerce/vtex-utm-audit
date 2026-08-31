@@ -1,0 +1,395 @@
+{
+  "date": "2026-08-24",
+  "chat": {
+    "llamadas": 165,
+    "usuarios_unicos": 65,
+    "con_productos_identificados": 81,
+    "con_sugerencia": 14,
+    "por_hora": [
+      2,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2,
+      0,
+      1,
+      2,
+      19,
+      18,
+      10,
+      8,
+      14,
+      4,
+      19,
+      12,
+      15,
+      16,
+      6,
+      3,
+      4,
+      8
+    ],
+    "errores": 36
+  },
+  "categorizar": {
+    "total": 66,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Ayudin antihongos",
+        "count": 1
+      },
+      {
+        "key": "Hola, me podrías hacer el mayor descuento posible con todas las promos y cupones que tengo disponible y me dirías el precio de un fernet branca",
+        "count": 1
+      },
+      {
+        "key": "Necesito hacer una tortas marmolada",
+        "count": 1
+      },
+      {
+        "key": "Finlandia queso ",
+        "count": 1
+      },
+      {
+        "key": "Quedo inhale findlandia 200gr.",
+        "count": 1
+      },
+      {
+        "key": "4 Quesos Finlandia x 200gr.",
+        "count": 1
+      },
+      {
+        "key": "No quiero sugerencias ",
+        "count": 1
+      },
+      {
+        "key": "2 aceites Cañuelas de 1.5 lts",
+        "count": 1
+      },
+      {
+        "key": "2 caldos Knorr de carne",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "caldo de carne",
+        "count": 15
+      },
+      {
+        "key": "azúcar",
+        "count": 13
+      },
+      {
+        "key": "lavandina en gel",
+        "count": 12
+      },
+      {
+        "key": "papel de cocina",
+        "count": 11
+      },
+      {
+        "key": "aceite",
+        "count": 10
+      },
+      {
+        "key": "yerba suave",
+        "count": 9
+      },
+      {
+        "key": "queso untable",
+        "count": 8
+      },
+      {
+        "key": "aceite 1.5 lts",
+        "count": 8
+      },
+      {
+        "key": "vinagre de alcohol",
+        "count": 8
+      },
+      {
+        "key": "papel higiénico",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "tostadas clásicas",
+        "count": 7
+      },
+      {
+        "key": "amargo sin alcohol",
+        "count": 7
+      },
+      {
+        "key": "queso untable 4 quesos",
+        "count": 6
+      },
+      {
+        "key": "queso untable 4 quesos 200gr",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 308,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "caldo de carne",
+        "count": 15
+      },
+      {
+        "key": "azucar",
+        "count": 13
+      },
+      {
+        "key": "lavandina en gel",
+        "count": 12
+      },
+      {
+        "key": "papel de cocina",
+        "count": 11
+      },
+      {
+        "key": "aceite",
+        "count": 9
+      },
+      {
+        "key": "tostadas clasicas",
+        "count": 9
+      },
+      {
+        "key": "yerba suave",
+        "count": 9
+      },
+      {
+        "key": "papel higienico",
+        "count": 9
+      },
+      {
+        "key": "queso untable",
+        "count": 8
+      },
+      {
+        "key": "aceite 1.5 lts",
+        "count": 8
+      },
+      {
+        "key": "vinagre de alcohol",
+        "count": 8
+      },
+      {
+        "key": "leche",
+        "count": 7
+      },
+      {
+        "key": "amargo sin alcohol",
+        "count": 7
+      },
+      {
+        "key": "queso untable 4 quesos",
+        "count": 6
+      },
+      {
+        "key": "queso untable 4 quesos 200gr",
+        "count": 6
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Aceite",
+        "count": 13
+      },
+      {
+        "key": "Tostadas",
+        "count": 13
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 11
+      },
+      {
+        "key": "Azucar",
+        "count": 11
+      },
+      {
+        "key": "Detergente",
+        "count": 9
+      },
+      {
+        "key": "Queso Untable",
+        "count": 8
+      },
+      {
+        "key": "Vinagre",
+        "count": 8
+      },
+      {
+        "key": "Lavandina",
+        "count": 8
+      },
+      {
+        "key": "Rollo de Cocina",
+        "count": 7
+      },
+      {
+        "key": "Queso untable",
+        "count": 6
+      }
+    ],
+    "errores": 4
+  },
+  "agregar": {
+    "total_agregados": 4,
+    "valor_total": 70030.8,
+    "ticket_promedio": 17507.7,
+    "descuento_total": 23617.4,
+    "canal": {
+      "inmediato": 0,
+      "programado": 4
+    },
+    "top_productos": [
+      {
+        "key": "Maíz inflado azucarado 80 g.",
+        "count": 6
+      },
+      {
+        "key": "Café Morenita intenso saquitos 5 g.",
+        "count": 3
+      },
+      {
+        "key": "Remera Everlast camuflado talle XL verde militar",
+        "count": 2
+      },
+      {
+        "key": "Rollo de cocina Carrefour Essential maxi blanco x 200 paños",
+        "count": 2
+      },
+      {
+        "key": "Cacao en polvo Carrefour classic pouch 360 g.",
+        "count": 1
+      },
+      {
+        "key": "Huevos libres de jaula Huella Natural 6 uni",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutos secos",
+        "count": 6
+      },
+      {
+        "key": "Café instantáneo",
+        "count": 3
+      },
+      {
+        "key": "Remeras y camisas",
+        "count": 2
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 2
+      },
+      {
+        "key": "Cacao",
+        "count": 1
+      },
+      {
+        "key": "Huevos",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 10,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 15
+      },
+      {
+        "key": "Chocolinas",
+        "count": 7
+      },
+      {
+        "key": "Genérico",
+        "count": 4
+      },
+      {
+        "key": "Huella Natural",
+        "count": 4
+      },
+      {
+        "key": "Nesquik",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Toddy",
+        "count": 2
+      },
+      {
+        "key": "Chocolino",
+        "count": 2
+      },
+      {
+        "key": "La Campagnola",
+        "count": 2
+      },
+      {
+        "key": "La Virginia",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 47
+      },
+      {
+        "key": "Almacén",
+        "count": 14
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 8
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 4
+      },
+      {
+        "key": "Congelados",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 191,
+    "carrito_promedio": 61527.97,
+    "pct_con_carrito": 56.3,
+    "errores": 44
+  },
+  "origen": {
+    "total_requests": 304,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:13.524Z"
+}

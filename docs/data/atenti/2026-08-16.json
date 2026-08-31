@@ -1,0 +1,367 @@
+{
+  "date": "2026-08-16",
+  "chat": {
+    "llamadas": 93,
+    "usuarios_unicos": 35,
+    "con_productos_identificados": 49,
+    "con_sugerencia": 8,
+    "por_hora": [
+      2,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      11,
+      5,
+      7,
+      0,
+      6,
+      6,
+      6,
+      6,
+      5,
+      5,
+      2,
+      1,
+      27,
+      0
+    ],
+    "errores": 23
+  },
+  "categorizar": {
+    "total": 37,
+    "top_recetas": [
+      {
+        "key": "Cinta doble faz",
+        "count": 1
+      },
+      {
+        "key": "Mostrarme opciones ",
+        "count": 1
+      },
+      {
+        "key": "Qué es una Cinta doble faz para vos ?",
+        "count": 1
+      },
+      {
+        "key": "Ósea en carrefour no lo venden ? ",
+        "count": 1
+      },
+      {
+        "key": "Busco frasco de vidrio",
+        "count": 1
+      },
+      {
+        "key": "Frasco",
+        "count": 1
+      },
+      {
+        "key": "Abrochadoras ",
+        "count": 1
+      },
+      {
+        "key": "Abrochadora",
+        "count": 1
+      },
+      {
+        "key": "Clip de abrochadora",
+        "count": 1
+      },
+      {
+        "key": "Pinza de depilar ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "pan integral",
+        "count": 15
+      },
+      {
+        "key": "queso port salut",
+        "count": 11
+      },
+      {
+        "key": "galletitas crackers sin sal",
+        "count": 9
+      },
+      {
+        "key": "queso untable",
+        "count": 9
+      },
+      {
+        "key": "tostadas sin sal",
+        "count": 9
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "manzanas",
+        "count": 7
+      },
+      {
+        "key": "crackers sin sal",
+        "count": 6
+      },
+      {
+        "key": "bananas",
+        "count": 6
+      },
+      {
+        "key": "galletitas crackers",
+        "count": 5
+      },
+      {
+        "key": "mandarinas",
+        "count": 5
+      },
+      {
+        "key": "papas blancas",
+        "count": 5
+      },
+      {
+        "key": "cinta doble faz",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "cebollas",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 180,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "pan integral",
+        "count": 15
+      },
+      {
+        "key": "queso port salut",
+        "count": 11
+      },
+      {
+        "key": "galletitas crackers sin sal",
+        "count": 9
+      },
+      {
+        "key": "queso untable",
+        "count": 9
+      },
+      {
+        "key": "tostadas sin sal",
+        "count": 9
+      },
+      {
+        "key": "galletitas dulces",
+        "count": 8
+      },
+      {
+        "key": "manzanas",
+        "count": 7
+      },
+      {
+        "key": "crackers sin sal",
+        "count": 6
+      },
+      {
+        "key": "bananas",
+        "count": 6
+      },
+      {
+        "key": "galletitas crackers",
+        "count": 5
+      },
+      {
+        "key": "zapallo japones",
+        "count": 5
+      },
+      {
+        "key": "mandarinas",
+        "count": 5
+      },
+      {
+        "key": "papas blancas",
+        "count": 5
+      },
+      {
+        "key": "cinta doble faz",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Tostadas",
+        "count": 12
+      },
+      {
+        "key": "Galletitas saladas",
+        "count": 11
+      },
+      {
+        "key": "Pan Integral",
+        "count": 8
+      },
+      {
+        "key": "Galletitas Saladas",
+        "count": 8
+      },
+      {
+        "key": "Pan integral",
+        "count": 7
+      },
+      {
+        "key": "Manzanas",
+        "count": 7
+      },
+      {
+        "key": "Queso Untable",
+        "count": 6
+      },
+      {
+        "key": "Bananas",
+        "count": 6
+      },
+      {
+        "key": "Cebollas",
+        "count": 6
+      },
+      {
+        "key": "Papas",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 11,
+    "valor_total": 130994.8,
+    "ticket_promedio": 11908.62,
+    "descuento_total": 1456.2,
+    "canal": {
+      "inmediato": 0,
+      "programado": 11
+    },
+    "top_productos": [
+      {
+        "key": "Palta x uni",
+        "count": 11
+      },
+      {
+        "key": "Queso Port Salut Ligth Puyehue fraccionado x kg",
+        "count": 10
+      },
+      {
+        "key": "Tostadas Carrefour classic sin sal 200 g.",
+        "count": 9
+      },
+      {
+        "key": "Finlandia light sin sal agregada 290 g.",
+        "count": 8
+      },
+      {
+        "key": "Pan Integral Fargo 400 grs",
+        "count": 7
+      },
+      {
+        "key": "Galletitas crackers Granix sin sal 140 g.",
+        "count": 6
+      },
+      {
+        "key": "Tostadas Carrefour classic clásicas sin sal 180 g.",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 11
+      },
+      {
+        "key": "Tostadas, grisines y marineras",
+        "count": 11
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 10
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 8
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 7
+      },
+      {
+        "key": "Galletitas de agua",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 1,
+    "top_marcas": [
+      {
+        "key": "Granix",
+        "count": 3
+      },
+      {
+        "key": "Smams",
+        "count": 2
+      },
+      {
+        "key": "Criollitas",
+        "count": 2
+      },
+      {
+        "key": "Cerealitas",
+        "count": 1
+      },
+      {
+        "key": "Carrefour",
+        "count": 1
+      },
+      {
+        "key": "Paseo",
+        "count": 1
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 80,
+    "carrito_promedio": 65341.31,
+    "pct_con_carrito": 65.1,
+    "errores": 11
+  },
+  "origen": {
+    "total_requests": 126,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:45:02.654Z"
+}

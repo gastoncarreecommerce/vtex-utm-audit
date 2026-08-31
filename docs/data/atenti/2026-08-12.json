@@ -1,0 +1,427 @@
+{
+  "date": "2026-08-12",
+  "chat": {
+    "llamadas": 138,
+    "usuarios_unicos": 63,
+    "con_productos_identificados": 71,
+    "con_sugerencia": 16,
+    "por_hora": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      3,
+      2,
+      11,
+      6,
+      4,
+      17,
+      5,
+      15,
+      14,
+      14,
+      16,
+      12,
+      3,
+      3,
+      4,
+      4
+    ],
+    "errores": 29
+  },
+  "categorizar": {
+    "total": 60,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Papas ",
+        "count": 2
+      },
+      {
+        "key": "No",
+        "count": 2
+      },
+      {
+        "key": "Rollo de cosina Carrefour con descuento delcupon",
+        "count": 1
+      },
+      {
+        "key": "Grasa de ternera ",
+        "count": 1
+      },
+      {
+        "key": "productos sin tacc",
+        "count": 1
+      },
+      {
+        "key": "alfajores sin tacc",
+        "count": 1
+      },
+      {
+        "key": "quiero hacer una choco torta",
+        "count": 1
+      },
+      {
+        "key": "quiero hacer una chocotorta",
+        "count": 1
+      },
+      {
+        "key": "Jamon cocido cagnoli",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "alimento seco para gatos sabor pescado",
+        "count": 6
+      },
+      {
+        "key": "pastilla para inodoro lavanda",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "trapo de fibra grande",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "alfajores sin tacc",
+        "count": 2
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 2
+      },
+      {
+        "key": "vino tinto",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "bicicleta playera rodado 26 para mujer",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "yogur",
+        "count": 2
+      },
+      {
+        "key": "atún",
+        "count": 2
+      },
+      {
+        "key": "paté",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 92,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "alimento seco para gatos sabor pescado",
+        "count": 6
+      },
+      {
+        "key": "pastilla para inodoro lavanda",
+        "count": 5
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "trapo de fibra grande",
+        "count": 4
+      },
+      {
+        "key": "dulce de leche",
+        "count": 3
+      },
+      {
+        "key": "alfajores sin tacc",
+        "count": 2
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 2
+      },
+      {
+        "key": "bicicleta playera rodado 26 para mujer",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "atun",
+        "count": 2
+      },
+      {
+        "key": "yogur",
+        "count": 2
+      },
+      {
+        "key": "pate",
+        "count": 2
+      },
+      {
+        "key": "dulce de leche aireado",
+        "count": 2
+      },
+      {
+        "key": "papas",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Alimento Seco",
+        "count": 7
+      },
+      {
+        "key": "Dulce de Leche",
+        "count": 4
+      },
+      {
+        "key": "Panos y Trapos",
+        "count": 4
+      },
+      {
+        "key": "Pastillas para inodoro",
+        "count": 3
+      },
+      {
+        "key": "Papas",
+        "count": 3
+      },
+      {
+        "key": "Sin TACC",
+        "count": 2
+      },
+      {
+        "key": "Leche Entera",
+        "count": 2
+      },
+      {
+        "key": "Galletitas Dulces",
+        "count": 2
+      },
+      {
+        "key": "Queso Crema",
+        "count": 2
+      },
+      {
+        "key": "Fideos secos",
+        "count": 2
+      }
+    ],
+    "errores": 2706
+  },
+  "agregar": {
+    "total_agregados": 8,
+    "valor_total": 638204.76,
+    "ticket_promedio": 79775.6,
+    "descuento_total": 41144.06,
+    "canal": {
+      "inmediato": 0,
+      "programado": 8
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT Zero lactosa La Serenisima 1L",
+        "count": 48
+      },
+      {
+        "key": "Lomito de atún en aceite Carrefour Classic 170 grs",
+        "count": 16
+      },
+      {
+        "key": "Tomate perita entero Carrefour Classic en lata 400 g.",
+        "count": 8
+      },
+      {
+        "key": "Suavizante concentrado Comfort frescor intenso doypack 450 ml",
+        "count": 8
+      },
+      {
+        "key": "Papel higiénico Felpita blanquísimo hoja simple 4 x 80 m.",
+        "count": 8
+      },
+      {
+        "key": "Toallas femeninas Ladysoft Ultra suave 24 uni",
+        "count": 8
+      },
+      {
+        "key": "Limpiador en gel Cif con lavandina 513 g.",
+        "count": 4
+      },
+      {
+        "key": "Mayonesa liviana Hellmanns dp 475 g",
+        "count": 4
+      },
+      {
+        "key": "Sal fina Celusal paquete 500 g.",
+        "count": 4
+      },
+      {
+        "key": "Fideos coditos rayados Favorita fortificado 500 g.",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 51
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 16
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 12
+      },
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 8
+      },
+      {
+        "key": "Suavizantes para la ropa",
+        "count": 8
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 8
+      },
+      {
+        "key": "Toallitas femeninas",
+        "count": 8
+      },
+      {
+        "key": "Ollas, sartenes y fuentes",
+        "count": 8
+      },
+      {
+        "key": "Jabones para la ropa",
+        "count": 8
+      },
+      {
+        "key": "Canastas y bloques",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 11,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "Bulnez",
+        "count": 8
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 8
+      },
+      {
+        "key": "Swift",
+        "count": 6
+      },
+      {
+        "key": "Lysoform",
+        "count": 5
+      },
+      {
+        "key": "Véritas",
+        "count": 4
+      },
+      {
+        "key": "Genérico",
+        "count": 4
+      },
+      {
+        "key": "Yogurísimo",
+        "count": 3
+      },
+      {
+        "key": "Casancrem",
+        "count": 3
+      },
+      {
+        "key": "Lucchetti",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 30
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 26
+      },
+      {
+        "key": "Limpieza",
+        "count": 21
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 168,
+    "carrito_promedio": 47342.94,
+    "pct_con_carrito": 55.1,
+    "errores": 178
+  },
+  "origen": {
+    "total_requests": 231,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:44:57.058Z"
+}
