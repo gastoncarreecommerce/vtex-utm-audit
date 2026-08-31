@@ -1,10 +1,11 @@
 name: Fetch Atenti (logs chat IA)
 
-# fetch-atenti.js vuelve a leer los mails vía Gmail directo (revertido el
-# 2026-08-31): entre el 11 y el 30 de agosto el script estuvo pidiendo
-# APPSCRIPT_URL/APPSCRIPT_SECRET, que nunca se cargaron como secret, así que
-# todas las corridas diarias fallaban en el primer paso. Este workflow ya
-# tenía las env vars de Gmail correctas — no hacía falta tocarlo.
+# fetch-atenti.js pide los logs vía el Apps Script propio (apps-script/atenti-logs.gs),
+# no vía Gmail/OAuth directo: evita el refresh token de Google, que en un
+# proyecto OAuth en modo "Testing" vence a los 7 días de inactividad (eso fue
+# lo que rompió el módulo entre el 11 y el 31 de agosto tras un intento previo
+# de volver a Gmail). Necesita 2 secrets en el repo: APPSCRIPT_URL y
+# APPSCRIPT_SECRET (instrucciones de deploy en apps-script/atenti-logs.gs).
 on:
   push:
     branches: [main]
@@ -36,15 +37,11 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
-        run: npm install googleapis adm-zip
-
       - name: Fetch Atenti logs
         env:
-          GMAIL_CLIENT_ID:     ${{ secrets.GMAIL_CLIENT_ID }}
-          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
-          FETCH_ATENTI_DATE:   ${{ github.event.inputs.date }}
+          APPSCRIPT_URL:     ${{ secrets.APPSCRIPT_URL }}
+          APPSCRIPT_SECRET:  ${{ secrets.APPSCRIPT_SECRET }}
+          FETCH_ATENTI_DATE: ${{ github.event.inputs.date }}
         run: node fetch-atenti.js
 
       - name: Commit data
