@@ -1,0 +1,431 @@
+{
+  "date": "2026-08-30",
+  "chat": {
+    "llamadas": 75,
+    "usuarios_unicos": 30,
+    "con_productos_identificados": 35,
+    "con_sugerencia": 3,
+    "por_hora": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      6,
+      8,
+      5,
+      6,
+      5,
+      2,
+      1,
+      10,
+      12,
+      10,
+      6,
+      0,
+      2
+    ],
+    "errores": 17
+  },
+  "categorizar": {
+    "total": 34,
+    "top_recetas": [
+      {
+        "key": "En que entra sopapa?",
+        "count": 2
+      },
+      {
+        "key": "Dulce de leche",
+        "count": 1
+      },
+      {
+        "key": "Agua mineral Villa del sur",
+        "count": 1
+      },
+      {
+        "key": "Villa del sur",
+        "count": 1
+      },
+      {
+        "key": "Bon o bom",
+        "count": 1
+      },
+      {
+        "key": "Leche",
+        "count": 1
+      },
+      {
+        "key": "Pasta dental colgate",
+        "count": 1
+      },
+      {
+        "key": "Dulce de leche rigidiet ",
+        "count": 1
+      },
+      {
+        "key": "Shampoo, Acondicionador, Jabón de tocador, Jabón líquido, Jabón de ropa, Suavizante, Jabón blanco, Detergente, Raid, Limpia baño, Esponja (2), Cepillo de baño, Trapo de piso (3), Tacho de basura, Escobillon , Palita, Lavandina , Perfume para el piso, Balde, Secador",
+        "count": 1
+      },
+      {
+        "key": "Cerdo",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "shampoo",
+        "count": 8
+      },
+      {
+        "key": "acondicionador",
+        "count": 6
+      },
+      {
+        "key": "agua mineral",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "yogur griego",
+        "count": 4
+      },
+      {
+        "key": "jabones de tocador",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "pasta dental",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "queso crema",
+        "count": 3
+      },
+      {
+        "key": "papel higiénico",
+        "count": 3
+      },
+      {
+        "key": "dulce de leche",
+        "count": 2
+      },
+      {
+        "key": "jabón de tocador",
+        "count": 2
+      },
+      {
+        "key": "limpiador de baño",
+        "count": 2
+      },
+      {
+        "key": "limpiador de pisos",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 80,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "shampoo",
+        "count": 7
+      },
+      {
+        "key": "acondicionador",
+        "count": 5
+      },
+      {
+        "key": "agua mineral",
+        "count": 4
+      },
+      {
+        "key": "jabones de tocador",
+        "count": 4
+      },
+      {
+        "key": "pasta dental",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 3
+      },
+      {
+        "key": "yogur griego",
+        "count": 3
+      },
+      {
+        "key": "limpiador de bano",
+        "count": 2
+      },
+      {
+        "key": "limpiador de pisos",
+        "count": 2
+      },
+      {
+        "key": "cerdo",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "bombones",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Shampoo",
+        "count": 7
+      },
+      {
+        "key": "Acondicionador",
+        "count": 5
+      },
+      {
+        "key": "Agua Mineral",
+        "count": 4
+      },
+      {
+        "key": "Pasta Dental",
+        "count": 3
+      },
+      {
+        "key": "Jabones",
+        "count": 3
+      },
+      {
+        "key": "Fideos secos",
+        "count": 2
+      },
+      {
+        "key": "Aceite",
+        "count": 2
+      },
+      {
+        "key": "Queso Crema",
+        "count": 2
+      },
+      {
+        "key": "Yogur Griego",
+        "count": 2
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 2
+      }
+    ],
+    "errores": 11
+  },
+  "agregar": {
+    "total_agregados": 4,
+    "valor_total": 528998.85,
+    "ticket_promedio": 132249.71,
+    "descuento_total": 80581.15,
+    "canal": {
+      "inmediato": 0,
+      "programado": 4
+    },
+    "top_productos": [
+      {
+        "key": "Jugo en polvo Tang manzana 15 g Jugo en polvo Tang  manzana 15 g.",
+        "count": 29
+      },
+      {
+        "key": "Agua mineral sin gas Villa del Sur 2,25 lts",
+        "count": 24
+      },
+      {
+        "key": "Jugo en polvo Tang naranja dulce 15 g.",
+        "count": 19
+      },
+      {
+        "key": "Fideos tallarines Don Vicente en bolsa 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Galletitas Pepitos con chips de chocolate 357 g. Pack x3 de 119 g.",
+        "count": 8
+      },
+      {
+        "key": "Galletitas Oreo Rellenas con crema sabor original 354 g.",
+        "count": 8
+      },
+      {
+        "key": "Papel higiénico Elite Ultra Suave doble hoja 30 mts 4 uni",
+        "count": 8
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero 1,25 lts",
+        "count": 8
+      },
+      {
+        "key": "Papas noisettes Carrefour classic 500 g.",
+        "count": 6
+      },
+      {
+        "key": "Galletitas snacks Saladix sabor pizza 100 grs",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Jugos en polvo",
+        "count": 48
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 24
+      },
+      {
+        "key": "Galletitas dulces",
+        "count": 21
+      },
+      {
+        "key": "Fideos largos",
+        "count": 11
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 9
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 8
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 8
+      },
+      {
+        "key": "Otros snacks salados",
+        "count": 7
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 7
+      },
+      {
+        "key": "Papas",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 12,
+    "top_marcas": [
+      {
+        "key": "Colgate",
+        "count": 15
+      },
+      {
+        "key": "Higienol",
+        "count": 10
+      },
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "Algabo",
+        "count": 5
+      },
+      {
+        "key": "Campos Verdes",
+        "count": 5
+      },
+      {
+        "key": "Dulcor",
+        "count": 4
+      },
+      {
+        "key": "La Paulina",
+        "count": 4
+      },
+      {
+        "key": "Chiagraal",
+        "count": 4
+      },
+      {
+        "key": "Tresemmé",
+        "count": 3
+      },
+      {
+        "key": "Cocinero",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Perfumería y farmacia",
+        "count": 33
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 26
+      },
+      {
+        "key": "Almacén",
+        "count": 20
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 7
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 71,
+    "carrito_promedio": 35975.91,
+    "pct_con_carrito": 41.6,
+    "errores": 27
+  },
+  "origen": {
+    "total_requests": 118,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-08-31T20:43:22.763Z"
+}
