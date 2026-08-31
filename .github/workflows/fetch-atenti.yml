@@ -1,5 +1,10 @@
 name: Fetch Atenti (logs chat IA)
 
+# fetch-atenti.js vuelve a leer los mails vía Gmail directo (revertido el
+# 2026-08-31): entre el 11 y el 30 de agosto el script estuvo pidiendo
+# APPSCRIPT_URL/APPSCRIPT_SECRET, que nunca se cargaron como secret, así que
+# todas las corridas diarias fallaban en el primer paso. Este workflow ya
+# tenía las env vars de Gmail correctas — no hacía falta tocarlo.
 on:
   push:
     branches: [main]
