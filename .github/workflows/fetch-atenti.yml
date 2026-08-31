@@ -1,13 +1,16 @@
 name: Fetch Atenti (logs chat IA)
 
-# fetch-atenti.js pide los logs vía el Apps Script propio (apps-script/atenti-logs.gs),
-# no vía Gmail/OAuth directo: evita el refresh token de Google, que en un
-# proyecto OAuth en modo "Testing" vence a los 7 días de inactividad (eso fue
-# lo que rompió el módulo entre el 11 y el 31 de agosto tras un intento previo
-# de volver a Gmail). Necesita 2 secrets en el repo: APPSCRIPT_URL y
-# APPSCRIPT_SECRET (instrucciones de deploy en apps-script/atenti-logs.gs).
-# APPSCRIPT_URL/APPSCRIPT_SECRET cargados el 2026-08-31, desplegado desde una
-# cuenta personal (no Workspace) para poder usar acceso "Cualquier persona".
+# fetch-atenti.js lee los mails vía Gmail API con OAuth directo (GMAIL_CLIENT_ID/
+# SECRET/REFRESH_TOKEN, proyecto "Chimi BOT"). El mail que hay que leer es el
+# laboral (@carrefour), no el personal — por eso NO sirve Apps Script "Ejecutar
+# como Yo" con la cuenta personal (2026-08-31: probado, busca en la bandeja
+# equivocada). El refresh token debe salir de un client OAuth con scope
+# gmail.readonly y Publishing status "In production" (no "Testing"): en Testing
+# el token vence a los 7 días de inactividad SIN importar el uso, que fue la
+# causa original de la rotura. Con scope gmail.readonly (Sensitive, no
+# Restricted) se puede publicar sin pasar por la revisión de seguridad de
+# Google — solo hay que aceptar el cartel de "app no verificada" una vez al
+# volver a autorizar.
 on:
   push:
     branches: [main]
@@ -39,11 +42,15 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Install dependencies
+        run: npm install googleapis adm-zip
+
       - name: Fetch Atenti logs
         env:
-          APPSCRIPT_URL:     ${{ secrets.APPSCRIPT_URL }}
-          APPSCRIPT_SECRET:  ${{ secrets.APPSCRIPT_SECRET }}
-          FETCH_ATENTI_DATE: ${{ github.event.inputs.date }}
+          GMAIL_CLIENT_ID:     ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          FETCH_ATENTI_DATE:   ${{ github.event.inputs.date }}
         run: node fetch-atenti.js
 
       - name: Commit data
