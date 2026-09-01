@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T15:04:08-03:00",
+  "generated_at": "2026-09-01T12:30:37-03:00",
   "source": "vtex-utm-audit dashboard (docs/data/daily) — solo agregados, sin PII",
   "tab": "APP",
   "rows": {
@@ -61,7 +61,8 @@
   ],
   "col_by_month": {
     "2026-07": "G",
-    "2026-08": "H"
+    "2026-08": "H",
+    "2026-09": "I"
   },
   "months": {
     "2026-07": {
@@ -94,23 +95,47 @@
       "through": "2026-08-31",
       "days_in_month": 31,
       "partial": false,
-      "pedidos": 25816,
-      "vct": 2237303628,
-      "ticket": 86663,
-      "participacion": 0.2141020750053907,
-      "recompra": 0.29232318445681793,
-      "frecuencia": 1.5292027011017653,
-      "frecuencia_qc": 1.5580608793686583,
-      "unidades": 796262,
-      "unidades_prom": 30.84374031608305,
-      "food": 22818,
-      "food_pct": 0.8838704679268671,
-      "non_food": 130,
-      "non_food_pct": 0.0050356368143786795,
-      "marketplace": 104,
-      "marketplace_pct": 0.004028509451502944,
-      "quick": 2764,
-      "quick_pct": 0.10706538580725132
+      "pedidos": 26936,
+      "vct": 2329633005,
+      "ticket": 86488,
+      "participacion": 0.2149274691604296,
+      "recompra": 0.299201745822087,
+      "frecuencia": 1.5468902544076264,
+      "frecuencia_qc": 1.5698509110988403,
+      "unidades": 829185,
+      "unidades_prom": 30.783523908523907,
+      "food": 23848,
+      "food_pct": 0.8853578853578854,
+      "non_food": 137,
+      "non_food_pct": 0.005086130086130086,
+      "marketplace": 108,
+      "marketplace_pct": 0.004009504009504009,
+      "quick": 2843,
+      "quick_pct": 0.10554648054648055
+    },
+    "2026-09": {
+      "name": "septiembre",
+      "days": 1,
+      "through": "2026-09-01",
+      "days_in_month": 30,
+      "partial": true,
+      "pedidos": 97,
+      "vct": 11719003,
+      "ticket": 120814,
+      "participacion": 0.18653846153846154,
+      "recompra": null,
+      "frecuencia": null,
+      "frecuencia_qc": null,
+      "unidades": 3933,
+      "unidades_prom": 40.54639175257732,
+      "food": 92,
+      "food_pct": 0.9484536082474226,
+      "non_food": 0,
+      "non_food_pct": 0,
+      "marketplace": 0,
+      "marketplace_pct": 0,
+      "quick": 5,
+      "quick_pct": 0.05154639175257732
     }
   }
 }
