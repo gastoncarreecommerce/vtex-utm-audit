@@ -1,0 +1,435 @@
+{
+  "date": "2026-08-31",
+  "chat": {
+    "llamadas": 212,
+    "usuarios_unicos": 68,
+    "con_productos_identificados": 128,
+    "con_sugerencia": 26,
+    "por_hora": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      6,
+      2,
+      20,
+      8,
+      8,
+      9,
+      11,
+      17,
+      13,
+      43,
+      25,
+      9,
+      7,
+      13,
+      17
+    ],
+    "errores": 42
+  },
+  "categorizar": {
+    "total": 100,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "frutos rojos congelados",
+        "count": 1
+      },
+      {
+        "key": "Necesito ver mis pedidos ",
+        "count": 1
+      },
+      {
+        "key": "yerba la merced barbacua",
+        "count": 1
+      },
+      {
+        "key": "cafe dolce guato",
+        "count": 1
+      },
+      {
+        "key": "Dale",
+        "count": 1
+      },
+      {
+        "key": "Quiero buscar la promo de fernet y Coca",
+        "count": 1
+      },
+      {
+        "key": "Es la promo del fernet más la coca grande por 19800",
+        "count": 1
+      },
+      {
+        "key": "Leche larga vida ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite de girasol",
+        "count": 17
+      },
+      {
+        "key": "azúcar",
+        "count": 11
+      },
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "jabón líquido para ropa",
+        "count": 8
+      },
+      {
+        "key": "té",
+        "count": 8
+      },
+      {
+        "key": "jabón de glicerina",
+        "count": 8
+      },
+      {
+        "key": "queso crema",
+        "count": 6
+      },
+      {
+        "key": "leche descremada",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "bolsas para horno",
+        "count": 6
+      },
+      {
+        "key": "jabón líquido",
+        "count": 5
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 5
+      },
+      {
+        "key": "guantes para lavar",
+        "count": 5
+      },
+      {
+        "key": "detergente",
+        "count": 5
+      },
+      {
+        "key": "edulcorante líquido",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 401,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "aceite de girasol",
+        "count": 16
+      },
+      {
+        "key": "azucar",
+        "count": 10
+      },
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "te",
+        "count": 9
+      },
+      {
+        "key": "jabon liquido para ropa",
+        "count": 8
+      },
+      {
+        "key": "jabon de glicerina",
+        "count": 8
+      },
+      {
+        "key": "queso crema",
+        "count": 6
+      },
+      {
+        "key": "leche descremada",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "bolsas para horno",
+        "count": 6
+      },
+      {
+        "key": "atun",
+        "count": 5
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 5
+      },
+      {
+        "key": "jabon liquido",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "pollo",
+        "count": 4
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Aceite de Girasol",
+        "count": 14
+      },
+      {
+        "key": "Azucar",
+        "count": 10
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 10
+      },
+      {
+        "key": "Te",
+        "count": 9
+      },
+      {
+        "key": "Legumbres",
+        "count": 8
+      },
+      {
+        "key": "Galletitas Dulces",
+        "count": 6
+      },
+      {
+        "key": "Jugos en Polvo",
+        "count": 6
+      },
+      {
+        "key": "Jugo en Polvo",
+        "count": 6
+      },
+      {
+        "key": "Pescados",
+        "count": 5
+      },
+      {
+        "key": "Queso crema",
+        "count": 5
+      }
+    ],
+    "errores": 24909
+  },
+  "agregar": {
+    "total_agregados": 37,
+    "valor_total": 1027690.34,
+    "ticket_promedio": 27775.41,
+    "descuento_total": 194516.56,
+    "canal": {
+      "inmediato": 0,
+      "programado": 37
+    },
+    "top_productos": [
+      {
+        "key": "Leche Protein La Serenisima 1L",
+        "count": 27
+      },
+      {
+        "key": "Leche liviana UAT Las tres niñas 2 fortificada 1 lt.",
+        "count": 24
+      },
+      {
+        "key": "Yogur Griego natural endulzado Yogurísimo 300 grs",
+        "count": 19
+      },
+      {
+        "key": "Palta x uni",
+        "count": 17
+      },
+      {
+        "key": "Gaseosa cola Coca Cola sabor original 2,25 lts",
+        "count": 16
+      },
+      {
+        "key": "Yogur Griego con granola Yogurísimo 168 grs",
+        "count": 15
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 14
+      },
+      {
+        "key": "Tostadas de arroz Carrefour classic aireadas sin TACC 110 g.",
+        "count": 12
+      },
+      {
+        "key": "Leche ultra entera Carrefour classic sachet 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Matambrito congelado x kg",
+        "count": 9
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches descremadas",
+        "count": 51
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 38
+      },
+      {
+        "key": "Frutas",
+        "count": 17
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 16
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 16
+      },
+      {
+        "key": "Leches enteras",
+        "count": 15
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 14
+      },
+      {
+        "key": "Jabones para la ropa",
+        "count": 11
+      },
+      {
+        "key": "Tapas y pastas frescas",
+        "count": 11
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 22,
+    "top_marcas": [
+      {
+        "key": "Granby",
+        "count": 11
+      },
+      {
+        "key": "Genérico",
+        "count": 11
+      },
+      {
+        "key": "Yogurísimo",
+        "count": 10
+      },
+      {
+        "key": "Ala",
+        "count": 8
+      },
+      {
+        "key": "Querubín",
+        "count": 8
+      },
+      {
+        "key": "Carrefour",
+        "count": 8
+      },
+      {
+        "key": "Skip",
+        "count": 7
+      },
+      {
+        "key": "Ace",
+        "count": 6
+      },
+      {
+        "key": "Vivere",
+        "count": 6
+      },
+      {
+        "key": "La Salteña",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Limpieza",
+        "count": 67
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 54
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 8
+      },
+      {
+        "key": "Bebidas",
+        "count": 4
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 166,
+    "carrito_promedio": 65631.78,
+    "pct_con_carrito": 58.7,
+    "errores": 257
+  },
+  "origen": {
+    "total_requests": 299,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-01T09:25:43.815Z"
+}
