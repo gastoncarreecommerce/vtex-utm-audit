@@ -1,0 +1,435 @@
+{
+  "date": "2026-09-01",
+  "chat": {
+    "llamadas": 115,
+    "usuarios_unicos": 57,
+    "con_productos_identificados": 55,
+    "con_sugerencia": 15,
+    "por_hora": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      4,
+      9,
+      9,
+      10,
+      8,
+      2,
+      8,
+      5,
+      11,
+      3,
+      12,
+      10,
+      1,
+      4,
+      12,
+      3
+    ],
+    "errores": 28
+  },
+  "categorizar": {
+    "total": 46,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 7
+      },
+      {
+        "key": "Yogur griego",
+        "count": 1
+      },
+      {
+        "key": "Tostadas carrefoull pawuete celeste",
+        "count": 1
+      },
+      {
+        "key": "Alcohol ",
+        "count": 1
+      },
+      {
+        "key": "Café ",
+        "count": 1
+      },
+      {
+        "key": "Instantáneo ",
+        "count": 1
+      },
+      {
+        "key": "Yogures ",
+        "count": 1
+      },
+      {
+        "key": "Leche",
+        "count": 1
+      },
+      {
+        "key": "1 yerba playadito o mañanita de 1kg",
+        "count": 1
+      },
+      {
+        "key": "Quiero hacer pastel de papas",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "atún al natural",
+        "count": 6
+      },
+      {
+        "key": "mayonesa natura",
+        "count": 5
+      },
+      {
+        "key": "leche descremada",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "leche",
+        "count": 4
+      },
+      {
+        "key": "manteca",
+        "count": 4
+      },
+      {
+        "key": "leche carrefour",
+        "count": 4
+      },
+      {
+        "key": "carne picada",
+        "count": 3
+      },
+      {
+        "key": "cebolla",
+        "count": 3
+      },
+      {
+        "key": "morrón",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "jabón de tocador",
+        "count": 2
+      },
+      {
+        "key": "papas",
+        "count": 2
+      },
+      {
+        "key": "aceitunas",
+        "count": 2
+      },
+      {
+        "key": "sal",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 129,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "mayonesa natura",
+        "count": 5
+      },
+      {
+        "key": "atun al natural",
+        "count": 4
+      },
+      {
+        "key": "leche carrefour",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 3
+      },
+      {
+        "key": "leche descremada",
+        "count": 3
+      },
+      {
+        "key": "morron",
+        "count": 2
+      },
+      {
+        "key": "huevos",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "manteca",
+        "count": 2
+      },
+      {
+        "key": "leche",
+        "count": 2
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "queso crema",
+        "count": 2
+      },
+      {
+        "key": "jabon liquido para ropa",
+        "count": 2
+      },
+      {
+        "key": "palta",
+        "count": 2
+      },
+      {
+        "key": "tostaditas de arroz",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leche",
+        "count": 5
+      },
+      {
+        "key": "Mayonesa",
+        "count": 5
+      },
+      {
+        "key": "Jugos en Polvo",
+        "count": 4
+      },
+      {
+        "key": "Gaseosas",
+        "count": 3
+      },
+      {
+        "key": "Pescados",
+        "count": 3
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 3
+      },
+      {
+        "key": "Queso Rallado",
+        "count": 3
+      },
+      {
+        "key": "Obleas",
+        "count": 3
+      },
+      {
+        "key": "Tostadas",
+        "count": 2
+      },
+      {
+        "key": "Crema de Leche",
+        "count": 2
+      }
+    ],
+    "errores": 801
+  },
+  "agregar": {
+    "total_agregados": 24,
+    "valor_total": 570016.95,
+    "ticket_promedio": 23750.71,
+    "descuento_total": 138780.73,
+    "canal": {
+      "inmediato": 0,
+      "programado": 24
+    },
+    "top_productos": [
+      {
+        "key": "Barra de cereal Cereal mix 23 g.",
+        "count": 30
+      },
+      {
+        "key": "Azúcar Ledesma molida superior bolsa 1 kg.",
+        "count": 15
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 170 grs",
+        "count": 13
+      },
+      {
+        "key": "Tostaditas de arroz Crackines 120 g. sin TACC",
+        "count": 12
+      },
+      {
+        "key": "Gaseosa cola Pepsi Black pet 1,5 lts",
+        "count": 12
+      },
+      {
+        "key": "Leche parcialmente descremada UAT Carrefour classic tetra 1 lt.",
+        "count": 12
+      },
+      {
+        "key": "Encendedor Bic classic 1 u.",
+        "count": 10
+      },
+      {
+        "key": "Protector diario Kotex extra protección 60 uni",
+        "count": 10
+      },
+      {
+        "key": "Rollo de cocina Elegante Premium 3 x 60 paños",
+        "count": 10
+      },
+      {
+        "key": "Vino tinto Malbec Los Árboles 750 ml",
+        "count": 9
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Barritas de cereales",
+        "count": 30
+      },
+      {
+        "key": "Azúcar",
+        "count": 15
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 14
+      },
+      {
+        "key": "Galletas de arroz",
+        "count": 12
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 12
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 12
+      },
+      {
+        "key": "Palillos, velas y fósforos",
+        "count": 10
+      },
+      {
+        "key": "Protectores diarios",
+        "count": 10
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 10
+      },
+      {
+        "key": "Vinos tintos",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 14,
+    "top_marcas": [
+      {
+        "key": "La Serenísima",
+        "count": 12
+      },
+      {
+        "key": "Tonadita",
+        "count": 9
+      },
+      {
+        "key": "Yogurísimo",
+        "count": 8
+      },
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Tregar",
+        "count": 5
+      },
+      {
+        "key": "Lactal",
+        "count": 5
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 4
+      },
+      {
+        "key": "La Perla",
+        "count": 4
+      },
+      {
+        "key": "Genérico",
+        "count": 4
+      },
+      {
+        "key": "Bialcohol",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 60
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 9
+      },
+      {
+        "key": "Panadería",
+        "count": 9
+      },
+      {
+        "key": "Almacén",
+        "count": 8
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 7
+      },
+      {
+        "key": "Limpieza",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 119,
+    "carrito_promedio": 41170.19,
+    "pct_con_carrito": 46.9,
+    "errores": 164
+  },
+  "origen": {
+    "total_requests": 197,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-02T08:48:03.424Z"
+}
