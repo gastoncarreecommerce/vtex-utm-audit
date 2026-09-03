@@ -1,0 +1,427 @@
+{
+  "date": "2026-09-02",
+  "chat": {
+    "llamadas": 130,
+    "usuarios_unicos": 74,
+    "con_productos_identificados": 54,
+    "con_sugerencia": 8,
+    "por_hora": [
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      3,
+      5,
+      6,
+      13,
+      14,
+      6,
+      15,
+      5,
+      4,
+      4,
+      10,
+      8,
+      1,
+      6,
+      3,
+      12,
+      6,
+      4
+    ],
+    "errores": 43
+  },
+  "categorizar": {
+    "total": 39,
+    "top_recetas": [
+      {
+        "key": "Galletitas",
+        "count": 1
+      },
+      {
+        "key": "Arroz 2 k Fideos comunes — 2 paquetes Fideos integrales — 2 paquetes Puré de tomate — 4 Atún — 2 latas Aceite — 2 botellas Harina — 1 kg Azúcar — 3 kg Galletitas de agua — 3 paquetes Galletitas dulces — 2 paquetes Avena — 1 paquete Desayuno Leche — 2 litros Cacao — 1 Mate cocido — 1 caja Huevos Maple x30 — 2 maples (60 huevos) Carnes Pollo — 2–3 kg Carne picada — 1 kg Otra carne económica — 1–2 kg Frutas y verduras Papa — 3 kg Cebolla — 2 kg Zanahoria — 1 kg Zapallo — 1 Tomate — 1 kg Banana — 1 kg Manzana — 1 kg Mandarina/naranja — 2 kg Bebidas Agua mineral — 2 botellas de 6 L Limpieza Jabón líquido para ropa — 1 Detergente — 1 Esponjas — 2 Papel higiénico — bolsón x18",
+        "count": 1
+      },
+      {
+        "key": "Café cápsula tostado",
+        "count": 1
+      },
+      {
+        "key": "En cápsulas ",
+        "count": 1
+      },
+      {
+        "key": "Colombia café ",
+        "count": 1
+      },
+      {
+        "key": "Tarta de atun",
+        "count": 1
+      },
+      {
+        "key": "Esos",
+        "count": 1
+      },
+      {
+        "key": "Papel.",
+        "count": 1
+      },
+      {
+        "key": "Leche en polvo,galletitas tostadas mermeladas yerba y yogures ",
+        "count": 1
+      },
+      {
+        "key": "Chocolates con descuento ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "azúcar",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "galletitas",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "atún",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "café",
+        "count": 2
+      },
+      {
+        "key": "cerveza",
+        "count": 2
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "acondicionador",
+        "count": 2
+      },
+      {
+        "key": "leche en pack",
+        "count": 2
+      },
+      {
+        "key": "arroz",
+        "count": 1
+      },
+      {
+        "key": "fideos integrales",
+        "count": 1
+      },
+      {
+        "key": "puré de tomate",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 91,
+    "sin_resultado": 3,
+    "top_terminos": [
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "atun",
+        "count": 3
+      },
+      {
+        "key": "azucar",
+        "count": 3
+      },
+      {
+        "key": "galletitas",
+        "count": 2
+      },
+      {
+        "key": "cebolla",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "cafe",
+        "count": 2
+      },
+      {
+        "key": "cerveza",
+        "count": 2
+      },
+      {
+        "key": "shampoo",
+        "count": 2
+      },
+      {
+        "key": "acondicionador",
+        "count": 2
+      },
+      {
+        "key": "leche en pack",
+        "count": 2
+      },
+      {
+        "key": "arroz",
+        "count": 1
+      },
+      {
+        "key": "galletitas de agua",
+        "count": 1
+      },
+      {
+        "key": "esponjas",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Galletitas Dulces",
+        "count": 3
+      },
+      {
+        "key": "Aceite",
+        "count": 3
+      },
+      {
+        "key": "Azucar",
+        "count": 3
+      },
+      {
+        "key": "Cafe",
+        "count": 3
+      },
+      {
+        "key": "Leche Larga Vida",
+        "count": 3
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 2
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 2
+      },
+      {
+        "key": "Cebolla",
+        "count": 2
+      },
+      {
+        "key": "Fideos",
+        "count": 2
+      },
+      {
+        "key": "Atun",
+        "count": 2
+      }
+    ],
+    "errores": 4568
+  },
+  "agregar": {
+    "total_agregados": 9,
+    "valor_total": 670901.15,
+    "ticket_promedio": 74544.57,
+    "descuento_total": 128345.1,
+    "canal": {
+      "inmediato": 0,
+      "programado": 9
+    },
+    "top_productos": [
+      {
+        "key": "Yogur Griego natural sin endulzar Yogurísimo 300 grs",
+        "count": 30
+      },
+      {
+        "key": "Naranja de jugo x kg.",
+        "count": 23
+      },
+      {
+        "key": "Yogur bebible Ser PRO+ con proteínas sabor vainilla 190 grs",
+        "count": 18
+      },
+      {
+        "key": "Manzana verde granny smith Huella Natural x kg.",
+        "count": 15
+      },
+      {
+        "key": "Pimiento rojo x kg",
+        "count": 13
+      },
+      {
+        "key": "Lomito de atún al natural Carrefour Classic 354 grs",
+        "count": 12
+      },
+      {
+        "key": "Yogur bebible Ser PRO+ con proteínas sabor frutillas y arándanos 190 grs",
+        "count": 12
+      },
+      {
+        "key": "Leche La serenisima clásica 3% 1L.",
+        "count": 10
+      },
+      {
+        "key": "Bizcochos 9 de Oro agridulces 200 g.",
+        "count": 8
+      },
+      {
+        "key": "Pan de mesa multicereal Mimago grande 650 grs",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Yogures descremados",
+        "count": 61
+      },
+      {
+        "key": "Frutas",
+        "count": 39
+      },
+      {
+        "key": "Verduras",
+        "count": 33
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 14
+      },
+      {
+        "key": "Leches enteras",
+        "count": 13
+      },
+      {
+        "key": "Conservas de pescado",
+        "count": 12
+      },
+      {
+        "key": "Bizcochitos",
+        "count": 8
+      },
+      {
+        "key": "Panes lacteados y de mesa",
+        "count": 7
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 7
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 7,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "Higienol",
+        "count": 7
+      },
+      {
+        "key": "Cadbury",
+        "count": 4
+      },
+      {
+        "key": "Milka",
+        "count": 4
+      },
+      {
+        "key": "Andes",
+        "count": 4
+      },
+      {
+        "key": "Ace",
+        "count": 3
+      },
+      {
+        "key": "Granby",
+        "count": 3
+      },
+      {
+        "key": "Nosotras",
+        "count": 3
+      },
+      {
+        "key": "Imperial",
+        "count": 3
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 10
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 185,
+    "carrito_promedio": 57916.63,
+    "pct_con_carrito": 64.7,
+    "errores": 64
+  },
+  "origen": {
+    "total_requests": 274,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-03T08:57:24.496Z"
+}
