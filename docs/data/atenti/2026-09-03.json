@@ -1,0 +1,439 @@
+{
+  "date": "2026-09-03",
+  "chat": {
+    "llamadas": 163,
+    "usuarios_unicos": 86,
+    "con_productos_identificados": 84,
+    "con_sugerencia": 13,
+    "por_hora": [
+      1,
+      1,
+      1,
+      10,
+      0,
+      0,
+      2,
+      2,
+      9,
+      19,
+      10,
+      8,
+      8,
+      7,
+      9,
+      7,
+      10,
+      5,
+      11,
+      12,
+      5,
+      19,
+      5,
+      2
+    ],
+    "errores": 51
+  },
+  "categorizar": {
+    "total": 77,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 5
+      },
+      {
+        "key": "Papel higiénico ",
+        "count": 3
+      },
+      {
+        "key": "Fideos",
+        "count": 2
+      },
+      {
+        "key": "Fernet hay descuento por mercado pago si retiro en tienda ",
+        "count": 1
+      },
+      {
+        "key": "Gaseosa ",
+        "count": 1
+      },
+      {
+        "key": "Detergentes para Limpieza pisos ",
+        "count": 1
+      },
+      {
+        "key": "Pan de mesa tipo molde ",
+        "count": 1
+      },
+      {
+        "key": "Pan molde Fargo ",
+        "count": 1
+      },
+      {
+        "key": "Fargo",
+        "count": 1
+      },
+      {
+        "key": "Volviste a mostrar lo mismo. Te pudo Fargo y me traes Bimbo",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "mandarinas",
+        "count": 9
+      },
+      {
+        "key": "palta",
+        "count": 8
+      },
+      {
+        "key": "lechuga",
+        "count": 7
+      },
+      {
+        "key": "yogurt natural sin sellos",
+        "count": 7
+      },
+      {
+        "key": "aceite",
+        "count": 7
+      },
+      {
+        "key": "hamburguesas sin sellos",
+        "count": 6
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "papel higiénico",
+        "count": 6
+      },
+      {
+        "key": "agua mineral sin sodio",
+        "count": 5
+      },
+      {
+        "key": "gaseosa",
+        "count": 4
+      },
+      {
+        "key": "mate cocido en saquitos",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 4
+      },
+      {
+        "key": "pan de molde",
+        "count": 3
+      },
+      {
+        "key": "vino tinto",
+        "count": 3
+      },
+      {
+        "key": "cerveza en lata",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 215,
+    "sin_resultado": 7,
+    "top_terminos": [
+      {
+        "key": "mandarinas",
+        "count": 9
+      },
+      {
+        "key": "palta",
+        "count": 8
+      },
+      {
+        "key": "lechuga",
+        "count": 7
+      },
+      {
+        "key": "yogurt natural sin sellos",
+        "count": 7
+      },
+      {
+        "key": "hamburguesas sin sellos",
+        "count": 6
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 6
+      },
+      {
+        "key": "agua mineral sin sodio",
+        "count": 5
+      },
+      {
+        "key": "papel higienico",
+        "count": 5
+      },
+      {
+        "key": "gaseosa",
+        "count": 4
+      },
+      {
+        "key": "mate cocido en saquitos",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 4
+      },
+      {
+        "key": "pan de molde",
+        "count": 3
+      },
+      {
+        "key": "vino tinto",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Citricos",
+        "count": 9
+      },
+      {
+        "key": "Paltas",
+        "count": 7
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 6
+      },
+      {
+        "key": "Gaseosas",
+        "count": 4
+      },
+      {
+        "key": "Cafe",
+        "count": 4
+      },
+      {
+        "key": "Aceite",
+        "count": 4
+      },
+      {
+        "key": "Pan de molde",
+        "count": 3
+      },
+      {
+        "key": "Sal",
+        "count": 3
+      },
+      {
+        "key": "Hamburguesas de Carne",
+        "count": 3
+      },
+      {
+        "key": "Agua Mineral",
+        "count": 3
+      }
+    ],
+    "errores": 7
+  },
+  "agregar": {
+    "total_agregados": 25,
+    "valor_total": 664625.46,
+    "ticket_promedio": 26585.02,
+    "descuento_total": 106000.41,
+    "canal": {
+      "inmediato": 0,
+      "programado": 25
+    },
+    "top_productos": [
+      {
+        "key": "Gaseosa cola Cunnington classic pet 2,25 lts",
+        "count": 24
+      },
+      {
+        "key": "Yogur entero natural cremoso Milkaut en pote 300 grs",
+        "count": 16
+      },
+      {
+        "key": "Avena tradicional Morixe 400 g.",
+        "count": 12
+      },
+      {
+        "key": "Leche con proteina Las Tres Niñas Vida Activa 1 lt",
+        "count": 12
+      },
+      {
+        "key": "Leche La serenisima liviana 1% 1L",
+        "count": 12
+      },
+      {
+        "key": "Gaseosa cola Coca Cola Zero en lata 354 ml",
+        "count": 12
+      },
+      {
+        "key": "Vino tinto Red Blend Elementos 750 ml",
+        "count": 9
+      },
+      {
+        "key": "Fideos tirabuzones Favorita fortificado 500 g.",
+        "count": 8
+      },
+      {
+        "key": "Gaseosa lima limón 7 Up sin azúcar 2.25 lts",
+        "count": 6
+      },
+      {
+        "key": "Detergente Magistral Ultra Limón Botella 500 ml",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Gaseosas cola",
+        "count": 36
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 24
+      },
+      {
+        "key": "Verduras",
+        "count": 16
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 16
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 14
+      },
+      {
+        "key": "Vinos tintos",
+        "count": 12
+      },
+      {
+        "key": "Avena",
+        "count": 12
+      },
+      {
+        "key": "Cremas de leche",
+        "count": 8
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 8
+      },
+      {
+        "key": "Gaseosas limón",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 20,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 24
+      },
+      {
+        "key": "Genérico",
+        "count": 22
+      },
+      {
+        "key": "Higienol",
+        "count": 12
+      },
+      {
+        "key": "Cif",
+        "count": 6
+      },
+      {
+        "key": "7 Up",
+        "count": 5
+      },
+      {
+        "key": "Cocinero",
+        "count": 5
+      },
+      {
+        "key": "Lysoform",
+        "count": 5
+      },
+      {
+        "key": "Carrefour Eco Planet",
+        "count": 4
+      },
+      {
+        "key": "La Perla",
+        "count": 4
+      },
+      {
+        "key": "Noly",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Limpieza",
+        "count": 50
+      },
+      {
+        "key": "Bebidas",
+        "count": 36
+      },
+      {
+        "key": "Panadería",
+        "count": 27
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 14
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 11
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 10
+      },
+      {
+        "key": "Congelados",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 207,
+    "carrito_promedio": 65090.67,
+    "pct_con_carrito": 54.7,
+    "errores": 28
+  },
+  "origen": {
+    "total_requests": 365,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-04T08:52:48.340Z"
+}
