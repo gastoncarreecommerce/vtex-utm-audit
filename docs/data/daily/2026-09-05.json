@@ -1,33 +1,33 @@
 {
   "date": "2026-09-05",
-  "total_ecomm_orders": 1045,
-  "total_ecomm_gmv": 136087280,
+  "total_ecomm_orders": 1383,
+  "total_ecomm_gmv": 178416241,
   "app": {
-    "total": 290,
-    "gmv": 28341938,
-    "con_utm": 200,
-    "sin_utm": 90,
+    "total": 387,
+    "gmv": 39351285,
+    "con_utm": 268,
+    "sin_utm": 119,
     "segments": {
       "food": {
-        "orders": 242,
-        "gmv": 26102199
+        "orders": 307,
+        "gmv": 34514038
       },
       "non_food": {
-        "orders": 0,
-        "gmv": 0
+        "orders": 2,
+        "gmv": 1161299
       },
       "marketplace": {
-        "orders": 2,
-        "gmv": 142102
+        "orders": 3,
+        "gmv": 504715
       },
       "quickcommerce": {
-        "orders": 46,
-        "gmv": 2097637
+        "orders": 75,
+        "gmv": 3171233
       }
     }
   },
-  "participation_pct": 27.8,
-  "participation_gmv_pct": 20.8,
-  "utm_pct_sin": 31,
-  "fetched_at": "2026-09-05T15:50:49.707Z"
+  "participation_pct": 28,
+  "participation_gmv_pct": 22.1,
+  "utm_pct_sin": 30.7,
+  "fetched_at": "2026-09-05T17:45:05.690Z"
 }
