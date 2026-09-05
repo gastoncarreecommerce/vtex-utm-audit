@@ -1,0 +1,423 @@
+{
+  "date": "2026-09-04",
+  "chat": {
+    "llamadas": 124,
+    "usuarios_unicos": 62,
+    "con_productos_identificados": 62,
+    "con_sugerencia": 12,
+    "por_hora": [
+      11,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10,
+      9,
+      10,
+      5,
+      14,
+      4,
+      9,
+      1,
+      1,
+      10,
+      4,
+      13,
+      13,
+      3,
+      3,
+      3
+    ],
+    "errores": 31
+  },
+  "categorizar": {
+    "total": 54,
+    "top_recetas": [
+      {
+        "key": "Carne",
+        "count": 2
+      },
+      {
+        "key": "Alimento para perro matute",
+        "count": 2
+      },
+      {
+        "key": "Fideos con tuco",
+        "count": 1
+      },
+      {
+        "key": "Vi en la web que hay promo del 70% en la segunda unidad de BOCADITOS DE  CALABAZA Y MOZZARELLA/ESPINACA/POLLO REBOZADOS PREFRITOS X 400 G ",
+        "count": 1
+      },
+      {
+        "key": "Azúcar ",
+        "count": 1
+      },
+      {
+        "key": "Tortas",
+        "count": 1
+      },
+      {
+        "key": "Torta lista de panaderia",
+        "count": 1
+      },
+      {
+        "key": "Milanesas ",
+        "count": 1
+      },
+      {
+        "key": "Jabon liquido para cuerpo, shampoo plusbelle",
+        "count": 1
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "alimento para perro adulto",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "carne picada",
+        "count": 2
+      },
+      {
+        "key": "puré de tomate",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "azúcar",
+        "count": 2
+      },
+      {
+        "key": "alimento seco para gatos",
+        "count": 2
+      },
+      {
+        "key": "desodorante para heladera",
+        "count": 2
+      },
+      {
+        "key": "barritas proteicas",
+        "count": 2
+      },
+      {
+        "key": "yogures ser pro+",
+        "count": 2
+      },
+      {
+        "key": "yogur ser pro+",
+        "count": 2
+      },
+      {
+        "key": "yogur descremado vainilla",
+        "count": 2
+      },
+      {
+        "key": "yogur descremado frutilla",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 137,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 5
+      },
+      {
+        "key": "alimento para perro adulto",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      },
+      {
+        "key": "carne picada",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "pure de tomate",
+        "count": 2
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "alimento seco para gatos",
+        "count": 2
+      },
+      {
+        "key": "desodorante para heladera",
+        "count": 2
+      },
+      {
+        "key": "barritas proteicas",
+        "count": 2
+      },
+      {
+        "key": "yogures ser pro+",
+        "count": 2
+      },
+      {
+        "key": "yogur descremado vainilla",
+        "count": 2
+      },
+      {
+        "key": "yogur descremado frutilla",
+        "count": 2
+      },
+      {
+        "key": "yogur ser pro+",
+        "count": 2
+      },
+      {
+        "key": "pan rallado",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Descremados",
+        "count": 4
+      },
+      {
+        "key": "Yogur descremado",
+        "count": 4
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 3
+      },
+      {
+        "key": "Shampoo",
+        "count": 3
+      },
+      {
+        "key": "Alimento seco",
+        "count": 3
+      },
+      {
+        "key": "Barras Proteicas",
+        "count": 3
+      },
+      {
+        "key": "Alimento",
+        "count": 3
+      },
+      {
+        "key": "Alimento Seco",
+        "count": 3
+      },
+      {
+        "key": "Fideos secos",
+        "count": 2
+      },
+      {
+        "key": "Tortas",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 29,
+    "valor_total": 1057216.55,
+    "ticket_promedio": 36455.74,
+    "descuento_total": 126310.77,
+    "canal": {
+      "inmediato": 0,
+      "programado": 29
+    },
+    "top_productos": [
+      {
+        "key": "Fideos Rina Matarazzo spaghetti 500 g.",
+        "count": 32
+      },
+      {
+        "key": "Agua saborizada citrus H2OH con gas 2,25 lts",
+        "count": 20
+      },
+      {
+        "key": "Pan rallado Carrefour classic 500 g.",
+        "count": 16
+      },
+      {
+        "key": "Yogur Cremoso Vainilla Descremado La Serenísima Nutrición Activa 120 grs",
+        "count": 16
+      },
+      {
+        "key": "Yogur Griego natural sin endulzar Yogurísimo 300 grs",
+        "count": 12
+      },
+      {
+        "key": "Yogur Cremoso Frutilla Descremado La Serenísima Nutrición Activa 120grs Yogur Cremoso Frutilla Descremado La Serenísima Nutrición Activa 120 grs",
+        "count": 12
+      },
+      {
+        "key": "Queso Port Salut La Pauilna tradicional x kg",
+        "count": 12
+      },
+      {
+        "key": "Jardinera Bulnez en lata 300 g.",
+        "count": 10
+      },
+      {
+        "key": "Aceite de girasol alto omega Carrefour Classic pet 1.5 lts",
+        "count": 9
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Yogures descremados",
+        "count": 44
+      },
+      {
+        "key": "Fideos largos",
+        "count": 35
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 29
+      },
+      {
+        "key": "Aguas saborizadas",
+        "count": 20
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 17
+      },
+      {
+        "key": "Pan rallado y rebozadores",
+        "count": 16
+      },
+      {
+        "key": "Insecticidas",
+        "count": 15
+      },
+      {
+        "key": "Yerba",
+        "count": 12
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 12
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 11
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 9,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 16
+      },
+      {
+        "key": "Integra",
+        "count": 8
+      },
+      {
+        "key": "Lario",
+        "count": 6
+      },
+      {
+        "key": "Smirnoff",
+        "count": 4
+      },
+      {
+        "key": "Tonadita",
+        "count": 4
+      },
+      {
+        "key": "Cocinero",
+        "count": 3
+      },
+      {
+        "key": "Beepure",
+        "count": 3
+      },
+      {
+        "key": "Morixe",
+        "count": 3
+      },
+      {
+        "key": "Mamá Cocina",
+        "count": 3
+      },
+      {
+        "key": "Lays",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 38
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 20
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 20
+      },
+      {
+        "key": "Bebidas",
+        "count": 10
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 149,
+    "carrito_promedio": 55382.12,
+    "pct_con_carrito": 53.6,
+    "errores": 19
+  },
+  "origen": {
+    "total_requests": 292,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-05T08:22:40.016Z"
+}
