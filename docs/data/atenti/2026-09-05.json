@@ -1,0 +1,435 @@
+{
+  "date": "2026-09-05",
+  "chat": {
+    "llamadas": 111,
+    "usuarios_unicos": 59,
+    "con_productos_identificados": 65,
+    "con_sugerencia": 8,
+    "por_hora": [
+      0,
+      2,
+      0,
+      4,
+      0,
+      3,
+      0,
+      2,
+      2,
+      5,
+      11,
+      7,
+      6,
+      7,
+      4,
+      13,
+      8,
+      2,
+      20,
+      3,
+      3,
+      4,
+      3,
+      2
+    ],
+    "errores": 24
+  },
+  "categorizar": {
+    "total": 55,
+    "top_recetas": [
+      {
+        "key": "Lácteos fideos fiambres",
+        "count": 1
+      },
+      {
+        "key": "Huevos,  leche,  yogurt, fiambre,  pan, cafe",
+        "count": 1
+      },
+      {
+        "key": "Enteros, café molido ",
+        "count": 1
+      },
+      {
+        "key": "Pan lactal",
+        "count": 1
+      },
+      {
+        "key": "Pollo",
+        "count": 1
+      },
+      {
+        "key": "Pechugas",
+        "count": 1
+      },
+      {
+        "key": "Carne oferta ",
+        "count": 1
+      },
+      {
+        "key": "Café dolca",
+        "count": 1
+      },
+      {
+        "key": "Falda",
+        "count": 1
+      },
+      {
+        "key": "Carnicería.  Falda",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "arroz",
+        "count": 7
+      },
+      {
+        "key": "fideos",
+        "count": 6
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "leche entera",
+        "count": 5
+      },
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "vinagre",
+        "count": 4
+      },
+      {
+        "key": "papel higiénico",
+        "count": 4
+      },
+      {
+        "key": "azúcar",
+        "count": 4
+      },
+      {
+        "key": "puré de tomate",
+        "count": 4
+      },
+      {
+        "key": "fiambre",
+        "count": 3
+      },
+      {
+        "key": "palta",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 3
+      },
+      {
+        "key": "suavizante",
+        "count": 3
+      },
+      {
+        "key": "trapo de piso",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 194,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "arroz",
+        "count": 7
+      },
+      {
+        "key": "leche",
+        "count": 6
+      },
+      {
+        "key": "leche entera",
+        "count": 5
+      },
+      {
+        "key": "papel higienico",
+        "count": 5
+      },
+      {
+        "key": "fideos",
+        "count": 5
+      },
+      {
+        "key": "huevos",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "vinagre",
+        "count": 4
+      },
+      {
+        "key": "pure de tomate",
+        "count": 4
+      },
+      {
+        "key": "fiambre",
+        "count": 3
+      },
+      {
+        "key": "palta",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 3
+      },
+      {
+        "key": "trapo de piso",
+        "count": 3
+      },
+      {
+        "key": "suavizante",
+        "count": 3
+      },
+      {
+        "key": "garbanzos",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Leche Entera",
+        "count": 7
+      },
+      {
+        "key": "Arroz",
+        "count": 6
+      },
+      {
+        "key": "Cafe",
+        "count": 4
+      },
+      {
+        "key": "Vinagre",
+        "count": 4
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 4
+      },
+      {
+        "key": "Queso Crema",
+        "count": 3
+      },
+      {
+        "key": "Palta",
+        "count": 3
+      },
+      {
+        "key": "Fideos",
+        "count": 3
+      },
+      {
+        "key": "Azucar",
+        "count": 3
+      },
+      {
+        "key": "Leche entera",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 17,
+    "valor_total": 517596.8,
+    "ticket_promedio": 30446.87,
+    "descuento_total": 137666.7,
+    "canal": {
+      "inmediato": 0,
+      "programado": 17
+    },
+    "top_productos": [
+      {
+        "key": "Puré de tomates Bulnez 520 g.",
+        "count": 25
+      },
+      {
+        "key": "Toallas Húmedas Huggies Limpieza Diaria 112 uni",
+        "count": 24
+      },
+      {
+        "key": "Leche clásica UAT Bulnez 1 lt",
+        "count": 14
+      },
+      {
+        "key": "Fideos tirabuzón Don Bernabeu 500 g.",
+        "count": 12
+      },
+      {
+        "key": "Queso cremoso Puyehue horma x kg.",
+        "count": 10
+      },
+      {
+        "key": "Máscara de tratamiento Tresemmé hidratación Pro Activa 300 ml",
+        "count": 7
+      },
+      {
+        "key": "Puré de manzana durazno Zummy pouch 110 g.",
+        "count": 6
+      },
+      {
+        "key": "Puré de pera Zummy pouch 110 g.",
+        "count": 6
+      },
+      {
+        "key": "Arvejas secas remojadas Arcor 300 g.",
+        "count": 6
+      },
+      {
+        "key": "Nescao polvo chocolatado 300 grs",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas y salsas de tomate",
+        "count": 27
+      },
+      {
+        "key": "Toallitas húmedas",
+        "count": 24
+      },
+      {
+        "key": "Leches enteras",
+        "count": 17
+      },
+      {
+        "key": "Fideos guiseros y para sopas",
+        "count": 16
+      },
+      {
+        "key": "Cereales y papillas",
+        "count": 15
+      },
+      {
+        "key": "Conservas de legumbres y vegetales",
+        "count": 12
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 10
+      },
+      {
+        "key": "Harinas comunes y leudantes",
+        "count": 9
+      },
+      {
+        "key": "Tratamientos capilares",
+        "count": 7
+      },
+      {
+        "key": "Cacao",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 25,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 22
+      },
+      {
+        "key": "Genérico",
+        "count": 8
+      },
+      {
+        "key": "Higienol",
+        "count": 7
+      },
+      {
+        "key": "La Perla",
+        "count": 6
+      },
+      {
+        "key": "Bulnez",
+        "count": 6
+      },
+      {
+        "key": "Pureza",
+        "count": 6
+      },
+      {
+        "key": "Vivere",
+        "count": 6
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 6
+      },
+      {
+        "key": "Bonafide",
+        "count": 5
+      },
+      {
+        "key": "El Mercado",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 60
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 34
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 30
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 18
+      },
+      {
+        "key": "Panadería",
+        "count": 9
+      },
+      {
+        "key": "Congelados",
+        "count": 9
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 132,
+    "carrito_promedio": 40798.64,
+    "pct_con_carrito": 53.7,
+    "errores": 31
+  },
+  "origen": {
+    "total_requests": 191,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-06T08:41:14.391Z"
+}
