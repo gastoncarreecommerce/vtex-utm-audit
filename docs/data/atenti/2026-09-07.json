@@ -1,0 +1,431 @@
+{
+  "date": "2026-09-07",
+  "chat": {
+    "llamadas": 192,
+    "usuarios_unicos": 82,
+    "con_productos_identificados": 74,
+    "con_sugerencia": 19,
+    "por_hora": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      10,
+      5,
+      18,
+      12,
+      12,
+      18,
+      16,
+      7,
+      19,
+      14,
+      20,
+      12,
+      12,
+      6,
+      5
+    ],
+    "errores": 71
+  },
+  "categorizar": {
+    "total": 66,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 7
+      },
+      {
+        "key": "Leche  Óleo  Sal  Açúcar  Arroz  Feijão  Papel toalha ou guardanapo Amaciante de roupa Detergente (3 pelo menos)  Bucha de pia   Desinfetante de piso  Carne moída (4kg)  Frango inteiro? (4)  Papel higiénico Cenoura   Tomate  Brócolis Mix de sementes,  Tempero: Curry, Açafrão, Chimichurri, Provenzal",
+        "count": 3
+      },
+      {
+        "key": "Dulce de leche",
+        "count": 2
+      },
+      {
+        "key": "Yerba secadero ",
+        "count": 2
+      },
+      {
+        "key": "Alimentos indispensable ",
+        "count": 1
+      },
+      {
+        "key": "Conservas",
+        "count": 1
+      },
+      {
+        "key": "Clasico",
+        "count": 1
+      },
+      {
+        "key": "Vacuna",
+        "count": 1
+      },
+      {
+        "key": "Agua, carne, pan, papas ",
+        "count": 1
+      },
+      {
+        "key": "Agua mineral",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "arroz",
+        "count": 7
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 7
+      },
+      {
+        "key": "papel higiénico",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "dulce de leche",
+        "count": 5
+      },
+      {
+        "key": "azúcar",
+        "count": 5
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "leche descremada",
+        "count": 4
+      },
+      {
+        "key": "detergente",
+        "count": 4
+      },
+      {
+        "key": "carne picada",
+        "count": 4
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "café instantáneo",
+        "count": 3
+      },
+      {
+        "key": "leche en polvo",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 245,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "leche",
+        "count": 9
+      },
+      {
+        "key": "arroz",
+        "count": 7
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 7
+      },
+      {
+        "key": "papel higienico",
+        "count": 6
+      },
+      {
+        "key": "aceite",
+        "count": 5
+      },
+      {
+        "key": "dulce de leche",
+        "count": 5
+      },
+      {
+        "key": "azucar",
+        "count": 5
+      },
+      {
+        "key": "leche descremada",
+        "count": 4
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 4
+      },
+      {
+        "key": "detergente",
+        "count": 4
+      },
+      {
+        "key": "carne picada",
+        "count": 4
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "leche en polvo",
+        "count": 3
+      },
+      {
+        "key": "cafe instantaneo",
+        "count": 3
+      },
+      {
+        "key": "manteca",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Arroz",
+        "count": 6
+      },
+      {
+        "key": "Dulce de Leche",
+        "count": 6
+      },
+      {
+        "key": "Leche Descremada",
+        "count": 6
+      },
+      {
+        "key": "Leche",
+        "count": 5
+      },
+      {
+        "key": "Rollos de Cocina",
+        "count": 5
+      },
+      {
+        "key": "Aceite",
+        "count": 4
+      },
+      {
+        "key": "Papel higienico",
+        "count": 4
+      },
+      {
+        "key": "Rollo de cocina",
+        "count": 4
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 4
+      },
+      {
+        "key": "Carne picada",
+        "count": 4
+      }
+    ],
+    "errores": 180
+  },
+  "agregar": {
+    "total_agregados": 30,
+    "valor_total": 795803.6,
+    "ticket_promedio": 26526.79,
+    "descuento_total": 128183.79,
+    "canal": {
+      "inmediato": 5,
+      "programado": 25
+    },
+    "top_productos": [
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 27
+      },
+      {
+        "key": "Leche La serenisima liviana 1% 1L",
+        "count": 24
+      },
+      {
+        "key": "Jamón cocido feteado Bulnez 150 grs",
+        "count": 19
+      },
+      {
+        "key": "Carne picada Swift congelada 500 grs",
+        "count": 18
+      },
+      {
+        "key": "Limpiador multiuso Multimax para diluir lavanda (rinde 5 litros) 150 ml.",
+        "count": 18
+      },
+      {
+        "key": "Yerba mate Secadero 500 g.",
+        "count": 16
+      },
+      {
+        "key": "Gaseosa cola Coca Cola sabor original 2,25 lts",
+        "count": 12
+      },
+      {
+        "key": "Té clásico en saquitos diamantado Taragüi x 50 uni",
+        "count": 12
+      },
+      {
+        "key": "Papel higiénico Higienol Premium doble hoja 30 mts 4 uni",
+        "count": 9
+      },
+      {
+        "key": "Suavizante Para ropa Comfort Clásico Cápsulas de Fragancia Doypack 900 ml",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 27
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 26
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 23
+      },
+      {
+        "key": "Fiambres feteados",
+        "count": 21
+      },
+      {
+        "key": "Yerba",
+        "count": 19
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 18
+      },
+      {
+        "key": "Limpiadores de piso",
+        "count": 18
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 16
+      },
+      {
+        "key": "Suavizantes para la ropa",
+        "count": 14
+      },
+      {
+        "key": "Té",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 20,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 17
+      },
+      {
+        "key": "Nescafé",
+        "count": 12
+      },
+      {
+        "key": "Magistral",
+        "count": 9
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 8
+      },
+      {
+        "key": "Higienol",
+        "count": 7
+      },
+      {
+        "key": "Bonafide",
+        "count": 7
+      },
+      {
+        "key": "Dolca",
+        "count": 7
+      },
+      {
+        "key": "Ser",
+        "count": 6
+      },
+      {
+        "key": "Purísima",
+        "count": 5
+      },
+      {
+        "key": "Huggies",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 48
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 46
+      },
+      {
+        "key": "Limpieza",
+        "count": 30
+      },
+      {
+        "key": "Almacén",
+        "count": 16
+      },
+      {
+        "key": "Bebidas",
+        "count": 8
+      },
+      {
+        "key": "Mundo Bebé",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 221,
+    "carrito_promedio": 41308.4,
+    "pct_con_carrito": 51.1,
+    "errores": 42
+  },
+  "origen": {
+    "total_requests": 319,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-08T08:53:27.808Z"
+}
