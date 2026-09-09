@@ -1,0 +1,427 @@
+{
+  "date": "2026-09-08",
+  "chat": {
+    "llamadas": 52,
+    "usuarios_unicos": 25,
+    "con_productos_identificados": 24,
+    "con_sugerencia": 1,
+    "por_hora": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      4,
+      4,
+      3,
+      3,
+      4,
+      1,
+      4,
+      3,
+      0,
+      3,
+      5,
+      3,
+      4,
+      2,
+      3,
+      3,
+      0
+    ],
+    "errores": 12
+  },
+  "categorizar": {
+    "total": 22,
+    "top_recetas": [
+      {
+        "key": "Jabon lavavajillas  Detergente  Aceite Cif crema  Lavandina en gel Ayudin clásica  Desodorante en barra Alcohol etílico  Nachos Mango (2) Paltas (20)",
+        "count": 1
+      },
+      {
+        "key": "Harina 000",
+        "count": 1
+      },
+      {
+        "key": "Leche en polvo",
+        "count": 1
+      },
+      {
+        "key": "Azúcar ",
+        "count": 1
+      },
+      {
+        "key": "Milanesa de soja",
+        "count": 1
+      },
+      {
+        "key": "Desastre ",
+        "count": 1
+      },
+      {
+        "key": "Si no pudiste encontrar unas simples milanesas nunca me vas a poder ayudar",
+        "count": 1
+      },
+      {
+        "key": "Aceite de oliva",
+        "count": 1
+      },
+      {
+        "key": "LISTA PARA EL SUPER    AGUA.                            14 AZUCAR                          2 EDULCORANTE HILERET ZUCRA      .................   .     2 YOGURT GRIEGO DAHI.  3 QUESO CREMON DESLACTOSADO.        .... 1/2 KG CASANCREM BALAN CE.   ....................     ............. 4 MERMELADA MEMBRILLO  2 ROLLOS COCINA.     .     .... 2 ARROZ GALLO FINO.    ..... 2 FIDEOS DON FELIPE.      .... 2 DURAZNOS EN A.  . ............ 2 TE NEGRO LA VIRGIN.       .2 RAID MATA PULGAS Y GARRAPATAS.      ...     ....... 1 LECHE ZERO L.       ............. 3 ALGO DE PAN",
+        "count": 1
+      },
+      {
+        "key": "Coca cero ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "detergente",
+        "count": 3
+      },
+      {
+        "key": "azúcar",
+        "count": 3
+      },
+      {
+        "key": "jabón líquido para la ropa",
+        "count": 3
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "leche en polvo",
+        "count": 2
+      },
+      {
+        "key": "milanesa de soja",
+        "count": 2
+      },
+      {
+        "key": "edulcorante",
+        "count": 2
+      },
+      {
+        "key": "yogur",
+        "count": 2
+      },
+      {
+        "key": "lavandina",
+        "count": 2
+      },
+      {
+        "key": "perfumina",
+        "count": 2
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 2
+      },
+      {
+        "key": "papel higiénico",
+        "count": 2
+      },
+      {
+        "key": "desinfectante en aerosol",
+        "count": 2
+      },
+      {
+        "key": "difusor",
+        "count": 2
+      },
+      {
+        "key": "limpiador cremoso",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 60,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "jabon liquido para la ropa",
+        "count": 3
+      },
+      {
+        "key": "detergente",
+        "count": 2
+      },
+      {
+        "key": "aceite",
+        "count": 2
+      },
+      {
+        "key": "leche en polvo",
+        "count": 2
+      },
+      {
+        "key": "azucar",
+        "count": 2
+      },
+      {
+        "key": "milanesa de soja",
+        "count": 2
+      },
+      {
+        "key": "edulcorante",
+        "count": 2
+      },
+      {
+        "key": "limpiador cremoso",
+        "count": 1
+      },
+      {
+        "key": "lavandina en gel",
+        "count": 1
+      },
+      {
+        "key": "lavandina clasica",
+        "count": 1
+      },
+      {
+        "key": "desodorante en barra",
+        "count": 1
+      },
+      {
+        "key": "alcohol etilico",
+        "count": 1
+      },
+      {
+        "key": "mango",
+        "count": 1
+      },
+      {
+        "key": "nachos",
+        "count": 1
+      },
+      {
+        "key": "palta",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Jabon Liquido",
+        "count": 4
+      },
+      {
+        "key": "Detergente",
+        "count": 2
+      },
+      {
+        "key": "Leche en polvo",
+        "count": 2
+      },
+      {
+        "key": "Azucar",
+        "count": 2
+      },
+      {
+        "key": "Milanesas de Soja",
+        "count": 2
+      },
+      {
+        "key": "Aceite",
+        "count": 1
+      },
+      {
+        "key": "Limpiador Cremoso",
+        "count": 1
+      },
+      {
+        "key": "Lavandina en Gel",
+        "count": 1
+      },
+      {
+        "key": "Lavandina Clasica",
+        "count": 1
+      },
+      {
+        "key": "Desodorante",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 16,
+    "valor_total": 412655.9,
+    "ticket_promedio": 25790.99,
+    "descuento_total": 25595.9,
+    "canal": {
+      "inmediato": 0,
+      "programado": 16
+    },
+    "top_productos": [
+      {
+        "key": "Palta x uni",
+        "count": 20
+      },
+      {
+        "key": "Queso untable Finlandia pote 290 g.",
+        "count": 10
+      },
+      {
+        "key": "Nachos Tostitos 100 grs",
+        "count": 10
+      },
+      {
+        "key": "Lavandina clásica desinfectante Ayudín 2 lts.",
+        "count": 9
+      },
+      {
+        "key": "Lavandina Odex aditivada en gel original 700 cc.",
+        "count": 8
+      },
+      {
+        "key": "Aceite de girasol alto omega Carrefour Classic pet 1.5 lts",
+        "count": 7
+      },
+      {
+        "key": "Mango x uni",
+        "count": 6
+      },
+      {
+        "key": "Antitranspirante en Barra Dove Original 53 grs",
+        "count": 5
+      },
+      {
+        "key": "Leche UAT Zero lactosa La Serenisima 1L",
+        "count": 5
+      },
+      {
+        "key": "Detergente Cif Bioactive Lima Doypack 450 ml",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 26
+      },
+      {
+        "key": "Lavandinas",
+        "count": 17
+      },
+      {
+        "key": "Quesos cremas y untables",
+        "count": 10
+      },
+      {
+        "key": "Nachos, maní y palitos",
+        "count": 10
+      },
+      {
+        "key": "Aceites comunes",
+        "count": 7
+      },
+      {
+        "key": "En barra y roll on",
+        "count": 5
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 5
+      },
+      {
+        "key": "Detergentes",
+        "count": 4
+      },
+      {
+        "key": "Quesos duros y semi duros",
+        "count": 4
+      },
+      {
+        "key": "Artículos de botiquín",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 8,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 7
+      },
+      {
+        "key": "ARM & Hammer",
+        "count": 4
+      },
+      {
+        "key": "Macritas",
+        "count": 3
+      },
+      {
+        "key": "Bulnez",
+        "count": 3
+      },
+      {
+        "key": "Avicoper",
+        "count": 3
+      },
+      {
+        "key": "Ala",
+        "count": 3
+      },
+      {
+        "key": "Tostitos",
+        "count": 2
+      },
+      {
+        "key": "Krachitos",
+        "count": 2
+      },
+      {
+        "key": "Takis",
+        "count": 2
+      },
+      {
+        "key": "Dove",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Almacén",
+        "count": 23
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 18
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 10
+      },
+      {
+        "key": "Limpieza",
+        "count": 10
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 65,
+    "carrito_promedio": 80613.35,
+    "pct_con_carrito": 50,
+    "errores": 24
+  },
+  "origen": {
+    "total_requests": 125,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-09T08:59:27.968Z"
+}
