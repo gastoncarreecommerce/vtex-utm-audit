@@ -1,0 +1,147 @@
+{
+  "date": "2026-09-09",
+  "chat": {
+    "llamadas": 16,
+    "usuarios_unicos": 9,
+    "con_productos_identificados": 6,
+    "con_sugerencia": 1,
+    "por_hora": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      3,
+      5,
+      1,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "errores": 6
+  },
+  "categorizar": {
+    "total": 4,
+    "top_recetas": [
+      {
+        "key": "Huggies dermacare ",
+        "count": 1
+      },
+      {
+        "key": "Quiero nuggets o patitas de pollo",
+        "count": 1
+      },
+      {
+        "key": "Clasicas",
+        "count": 1
+      },
+      {
+        "key": "Mostrame",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "huggies dermacare",
+        "count": 1
+      },
+      {
+        "key": "nuggets o patitas de pollo",
+        "count": 1
+      },
+      {
+        "key": "nuggets de pollo clásicos",
+        "count": 1
+      },
+      {
+        "key": "nuggets clásicos",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 4,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "huggies dermacare",
+        "count": 1
+      },
+      {
+        "key": "nuggets o patitas de pollo",
+        "count": 1
+      },
+      {
+        "key": "nuggets de pollo clasicos",
+        "count": 1
+      },
+      {
+        "key": "nuggets clasicos",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Panales Desechables",
+        "count": 1
+      },
+      {
+        "key": "Pollo",
+        "count": 1
+      },
+      {
+        "key": "Nuggets y Medallones",
+        "count": 1
+      },
+      {
+        "key": "Nuggets de pollo",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "agregar": {
+    "total_agregados": 0,
+    "valor_total": 0,
+    "ticket_promedio": 0,
+    "descuento_total": 0,
+    "canal": {
+      "inmediato": 0,
+      "programado": 0
+    },
+    "top_productos": [],
+    "top_categorias": [],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 0,
+    "top_marcas": [],
+    "top_categorias": [],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 25,
+    "carrito_promedio": 57788.02,
+    "pct_con_carrito": 72.4,
+    "errores": 7
+  },
+  "origen": {
+    "total_requests": 61,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-10T08:58:09.652Z"
+}
