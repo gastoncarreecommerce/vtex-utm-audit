@@ -1,0 +1,439 @@
+{
+  "date": "2026-09-10",
+  "chat": {
+    "llamadas": 137,
+    "usuarios_unicos": 66,
+    "con_productos_identificados": 61,
+    "con_sugerencia": 13,
+    "por_hora": [
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      3,
+      17,
+      19,
+      5,
+      16,
+      1,
+      9,
+      8,
+      17,
+      5,
+      10,
+      7,
+      5,
+      2
+    ],
+    "errores": 40
+  },
+  "categorizar": {
+    "total": 53,
+    "top_recetas": [
+      {
+        "key": "Alimento de gati",
+        "count": 2
+      },
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Yogurt descremado",
+        "count": 2
+      },
+      {
+        "key": "Tostadas ",
+        "count": 1
+      },
+      {
+        "key": "Necesito la receta del tiramisu",
+        "count": 1
+      },
+      {
+        "key": "Quiero comprar 2 bidones de agua villa del sur de 6.2 lts pero no me deja poner más de uno en el carrito y la Promo es llevando 2",
+        "count": 1
+      },
+      {
+        "key": "Set de herméticos X3 U",
+        "count": 1
+      },
+      {
+        "key": "Si. Es un set de contenedores y en el folleto figuran que son tres unidades ",
+        "count": 1
+      },
+      {
+        "key": "Quería saber si venden el pack de leche líquida ",
+        "count": 1
+      },
+      {
+        "key": "Si",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "café",
+        "count": 4
+      },
+      {
+        "key": "alimento para gatos",
+        "count": 4
+      },
+      {
+        "key": "harina 0000",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "sal light",
+        "count": 2
+      },
+      {
+        "key": "milanesa de carne rebozada congelada",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "papel higiénico",
+        "count": 2
+      },
+      {
+        "key": "edulcorante",
+        "count": 2
+      },
+      {
+        "key": "calabaza",
+        "count": 2
+      },
+      {
+        "key": "milanesa",
+        "count": 2
+      },
+      {
+        "key": "yogur bebible",
+        "count": 2
+      },
+      {
+        "key": "yogur descremado",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 107,
+    "sin_resultado": 4,
+    "top_terminos": [
+      {
+        "key": "cafe",
+        "count": 4
+      },
+      {
+        "key": "rollo de cocina",
+        "count": 3
+      },
+      {
+        "key": "alimento para gatos",
+        "count": 3
+      },
+      {
+        "key": "harina 0000",
+        "count": 3
+      },
+      {
+        "key": "milanesa de carne rebozada congelada",
+        "count": 2
+      },
+      {
+        "key": "leche descremada",
+        "count": 2
+      },
+      {
+        "key": "edulcorante",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "calabaza",
+        "count": 2
+      },
+      {
+        "key": "milanesa",
+        "count": 2
+      },
+      {
+        "key": "yogur bebible",
+        "count": 2
+      },
+      {
+        "key": "aceite de girasol",
+        "count": 2
+      },
+      {
+        "key": "gaseosa cola",
+        "count": 2
+      },
+      {
+        "key": "espinaca congelada",
+        "count": 2
+      },
+      {
+        "key": "vainillas",
+        "count": 1
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Cafe",
+        "count": 4
+      },
+      {
+        "key": "Milanesas",
+        "count": 4
+      },
+      {
+        "key": "Rollos de Cocina",
+        "count": 3
+      },
+      {
+        "key": "Leche Descremada",
+        "count": 3
+      },
+      {
+        "key": "Alimento para gatos",
+        "count": 3
+      },
+      {
+        "key": "Espinaca",
+        "count": 3
+      },
+      {
+        "key": "Te",
+        "count": 2
+      },
+      {
+        "key": "Cremas Dentales",
+        "count": 2
+      },
+      {
+        "key": "Edulcorantes",
+        "count": 2
+      },
+      {
+        "key": "Papel Higienico",
+        "count": 2
+      }
+    ],
+    "errores": 826
+  },
+  "agregar": {
+    "total_agregados": 30,
+    "valor_total": 1150408.76,
+    "ticket_promedio": 38346.96,
+    "descuento_total": 120569.18,
+    "canal": {
+      "inmediato": 22,
+      "programado": 8
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT parcialmente descremada Carrefour classic brik 1 lt.",
+        "count": 120
+      },
+      {
+        "key": "Lechuga Capuchina x kg.",
+        "count": 54
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 52
+      },
+      {
+        "key": "Pimiento verde x kg.",
+        "count": 45
+      },
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 42
+      },
+      {
+        "key": "Papel higiénico Higienol Premium doble hoja 30 mts 4 uni",
+        "count": 34
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 32
+      },
+      {
+        "key": "Bocaditos de pollo Patitas 400 g.",
+        "count": 19
+      },
+      {
+        "key": "Zanahoria Huella Natural x kg.",
+        "count": 18
+      },
+      {
+        "key": "Manzana roja Huella Natural x kg.",
+        "count": 15
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 195
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 124
+      },
+      {
+        "key": "Frutas",
+        "count": 63
+      },
+      {
+        "key": "Leches enteras",
+        "count": 42
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 37
+      },
+      {
+        "key": "Nuggets y rebozados",
+        "count": 25
+      },
+      {
+        "key": "Salsas y aderezos",
+        "count": 21
+      },
+      {
+        "key": "Rollos de cocina y servilletas",
+        "count": 13
+      },
+      {
+        "key": "Té",
+        "count": 13
+      },
+      {
+        "key": "Gaseosas cola",
+        "count": 12
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 21,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 20
+      },
+      {
+        "key": "Vivere",
+        "count": 7
+      },
+      {
+        "key": "Higienol",
+        "count": 7
+      },
+      {
+        "key": "Genérico",
+        "count": 6
+      },
+      {
+        "key": "La Serenísima",
+        "count": 6
+      },
+      {
+        "key": "Tonadita",
+        "count": 5
+      },
+      {
+        "key": "Yogurísimo",
+        "count": 4
+      },
+      {
+        "key": "Hellmanns",
+        "count": 4
+      },
+      {
+        "key": "Cafe Martinez",
+        "count": 4
+      },
+      {
+        "key": "Lux",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Desayuno y merienda",
+        "count": 29
+      },
+      {
+        "key": "Limpieza",
+        "count": 25
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 24
+      },
+      {
+        "key": "Almacén",
+        "count": 24
+      },
+      {
+        "key": "Perfumería y farmacia",
+        "count": 11
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 7
+      },
+      {
+        "key": "Congelados",
+        "count": 5
+      },
+      {
+        "key": "Carnes y pescados",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 146,
+    "carrito_promedio": 149750.63,
+    "pct_con_carrito": 62,
+    "errores": 43
+  },
+  "origen": {
+    "total_requests": 287,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-11T08:56:19.580Z"
+}
