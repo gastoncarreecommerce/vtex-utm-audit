@@ -1,0 +1,431 @@
+{
+  "date": "2026-09-11",
+  "chat": {
+    "llamadas": 145,
+    "usuarios_unicos": 70,
+    "con_productos_identificados": 55,
+    "con_sugerencia": 5,
+    "por_hora": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      8,
+      7,
+      3,
+      20,
+      16,
+      18,
+      6,
+      1,
+      8,
+      15,
+      9,
+      3,
+      15,
+      4,
+      8,
+      3
+    ],
+    "errores": 58
+  },
+  "categorizar": {
+    "total": 54,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Yerba chamigo ",
+        "count": 2
+      },
+      {
+        "key": "Jamón bulnes  2x1 Soja 2do 70% Aceite en aerosol 40% Nesquik 40% Gatorade 35%",
+        "count": 2
+      },
+      {
+        "key": "Busco rollos de cocina ",
+        "count": 1
+      },
+      {
+        "key": "Leche descremada larga vida",
+        "count": 1
+      },
+      {
+        "key": "Busco leche nidita liquida 1",
+        "count": 1
+      },
+      {
+        "key": "Leche nidita liquida 1 ",
+        "count": 1
+      },
+      {
+        "key": "Nidita liquida 1 en cajita ",
+        "count": 1
+      },
+      {
+        "key": "Pañales",
+        "count": 1
+      },
+      {
+        "key": "Alfajor terrabusi",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "bola de lomo",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "alfajor",
+        "count": 3
+      },
+      {
+        "key": "harina integral leudante",
+        "count": 3
+      },
+      {
+        "key": "papas",
+        "count": 3
+      },
+      {
+        "key": "pechuga de pollo",
+        "count": 3
+      },
+      {
+        "key": "leche en polvo descremada",
+        "count": 3
+      },
+      {
+        "key": "jamón",
+        "count": 3
+      },
+      {
+        "key": "soja",
+        "count": 3
+      },
+      {
+        "key": "aceite en aerosol",
+        "count": 3
+      },
+      {
+        "key": "cacao",
+        "count": 3
+      },
+      {
+        "key": "bebida isotónica",
+        "count": 3
+      },
+      {
+        "key": "chocolate",
+        "count": 2
+      },
+      {
+        "key": "aceite de oliva",
+        "count": 2
+      }
+    ],
+    "errores": 2
+  },
+  "buscar_eans": {
+    "busquedas": 123,
+    "sin_resultado": 2,
+    "top_terminos": [
+      {
+        "key": "bola de lomo",
+        "count": 4
+      },
+      {
+        "key": "cebolla",
+        "count": 4
+      },
+      {
+        "key": "queso cremoso",
+        "count": 4
+      },
+      {
+        "key": "alfajor",
+        "count": 3
+      },
+      {
+        "key": "harina integral leudante",
+        "count": 3
+      },
+      {
+        "key": "papas",
+        "count": 3
+      },
+      {
+        "key": "pechuga de pollo",
+        "count": 3
+      },
+      {
+        "key": "leche en polvo descremada",
+        "count": 3
+      },
+      {
+        "key": "chocolate",
+        "count": 2
+      },
+      {
+        "key": "leche deslactosada",
+        "count": 2
+      },
+      {
+        "key": "cebollas",
+        "count": 2
+      },
+      {
+        "key": "papa negra",
+        "count": 2
+      },
+      {
+        "key": "rucula",
+        "count": 2
+      },
+      {
+        "key": "zanahoria",
+        "count": 2
+      },
+      {
+        "key": "zapallo",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Verduras",
+        "count": 7
+      },
+      {
+        "key": "Papas",
+        "count": 5
+      },
+      {
+        "key": "Cebollas",
+        "count": 4
+      },
+      {
+        "key": "Formulas Infantiles",
+        "count": 3
+      },
+      {
+        "key": "Alfajores",
+        "count": 3
+      },
+      {
+        "key": "Verduras de Hoja",
+        "count": 3
+      },
+      {
+        "key": "Frutas",
+        "count": 3
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 3
+      },
+      {
+        "key": "Leche en Polvo",
+        "count": 3
+      },
+      {
+        "key": "Harina Integral",
+        "count": 2
+      }
+    ],
+    "errores": 2
+  },
+  "agregar": {
+    "total_agregados": 13,
+    "valor_total": 414344.26,
+    "ticket_promedio": 31872.64,
+    "descuento_total": 30599.15,
+    "canal": {
+      "inmediato": 0,
+      "programado": 13
+    },
+    "top_productos": [
+      {
+        "key": "Papel higiénico Higienol Fresh hoja simple 30 mts 4 uni",
+        "count": 14
+      },
+      {
+        "key": "Ajo suelto x kg.",
+        "count": 14
+      },
+      {
+        "key": "Jugo de limón Minerva pet 1 l.",
+        "count": 14
+      },
+      {
+        "key": "Merluza en aceite Carrefour Classic 340 grs",
+        "count": 10
+      },
+      {
+        "key": "Merluza al natural Carrefour Classic 340 grs",
+        "count": 8
+      },
+      {
+        "key": "Bebida isotónica Gatorade Manzana 1,25 lts",
+        "count": 8
+      },
+      {
+        "key": "Jamón cocido feteado Bulnez 150 grs",
+        "count": 7
+      },
+      {
+        "key": "Escobilla de baño",
+        "count": 7
+      },
+      {
+        "key": "Detergente gel Cif Active limón dp 400 ml",
+        "count": 7
+      },
+      {
+        "key": "Toalla Nosotras clásica suave CURV 16 uni",
+        "count": 7
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Conservas de pescado",
+        "count": 25
+      },
+      {
+        "key": "Papeles higiénicos",
+        "count": 14
+      },
+      {
+        "key": "Verduras",
+        "count": 14
+      },
+      {
+        "key": "Vinagres, acetos y limón",
+        "count": 14
+      },
+      {
+        "key": "Bebidas isotónicas",
+        "count": 8
+      },
+      {
+        "key": "Fiambres feteados",
+        "count": 7
+      },
+      {
+        "key": "Accesorios de baño",
+        "count": 7
+      },
+      {
+        "key": "Detergentes",
+        "count": 7
+      },
+      {
+        "key": "Toallitas femeninas",
+        "count": 7
+      },
+      {
+        "key": "Quesos cremosos y mozzarellas",
+        "count": 7
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 6,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 9
+      },
+      {
+        "key": "Genérico",
+        "count": 8
+      },
+      {
+        "key": "Pollolin",
+        "count": 5
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 3
+      },
+      {
+        "key": "Avícola Luján",
+        "count": 3
+      },
+      {
+        "key": "Cofler",
+        "count": 3
+      },
+      {
+        "key": "Casanto",
+        "count": 2
+      },
+      {
+        "key": "Gomes Da Costa",
+        "count": 2
+      },
+      {
+        "key": "La Campagnola",
+        "count": 2
+      },
+      {
+        "key": "Bulnez",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Carnes y pescados",
+        "count": 15
+      },
+      {
+        "key": "Almacén",
+        "count": 14
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 8
+      },
+      {
+        "key": "Congelados",
+        "count": 3
+      },
+      {
+        "key": "Panadería",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 195,
+    "carrito_promedio": 41590.6,
+    "pct_con_carrito": 55.2,
+    "errores": 29
+  },
+  "origen": {
+    "total_requests": 268,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-12T08:39:22.103Z"
+}
