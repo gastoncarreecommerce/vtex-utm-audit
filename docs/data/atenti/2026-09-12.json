@@ -1,0 +1,435 @@
+{
+  "date": "2026-09-12",
+  "chat": {
+    "llamadas": 137,
+    "usuarios_unicos": 57,
+    "con_productos_identificados": 61,
+    "con_sugerencia": 12,
+    "por_hora": [
+      3,
+      1,
+      1,
+      1,
+      0,
+      1,
+      2,
+      2,
+      5,
+      7,
+      11,
+      18,
+      9,
+      9,
+      7,
+      5,
+      11,
+      14,
+      10,
+      4,
+      8,
+      1,
+      2,
+      5
+    ],
+    "errores": 35
+  },
+  "categorizar": {
+    "total": 48,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 4
+      },
+      {
+        "key": "Queso Crema ",
+        "count": 1
+      },
+      {
+        "key": "Aceite aceitunas verdes Arroz Arvejas Atún Azúcar Bizcochuelo Caldo verduras Especias cacao Fideos tira buzón Fideos mostachol Fideos Spagueti Aluminio Film Galletitas de agua Galletitas dulces Gelatina Harina Harina Lista Leches Mate cocido Mayonesa Mermelada Mostaza ketchup Polenta Sal fina Sal gruesa Te Tomate Perita Tomates Puré Yerba Tapa Para Empanadas Pascualina yogures Salchichas queso crema Cif Blem Detergente Jabon blanco Lavandina Papel Higiénico Desodorante de ambiente Pastillas Para Baño Poet Rejilla Esponjas Bolsa de basura Rollo Cocina Algodón  Alcohol  Crema Dental Crema dental benja Desodorantes Jabón Tocador Jabon manos  Pañuelos de papel Talco para pies Shampoo acondicionador",
+        "count": 1
+      },
+      {
+        "key": "Helados",
+        "count": 1
+      },
+      {
+        "key": "En pote",
+        "count": 1
+      },
+      {
+        "key": "Helados en pote marca bulnes",
+        "count": 1
+      },
+      {
+        "key": "Lo que encontrastes",
+        "count": 1
+      },
+      {
+        "key": "De tres litros y de un litro ",
+        "count": 1
+      },
+      {
+        "key": "Lo que encuentres",
+        "count": 1
+      },
+      {
+        "key": "Nuggets de pollo",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "detergente",
+        "count": 6
+      },
+      {
+        "key": "queso crema",
+        "count": 5
+      },
+      {
+        "key": "leche entera",
+        "count": 4
+      },
+      {
+        "key": "aceite",
+        "count": 4
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "atún al natural",
+        "count": 3
+      },
+      {
+        "key": "helado en pote",
+        "count": 3
+      },
+      {
+        "key": "galletitas surtidas",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "leche descremada en brik",
+        "count": 2
+      },
+      {
+        "key": "leche descremada en sachet",
+        "count": 2
+      },
+      {
+        "key": "yerba mate",
+        "count": 2
+      },
+      {
+        "key": "aperitivo sin alcohol",
+        "count": 2
+      },
+      {
+        "key": "arvejas bulnez",
+        "count": 2
+      },
+      {
+        "key": "harina leudante",
+        "count": 2
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 126,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "detergente",
+        "count": 5
+      },
+      {
+        "key": "fideos",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "aceite",
+        "count": 3
+      },
+      {
+        "key": "helado en pote",
+        "count": 3
+      },
+      {
+        "key": "galletitas surtidas",
+        "count": 3
+      },
+      {
+        "key": "leche",
+        "count": 3
+      },
+      {
+        "key": "leche entera",
+        "count": 2
+      },
+      {
+        "key": "galletitas de chocolate",
+        "count": 2
+      },
+      {
+        "key": "atun en aceite",
+        "count": 2
+      },
+      {
+        "key": "queso rallado",
+        "count": 2
+      },
+      {
+        "key": "tapa para pascualina",
+        "count": 2
+      },
+      {
+        "key": "papel higienico",
+        "count": 2
+      },
+      {
+        "key": "harina",
+        "count": 2
+      },
+      {
+        "key": "arroz",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Detergente",
+        "count": 4
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 4
+      },
+      {
+        "key": "Aceite",
+        "count": 3
+      },
+      {
+        "key": "Galletitas Dulces",
+        "count": 3
+      },
+      {
+        "key": "Fideos",
+        "count": 3
+      },
+      {
+        "key": "Helados en pote",
+        "count": 3
+      },
+      {
+        "key": "Bolsas de Residuos",
+        "count": 3
+      },
+      {
+        "key": "Pescados",
+        "count": 2
+      },
+      {
+        "key": "Queso Rallado",
+        "count": 2
+      },
+      {
+        "key": "Pure de Tomate",
+        "count": 2
+      }
+    ],
+    "errores": 30
+  },
+  "agregar": {
+    "total_agregados": 17,
+    "valor_total": 911326.38,
+    "ticket_promedio": 53607.43,
+    "descuento_total": 133184.61,
+    "canal": {
+      "inmediato": 0,
+      "programado": 17
+    },
+    "top_productos": [
+      {
+        "key": "Leche UAT entera Carrefour classic brik 1 lt.",
+        "count": 30
+      },
+      {
+        "key": "Roast beef Novillo x kg",
+        "count": 20
+      },
+      {
+        "key": "Yerba mate Mañanita bajo polvo 4flex 1 kg.",
+        "count": 12
+      },
+      {
+        "key": "Desinfectante de ambientes y elimina olores Lysoform original en eerosol 495 ml.",
+        "count": 6
+      },
+      {
+        "key": "Leche descremada larga vida Las tres niñas 1 l.",
+        "count": 6
+      },
+      {
+        "key": "Cerveza Vera Ipa Patagonia 730 ml",
+        "count": 6
+      },
+      {
+        "key": "Fideos Spaghetti Carrefour Classic 500 grs",
+        "count": 6
+      },
+      {
+        "key": "Leche UAT Zero lactosa La Serenisima 1L",
+        "count": 6
+      },
+      {
+        "key": "Caldo Knorr de gallina deshidratado 12 cubos.",
+        "count": 5
+      },
+      {
+        "key": "Arroz largo fino Crucero 00000 1 kg.",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Leches enteras",
+        "count": 30
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 25
+      },
+      {
+        "key": "Yerba",
+        "count": 12
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 12
+      },
+      {
+        "key": "Cervezas",
+        "count": 10
+      },
+      {
+        "key": "En aerosol",
+        "count": 9
+      },
+      {
+        "key": "Cereales",
+        "count": 8
+      },
+      {
+        "key": "Jabones para la ropa",
+        "count": 7
+      },
+      {
+        "key": "Desodorantes y desinfectantes",
+        "count": 6
+      },
+      {
+        "key": "Yogures enteros",
+        "count": 6
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 13,
+    "top_marcas": [
+      {
+        "key": "Carrefour",
+        "count": 13
+      },
+      {
+        "key": "Higienol",
+        "count": 10
+      },
+      {
+        "key": "Genérico",
+        "count": 9
+      },
+      {
+        "key": "La Serenísima",
+        "count": 9
+      },
+      {
+        "key": "Magistral",
+        "count": 8
+      },
+      {
+        "key": "La Salteña",
+        "count": 6
+      },
+      {
+        "key": "Tosti",
+        "count": 6
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 4
+      },
+      {
+        "key": "Casancrem",
+        "count": 4
+      },
+      {
+        "key": "Finlandia",
+        "count": 3
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 48
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 21
+      },
+      {
+        "key": "Limpieza",
+        "count": 20
+      },
+      {
+        "key": "Almacén",
+        "count": 19
+      },
+      {
+        "key": "Congelados",
+        "count": 10
+      },
+      {
+        "key": "Panadería",
+        "count": 1
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 164,
+    "carrito_promedio": 48353.51,
+    "pct_con_carrito": 51.2,
+    "errores": 147
+  },
+  "origen": {
+    "total_requests": 231,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-13T09:34:32.482Z"
+}
