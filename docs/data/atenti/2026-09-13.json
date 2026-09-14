@@ -1,0 +1,423 @@
+{
+  "date": "2026-09-13",
+  "chat": {
+    "llamadas": 88,
+    "usuarios_unicos": 42,
+    "con_productos_identificados": 47,
+    "con_sugerencia": 10,
+    "por_hora": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      18,
+      4,
+      6,
+      1,
+      8,
+      8,
+      3,
+      4,
+      10,
+      8,
+      4,
+      1,
+      2,
+      5
+    ],
+    "errores": 23
+  },
+  "categorizar": {
+    "total": 34,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 3
+      },
+      {
+        "key": "Limpiador cremoso carrefour",
+        "count": 1
+      },
+      {
+        "key": "Cif",
+        "count": 1
+      },
+      {
+        "key": "almacen: hisopo pan lactal grande leche cafe sal fideo queso crema matecocido algodon jabon dove jabon ropa shampoo y acondicionador  dentrifico crema condimento",
+        "count": 1
+      },
+      {
+        "key": "detergente magistral limon mas skip para diluir ",
+        "count": 1
+      },
+      {
+        "key": "ojo de bife 5 bifes ",
+        "count": 1
+      },
+      {
+        "key": "cafe instantanero dolca gold ",
+        "count": 1
+      },
+      {
+        "key": "lavandina comun ",
+        "count": 1
+      },
+      {
+        "key": "chocolate aguila para tasas 70/30",
+        "count": 1
+      },
+      {
+        "key": "cuanto cuesta la freyer aire ? y como hago para comprar con descuento? ",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "lavandina para ropa blanca",
+        "count": 7
+      },
+      {
+        "key": "polvo para hornear",
+        "count": 7
+      },
+      {
+        "key": "ojo de bife",
+        "count": 7
+      },
+      {
+        "key": "detergente de limon",
+        "count": 5
+      },
+      {
+        "key": "jabon para la ropa para diluir",
+        "count": 5
+      },
+      {
+        "key": "cafe instantaneo",
+        "count": 4
+      },
+      {
+        "key": "lavandina comun",
+        "count": 4
+      },
+      {
+        "key": "chocolate para taza",
+        "count": 4
+      },
+      {
+        "key": "crema de leche",
+        "count": 4
+      },
+      {
+        "key": "detergente de limón",
+        "count": 3
+      },
+      {
+        "key": "jabón para la ropa para diluir",
+        "count": 3
+      },
+      {
+        "key": "café instantáneo",
+        "count": 3
+      },
+      {
+        "key": "jamon cocido",
+        "count": 3
+      },
+      {
+        "key": "huevos",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 147,
+    "sin_resultado": 1,
+    "top_terminos": [
+      {
+        "key": "detergente de limon",
+        "count": 7
+      },
+      {
+        "key": "jabon para la ropa para diluir",
+        "count": 7
+      },
+      {
+        "key": "polvo para hornear",
+        "count": 6
+      },
+      {
+        "key": "ojo de bife",
+        "count": 6
+      },
+      {
+        "key": "lavandina para ropa blanca",
+        "count": 6
+      },
+      {
+        "key": "cafe instantaneo",
+        "count": 6
+      },
+      {
+        "key": "lavandina comun",
+        "count": 5
+      },
+      {
+        "key": "jamon cocido",
+        "count": 4
+      },
+      {
+        "key": "chocolate para taza",
+        "count": 3
+      },
+      {
+        "key": "crema de leche",
+        "count": 3
+      },
+      {
+        "key": "yerba",
+        "count": 3
+      },
+      {
+        "key": "banana",
+        "count": 3
+      },
+      {
+        "key": "condimentos",
+        "count": 2
+      },
+      {
+        "key": "fideos",
+        "count": 2
+      },
+      {
+        "key": "huevos",
+        "count": 2
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Lavandina",
+        "count": 6
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 5
+      },
+      {
+        "key": "Polvo para Hornear",
+        "count": 5
+      },
+      {
+        "key": "Cafe Instantaneo",
+        "count": 5
+      },
+      {
+        "key": "Ojo de Bife",
+        "count": 4
+      },
+      {
+        "key": "Fideos",
+        "count": 3
+      },
+      {
+        "key": "Detergente Liquido",
+        "count": 3
+      },
+      {
+        "key": "Jamon Cocido",
+        "count": 3
+      },
+      {
+        "key": "Yerba Mate",
+        "count": 3
+      },
+      {
+        "key": "Especias",
+        "count": 2
+      }
+    ],
+    "errores": 1
+  },
+  "agregar": {
+    "total_agregados": 15,
+    "valor_total": 231098.45,
+    "ticket_promedio": 15406.56,
+    "descuento_total": 102236.59,
+    "canal": {
+      "inmediato": 0,
+      "programado": 15
+    },
+    "top_productos": [
+      {
+        "key": "Tomate x kg.",
+        "count": 36
+      },
+      {
+        "key": "Naranja ombligo premiun x kg.",
+        "count": 30
+      },
+      {
+        "key": "Manzana granny especial x kg.",
+        "count": 25
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 18
+      },
+      {
+        "key": "Yerba mate Amanda tradicional 500 grs",
+        "count": 14
+      },
+      {
+        "key": "Oleo Extraordinario Elvive 100 ml",
+        "count": 12
+      },
+      {
+        "key": "Agua mineral sin gas Villavicencio 2 lts",
+        "count": 12
+      },
+      {
+        "key": "Zanahoria Huella Natural x kg.",
+        "count": 11
+      },
+      {
+        "key": "Papa negra x kg.",
+        "count": 9
+      },
+      {
+        "key": "Chicles Topline menta 14 g.",
+        "count": 8
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Frutas",
+        "count": 73
+      },
+      {
+        "key": "Verduras",
+        "count": 64
+      },
+      {
+        "key": "Yerba",
+        "count": 17
+      },
+      {
+        "key": "Tratamientos capilares",
+        "count": 12
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 12
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 8
+      },
+      {
+        "key": "Toallitas femeninas",
+        "count": 3
+      },
+      {
+        "key": "Lavandinas",
+        "count": 2
+      },
+      {
+        "key": "Jabones para la ropa",
+        "count": 1
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 10,
+    "top_marcas": [
+      {
+        "key": "Dos Anclas",
+        "count": 8
+      },
+      {
+        "key": "Estrella",
+        "count": 8
+      },
+      {
+        "key": "Algabo",
+        "count": 7
+      },
+      {
+        "key": "Bonafide",
+        "count": 7
+      },
+      {
+        "key": "Carrefour",
+        "count": 6
+      },
+      {
+        "key": "Las Tres Niñas",
+        "count": 5
+      },
+      {
+        "key": "Cabrales",
+        "count": 2
+      },
+      {
+        "key": "Ilolay",
+        "count": 2
+      },
+      {
+        "key": "Cotton Baby",
+        "count": 2
+      },
+      {
+        "key": "Cotonetes",
+        "count": 2
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Perfumería y farmacia",
+        "count": 30
+      },
+      {
+        "key": "Almacén",
+        "count": 19
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 10
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 9
+      },
+      {
+        "key": "Limpieza",
+        "count": 4
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 102,
+    "carrito_promedio": 60046.06,
+    "pct_con_carrito": 50,
+    "errores": 17
+  },
+  "origen": {
+    "total_requests": 179,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-14T09:54:06.186Z"
+}
