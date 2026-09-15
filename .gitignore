@@ -1,0 +1,6 @@
+
+# Los rows traen el email del cliente (PII) y este repo es PUBLICO.
+# Viven en gastoncarreecommerce/appdash-private-data y los sirve api/private-data.js.
+# Ignorarlos aca es la red de seguridad: si un workflow los genera localmente,
+# `git add docs/data/` no los puede stagear por accidente.
+docs/data/daily/*-rows.json

@@ -332,7 +332,12 @@ async function main() {
   console.log(`\n💾 Saved: ${outPath}`);
 
   // Save rows CSV for export
-  const csvPath = path.join(outDir, `${targetDate}-rows.json`);
+  // Los rows llevan el email del cliente, asi que NO van al repo publico: el
+  // workflow apunta ROWS_DIR al checkout del repo privado. El default deja el
+  // comportamiento de siempre para correrlo a mano en local.
+  const rowsDir = process.env.ROWS_DIR || outDir;
+  fs.mkdirSync(rowsDir, { recursive: true });
+  const csvPath = path.join(rowsDir, `${targetDate}-rows.json`);
   fs.writeFileSync(csvPath, JSON.stringify(rows));
   console.log(`💾 Saved: ${csvPath}`);
 

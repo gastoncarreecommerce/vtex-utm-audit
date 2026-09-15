@@ -806,6 +806,15 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--
 // Sin PASSWORD acá — la validación es server-side en /api/login
 const GH_REPO  = "gastoncarreecommerce/vtex-utm-audit";
 function getGHToken(){ return localStorage.getItem("gh_token")||""; }
+
+// Los endpoints con PII (/api/today, /api/private-data) exigen sesion. Normalmente
+// alcanza la cookie HttpOnly `appdash_session`, que el browser manda sola en los
+// fetch al mismo origen. Se manda ademas el token de localStorage como Bearer para
+// no dejar afuera a quien inicio sesion antes de que la cookie existiera.
+function authHeaders(){
+  const t=localStorage.getItem("appdash_token");
+  return t? { Authorization: "Bearer "+t } : {};
+}
 const DATA_BASE = (()=>{ const p=window.location.pathname.replace(/\/[^/]*$/,""); return window.location.origin+p+"/data"; })();
 
 const S = {user:null,from:null,to:null,data:{},rows:{},todayState:{},milestones:[],charts:{},editMs:null,msSha:null,ordersSort:{key:"fecha",dir:"desc"},prodSort:{key:"gmv",dir:"desc"},cmpMode:"prev"};
@@ -1014,7 +1023,9 @@ async function seedFromSnapshot(date,state){
   try{
     const [rs,rr]=await Promise.all([
       fetch(`${DATA_BASE}/daily/${date}.json`,{cache:"no-store"}),
-      fetch(`${DATA_BASE}/daily/${date}-rows.json`,{cache:"no-store"})
+      // Los rows traen el email del cliente: salen del repo privado por /api/private-data,
+      // nunca de un archivo estatico. La cookie de sesion viaja sola (mismo origen).
+      fetch(`/api/private-data?date=${date}`,{cache:"no-store",headers:authHeaders()})
     ]);
     if(!rs.ok||!rr.ok) return false;
     const summary=await rs.json(), rows=await rr.json();
@@ -1045,7 +1056,7 @@ async function fetchTodayLive(date){
       ? `/api/today?date=${date}&since=${encodeURIComponent(state.lastTo)}&t=${Date.now()}`
       : `/api/today?date=${date}&t=${Date.now()}`;
     try{
-      const r=await fetch(url,{cache:"no-store"});
+      const r=await fetch(url,{cache:"no-store",headers:authHeaders()});
       const d=r.ok?await r.json():null;
       if(!d?.summary) return; // fetch falló → mantenemos lo último mostrado, no pisamos con ceros
       for(const row of (d.rows||[])){
@@ -1079,7 +1090,7 @@ async function fetchDay(date){
 async function fetchRows(date){
   if(date===todayAR()){ await fetchTodayLive(date); return S.rows[date]||[]; }
   if(S.rows[date]) return S.rows[date];
-  try{ const r=await fetch(`${DATA_BASE}/daily/${date}-rows.json`,{cache:"default"}); if(!r.ok) return []; const d=await r.json(); S.rows[date]=d; return d; }catch{ return []; }
+  try{ const r=await fetch(`/api/private-data?date=${date}`,{headers:authHeaders()}); if(!r.ok) return []; const d=await r.json(); if(!Array.isArray(d)) return []; S.rows[date]=d; return d; }catch{ return []; }
 }
 async function loadMilestones(){
   // Lectura SIEMPRE desde archivo público — no requiere token

@@ -13,6 +13,8 @@
  * tick para no repetir el bug de mergear porcentajes ya calculados.
  */
 
+import { exigirSesion } from "./_auth.js";
+
 const VTEX_ACCOUNT = process.env.VTEX_ACCOUNT || "carrefourar";
 const VTEX_KEY     = process.env.VTEX_APP_KEY;
 const VTEX_TOKEN   = process.env.VTEX_APP_TOKEN;
@@ -131,6 +133,11 @@ async function mapLimit(items, limit, fn) {
 }
 
 export default async function handler(req, res) {
+  // Este endpoint devuelve `rows` con el email del cliente de cada pedido, así que
+  // exige sesión igual que api/private-data.js. Sin esto quedaba abierto: cualquiera
+  // con la URL se traía los pedidos del día con los emails.
+  if (!exigirSesion(req, res)) return;
+
   if (!VTEX_KEY || !VTEX_TOKEN) {
     return res.status(500).json({ error: "VTEX credentials not configured in Vercel env vars" });
   }
