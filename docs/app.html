@@ -815,6 +815,34 @@ let currentMsType="promo", liveInterval=null, lastFetch=null, liveActive=false;
 function fmtFechaAR(iso){ const [y,m,d]=iso.split("-"); return `${d}/${m}/${y}`; }
 function fmtRangeAR(from,to){ return from===to?fmtFechaAR(from):`${fmtFechaAR(from)} → ${fmtFechaAR(to)}`; }
 
+// ── 401 → volver al login ─────────────────────────────
+// Desde que existe middleware.js, /data/ y /api/ exigen la cookie de sesión.
+// Si la cookie venció (dura 12hs, igual que el token) el dashboard se quedaría
+// mostrando pantallas vacías sin decir por qué. Acá se detecta el 401 y se
+// manda a loguearse de nuevo. El guard de sessionStorage evita un loop de
+// recargas si el 401 fuera por otra razón.
+(function(){
+  const orig = window.fetch;
+  window.fetch = async function(...args){
+    const res = await orig.apply(this, args);
+    try {
+      const url = new URL(typeof args[0]==="string" ? args[0] : args[0].url, location.origin);
+      const propia = url.origin===location.origin && /^\/(data|api)\//.test(url.pathname);
+      if (res.status===401 && propia && !url.pathname.startsWith("/api/login")) {
+        if (!sessionStorage.getItem("appdash_relogin")) {
+          sessionStorage.setItem("appdash_relogin","1");
+          localStorage.removeItem("appdash_sess");
+          localStorage.removeItem("appdash_token");
+          location.reload();
+        }
+      } else if (res.ok && propia) {
+        sessionStorage.removeItem("appdash_relogin");
+      }
+    } catch {}
+    return res;
+  };
+})();
+
 // ── TOKEN (HMAC firmado por /api/login, expira 12hs) ──
 function tokenValid(){
   const raw=localStorage.getItem("appdash_token"); if(!raw) return false;
@@ -826,7 +854,7 @@ function tokenValid(){
   ["login-user","login-pass"].forEach(id=>document.getElementById(id).addEventListener("keydown",e=>{ if(e.key==="Enter") doLogin(); }));
   // Forzar re-login de TODOS al publicar un aviso: al bumpear EPOCH, el próximo
   // load limpia la sesión guardada → cada uno vuelve a loguearse y ve el modal.
-  const EPOCH="vpn-2026-08-12";
+  const EPOCH="cookie-sesion-2026-09-15";
   if(localStorage.getItem("appdash_epoch")!==EPOCH){
     localStorage.removeItem("appdash_sess"); localStorage.removeItem("appdash_token");
     localStorage.setItem("appdash_epoch",EPOCH);
