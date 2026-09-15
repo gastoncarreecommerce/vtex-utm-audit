@@ -2,7 +2,20 @@ name: Fetch Live (Hoy)
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # cada 5 min (mínimo real de GitHub Actions; puede demorarse algo bajo carga)
+    # Cada hora, no cada 5 min. Dos razones:
+    #
+    # 1) El */5 nunca pasó: GitHub descarta las corridas programadas de alta
+    #    frecuencia en repos públicos, y la mediana real entre corridas era de
+    #    211 min (42x el intervalo declarado). Cada hora es MÁS frecuente que
+    #    lo que venía ocurriendo, además de predecible.
+    # 2) Con el repo en privado los minutos se cuentan contra la cuota (2.000/mes
+    #    en plan Free). Al */5 honrado serían 288 runs/día = 12.096 min/mes, 6x
+    #    la cuota. Cada hora son ~1.008 min/mes y entra con margen.
+    #
+    # Esto no atrasa el dato en vivo: el dashboard lo trae de /api/today con
+    # `since`, y este workflow solo pre-cachea el snapshot para que el primer
+    # usuario no pague el fetch del día completo.
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 # Evita que dos corridas se pisen: si arranca una nueva, cancela la anterior en curso
