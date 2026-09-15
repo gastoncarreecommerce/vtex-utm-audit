@@ -11,7 +11,7 @@ on:
     # corridas/día (hueco mediano 177 min) porque GitHub descartaba el resto,
     # así que 8/día no cambia el comportamiento — solo lo vuelve predecible
     # para la cuota de Actions del repo privado.
-    - cron: "5 */3 * * *"    # cada hora: refresca el día de HOY (datos intraday de GA4)
+    - cron: "5 */3 * * *"   # refresca el día de HOY (datos intraday de GA4)
     - cron: "30 6 * * *"   # 6:30 UTC = 3:30am AR: consolida el día de AYER ya completo
   workflow_dispatch:
     inputs:
