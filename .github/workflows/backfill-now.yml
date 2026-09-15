@@ -71,11 +71,16 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data/
           git diff --staged --quiet || git commit -m "backfill items+cupones: 2026-05-01 → 2026-06-10" -q
+          ok=0
           for i in 1 2 3 4; do
-            if git push; then break; fi
+            if git push; then ok=1; break; fi
             echo "push falló, reintento en ${i}0s..."; sleep ${i}0
             git pull --rebase --autostash || true
           done
+          if [ "$ok" != 1 ]; then
+            echo "::error::No se pudo pushear a el repo publico tras 4 intentos."
+            exit 1
+          fi
 
       - name: Commit rows con PII al repo privado
         working-directory: private-data
@@ -87,8 +92,16 @@ jobs:
             echo "Sin rows nuevos."
           else
             git commit -m "rows: $(date -u +%Y-%m-%d)" -q
+            ok=0
             for i in 1 2 3 4; do
-              if git push; then break; fi
+              if git push; then ok=1; break; fi
               echo "push falló, reintento..."; sleep $((i*5)); git pull --rebase --autostash || true
             done
+            # Sin esto el step salia 0 aunque los 4 intentos fallaran: el push se
+            # perdia en silencio y el workflow se pintaba verde. Los rows de esta
+            # corrida solo existen en el runner, asi que fallar es obligatorio.
+            if [ "$ok" != 1 ]; then
+              echo "::error::No se pudieron pushear los rows al repo privado tras 4 intentos. Revisar que PRIVATE_DATA_TOKEN tenga Contents: Read and write."
+              exit 1
+            fi
           fi

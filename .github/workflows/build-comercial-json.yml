@@ -61,8 +61,16 @@ jobs:
             echo "Sin cambios."
           else
             git commit -m "comercial: refresh comercial-app.json" -q
+            ok=0
             for i in 1 2 3 4; do
-              if git push; then break; fi
+              if git push; then ok=1; break; fi
               echo "push falló, reintento..."; sleep $((i*5)); git pull --rebase --autostash || true
             done
+            # Sin esto el step salia 0 aunque los 4 intentos fallaran: el push se
+            # perdia en silencio y el workflow se pintaba verde. Los rows de esta
+            # corrida solo existen en el runner, asi que fallar es obligatorio.
+            if [ "$ok" != 1 ]; then
+              echo "::error::No se pudo pushear comercial-app.json tras 4 intentos."
+              exit 1
+            fi
           fi
