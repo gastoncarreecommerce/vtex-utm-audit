@@ -1,0 +1,431 @@
+{
+  "date": "2026-09-14",
+  "chat": {
+    "llamadas": 134,
+    "usuarios_unicos": 50,
+    "con_productos_identificados": 68,
+    "con_sugerencia": 9,
+    "por_hora": [
+      2,
+      1,
+      6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      21,
+      1,
+      10,
+      12,
+      7,
+      6,
+      13,
+      10,
+      4,
+      7,
+      10,
+      5,
+      5,
+      7,
+      3,
+      2
+    ],
+    "errores": 28
+  },
+  "categorizar": {
+    "total": 60,
+    "top_recetas": [
+      {
+        "key": "Quiero ver mis productos más comprados",
+        "count": 2
+      },
+      {
+        "key": "Quiero buscar todas las golosinas de color amarillo ",
+        "count": 1
+      },
+      {
+        "key": "Sal fina light",
+        "count": 1
+      },
+      {
+        "key": "Aceite alto oleico ",
+        "count": 1
+      },
+      {
+        "key": "Jugo minerva ",
+        "count": 1
+      },
+      {
+        "key": "Bananos, Kiwi , arandanos",
+        "count": 1
+      },
+      {
+        "key": "Agua carrefour de 6 litros",
+        "count": 1
+      },
+      {
+        "key": "Mayoría chica",
+        "count": 1
+      },
+      {
+        "key": "Mayonesa oliva",
+        "count": 1
+      },
+      {
+        "key": "Vino de nos mas de 7000 pesos malbec",
+        "count": 1
+      }
+    ],
+    "top_ingredientes": [
+      {
+        "key": "kiwi",
+        "count": 11
+      },
+      {
+        "key": "bananas",
+        "count": 9
+      },
+      {
+        "key": "jugo concentrado",
+        "count": 8
+      },
+      {
+        "key": "arándanos",
+        "count": 8
+      },
+      {
+        "key": "agua en bidón",
+        "count": 7
+      },
+      {
+        "key": "tomate",
+        "count": 7
+      },
+      {
+        "key": "palta",
+        "count": 6
+      },
+      {
+        "key": "mayonesa con oliva",
+        "count": 5
+      },
+      {
+        "key": "vino malbec",
+        "count": 5
+      },
+      {
+        "key": "banana",
+        "count": 5
+      },
+      {
+        "key": "pasta de maní",
+        "count": 5
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "jabón líquido para la ropa",
+        "count": 4
+      },
+      {
+        "key": "mandarina",
+        "count": 3
+      },
+      {
+        "key": "pasta",
+        "count": 3
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_eans": {
+    "busquedas": 186,
+    "sin_resultado": 0,
+    "top_terminos": [
+      {
+        "key": "kiwi",
+        "count": 10
+      },
+      {
+        "key": "arandanos",
+        "count": 9
+      },
+      {
+        "key": "bananas",
+        "count": 8
+      },
+      {
+        "key": "jugo concentrado",
+        "count": 7
+      },
+      {
+        "key": "agua en bidon",
+        "count": 6
+      },
+      {
+        "key": "tomate",
+        "count": 6
+      },
+      {
+        "key": "palta",
+        "count": 6
+      },
+      {
+        "key": "banana",
+        "count": 5
+      },
+      {
+        "key": "pasta de mani",
+        "count": 5
+      },
+      {
+        "key": "mayonesa con oliva",
+        "count": 4
+      },
+      {
+        "key": "vino malbec",
+        "count": 4
+      },
+      {
+        "key": "queso crema",
+        "count": 4
+      },
+      {
+        "key": "jabon liquido para la ropa",
+        "count": 4
+      },
+      {
+        "key": "mandarina",
+        "count": 3
+      },
+      {
+        "key": "pasta",
+        "count": 3
+      }
+    ],
+    "top_subcategorias": [
+      {
+        "key": "Kiwi",
+        "count": 10
+      },
+      {
+        "key": "Bananas",
+        "count": 9
+      },
+      {
+        "key": "Arandanos",
+        "count": 9
+      },
+      {
+        "key": "Jugo concentrado",
+        "count": 7
+      },
+      {
+        "key": "Tomate",
+        "count": 6
+      },
+      {
+        "key": "Dulces",
+        "count": 6
+      },
+      {
+        "key": "Agua sin gas",
+        "count": 5
+      },
+      {
+        "key": "Mayonesa",
+        "count": 5
+      },
+      {
+        "key": "Jabon Liquido",
+        "count": 5
+      },
+      {
+        "key": "Palta",
+        "count": 4
+      }
+    ],
+    "errores": 3
+  },
+  "agregar": {
+    "total_agregados": 30,
+    "valor_total": 425736.1,
+    "ticket_promedio": 14191.2,
+    "descuento_total": 31330.04,
+    "canal": {
+      "inmediato": 0,
+      "programado": 30
+    },
+    "top_productos": [
+      {
+        "key": "Papa x kg.",
+        "count": 24
+      },
+      {
+        "key": "Palta x uni",
+        "count": 24
+      },
+      {
+        "key": "Papa negra x kg.",
+        "count": 21
+      },
+      {
+        "key": "Cebolla x kg.",
+        "count": 20
+      },
+      {
+        "key": "Banana selección x kg.",
+        "count": 13
+      },
+      {
+        "key": "Leche entera UAT Carrefour classic tetra 1 lt.",
+        "count": 13
+      },
+      {
+        "key": "Kiwi elegido x kg.",
+        "count": 10
+      },
+      {
+        "key": "Tomate cherry rojo Huella Natural x kg.",
+        "count": 8
+      },
+      {
+        "key": "Arándanos 125 g.",
+        "count": 7
+      },
+      {
+        "key": "Agua de mesa sin gas Carrefour Classic bidón 6.5 lts",
+        "count": 6
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Verduras",
+        "count": 81
+      },
+      {
+        "key": "Frutas",
+        "count": 55
+      },
+      {
+        "key": "Leches enteras",
+        "count": 13
+      },
+      {
+        "key": "Carne vacuna",
+        "count": 8
+      },
+      {
+        "key": "Leches descremadas",
+        "count": 8
+      },
+      {
+        "key": "Aguas minerales y de mesa",
+        "count": 7
+      },
+      {
+        "key": "Tortillas",
+        "count": 6
+      },
+      {
+        "key": "Aguas saborizadas",
+        "count": 6
+      },
+      {
+        "key": "Vinos tintos",
+        "count": 5
+      },
+      {
+        "key": "Frutas y vegetales congelados",
+        "count": 5
+      }
+    ],
+    "errores": 0
+  },
+  "buscar_similares": {
+    "total": 17,
+    "top_marcas": [
+      {
+        "key": "Genérico",
+        "count": 13
+      },
+      {
+        "key": "Carrefour",
+        "count": 7
+      },
+      {
+        "key": "Las Perdices",
+        "count": 6
+      },
+      {
+        "key": "La Serenísima",
+        "count": 6
+      },
+      {
+        "key": "Dos Anclas",
+        "count": 5
+      },
+      {
+        "key": "Woolite",
+        "count": 5
+      },
+      {
+        "key": "Smams",
+        "count": 5
+      },
+      {
+        "key": "Chocolinas",
+        "count": 5
+      },
+      {
+        "key": "Trivento",
+        "count": 4
+      },
+      {
+        "key": "Bulnez",
+        "count": 4
+      }
+    ],
+    "top_categorias": [
+      {
+        "key": "Limpieza",
+        "count": 34
+      },
+      {
+        "key": "Desayuno y merienda",
+        "count": 30
+      },
+      {
+        "key": "Lácteos y productos frescos",
+        "count": 26
+      },
+      {
+        "key": "Bebidas",
+        "count": 25
+      },
+      {
+        "key": "Almacén",
+        "count": 10
+      },
+      {
+        "key": "Frutas y verduras",
+        "count": 8
+      }
+    ],
+    "errores": 0
+  },
+  "login": {
+    "usuarios_unicos": 183,
+    "carrito_promedio": 30316.78,
+    "pct_con_carrito": 52.5,
+    "errores": 81
+  },
+  "origen": {
+    "total_requests": 276,
+    "ips_unicas": 2
+  },
+  "fetched_at": "2026-09-15T09:28:32.064Z"
+}
