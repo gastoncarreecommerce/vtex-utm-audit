@@ -22,6 +22,10 @@ concurrency:
   group: build-comercial-json
   cancel-in-progress: false
 
+# De donde comercial-lib.mjs LEE los rows con PII (repo privado).
+env:
+  ROWS_DIR: private-data/daily
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,6 +34,14 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+      # Los rows llevan el email del cliente y este repo es PUBLICO, asi que se
+      # escriben en el checkout del repo privado (via ROWS_DIR) y se pushean alla.
+      - name: Checkout repo privado de datos
+        uses: actions/checkout@v4
+        with:
+          repository: gastoncarreecommerce/appdash-private-data
+          token: ${{ secrets.PRIVATE_DATA_TOKEN }}
+          path: private-data
 
       - uses: actions/setup-node@v4
         with:

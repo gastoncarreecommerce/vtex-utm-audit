@@ -9,6 +9,12 @@ import path from 'path';
 
 export const DAILY = 'docs/data/daily';
 
+// Los agregados diarios siguen en el repo publico (no tienen PII), pero los
+// `-rows.json` llevan el email del cliente y viven en el repo privado. El
+// workflow apunta ROWS_DIR al checkout de ese repo; el default mantiene el
+// comportamiento de siempre para correrlo en local.
+export const ROWS = process.env.ROWS_DIR || DAILY;
+
 // Fila (1-indexed en el Sheet) por KPI — fallback si no se encuentra por etiqueta.
 export const ROW = {
   pedidos: 2, vct: 3, ticket: 4, participacion: 5,
@@ -59,9 +65,9 @@ export function realEmail(e) {
   return String(e).replace(/-[^-@]*\.ct\.vtex\.com\.br$/i, '').toLowerCase() || null;
 }
 
-function monthFiles(ym, suffix) {
-  if (!fs.existsSync(DAILY)) return [];
-  return fs.readdirSync(DAILY).filter(f => f.startsWith(ym) && f.endsWith(suffix)).sort();
+function monthFiles(ym, suffix, dir = DAILY) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter(f => f.startsWith(ym) && f.endsWith(suffix)).sort();
 }
 
 // Todos los meses (YYYY-MM) con al menos un daily JSON.
@@ -88,8 +94,8 @@ export function computeMonth(ym) {
   // Unidades (Σ qty de items) y clientes únicos (por email normalizado), leyendo los rows.
   let unidades = 0, rowsDays = 0, ordersWithEmail = 0, qcOrders = 0;
   const cust = new Map(), custQc = new Map();
-  for (const f of monthFiles(ym, '-rows.json')) {
-    const rows = readJson(path.join(DAILY, f));
+  for (const f of monthFiles(ym, '-rows.json', ROWS)) {
+    const rows = readJson(path.join(ROWS, f));
     if (!Array.isArray(rows)) continue;
     rowsDays++;
     for (const r of rows) {
