@@ -67,6 +67,29 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: "Usuario no autorizado. Para solicitar acceso escribir a gaston_ruiz@carrefour.com" });
   }
 
-  const user = buildUser(u);
-  res.json({ token: makeToken(user.username), user });
+  const user  = buildUser(u);
+  const token = makeToken(user.username);
+
+  // La cookie es lo que hace que el login sirva de algo del lado del servidor.
+  // El token en localStorage (que el cliente sigue usando para pintar la UI) no
+  // viaja en los fetch de los archivos estáticos, así que el edge middleware no
+  // tiene forma de verlo y los datos quedaban accesibles sin sesión.
+  //
+  //   HttpOnly  el JS de la página no puede leerla → no se filtra por XSS
+  //   Secure    solo por HTTPS
+  //   SameSite=Lax  no viaja en peticiones cross-site
+  //   Max-Age   12hs, los mismos que dura el token firmado
+  res.setHeader('Set-Cookie', [
+    `appdash_session=${token}`,
+    'HttpOnly',
+    'Secure',
+    'SameSite=Lax',
+    'Path=/',
+    `Max-Age=${12 * 3600}`,
+  ].join('; '));
+
+  // Se sigue devolviendo el token en el body a propósito: el cliente actual lo
+  // guarda en localStorage para saber si mostrar la pantalla de login. Cambiar
+  // eso rompería a quien ya tiene la sesión abierta.
+  res.json({ token, user });
 }
